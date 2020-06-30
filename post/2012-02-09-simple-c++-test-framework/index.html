@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Very Very Simple C&#43;&#43; Testing Framework - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="简介 测试驱动开发(TDD)是敏捷开发的一种方法，TDD的一个重要的工具就是单元测试(Unit Test)。如果想详细了解什么是TDD和单元测试" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2012-02-09-simple-c&#43;&#43;-test-framework/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Very Very Simple C&#43;&#43; Testing Framework" />
+<meta property="og:description" content="简介 测试驱动开发(TDD)是敏捷开发的一种方法，TDD的一个重要的工具就是单元测试(Unit Test)。如果想详细了解什么是TDD和单元测试" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2012-02-09-simple-c&#43;&#43;-test-framework/" /><meta property="article:published_time" content="2012-02-09T20:50:00&#43;00:00"/>
+<meta property="article:modified_time" content="2012-02-09T20:50:00&#43;00:00"/>
+
+<meta itemprop="name" content="Very Very Simple C&#43;&#43; Testing Framework">
+<meta itemprop="description" content="简介 测试驱动开发(TDD)是敏捷开发的一种方法，TDD的一个重要的工具就是单元测试(Unit Test)。如果想详细了解什么是TDD和单元测试">
+
+
+<meta itemprop="datePublished" content="2012-02-09T20:50:00&#43;00:00" />
+<meta itemprop="dateModified" content="2012-02-09T20:50:00&#43;00:00" />
+<meta itemprop="wordCount" content="1226">
+
+
+
+<meta itemprop="keywords" content="c&#43;&#43;,gtest,tdd," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Very Very Simple C&#43;&#43; Testing Framework"/>
+<meta name="twitter:description" content="简介 测试驱动开发(TDD)是敏捷开发的一种方法，TDD的一个重要的工具就是单元测试(Unit Test)。如果想详细了解什么是TDD和单元测试"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Very Very Simple C&#43;&#43; Testing Framework</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2012-02-09 </span>
+        <div class="post-category">
+            <a href="/categories/unittest/"> unittest </a>
+            </div>
+          <span class="more-meta"> 约 1226 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#断言-test-assertion">断言(Test Assertion)</a></li>
+<li><a href="#固件-test-fixture">固件(Test Fixture)</a></li>
+<li><a href="#环境-test-environment">环境(Test Environment)</a></li>
+<li><a href="#其它">其它</a></li>
+<li><a href="#示例">示例</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h3 id="简介">简介</h3>
+
+<p>测试驱动开发(TDD)是敏捷开发的一种方法，TDD的一个重要的工具就是单元测试(Unit Test)。如果想详细了解什么是TDD和单元测试请GOOGLE之。简单来和简略地说TDD是在测试驱动下的开发，先写完成测试然后努力使测试通过。单元测试大体包括下面所说的断言，测试固件（非常不喜欢国人这样翻译）和测试环境。</p>
+
+<p>C++单元测试框架google 的<a href="http://code.google.com/p/googletest/">gtest</a>是其中的不错一款，本测试框架是模仿它的。为什么不直接用它而要模仿它？因为公司不允许（允许但过程很麻烦）使用第三方的库，而公司又要求作单元测试，于是这个东西就写了出来。</p>
+
+<p>特点：</p>
+
+<ul>
+<li>小，只有一个头文件，其实你会觉得很啰嗦。<br /></li>
+<li>使用方法和GTEST一样，当然也没那么全。<br /></li>
+<li>跨平台<br /></li>
+<li>……</li>
+</ul>
+
+<p>下载：<a href="https://github.com/buf1024/mydoc/blob/master/tmpcode/test.h">test.h</a></p>
+
+<h3 id="断言-test-assertion">断言(Test Assertion)</h3>
+
+<p>断言包括两种，一种是以EXPECT_XXX，一种是ASSERT_XX，前者即使断言不通过，继续执行此测试用例下面的测试，后都则立即停止执行当前的测试用例。</p>
+
+<p>| 断言宏         | 含义  |<br />
+| &mdash;&mdash;&mdash;&mdash;- |:&mdash;&mdash;&mdash;&mdash;-|<br />
+| EXPECT_EQ/ASSERT_EQ| 期待数值相等 |<br />
+| EXPECT_NEQ/ASSERT_NEQ       | 期待数值不相等      |<br />
+| EXPECT_STREQ/ASSERT_STREQ  | 期待字符串相等      |<br />
+| EXPECT_STRNEQ/ASSERT_STRNEQ        | 期待字符串不相等    |<br />
+| EXPECT_BINEQ/ASSERT_BINEQ      | 期待二进制相等      |<br />
+| EXPECT_BINNEQ/ASSERT_BINNEQ            | 期待二进制不相等      |<br />
+| EXPECT_TRUE/ASSERT_TRUE                | 期待值为真      |
+| EXPECT_FALSE/ASSERT_FALSE              | 期待值为假      |</p>
+
+<h3 id="固件-test-fixture">固件(Test Fixture)</h3>
+
+<p>测试固件可看作是一组测试用例的集合，在执行这组测试用例之前或之后，可以先执行一些操作，同时也可以在执行单个测试用例之前或之后，也可以执行一些操作。对于单个测试用用例，这里，当作是包含一个测试用例的测试固件来处理。</p>
+
+<p>使用Test Fixture，你要继承Test这个类。类声明：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    class Test
+    {
+        ....
+    public:
+        static void SetUpTestCase()
+        {
+        }
+        static void TearDownTestCase()
+        {
+        }
+        virtual void SetUp()
+        {
+        }
+        virtual void TearDown()
+        {
+        }
+        ...
+    };</pre></td></tr></table>
+</div>
+</div>
+<p>然后重写上述方法，带static的是执行所有用例之前或后执行的，不带的是每个测试用例执行之前或之后执行的。</p>
+
+<p>提供两个宏进行操作：</p>
+
+<p>| 宏         | 含义  |  实例  |<br />
+| &mdash;&mdash;&mdash;&mdash;- |:&mdash;&mdash;&mdash;&mdash;-|:&mdash;&mdash;&mdash;&mdash;-|
+| TEST_F |测试固件|TEST_F(MyTestFixture, MyCase) <br>{ <br>} <br>MyTestFixture是你继续Test的固件。<br>MyCase是这个用例的名称。|<br />
+| TEST |测试用用例   |TEST(MyDummyFixture, MyCase) <br>{ <br>} <br>MyTestFixture是固件名称，事实上它什么也不做。<br>MyCase是这个用例的名称。|</p>
+
+<h3 id="环境-test-environment">环境(Test Environment)</h3>
+
+<p>测试环境是所有Test Fixture执行之前或之后进行的准备和清理。继续类Environment，其声明为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    class Environment
+    {
+    public:
+        Environment(){}
+        virtual ~Environment(){}
+    public:
+        virtual void SetUp(){}
+        virtual void TearDown(){}
+    };</pre></td></tr></table>
+</div>
+</div>
+<p>看的人应该明白。不解释。<br />
+在初始化之前，如果使用测试环境，则要用宏SET_ENVIRONMENT将环境添加进去。</p>
+
+<h3 id="其它">其它</h3>
+
+<p>还有一些与测试无关，但是与本框架相关的一些宏。</p>
+
+<p>| 宏         | 含义  |<br />
+| &mdash;&mdash;&mdash;&mdash;- |:&mdash;&mdash;&mdash;&mdash;-|<br />
+| INIT_TEST |初始化框架，在使用调用|<br />
+| RUN_ALL_TEST |运行测试    |</p>
+
+<p>编译好测试程序后，可执行程序接受一些选项，和GTEST的一样。</p>
+
+<p>| 选项         | 含义  |<br />
+| &mdash;&mdash;&mdash;&mdash;- |:&mdash;&mdash;&mdash;&mdash;-|<br />
+| &ndash;help     |输出帮助信息，仅显示英文，因为哥的工作的UNIX不支持中文。|<br />
+| &ndash;list_tests   |列出测试用例    |<br />
+| &ndash;filter=POSTIVE_PATTERNS[-NEGATIVE_PATTERNS]  |过虑，仅支持通佩符 |</p>
+
+<p>居然这个介绍花的时间比写这个测试框架的时间还长。</p>
+
+<h3 id="示例">示例</h3>
+
+<p>更多示例参考GTEST。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2012-02-09</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/c&#43;&#43;/">c&#43;&#43;</a>
+          <a href="/tags/gtest/">gtest</a>
+          <a href="/tags/tdd/">tdd</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2012-05-02-sys-queue-h/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">sys/queue.h</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2011-12-05-gtest-summary/">
+            <span class="next-text nav-default">gtest 小结</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2012-02-09 20:50:00 \x2b0000 UTC',
+        title: 'Very Very Simple C\x2b\x2b Testing Framework',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

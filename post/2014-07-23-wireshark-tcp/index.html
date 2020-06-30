@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>wireshark tcp 协议分析 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="注：本文比较简略，且存在错漏。更详细的总结参考tcp协议小结，后续如若发现有错漏，则同时在tcp协议小结中进行修正，本文不再做维护。 &amp;ndash;2016-09-23 虽然知" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2014-07-23-wireshark-tcp/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="wireshark tcp 协议分析" />
+<meta property="og:description" content="注：本文比较简略，且存在错漏。更详细的总结参考tcp协议小结，后续如若发现有错漏，则同时在tcp协议小结中进行修正，本文不再做维护。 &ndash;2016-09-23 虽然知" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2014-07-23-wireshark-tcp/" /><meta property="article:published_time" content="2014-07-23T15:28:16&#43;00:00"/>
+<meta property="article:modified_time" content="2014-07-23T15:28:16&#43;00:00"/>
+
+<meta itemprop="name" content="wireshark tcp 协议分析">
+<meta itemprop="description" content="注：本文比较简略，且存在错漏。更详细的总结参考tcp协议小结，后续如若发现有错漏，则同时在tcp协议小结中进行修正，本文不再做维护。 &ndash;2016-09-23 虽然知">
+
+
+<meta itemprop="datePublished" content="2014-07-23T15:28:16&#43;00:00" />
+<meta itemprop="dateModified" content="2014-07-23T15:28:16&#43;00:00" />
+<meta itemprop="wordCount" content="2651">
+
+
+
+<meta itemprop="keywords" content="tcp,wireshark," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="wireshark tcp 协议分析"/>
+<meta name="twitter:description" content="注：本文比较简略，且存在错漏。更详细的总结参考tcp协议小结，后续如若发现有错漏，则同时在tcp协议小结中进行修正，本文不再做维护。 &ndash;2016-09-23 虽然知"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">wireshark tcp 协议分析</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-07-23 </span>
+        <div class="post-category">
+            <a href="/categories/tcp/"> tcp </a>
+            </div>
+          <span class="more-meta"> 约 2651 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>注：本文比较简略，且存在错漏。更详细的总结参考<a href="https://luoguochun.cn/2016/09/23/tcp-fuck">tcp协议小结</a>，后续如若发现有错漏，则同时在<a href="https://luoguochun.cn/2016/09/23/tcp-fuck">tcp协议小结</a>中进行修正，本文不再做维护。   &ndash;2016-09-23</p>
+
+<p>虽然知道wireshark是抓包神器，只会大概大概用一下，还用一下下tcpdump，略懂一点BPF过滤器，也知道一点怎么用wirkshark过滤相关的报文，但是对于详细的字段的含义，如何查看TCP的交互情况还不是非常的了解。现在，简单分析一下。PS：这次抓包的对象是传说中通过公安局多少多少级认证的本公司开发的交易系统，本来看到他的验证码倾斜的很有规律，叫的斑斑点点也不是很密集。就想写个小程序练习一下验证码识别，可是我失望了，在wireshark里面居然没有抓到任何报文，这个东西的验证码居然是客户端生成的，无语。于是，抓下登录过程的报文，看看能否破解，相关的TCP报文：<a href="/raw/tcp/wiresharktcp-crack.pcapng">crack.pcapng</a>。关于报文分析，有一个很好的E文网站:<a href="http://packetlife.net/">packetlife</a>。</p>
+
+<p>废话少说，简单在看看TCP的协议头：
+<img src="/img/tcp/tcp-header.png" alt="TCP协议头" />
+这张图片有点过期，保留位是6位，实际的情况是，保留位的后2位已经被使用了。保留位的第5位是Congestion Window Reduced(<em>CWR</em>)，第6位是ECN-Echo(<em>ECN</em>)。TCP协议的其他部分不说，先看看TCP协议的几个不是很了解标志是什么意思。</p>
+
+<ul>
+<li><p><em>CWR</em>(Congestion Window Reduced)<br />
+简单来说就是网络不是很畅通了，通知对方减少阻塞窗口，发包速度发慢一点。</p></li>
+
+<li><p>*ECN*（ECN-Echo）<br />
+*ECN*两个作用，在TCP三次握手时表明TCP端是否支持ECN；在传输数据时，发送方是无法知道网络是否畅通的，但是经过重重的路由后，路由根据网络的情况可以知道是否阻塞，路由会设置在IP层会设置的相应的标志，即接收端发现了拥塞。*CWR*为发送端缩小拥塞窗口标志，用来通知发送端它已经收到了设置*ECN*标志，应该减慢发包速度。关于*ECN*的详细描述请参考：<a href="http://blog.csdn.net/zhangskd/article/details/7246503"><em>ECN</em></a></p></li>
+
+<li><p><em>URG</em>(Urgent)<br />
+这就是传说中的带外数据。因为TCP是没有消息边界的，假如有一种情况，你已经发送了一些数据，但是此时，你要发送一些数据优先处理，就可以设置这些标志，同时如果设置了这个标志，紧急指针也会设置为相应的偏移。当接受方收到*URG*数据时，不缓存在接收窗口，直接往上传给上层。具体的使用可以参考<a href="http://wenku.baidu.com/view/f04a4dff9e31433239689341.html">TCP带外数据</a>。大体来说，就是，调用<code>send</code>和<code>recv</code>是要加上<code>MSG_OOB</code>参数。同时接收方要处理<code>SIGURG</code>信号。不过据说这个带外数据在实际上，用得很少。</p></li>
+
+<li><p>*PSH*（Push）<br />
+简单来说，就是告诉对方，我发这么多数据了，你可以处理了，不用缓冲在接收窗口了，直接交数据给上层吧。如果设置了<code>SO_NODELAY</code>选项，可以强制设置这个标志，如果设置了这个标志，数据就不缓冲在发送窗口那里，直接发送。</p></li>
+</ul>
+
+<p>TCP报文SYN ACK的计算如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    A -&gt; B SYN J ACK K LEN L  
+    B -&gt; A SYN K ACK J+L LEN M  
+    A -&gt; B SYN J+L ACK K+M</pre></td></tr></table>
+</div>
+</div>
+<p>具体看下wireshark抓到的报文：</p>
+
+<ol>
+<li>TCP3次握手的部分是帧1到帧3。
+<img src="/img/tcp/wiresharktcp-tcp-cap-1.png" alt="建立连接" /><br />
+
+<ul>
+<li>第1帧，发送SYN J:<br />
+A -&gt; B seq = 0, win = 8192, len = 0, MSS = 1440, WS = 4, SACK_PERM = 1<br />
+WS(Window Scale), 4表示左移动4位，原来窗口大小是16为，现在是20为，现代扩大了2^4倍，关于WS，这里有比较详细的描述<a href="http://packetlife.net/blog/2010/aug/4/tcp-windows-and-window-scaling/">tcp-windows-and-window-scaling</a>。这里比较疑惑的就是SACK_PERM这个TCP选项。SACK（Select ACKnowledgement）的目的就是当出现大量的报文丢失时增加恢复时间来用的，类似于累计ACK，就是说N多个ACK合成一个SACK。关于SACK，有两个地方描述的比较详细<a href="http://kb.pert.geant.net/PERTKB/SelectiveAcknowledgements">SelectiveAcknowledgements</a>,<a href="http://msdn.microsoft.com/en-us/library/aa917455.aspx">TCP Selective Acknowledgment</a>。</li>
+<li>第2帧，发送SYN K， ACK J+1:<br />
+B -&gt; A seq = 0, ACK = 1, Win = 14600, Len = 0, MSS = 1448, SACK_PERM = 1 WS = 128<br />
+这些含义看第1帧，win = 14600, WS = 128，可以看到这台服务器的窗口非常大，WS也很多，网络性能应该不错的（事实也如此）。<br /></li>
+<li>第3帧，发送SYN J+1， ACK K+1:
+A -&gt; B seq = 1, ACK = 1, win = 66608, Len = 0<br />
+这是建立TCP连接的第3次握手，这时win = 66608了，转换为2进制有17位比16位长，因为再第1帧第2帧的交互中已经交互了各种的TCP选项，所以这次的确认不带有TCP选项。<br /></li>
+</ul></li>
+</ol>
+
+<p>当这3次交互完成后，连接真正建立，只要服务端accept后，就可以接收和发送数据了。</p>
+
+<ol>
+<li><p>TCP数据传输<br />
+<img src="/img/tcp/wiresharktcp-tcp-cap-2.png" alt="普通数据传输" /><br />
+截图的是报文的第7帧，这个帧报文在这次抓的报文中相对有代表性点的。这个帧的报文设置了<code>PSH</code>标志，而且是TCP分片传输的报文，因为此帧的报文是第6帧报文分片传输的，从<code>ACK = 125</code>可以看出。传输数据的报文没有什么特别可以说的：~</p></li>
+
+<li><p>TCP终止连接的4次交换的部分是帧19到帧21（可以发现，这里的交互是有问题的）。<br />
+<img src="/img/tcp/wiresharktcp-tcp-cap-2.png" alt="终止连接" /></p>
+
+<ul>
+<li>第19帧，发送FIN J, ACK K:<br />
+A -&gt; B seq = 2559, ack = 2361, win = 65812, len = 0<br />
+客户端发起FIN主动关闭连接和上个报文的ACK（应该是接收完了数据，关闭SOCKET），客户端最后应该会变成TIME_WAIT状态。这是第一次交换。<br /></li>
+<li>第20帧，发送FIN K， ACK J+1:<br />
+B -&gt; A seq = 2361, ack = 2560, Win = 26240, Len = 37<br />
+这次交换中，除了对客户端的ACK外，同时发送FIN，但同时带有37字节的数据，这37个数据不是我们期待有的。可以猜测一下，可能是服务端里面有37个字节还没有发送，在收到FIN后，把缓存里面的数据全部发送过去。服务端如果忘记的关闭连接，会变成CLOSE_WAIT状态。这里两次的交换合并在一起了。<br /></li>
+<li>第21帧，发送RST， ACK K+Len:
+A -&gt; B seq = 2560, ACK = 2398, win = 0, Len = 0<br />
+主动关闭一方收到FIN，回应ACK。但是这里却有一个不是我们期待的<code>RST</code>标志。<code>RST</code>标志表明往已经关闭连接发送数据，这是个错误。这是第四次交换。<br /></li>
+</ul></li>
+</ol>
+
+<p>这里的客户端与服务端的交换是有问题的，在第20帧，收到FIN时，不应该再发送数据，这样发送的数据很有可能收到的就是<code>RST</code>。但是这并不一定是发送数据一方的问题，很有可能是客户端还没有接受完数据就关闭连接了。但可以肯定的是，在客户端或服务端某个地方肯定存在BUG。</p>
+
+<p>这个就是某交易系统登录的报文，报文涉及5次数据交互（请求-应答）。这有5次交换，第1，2次交换，很可能是交换RSA公钥（猜的，因为报文数据有OpenSSL标志：~）。然而后面的还有3次数据交互，并不是我期待的一次交互。难道还要同步其他密钥之类的？有空问下相关开发人员。如果是单纯破解报文的话，存在比较大的难度，但是如果是<code>DOS</code>攻击的话，这应该是非常简单的……</p>
+
+<p>注：本文比较简略，且存在错漏。更详细的总结参考<a href="https://luoguochun.cn/2016/09/23/tcp-fuck">tcp协议小结</a>，后续如若发现有错漏，则同时在<a href="https://luoguochun.cn/2016/09/23/tcp-fuck">tcp协议小结</a>中进行修正，本文不再做维护。   &ndash;2016-09-23</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-07-23</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/tcp/">tcp</a>
+          <a href="/tags/wireshark/">wireshark</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2014-07-28-process-information-pseduo-file-system/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">linux /proc 伪文件系统</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2014-07-15-misc-memory/">
+            <span class="next-text nav-default">杂乱记忆</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2014-07-23 15:28:16 \x2b0000 UTC',
+        title: 'wireshark tcp 协议分析',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

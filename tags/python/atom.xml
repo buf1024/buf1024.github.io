@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on BUF1024</title>
+    <link>https://luoguochun.cn/tags/python/</link>
+    <description>Recent content in Python on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sun, 28 Dec 2014 21:08:34 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/tags/python/atom.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sqlalchemy orm 概览</title>
+      <link>https://luoguochun.cn/post/2014-12-28-sqlalchemy-orm-overview/</link>
+      <pubDate>Sun, 28 Dec 2014 21:08:34 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-12-28-sqlalchemy-orm-overview/</guid>
+      <description>SQLAlchemy 概述 在python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图</description>
+    </item>
+    
+    <item>
+      <title>验证码识别</title>
+      <link>https://luoguochun.cn/post/2014-08-29-verification-code-identified/</link>
+      <pubDate>Fri, 29 Aug 2014 22:31:35 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-08-29-verification-code-identified/</guid>
+      <description>本文所使用的验证码识别的方法非常暴力，高手可忽略。对于在客户端实现的“伪验证码”或使用静态图片的验证码，本文不作讨论。对于验证码的识别，一直</description>
+    </item>
+    
+    <item>
+      <title>杂乱记忆</title>
+      <link>https://luoguochun.cn/post/2014-07-15-misc-memory/</link>
+      <pubDate>Tue, 15 Jul 2014 11:10:13 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-07-15-misc-memory/</guid>
+      <description>这里记录的是一些常见的错误或技巧或一些注意事项等，不定时更新: hexo 安装（含插件） hexo 是相对比较好的一个静态BLOG生成器，虽然我在树莓派上面编译</description>
+    </item>
+    
+    <item>
+      <title>django &#43; nginx &#43; raspberypi &#43; pidaro</title>
+      <link>https://luoguochun.cn/post/2014-05-12-django-nginx-raspberypi-pidora/</link>
+      <pubDate>Mon, 12 May 2014 22:12:47 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-05-12-django-nginx-raspberypi-pidora/</guid>
+      <description>对于一个从事后台开发的人来说，搞了个网站，我自己都觉得有点意外。不是很懂html，不是很懂css，不是很懂js，不是很懂web开发模式/框架</description>
+    </item>
+    
+  </channel>
+</rss>

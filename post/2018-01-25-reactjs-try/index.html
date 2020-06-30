@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ReactJS  --  试水篇 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="简介 在大前端里，有三个特别流行的MVVM（参考：MVC，MVP 和 MVVM 的图示）框架，AngularJS，ReactJS和Vue。在MVVM之前，" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2018-01-25-reactjs-try/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="ReactJS  --  试水篇" />
+<meta property="og:description" content="简介 在大前端里，有三个特别流行的MVVM（参考：MVC，MVP 和 MVVM 的图示）框架，AngularJS，ReactJS和Vue。在MVVM之前，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2018-01-25-reactjs-try/" /><meta property="article:published_time" content="2018-01-25T09:32:32&#43;00:00"/>
+<meta property="article:modified_time" content="2018-01-25T09:32:32&#43;00:00"/>
+
+<meta itemprop="name" content="ReactJS  --  试水篇">
+<meta itemprop="description" content="简介 在大前端里，有三个特别流行的MVVM（参考：MVC，MVP 和 MVVM 的图示）框架，AngularJS，ReactJS和Vue。在MVVM之前，">
+
+
+<meta itemprop="datePublished" content="2018-01-25T09:32:32&#43;00:00" />
+<meta itemprop="dateModified" content="2018-01-25T09:32:32&#43;00:00" />
+<meta itemprop="wordCount" content="5289">
+
+
+
+<meta itemprop="keywords" content="frontend," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ReactJS  --  试水篇"/>
+<meta name="twitter:description" content="简介 在大前端里，有三个特别流行的MVVM（参考：MVC，MVP 和 MVVM 的图示）框架，AngularJS，ReactJS和Vue。在MVVM之前，"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">ReactJS  --  试水篇</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-01-25 </span>
+        <div class="post-category">
+            <a href="/categories/reactjs/"> reactjs </a>
+            </div>
+          <span class="more-meta"> 约 5289 字 </span>
+          <span class="more-meta"> 预计阅读 11 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#入门">入门</a></li>
+<li><a href="#react部分技术栈">React部分技术栈</a>
+<ul>
+<li>
+<ul>
+<li><a href="#react">React</a></li>
+<li><a href="#redux">REDUX</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#优化与踩坑">优化与踩坑</a></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h2 id="简介">简介</h2>
+
+<p>在大前端里，有三个特别流行的MVVM（参考：<a href="http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html">MVC，MVP 和 MVVM 的图示</a>）框架，<a href="https://angularjs.org/">AngularJS</a>，<a href="https://reactjs.org/">ReactJS</a>和<a href="https://vuejs.org/">Vue</a>。在MVVM之前，前后端的开发是紧耦合的，前端设计页面，后端服务端生成渲染页面。这中方式开发最大的坏处是，前后端的代码混合在一起，不容易维护，当然最可能好处就是，前后端紧密合作或许会产生感情的火花~~。使用MVVM框架，前后分离，定好交互的接口后，前后端就可以进行独立的开发，互不干扰，代码分别维护。基于这个优点，毫不犹豫的产生了想使用MVVM的想法。</p>
+
+<p>关于AngularJS，ReactJS和Vue，网上有很多的资料参考。AngularJS没有接触过，由google维护，使用的是<a href="http://www.typescriptlang.org/">TypeScript</a>，据说使用起来稍微复杂和笨重。ReactJS，是Facebook维护的，兼容相对低版本的浏览器，使用自己发明的JSX语法，因为JSX把JS和HTML混合起来，所以相对一部分人第一次接触，并不会这么喜欢它，但是当你使用时，也不会感觉到什么异样。Vue是个人维护的项目，感觉参考了吸收了AngularJS和ReactJS，上手相对简单，遗憾的是不支持低版本的浏览器。经过对比后，开发使用了ReactJS，最主要的原因是，兼容相对低版本的浏览器。</p>
+
+<h2 id="入门">入门</h2>
+
+<p>这里说的是后台人员的入门。因为前端的发展大都是借鉴后台的技术，甚至不少前端框架是后台人员开发的，所以后台开发人员进行前端开发，门槛不会太大。那么对于后端需要掌握什么的技术呢？</p>
+
+<p>JS 是必须的，除了 JS 还不够，你还得熟悉ES6，ES6的最好参考在: <a href="http://es6.ruanyifeng.com/">ECMAScript 6 入门</a>。看完ES6之后，你才会觉得JS是一门编程语言。JS的参考也很重要，mozilla的参考比较详细：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">JavaScript reference</a>。</p>
+
+<p>ES6代码并不能在浏览器执行，所以需要将ES6代码转换成普通的JS代码，这是<a href="http://babeljs.io/">babeljs</a>干的事情，不过你很少会直接接触babeljs，更多的情况下，你是通过使用构建工具间接使用到。<a href="http://webpack.github.io/">webpack</a>是一个很好的构建工具，这篇入门级别介绍挺好：<a href="https://www.jianshu.com/p/42e11515c10f">入门Webpack，看这篇就够了</a>。当然还有很多构建工具，不过webpack用的人相对多点，webpack的配置对于入门者来说，是比较复杂的，但是很多情况下，也不需要深入。</p>
+
+<p>ReactJS看<a href="https://doc.react-china.org/">react-china</a>中文翻译，总体上也能入门，入门估计实战可能还有点距离，很多情况下，你可能还需要<a href="https://reacttraining.com/react-router/web/guides/redux-integration">React Router</a>。React Router据说每次版本变化都比较大，对于新开发的项目，我们当然选择最新版本，这篇文章可能有助于理解: <a href="https://www.jianshu.com/p/e3adc9b5f75c/">初探 React Router 4.0</a>。你可能还需要全局的状态管理，你需要<a href="https://redux.js.org/">Redux</a>，看中文翻译即可<a href="http://www.redux.org.cn/">Redux 中文文档</a>，Redux的代码仓库里面带有不少例子，看里面的例子对理解Redux和ReactJS都很有帮助。<a href="http://www.ruanyifeng.com/">阮一峰</a>的三篇入门教程对理解Redux也是非常有帮助的。<a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html">Redux 入门教程（一）：基本用法</a>, <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html">Redux 入门教程（二）：中间件与异步操作</a>, <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html">Redux 入门教程（三）：React-Redux 的用法</a>。</p>
+
+<p>web的请求大多数情况下都是异步，异步的数据流Redux推荐的数据流管理是<a href="https://github.com/gaearon/redux-thunk">redux-thunk</a>，但是实际上使用时，你不用redux-thunk也没什么毛病，自己控制<code>dispatch action</code>。所以，对于异步数据，更喜欢<a href="https://redux-saga.js.org/">redux-saga</a>，他利用了es6的generator，使用起来像后台的协程这样的，用顺序的方式写异步的代码。redux-saga的中文文档，最好看繁体翻译的，因为简体中文翻译好像有点拗口，而且没有跟进最新版本：<a href="https://neighborhood999.github.io/redux-saga/">redux-saga</a>。</p>
+
+<p>另外推荐一看下<a href="https://github.com/dvajs/dva">dva</a>这个项目(据说维护不积极)，但是个人觉得封装的很深入，用起来会很顺手，只是使用了之后，很容易忘记原来的技术栈，基于据说的维护不积极，所以我们也不考虑使用它。不过，里面一篇，最佳实践比较值得一看：<a href="https://github.com/sorrycc/blog/issues/1">React + Redux 最佳实践</a></p>
+
+<p>以上，看起需要掌握的东西比较多，但是实践上对于后台人员并不会有太多的困难。对于后台开发人员来说，困难的不是以上部分，而是没有提及的css部分，这是要靠天赋和美感的。<a href="http://lesscss.org/">less</a>和<a href="http://sass-lang.com/">sass</a>可以简化css的编写，但是对于没有大量实践经验的后台人员来说，css编写很耗时间。</p>
+
+<h2 id="react部分技术栈">React部分技术栈</h2>
+
+<p>React相关入门的参考上一节已经做了简介，这里是看上面部分关于React部分的笔记，当然简单不完整：</p>
+
+<h4 id="react">React</h4>
+
+<p><code>ReactDOM.render</code> 是React最基本方法，用于将模板转为HTML语言，并插入指定的DOM节点。React元素都是immutable不可变的。当元素被创建之后，你是无法改变其内容或属性的。一个元素就好像是动画里的一帧，它代表应用界面在某一时间点的样子。</p>
+
+<p>React使用的是JSX语法，JSX的基本语法规则其实非常简单：遇到HTML标签（以&lt;开头），就用HTML规则解析；遇到代码块（以{开头），就用JavaScript规则解析。推荐在JSX代码的外面扩上一个小括号，这样可以防止分号自动插入的bug。</p>
+
+<p>组件是React复用的基本单元，组件从概念上看就像是函数，它可以接收任意的输入值（称之为<code>props</code>），并返回一个需要在页面上展示的React元素。组件类的第一个字母必须<strong>大写</strong>。</p>
+
+<p><code>this.props.children</code>属性。它表示组件的所有子节点，React 提供一个工具方法 React.Children 来处理 <code>this.props.children</code>。我们可以用<code>React.Children.map</code>来遍历子节点，而不用担心<code>this.props.children</code>的数据类型是 <code>undefined</code>还是<code>object</code>。</p>
+
+<p>组件最简单的方式是使用JavaScript函数，接收一个单一的<code>props</code>对象并返回了一个React元素，缺点是用不了生命周期钩子，写法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">Welcome</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+<span class="p">}</span>
+<span class="c1">// 类型检查propTypes：
+</span><span class="c1"></span><span class="k">import</span> <span class="nx">PropTypes</span> <span class="nx">from</span> <span class="s1">&#39;prop-types&#39;</span>
+<span class="nx">Welcome</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span>
+<span class="p">}</span>
+<span class="c1">// 为属性指定默认值:
+</span><span class="c1"></span><span class="nx">Welcome</span><span class="p">.</span><span class="nx">defaultProps</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Stranger&#39;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>另外的组件方法是用类实现，可以包括状态和生命周期。<code>props</code>和<code>state</code>的区别：<code>props</code>为外部传递给组件的，而<code>state</code>为组件内部的状态。<code>this.state</code>代表组件的状态，关于state：
+1. 不要直接更新状态
+  更新方式：<code>this.setState({comment: 'Hello'})</code></p>
+
+<ol>
+<li><p>状态更新可能是异步的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">prevState</span><span class="p">,</span> <span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="p">{</span>
+  <span class="nx">counter</span><span class="o">:</span> <span class="nx">prevState</span><span class="p">.</span><span class="nx">counter</span> <span class="o">+</span> <span class="nx">props</span><span class="p">.</span><span class="nx">increment</span>
+<span class="p">}</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>状态更新支持合并</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">posts</span><span class="o">:</span> <span class="p">[],</span>
+  <span class="nx">comments</span><span class="o">:</span> <span class="p">[]</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+
+<p>类组件实现方法</p>
+
+<ol>
+<li>继承React.Component</li>
+<li>实现render()方法</li>
+<li>创建构造函数实现增加state状态（可选）</li>
+<li>添加生命周期钩子（可选）</li>
+</ol>
+
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="k">class</span> <span class="nx">Clock</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span><span class="nx">date</span><span class="o">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()};</span>
+  <span class="p">}</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">world</span><span class="o">!&lt;</span><span class="err">/h1&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">It</span> <span class="nx">is</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">date</span><span class="p">.</span><span class="nx">toLocaleTimeString</span><span class="p">()}.</span><span class="o">&lt;</span><span class="err">/h2&gt;</span>
+      <span class="o">&lt;</span><span class="err">/div&gt;</span>
+    <span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">Clock</span> <span class="err">/&gt;,</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>组件的生命周期(详细参考: <a href="https://segmentfault.com/a/1190000004168886">React：组件的生命周期</a>)分成三个状态：
+  - Mounting：已插入真实 DOM
+  - Updating：正在被重新渲染
+  - Unmounting：已移出真实 DOM</p>
+
+<p>组件对应的生命周期
+  - componentWillMount()
+  - componentDidMount()
+  - componentWillUpdate(object nextProps, object nextState)
+  - componentDidUpdate(object prevProps, object prevState)
+  - componentWillUnmount()</p>
+
+<p>额外的生命周期
+  - componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用
+  - shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用</p>
+
+<p>组件类似于面向对象的类，外部是不需要知道内部的状态。</p>
+
+<p>在事件处理，最好使用箭头函数，这样可以避免<code>this</code>的影响。在 React 中你不能使用返回 false 的方式阻止默认行为。你必须明确的使用 <code>preventDefault</code>，如。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js">  <span class="nx">handleClick</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;The link was clicked.&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>也可以在构造函数里面绑定<code>this</code>, 向事件传递参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">deleteRow</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">e</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">Delete</span> <span class="nx">Row</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">deleteRow</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">id</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">Delete</span> <span class="nx">Row</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>参数 e 作为 React 事件对象将会被作为第二个参数进行传递。通过箭头函数的方式，事件对象必须显式的进行传递，但是通过 bind 的方式，事件对象以及更多的参数将会被隐式的进行传递</p>
+
+<h4 id="redux">REDUX</h4>
+
+<p>应用中所有的 state 都以一个对象树的形式储存在一个单一的 store 中。惟一改变 state 的办法是触发 action，一个描述发生什么的对象。为了描述 action 如何改变 state 树，你需要编写 reducers。</p>
+
+<p>三大原则：
+- 单一数据源, 整个应用的 state 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 store 中。
+- State 是只读的, 惟一改变 state 的方法就是触发 action，action 是一个用于描述已发生事件的普通对象。
+- 使用纯函数来执行修改, 为了描述 action 如何改变 state tree ，你需要编写 reducers。</p>
+
+<p>一般来说你会通过 store.dispatch() 将 action 传到 store。action 内必须使用一个字符串类型的 type 字段来表示将要执行的动作。除了 type 字段外，action 对象的结构完全由你自己决定。我们应该尽量减少在 action 中传递的数据
+Action 创建函数 就是生成 action 的方法。Action 只是描述了有事情发生了这一事实，并没有指明应用如何更新 state。而这正是 reducer 要做的事情。reducer 就是一个纯函数，接收旧的 state 和 action，返回新的 state。</p>
+
+<p>注意:
+- 不要修改 state。 使用 Object.assign() 新建了一个副本。
+- 在 default 情况下返回旧的 state</p>
+
+<p>Store 有以下职责：
+  - 维持应用的 state；
+  - 提供 getState() 方法获取 state；
+  - 提供 dispatch(action) 方法更新 state；
+  - 通过 subscribe(listener) 注册监听器;
+  - 通过 subscribe(listener) 返回的函数注销监听器</p>
+
+<p>Redux 的设计思想很简单
+1. Web 应用是一个状态机，视图与状态是一一对应的。
+2. 所有的状态，保存在一个对象里面。</p>
+
+<p>异步操作的差别是它要发出三种 Action。
+  - 操作发起时的 Action
+  - 操作成功时的 Action
+  - 操作失败时的 Action</p>
+
+<ul>
+<li>操作开始时，送出一个 Action，触发 State 更新为&rdquo;正在操作&rdquo;状态，View 重新渲染</li>
+<li>操作结束后，再送出一个 Action，触发 State 更新为&rdquo;操作结束&rdquo;状态，View 再一次重新渲染</li>
+</ul>
+
+<p>action creator的写法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">asyncAction</span> <span class="o">=</span> <span class="p">(</span><span class="nx">base</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;REQUEST&#39;</span><span class="p">,</span> <span class="s1">&#39;SUCCESS&#39;</span><span class="p">,</span> <span class="s1">&#39;FAILURE&#39;</span><span class="p">].</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">acc</span><span class="p">[</span><span class="nx">type</span><span class="p">]</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">base</span><span class="si">}</span><span class="sb">_</span><span class="si">${</span><span class="nx">type</span><span class="si">}</span><span class="sb">`</span>
+    <span class="k">return</span> <span class="nx">acc</span>
+  <span class="p">},</span> <span class="p">{})</span>
+<span class="p">}</span>
+<span class="k">const</span> <span class="nx">action</span> <span class="o">=</span> <span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span><span class="nx">type</span><span class="p">,</span> <span class="p">...</span><span class="nx">payload</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="k">export</span> <span class="k">const</span> <span class="nx">LOAD_COMMODITY</span> <span class="o">=</span> <span class="nx">asyncAction</span><span class="p">(</span><span class="s1">&#39;LOAD_COMMODITY&#39;</span><span class="p">)</span>
+<span class="k">export</span> <span class="k">const</span> <span class="nx">loadCommodity</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">request</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">action</span><span class="p">(</span><span class="nx">LOAD_COMMODITY</span><span class="p">[</span><span class="s1">&#39;REQUEST&#39;</span><span class="p">]),</span>
+  <span class="nx">success</span><span class="o">:</span> <span class="p">(</span><span class="nx">payload</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">action</span><span class="p">(</span><span class="nx">LOAD_COMMODITY</span><span class="p">[</span><span class="s1">&#39;SUCCESS&#39;</span><span class="p">],</span> <span class="p">{...</span><span class="nx">payload</span><span class="p">}),</span>
+  <span class="nx">failure</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">action</span><span class="p">(</span><span class="nx">LOAD_COMMODITY</span><span class="p">[</span><span class="s1">&#39;FAILURE&#39;</span><span class="p">])</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>UI组件和容器组件通过(<a href="github.com/reactjs/react-redux">react-redux</a>)connect连接在一起, 通过Provider注入，原型：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">connect</span><span class="p">(</span><span class="nx">mapStateToProps</span><span class="p">,</span> <span class="nx">mapDispatchToProps</span><span class="p">)(</span><span class="nx">UIComponent</span><span class="p">)</span>
+
+<span class="k">const</span> <span class="nx">mapStateToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">ownProps</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">active</span><span class="o">:</span> <span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span> <span class="o">===</span> <span class="nx">state</span><span class="p">.</span><span class="nx">visibilityFilter</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">const</span> <span class="nx">mapDispatchToProps</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="nx">dispatch</span><span class="p">,</span>
+  <span class="nx">ownProps</span>
+<span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">onClick</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">dispatch</span><span class="p">({</span>
+        <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;SET_VISIBILITY_FILTER&#39;</span><span class="p">,</span>
+        <span class="nx">filter</span><span class="o">:</span> <span class="nx">ownProps</span><span class="p">.</span><span class="nx">filter</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>当state变化时，导致filter的改变，用reselect可以缓存state，输入不变，则结果不变。
+如果connect第而个参数是action creator，那么直接调用action creator就可以进行dispatch</p>
+
+<p>Redux中间件是对dispatch的封装（redux-saga是一个中间件），原型：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">logger</span> <span class="o">=</span> <span class="nx">store</span> <span class="p">=&gt;</span> <span class="nx">next</span> <span class="p">=&gt;</span> <span class="nx">action</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;dispatching&#39;</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span>
+  <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">next</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;next state&#39;</span><span class="p">,</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">())</span>
+  <span class="k">return</span> <span class="nx">result</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>reducer的原型:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">todos</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<span class="p">}</span>
+<span class="c1">//必须返回新的state
+</span><span class="c1"></span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="优化与踩坑">优化与踩坑</h2>
+
+<p>当你写比较多的reducer的时候，你会发现，所有的reducer的写法都类似，只要定义好action传过来的字段是payload，那很多reducer的写法基本和以下类似：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">merge</span> <span class="nx">from</span> <span class="s1">&#39;lodash/merge&#39;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">userActions</span> <span class="nx">from</span> <span class="s1">&#39;../actions/user&#39;</span>
+
+<span class="k">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// ... 其他字段
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="k">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">merge</span><span class="p">({},</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">userActions</span><span class="p">.</span><span class="nx">USER_LOGOUT</span><span class="p">[</span><span class="s1">&#39;SUCCESS&#39;</span><span class="p">]</span><span class="o">:</span>
+      <span class="k">return</span> <span class="nx">merge</span><span class="p">({},</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">initialState</span><span class="p">)</span>
+    <span class="k">default</span><span class="o">:</span>
+      <span class="k">return</span> <span class="nx">state</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">state</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="p">{</span> <span class="nx">user</span> <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>ReactJS真正使用起来还是有不少坑，印象比较深的是key字段，在渲染列表时，或其他组件时遇到多次。举个栗子，如下代码，如果没有key字段，那么DeliveryList组件的生命周期只有创建一次。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="k">class</span> <span class="nx">WorkBenchLayout</span> <span class="k">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">Layout</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&#34;workbench&#34;</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Switch</span><span class="o">&gt;</span>
+            <span class="p">{</span><span class="cm">/* ... 其他 */</span><span class="p">}</span>
+            <span class="o">&lt;</span><span class="nx">PrivateRoute</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&#34;/workbench/delivery/list&#34;</span> <span class="nx">exact</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">DeliveryList</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="s1">&#39;list&#39;</span><span class="err">/&gt;</span>
+            <span class="o">&lt;</span><span class="nx">PrivateRoute</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&#34;/workbench/delivery/todo&#34;</span> <span class="nx">exact</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">DeliveryList</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="s1">&#39;todo&#39;</span><span class="err">/&gt;</span>
+            <span class="p">{</span><span class="cm">/* ... 其他 */</span><span class="p">}</span>
+          <span class="o">&lt;</span><span class="err">/Switch&gt;</span>
+      <span class="o">&lt;</span><span class="err">/Layout&gt;</span>
+    <span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="总结">总结</h2>
+
+<p>这次试水React并不算怎么顺利。可能的原因：
+1. 不安规定制定接口
+前后分离的开发模式，需要开发前制定接口，然后各自开发。但现实却是，接口制定完全由后端控制，后端自己先开发完毕了一个接口功能，就制定一个接口。这样前端就处于一个非常被动的地位，很容易成为开发的瓶颈。</p>
+
+<ol>
+<li><p>后端接口实现的缺陷，沟通困难。
+安照原型图，后端制定的接口里面，有不少需要的字段缺少的，而且对接口测试不足，完全依赖于前端输入。举个栗子，有个入库的接口，前端填好相关ID和名字后，让后端进行入库，后端完全不校验数据的合法性，不管前端传输的任何和数据，都直接入库。这样导致后台的审核的系统，报错。当然这些缺陷的软件开发这不是问题，最关键的问题是，后台人员沟通比较困难，要后台修改一个问题，像大爷一样求着修改。后来了解到，之前另外一个java后台沟通更困难。本来前后分离，是减轻后端的开发工作量的，没有料到的是，沟通和不合作却成为一个困难。可能这也跟公司的前景相关</p></li>
+
+<li><p>前端优化页面编写
+前端的开发中有不少相似的页面和逻辑，按照复用的原则理论上可以让代码更少，然而可能是经验方面的不足，写了很多冗余的代码，这是需要提高</p></li>
+</ol>
+
+<p>最后，总结：
+1. 如果决定了采用前后分离的开发模式，那么前后端的开发都必须达成一致，同意这种开发的模式，积极参与进来，否则导致后面的沟通问题
+2. 前后方的接口制定，需要双方同时制定，不能由一方制定后，再给另外一方，中途出现问题，再做修改，然后同时开发，必须同时分别进行接口测试。
+3. 如果后端同事较多，可以让后端同事适当参与前端开发，毕竟后端向端开发的转化还相对容易
+4. 如果原来的技术栈可以适应当前的业务情景，组内兴趣对新技术兴趣不高，那么还是保留使用原来的技术栈</p>
+
+<p>P.S:
+这里没有针对任何人。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-01-25</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/frontend/">frontend</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2018-04-14-react-native-dev-env/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">react-native 开发环境配置 -- 调试部分</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2017-12-26-soft-architecture/">
+            <span class="next-text nav-default">软件构架  --  无技术简篇</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-01-25 09:32:32 \x2b0000 UTC',
+        title: 'ReactJS  --  试水篇',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

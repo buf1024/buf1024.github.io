@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>验证码识别 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="本文所使用的验证码识别的方法非常暴力，高手可忽略。对于在客户端实现的“伪验证码”或使用静态图片的验证码，本文不作讨论。对于验证码的识别，一直" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2014-08-29-verification-code-identified/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="验证码识别" />
+<meta property="og:description" content="本文所使用的验证码识别的方法非常暴力，高手可忽略。对于在客户端实现的“伪验证码”或使用静态图片的验证码，本文不作讨论。对于验证码的识别，一直" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2014-08-29-verification-code-identified/" /><meta property="article:published_time" content="2014-08-29T22:31:35&#43;00:00"/>
+<meta property="article:modified_time" content="2014-08-29T22:31:35&#43;00:00"/>
+
+<meta itemprop="name" content="验证码识别">
+<meta itemprop="description" content="本文所使用的验证码识别的方法非常暴力，高手可忽略。对于在客户端实现的“伪验证码”或使用静态图片的验证码，本文不作讨论。对于验证码的识别，一直">
+
+
+<meta itemprop="datePublished" content="2014-08-29T22:31:35&#43;00:00" />
+<meta itemprop="dateModified" content="2014-08-29T22:31:35&#43;00:00" />
+<meta itemprop="wordCount" content="1438">
+
+
+
+<meta itemprop="keywords" content="python," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="验证码识别"/>
+<meta name="twitter:description" content="本文所使用的验证码识别的方法非常暴力，高手可忽略。对于在客户端实现的“伪验证码”或使用静态图片的验证码，本文不作讨论。对于验证码的识别，一直"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">验证码识别</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-08-29 </span>
+        <div class="post-category">
+            <a href="/categories/python/"> python </a>
+            </div>
+          <span class="more-meta"> 约 1438 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>本文所使用的验证码识别的方法非常暴力，高手可忽略。对于在客户端实现的“伪验证码”或使用静态图片的验证码，本文不作讨论。对于验证码的识别，一直以为，只要足够的样本，就可以分析出验证码的特征，从而进行分门别类，再通过和样本做比较，就可以得出正确验证码。这里简单而暴力的验证一下这个一直想验证而没有行动过的想法。做实验的网站是某体检机构，因为它生成的验证码很有规律（不确定是不是静态文件，但就可以当成是算法随机生成的），每个字符的位置相对固定，虽然每个字符的颜色和背景都不一样，但是背景颜色很相近，没有干扰线，更重要的是，它和中国很多很多网站的验证码很类似。相关代码和文件(某体检机构网站忽略)：<a href="https://github.com/buf1024/xcoll/tree/master/verify">verification code identified</a>。<br />
+暴力步骤：</p>
+
+<ol>
+<li>下载样本数据。<br />
+任何有验证码的网络，都有刷新按钮，一般而言点击该按钮，就会向服务器发送一个HTTP GET的请求，我们可以根据这个请求下载大量的样本数据。一般可以通过查看HTML源码可以看到这个请求的URL和相关信息，也可以用<a href="www.wireshark.org">wireshark</a>抓下包，很容易就可以得到请求的信息。由于要用肉眼分析每个样本数据，所以，为了不增加肉眼的负担，分析的数据只下载了200个。当然是用脚本下载的，对应的代码为:<a href="https://github.com/buf1024/xcoll/blob/master/verify/sample.py">sample.py</a>。样本数据如图：<br />
+<img src="/img/python/code-verify-sample.png" alt="样本数据" /><br /></li>
+<li>分析样本<br />
+每个验证码颜色都有可能不一样，但是背景都是和验证码的数据的颜色有明显的不同，而且背景的颜色相差不大。于是，为了方便处理，我们可以将背景颜色都变成白色，验证码变成黑色。如何识别背景的颜色？仔细观察下，初步用个非常简陋的方法：首先，取4个角落的，9个像素，如果其他位置的颜色和这36个角落的颜色相差在一定的范围内，我们认为都是背景，变成白色。其他非白色的区域，都是黑色（后来，证实，这个方法不好，因为有些验证码在边边角角里）。然后，因为各个验证码的位置都相对固定（相对而已，有一些是重叠的），将各个验证码切成一个数字字符的。对应的代码:<a href="https://github.com/buf1024/xcoll/blob/master/verify/analyse.py">analyse.py</a>。处理的结果：<br />
+<img src="/img/python/code-verify-analyse.png" alt="样本处理结果" /><br />
+这里处理处理的样本数据有4X200,800个，如果用作标准样本，识别正确率会高很多，但是，笔记本计算机资源有限，从中挑出有代表性的26+25+10,61个(因为我实在区分不出大小的I和小写的l有什么区别，所以没有大写的I了)。由于PIL处理保存图片时，为了使图片更自然，会加上反锯齿，所以看到的图片不是全黑白的，还有一点灰阶，这样会降低识别的正确率，由于PIL不熟悉，不知道哪里设置，作罢。<br />
+<img src="/img/python/code-verify-good.png" alt="有效标准样本" />。<br /></li>
+<li>验证码识别<br />
+有了样本数据，就可以用样本来做对比了。同样，是按照分析样本的方法，将待测试的数据切分为几个部分，分别和样本的数据一个一个的对比，如果颜色差别在允许的范围内就认为相等，相似度最高的，就认为和样本一致，就可以认为是该样本的值。再次下载500多个验证码来测试，对应代码：<a href="https://github.com/buf1024/xcoll/blob/master/verify/crack.py">crack.py</a>。识别结果：<br />
+<img src="/img/python/code-verify-crack.png" alt="测试结果" /><br /></li>
+<li>结果分析<br />
+测试的验证码540个左右，识别错误约70个（粗略统计，眼累），识别正确率大约86%。仔细观察识别错误的验证码大多是：l -&gt; i k -&gt; i r -&gt; i, l-&gt;i和r-&gt;i容易识别错误，这个可以理解，但是k-&gt;i，就迷惑了。 相关错误结果：<br />
+<img src="/img/python/code-verify-wrong.png" alt="错误结果" />。</li>
+</ol>
+
+<p>85%左右的正确率，暴力破解其实也可以了，改进下有可能达到90%以上。验证码是网络的一道屏障，破解了验证码后，很多邪恶的事情都可以做。当然这里介绍的是最笨的方法，对于复杂的验证码还不能识别，还需要更复杂点的方法。本文仅是图片识别技术的讨论，相关的代码等仅用于学习，不得用于做非法事情。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-08-29</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/python/">python</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2014-09-17-bt-file-structure/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">bt种子文件文件结构</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2014-08-21-coroutine/">
+            <span class="next-text nav-default">coroutine协程</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2014-08-29 22:31:35 \x2b0000 UTC',
+        title: '验证码识别',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Talib-docs on BUF1024!!!</title>
+    <link>https://luoguochun.cn/talib-doc/</link>
+    <description>Recent content in Talib-docs on BUF1024!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 10 Oct 2019 00:00:16 +0800</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/talib-doc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>16 数学运算符(Math Operator Functions )</title>
+      <link>https://luoguochun.cn/talib-doc/func_groups/math_operators/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:16 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/func_groups/math_operators/</guid>
+      <description>Math Operator Functions 数学运算符函数 数学运算符函数 ADD - Vector Arithmetic Add 函数名：ADD 名称：向量加法运算 1 real = ADD(high, low) DIV - Vector Arithmetic Div 函数名：DIV 名称：向量除法运算 1 real = DIV(high, low) MAX</description>
+    </item>
+    
+    <item>
+      <title>15 数学变换(Math Transform Functions)</title>
+      <link>https://luoguochun.cn/talib-doc/func_groups/math_transform/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:15 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/func_groups/math_transform/</guid>
+      <description>Math Transform Functions 数学变换函数 ACOS - Vector Trigonometric ACos 函数名：ACOS 名称：acos函数是反余弦函数，三角函数 1 real = ACOS(close) ASIN - Vector Trigonometric ASin 函数名：ASIN 名称：反正弦函数，三角</description>
+    </item>
+    
+    <item>
+      <title>14 统计功能(Statistic Functions)</title>
+      <link>https://luoguochun.cn/talib-doc/func_groups/statistic_functions/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:14 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/func_groups/statistic_functions/</guid>
+      <description>Statistic Functions 统计功能函数 BETA - Beta 函数名：BETA 名称：β系数也称为贝塔系数 简介：一种风险指数，用来衡量个别股票或 股票基金相对于整个股市的价格波动情况 贝</description>
+    </item>
+    
+    <item>
+      <title>13 形态识别(Pattern Recognition Functions)</title>
+      <link>https://luoguochun.cn/talib-doc/func_groups/pattern_recognition/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:13 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/func_groups/pattern_recognition/</guid>
+      <description>Pattern Recognition Functions 形态识别函数 CDL2CROWS - Two Crows 函数名：CDL2CROWS 名称：Two Crows 两只乌鸦 简介：三日K线模式，第一天长阳，第二天高开收阴，第三天再次高开继续</description>
+    </item>
+    
+    <item>
+      <title>12 周期指标(Cycle Indicator Functions)</title>
+      <link>https://luoguochun.cn/talib-doc/func_groups/cycle_indicators/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:12 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/func_groups/cycle_indicators/</guid>
+      <description>Cycle Indicator Functions 周期指标函数 不是很懂，欢迎指教 HT_DCPERIOD - Hilbert Transform - Dominant Cycle Period 函数名：HT_DCPERIOD 名称： 希尔伯特变换-主导周期 简介：将价格作为信息信号，计算</description>
+    </item>
+    
+    <item>
+      <title>11 价格指标(Price Transform Functions)</title>
+      <link>https://luoguochun.cn/talib-doc/func_groups/price_transform/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:11 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/func_groups/price_transform/</guid>
+      <description>Price Transform Functions 价格变换函数 AVGPRICE - Average Price 函数名：AVGPRICE 名称：平均价格函数 1 real = AVGPRICE(open, high, low, close) Learn more about the Average Price at tadoc.org. MEDPRICE - Median Price 函数名：MEDPRICE 名称：中位</description>
+    </item>
+    
+    <item>
+      <title>10 波动性指标(Volatility Indicator Functions)</title>
+      <link>https://luoguochun.cn/talib-doc/func_groups/volatility_indicators/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/func_groups/volatility_indicators/</guid>
+      <description>Volatility Indicator Functions 波动性指标函数 ATR - Average True Range 函数名：ATR 名称：真实波动幅度均值 简介：真实波动幅度均值（ATR)是 以 N 天的指数移动平均数平均後的交易波动幅</description>
+    </item>
+    
+    <item>
+      <title>09 量指标(Volume Indicators)</title>
+      <link>https://luoguochun.cn/talib-doc/func_groups/volume_indicators/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:09 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/func_groups/volume_indicators/</guid>
+      <description>Volume Indicators 量指标 AD - Chaikin A/D Line 量价指标 函数名：AD 名称：Chaikin A/D Line 累积/派发线（Accumulation/Distribution Line） 简</description>
+    </item>
+    
+    <item>
+      <title>08 动量指标(Momentum Indicator Functions)</title>
+      <link>https://luoguochun.cn/talib-doc/func_groups/momentum_indicators/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:08 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/func_groups/momentum_indicators/</guid>
+      <description>Momentum Indicator Functions 动量指标函数 ADX - Average Directional Movement Index 函数名：ADX 名称：平均趋向指数 简介：使用ADX指标，指标判断盘整、振荡和单边趋势。 公式： 一、先决定股价趋势（</description>
+    </item>
+    
+    <item>
+      <title>07 重叠研究指标(Overlap Studies Functions)</title>
+      <link>https://luoguochun.cn/talib-doc/func_groups/overlap_studies/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:07 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/func_groups/overlap_studies/</guid>
+      <description>Overlap Studies Functions 重叠研究指标函数 BBANDS - Bollinger Bands 函数名：BBANDS 名称： 布林线指标 简介：其利用统计原理，求出股价的标准差及其信赖区间，从而确定股价的波动范围</description>
+    </item>
+    
+    <item>
+      <title>06 方法分类(All Functions)</title>
+      <link>https://luoguochun.cn/talib-doc/funcs/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:06 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/funcs/</guid>
+      <description>All Supported Indicators and Functions 所有支持的指标和函数 Overlap Studies 重叠的指标 Momentum Indicators 动量指标 Volume Indicators 量指标 Volatility Indicators 波动性指标 Price Transform 价格指标 Cycle Indicators 周期指标 Pattern Recognition 形态识别 Statistic Functions 统计功能 Math Transform 数学变换</description>
+    </item>
+    
+    <item>
+      <title>05 高级应用(Using the Abstract API)</title>
+      <link>https://luoguochun.cn/talib-doc/abstract/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:05 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/abstract/</guid>
+      <description>抽象API快速开始 如果您已经熟悉使用函数API，那么您就应该在精通使用抽象API。 每个函数有相同的输入，作为一个字典通过NumPy数组： 1 2</description>
+    </item>
+    
+    <item>
+      <title>04 快速使用(Using the Function API)</title>
+      <link>https://luoguochun.cn/talib-doc/func/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:04 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/func/</guid>
+      <description>Function API Examples Similar to TA-Lib, the function interface provides a lightweight wrapper of the exposed TA-Lib indicators. 类似于TA库，对函数接口进行了一个轻量级的封装，用于公开的ta-lib的指标。 Each function returns an output array and have default values for their parameters,</description>
+    </item>
+    
+    <item>
+      <title>03 安装(Install)</title>
+      <link>https://luoguochun.cn/talib-doc/install/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:03 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/install/</guid>
+      <description>安装 使用pip安装 PyPI: 1 $ pip install TA-Lib Or checkout the sources and run setup.py yourself: 1 $ python setup.py install 如果安装发生错误 1 2 func.c:256:28: fatal error: ta-lib/ta_libc.h: No such file or directory compilation terminated. 如果你遇到这样的编译错误，它通常意味着它找</description>
+    </item>
+    
+    <item>
+      <title>02 文档目录(Documentation)</title>
+      <link>https://luoguochun.cn/talib-doc/doc_index/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/doc_index/</guid>
+      <description>Documentation 安装和问题 快速使用 高级应用 方法分类 Overlap Studies 重叠的指标 Momentum Indicators 动量指标 Volume Indicators 量指标 Volatility Indicators 波动性指标 Price Transform 价格指标 Cycle Indicators 周期指标 Pattern Recognition 形态识别 Statistic Functions 统计功能 Math Transform 数</description>
+    </item>
+    
+    <item>
+      <title>01 简介(About)</title>
+      <link>https://luoguochun.cn/talib-doc/intro/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:01 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/intro/</guid>
+      <description>简介 原文地址： TA-LIB document 这是一个Python的封装库，它是对技术分析库TA-LIB封装的，而且基于CPython而不是SWIG。TA-LIB首页里</description>
+    </item>
+    
+    <item>
+      <title>00 说明</title>
+      <link>https://luoguochun.cn/talib-doc/readme/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/readme/</guid>
+      <description>本主题文档来自talib-document，可能根据具体情况作适当的调整。 为了感谢原作者的辛苦成功，请不吝赞赏:</description>
+    </item>
+    
+    <item>
+      <title>TAG</title>
+      <link>https://luoguochun.cn/talib-doc/zfuck/</link>
+      <pubDate>Wed, 09 Oct 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/talib-doc/zfuck/</guid>
+      <description>Overlap Studies 重叠研究 BBANDS Bollinger Bands #布林带 DEMA Double Exponential Moving Average #双指数移动平均线 EMA Exponential Moving Average #指数移动平均线 HT_TRENDLINE Hilbert Transform - Instantaneous Trendline #希尔伯特变换瞬时趋势 KAMA Kaufman Adaptive Moving Average #卡玛考夫曼自适应</description>
+    </item>
+    
+  </channel>
+</rss>

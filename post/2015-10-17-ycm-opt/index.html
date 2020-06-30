@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ycm 选项 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="YouCompleteMe, vim/neovim 语义补全利器，按照参见YouCompleteMe github网页。下面看看简单选项和命令，不保证解释准确，只做粗略参考。 命令 1 2 3 4 5 6" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2015-10-17-ycm-opt/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="ycm 选项" />
+<meta property="og:description" content="YouCompleteMe, vim/neovim 语义补全利器，按照参见YouCompleteMe github网页。下面看看简单选项和命令，不保证解释准确，只做粗略参考。 命令 1 2 3 4 5 6" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2015-10-17-ycm-opt/" /><meta property="article:published_time" content="2015-10-17T22:11:41&#43;00:00"/>
+<meta property="article:modified_time" content="2015-10-17T22:11:41&#43;00:00"/>
+
+<meta itemprop="name" content="ycm 选项">
+<meta itemprop="description" content="YouCompleteMe, vim/neovim 语义补全利器，按照参见YouCompleteMe github网页。下面看看简单选项和命令，不保证解释准确，只做粗略参考。 命令 1 2 3 4 5 6">
+
+
+<meta itemprop="datePublished" content="2015-10-17T22:11:41&#43;00:00" />
+<meta itemprop="dateModified" content="2015-10-17T22:11:41&#43;00:00" />
+<meta itemprop="wordCount" content="2248">
+
+
+
+<meta itemprop="keywords" content="vim," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ycm 选项"/>
+<meta name="twitter:description" content="YouCompleteMe, vim/neovim 语义补全利器，按照参见YouCompleteMe github网页。下面看看简单选项和命令，不保证解释准确，只做粗略参考。 命令 1 2 3 4 5 6"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">ycm 选项</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-10-17 </span>
+        <div class="post-category">
+            <a href="/categories/vim/"> vim </a>
+            </div>
+          <span class="more-meta"> 约 2248 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#命令">命令</a></li>
+<li><a href="#配置选项">配置选项</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p><a href="https://github.com/Valloric/YouCompleteMe">YouCompleteMe</a>, <a href="https://github.com/vim/vim">vim</a>/<a href="https://github.com/neovim/neovim">neovim</a> 语义补全利器，按照参见<a href="https://github.com/Valloric/YouCompleteMe">YouCompleteMe</a> github网页。下面看看简单选项和命令，不保证解释准确，只做粗略参考。</p>
+
+<h2 id="命令">命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&#34;重启Ycm服务器
+:YcmRestartServer    
+
+&#34;立马让YCM重新编译你的文件并显示编译诊断信息
+&#34;为了方便，通常该命令做映射，如：nnoremap &lt;F5&gt; :YcmForceCompileAndDiagnostics&lt;CR&gt;
+:YcmForceCompileAndDiagnostics
+
+&#34;显示YCM探测到的错误或警告
+:YcmDiags
+
+&#34;显示光标下面的详细诊断信息
+:YcmShowDetailedDiagnostic
+
+&#34;显示当前文件的调试信息
+:YcmdDebugInfo
+
+&#34;调用补全专门的命令，如果第一个补全参数是 ft=..
+&#34;则使用指定类型的补全插件，否则，使用当前缓存文件类型的补全插件
+:YcmCompleter
+
+&#34;跳转到声明 支持的文件类型：c, cpp, objc, objcpp, python, cs
+:YcmCompleter GoToDeclaration 
+
+&#34;跳转到定义 支持的文件类型：c, cpp, objc, objcpp, python, cs, typescript
+:YcmCompleter GoToDefinition 
+
+&#34;盲跳 支持的文件类型：c, cpp, objc, objcpp, python, cs
+:YcmCompleter GoTo 
+
+&#34;同GoTo，快，非精确 支持的文件类型：c, cpp, objc, objcpp, python, cs
+:YcmCompleter GoToImprecise 
+
+&#34;清空YCM编译缓存，支持的文件类型：c, cpp, objc, objcpp
+:YcmCompleter ClearCompilationFlagCache 
+
+&#34;显示变量类型 支持的文件类型：c, cpp, objc, objcpp, typescript
+:YcmCompleter GetType 
+
+&#34;显示语补全的父类型 支持的文件类型：c, cpp, objc, objcpp
+:YcmCompleter GetParent 
+
+&#34;修正YCM诊断的光标附近的错误 支持的文件类型：c, cpp, objc, objcpp, cs
+:YcmCompleter FixIt 
+
+&#34;预览窗口展示文档 支持的文件类型：c, cpp, objc, objcpp, cs, python, typescript
+:YcmCompleter GetDoc 
+
+&#34;启动语义引擎服务器， 支持的文件类型：cs
+:YcmCompleter StartServer 
+
+&#34;停止语义引擎服务器， 支持的文件类型：cs
+:YcmCompleter StopServer 
+
+&#34;重启语义引擎服务器， 支持的文件类型：cs
+:YcmCompleter RestartServer 
+
+&#34;重加载文件， 支持的文件类型：cs
+:YcmCompleter ReloadSolution 
+
+&#34;跳到实现， 支持的文件类型：cs
+:YcmCompleter GoToImplementation 
+
+&#34;跳到实现或声明， 支持的文件类型：cs
+:YcmCompleter GoToImplementationElseDeclaration </pre></td></tr></table>
+</div>
+</div>
+<h2 id="配置选项">配置选项</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&#34;开启自动补全输入的最少字符数，默认2
+g:ycm_min_num_of_chars_for_completion
+
+&#34;弹出的自动补全最少候选数，默认0，表示不限制
+g:ycm_min_num_identifier_candidate_chars
+
+&#34;输入语义字符（如c++的. -&gt;）自动补全是否启动，默认1
+g:ycm_auto_trigger
+
+&#34;自动补全白名单，默认{&#39;*&#39; : 1}
+g:ycm_filetype_whitelist
+
+&#34;自动补全黑名单，默认：
+&#34;{
+  \ &#39;tagbar&#39; : 1,
+  \ &#39;qf&#39; : 1,
+  \ &#39;notes&#39; : 1,
+  \ &#39;markdown&#39; : 1,
+  \ &#39;unite&#39; : 1,
+  \ &#39;text&#39; : 1,
+  \ &#39;vimwiki&#39; : 1,
+  \ &#39;pandoc&#39; : 1,
+  \ &#39;infolog&#39; : 1,
+  \ &#39;mail&#39; : 1
+  \}
+g:ycm_filetype_blacklist
+
+&#34;自动补全禁止文件，默认{&#39;gitcommit&#39; : 1}
+g:ycm_filetype_specific_completion_to_disable
+
+&#34;自动补全诊断UI，默认1
+g:ycm_filetype_specific_completion_to_disable
+
+&#34;自动补全诊断出现错误的符号，默认 &gt;&gt;
+g:ycm_error_symbol
+
+&#34;自动补全诊断出现警告的符号，默认 &gt;&gt;
+g:ycm_error_symbol
+
+&#34;是否允许自动补全诊断符号，默认 1
+g:ycm_enable_diagnostic_signs 
+
+&#34;是否自动补全诊断符号高亮，默认 1
+g:ycm_enable_diagnostic_highlighting  
+
+&#34;是否显示自动补全诊断，默认 1
+g:ycm_echo_current_diagnostic   
+
+&#34;是否显示自动补全诊断location list，默认 0
+g:ycm_always_populate_location_list   
+
+&#34;强制编译后，是否显示location list和诊断，默认 1
+g:ycm_open_loclist_on_ycm_diags   
+
+&#34;是否允许更新VIM更新时间，默认 1
+g:ycm_allow_changing_updatetime    
+
+&#34;是否自动补全注释，默认 0
+g:ycm_allow_changing_updatetime  
+
+&#34;是否在变量的值内实现自动补全，默认 1
+g:ycm_complete_in_strings   
+
+&#34;是否收集注释和字符变量值作为自动补全信息，默认 0
+g:ycm_collect_identifiers_from_comments_and_strings
+
+&#34;是否tags文件作为自动补全信息，默认 0
+g:ycm_collect_identifiers_from_tags_files 
+
+&#34;不明白什么意思，默认 0
+g:ycm_seed_identifiers_with_syntax  
+
+&#34;与.ycm_extra_conf.py文件中FlagsForFile函数交换的参数，默认 []
+g:ycm_extra_conf_vim_data  
+
+&#34;python解释器的路径，默认 &#39;&#39;
+g:ycm_path_to_python_interpreter   
+
+&#34;ycm日志是否使用stdout，默认 0
+g:ycm_server_use_vim_stdout    
+
+&#34;当ycm服务器退出时，是否保存日志，默认 0
+g:ycm_server_keep_logfiles     
+
+&#34;ycm服务器日志级别，有debug, info, warning, error, critical，默认 info
+g:ycm_server_log_level  
+
+&#34;是否自动启动c#自动补全服务器，默认 1
+g:ycm_auto_start_csharp_server    
+
+&#34;是否自动停止c#自动补全服务器，默认 1
+g:ycm_auto_start_csharp_server 
+
+&#34;c#自动补全服务器端口，默认 0，即任意端口
+g:ycm_csharp_server_port  
+
+&#34;c#自动补全插入命名空间表达式，默认 &#39;&#39;
+g:ycm_csharp_insert_namespace_expr   
+
+&#34;是否展示预览窗口，默认 0
+g:ycm_add_preview_to_completeopt    
+
+&#34;当补全完成时，是否自动关闭展示的预览窗口，默认 0
+g:ycm_autoclose_preview_window_after_completion 
+
+&#34;当补全插入时，是否自动关闭展示的预览窗口，默认 0
+g:ycm_autoclose_preview_window_after_insertion 
+
+&#34;诊断信息的条数，默认 30
+g:ycm_max_diagnostics_to_display  
+
+&#34;选择自动补全信息的按键，默认 [&#39;&lt;TAB&gt;&#39;, &#39;&lt;Down&gt;&#39;]
+g:ycm_key_list_select_completion   
+
+&#34;选择前一个自动补全信息的按键，默认 [&#39;&lt;S-TAB&gt;&#39;, &#39;&lt;Up&gt;&#39;]
+g:ycm_key_list_previous_completion   
+
+&#34;调用自动补全信息的按键，默认 &lt;C-Space&gt;
+g:ycm_key_invoke_completion   
+
+&#34;详细诊断信息的按键，默认 &lt;leader&gt;d
+g:ycm_key_detailed_diagnostics   
+
+&#34;全局的ycm_extra_conf文件，默认 &#39;&#39;
+g:ycm_global_ycm_extra_conf  
+
+&#34;载入ycm_extra_conf文件，是否提示确认 默认 1
+g:ycm_confirm_extra_conf
+
+&#34;ycm_extra_conf文件，通配符 默认 []
+g:ycm_extra_conf_globlist
+
+&#34;自动补全是否使用当前工作目录 默认 0
+g:ycm_filepath_completion_use_working_dir 
+
+&#34;语义触发的字符 默认
+&#34; {
+&#34; \   &#39;c&#39; : [&#39;-&gt;&#39;, &#39;.&#39;],
+&#34; \   &#39;objc&#39; : [&#39;-&gt;&#39;, &#39;.&#39;, &#39;re!\[[_a-zA-Z]+\w*\s&#39;, &#39;re!^\s*[^\W\d]\w*\s&#39;,
+&#34;  \             &#39;re!\[.*\]\s&#39;],
+&#34;  \   &#39;ocaml&#39; : [&#39;.&#39;, &#39;#&#39;],
+&#34;  \   &#39;cpp,objcpp&#39; : [&#39;-&gt;&#39;, &#39;.&#39;, &#39;::&#39;],
+&#34;  \   &#39;perl&#39; : [&#39;-&gt;&#39;],
+&#34; \   &#39;php&#39; : [&#39;-&gt;&#39;, &#39;::&#39;],
+&#34;  \   &#39;cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go&#39; : [&#39;.&#39;],
+&#34;  \   &#39;ruby&#39; : [&#39;.&#39;, &#39;::&#39;],
+&#34;  \   &#39;lua&#39; : [&#39;.&#39;, &#39;:&#39;],
+&#34; \   &#39;erlang&#39; : [&#39;:&#39;],
+&#34;  \ }
+g:ycm_semantic_triggers
+
+&#34;是否缓存，omnifunc 默认 1
+g:ycm_cache_omnifunc
+
+&#34;是否缓存omnifunc 默认 1
+g:ycm_cache_omnifunc
+
+&#34;是否使用ultisnips 插件自动补全 默认 1
+g:ycm_use_ultisnips_completer 
+
+&#34;GoTo*命令的打开方式，可选值为：
+&#34;[ &#39;same-buffer&#39;, &#39;horizontal-split&#39;, &#39;vertical-split&#39;, &#39;new-tab&#39;, &#39;new-or-existing-tab&#39; ]
+&#34;默认 &#39;same-buffer&#39;
+g:ycm_goto_buffer_command  
+
+&#34;不使用自动补全的文件大小，单位为KB,0表示不检测 默认 1000
+g:ycm_disable_for_files_larger_than_kb  </pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2015-10-17</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/vim/">vim</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2016-01-18-minix-3/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">minix 3</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2015-07-25-tcpdump-usage/">
+            <span class="next-text nav-default">tcpdump usage</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2015-10-17 22:11:41 \x2b0000 UTC',
+        title: 'ycm 选项',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

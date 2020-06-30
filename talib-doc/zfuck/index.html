@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>TAG - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="Overlap Studies 重叠研究 BBANDS Bollinger Bands #布林带 DEMA Double Exponential Moving Average #双指数移动平均线 EMA Exponential Moving Average #指数移动平均线 HT_TRENDLINE Hilbert Transform - Instantaneous Trendline #希尔伯特变换瞬时趋势 KAMA Kaufman Adaptive Moving Average #卡玛考夫曼自适应" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/talib-doc/zfuck/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="TAG" />
+<meta property="og:description" content="Overlap Studies 重叠研究 BBANDS Bollinger Bands #布林带 DEMA Double Exponential Moving Average #双指数移动平均线 EMA Exponential Moving Average #指数移动平均线 HT_TRENDLINE Hilbert Transform - Instantaneous Trendline #希尔伯特变换瞬时趋势 KAMA Kaufman Adaptive Moving Average #卡玛考夫曼自适应" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/talib-doc/zfuck/" /><meta property="article:published_time" content="2019-10-09T00:00:00&#43;08:00"/>
+<meta property="article:modified_time" content="2019-10-09T00:00:00&#43;08:00"/>
+
+<meta itemprop="name" content="TAG">
+<meta itemprop="description" content="Overlap Studies 重叠研究 BBANDS Bollinger Bands #布林带 DEMA Double Exponential Moving Average #双指数移动平均线 EMA Exponential Moving Average #指数移动平均线 HT_TRENDLINE Hilbert Transform - Instantaneous Trendline #希尔伯特变换瞬时趋势 KAMA Kaufman Adaptive Moving Average #卡玛考夫曼自适应">
+
+
+<meta itemprop="datePublished" content="2019-10-09T00:00:00&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-09T00:00:00&#43;08:00" />
+<meta itemprop="wordCount" content="1323">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TAG"/>
+<meta name="twitter:description" content="Overlap Studies 重叠研究 BBANDS Bollinger Bands #布林带 DEMA Double Exponential Moving Average #双指数移动平均线 EMA Exponential Moving Average #指数移动平均线 HT_TRENDLINE Hilbert Transform - Instantaneous Trendline #希尔伯特变换瞬时趋势 KAMA Kaufman Adaptive Moving Average #卡玛考夫曼自适应"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    
+
+<h2 id="overlap-studies-重叠研究-talib-doc-func-groups-overlap-studies"><a href="/talib-doc/func_groups/overlap_studies">Overlap Studies 重叠研究</a></h2>
+
+<ul>
+<li>BBANDS               Bollinger Bands #布林带</li>
+<li>DEMA                 Double Exponential Moving Average #双指数移动平均线</li>
+<li>EMA                  Exponential Moving Average #指数移动平均线</li>
+<li>HT_TRENDLINE         Hilbert Transform - Instantaneous Trendline #希尔伯特变换瞬时趋势</li>
+<li>KAMA                 Kaufman Adaptive Moving Average #卡玛考夫曼自适应移动平均线</li>
+<li>MA                   Moving average #移动平均线</li>
+<li>MAMA                 MESA Adaptive Moving Average #MESA自适应移动平均</li>
+<li>MAVP                 Moving average with variable period #变周期移动平均线</li>
+<li>MIDPOINT             MidPoint over period #周期中点</li>
+<li>MIDPRICE             Midpoint Price over period #周期中点价格</li>
+<li>SAR                  Parabolic SAR #抛物线转向指标</li>
+<li>SAREXT               Parabolic SAR - Extended #抛物线转向指标 - 扩展</li>
+<li>SMA                  Simple Moving Average #简单移动平均线</li>
+<li>T3                   Triple Exponential Moving Average (T3) #双指数移动均线改进指标</li>
+<li>TEMA                 Triple Exponential Moving Average #三重指数移动均线指标</li>
+<li>TRIMA                Triangular Moving Average #三指数移动平均</li>
+<li>WMA                  Weighted Moving Average #加权移动平均线</li>
+</ul>
+
+<h2 id="momentum-indicators-动量指标-talib-doc-func-groups-momentum-indicators"><a href="/talib-doc/func_groups/momentum_indicators">Momentum Indicators 动量指标</a></h2>
+
+<ul>
+<li>ADX                  Average Directional Movement Index</li>
+<li>ADXR                 Average Directional Movement Index Rating</li>
+<li>APO                  Absolute Price Oscillator</li>
+<li>AROON                Aroon</li>
+<li>AROONOSC             Aroon Oscillator</li>
+<li>BOP                  Balance Of Power</li>
+<li>CCI                  Commodity Channel Index</li>
+<li>CMO                  Chande Momentum Oscillator</li>
+<li>DX                   Directional Movement Index</li>
+<li>MACD                 Moving Average Convergence/Divergence</li>
+<li>MACDEXT              MACD with controllable MA type</li>
+<li>MACDFIX              Moving Average Convergence/Divergence Fix <sup>12</sup>&frasl;<sub>26</sub></li>
+<li>MFI                  Money Flow Index</li>
+<li>MINUS_DI             Minus Directional Indicator</li>
+<li>MINUS_DM             Minus Directional Movement</li>
+<li>MOM                  Momentum</li>
+<li>PLUS_DI              Plus Directional Indicator</li>
+<li>PLUS_DM              Plus Directional Movement</li>
+<li>PPO                  Percentage Price Oscillator</li>
+<li>ROC                  Rate of change : ((price/prevPrice)-1)*100</li>
+<li>ROCP                 Rate of change Percentage: (price-prevPrice)/prevPrice</li>
+<li>ROCR                 Rate of change ratio: (price/prevPrice)</li>
+<li>ROCR100              Rate of change ratio 100 scale: (price/prevPrice)*100</li>
+<li><a href="/talib-doc/func_groups/momentum_indicators#rsi-relative-strength-index-相对强弱指数">RSI &ndash; Relative Strength Index #相对强弱指数</a><br /></li>
+<li><a href="/talib-doc/func_groups/momentum_indicators#stoch-stochastic-随机指标-俗称kd">STOCH &ndash; Stochastic #随机指标,俗称KD</a></li>
+<li><a href="/talib-doc/func_groups/momentum_indicators#stochf-stochastic-fast-快速stoch指标">STOCHF &ndash; Stochastic Fast #快速STOCH指标</a><br /></li>
+<li><a href="/talib-doc/func_groups/momentum_indicators#stochrsi-stochastic-relative-strength-index-随机相对强弱指数">STOCHRSI &ndash; Stochastic Relative Strength Index #随机强弱指数</a></li>
+<li>TRIX                 1-day Rate-Of-Change (ROC) of a Triple Smooth EMA</li>
+<li>ULTOSC               Ultimate Oscillator</li>
+<li>WILLR                Williams&rsquo; %R</li>
+</ul>
+
+<h2 id="volume-indicators-talib-doc-func-groups-volume-indicators"><a href="/talib-doc/func_groups/volume_indicators">Volume Indicators</a></h2>
+
+<ul>
+<li>AD                   Chaikin A/D Line #线随机指标</li>
+<li>ADOSC                Chaikin A/D Oscillator #佳庆指数</li>
+<li>OBV                  On Balance Volume #能量潮指标</li>
+</ul>
+
+<h2 id="cycle-indicators-talib-doc-func-groups-cycle-indicators"><a href="/talib-doc/func_groups/cycle_indicators">Cycle Indicators</a></h2>
+
+<ul>
+<li>HT_DCPERIOD          Hilbert Transform - Dominant Cycle Period #希尔伯特变换 - 主周期</li>
+<li>HT_DCPHASE           Hilbert Transform - Dominant Cycle Phase #希尔伯特变换 - 主阶段</li>
+<li>HT_PHASOR            Hilbert Transform - Phasor Components #希尔伯特变换 - 相成分</li>
+<li>HT_SINE              Hilbert Transform - SineWave #希尔伯特变换 - 正弦波</li>
+<li>HT_TRENDMODE         Hilbert Transform - Trend vs Cycle Mode #希尔伯特变换 - 趋势与周期</li>
+</ul>
+
+<h2 id="price-transform-talib-doc-func-groups-price-transform"><a href="/talib-doc/func_groups/price_transform">Price Transform</a></h2>
+
+<ul>
+<li>AVGPRICE             Average Price #平均价格指标</li>
+<li>MEDPRICE             Median Price #价格中间值指标</li>
+<li>TYPPRICE             Typical Price #典型价格指标</li>
+<li>WCLPRICE             Weighted Close Price #加权收盘价指标</li>
+</ul>
+
+<h2 id="volatility-indicators-talib-doc-func-groups-volatility-indicators"><a href="/talib-doc/func_groups/volatility_indicators">Volatility Indicators</a></h2>
+
+<ul>
+<li>ATR                  Average True Range #平均真实波幅指标</li>
+<li>NATR                 Normalized Average True Range #归一化平均真实波幅</li>
+<li>TRANGE               True Range #真实范围指标</li>
+</ul>
+
+<h2 id="pattern-recognition-talib-doc-func-groups-pattern-recognition"><a href="/talib-doc/func_groups/pattern_recognition">Pattern Recognition</a></h2>
+
+<ul>
+<li>CDL2CROWS            Two Crows  #两只乌鸦</li>
+<li>CDL3BLACKCROWS       Three Black Crows  #三只乌鸦</li>
+<li>CDL3INSIDE           Three Inside Up/Down  #三内部上涨和下跌</li>
+<li>CDL3LINESTRIKE       Three-Line Strike  #三线打击</li>
+<li>CDL3OUTSIDE          Three Outside Up/Down  #三外部上涨和下跌</li>
+<li>CDL3STARSINSOUTH     Three Stars In The South  #南方三星</li>
+<li>CDL3WHITESOLDIERS    Three Advancing White Soldiers  #三个白兵</li>
+<li>CDLABANDONEDBABY     Abandoned Baby  #舍子线</li>
+<li>CDLADVANCEBLOCK      Advance Block  #大敌当前</li>
+<li>CDLBELTHOLD          Belt-hold  #捉腰带线</li>
+<li>CDLBREAKAWAY         Breakaway  #脱离</li>
+<li>CDLCLOSINGMARUBOZU   Closing Marubozu  #收盘缺影线</li>
+<li>CDLCONCEALBABYSWALL  Concealing Baby Swallow  #藏婴吞没</li>
+<li>CDLCOUNTERATTACK     Counterattack  #反击线</li>
+<li>CDLDARKCLOUDCOVER    Dark Cloud Cover  #乌云压顶</li>
+<li>CDLDOJI              Doji  #十字</li>
+<li>CDLDOJISTAR          Doji Star  #十字星</li>
+<li>CDLDRAGONFLYDOJI     Dragonfly Doji  #蜻蜓十字/T形十字</li>
+<li>CDLENGULFING         Engulfing Pattern  #吞噬模式</li>
+<li>CDLEVENINGDOJISTAR   Evening Doji Star  #十字暮星</li>
+<li>CDLEVENINGSTAR       Evening Star  #暮星</li>
+<li>CDLGAPSIDESIDEWHITE  Up/Down-gap side-by-side white lines  #向上/下跳空并列阳线</li>
+<li>CDLGRAVESTONEDOJI    Gravestone Doji  #墓碑十字/倒T十字</li>
+<li>CDLHAMMER            Hammer  #锤头</li>
+<li>CDLHANGINGMAN        Hanging Man  #上吊线</li>
+<li>CDLHARAMI            Harami Pattern  #母子线</li>
+<li>CDLHARAMICROSS       Harami Cross Pattern  #十字孕线</li>
+<li>CDLHIGHWAVE          High-Wave Candle  #风高浪大线</li>
+<li>CDLHIKKAKE           Hikkake Pattern  #陷阱</li>
+<li>CDLHIKKAKEMOD        Modified Hikkake Pattern  #修正陷阱</li>
+<li>CDLHOMINGPIGEON      Homing Pigeon  #家鸽</li>
+<li>CDLIDENTICAL3CROWS   Identical Three Crows  #三胞胎乌鸦</li>
+<li>CDLINNECK            In-Neck Pattern  #颈内线</li>
+<li>CDLINVERTEDHAMMER    Inverted Hammer  #倒锤头</li>
+<li>CDLKICKING           Kicking  #反冲形态</li>
+<li>CDLKICKINGBYLENGTH   Kicking - bull/bear determined by the longer marubozu  #较长- 线反冲形态</li>
+<li>CDLLADDERBOTTOM      Ladder Bottom  #梯底</li>
+<li>CDLLONGLEGGEDDOJI    Long Legged Doji  #长脚十字</li>
+<li>CDLLONGLINE          Long Line Candle  #长蜡烛</li>
+<li>CDLMARUBOZU          Marubozu  #光头光脚/缺影线</li>
+<li>CDLMATCHINGLOW       Matching Low  #相同低价</li>
+<li>CDLMATHOLD           Mat Hold  #铺垫</li>
+<li>CDLMORNINGDOJISTAR   Morning Doji Star  #十字晨星</li>
+<li>CDLMORNINGSTAR       Morning Star  #晨星</li>
+<li>CDLONNECK            On-Neck Pattern  #颈上线</li>
+<li>CDLPIERCING          Piercing Pattern  #刺透形态</li>
+<li>CDLRICKSHAWMAN       Rickshaw Man  #黄包车夫</li>
+<li>CDLRISEFALL3METHODS  Rising/Falling Three Methods  #上升/下降三法</li>
+<li>CDLSEPARATINGLINES   Separating Lines  #分离线</li>
+<li>CDLSHOOTINGSTAR      Shooting Star  #射击之星</li>
+<li>CDLSHORTLINE         Short Line Candle  #短蜡烛</li>
+<li>CDLSPINNINGTOP       Spinning Top  #纺锤</li>
+<li>CDLSTALLEDPATTERN    Stalled Pattern  #停顿形态</li>
+<li>CDLSTICKSANDWICH     Stick Sandwich  #条形三明治</li>
+<li>CDLTAKURI            Takuri (Dragonfly Doji with very long lower shadow)  #探水竿</li>
+<li>CDLTASUKIGAP         Tasuki Gap  #跳空并列阴阳线</li>
+<li>CDLTHRUSTING         Thrusting Pattern  #插入</li>
+<li>CDLTRISTAR           Tristar Pattern  #三星</li>
+<li>CDLUNIQUE3RIVER      Unique 3 River  #奇特三河床</li>
+<li>CDLUPSIDEGAP2CROWS   Upside Gap Two Crows  #向上跳空的两只乌鸦</li>
+<li>CDLXSIDEGAP3METHODS  Upside/Downside Gap Three Methods  #上升/下降跳空三法</li>
+</ul>
+
+<h2 id="statistic-functions-talib-doc-func-groups-statistic-functions"><a href="/talib-doc/func_groups/statistic_functions">Statistic Functions</a></h2>
+
+<ul>
+<li>BETA                 Beta</li>
+<li>CORREL               Pearson&rsquo;s Correlation Coefficient &reg;</li>
+<li>LINEARREG            Linear Regression</li>
+<li>LINEARREG_ANGLE      Linear Regression Angle</li>
+<li>LINEARREG_INTERCEPT  Linear Regression Intercept</li>
+<li>LINEARREG_SLOPE      Linear Regression Slope</li>
+<li>STDDEV               Standard Deviation</li>
+<li>TSF                  Time Series Forecast</li>
+<li>VAR                  Variance</li>
+</ul>
+
+<h2 id="math-transform-talib-doc-func-groups-math-transform"><a href="/talib-doc/func_groups/math_transform">Math Transform</a></h2>
+
+<ul>
+<li>ACOS                 Vector Trigonometric ACos</li>
+<li>ASIN                 Vector Trigonometric ASin</li>
+<li>ATAN                 Vector Trigonometric ATan</li>
+<li>CEIL                 Vector Ceil</li>
+<li>COS                  Vector Trigonometric Cos</li>
+<li>COSH                 Vector Trigonometric Cosh</li>
+<li>EXP                  Vector Arithmetic Exp</li>
+<li>FLOOR                Vector Floor</li>
+<li>LN                   Vector Log Natural</li>
+<li>LOG10                Vector Log10</li>
+<li>SIN                  Vector Trigonometric Sin</li>
+<li>SINH                 Vector Trigonometric Sinh</li>
+<li>SQRT                 Vector Square Root</li>
+<li>TAN                  Vector Trigonometric Tan</li>
+<li>TANH                 Vector Trigonometric Tanh</li>
+</ul>
+
+<h2 id="math-operators-talib-doc-func-groups-math-operators"><a href="/talib-doc/func_groups/math_operators">Math Operators</a></h2>
+
+<ul>
+<li>ADD                  Vector Arithmetic Add</li>
+<li>DIV                  Vector Arithmetic Div</li>
+<li>MAX                  Highest value over a specified period</li>
+<li>MAXINDEX             Index of highest value over a specified period</li>
+<li>MIN                  Lowest value over a specified period</li>
+<li>MININDEX             Index of lowest value over a specified period</li>
+<li>MINMAX               Lowest and highest values over a specified period</li>
+<li>MINMAXINDEX          Indexes of lowest and highest values over a specified period</li>
+<li>MULT                 Vector Arithmetic Mult</li>
+<li>SUB                  Vector Arithmetic Substraction</li>
+<li>SUM                  Summation</li>
+</ul>
+
+<p><a href="/talib-doc/doc_index">文档 </a></p>
+
+  </div>
+</article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-10-09 00:00:00 \x2b0800 CST',
+        title: 'TAG',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

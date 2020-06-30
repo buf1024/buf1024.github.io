@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Server on BUF1024</title>
+    <link>https://luoguochun.cn/tags/server/</link>
+    <description>Recent content in Server on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 25 Jun 2014 20:49:24 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/tags/server/atom.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>服务器模式</title>
+      <link>https://luoguochun.cn/post/2014-06-25-server-mode/</link>
+      <pubDate>Wed, 25 Jun 2014 20:49:24 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-06-25-server-mode/</guid>
+      <description>服务器开发貌似有固定的模式，性能和复杂度各异，现总结下常见的模式。当然服务器的开发并没有固定的模式，除了以下总结的外，实际根据业务的不同，生</description>
+    </item>
+    
+  </channel>
+</rss>

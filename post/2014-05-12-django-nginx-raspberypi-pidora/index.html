@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>django &#43; nginx &#43; raspberypi &#43; pidaro - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="对于一个从事后台开发的人来说，搞了个网站，我自己都觉得有点意外。不是很懂html，不是很懂css，不是很懂js，不是很懂web开发模式/框架" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2014-05-12-django-nginx-raspberypi-pidora/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="django &#43; nginx &#43; raspberypi &#43; pidaro" />
+<meta property="og:description" content="对于一个从事后台开发的人来说，搞了个网站，我自己都觉得有点意外。不是很懂html，不是很懂css，不是很懂js，不是很懂web开发模式/框架" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2014-05-12-django-nginx-raspberypi-pidora/" /><meta property="article:published_time" content="2014-05-12T22:12:47&#43;00:00"/>
+<meta property="article:modified_time" content="2014-05-12T22:12:47&#43;00:00"/>
+
+<meta itemprop="name" content="django &#43; nginx &#43; raspberypi &#43; pidaro">
+<meta itemprop="description" content="对于一个从事后台开发的人来说，搞了个网站，我自己都觉得有点意外。不是很懂html，不是很懂css，不是很懂js，不是很懂web开发模式/框架">
+
+
+<meta itemprop="datePublished" content="2014-05-12T22:12:47&#43;00:00" />
+<meta itemprop="dateModified" content="2014-05-12T22:12:47&#43;00:00" />
+<meta itemprop="wordCount" content="640">
+
+
+
+<meta itemprop="keywords" content="js,css,django,python," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="django &#43; nginx &#43; raspberypi &#43; pidaro"/>
+<meta name="twitter:description" content="对于一个从事后台开发的人来说，搞了个网站，我自己都觉得有点意外。不是很懂html，不是很懂css，不是很懂js，不是很懂web开发模式/框架"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">django &#43; nginx &#43; raspberypi &#43; pidaro</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-05-12 </span>
+        <div class="post-category">
+            <a href="/categories/django/"> django </a>
+            </div>
+          <span class="more-meta"> 约 640 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>对于一个从事后台开发的人来说，搞了个网站，我自己都觉得有点意外。不是很懂html，不是很懂css，不是很懂js，不是很懂web开发模式/框架，不是很懂httpd/nginx……，web的东西样样都知道一点，但样样都不知道很多，web开发对于我来说很陌生。很早前，买了个树莓派，就一直丢在那里，24小时开着机，但也是仅仅开机。想着一直让它这么浪费电不是办法，于是就现在折腾些web的东西了。于是便在工作空闲的时候，花了两个多星期，从CSS开始学起，有了这个很一般，或许很多BUG的网站。已经部署在树莓派和新浪云APP上。因为树莓派实在太卡，所以数据库用的是sqlite3，但新浪APP ENGINE，只支持MYSQL，所以在SAE上面，数据库是MYSQL。树莓派访问地址：<a href="http://buf1024.xicp.net:3721/">http://buf1024.xicp.net:3721/</a> SAE访问地址<a href="http://bigfalse.sinaapp.com/">http://bigfalse.sinaapp.com/</a> 。已经将源代码放到github上面，github上面是sae版本，github页面：<a href="https://github.com/buf1024/bigfalse。">https://github.com/buf1024/bigfalse。</a></p>
+
+<p>特点/优点/缺点：<br />
+   1. 登陆，管理等都是用http，及其容易盗取管理员密码。<br />
+   2. 全文搜索没有实现<br />
+   3. RSS没有实现，没有分享没有实现<br />
+   4. 没有实现用windows live发布文章<br />
+   5. SAE版本，没实现评论回复邮件通知，树莓派有实现，不过开的话，太卡，关闭了。<br />
+   6. 首页，管理页面，更多页面采用瀑布流模式<br />
+   7. 界面还算清新<br />
+…………</p>
+
+<p>还有一大堆缺点。呵呵。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-05-12</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/js/">js</a>
+          <a href="/tags/css/">css</a>
+          <a href="/tags/django/">django</a>
+          <a href="/tags/python/">python</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2014-05-30-myschd/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">mschedule 简单linux进程管理（树莓派）</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2014-01-11-ctest/">
+            <span class="next-text nav-default">C 简单单元测试框架</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2014-05-12 22:12:47 \x2b0000 UTC',
+        title: 'django \x2b nginx \x2b raspberypi \x2b pidaro',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

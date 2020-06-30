@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>bt种子文件文件结构 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="估计80%以上接触互联网的人都知道bt是什么东西，任何一个用bt下载的人都知道这样一个概念，种子。bt种子就是记录了p2p对等网络中trac" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2014-09-17-bt-file-structure/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="bt种子文件文件结构" />
+<meta property="og:description" content="估计80%以上接触互联网的人都知道bt是什么东西，任何一个用bt下载的人都知道这样一个概念，种子。bt种子就是记录了p2p对等网络中trac" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2014-09-17-bt-file-structure/" /><meta property="article:published_time" content="2014-09-17T19:12:17&#43;00:00"/>
+<meta property="article:modified_time" content="2014-09-17T19:12:17&#43;00:00"/>
+
+<meta itemprop="name" content="bt种子文件文件结构">
+<meta itemprop="description" content="估计80%以上接触互联网的人都知道bt是什么东西，任何一个用bt下载的人都知道这样一个概念，种子。bt种子就是记录了p2p对等网络中trac">
+
+
+<meta itemprop="datePublished" content="2014-09-17T19:12:17&#43;00:00" />
+<meta itemprop="dateModified" content="2014-09-17T19:12:17&#43;00:00" />
+<meta itemprop="wordCount" content="1073">
+
+
+
+<meta itemprop="keywords" content="bt," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="bt种子文件文件结构"/>
+<meta name="twitter:description" content="估计80%以上接触互联网的人都知道bt是什么东西，任何一个用bt下载的人都知道这样一个概念，种子。bt种子就是记录了p2p对等网络中trac"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">bt种子文件文件结构</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-09-17 </span>
+        <div class="post-category">
+            <a href="/categories/misc/"> misc </a>
+            </div>
+          <span class="more-meta"> 约 1073 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>估计80%以上接触互联网的人都知道bt是什么东西，任何一个用bt下载的人都知道这样一个概念，种子。bt种子就是记录了p2p对等网络中tracker, nodes, files等信息，也就是说，这个种子告诉你，你要下载什么，到哪里下载。bt种子文件有自己的文件格式，下面简单看看bt种子文件的结构。<br />
+在开始之前，我们先介绍bencode这种编码格式，因为bt种子文件，包括以后的DHT网络中，都是用这种编码的。网上有很多介绍，这里简单再重复一遍。bencode有4种数据类型:string, integer, list 和 dictionary。</p>
+
+<ol>
+<li>string<br />
+字符是以这种方式编码的: &lt;字符串长度&gt;:&lt;字符串&gt;。<br />
+如hell: 4:hell</li>
+<li>integer<br />
+整数是一这种方式编码的: i&lt;整数&gt;e。<br />
+如1999: i1999e</li>
+<li>list<br />
+列表是一这种方式编码的: l[数据1][数据2][数据3][&hellip;]e。<br />
+如列表[hello, world, 101]： l5:hello5:worldi101ee<br /></li>
+<li>dictionary<br />
+字典是一这种方式编码的: d[key1][value1][key2][value2][&hellip;]e，其中key必须是string而且按照字母顺序排序。<br />
+如字典{aa:100, bb:bb, cc:200}： d2:aai100e2:bb2:bb2:cci200ee<br /></li>
+</ol>
+
+<p>很多语言都有bencode的实现，<a href="http://python.org">Python</a>版本可在pypi里面找到: <a href="https://pypi.python.org/pypi/bencode/1.0">bencode</a>。</p>
+
+<p>bt种子文件是使用bencode编码的，整个文件就dictionary，包含以下键。</p>
+
+<ol>
+<li>info, dictinary, 必选, 表示该bt种子文件的文件信息。<br /></li>
+</ol>
+
+<p>文件信息包括文件的公共部分</p>
+
+<p>piece length, integer, 必选, 每一数据块的长度<br />
+  pieces, string, 必选, 所有数据块的SHA1校验值<br />
+  publisher, string, 可选, 发布者<br />
+  publisher.utf-8, string, 可选, 发布者的UTF-8编码<br />
+  publisher-url, string, 可选, 发布者的URL<br />
+  publisher-url.utf-8, string, 可选, 发布者的URL的UTF-8编码</p>
+
+<p>如果bt种子包含的是单个文件，包含以下内容</p>
+
+<p>name, string, 必选, 推荐的文件名称
+  name.utf-8, string, 可选, 推荐的文件名称的UTF-8编码<br />
+  length, int, 必选， 文件的长度单位是字节</p>
+
+<p>如果是多文件，则包含以下部分:</p>
+
+<p>name, string, 必选, 推荐的文件夹名称
+  name.utf-8, string, 可选, 推荐的文件名称的UTF-8编码<br />
+  files, list, 必选, 文件列表，每个文件列表下面是包括每一个文件的信息，文件信息是个字典。</p>
+
+<p>文件字典</p>
+
+<p>length, int, 必选， 文件的长度单位是字节<br />
+  path, string, 必选， 文件名称，包含文件夹在内<br />
+  path.utf-8, string, 必选， 文件名称UTF-8表示，包含文件夹在内<br />
+  filehash，string, 可选， 文件hash。<br />
+  ed2k, string, 可选, ed2k信息。</p>
+
+<ol>
+<li><p>announce, string, 必选, tracker 服务器的地址</p></li>
+
+<li><p>announce-list, list, 可选, 可选的tracker服务器地址</p></li>
+
+<li><p>creation date， interger， 必选, 文件创建时间</p></li>
+
+<li><p>comment， string, 可选, bt文件注释</p></li>
+
+<li><p>created by， string， 可选， 文件创建者。</p></li>
+</ol>
+
+<p>上面列举的可能不是很完整的，但是大体上主要的字段没有重大的错误。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-09-17</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/bt/">bt</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2014-10-07-jquery-summary/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">jquery selector小结</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2014-08-29-verification-code-identified/">
+            <span class="next-text nav-default">验证码识别</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2014-09-17 19:12:17 \x2b0000 UTC',
+        title: 'bt种子文件文件结构',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

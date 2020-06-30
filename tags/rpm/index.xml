@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rpm on BUF1024!!!</title>
+    <link>https://luoguochun.cn/tags/rpm/</link>
+    <description>Recent content in rpm on BUF1024!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 18 Sep 2012 23:48:14 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/tags/rpm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux -- rpm</title>
+      <link>https://luoguochun.cn/post/2012-09-18-linux-rpm/</link>
+      <pubDate>Tue, 18 Sep 2012 23:48:14 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-09-18-linux-rpm/</guid>
+      <description>rpm是redhat（系列）系统软件安装，管理的工具。相对于针对仓库而言的yum，rpm是针对单个软件包的。通常情况下Linux发布软件是通</description>
+    </item>
+    
+  </channel>
+</rss>

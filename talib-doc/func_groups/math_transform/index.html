@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>15 数学变换(Math Transform Functions) - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="Math Transform Functions 数学变换函数 ACOS - Vector Trigonometric ACos 函数名：ACOS 名称：acos函数是反余弦函数，三角函数 1 real = ACOS(close) ASIN - Vector Trigonometric ASin 函数名：ASIN 名称：反正弦函数，三角" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/talib-doc/func_groups/math_transform/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="15 数学变换(Math Transform Functions)" />
+<meta property="og:description" content="Math Transform Functions 数学变换函数 ACOS - Vector Trigonometric ACos 函数名：ACOS 名称：acos函数是反余弦函数，三角函数 1 real = ACOS(close) ASIN - Vector Trigonometric ASin 函数名：ASIN 名称：反正弦函数，三角" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/talib-doc/func_groups/math_transform/" /><meta property="article:published_time" content="2019-10-10T00:00:15&#43;08:00"/>
+<meta property="article:modified_time" content="2019-10-10T00:00:15&#43;08:00"/>
+
+<meta itemprop="name" content="15 数学变换(Math Transform Functions)">
+<meta itemprop="description" content="Math Transform Functions 数学变换函数 ACOS - Vector Trigonometric ACos 函数名：ACOS 名称：acos函数是反余弦函数，三角函数 1 real = ACOS(close) ASIN - Vector Trigonometric ASin 函数名：ASIN 名称：反正弦函数，三角">
+
+
+<meta itemprop="datePublished" content="2019-10-10T00:00:15&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-10T00:00:15&#43;08:00" />
+<meta itemprop="wordCount" content="445">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="15 数学变换(Math Transform Functions)"/>
+<meta name="twitter:description" content="Math Transform Functions 数学变换函数 ACOS - Vector Trigonometric ACos 函数名：ACOS 名称：acos函数是反余弦函数，三角函数 1 real = ACOS(close) ASIN - Vector Trigonometric ASin 函数名：ASIN 名称：反正弦函数，三角"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    
+
+<h1 id="math-transform-functions-数学变换函数">Math Transform Functions 数学变换函数</h1>
+
+<h3 id="acos-vector-trigonometric-acos">ACOS - Vector Trigonometric ACos</h3>
+
+<blockquote>
+<p>函数名：ACOS
+名称：acos函数是反余弦函数，三角函数</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">ACOS</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="asin-vector-trigonometric-asin">ASIN - Vector Trigonometric ASin</h3>
+
+<blockquote>
+<p>函数名：ASIN
+名称：反正弦函数，三角函数</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">ASIN</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="atan-vector-trigonometric-atan">ATAN - Vector Trigonometric ATan</h3>
+
+<blockquote>
+<p>函数名：ASIN
+名称：数字的反正切值，三角函数</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">ATAN</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="ceil-vector-ceil">CEIL - Vector Ceil</h3>
+
+<blockquote>
+<p>函数名：CEIL
+简介：向上取整数</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">CEIL</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cos-vector-trigonometric-cos">COS - Vector Trigonometric Cos</h3>
+
+<blockquote>
+<p>函数名：COS
+名称：余弦函数，三角函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">COS</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<h3 id="cosh-vector-trigonometric-cosh">COSH - Vector Trigonometric Cosh</h3>
+
+<blockquote>
+<p>函数名：COSH
+名称：双曲正弦函数，三角函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">COSH</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<h3 id="exp-vector-arithmetic-exp">EXP - Vector Arithmetic Exp</h3>
+
+<blockquote>
+<p>函数名：EXP
+名称：指数曲线，三角函数</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">EXP</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="floor-vector-floor">FLOOR - Vector Floor</h3>
+
+<blockquote>
+<p>函数名：FLOOR<br />
+名称：向下取整数</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">FLOOR</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="ln-vector-log-natural">LN - Vector Log Natural</h3>
+
+<blockquote>
+<p>函数名：LN<br />
+名称：自然对数</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">LN</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="log10-vector-log10">LOG10 - Vector Log10</h3>
+
+<blockquote>
+<p>函数名：LOG10<br />
+名称：对数函数log</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">LOG10</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="sin-vector-trigonometric-sin">SIN - Vector Trigonometric Sin</h3>
+
+<blockquote>
+<p>函数名：SIN
+名称：正弦函数，三角函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">SIN</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<h3 id="sinh-vector-trigonometric-sinh">SINH - Vector Trigonometric Sinh</h3>
+
+<blockquote>
+<p>函数名：SINH
+名称：双曲正弦函数，三角函数</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">SINH</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="sqrt-vector-square-root">SQRT - Vector Square Root</h3>
+
+<blockquote>
+<p>函数名：SQRT
+名称：非负实数的平方根</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">SQRT</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="tan-vector-trigonometric-tan">TAN - Vector Trigonometric Tan</h3>
+
+<blockquote>
+<p>函数名：TAN
+名称：正切函数，三角函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">TAN</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<h3 id="tanh-vector-trigonometric-tanh">TANH - Vector Trigonometric Tanh</h3>
+
+<blockquote>
+<p>函数名：TANH
+名称：双曲正切函数，三角函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">TANH</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<p><a href="/talib-doc/doc_index">文档 </a>
+<a href="/talib-doc/funcs">函数分组</a></p>
+
+  </div>
+</article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-10-10 00:00:15 \x2b0800 CST',
+        title: '15 数学变换(Math Transform Functions)',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

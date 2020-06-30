@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tcpdump on BUF1024</title>
+    <link>https://luoguochun.cn/tags/tcpdump/</link>
+    <description>Recent content in Tcpdump on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 25 Jul 2015 14:26:04 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/tags/tcpdump/atom.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>tcpdump usage</title>
+      <link>https://luoguochun.cn/post/2015-07-25-tcpdump-usage/</link>
+      <pubDate>Sat, 25 Jul 2015 14:26:04 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2015-07-25-tcpdump-usage/</guid>
+      <description>Tcpdump使用方法 （1）第一种是关于类型的关键字主要包括host，net，port 例如： host 210.27.48.2，指明 210.27.48</description>
+    </item>
+    
+  </channel>
+</rss>

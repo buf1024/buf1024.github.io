@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>09 量指标(Volume Indicators) - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="Volume Indicators 量指标 AD - Chaikin A/D Line 量价指标 函数名：AD 名称：Chaikin A/D Line 累积/派发线（Accumulation/Distribution Line） 简" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/talib-doc/func_groups/volume_indicators/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="09 量指标(Volume Indicators)" />
+<meta property="og:description" content="Volume Indicators 量指标 AD - Chaikin A/D Line 量价指标 函数名：AD 名称：Chaikin A/D Line 累积/派发线（Accumulation/Distribution Line） 简" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/talib-doc/func_groups/volume_indicators/" /><meta property="article:published_time" content="2019-10-10T00:00:09&#43;08:00"/>
+<meta property="article:modified_time" content="2019-10-10T00:00:09&#43;08:00"/>
+
+<meta itemprop="name" content="09 量指标(Volume Indicators)">
+<meta itemprop="description" content="Volume Indicators 量指标 AD - Chaikin A/D Line 量价指标 函数名：AD 名称：Chaikin A/D Line 累积/派发线（Accumulation/Distribution Line） 简">
+
+
+<meta itemprop="datePublished" content="2019-10-10T00:00:09&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-10T00:00:09&#43;08:00" />
+<meta itemprop="wordCount" content="760">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="09 量指标(Volume Indicators)"/>
+<meta name="twitter:description" content="Volume Indicators 量指标 AD - Chaikin A/D Line 量价指标 函数名：AD 名称：Chaikin A/D Line 累积/派发线（Accumulation/Distribution Line） 简"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    
+
+<h1 id="volume-indicators-量指标">Volume Indicators 量指标</h1>
+
+<h3 id="ad-chaikin-a-d-line-量价指标">AD - Chaikin A/D Line 量价指标</h3>
+
+<blockquote>
+<p>函数名：AD<br />
+名称：Chaikin A/D Line 累积/派发线（Accumulation/Distribution Line）<br />
+简介：Marc Chaikin提出的一种平衡交易量指标，以当日的收盘价位来估算成交流量，用于估定一段时间内该证券累积的资金流量。<br />
+计算公式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-A/D = 昨日A/D + 多空对比 * 今日成交量" data-lang="A/D = 昨日A/D + 多空对比 * 今日成交量"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-A/D = 昨日A/D + 多空对比 * 今日成交量" data-lang="A/D = 昨日A/D + 多空对比 * 今日成交量">多空对比 = [（收盘价- 最低价） - （最高价 - 收盘价）] / （最高价 - 最低价)</code></pre></td></tr></table>
+</div>
+</div>
+<p>若最高价等于最低价： 多空对比 = （收盘价 / 昨收盘） - 1<br />
+研判：<br />
+1、A/D测量资金流向，向上的A/D表明买方占优势，而向下的A/D表明卖方占优势<br />
+2、A/D与价格的背离可视为买卖信号，即底背离考虑买入，顶背离考虑卖出<br />
+3、应当注意A/D忽略了缺口的影响，事实上，跳空缺口的意义是不能轻易忽略的<br />
+A/D指标无需设置参数，但在应用时，可结合指标的均线进行分析</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">AD</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">volume</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="adosc-chaikin-a-d-oscillator">ADOSC - Chaikin A/D Oscillator</h3>
+
+<blockquote>
+<p>函数名：ADOSC<br />
+名称：Chaikin A/D Oscillator Chaikin震荡指标<br />
+简介：将资金流动情况与价格行为相对比，检测市场中资金流入和流出的情况<br />
+计算公式：fastperiod A/D - slowperiod A/D<br />
+研判：<br />
+1、交易信号是背离：看涨背离做多，看跌背离做空<br />
+2、股价与90天移动平均结合，与其他指标结合<br />
+3、由正变负卖出，由负变正买进</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">ADOSC</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="n">fastperiod</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">slowperiod</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="obv-on-balance-volume">OBV - On Balance Volume</h3>
+
+<blockquote>
+<p>函数名：OBV<br />
+名称：On Balance Volume 能量潮<br />
+简介：Joe Granville提出，通过统计成交量变动的趋势推测股价趋势<br />
+计算公式：以某日为基期，逐日累计每日上市股票总成交量，若隔日指数或股票上涨
+，则基期OBV加上本日成交量为本日OBV。隔日指数或股票下跌，
+则基期OBV减去本日成交量为本日OBV<br />
+研判：<br />
+1、以“N”字型为波动单位，一浪高于一浪称“上升潮”，下跌称“跌潮”；上升潮买进，跌潮卖出<br />
+2、须配合K线图走势<br />
+3、用多空比率净额法进行修正，但不知TA-Lib采用哪种方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-计算公式： 多空比率净额= [（收盘价－最低价）－（最高价-收盘价）] ÷（ 最高价－最低价）×成交量```" data-lang="计算公式： 多空比率净额= [（收盘价－最低价）－（最高价-收盘价）] ÷（ 最高价－最低价）×成交量```"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-计算公式： 多空比率净额= [（收盘价－最低价）－（最高价-收盘价）] ÷（ 最高价－最低价）×成交量```" data-lang="计算公式： 多空比率净额= [（收盘价－最低价）－（最高价-收盘价）] ÷（ 最高价－最低价）×成交量```">```python
+real = OBV(close, volume)</code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<p><a href="/talib-doc/doc_index">文档 </a>
+<a href="/talib-doc/funcs">函数分组</a></p>
+
+  </div>
+</article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-10-10 00:00:09 \x2b0800 CST',
+        title: '09 量指标(Volume Indicators)',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

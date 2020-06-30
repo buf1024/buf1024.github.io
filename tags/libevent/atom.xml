@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Libevent on BUF1024</title>
+    <link>https://luoguochun.cn/tags/libevent/</link>
+    <description>Recent content in Libevent on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 23 Jun 2012 11:08:14 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/tags/libevent/atom.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>基于libevent进程池服务器</title>
+      <link>https://luoguochun.cn/post/2012-06-23-proccess-pool-server/</link>
+      <pubDate>Sat, 23 Jun 2012 11:08:14 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-06-23-proccess-pool-server/</guid>
+      <description>本程序仅是为了学习libevent而写的，但可以当作是简单的程序框架扩展为实际的应用。程序本身没有经过广泛的功能测试和压力测试，仅作简单的功</description>
+    </item>
+    
+  </channel>
+</rss>

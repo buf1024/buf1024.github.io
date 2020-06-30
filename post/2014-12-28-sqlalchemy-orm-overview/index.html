@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>sqlalchemy orm 概览 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="SQLAlchemy 概述 在python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2014-12-28-sqlalchemy-orm-overview/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="sqlalchemy orm 概览" />
+<meta property="og:description" content="SQLAlchemy 概述 在python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2014-12-28-sqlalchemy-orm-overview/" /><meta property="article:published_time" content="2014-12-28T21:08:34&#43;00:00"/>
+<meta property="article:modified_time" content="2014-12-28T21:08:34&#43;00:00"/>
+
+<meta itemprop="name" content="sqlalchemy orm 概览">
+<meta itemprop="description" content="SQLAlchemy 概述 在python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图">
+
+
+<meta itemprop="datePublished" content="2014-12-28T21:08:34&#43;00:00" />
+<meta itemprop="dateModified" content="2014-12-28T21:08:34&#43;00:00" />
+<meta itemprop="wordCount" content="1892">
+
+
+
+<meta itemprop="keywords" content="python,sqlalchemy,orm," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="sqlalchemy orm 概览"/>
+<meta name="twitter:description" content="SQLAlchemy 概述 在python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">sqlalchemy orm 概览</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-12-28 </span>
+        <div class="post-category">
+            <a href="/categories/orm/"> orm </a>
+            </div>
+          <span class="more-meta"> 约 1892 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#sqlalchemy-概述"><strong><em>SQLAlchemy</em></strong> 概述</a>
+<ul>
+<li><a href="#数据库连接">数据库连接</a></li>
+<li><a href="#库表数据表示">库表数据表示</a></li>
+<li><a href="#数据类型关系映射">数据类型关系映射</a></li>
+</ul></li>
+<li><a href="#sqlalchemy-core"><strong><em>SQLAlchemy Core</em></strong></a>
+<ul>
+<li><a href="#sqlalchemy-core-数据操作-插入"><strong><em>SQLAlchemy Core</em></strong> 数据操作 &ndash; 插入</a></li>
+</ul></li>
+<li><a href="#sqlalchemy-orm"><strong>SQLALchemy ORM</strong></a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h4 id="sqlalchemy-概述"><strong><em>SQLAlchemy</em></strong> 概述</h4>
+
+<p>在<code>python</code>的<code>orm</code>世界里，<a href="www.sqlalchemy.org">SQLAlchemy</a>,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下:<br />
+<img src="/img/python/sqlalchemy-orm-overview_arch_small.png" alt="SQLAlchemy简略构架图" /></p>
+
+<p>如图所述，SQLAlchemy主要包括两个大方面: <strong>CORE</strong>和<strong>ORM</strong>，其中<strong>CORE</strong>里面最重要的是<strong>SQL Expression Language(SQL EL)</strong>, <strong>ORM</strong>是建立在<strong>SQL EL</strong>之上，而<strong>SQL EL</strong>通过<strong>ENGINE</strong>,<strong>DIALECT</strong>建立在具体的<strong>DBAPI</strong>之上。</p>
+
+<h5 id="数据库连接">数据库连接</h5>
+
+<p>使用<a href="www.sqlalchemy.org">SQLAlchemy</a>，必须关联一个数据库后端，后端使用<code>create_egine</code>创建，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python">    <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1">#导入sqlalchemy所有包</span>
+    <span class="o">&gt;&gt;&gt;</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&#34;sqlite:///:memory:&#34;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c1">#绑定数据库后端</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><code>create_engine</code>通过不同的<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/engines.html#database-urls">DB URL</a>来识别不同数据库后端，数据库接口必须是符合<a href="http://docs.sqlalchemy.org/en/rel_0_9/glossary.html#term-dbapi">python dbapi</a>规范的。需要注意的是，<code>create_engine</code>并不实际和数据库进行连接，等到第一次执行<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/connections.html#sqlalchemy.engine.Engine.execute">Engine.execute</a>或<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/connections.html#sqlalchemy.engine.Engine.connect">Engine.connect</a>显式连接时，才进行真正的数据库连接。</p>
+
+<h5 id="库表数据表示">库表数据表示</h5>
+
+<p><a href="www.sqlalchemy.org">SQLAlchemy</a>有3种方式表示关系数据库的库表：
+- 用户定义的<code>Table</code>对象
+- 使用<code>declerative</code>基类
+- 从现有的数据里面反射建立</p>
+
+<h5 id="数据类型关系映射">数据类型关系映射</h5>
+
+<p><img src="/img/python/sqlalchemy-datatype.png" alt="SQLAlchemy数据关系映射" /></p>
+
+<h4 id="sqlalchemy-core"><strong><em>SQLAlchemy Core</em></strong></h4>
+
+<p><strong>SQLAlchemy EL</strong>提供了用<code>python</code>构建数据库对象的方式，而且这些<code>python</code>对象是数据库中立的，<strong>EL</strong>对数据操作也是数据库中立的。<br />
+<a href="www.sqlalchemy.org">SQLAlchemy</a>使用的<strong>DTATBASE METADATA</strong>和内部数据库结构绑定，能加速<a href="www.sqlalchemy.org">SQLAlchemy</a>对数据库访问。如:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python">    <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="o">*</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&#34;sqlite:///test.db&#34;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">MetaData</span><span class="p">()</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span>
+      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">(</span><span class="mi">64</span><span class="p">)),</span>
+      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span>
+    <span class="p">)</span>
+    
+    <span class="n">address</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s1">&#39;address&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span>
+      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;user.id&#39;</span><span class="p">)),</span>
+      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;address&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>执行后输出如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    ……忽略无关内容
+    CREATE TABLE user (
+            id INTEGER NOT NULL,
+            name VARCHAR(64),
+            sex VARCHAR(2),
+            PRIMARY KEY (id)
+    )
+
+    2014-12-31 12:21:45,555 INFO sqlalchemy.engine.base.Engine ()
+    2014-12-31 12:21:45,704 INFO sqlalchemy.engine.base.Engine COMMIT
+    2014-12-31 12:21:45,707 INFO sqlalchemy.engine.base.Engine
+    CREATE TABLE address (
+            id INTEGER NOT NULL,
+            user_id INTEGER,
+            address VARCHAR(256) NOT NULL,
+            PRIMARY KEY (id),
+            FOREIGN KEY(user_id) REFERENCES user (id)
+    )
+    
+    2014-12-31 12:21:45,710 INFO sqlalchemy.engine.base.Engine ()
+    2014-12-31 12:21:45,716 INFO sqlalchemy.engine.base.Engine COMMIT</pre></td></tr></table>
+</div>
+</div>
+<p><code>create_engine</code>会根据数据库表名而决定是否需要在数据库创建库表，如果通过<code>metadata</code>增加库表，数据库如果没有该库表的话，就会创建。但如果修改列或在<code>metadata</code>删除表，则不受影响，不会执行。另外还有另外一种方法描述库表：<strong>TABLE REFLECTION</strong>，在已有的数据库的基础上通过反射获取库表的描述，这种方法虽然方便，但是可控程度稍低。具体可参考<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/reflection.html">Refelction Database Objects</a>。</p>
+
+<h5 id="sqlalchemy-core-数据操作-插入"><strong><em>SQLAlchemy Core</em></strong> 数据操作 &ndash; 插入</h5>
+
+<p>数据的插入可通过<code>table.insert()</code>获取<strong>INSERT</strong>对象，然后通过<a href="www.sqlalchemy.org">SQLAlchemy</a>获取<code>Connection</code>对象来执行，这是最直观的方式，默认是一执行完毕就提交数据库的。<strong>INSERT</strong>对象式可以通过绑定变量或者在<code>Connection</code>对象绑定变量构建数据。<code>Connection</code>可以执行一条或多条数据，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python">    <span class="n">conn</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+    <span class="n">inst</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">insert</span><span class="p">()</span>
+    <span class="n">rst</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;hello&#34;</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="s2">&#34;F&#34;</span><span class="p">)</span>
+    
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">address</span><span class="o">.</span><span class="n">insert</span><span class="p">(),</span> <span class="p">[</span> 
+       <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span> <span class="p">:</span> <span class="s1">&#39;Guangdong&#39;</span><span class="p">},</span>
+       <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span> <span class="p">:</span> <span class="s1">&#39;Beijing&#39;</span><span class="p">},</span>
+       <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span> <span class="p">:</span> <span class="s1">&#39;Shanghai&#39;</span><span class="p">},</span>
+       <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span> <span class="p">:</span> <span class="s1">&#39;Hongkong&#39;</span><span class="p">},</span>
+    <span class="p">])</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    sqlite&gt; select a.*, b.* from user a left join address b on b.user_id = a.id;
+    1|hello|F|1|1|Guangdong
+    1|hello|F|2|1|Beijing
+    1|hello|F|3|1|Shanghai
+    1|hello|F|4|1|Hongkong</pre></td></tr></table>
+</div>
+</div>
+<p>如果需要事务控制，则需要获取<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/connections.html#sqlalchemy.engine.Transaction">Transection</a>对象，事务一般需要在<code>try/except</code>块中控制，如:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">try:
+    addr_inst = address.insert()
+
+    r = conn.execute(addr_inst, [ 
+       {&#39;user_id&#39;: 1, &#39;address&#39; : &#39;Guangdong&#39;},
+       {&#39;user_id&#39;: 1, &#39;address&#39; : &#39;Beijing&#39;},
+       {&#39;user_id&#39;: 1, &#39;address&#39; : &#39;Shanghai&#39;},
+       {&#39;user_id&#39;: 1, &#39;address&#39; : &#39;Hongkong&#39;},
+    ])
+    r.close()
+    trans.commit()
+except:
+    trans.rollback()</pre></td></tr></table>
+</div>
+</div>
+<p>同理，数据的查询可通过<code>table.select()</code>获取<strong>SELECT</strong>对象。但这种方法只能针对一张表，如果用使用多张表或者选择不同对象，则需要使用<code>select</code>函数。如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">s = select([user, address]).where(user.c.id == address.c.user_id)
+r = conn.execute(s)
+
+for t in r:
+    print t
+
+print &#39;xxx&#39;
+s = user.select().where(user.c.id == 2)
+r = conn.execute(s)
+for t in r:
+    print t
+结果如下：
+2014-12-31 15:29:07,825 INFO sqlalchemy.engine.base.Engine SELECT user.id, user.
+name, user.sex, address.id, address.user_id, address.address
+FROM user, address
+WHERE user.id = address.user_id
+2014-12-31 15:29:07,825 INFO sqlalchemy.engine.base.Engine ()
+(1, u&#39;ZhangSan&#39;, u&#39;M&#39;, 1, 1, u&#39;Guangdong&#39;)
+(1, u&#39;ZhangSan&#39;, u&#39;M&#39;, 2, 1, u&#39;Beijing&#39;)
+(1, u&#39;ZhangSan&#39;, u&#39;M&#39;, 3, 1, u&#39;Shanghai&#39;)
+(1, u&#39;ZhangSan&#39;, u&#39;M&#39;, 4, 1, u&#39;Hongkong&#39;)
+xxx
+2014-12-31 15:29:07,828 INFO sqlalchemy.engine.base.Engine SELECT user.id, user.
+name, user.sex
+FROM user
+WHERE user.id = ?
+2014-12-31 15:29:07,828 INFO sqlalchemy.engine.base.Engine (2,)
+(2, u&#39;LiShi&#39;, u&#39;M&#39;)</pre></td></tr></table>
+</div>
+</div>
+<p><code>select</code>函数需要的参数是列表，需要选择的结果集放到这里面，具体的列可以通过<code>table.c.colum</code>的方式来获取。为了一致性处理，通常对于<code>select</code>出来的结果集，如果不需要使用，还需调用结果集的<code>close</code>方法来关闭，从而释放数据库资源。这里里例子里面包含了<code>where</code><strong>CLAUSE</strong>，这是个布尔表达式，使用的是<code>python</code>而非<code>sql</code>的语法，详细可参考<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/sqlelement.html#sqlalchemy.sql.expression.ColumnElement">ColumnElement</a>和<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/selectable.html">SelectTable</a>。<a href="www.sqlalchemy.org">SQLAlchemy</a>的选择运算符包括and<em>, or</em>, not_, group_by,func.sum聚集函数等，使用这些基本上可以构建日常使用的查询语句。如果还不行，还可以像普通<code>sql</code>一样，直接写，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">s = text(&#34;select * from user where id = :id&#34;)
+r = conn.execute(s, id=1)
+for t in r:
+    print t
+结果：
+2014-12-31 16:00:32,207 INFO sqlalchemy.engine.base.Engine select * from user wh
+ere id = ?
+2014-12-31 16:00:32,207 INFO sqlalchemy.engine.base.Engine (1,)
+(1, u&#39;ZhangSan&#39;, u&#39;M&#39;)</pre></td></tr></table>
+</div>
+</div>
+<p>关于查询再看看<strong>JOIN</strong>和<strong>SUBQUERY</strong>。</p>
+
+<h4 id="sqlalchemy-orm"><strong>SQLALchemy ORM</strong></h4>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-12-28</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/python/">python</a>
+          <a href="/tags/sqlalchemy/">sqlalchemy</a>
+          <a href="/tags/orm/">orm</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2015-07-22-vim-xx-things/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">VIM XX THINGS</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2014-10-22-tcp_nodelay/">
+            <span class="next-text nav-default">tcp_nodelay选项</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2014-12-28 21:08:34 \x2b0000 UTC',
+        title: 'sqlalchemy orm 概览',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Orm on BUF1024</title>
+    <link>https://luoguochun.cn/categories/orm/</link>
+    <description>Recent content in Orm on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sun, 28 Dec 2014 21:08:34 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/categories/orm/atom.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sqlalchemy orm 概览</title>
+      <link>https://luoguochun.cn/post/2014-12-28-sqlalchemy-orm-overview/</link>
+      <pubDate>Sun, 28 Dec 2014 21:08:34 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-12-28-sqlalchemy-orm-overview/</guid>
+      <description>SQLAlchemy 概述 在python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图</description>
+    </item>
+    
+  </channel>
+</rss>

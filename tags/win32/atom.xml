@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Win32 on BUF1024</title>
+    <link>https://luoguochun.cn/tags/win32/</link>
+    <description>Recent content in Win32 on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sun, 24 Jun 2012 00:00:43 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/tags/win32/atom.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Windows Shell Extension</title>
+      <link>https://luoguochun.cn/post/2012-06-24-windows-shell-extension/</link>
+      <pubDate>Sun, 24 Jun 2012 00:00:43 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-06-24-windows-shell-extension/</guid>
+      <description>分享1，2年前自己还在搞WINDOWS开发时写的一个小工具（当时在公司无聊的时候写了很多小工具啊，只不过拿不出源代码，杯具），个人觉得挺实用</description>
+    </item>
+    
+  </channel>
+</rss>

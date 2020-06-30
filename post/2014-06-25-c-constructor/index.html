@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>c构造函数 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="构造函数 任何一们面向对象语言里都会涉及构造函数这一概念，只是实现的方式各有差异。需要这main函数之前执行一段代码是非常容易的事情，只需要声" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2014-06-25-c-constructor/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="c构造函数" />
+<meta property="og:description" content="构造函数 任何一们面向对象语言里都会涉及构造函数这一概念，只是实现的方式各有差异。需要这main函数之前执行一段代码是非常容易的事情，只需要声" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2014-06-25-c-constructor/" /><meta property="article:published_time" content="2014-06-25T13:00:43&#43;00:00"/>
+<meta property="article:modified_time" content="2014-06-25T13:00:43&#43;00:00"/>
+
+<meta itemprop="name" content="c构造函数">
+<meta itemprop="description" content="构造函数 任何一们面向对象语言里都会涉及构造函数这一概念，只是实现的方式各有差异。需要这main函数之前执行一段代码是非常容易的事情，只需要声">
+
+
+<meta itemprop="datePublished" content="2014-06-25T13:00:43&#43;00:00" />
+<meta itemprop="dateModified" content="2014-06-25T13:00:43&#43;00:00" />
+<meta itemprop="wordCount" content="585">
+
+
+
+<meta itemprop="keywords" content="c,vc," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="c构造函数"/>
+<meta name="twitter:description" content="构造函数 任何一们面向对象语言里都会涉及构造函数这一概念，只是实现的方式各有差异。需要这main函数之前执行一段代码是非常容易的事情，只需要声"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">c构造函数</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-25 </span>
+        <div class="post-category">
+            <a href="/categories/c/"> c </a>
+            </div>
+          <span class="more-meta"> 约 585 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#构造函数">构造函数</a></li>
+<li><a href="#为何需要这个">为何需要这个</a></li>
+<li><a href="#如何实现">如何实现</a></li>
+<li><a href="#额外参考">额外参考</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h3 id="构造函数">构造函数</h3>
+
+<p>任何一们面向对象语言里都会涉及构造函数这一概念，只是实现的方式各有差异。需要这main函数之前执行一段代码是非常容易的事情，只需要声明一对象的全局变量，在构造函数可以为*所欲为*干你想干的事情。然而，对于面向过程的语言比如C，需要实现全局的构造函数就比较奇葩。当然gcc会有很优雅的解决方式，VC则猥琐点。</p>
+
+<h3 id="为何需要这个">为何需要这个</h3>
+
+<p>其实在main函数里面调用一下就可以了，是的，这样是可以，但是对于框架的实现来说，这却是不太好的，客户使用起来不自由。当然也可以说，我是屌丝，我可以装逼点。</p>
+
+<h3 id="如何实现">如何实现</h3>
+
+<ul>
+<li><p>gcc实现<br />
+gcc 实现是非常简单的事情。在全局构造函数前叫以下编译器属性即可：<br />
+<strong>attribute</strong>((constructor))</p></li>
+
+<li><p>vc实现
+vc的实现比较奇葩，VC本身没有类似·<strong>attribute</strong>·这样的属性，你需要将全局函数编译到某个特定的代码段里面。MSDN对于这部分有详细的说明：<a href="http://msdn.microsoft.com/en-us/library/bb918180.aspx">CRT Initialization</a><br />
+简单来说就是将你的全局构造函数的函数指针编译到·.CRT$XCU·段里面。如何编译到·.CRT$XCU·段？VC有VC的语法。</p>
+
+<p>// 声明在段·.CRT$XCU·里面生成代码<br />
+#pragma section(&rdquo;.CRT$XCU&rdquo;,read)<br />
+// 声明需要调用的函数<br />
+__declspec(allocate(&rdquo;.CRT$XCU&rdquo;)) void (__cdecl *a)(void) = func;<br />
+// 调用的函数实现<br />
+void func(void){}</p></li>
+</ul>
+
+<p>以上实现可以用下面实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#ifdef _MSC_VER    
+#define __CCALL __cdecl    
+#define __func__ __FUNCTION__    
+#define snprintf _snprintf    
+#pragma warning(disable:4996) // this is very violent    
+#pragma section(&#34;.CRT$XCU&#34;,read)
+#define __CONSTRCT(a, b)                                             \    
+  void __CCALL __##a##__##b##__ ## 520hjm(void);                   \    
+  __declspec(allocate(&#34;.CRT$XCU&#34;))                                 \    
+  void (__CCALL * __ctor__##a##__##b##__ ## 520hjm)(void) =        \    
+  __##a##__##b##__ ## 520hjm;    
+#else    
+#define __CCALL    
+#define __CONSTRCT(a, b) __attribute__((constructor))    </pre></td></tr></table>
+</div>
+</div>
+<h3 id="额外参考">额外参考</h3>
+
+<p>仿照<a href="https://code.google.com/p/googletest/">gtest</a>的简易单元测试<a href="https://github.com/buf1024/ctest">ctest</a>就是用的这方面的知识。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-06-25</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/c/">c</a>
+          <a href="/tags/vc/">vc</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2014-06-25-server-mode/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">服务器模式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2014-05-30-myschd/">
+            <span class="next-text nav-default">mschedule 简单linux进程管理（树莓派）</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2014-06-25 13:00:43 \x2b0000 UTC',
+        title: 'c构造函数',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

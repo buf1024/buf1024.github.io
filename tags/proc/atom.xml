@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Proc on BUF1024</title>
+    <link>https://luoguochun.cn/tags/proc/</link>
+    <description>Recent content in Proc on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 28 Jul 2014 14:57:18 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/tags/proc/atom.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>linux /proc 伪文件系统</title>
+      <link>https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/</link>
+      <pubDate>Mon, 28 Jul 2014 14:57:18 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/</guid>
+      <description>linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>tcpdump usage - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="Tcpdump使用方法 （1）第一种是关于类型的关键字主要包括host，net，port 例如： host 210.27.48.2，指明 210.27.48" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2015-07-25-tcpdump-usage/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="tcpdump usage" />
+<meta property="og:description" content="Tcpdump使用方法 （1）第一种是关于类型的关键字主要包括host，net，port 例如： host 210.27.48.2，指明 210.27.48" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2015-07-25-tcpdump-usage/" /><meta property="article:published_time" content="2015-07-25T14:26:04&#43;00:00"/>
+<meta property="article:modified_time" content="2015-07-25T14:26:04&#43;00:00"/>
+
+<meta itemprop="name" content="tcpdump usage">
+<meta itemprop="description" content="Tcpdump使用方法 （1）第一种是关于类型的关键字主要包括host，net，port 例如： host 210.27.48.2，指明 210.27.48">
+
+
+<meta itemprop="datePublished" content="2015-07-25T14:26:04&#43;00:00" />
+<meta itemprop="dateModified" content="2015-07-25T14:26:04&#43;00:00" />
+<meta itemprop="wordCount" content="1553">
+
+
+
+<meta itemprop="keywords" content="tcp,tcpdump," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="tcpdump usage"/>
+<meta name="twitter:description" content="Tcpdump使用方法 （1）第一种是关于类型的关键字主要包括host，net，port 例如： host 210.27.48.2，指明 210.27.48"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">tcpdump usage</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-07-25 </span>
+        <div class="post-category">
+            <a href="/categories/tcp/"> tcp </a>
+            </div>
+          <span class="more-meta"> 约 1553 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#tcpdump使用方法">Tcpdump使用方法</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h4 id="tcpdump使用方法">Tcpdump使用方法</h4>
+
+<p>（1）<strong>第一种是关于类型的关键字主要包括<code>host</code>，<code>net</code>，<code>port</code></strong><br />
+例如： <code>host 210.27.48.2</code>，指明 <code>210.27.48.2</code>是一台主机，<code>net 202.0.0.0</code> 指明<code>202.0.0.0</code>是一个网络地址，<code>port 23</code> 指明端口号是<code>23</code>。如果没有指定类型，缺省的类型是<code>host</code>.</p>
+
+<p>（2）第二种是确定传输方向的关键字主要包括<code>src</code> , <code>dst</code> ,<code>dst or src</code>, <code>dst and src</code><br />
+这些关键字指明了传输的方向，例如：<code>src 210.27.48.2</code>，指明ip包中源地址是<code>210.27.48.2</code> , <code>dst net 202.0.0.0</code> 指明目的网络地址是<code>202.0.0.0</code>。如果没有指明方向关键字，则缺省是<code>src or dst</code>关键字。</p>
+
+<p>（3）第三种是协议的关键字，主要包括<code>fddi</code>，<code>ip</code>，<code>arp</code>，<code>rarp</code>，<code>tcp</code>，<code>udp</code>等类型<br />
+Fddi指明是在FDDI(分布式光纤数据接口网络)上的特定的网络协议，实际上它是&rdquo;ether&rdquo;的别名，fddi和ether具有类似的源地址和目的地址，所以可以将fddi协议包当作ether的包进行处理和分析。其他的几个关键字就是指明了监听的包的协议内容。如果没有指定任何协议，则tcpdump将会监听所有协议的信息包。</p>
+
+<p>除了这三种类型的关键字之外，其他重要的关键字如下：<code>gateway</code>, <code>broadcast</code>,<code>less</code>,<code>greater</code>,还有三种逻辑运算，取非运算是<code>not</code> ，<code>!</code>，与运算是<code>and</code>，<code>&amp;&amp;</code>;或运算 是<code>or</code>，<code>││</code>；这些关键字可以组合起来构成强大的组合条件来满足人们的需要，下面举几个例子来说明。普通情况下，直接启动tcpdump将监视第一个网络界面上所有流过的数据包。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">A. tcpdump –i eth0 –c 10  
+使用-i参数指定tcpdump监听的网络界面，这在计算机具有多个网络界面时非常有用，
+使用-c参数指定要监听的数据包数量，
+使用-w参数指定将监听到的数据包写入文件中保存
+
+B.想要截获主机172.16.14.107和主机172.16.14.27或172.16.14.99的通信，使用命令：（在命令行中使用括号时，一定要用’\’
+tcpdump host 172.16.14.107 and \ (172.16.14.27or172.16.14.99 \)
+
+C.如果想要获取主机172.16.14.107除了和主机172.16.14.27之外所有主机通信的ip包，使用命令：
+tcpdump ip host 172.16.14.107 and ! 172.16.14.27
+
+D.如果想要获取主机172.16.14.107接收或发出的telnet包，使用如下命令：
+tcpdump tcp port 23 host 172.16.14.107
+
+E.对本机的udp 123 端口进行监视 （123 为ntp的服务端口）
+tcpdump udp port 123
+
+F.系统将只对名为hostname的主机的通信数据包进行监视。主机名可以是本地主机，
+也可以是网络上的任何一台计算机。下面的命令可以读取主机hostname发送的所有数据： 
+tcpdump -i eth0 src host hostname
+
+G.下面的命令可以监视所有送到主机hostname的数据包： 
+tcpdump -i eth0 dst host hostname
+#src表示源，即发送
+#dst表示目的地，即接收
+
+H.我们还可以监视通过指定网关的数据包： 
+tcpdump -i eth0 gateway Gatewayname
+
+I.如果你还想监视编址到指定端口的TCP或UDP数据包，那么执行以下命令： 
+tcpdump -i eth0 host hostname and port 80
+
+J.如果想要获取主机172.16.14.107接收或发出的telnet包，使用如下命令：
+tcpdump tcp port 23 host 172.16.14.107
+
+K. 如果我们只需要列出送到80端口的数据包，用dst port 80；如果我们只希望看到返回80端口的数据包，用src port 80。 
+tcpdump –i eth0 host hostname and dst port 80  #目的端口是80 或者
+tcpdump –i eth0 host hostname and src port 80  #源端口是80, 80端口一般是提供http的服务的主机</pre></td></tr></table>
+</div>
+</div>
+<p>tcpdump输出格式:<br />
+总的的输出格式为：系统时间 来源主机.端口 &gt; 目标主机.端口 数据包参数</p>
+
+<p>如果要用wireshark分析数据，须加上<code>-s –w</code>选项，否则wireshark不能识别文件格式：<br />
+<code>tcpdump -i eth0 -c 100 -s 0 -w /home/data.pcap</code></p>
+
+<p>实际上就是<code>BPF</code>语法，此语法同时适用于WIRESHARK获取报文的语法。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2015-07-25</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/tcp/">tcp</a>
+          <a href="/tags/tcpdump/">tcpdump</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2015-10-17-ycm-opt/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">ycm 选项</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2015-07-22-vim-xx-things/">
+            <span class="next-text nav-default">VIM XX THINGS</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2015-07-25 14:26:04 \x2b0000 UTC',
+        title: 'tcpdump usage',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

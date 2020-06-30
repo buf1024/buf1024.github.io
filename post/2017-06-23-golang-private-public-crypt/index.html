@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>golang 私钥&#34;加密&#34;公钥&#34;解密&#34; - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="之前工作主要使用C/C&#43;&#43;与银行/第三方支付对接，但C/C&#43;&#43;无法满足客户”当天给协议明天实盘上载“的开发速度以及现公司一些特殊情况，所以决" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2017-06-23-golang-private-public-crypt/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="golang 私钥&#34;加密&#34;公钥&#34;解密&#34;" />
+<meta property="og:description" content="之前工作主要使用C/C&#43;&#43;与银行/第三方支付对接，但C/C&#43;&#43;无法满足客户”当天给协议明天实盘上载“的开发速度以及现公司一些特殊情况，所以决" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2017-06-23-golang-private-public-crypt/" /><meta property="article:published_time" content="2017-06-23T20:57:11&#43;00:00"/>
+<meta property="article:modified_time" content="2017-06-23T20:57:11&#43;00:00"/>
+
+<meta itemprop="name" content="golang 私钥&#34;加密&#34;公钥&#34;解密&#34;">
+<meta itemprop="description" content="之前工作主要使用C/C&#43;&#43;与银行/第三方支付对接，但C/C&#43;&#43;无法满足客户”当天给协议明天实盘上载“的开发速度以及现公司一些特殊情况，所以决">
+
+
+<meta itemprop="datePublished" content="2017-06-23T20:57:11&#43;00:00" />
+<meta itemprop="dateModified" content="2017-06-23T20:57:11&#43;00:00" />
+<meta itemprop="wordCount" content="1409">
+
+
+
+<meta itemprop="keywords" content="rsa,go," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="golang 私钥&#34;加密&#34;公钥&#34;解密&#34;"/>
+<meta name="twitter:description" content="之前工作主要使用C/C&#43;&#43;与银行/第三方支付对接，但C/C&#43;&#43;无法满足客户”当天给协议明天实盘上载“的开发速度以及现公司一些特殊情况，所以决"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">golang 私钥&#34;加密&#34;公钥&#34;解密&#34;</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-06-23 </span>
+        <div class="post-category">
+            <a href="/categories/go/"> go </a>
+            </div>
+          <span class="more-meta"> 约 1409 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>之前工作主要使用C/C++与银行/第三方支付对接，但C/C++无法满足客户”当天给协议明天实盘上载“的开发速度以及现公司一些特殊情况，所以决定用go来尝试实现。基本的框架已经按照原来C/C++非阻塞框架实现一次，内部涉及加密方式也用go重新实现一遍，但一个数字证书加密的方式着实坑爹了一把，同时这个问题，也看到了openssl的命名混乱。</p>
+
+<p>关于这个加密方式的描述是：发送方用私钥进行rsa加密，接受方使用公钥进行rsa解密。看到这样的加密方式描述，感觉和自己的理解是有点不一样，不知道是不是自己对这方面了解不够深入，自己的理解是（之前使用过的加密方式）：公钥是公开的，私钥是自己保存的，用私钥对数据进行<strong>签名</strong>，用公钥<strong>验证</strong>签名。感觉画风不一样，翻查一下openssl，的确也是存在这样的函数：
+<code>RSA_private_encrypt</code>和<code>RSA_public_decrypt</code>，<a href="https://www.openssl.org/docs/manmaster/man3/RSA_private_encrypt.html">参考文档</a>。用openssl很容易就实现这样一个加密解密。但用纯go语言实现，不可能再用cgo来调用c函数，翻查一下go的文档，存在在类似的函数(<code>crypt/rsa</code>)：
+<code>func DecryptPKCS1v15(rand io.Reader, priv *PrivateKey, ciphertext []byte) ([]byte, error)</code>和<code>func EncryptPKCS1v15(rand io.Reader, pub *PublicKey, msg []byte) ([]byte, error)
+</code>。但仔细看，这里是使用<strong>公钥进行加密</strong>，使用<strong>私钥进行解密</strong>，和描述刚好相反。除了这两个涉及公私钥加密的函数外，似乎在go里面找不到其他类似的函数了。</p>
+
+<p>在google(科学上网lanttern)里面，能够搜索到的答案似乎不多，最后在stackoverflow找到结果：<a href="https://stackoverflow.com/questions/18011708/encrypt-message-with-rsa-private-key-as-in-openssls-rsa-private-encrypt">Encrypt message with RSA private key (as in OpenSSL&rsquo;s RSA_private_encrypt</a>。一哥们手工搞定，其代码放在<a href="https://play.golang.org/p/jrqN2KnUEM">goplaygound</a>。看了一下代码，如果不是对go内部的数据结构非常熟悉，而且对rsa机制非常清楚，很难写出正常代码。难道go就没有现成的代码完成这个功能？后面，有人就说，这是什么狗屁加密，压根就是一rsa签名，就用<code>crypt/rsa</code>里面，<code>func SignPKCS1v15(rand io.Reader, priv *PrivateKey, hash crypto.Hash, hashed []byte) ([]byte, error)</code>实现的。尼玛的，测试结果还真是一样。后来，回头看一下openssl里面的<a href="https://www.openssl.org/docs/manmaster/man3/RSA_private_encrypt.html">参考文档</a>说明，<strong>These functions handle RSA signatures at a low level.</strong>，这就是签名啊，既然是签名，为何命名<strong>encrypt/decrypt</strong>？是不是因为命名问题，广为传播为私钥&rdquo;加密&rdquo;公钥&rdquo;解密&rdquo;呢？</p>
+
+<p>go不知道是不是受不了这样私钥&rdquo;加密&rdquo;公钥&rdquo;解密&rdquo;这种混乱的说法，不像其他语言一样提供类似的函数呢？至于公钥&rdquo;解密&rdquo;，网上搜索不到满意答案，不过，既然私钥&rdquo;加密&rdquo;是rsa签名，那么公钥&rdquo;解密&rdquo;那么应该就是验证签名了。既然网上找不到满意的答案，那么只能修改一下go的<code>func VerifyPKCS1v15(pub *PublicKey, hash crypto.Hash, hashed []byte, sig []byte) error</code>函数。证实，这个想法是可行的。用openssl加密的数据，可以解密，加密的数据同时可以被openssl解密。</p>
+
+<p>相关代码：<a href="https://github.com/buf1024/golib/tree/master/crypt">https://github.com/buf1024/golib/tree/master/crypt</a> 只简单导出<code>PrivateEncrypt</code>和<code>PublicDecrypt</code>两个函数。</p>
+
+<p>最后，openssl的确存在一些非常混乱的命名方式，而其他语言/库，妥协这种混乱情况，那么混乱看起来即变为普遍。如不是非常熟悉，那么到一个不再妥协这种混乱时，那么及其容易使自己混乱啊。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2017-06-23</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/rsa/">rsa</a>
+          <a href="/tags/go/">go</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2017-12-26-soft-architecture/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">软件构架  --  无技术简篇</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2017-06-03-synchronize-atomic-variable/">
+            <span class="next-text nav-default">线程同步与原子变量</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-06-23 20:57:11 \x2b0000 UTC',
+        title: 'golang 私钥\x22加密\x22公钥\x22解密\x22',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

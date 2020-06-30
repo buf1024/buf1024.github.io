@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gcc on BUF1024</title>
+    <link>https://luoguochun.cn/categories/gcc/</link>
+    <description>Recent content in Gcc on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 31 May 2013 17:08:14 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/categories/gcc/atom.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>gcov 简述</title>
+      <link>https://luoguochun.cn/post/2013-05-31-linux-gcov/</link>
+      <pubDate>Fri, 31 May 2013 17:08:14 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2013-05-31-linux-gcov/</guid>
+      <description>代码覆盖率是单元测试的一个指标，通常覆盖率越高，单元测试就做得更完备。（然而，覆盖率是不是和软件质量成正比关系呢？）gcov是GNU工具链中</description>
+    </item>
+    
+  </channel>
+</rss>

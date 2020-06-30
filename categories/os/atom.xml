@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Os on BUF1024</title>
+    <link>https://luoguochun.cn/categories/os/</link>
+    <description>Recent content in Os on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 18 Jan 2016 11:12:36 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/categories/os/atom.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>minix 3</title>
+      <link>https://luoguochun.cn/post/2016-01-18-minix-3/</link>
+      <pubDate>Mon, 18 Jan 2016 11:12:36 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2016-01-18-minix-3/</guid>
+      <description>linux非常庞大，虽然有很多参考的资料，但是啃这样庞大的东西还是很费力，如果是业余啃，那难度或许更大。然而，我们可以绕道看下另外一个小巧，</description>
+    </item>
+    
+  </channel>
+</rss>

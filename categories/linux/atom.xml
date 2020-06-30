@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on BUF1024</title>
+    <link>https://luoguochun.cn/categories/linux/</link>
+    <description>Recent content in Linux on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 28 Jul 2014 14:57:18 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/categories/linux/atom.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>linux /proc 伪文件系统</title>
+      <link>https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/</link>
+      <pubDate>Mon, 28 Jul 2014 14:57:18 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/</guid>
+      <description>linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一</description>
+    </item>
+    
+    <item>
+      <title>gcov 简述</title>
+      <link>https://luoguochun.cn/post/2013-05-31-linux-gcov/</link>
+      <pubDate>Fri, 31 May 2013 17:08:14 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2013-05-31-linux-gcov/</guid>
+      <description>代码覆盖率是单元测试的一个指标，通常覆盖率越高，单元测试就做得更完备。（然而，覆盖率是不是和软件质量成正比关系呢？）gcov是GNU工具链中</description>
+    </item>
+    
+    <item>
+      <title>Linux pkg-config</title>
+      <link>https://luoguochun.cn/post/2013-05-29-linux-pkg-config/</link>
+      <pubDate>Wed, 29 May 2013 22:37:14 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2013-05-29-linux-pkg-config/</guid>
+      <description>pkg-config主要的作用是提供编译和连接到软件库的信息的。 如，典型的用法： [heidong@HEIDONGVM bin]$ pkg-config --cflags --libs libevent -I/usr/local/include -L/usr/local/lib -levent 将显示包含头文件和连接的信息。 那么pkg-</description>
+    </item>
+    
+    <item>
+      <title>Linux -- rpm</title>
+      <link>https://luoguochun.cn/post/2012-09-18-linux-rpm/</link>
+      <pubDate>Tue, 18 Sep 2012 23:48:14 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-09-18-linux-rpm/</guid>
+      <description>rpm是redhat（系列）系统软件安装，管理的工具。相对于针对仓库而言的yum，rpm是针对单个软件包的。通常情况下Linux发布软件是通</description>
+    </item>
+    
+    <item>
+      <title>基于libevent进程池服务器</title>
+      <link>https://luoguochun.cn/post/2012-06-23-proccess-pool-server/</link>
+      <pubDate>Sat, 23 Jun 2012 11:08:14 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-06-23-proccess-pool-server/</guid>
+      <description>本程序仅是为了学习libevent而写的，但可以当作是简单的程序框架扩展为实际的应用。程序本身没有经过广泛的功能测试和压力测试，仅作简单的功</description>
+    </item>
+    
+    <item>
+      <title>sys/queue.h</title>
+      <link>https://luoguochun.cn/post/2012-05-02-sys-queue-h/</link>
+      <pubDate>Wed, 02 May 2012 21:08:14 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-05-02-sys-queue-h/</guid>
+      <description>概述 sys/queue.h是LINUX/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple</description>
+    </item>
+    
+  </channel>
+</rss>

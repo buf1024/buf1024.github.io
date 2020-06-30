@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="luoguochun&#39;s personal page!" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/" />
+  <link href="https://luoguochun.cn/index.xml" rel="alternate" type="application/rss+xml" title="BUF1024!!!" />
+  <link href="https://luoguochun.cn/index.xml" rel="feed" type="application/rss+xml" title="BUF1024!!!" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="BUF1024!!!" />
+<meta property="og:description" content="luoguochun&#39;s personal page!" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://luoguochun.cn/" />
+<meta property="og:updated_time" content="2014-12-28T21:08:34&#43;00:00"/>
+
+<meta itemprop="name" content="BUF1024!!!">
+<meta itemprop="description" content="luoguochun&#39;s personal page!">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="BUF1024!!!"/>
+<meta name="twitter:description" content="luoguochun&#39;s personal page!"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2014-12-28-sqlalchemy-orm-overview/">sqlalchemy orm 概览</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-12-28 </span>
+      <div class="post-category">
+          <a href="/categories/orm/"> orm </a>
+          </div>
+        <span class="more-meta"> 约 1892 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      SQLAlchemy 概述 在python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图
+    </div>
+    <div class="read-more">
+      <a href="/post/2014-12-28-sqlalchemy-orm-overview/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2014-10-22-tcp_nodelay/">tcp_nodelay选项</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-10-22 </span>
+      <div class="post-category">
+          <a href="/categories/tcp/"> tcp </a>
+          </div>
+        <span class="more-meta"> 约 815 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      今天遇到了TCP_NODELAY的问题，简单记录一下。具体的表现是，客户端进行清算查询时，老是超时。这个问题出现很久了，运维一直都有反映查询
+    </div>
+    <div class="read-more">
+      <a href="/post/2014-10-22-tcp_nodelay/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2014-10-07-jquery-summary/">jquery selector小结</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-10-07 </span>
+      <div class="post-category">
+          <a href="/categories/webui/"> webui </a>
+          </div>
+        <span class="more-meta"> 约 2996 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      jQuery 概述 现代网站基本上都离不开jQuery。它是轻量级的js库，兼容css3，还有各种浏览器。文档齐全而详细，还有众多而成熟的插件可用。jQu
+    </div>
+    <div class="read-more">
+      <a href="/post/2014-10-07-jquery-summary/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2014-09-17-bt-file-structure/">bt种子文件文件结构</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-09-17 </span>
+      <div class="post-category">
+          <a href="/categories/misc/"> misc </a>
+          </div>
+        <span class="more-meta"> 约 1073 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      估计80%以上接触互联网的人都知道bt是什么东西，任何一个用bt下载的人都知道这样一个概念，种子。bt种子就是记录了p2p对等网络中trac
+    </div>
+    <div class="read-more">
+      <a href="/post/2014-09-17-bt-file-structure/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2014-08-29-verification-code-identified/">验证码识别</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-08-29 </span>
+      <div class="post-category">
+          <a href="/categories/python/"> python </a>
+          </div>
+        <span class="more-meta"> 约 1438 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      本文所使用的验证码识别的方法非常暴力，高手可忽略。对于在客户端实现的“伪验证码”或使用静态图片的验证码，本文不作讨论。对于验证码的识别，一直
+    </div>
+    <div class="read-more">
+      <a href="/post/2014-08-29-verification-code-identified/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2014-08-21-coroutine/">coroutine协程</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-08-21 </span>
+      
+        <span class="more-meta"> 约 2247 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      如果你接触过lua这种小巧的脚本语言，你就会经常接触到一个叫做协程的神奇概念。大多数脚本语言都有对协程不同程度的支持。但是大多编译语言，如C
+    </div>
+    <div class="read-more">
+      <a href="/post/2014-08-21-coroutine/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2014-07-28-process-information-pseduo-file-system/">linux /proc 伪文件系统</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-07-28 </span>
+      <div class="post-category">
+          <a href="/categories/linux/"> linux </a>
+          </div>
+        <span class="more-meta"> 约 1251 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一
+    </div>
+    <div class="read-more">
+      <a href="/post/2014-07-28-process-information-pseduo-file-system/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2014-07-23-wireshark-tcp/">wireshark tcp 协议分析</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-07-23 </span>
+      <div class="post-category">
+          <a href="/categories/tcp/"> tcp </a>
+          </div>
+        <span class="more-meta"> 约 2651 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      注：本文比较简略，且存在错漏。更详细的总结参考tcp协议小结，后续如若发现有错漏，则同时在tcp协议小结中进行修正，本文不再做维护。 &ndash;2016-09-23 虽然知
+    </div>
+    <div class="read-more">
+      <a href="/post/2014-07-23-wireshark-tcp/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2014-07-15-misc-memory/">杂乱记忆</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-07-15 </span>
+      
+        <span class="more-meta"> 约 505 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      这里记录的是一些常见的错误或技巧或一些注意事项等，不定时更新: hexo 安装（含插件） hexo 是相对比较好的一个静态BLOG生成器，虽然我在树莓派上面编译
+    </div>
+    <div class="read-more">
+      <a href="/post/2014-07-15-misc-memory/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2014-07-04-hide-compile-output/">隐藏make编译的编译输出</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-07-04 </span>
+      <div class="post-category">
+          <a href="/categories/c/"> c </a>
+          </div>
+        <span class="more-meta"> 约 185 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      编译程序make时，会看到很多编译输出。对于开发来说，这是非常直观的，但是如果分发到客户（需要编译）或者只需要关注错误时，这种输出就感觉烦人
+    </div>
+    <div class="read-more">
+      <a href="/post/2014-07-04-hide-compile-output/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    </section>
+  
+  <nav class="pagination">
+    <a class="prev" href="/page/2/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text">上一页</span>
+      </a>
+    <a class="next" href="/page/4/">
+        <span class="next-text">下一页</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+  </nav>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

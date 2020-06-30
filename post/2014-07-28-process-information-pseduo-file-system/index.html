@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>linux /proc 伪文件系统 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="linux /proc 伪文件系统" />
+<meta property="og:description" content="linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/" /><meta property="article:published_time" content="2014-07-28T14:57:18&#43;00:00"/>
+<meta property="article:modified_time" content="2014-07-28T14:57:18&#43;00:00"/>
+
+<meta itemprop="name" content="linux /proc 伪文件系统">
+<meta itemprop="description" content="linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一">
+
+
+<meta itemprop="datePublished" content="2014-07-28T14:57:18&#43;00:00" />
+<meta itemprop="dateModified" content="2014-07-28T14:57:18&#43;00:00" />
+<meta itemprop="wordCount" content="1251">
+
+
+
+<meta itemprop="keywords" content="proc,linux," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="linux /proc 伪文件系统"/>
+<meta name="twitter:description" content="linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">linux /proc 伪文件系统</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-07-28 </span>
+        <div class="post-category">
+            <a href="/categories/linux/"> linux </a>
+            </div>
+          <span class="more-meta"> 约 1251 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(<strong>未完待续</strong>)。</p>
+
+<ul>
+<li><p><em>/proc/[pid]</em><br />
+每一个正在运行的进程都对应有这样一个伪目录，目录名为该进程的pid。每个伪目录下面都有以下伪文件或伪目录:</p>
+
+<ul>
+<li><p>/proc/[pid]/auxv<br />
+包含ELF解析信息（ELF就是linux系统二进制可执行文件的文件格式），<code>auxv</code> 是 AUXiliary Vector简写。每个条目的格式就是:一个<code>unsigned long</code>ID加上一个<code>unsigned long</code>数值。这个AUXV是什么意思呢？ 我们可以通过加上<code>LD_SHOW_AUXV=1 程序名</code>可以获取具体的数值:</p>
+
+<p>[heidong@HEIDONGVM 2218]$ LD_SHOW_AUXV=1 /bin/sh<br />
+   AT_SYSINFO_EHDR: 0x7fff173d8000<br />
+   AT_HWCAP:        178bf3ff<br />
+   AT_PAGESZ:       4096<br />
+   AT_CLKTCK:       100<br />
+   AT_PHDR:         0x400040<br />
+   AT_PHENT:        56<br />
+   AT_PHNUM:        9<br />
+   AT_BASE:         0x7fd32ed59000<br />
+   AT_FLAGS:        0x0<br />
+   AT_ENTRY:        0x41aef0<br />
+   AT_UID:          500<br />
+   AT_EUID:         500<br />
+   AT_GID:          500<br />
+   AT_EGID:         500<br />
+   AT_SECURE:       0<br />
+   AT_RANDOM:       0x7fff17230579<br />
+   AT_EXECFN:       /bin/sh<br />
+   AT_PLATFORM:     x86_64<br />
+   sh-4.1$<br />
+对应的<code>AT_*</code>的含义可在<code>/usr/include/elf.h</code>找到。<br />
+相关参考: <a href="http://www.linuxquestions.org/questions/linux-kernel-70/what-does-proc-pid-auxv-mean-exactly-4175421876/">What does /proc/PID/auxv mean exactly?</a> 和 <a href="http://lenky.info/archives/2013/02/2203">关于ELF的辅助向量</a>。</p></li>
+
+<li><p><em>/proc/[pid]/cmdline</em><br />
+包含非僵死进程的命令行启动参数，该文件包含<code>&quot;\0&quot;</code>。如:</p>
+
+<p>[heidong@HEIDONGVM 2238]$ cat cmdline<br />
+   bash[heidong@HEIDONGVM 2238]$</p></li>
+
+<li><p><em>/proc/[pid]/coredump_filter</em><br />
+用于控制哪些内存段写入到core文件，16进制显示，是与<code>mmap</code>映射类型的位掩码。默认0,1,4,5(如果内核编译时定义CONFIG_CORE_DUMP_DEFAULT_ELF_HEADERS)，所以默认值是33。掩码含义是：<br />
+bit 0 dump匿名私有映射.<br />
+bit 1 dump匿名共享映射.<br />
+bit 2 dump基于文件的私有映射.<br />
+bit 3 dump基于文件的共享映射.<br />
+bit 4(linux 2.6.24) dump elf 头.<br />
+bit 5(linux 2.6.28) dump私有页面(private huge pages).
+bit 6(linux 2.6.28) dump共享页面(shared huge pages).</p></li>
+
+<li><p>/proc/[pid]/cpuset<br />
+// todo</p></li>
+
+<li><p>/proc/[pid]/cwd<br />
+进程当前工作目录的软连接。对于多线程的程序，如果主线程退出或挂掉了，子线程还存在，这个连接时无效的。去到当前工作目录：</p>
+
+<p>$ cd /proc/20/cwd; /bin/pwd</p></li>
+
+<li><p><em>/proc/[pid]/environ</em><br />
+进程环境变量，每个条目都是以<code>&quot;\0&quot;</code>结束。可用这种方法显示:</p>
+
+<p>[heidong@HEIDONGVM 2238]$ (cat /proc/2238/environ; echo) | tr &lsquo;\000&rsquo; &lsquo;\n&rsquo;</p></li>
+
+<li><p>/proc/[pid]/exe<br />
+进程可执行文件在软连接。对于多线程的程序，如果主线程退出或挂掉了，子线程还存在，这个连接时无效的。</p></li>
+
+<li><p><em>/proc/[pid]/fd/</em><br />
+打开文件文件描述符目录在连接。对于多线程的程序，如果主线程退出或挂掉了，子线程还存在，这个连接时无效的。<code>/proc/self/fd/N</code>和<code>/dev/fd/N</code>是一样在。补充说明，对于只知道fd怎么找对于的文件呢？答案是很简单的，直接用<code>readlink</code>函数，查看对于该目录下文件的连接就可以了。</p></li>
+
+<li><p>/proc/[pid]/fdinfo/<br />
+这个目录是和/proc/[pid]/fd/对应的，就是对于没个文件的当前偏移和打开标示。如:</p>
+
+<p>[heidong@HEIDONGVM fdinfo]$ cat 165<br />
+   pos: 0<br />
+   flags:   0100002<br />
+   [heidong@HEIDONGVM fdinfo]$</p></li>
+
+<li><p>/proc/[pid]/limits<br />
+limits信息。和<code>getrlimit</code>获取的信息是一样的。如:</p>
+
+<p>[heidong@HEIDONGVM 3500]$ cat limits<br />
+   Limit                     Soft Limit           Hard Limit           Units<br />
+   Max cpu time              unlimited            unlimited            seconds<br />
+   Max file size             unlimited            unlimited            bytes<br />
+   Max data size             unlimited            unlimited            bytes<br />
+   Max stack size            10485760             unlimited            bytes<br />
+   Max core file size        unlimited            unlimited            bytes<br />
+   Max resident set          unlimited            unlimited            bytes<br />
+   Max processes             1024                 14864                processes
+   Max open files            4096                 4096                 files<br />
+   Max locked memory         65536                65536                bytes<br />
+   Max address space         unlimited            unlimited            bytes<br />
+   Max file locks            unlimited            unlimited            locks<br />
+   Max pending signals       14864                14864                signals<br />
+   Max msgqueue size         819200               819200               bytes<br />
+   Max nice priority         0                    0<br />
+   Max realtime priority     0                    0<br />
+   Max realtime timeout      unlimited            unlimited            us</p></li>
+
+<li><p>/proc/[pid]/maps<br />
+内存映射的地址和权限。如:</p>
+
+<p>[heidong@HEIDONGVM 3890]$ cat maps
+   00400000-00410000 r-xp 00000000 fd:00 1072484                            /usr/bin/groff
+   0060f000-00610000 rw-p 0000f000 fd:00 1072484                            /usr/bin/groff
+   00610000-00614000 rw-p 00000000 00:00 0
+   0080f000-00811000 rw-p 0000f000 fd:00 1072484                            /usr/bin/groff
+   01c6f000-01c90000 rw-p 00000000 00:00 0                                  [heap]</p></li>
+
+<li><p>/proc/[pid]/mem<br />
+进程对应的内存，可以通过<code>open</code>, <code>read</code>, <code>lseek</code>访问。</p></li>
+</ul></li>
+
+<li><p>/proc/apm</p></li>
+
+<li><p>/proc/bus</p></li>
+
+<li><p>/proc/cmdline</p></li>
+
+<li><p>/proc/config.gz</p></li>
+
+<li><p>/proc/cpuinfo</p></li>
+
+<li><p>/proc/devices</p></li>
+
+<li><p>/proc/diskstats</p></li>
+
+<li><p>/proc/dma</p></li>
+
+<li><p>/proc/driver</p></li>
+
+<li><p>/proc/execdomains</p></li>
+
+<li><p>/proc/fb</p></li>
+
+<li><p>/proc/filesystems</p></li>
+
+<li><p>/proc/fs</p></li>
+
+<li><p>/proc/ide</p></li>
+
+<li><p>/proc/interrupts</p></li>
+
+<li><p>/proc/iomem</p></li>
+
+<li><p>/proc/ioports</p></li>
+
+<li><p>/proc/kallsyms</p></li>
+
+<li><p>/proc/kcore</p></li>
+
+<li><p>/proc/kmsg</p></li>
+
+<li><p>/proc/ksyms</p></li>
+
+<li><p>/proc/loadavg</p></li>
+
+<li><p>/proc/locks</p></li>
+
+<li><p>/proc/malloc</p></li>
+
+<li><p>/proc/meminfo</p></li>
+
+<li><p>/proc/modules</p></li>
+
+<li><p>/proc/mounts</p></li>
+
+<li><p>/proc/mtrr</p></li>
+
+<li><p>/proc/net</p></li>
+
+<li><p>/proc/partitions</p></li>
+
+<li><p>/proc/pci</p></li>
+
+<li><p>/proc/scsi</p></li>
+
+<li><p>/proc/self</p></li>
+
+<li><p>/proc/slabinfo</p></li>
+
+<li><p>/proc/stat</p></li>
+
+<li><p>/proc/swaps</p></li>
+
+<li><p>/proc/sys</p></li>
+
+<li><p>/proc/sysrq-trigger</p></li>
+
+<li><p>/proc/sysvipc</p></li>
+
+<li><p>/proc/tty</p></li>
+
+<li><p>/proc/uptime</p></li>
+
+<li><p>/proc/version</p></li>
+
+<li><p>/proc/vmstat</p></li>
+
+<li><p>/proc/zoneinfo</p></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-07-28</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/proc/">proc</a>
+          <a href="/tags/linux/">linux</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2014-08-21-coroutine/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">coroutine协程</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2014-07-23-wireshark-tcp/">
+            <span class="next-text nav-default">wireshark tcp 协议分析</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2014-07-28 14:57:18 \x2b0000 UTC',
+        title: 'linux \/proc 伪文件系统',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

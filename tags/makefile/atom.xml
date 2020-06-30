@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Makefile on BUF1024</title>
+    <link>https://luoguochun.cn/tags/makefile/</link>
+    <description>Recent content in Makefile on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 04 Jul 2014 16:45:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/tags/makefile/atom.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>隐藏make编译的编译输出</title>
+      <link>https://luoguochun.cn/post/2014-07-04-hide-compile-output/</link>
+      <pubDate>Fri, 04 Jul 2014 16:45:00 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-07-04-hide-compile-output/</guid>
+      <description>编译程序make时，会看到很多编译输出。对于开发来说，这是非常直观的，但是如果分发到客户（需要编译）或者只需要关注错误时，这种输出就感觉烦人</description>
+    </item>
+    
+  </channel>
+</rss>

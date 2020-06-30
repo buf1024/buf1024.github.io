@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vim on BUF1024!!!</title>
+    <link>https://luoguochun.cn/categories/vim/</link>
+    <description>Recent content in vim on BUF1024!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 17 Oct 2015 22:11:41 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/categories/vim/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ycm 选项</title>
+      <link>https://luoguochun.cn/post/2015-10-17-ycm-opt/</link>
+      <pubDate>Sat, 17 Oct 2015 22:11:41 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2015-10-17-ycm-opt/</guid>
+      <description>YouCompleteMe, vim/neovim 语义补全利器，按照参见YouCompleteMe github网页。下面看看简单选项和命令，不保证解释准确，只做粗略参考。 命令 1 2 3 4 5 6</description>
+    </item>
+    
+    <item>
+      <title>VIM XX THINGS</title>
+      <link>https://luoguochun.cn/post/2015-07-22-vim-xx-things/</link>
+      <pubDate>Wed, 22 Jul 2015 15:25:00 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2015-07-22-vim-xx-things/</guid>
+      <description>关于中文乱码 跟字符编码方式有关的选项: encoding, fileencoding, fileencodings, *termencoding*。更详细的信息可看vim 帮助文档: :help encoding-names。简</description>
+    </item>
+    
+  </channel>
+</rss>

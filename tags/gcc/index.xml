@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gcc on BUF1024!!!</title>
+    <link>https://luoguochun.cn/tags/gcc/</link>
+    <description>Recent content in gcc on BUF1024!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 03 Jun 2017 11:19:25 +0800</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/tags/gcc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>线程同步与原子变量</title>
+      <link>https://luoguochun.cn/post/2017-06-03-synchronize-atomic-variable/</link>
+      <pubDate>Sat, 03 Jun 2017 11:19:25 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2017-06-03-synchronize-atomic-variable/</guid>
+      <description>无论是基于多线程还是多进程并发的程序，同步控制总是不可避免的。按照自己的思维和使用习惯，自然会想到的是互斥量(mutext)和自旋锁(spi</description>
+    </item>
+    
+    <item>
+      <title>gcov 简述</title>
+      <link>https://luoguochun.cn/post/2013-05-31-linux-gcov/</link>
+      <pubDate>Fri, 31 May 2013 17:08:14 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2013-05-31-linux-gcov/</guid>
+      <description>代码覆盖率是单元测试的一个指标，通常覆盖率越高，单元测试就做得更完备。（然而，覆盖率是不是和软件质量成正比关系呢？）gcov是GNU工具链中</description>
+    </item>
+    
+  </channel>
+</rss>

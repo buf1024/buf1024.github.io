@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>高可用系统 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="很久之前，在公司鼎盛的时期，还存在运维人员的时候，我们开发应用的时候，就会和运维人员讨论一下部署的方案，听的比较多的是，运维人员说的比较多的" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2018-09-01-high-available-loadbalance/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="高可用系统" />
+<meta property="og:description" content="很久之前，在公司鼎盛的时期，还存在运维人员的时候，我们开发应用的时候，就会和运维人员讨论一下部署的方案，听的比较多的是，运维人员说的比较多的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2018-09-01-high-available-loadbalance/" /><meta property="article:published_time" content="2018-09-01T19:54:09&#43;00:00"/>
+<meta property="article:modified_time" content="2018-09-01T19:54:09&#43;00:00"/>
+
+<meta itemprop="name" content="高可用系统">
+<meta itemprop="description" content="很久之前，在公司鼎盛的时期，还存在运维人员的时候，我们开发应用的时候，就会和运维人员讨论一下部署的方案，听的比较多的是，运维人员说的比较多的">
+
+
+<meta itemprop="datePublished" content="2018-09-01T19:54:09&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-01T19:54:09&#43;00:00" />
+<meta itemprop="wordCount" content="2667">
+
+
+
+<meta itemprop="keywords" content="构架," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="高可用系统"/>
+<meta name="twitter:description" content="很久之前，在公司鼎盛的时期，还存在运维人员的时候，我们开发应用的时候，就会和运维人员讨论一下部署的方案，听的比较多的是，运维人员说的比较多的"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">高可用系统</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-09-01 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%9E%84%E6%9E%B6/"> 构架 </a>
+            </div>
+          <span class="more-meta"> 约 2667 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>很久之前，在公司鼎盛的时期，还存在运维人员的时候，我们开发应用的时候，就会和运维人员讨论一下部署的方案，听的比较多的是，运维人员说的比较多的是两个专业的名词是，负载均衡和ip漂移，前者是为减轻应用服务的压力使性能均衡，后者是为了负载均衡宕机后系统的高可用性。由于这些都是运作部署的，我们只关注应用功能的实现，并不是很在意这些部署的细节，只是了解到有这样的东西。现在公司没落了，很多事情都得自己搞了。</p>
+
+<p>负载均衡，无非就减轻后台应用服务器的压力，提高系统的可扩展性。方法是很多，比如有些在客户端实现，有些自己写分发程序，还有业界比较常用的F5负载均衡（贵，高大上），使用LVS/haproxy/nginx等开源的方案，这些都是支持4层/7层负载均衡。LVS已经集成在内核，没有使用过，haproxy/nginx曾经窥视过其内部数据结构，可没有非常深入的了解，nginx支持模块开发，如果对nginx比较熟悉，那么在其继承上开发对应的模块，其效率是比较高效的。这次用nginx的4层负载均衡测试一下，然而据说nginx的健康检查是惰性的，它不能及时知道后端服务的存活，所以有些人开发了相关的模块（更新年限久远，不知道是否能用）：<a href="https://github.com/yaoweibin/nginx_upstream_check_module">nginx_upstream_check_module</a></p>
+
+<p>当应用部署上负载均衡后，负载均衡很容易成为单点，如果负载均衡挂掉了，这个时候keepalived上场。要了解keepalived的工作原理，首先要先了解<a href="https://baike.baidu.com/item/%E8%99%9A%E6%8B%9F%E8%B7%AF%E7%94%B1%E5%99%A8%E5%86%97%E4%BD%99%E5%8D%8F%E8%AE%AE/2991482?fromtitle=VRRP&amp;fromid=932628">VRRP协议&ndash;虚拟路由器冗余协议</a>,这里有份详细的原理描述：<a href="http://blog.51cto.com/zhaoyuqiang/1166840">虚拟路由器冗余协议【原理篇】VRRP详解</a>。简单来说，VRRP就是把N台路由器(机器)放到一个组里面，组里面有一个MASTER和N-1个BACKUP，对外拥有一个虚拟IP，MASTER所在的机器拥有这个虚拟IP，MASTER通过广播报文到组内的BACKUP，当BACKUP在规定时间内没有收到MASTER的广播报文，则认为MASTER宕机了，当MASTER宕机后，组内的BACKUP通过特定的选举算法机制，选择出一个MASTER，然后这个MASTER拥有这个虚拟IP，这样看起来，感觉就是“IP从一台机器漂移到另外一台机器”了。Keepalived就是一个实现VRRP协议高可用方案。</p>
+
+<p>用以前在学习nodejs写的echo服务器模拟实际上的应用服务器，开三台虚拟机(VNODE-01 ~ VNODE-03), 简单记录一下简单测试步骤：</p>
+
+<ol>
+<li>启动应用，分别在VNODE-01 ~ VNODE-03部署应用服务</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">VNODE-01:
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:43:db:4d brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">172</span>.20.46.78/23 brd <span class="m">172</span>.20.47.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 17744sec preferred_lft 17744sec
+    inet6 fe80::950a:8286:4242:1da3/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+able@VNODE-01:~/luoguochun/privt/proj/privt-prj/web/nodejs/node-demo/echo-svr$ node echo-svr.js -h <span class="m">172</span>.20.46.78 -p <span class="m">9978</span> -i vnode-01
+server<span class="o">(</span>vnode-01<span class="o">)</span> listen <span class="m">172</span>.20.46.78:9978 started
+
+VNODE-02:
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:d0:b6:f5 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">172</span>.20.46.80/23 brd <span class="m">172</span>.20.47.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 17513sec preferred_lft 17513sec
+    inet6 fe80::146f:4835:5b3e:29c1/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+able@VNODE-02:~/luoguochun/privt/proj/privt-prj/web/nodejs/node-demo/echo-svr$ node echo-svr.js -h <span class="m">172</span>.20.46.80 -p <span class="m">9980</span> -i vnode-02
+server<span class="o">(</span>vnode-02<span class="o">)</span> listen <span class="m">172</span>.20.46.80:9980 started
+
+VNODE-03:
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:0e:28:a6 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">172</span>.20.46.79/23 brd <span class="m">172</span>.20.47.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 17720sec preferred_lft 17720sec
+    inet6 fe80::e7aa:1f55:1bdc:aaeb/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+able@VNODE-03:~/luoguochun/privt/proj/privt-prj/web/nodejs/node-demo/echo-svr$ node echo-svr.js -h <span class="m">172</span>.20.46.79 -p <span class="m">9979</span> -i vnode-03
+server<span class="o">(</span>vnode-03<span class="o">)</span> listen <span class="m">172</span>.20.46.79:9979 started</code></pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li>4层负载均衡：分别在VNODE-01 ~ VNODE-02部署nginx，假设VNODE-01为主机，VNODE-02为备机</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="m">2</span>.1 部署nginx: 简略配置<span class="o">(</span>负载策略，按权重轮询<span class="o">)</span>
+user able<span class="p">;</span>
+worker_processes <span class="m">1</span><span class="p">;</span>
+error_log /tmp/nginx_error.log<span class="p">;</span>
+pid /tmp/nginx.pid<span class="p">;</span>
+include /etc/nginx/modules-enabled/*.conf<span class="p">;</span>
+
+events <span class="o">{</span>
+	worker_connections <span class="m">768</span><span class="p">;</span>
+	<span class="c1"># multi_accept on;</span>
+<span class="o">}</span>
+
+stream <span class="o">{</span>
+    upstream echo_svr <span class="o">{</span>
+        server <span class="m">172</span>.20.46.78:9978 <span class="nv">weight</span><span class="o">=</span><span class="m">40</span><span class="p">;</span>
+        server <span class="m">172</span>.20.46.79:9979 <span class="nv">weight</span><span class="o">=</span><span class="m">30</span><span class="p">;</span>
+        server <span class="m">172</span>.20.46.80:9980 <span class="nv">weight</span><span class="o">=</span><span class="m">30</span><span class="p">;</span>
+    <span class="o">}</span>
+    server <span class="o">{</span>
+        listen <span class="m">9900</span><span class="p">;</span>
+        proxy_pass echo_svr<span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+
+
+<span class="m">2</span>.1 SHELL查看：
+VNODE-01:
+able@VNODE-01:/media/sf_luoguochun/privt/proj/privt-prj/arch/nginx$ sudo nginx -c /media/sf_luoguochun/privt/proj/privt-prj/arch/nginx/nginx-lb4layer.conf
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> able: 
+able@VNODE-01:/media/sf_luoguochun/privt/proj/privt-prj/arch/nginx$ ps -ef --forest <span class="p">|</span> grep -Ev <span class="s1">&#39;grep&#39;</span> <span class="p">|</span> grep nginx
+root      <span class="m">2131</span>     <span class="m">1</span>  <span class="m">0</span> <span class="m">09</span>:41 ?        <span class="m">00</span>:00:00 nginx: master process nginx -c /media/sf_luoguochun/privt/proj/privt-prj/arch/nginx/nginx-lb4layer.conf
+able      <span class="m">2132</span>  <span class="m">2131</span>  <span class="m">0</span> <span class="m">09</span>:41 ?        <span class="m">00</span>:00:00  <span class="se">\_</span> nginx: worker process
+
+VNODE-02:
+able@VNODE-02:/media/sf_luoguochun/privt/proj/privt-prj/arch/nginx$ sudo nginx -c /media/sf_luoguochun/privt/proj/privt-prj/arch/nginx/nginx-lb4layer.conf 
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> able: 
+able@VNODE-02:/media/sf_luoguochun/privt/proj/privt-prj/arch/nginx$ ps -ef --forest <span class="p">|</span> grep -Ev <span class="s1">&#39;grep&#39;</span> <span class="p">|</span> grep nginx
+root      <span class="m">2335</span>     <span class="m">1</span>  <span class="m">0</span> <span class="m">09</span>:44 ?        <span class="m">00</span>:00:00 nginx: master process nginx -c /media/sf_luoguochun/privt/proj/privt-prj/arch/nginx/nginx-lb4layer.conf
+able      <span class="m">2336</span>  <span class="m">2335</span>  <span class="m">0</span> <span class="m">09</span>:44 ?        <span class="m">00</span>:00:00  <span class="se">\_</span> nginx: worker process
+
+
+<span class="m">2</span>.3 简单测试，可看到nginx已经对后端服务进行负载：
+^_^@/Users/luoguochun<span class="o">]</span>$ telnet <span class="m">172</span>.20.46.78 <span class="m">9900</span>
+Trying <span class="m">172</span>.20.46.78...
+Connected to bogon.
+Escape character is <span class="s1">&#39;^]&#39;</span>.
+hello, vnode
+echo<span class="o">(</span>from vnode-01<span class="o">)</span>:hello, vnode
+^<span class="o">]</span>
+telnet&gt; quit
+Connection closed.
+^_^@/Users/luoguochun<span class="o">]</span>$ telnet <span class="m">172</span>.20.46.78 <span class="m">9900</span>
+Trying <span class="m">172</span>.20.46.78...
+Connected to bogon.
+Escape character is <span class="s1">&#39;^]&#39;</span>.
+hello, vnode
+
+echo<span class="o">(</span>from vnode-03<span class="o">)</span>:hello, vnode
+echo<span class="o">(</span>from vnode-03<span class="o">)</span>:
+^<span class="o">]</span>
+telnet&gt; quit
+Connection closed.</code></pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li>高可用：分别在VNODE-01 ~ VNODE-02部署keepalived，假设VNODE-01为MASTER，VNODE-01为BACKUP</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="m">3</span>.1 keepalived配置
+MASTER 简略配置:
+global_defs <span class="o">{</span>
+    router_id MASTER_ROUTER_ID
+<span class="o">}</span>
+vrrp_script chk_svr <span class="o">{</span>
+    script <span class="s2">&#34;killall -0 node&#34;</span>
+    interval <span class="m">2</span>
+    weight -5
+    fall <span class="m">3</span>  
+    rise <span class="m">2</span>
+<span class="o">}</span>
+
+vrrp_instance VI_1 <span class="o">{</span>
+    state MASTER
+    interface enp0s3
+    mcast_src_ip <span class="m">172</span>.20.46.78
+    virtual_router_id <span class="m">99</span>
+    priority <span class="m">101</span>
+    advert_int <span class="m">2</span>
+    authentication <span class="o">{</span>
+        auth_type PASS
+        auth_pass <span class="m">1111</span>
+    <span class="o">}</span>
+    virtual_ipaddress <span class="o">{</span>
+        <span class="m">172</span>.20.46.222
+    <span class="o">}</span>
+    track_script <span class="o">{</span>
+       chk_svr
+    <span class="o">}</span>
+<span class="o">}</span>
+BACKUP 简略配置:
+与MASTER几乎相同，不同的是:
+state MASTER -&gt; state BACKUP
+mcast_src_ip <span class="m">172</span>.20.46.78 -&gt; mcast_src_ip <span class="m">172</span>.20.46.80
+priority <span class="m">101</span> -&gt; priority <span class="m">100</span>
+
+<span class="m">2</span>. SHELL查看，可以看到MASTER除了拥有一个真实IP外，还有一个虚拟IP（ip a 查看, ifconfig 查看不到）
+VNODE-01:
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:43:db:4d brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">172</span>.20.46.78/23 brd <span class="m">172</span>.20.47.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 15610sec preferred_lft 15610sec
+    inet <span class="m">172</span>.20.46.222/32 scope global enp0s3
+       valid_lft forever preferred_lft forever
+    inet6 fe80::950a:8286:4242:1da3/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+VNODE-02:
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:d0:b6:f5 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">172</span>.20.46.80/23 brd <span class="m">172</span>.20.47.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 17513sec preferred_lft 17513sec
+    inet6 fe80::146f:4835:5b3e:29c1/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+<span class="m">3</span>. 测试
+<span class="m">3</span>.1 应用测试，可以正常使用虚拟IP进行转发处理
+^_^@/Users/luoguochun<span class="o">]</span>$ telnet <span class="m">172</span>.20.46.222 <span class="m">9900</span>
+Trying <span class="m">172</span>.20.46.222...
+Connected to bogon.
+Escape character is <span class="s1">&#39;^]&#39;</span>.
+hello, keepalived
+echo<span class="o">(</span>from vnode-02<span class="o">)</span>:hello, keepalived
+^<span class="o">]</span>
+telnet&gt; quit
+Connection closed.
+^_^@/Users/luoguochun<span class="o">]</span>$ telnet <span class="m">172</span>.20.46.222 <span class="m">9900</span>
+Trying <span class="m">172</span>.20.46.222...
+Connected to bogon.
+Escape character is <span class="s1">&#39;^]&#39;</span>.
+hellow 
+echo<span class="o">(</span>from vnode-01<span class="o">)</span>:hellow
+^<span class="o">]</span>
+telnet&gt; quit
+Connection closed.
+
+<span class="m">3</span>.2 模拟MASTER宕机<span class="o">(</span>IP漂移到BACKUP<span class="o">)</span>
+VNODE-01:
+able@VNODE-01:~/luoguochun/privt/proj/privt-prj/web/nodejs/node-demo/echo-svr$ sudo killall nginx keepalived
+
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:43:db:4d brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">172</span>.20.46.78/23 brd <span class="m">172</span>.20.47.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 15355sec preferred_lft 15355sec
+    inet6 fe80::950a:8286:4242:1da3/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+VNODE-02:
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:d0:b6:f5 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">172</span>.20.46.80/23 brd <span class="m">172</span>.20.47.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 15363sec preferred_lft 15363sec
+    inet <span class="m">172</span>.20.46.222/32 scope global enp0s3
+       valid_lft forever preferred_lft forever
+    inet6 fe80::146f:4835:5b3e:29c1/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+^_^@/Users/luoguochun<span class="o">]</span>$ telnet <span class="m">172</span>.20.46.222 <span class="m">9900</span>
+Trying <span class="m">172</span>.20.46.222...
+Connected to bogon.
+Escape character is <span class="s1">&#39;^]&#39;</span>.
+hello, keepalived
+echo<span class="o">(</span>from vnode-02<span class="o">)</span>:hello, keepalived
+^<span class="o">]</span>
+telnet&gt; quit
+Connection closed.
+^_^@/Users/luoguochun<span class="o">]</span>$ telnet <span class="m">172</span>.20.46.222 <span class="m">9900</span>
+Trying <span class="m">172</span>.20.46.222...
+Connected to bogon.
+Escape character is <span class="s1">&#39;^]&#39;</span>.
+hellow 
+echo<span class="o">(</span>from vnode-01<span class="o">)</span>:hellow
+^<span class="o">]</span>
+telnet&gt; quit
+Connection closed.
+
+可见IP正确漂移到备机，除了正连接主机处理的有问题外，新请求正确负载到备机。
+
+
+<span class="m">3</span>.3 模拟MASTER恢复
+在VNODE-01重启nginx和keepalived后，可以看到IP又漂移会主机
+
+VNODE-01:
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:43:db:4d brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">172</span>.20.46.78/23 brd <span class="m">172</span>.20.47.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 15206sec preferred_lft 15206sec
+    inet <span class="m">172</span>.20.46.222/32 scope global enp0s3
+       valid_lft forever preferred_lft forever
+    inet6 fe80::950a:8286:4242:1da3/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+VNODE-02:
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:d0:b6:f5 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">172</span>.20.46.80/23 brd <span class="m">172</span>.20.47.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 17513sec preferred_lft 17513sec
+    inet6 fe80::146f:4835:5b3e:29c1/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+^_^@/Users/luoguochun<span class="o">]</span>$ telnet <span class="m">172</span>.20.46.222 <span class="m">9900</span>
+Trying <span class="m">172</span>.20.46.222...
+Connected to bogon.
+Escape character is <span class="s1">&#39;^]&#39;</span>.
+what
+echo<span class="o">(</span>from vnode-02<span class="o">)</span>:what
+^<span class="o">]</span>
+telnet&gt; quit
+Connection closed.
+^_^@/Users/luoguochun<span class="o">]</span>$ telnet <span class="m">172</span>.20.46.222 <span class="m">9900</span>
+Trying <span class="m">172</span>.20.46.222...
+Connected to bogon.
+Escape character is <span class="s1">&#39;^]&#39;</span>.
+youe
+echo<span class="o">(</span>from vnode-01<span class="o">)</span>:youe
+^<span class="o">]</span>
+telnet&gt; quit
+Connection closed.
+^_^@/Users/luoguochun<span class="o">]</span>$
+
+可见IP正确漂移到主机，除了正连接备机处理的有问题外，新请求正确负载到主机。</code></pre></td></tr></table>
+</div>
+</div>
+<p>由此，使用简单的开源方法便可以相对简单的部署高可用的负载均衡系统，当然这里的练习测试没有涉及具体的业务，现实业务情况可能会更复杂。不过，由于nginx本身的良好设计，在nginx上进行模块的开发，不失为一种高效的方法。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-09-01</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E6%9E%84%E6%9E%B6/">构架</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2019-06-21-flutter-try/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Flutter -- 写app的另一种姿态</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2018-05-25-react-native-practice/">
+            <span class="next-text nav-default">react-native 实践部分</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-09-01 19:54:09 \x2b0000 UTC',
+        title: '高可用系统',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

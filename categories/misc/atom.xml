@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Misc on BUF1024</title>
+    <link>https://luoguochun.cn/categories/misc/</link>
+    <description>Recent content in Misc on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 17 Sep 2014 19:12:17 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/categories/misc/atom.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>bt种子文件文件结构</title>
+      <link>https://luoguochun.cn/post/2014-09-17-bt-file-structure/</link>
+      <pubDate>Wed, 17 Sep 2014 19:12:17 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-09-17-bt-file-structure/</guid>
+      <description>估计80%以上接触互联网的人都知道bt是什么东西，任何一个用bt下载的人都知道这样一个概念，种子。bt种子就是记录了p2p对等网络中trac</description>
+    </item>
+    
+    <item>
+      <title>端的起源</title>
+      <link>https://luoguochun.cn/post/2014-06-30-endian/</link>
+      <pubDate>Mon, 30 Jun 2014 17:08:14 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-06-30-endian/</guid>
+      <description>一下摘自《深入理解计算机系统》第二版： “端”(endian)的起源： &amp;gt;以下是Jonathan Swift 在1726 年关于大小端之争历史的描述： &amp;</description>
+    </item>
+    
+    <item>
+      <title>服务器模式</title>
+      <link>https://luoguochun.cn/post/2014-06-25-server-mode/</link>
+      <pubDate>Wed, 25 Jun 2014 20:49:24 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-06-25-server-mode/</guid>
+      <description>服务器开发貌似有固定的模式，性能和复杂度各异，现总结下常见的模式。当然服务器的开发并没有固定的模式，除了以下总结的外，实际根据业务的不同，生</description>
+    </item>
+    
+  </channel>
+</rss>

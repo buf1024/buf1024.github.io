@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>13 形态识别(Pattern Recognition Functions) - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="Pattern Recognition Functions 形态识别函数 CDL2CROWS - Two Crows 函数名：CDL2CROWS 名称：Two Crows 两只乌鸦 简介：三日K线模式，第一天长阳，第二天高开收阴，第三天再次高开继续" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/talib-doc/func_groups/pattern_recognition/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="13 形态识别(Pattern Recognition Functions)" />
+<meta property="og:description" content="Pattern Recognition Functions 形态识别函数 CDL2CROWS - Two Crows 函数名：CDL2CROWS 名称：Two Crows 两只乌鸦 简介：三日K线模式，第一天长阳，第二天高开收阴，第三天再次高开继续" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/talib-doc/func_groups/pattern_recognition/" /><meta property="article:published_time" content="2019-10-10T00:00:13&#43;08:00"/>
+<meta property="article:modified_time" content="2019-10-10T00:00:13&#43;08:00"/>
+
+<meta itemprop="name" content="13 形态识别(Pattern Recognition Functions)">
+<meta itemprop="description" content="Pattern Recognition Functions 形态识别函数 CDL2CROWS - Two Crows 函数名：CDL2CROWS 名称：Two Crows 两只乌鸦 简介：三日K线模式，第一天长阳，第二天高开收阴，第三天再次高开继续">
+
+
+<meta itemprop="datePublished" content="2019-10-10T00:00:13&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-10T00:00:13&#43;08:00" />
+<meta itemprop="wordCount" content="6007">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="13 形态识别(Pattern Recognition Functions)"/>
+<meta name="twitter:description" content="Pattern Recognition Functions 形态识别函数 CDL2CROWS - Two Crows 函数名：CDL2CROWS 名称：Two Crows 两只乌鸦 简介：三日K线模式，第一天长阳，第二天高开收阴，第三天再次高开继续"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    
+
+<h1 id="pattern-recognition-functions-形态识别函数">Pattern Recognition Functions 形态识别函数</h1>
+
+<h3 id="cdl2crows-two-crows">CDL2CROWS - Two Crows</h3>
+
+<blockquote>
+<p>函数名：CDL2CROWS<br />
+名称：Two Crows 两只乌鸦<br />
+简介：三日K线模式，第一天长阳，第二天高开收阴，第三天再次高开继续收阴，
+收盘比前一日收盘价低，预示股价下跌。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL2CROWS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdl3blackcrows-three-black-crows">CDL3BLACKCROWS - Three Black Crows</h3>
+
+<blockquote>
+<p>函数名：CDL3BLACKCROWS<br />
+名称：Three Black Crows 三只乌鸦<br />
+简介：三日K线模式，连续三根阴线，每日收盘价都下跌且接近最低价，
+每日开盘价都在上根K线实体内，预示股价下跌。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3BLACKCROWS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdl3inside-three-inside-up-down">CDL3INSIDE - Three Inside Up/Down</h3>
+
+<blockquote>
+<p>函数名：CDL3INSIDE<br />
+名称： Three Inside Up/Down 三内部上涨和下跌<br />
+简介：三日K线模式，母子信号+长K线，以三内部上涨为例，K线为阴阳阳，
+第三天收盘价高于第一天开盘价，第二天K线在第一天K线内部，预示着股价上涨。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3INSIDE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdl3linestrike-three-line-strike">CDL3LINESTRIKE - Three-Line Strike</h3>
+
+<blockquote>
+<p>函数名：CDL3LINESTRIKE<br />
+名称： Three-Line Strike 三线打击<br />
+简介：四日K线模式，前三根阳线，每日收盘价都比前一日高，
+开盘价在前一日实体内，第四日市场高开，收盘价低于第一日开盘价，预示股价下跌。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3LINESTRIKE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdl3outside-three-outside-up-down">CDL3OUTSIDE - Three Outside Up/Down</h3>
+
+<blockquote>
+<p>函数名：CDL3OUTSIDE<br />
+名称：Three Outside Up/Down 三外部上涨和下跌<br />
+简介：三日K线模式，与三内部上涨和下跌类似，K线为阴阳阳，但第一日与第二日的K线形态相反，
+以三外部上涨为例，第一日K线在第二日K线内部，预示着股价上涨。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3OUTSIDE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdl3starsinsouth-three-stars-in-the-south">CDL3STARSINSOUTH - Three Stars In The South</h3>
+
+<blockquote>
+<p>函数名：CDL3STARSINSOUTH<br />
+名称：Three Stars In The South 南方三星<br />
+简介：三日K线模式，与大敌当前相反，三日K线皆阴，第一日有长下影线，
+第二日与第一日类似，K线整体小于第一日，第三日无下影线实体信号，
+成交价格都在第一日振幅之内，预示下跌趋势反转，股价上升。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3STARSINSOUTH</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdl3whitesoldiers-three-advancing-white-soldiers">CDL3WHITESOLDIERS - Three Advancing White Soldiers</h3>
+
+<blockquote>
+<p>函数名：CDL3WHITESOLDIERS<br />
+名称：Three Advancing White Soldiers 三个白兵<br />
+简介：三日K线模式，三日K线皆阳，
+每日收盘价变高且接近最高价，开盘价在前一日实体上半部，预示股价上升。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3WHITESOLDIERS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlabandonedbaby-abandoned-baby">CDLABANDONEDBABY - Abandoned Baby</h3>
+
+<blockquote>
+<p>函数名：CDLABANDONEDBABY<br />
+名称：Abandoned Baby 弃婴<br />
+简介：三日K线模式，第二日价格跳空且收十字星（开盘价与收盘价接近，
+最高价最低价相差不大），预示趋势反转，发生在顶部下跌，底部上涨。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLABANDONEDBABY</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdladvanceblock-advance-block">CDLADVANCEBLOCK - Advance Block</h3>
+
+<blockquote>
+<p>函数名：CDLADVANCEBLOCK<br />
+名称：Advance Block 大敌当前<br />
+简介：三日K线模式，三日都收阳，每日收盘价都比前一日高，
+开盘价都在前一日实体以内，实体变短，上影线变长。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLADVANCEBLOCK</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlbelthold-belt-hold">CDLBELTHOLD - Belt-hold</h3>
+
+<blockquote>
+<p>函数名：CDLBELTHOLD<br />
+名称：Belt-hold 捉腰带线<br />
+简介：两日K线模式，下跌趋势中，第一日阴线，
+第二日开盘价为最低价，阳线，收盘价接近最高价，预示价格上涨。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLBELTHOLD</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlbreakaway-breakaway">CDLBREAKAWAY - Breakaway</h3>
+
+<blockquote>
+<p>函数名：CDLBREAKAWAY<br />
+名称：Breakaway 脱离<br />
+简介：五日K线模式，以看涨脱离为例，下跌趋势中，第一日长阴线，第二日跳空阴线，延续趋势开始震荡，
+第五日长阳线，收盘价在第一天收盘价与第二天开盘价之间，预示价格上涨。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLBREAKAWAY</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlclosingmarubozu-closing-marubozu">CDLCLOSINGMARUBOZU - Closing Marubozu</h3>
+
+<blockquote>
+<p>函数名：CDLCLOSINGMARUBOZU<br />
+名称：Closing Marubozu 收盘缺影线<br />
+简介：一日K线模式，以阳线为例，最低价低于开盘价，收盘价等于最高价，
+预示着趋势持续。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLCLOSINGMARUBOZU</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlconcealbabyswall-concealing-baby-swallow">CDLCONCEALBABYSWALL - Concealing Baby Swallow</h3>
+
+<blockquote>
+<p>函数名：CDLCONCEALBABYSWALL<br />
+名称： Concealing Baby Swallow 藏婴吞没<br />
+简介：四日K线模式，下跌趋势中，前两日阴线无影线
+，第二日开盘、收盘价皆低于第二日，第三日倒锤头，
+第四日开盘价高于前一日最高价，收盘价低于前一日最低价，预示着底部反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLCONCEALBABYSWALL</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlcounterattack-counterattack">CDLCOUNTERATTACK - Counterattack</h3>
+
+<blockquote>
+<p>函数名：CDLCOUNTERATTACK<br />
+名称：Counterattack 反击线<br />
+简介：二日K线模式，与分离线类似。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLCOUNTERATTACK</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdldarkcloudcover-dark-cloud-cover">CDLDARKCLOUDCOVER - Dark Cloud Cover</h3>
+
+<blockquote>
+<p>函数名：CDLDARKCLOUDCOVER<br />
+名称：Dark Cloud Cover 乌云压顶<br />
+简介：二日K线模式，第一日长阳，第二日开盘价高于前一日最高价，
+收盘价处于前一日实体中部以下，预示着股价下跌。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLDARKCLOUDCOVER</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdldoji-doji">CDLDOJI - Doji</h3>
+
+<blockquote>
+<p>函数名：CDLDOJI<br />
+名称：Doji 十字<br />
+简介：一日K线模式，开盘价与收盘价基本相同。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLDOJI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdldojistar-doji-star">CDLDOJISTAR - Doji Star</h3>
+
+<blockquote>
+<p>函数名：CDLDOJISTAR<br />
+名称：Doji Star 十字星<br />
+简介：一日K线模式，开盘价与收盘价基本相同，上下影线不会很长，预示着当前趋势反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLDOJISTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdldragonflydoji-dragonfly-doji">CDLDRAGONFLYDOJI - Dragonfly Doji</h3>
+
+<blockquote>
+<p>函数名：CDLDRAGONFLYDOJI<br />
+名称：Dragonfly Doji 蜻蜓十字/T形十字<br />
+简介：一日K线模式，开盘后价格一路走低，
+之后收复，收盘价与开盘价相同，预示趋势反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLDRAGONFLYDOJI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlengulfing-engulfing-pattern">CDLENGULFING - Engulfing Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLENGULFING<br />
+名称：Engulfing Pattern 吞噬模式<br />
+简介：两日K线模式，分多头吞噬和空头吞噬，以多头吞噬为例，第一日为阴线，
+第二日阳线，第一日的开盘价和收盘价在第二日开盘价收盘价之内，但不能完全相同。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLENGULFING</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdleveningdojistar-evening-doji-star">CDLEVENINGDOJISTAR - Evening Doji Star</h3>
+
+<blockquote>
+<p>函数名：CDLEVENINGDOJISTAR<br />
+名称：Evening Doji Star 十字暮星<br />
+简介：三日K线模式，基本模式为暮星，第二日收盘价和开盘价相同，预示顶部反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLEVENINGDOJISTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdleveningstar-evening-star">CDLEVENINGSTAR - Evening Star</h3>
+
+<blockquote>
+<p>函数名：CDLEVENINGSTAR<br />
+名称：Evening Star 暮星<br />
+简介：三日K线模式，与晨星相反，上升趋势中,
+第一日阳线，第二日价格振幅较小，第三日阴线，预示顶部反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLEVENINGSTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlgapsidesidewhite-up-down-gap-side-by-side-white-lines">CDLGAPSIDESIDEWHITE - Up/Down-gap side-by-side white lines</h3>
+
+<blockquote>
+<p>函数名：CDLGAPSIDESIDEWHITE<br />
+名称：Up/Down-gap side-by-side white lines 向上/下跳空并列阳线<br />
+简介：二日K线模式，上升趋势向上跳空，下跌趋势向下跳空,
+第一日与第二日有相同开盘价，实体长度差不多，则趋势持续。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLGAPSIDESIDEWHITE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlgravestonedoji-gravestone-doji">CDLGRAVESTONEDOJI - Gravestone Doji</h3>
+
+<blockquote>
+<p>函数名：CDLGRAVESTONEDOJI<br />
+名称：Gravestone Doji 墓碑十字/倒T十字<br />
+简介：一日K线模式，开盘价与收盘价相同，上影线长，无下影线，预示底部反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLGRAVESTONEDOJI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlhammer-hammer">CDLHAMMER - Hammer</h3>
+
+<blockquote>
+<p>函数名：CDLHAMMER<br />
+名称：Hammer 锤头<br />
+简介：一日K线模式，实体较短，无上影线，
+下影线大于实体长度两倍，处于下跌趋势底部，预示反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHAMMER</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlhangingman-hanging-man">CDLHANGINGMAN - Hanging Man</h3>
+
+<blockquote>
+<p>函数名：CDLHANGINGMAN<br />
+名称：Hanging Man 上吊线<br />
+简介：一日K线模式，形状与锤子类似，处于上升趋势的顶部，预示着趋势反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHANGINGMAN</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlharami-harami-pattern">CDLHARAMI - Harami Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLHARAMI<br />
+名称：Harami Pattern 母子线<br />
+简介：二日K线模式，分多头母子与空头母子，两者相反，以多头母子为例，在下跌趋势中，第一日K线长阴，
+第二日开盘价收盘价在第一日价格振幅之内，为阳线，预示趋势反转，股价上升。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHARAMI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlharamicross-harami-cross-pattern">CDLHARAMICROSS - Harami Cross Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLHARAMICROSS<br />
+名称：Harami Cross Pattern 十字孕线<br />
+简介：二日K线模式，与母子县类似，若第二日K线是十字线，
+便称为十字孕线，预示着趋势反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHARAMICROSS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlhighwave-high-wave-candle">CDLHIGHWAVE - High-Wave Candle</h3>
+
+<blockquote>
+<p>函数名：CDLHIGHWAVE<br />
+名称：High-Wave Candle 风高浪大线<br />
+简介：三日K线模式，具有极长的上/下影线与短的实体，预示着趋势反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHIGHWAVE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlhikkake-hikkake-pattern">CDLHIKKAKE - Hikkake Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLHIKKAKE<br />
+名称：Hikkake Pattern 陷阱<br />
+简介：三日K线模式，与母子类似，第二日价格在前一日实体范围内,
+第三日收盘价高于前两日，反转失败，趋势继续。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHIKKAKE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<h3 id="cdlhikkakemod-modified-hikkake-pattern">CDLHIKKAKEMOD - Modified Hikkake Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLHIKKAKEMOD<br />
+名称：Modified Hikkake Pattern 修正陷阱<br />
+简介：三日K线模式，与陷阱类似，上升趋势中，第三日跳空高开；
+下跌趋势中，第三日跳空低开，反转失败，趋势继续。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHIKKAKEMOD</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<h3 id="cdlhomingpigeon-homing-pigeon">CDLHOMINGPIGEON - Homing Pigeon</h3>
+
+<blockquote>
+<p>函数名：CDLHOMINGPIGEON<br />
+名称：Homing Pigeon 家鸽<br />
+简介：二日K线模式，与母子线类似，不同的的是二日K线颜色相同，
+第二日最高价、最低价都在第一日实体之内，预示着趋势反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHOMINGPIGEON</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlidentical3crows-identical-three-crows">CDLIDENTICAL3CROWS - Identical Three Crows</h3>
+
+<blockquote>
+<p>函数名：CDLIDENTICAL3CROWS<br />
+名称：Identical Three Crows 三胞胎乌鸦<br />
+简介：三日K线模式，上涨趋势中，三日都为阴线，长度大致相等，
+每日开盘价等于前一日收盘价，收盘价接近当日最低价，预示价格下跌。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLIDENTICAL3CROWS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlinneck-in-neck-pattern">CDLINNECK - In-Neck Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLINNECK<br />
+名称：In-Neck Pattern 颈内线<br />
+简介：二日K线模式，下跌趋势中，第一日长阴线，
+第二日开盘价较低，收盘价略高于第一日收盘价，阳线，实体较短，预示着下跌继续。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLINNECK</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlinvertedhammer-inverted-hammer">CDLINVERTEDHAMMER - Inverted Hammer</h3>
+
+<blockquote>
+<p>函数名：CDLINVERTEDHAMMER<br />
+名称：Inverted Hammer 倒锤头<br />
+简介：一日K线模式，上影线较长，长度为实体2倍以上，
+无下影线，在下跌趋势底部，预示着趋势反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLINVERTEDHAMMER</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlkicking-kicking">CDLKICKING - Kicking</h3>
+
+<blockquote>
+<p>函数名：CDLKICKING<br />
+名称：Kicking 反冲形态<br />
+简介：二日K线模式，与分离线类似，两日K线为秃线，颜色相反，存在跳空缺口。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLKICKING</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlkickingbylength-kicking-bull-bear-determined-by-the-longer-marubozu">CDLKICKINGBYLENGTH - Kicking - bull/bear determined by the longer marubozu</h3>
+
+<blockquote>
+<p>函数名：CDLKICKINGBYLENGTH<br />
+名称：Kicking - bull/bear determined by the longer marubozu 由较长缺影线决定的反冲形态<br />
+简介：二日K线模式，与反冲形态类似，较长缺影线决定价格的涨跌。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLKICKINGBYLENGTH</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlladderbottom-ladder-bottom">CDLLADDERBOTTOM - Ladder Bottom</h3>
+
+<blockquote>
+<p>函数名：CDLLADDERBOTTOM<br />
+名称：Ladder Bottom 梯底<br />
+简介：五日K线模式，下跌趋势中，前三日阴线，
+开盘价与收盘价皆低于前一日开盘、收盘价，第四日倒锤头，第五日开盘价高于前一日开盘价，
+阳线，收盘价高于前几日价格振幅，预示着底部反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLLADDERBOTTOM</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdllongleggeddoji-long-legged-doji">CDLLONGLEGGEDDOJI - Long Legged Doji</h3>
+
+<blockquote>
+<p>函数名：CDLLONGLEGGEDDOJI<br />
+名称：Long Legged Doji 长脚十字<br />
+简介：一日K线模式，开盘价与收盘价相同居当日价格中部，上下影线长，
+表达市场不确定性。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLLONGLEGGEDDOJI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdllongline-long-line-candle">CDLLONGLINE - Long Line Candle</h3>
+
+<blockquote>
+<p>函数名：CDLLONGLINE<br />
+名称：Long Line Candle 长蜡烛<br />
+简介：一日K线模式，K线实体长，无上下影线。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLLONGLINE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlmarubozu-marubozu">CDLMARUBOZU - Marubozu</h3>
+
+<p>函数名：CDLMARUBOZU<br />
+名称：Marubozu 光头光脚/缺影线<br />
+简介：一日K线模式，上下两头都没有影线的实体，
+阴线预示着熊市持续或者牛市反转，阳线相反。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLMARUBOZU</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlmatchinglow-matching-low">CDLMATCHINGLOW - Matching Low</h3>
+
+<blockquote>
+<p>函数名：CDLMATCHINGLOW<br />
+名称：Matching Low 相同低价<br />
+简介：二日K线模式，下跌趋势中，第一日长阴线，
+第二日阴线，收盘价与前一日相同，预示底部确认，该价格为支撑位。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLMATCHINGLOW</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlmathold-mat-hold">CDLMATHOLD - Mat Hold</h3>
+
+<blockquote>
+<p>函数名：CDLMATHOLD<br />
+名称：Mat Hold 铺垫<br />
+简介：五日K线模式，上涨趋势中，第一日阳线，第二日跳空高开影线，
+第三、四日短实体影线，第五日阳线，收盘价高于前四日，预示趋势持续。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLMATHOLD</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlmorningdojistar-morning-doji-star">CDLMORNINGDOJISTAR - Morning Doji Star</h3>
+
+<blockquote>
+<p>函数名：CDLMORNINGDOJISTAR<br />
+名称：Morning Doji Star 十字晨星<br />
+简介：三日K线模式，
+基本模式为晨星，第二日K线为十字星，预示底部反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLMORNINGDOJISTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlmorningstar-morning-star">CDLMORNINGSTAR - Morning Star</h3>
+
+<blockquote>
+<p>函数名：CDLMORNINGSTAR<br />
+名称：Morning Star 晨星<br />
+简介：三日K线模式，下跌趋势，第一日阴线，
+第二日价格振幅较小，第三天阳线，预示底部反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLMORNINGSTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlonneck-on-neck-pattern">CDLONNECK - On-Neck Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLONNECK<br />
+名称：On-Neck Pattern 颈上线<br />
+简介：二日K线模式，下跌趋势中，第一日长阴线，第二日开盘价较低，
+收盘价与前一日最低价相同，阳线，实体较短，预示着延续下跌趋势。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLONNECK</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlpiercing-piercing-pattern">CDLPIERCING - Piercing Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLPIERCING<br />
+名称：Piercing Pattern 刺透形态<br />
+简介：两日K线模式，下跌趋势中，第一日阴线，第二日收盘价低于前一日最低价，
+收盘价处在第一日实体上部，预示着底部反转。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLPIERCING</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<h3 id="cdlrickshawman-rickshaw-man">CDLRICKSHAWMAN - Rickshaw Man</h3>
+
+<blockquote>
+<p>函数名：CDLRICKSHAWMAN<br />
+名称：Rickshaw Man 黄包车夫<br />
+简介：一日K线模式，与长腿十字线类似，
+若实体正好处于价格振幅中点，称为黄包车夫。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLRICKSHAWMAN</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlrisefall3methods-rising-falling-three-methods">CDLRISEFALL3METHODS - Rising/Falling Three Methods</h3>
+
+<blockquote>
+<p>函数名：CDLRISEFALL3METHODS
+名称：Rising/Falling Three Methods 上升/下降三法<br />
+简介： 五日K线模式，以上升三法为例，上涨趋势中，
+第一日长阳线，中间三日价格在第一日范围内小幅震荡，
+第五日长阳线，收盘价高于第一日收盘价，预示股价上升。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLRISEFALL3METHODS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlseparatinglines-separating-lines">CDLSEPARATINGLINES - Separating Lines</h3>
+
+<blockquote>
+<p>函数名：CDLSEPARATINGLINES<br />
+名称：Separating Lines 分离线<br />
+简介：二日K线模式，上涨趋势中，第一日阴线，第二日阳线，
+第二日开盘价与第一日相同且为最低价，预示着趋势继续。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLSEPARATINGLINES</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlshootingstar-shooting-star">CDLSHOOTINGSTAR - Shooting Star</h3>
+
+<blockquote>
+<p>函数名：CDLSHOOTINGSTAR<br />
+名称：Shooting Star 射击之星<br />
+简介：一日K线模式，上影线至少为实体长度两倍，
+没有下影线，预示着股价下跌</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLSHOOTINGSTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<h3 id="cdlshortline-short-line-candle">CDLSHORTLINE - Short Line Candle</h3>
+
+<blockquote>
+<p>函数名：CDLSHORTLINE<br />
+名称：Short Line Candle 短蜡烛<br />
+简介：一日K线模式，实体短，无上下影线</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLSHORTLINE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlspinningtop-spinning-top">CDLSPINNINGTOP - Spinning Top</h3>
+
+<blockquote>
+<p>函数名：CDLSPINNINGTOP<br />
+名称：Spinning Top 纺锤<br />
+简介：一日K线，实体小。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLSPINNINGTOP</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlstalledpattern-stalled-pattern">CDLSTALLEDPATTERN - Stalled Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLSTALLEDPATTERN<br />
+名称：Stalled Pattern 停顿形态<br />
+简介：三日K线模式，上涨趋势中，第二日长阳线，
+第三日开盘于前一日收盘价附近，短阳线，预示着上涨结束</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLSTALLEDPATTERN</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlsticksandwich-stick-sandwich">CDLSTICKSANDWICH - Stick Sandwich</h3>
+
+<blockquote>
+<p>函数名：CDLSTICKSANDWICH<br />
+名称：Stick Sandwich 条形三明治<br />
+简介：三日K线模式，第一日长阴线，第二日阳线，开盘价高于前一日收盘价，
+第三日开盘价高于前两日最高价，收盘价于第一日收盘价相同。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLSTICKSANDWICH</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdltakuri-takuri-dragonfly-doji-with-very-long-lower-shadow">CDLTAKURI - Takuri (Dragonfly Doji with very long lower shadow)</h3>
+
+<blockquote>
+<p>函数名：CDLTAKURI<br />
+名称：Takuri (Dragonfly Doji with very long lower shadow)
+探水竿<br />
+简介：一日K线模式，大致与蜻蜓十字相同，下影线长度长。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLTAKURI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdltasukigap-tasuki-gap">CDLTASUKIGAP - Tasuki Gap</h3>
+
+<blockquote>
+<p>函数名：CDLTASUKIGAP<br />
+名称：Tasuki Gap 跳空并列阴阳线<br />
+简介：三日K线模式，分上涨和下跌，以上升为例，
+前两日阳线，第二日跳空，第三日阴线，收盘价于缺口中，上升趋势持续。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLTASUKIGAP</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlthrusting-thrusting-pattern">CDLTHRUSTING - Thrusting Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLTHRUSTING<br />
+名称：Thrusting Pattern 插入<br />
+简介：二日K线模式，与颈上线类似，下跌趋势中，第一日长阴线，第二日开盘价跳空，
+收盘价略低于前一日实体中部，与颈上线相比实体较长，预示着趋势持续。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLTHRUSTING</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdltristar-tristar-pattern">CDLTRISTAR - Tristar Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLTRISTAR<br />
+名称：Tristar Pattern 三星<br />
+简介：三日K线模式，由三个十字组成，
+第二日十字必须高于或者低于第一日和第三日，预示着反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLTRISTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlunique3river-unique-3-river">CDLUNIQUE3RIVER - Unique 3 River</h3>
+
+<blockquote>
+<p>函数名：CDLUNIQUE3RIVER<br />
+名称：Unique 3 River 奇特三河床<br />
+简介：三日K线模式，下跌趋势中，第一日长阴线，第二日为锤头，最低价创新低，第三日开盘价低于第二日收盘价，收阳线，
+收盘价不高于第二日收盘价，预示着反转，第二日下影线越长可能性越大。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLUNIQUE3RIVER</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlupsidegap2crows-upside-gap-two-crows">CDLUPSIDEGAP2CROWS - Upside Gap Two Crows</h3>
+
+<blockquote>
+<p>函数名：CDLUPSIDEGAP2CROWS<br />
+名称：Upside Gap Two Crows 向上跳空的两只乌鸦<br />
+简介：三日K线模式，第一日阳线，第二日跳空以高于第一日最高价开盘，
+收阴线，第三日开盘价高于第二日，收阴线，与第一日比仍有缺口。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLUPSIDEGAP2CROWS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlxsidegap3methods-upside-downside-gap-three-methods">CDLXSIDEGAP3METHODS - Upside/Downside Gap Three Methods</h3>
+
+<blockquote>
+<p>函数名：CDLXSIDEGAP3METHODS<br />
+名称：Upside/Downside Gap Three Methods 上升/下降跳空三法<br />
+简介：五日K线模式，以上升跳空三法为例，上涨趋势中，第一日长阳线，第二日短阳线，第三日跳空阳线，第四日阴线，开盘价与收盘价于前两日实体内，
+第五日长阳线，收盘价高于第一日收盘价，预示股价上升。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLXSIDEGAP3METHODS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><a href="/talib-doc/doc_index">文档 </a>
+<a href="/talib-doc/funcs">函数分组</a></p>
+
+  </div>
+</article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-10-10 00:00:13 \x2b0800 CST',
+        title: '13 形态识别(Pattern Recognition Functions)',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tcp on BUF1024!!!</title>
+    <link>https://luoguochun.cn/categories/tcp/</link>
+    <description>Recent content in tcp on BUF1024!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 23 Sep 2016 21:20:10 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/categories/tcp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>tcp 协议小结</title>
+      <link>https://luoguochun.cn/post/2016-09-23-tcp-fuck/</link>
+      <pubDate>Fri, 23 Sep 2016 21:20:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2016-09-23-tcp-fuck/</guid>
+      <description>tcp协议是一个比较复杂的协议，对tcp协议深入理解的，真的非常少非常少；对tcp协议误理解或理解片面的，真的非常多非常多。当然这也包括自己</description>
+    </item>
+    
+    <item>
+      <title>tcpdump usage</title>
+      <link>https://luoguochun.cn/post/2015-07-25-tcpdump-usage/</link>
+      <pubDate>Sat, 25 Jul 2015 14:26:04 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2015-07-25-tcpdump-usage/</guid>
+      <description>Tcpdump使用方法 （1）第一种是关于类型的关键字主要包括host，net，port 例如： host 210.27.48.2，指明 210.27.48</description>
+    </item>
+    
+    <item>
+      <title>tcp_nodelay选项</title>
+      <link>https://luoguochun.cn/post/2014-10-22-tcp_nodelay/</link>
+      <pubDate>Wed, 22 Oct 2014 17:01:08 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-10-22-tcp_nodelay/</guid>
+      <description>今天遇到了TCP_NODELAY的问题，简单记录一下。具体的表现是，客户端进行清算查询时，老是超时。这个问题出现很久了，运维一直都有反映查询</description>
+    </item>
+    
+    <item>
+      <title>wireshark tcp 协议分析</title>
+      <link>https://luoguochun.cn/post/2014-07-23-wireshark-tcp/</link>
+      <pubDate>Wed, 23 Jul 2014 15:28:16 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-07-23-wireshark-tcp/</guid>
+      <description>注：本文比较简略，且存在错漏。更详细的总结参考tcp协议小结，后续如若发现有错漏，则同时在tcp协议小结中进行修正，本文不再做维护。 &amp;ndash;2016-09-23 虽然知</description>
+    </item>
+    
+  </channel>
+</rss>

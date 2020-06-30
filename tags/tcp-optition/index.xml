@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tcp optition on BUF1024!!!</title>
+    <link>https://luoguochun.cn/tags/tcp-optition/</link>
+    <description>Recent content in tcp optition on BUF1024!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 22 Oct 2014 17:01:08 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/tags/tcp-optition/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>tcp_nodelay选项</title>
+      <link>https://luoguochun.cn/post/2014-10-22-tcp_nodelay/</link>
+      <pubDate>Wed, 22 Oct 2014 17:01:08 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-10-22-tcp_nodelay/</guid>
+      <description>今天遇到了TCP_NODELAY的问题，简单记录一下。具体的表现是，客户端进行清算查询时，老是超时。这个问题出现很久了，运维一直都有反映查询</description>
+    </item>
+    
+  </channel>
+</rss>

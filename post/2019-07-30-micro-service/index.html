@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>微服务架构一些事 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="简介 微服务是最近几年比较热的一个话题，并且随着容器技术(docker, k8s等)的不断发展只会越来越热，同时也有各种各样的大中小公司尝试着拥" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2019-07-30-micro-service/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="微服务架构一些事" />
+<meta property="og:description" content="简介 微服务是最近几年比较热的一个话题，并且随着容器技术(docker, k8s等)的不断发展只会越来越热，同时也有各种各样的大中小公司尝试着拥" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2019-07-30-micro-service/" /><meta property="article:published_time" content="2019-07-29T20:17:52&#43;08:00"/>
+<meta property="article:modified_time" content="2019-07-29T20:17:52&#43;08:00"/>
+
+<meta itemprop="name" content="微服务架构一些事">
+<meta itemprop="description" content="简介 微服务是最近几年比较热的一个话题，并且随着容器技术(docker, k8s等)的不断发展只会越来越热，同时也有各种各样的大中小公司尝试着拥">
+
+
+<meta itemprop="datePublished" content="2019-07-29T20:17:52&#43;08:00" />
+<meta itemprop="dateModified" content="2019-07-29T20:17:52&#43;08:00" />
+<meta itemprop="wordCount" content="2640">
+
+
+
+<meta itemprop="keywords" content="微服务," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="微服务架构一些事"/>
+<meta name="twitter:description" content="简介 微服务是最近几年比较热的一个话题，并且随着容器技术(docker, k8s等)的不断发展只会越来越热，同时也有各种各样的大中小公司尝试着拥"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">微服务架构一些事</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-07-29 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%9E%84%E6%9E%B6/"> 构架 </a>
+            </div>
+          <span class="more-meta"> 约 2640 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#服务注册-发现和健康检查">服务注册、发现和健康检查</a></li>
+<li><a href="#配置中心">配置中心</a></li>
+<li><a href="#服务网关和负载均衡">服务网关和负载均衡</a></li>
+<li><a href="#其他">其他</a></li>
+<li><a href="#小结">小结</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h1 id="简介">简介</h1>
+
+<p>微服务是最近几年比较热的一个话题，并且随着容器技术(<a href="https://github.com/moby/moby">docker</a>, <a href="https://github.com/kubernetes/kubernetes">k8s</a>等)的不断发展只会越来越热，同时也有各种各样的大中小公司尝试着拥抱微服务构架。先不管这种做法是否正确，但在这种情势下，作为一个后台程序员，如果你不了解一下微服务，是会被人笑话的。</p>
+
+<p>那什么是微服务？</p>
+
+<p>很多介绍微服务的定义的，都会引用<a href="https://martinfowler.com/">Martin Fowler</a>的定义: <a href="https://martinfowler.com/articles/microservices.html">Microservices</a>。按Martin Fowler的定义，微服务构架是一系列可独立部署的服务，没有明确的定义，围绕业务能力，自动化部署，终端智能化，分布式语言和数据。简而言之，单一的应用程序由一系列的微小的服务组成，微小服务运行在自己的进程内并通过轻量级的机制(如REST, RPC等)通讯，这些微小服务围绕业务能力，自动化独立部署，可以有少量集中化管理的机制协调这些服务，微小服务可以使用不同语言和不同的数据存储技术。</p>
+
+<p>盗用Martin Fowler文章中的图（出处: <a href="https://martinfowler.com/articles/microservices/images/sketch.png）:">https://martinfowler.com/articles/microservices/images/sketch.png）:</a></p>
+
+<p><img src="https://martinfowler.com/articles/microservices/images/sketch.png" alt="什么是微服务" /></p>
+
+<p>以前的构架有什么不好的地方？</p>
+
+<p>很多介绍微服务的文章，都喜欢和单体程序做比较，当作为一名后台程序员，印象中极少公司是单体程序，大多都根据业务功能进行模块划分(比如，用户管理模块，订单模块，库存模块，出入金模块等等)，模块又可能包括多个应用程序协调运行。这样的构架相对于微服务有什么不好的地方？模块的划分，虽然可以使复杂的业务得到分解，但相对于“微”来说还是巨大的单体，而且随着业务的发展，软件复杂度与之相应增强，而且不够弹性，比如搞活动是订单模块超忙，用户管理模块却相对空闲。</p>
+
+<p>个人认为，微服务以前模块划分，SOA等方式发展而来，克服旧构架可能存在的问题，它以明确或通用的构架的方式明确怎么去构架一个良好的系统。微服务就是为了解决软件的复杂性和弹性的问题，微服务，它更易于理解，使团队专注于自己的业务，独立开发、发布、管理微服务，独立部署、扩展和管理，彼此隔离，复用现有服务，在现有服务基础上构建全新的功能。</p>
+
+<p>听起来微服务很爽，是不是都需要使用这种新的构架模式呢？每一个看过构架的书籍，都看过这样一样话，构架是根据业务发展而来的，不能为了技术而技术。用不用”微服务“需要个人觉得需要<strong>根据自身业务情况</strong>而决定。因为”微服务“的构架模式需要新的基础框，同时也带来新的问题，如果业务不是过于复杂，在原有构架很好适应的情况下，盲目拥护微服务的代价并不一定高于收益。</p>
+
+<h1 id="服务注册-发现和健康检查">服务注册、发现和健康检查</h1>
+
+<p>由于微服务构架将应用划分为一系列的细粒度的单一职责的服务，所以系统内存在N多的服务组成的服务网(Service mesh)，这些服务通过轻量级的通讯机制进行联通，N多服务构成网状的结构。在这种情况下必定会引入服务注册发现的概念，当服务启动起来的时候，必须有一个地方宣告，我能提供什么样的服务，同时调用者也能感知到有多少个服务的提供者。通常提供这些功能的，是由一个去中心化的分布式<strong>注册中心</strong>框架完成，常见的如: <a href="https://zookeeper.apache.org/">zookeeper</a>, <a href="https://github.com/etcd-io/etcd">etcd</a>, <a href="https://www.consul.io/">consul</a>, <a href="https://github.com/Netflix/eureka">Eureka</a>等等。</p>
+
+<p>任何一个程序都可能存在bug，服务可能存在挂掉，假死，慢，忙等各种情况，服务调用者需要知道服务是否可用，甚至是否过载等情况，以确定是否调用该服务，所以服务需要健康检查。健康检查一般两方面做，一个在服务向注册中心注册时，告知服务<strong>TTL</strong>，同时服务在<strong>TTL</strong>时间内每隔一段时间进行一次重新注册，类似于心跳报文；另外一方面，在注册中心内部对注册上来的服务运用各种手段进行检测，比如telnet端口，http访问特定连接，运行特定检查脚本等。</p>
+
+<p>实施微服务，需要要增加的是注册中心群集，必须熟悉注册中心的运维(安全，权限等)，同时应用开发者也必须熟悉注册中心的注册和发现等api使用。</p>
+
+<p>consul注册中心例:</p>
+
+<p><img src="/img/micro-service/ms-reg.png" alt="consul注册中心实例" /></p>
+
+<h1 id="配置中心">配置中心</h1>
+
+<p>由于微服务构架服务的数量众多，每个服务对应的机器使用一套配置文件的方式是不太现实的，由此又引用一个概念，分布式配置中心。<strong>配置中心</strong>框架，使服务统一从一个中心读取配置文件，同时能够感知到配置的变化从而进行服务的重新初始化。更有甚者，配置中心还支持灰度发布，分环境、分集群管理配置，完善的权限、审核机制等等。目前开源的配置中心也是比较多，比如<a href="https://github.com/knightliao/disconf">disconf</a>,
+<a href="https://github.com/ctripcorp/apollo/">ctrip apollo</a>等。</p>
+
+<p>当然，一般上面的<strong>注册中心</strong>也是提供简单的键值存储，如果要求不是很高，也是可以用做简单的配置中心，当然也是可以开发一个配置中心的RPC服务。</p>
+
+<p>实施微服务，需要增加配置中心群集，必须熟悉配置中心的运维(安全，权限等)，同时应用开发者也必须熟悉配置中心配置获取，配置的变化感知等。</p>
+
+<p>consul配置中心例:</p>
+
+<p><img src="/img/micro-service/ms-conf.png" alt="consul配置中心实例" /></p>
+
+<h1 id="服务网关和负载均衡">服务网关和负载均衡</h1>
+
+<p>将内部服务暴露于外的组件，称之为服务网关。服务网关最重要的功能是将外部的请求路由到内部的服务，除此之外，网关通常还具备鉴权(请求鉴权中心或自己是鉴权中心)，反爬虫，限流容错，监控等功能。通常我们需要在服务网关框架上，根据自己业务需求进行进一步开发。这里只是介绍概念，这里描述的很简单，事实上服务网关对外提供唯一的出口，实现起来可能很复杂。</p>
+
+<p>无论是服务网关调用后端的服务，或是内部服务调用后端服务，都涉及调用哪个服务的问题，即是负载均衡，通常是实现方式是在客户端上实现，一般有现成框架，在其基础上进行扩展。当然实现方式是多样的，也有不少把请求丢到消息队列，事件总线等。不管实现方式如何，目标是服务的负载需要均衡。</p>
+
+<h1 id="其他">其他</h1>
+
+<ul>
+<li>降级，熔断，限流
+一个前端请求一般会依赖于多个后端服务，突发流量可能造成单个服务延迟致雪崩效应，如何限流，降级，熔断？</li>
+<li>监控链路跟踪和日志收集
+一个业务分布于多个服务的调用之中，如何追踪调用链路？日志又如何收集，如<strong>ELK</strong>栈？</li>
+<li>快速部署扩容缩容
+docker/k8s/istio快速部署？</li>
+<li>分布式事务
+分布式事务是微服务经常遇到的问题也是比较困难的问题，使用网上说的复杂的2PC，TCC等，还是简单的补偿？？</li>
+</ul>
+
+<h1 id="小结">小结</h1>
+
+<p>本来想每个部分都简单写写，列一下常用的方式，做法是什么。但是很多东西自己都只是有一个概念，并没有认真的去实践，没有经过自己实践过的东西也不知道写什么，倒是网上却又很多的介绍，总结的都挺好。每一部分都有N多的解决方案，直接参考网上搜索结果即可。</p>
+
+<p>由上，微服务架构需要掌握的东西和概念很多，能否在原来业务上转为微服务，或在新业务上使用微服务？熟练了为服务的模式，会不会开展业务更舒畅？或许是，也或许不是，因为并没有尝试过，不过倒是很乐意去尝试一下。</p>
+
+<p>微服务尝试: <a href="https://github.com/buf1024/monthproj/tree/master/ms-exam/stock">stock</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019-07-29</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/2019-06-21-flutter-try/">
+            <span class="next-text nav-default">Flutter -- 写app的另一种姿态</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-07-29 20:17:52 \x2b0800 CST',
+        title: '微服务架构一些事',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

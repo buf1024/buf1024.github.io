@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>sys/queue.h - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="概述 sys/queue.h是LINUX/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2012-05-02-sys-queue-h/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="sys/queue.h" />
+<meta property="og:description" content="概述 sys/queue.h是LINUX/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2012-05-02-sys-queue-h/" /><meta property="article:published_time" content="2012-05-02T21:08:14&#43;00:00"/>
+<meta property="article:modified_time" content="2012-05-02T21:08:14&#43;00:00"/>
+
+<meta itemprop="name" content="sys/queue.h">
+<meta itemprop="description" content="概述 sys/queue.h是LINUX/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple">
+
+
+<meta itemprop="datePublished" content="2012-05-02T21:08:14&#43;00:00" />
+<meta itemprop="dateModified" content="2012-05-02T21:08:14&#43;00:00" />
+<meta itemprop="wordCount" content="3158">
+
+
+
+<meta itemprop="keywords" content="c,linux," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="sys/queue.h"/>
+<meta name="twitter:description" content="概述 sys/queue.h是LINUX/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">sys/queue.h</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2012-05-02 </span>
+        <div class="post-category">
+            <a href="/categories/linux/"> linux </a>
+            </div>
+          <span class="more-meta"> 约 3158 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#概述">概述</a></li>
+<li><a href="#单链表-singly-linked-list">单链表(singly-linked list)</a></li>
+<li><a href="#双向链表-list">双向链表(list)</a></li>
+<li><a href="#简单队列-simple-queue">简单队列(simple queue)</a></li>
+<li><a href="#单链尾队列-singled-linked-tail-queue">单链尾队列(singled-linked tail queue)</a></li>
+<li><a href="#循环队列-circle-queue">循环队列(circle queue)</a></li>
+</ul></li>
+<li><a href="#小结">小结</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h3 id="概述">概述</h3>
+
+<p>sys/queue.h是LINUX/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple queue(Singly-linked Tail queue), tail queue, circle queue五种。</p>
+
+<p>引用此头文件对这五种数据结构的描述：</p>
+
+<blockquote>
+<p>A singly-linked list is headed by a single forward pointer. The
+elements are singly linked for minimum space and pointer manipulation
+overhead at the expense of O(n) removal for arbitrary elements. New
+elements can be added to the list after an existing element or at the
+head of the list.  Elements being removed from the head of the list
+should use the explicit macro for this purpose for optimum
+efficiency. A singly-linked list may only be traversed in the forward
+direction.  Singly-linked lists are ideal for applications with large
+datasets and few or no removals or for implementing a LIFO queue.</p>
+
+<p>A list is headed by a single forward pointer (or an array of forward
+pointers for a hash table header). The elements are doubly linked
+so that an arbitrary element can be removed without a need to
+traverse the list. New elements can be added to the list before
+or after an existing element or at the head of the list. A list
+may only be traversed in the forward direction.</p>
+
+<p>A simple queue is headed by a pair of pointers, one the head of the
+list and the other to the tail of the list. The elements are singly
+linked to save space, so elements can only be removed from the
+head of the list. New elements can be added to the list after
+an existing element, at the head of the list, or at the end of the
+list. A simple queue may only be traversed in the forward direction.</p>
+
+<p>A tail queue is headed by a pair of pointers, one to the head of the
+list and the other to the tail of the list. The elements are doubly
+linked so that an arbitrary element can be removed without a need to
+traverse the list. New elements can be added to the list before or
+after an existing element, at the head of the list, or at the end of
+the list. A tail queue may be traversed in either direction.</p>
+
+<p>A circle queue is headed by a pair of pointers, one to the head of the
+list and the other to the tail of the list. The elements are doubly
+linked so that an arbitrary element can be removed without a need to
+traverse the list. New elements can be added to the list before or after
+an existing element, at the head of the list, or at the end of the list.
+A circle queue may be traversed in either direction, but has a more
+complex end of list detection.</p>
+</blockquote>
+
+<p>简单来说，即是单链表，双链表，单链队列，双向队列（尾队列）和双向循环队列。</p>
+
+<p>虽然这是LINUX/UNIX里面的文件，但此文件本身没有用到LINUX/UNIX的系统特性，因而可以跨平台使用。</p>
+
+<p>下面对各数据结构简单描述之。</p>
+
+<h3 id="单链表-singly-linked-list">单链表(singly-linked list)</h3>
+
+<p>singly-linked list就是一单链表。</p>
+
+<p>singly-linked list相关的定义：</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|SLIST_HEAD(name, type)|    定义表头结点。 <br>name: 表头结点名。<br>type: 结点类型。|<br />
+|SLIST_HEAD_INITIALIZER(head)|  初始化头结点。 <br>head: 表头结点。|<br />
+|SLIST_ENTRY(type)| 定义链表的链域。<br>type: 结点类型。|</p>
+
+<p>singly-linked list函数：</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|SLIST_INIT(head)|初始化头结点。 <br>head: 表头结点。|<br />
+|SLIST_INSERT_AFTER(slistelm, elm, field)|将结点elm插入到结点slistelm后面。 <br>slistelm：链表中某结点。 <br>elm:要插入的结点。 <br>field:链表中链域的名称。|<br />
+|SLIST_INSERT_HEAD(head, elm, field)|将结点elm插入到头结点head后面。 <br>head: 表头结点。<br>elm:要插入的结点。<br>field:链表中链域的名称。|<br />
+|SLIST_REMOVE_HEAD(head, field) |   移除将表头结点下面一个结点。 <br>head: 表头结点。 <br>field:链表中链域的名称。|<br />
+|SLIST_REMOVE(head, elm, type, field)|移除将elm结点，elm结点一定要是链表中一结点。 <br>head: 表头结点。 <br>elm:某结点。 <br>type: 结点类型。 <br>field:链表中链域的名称。|<br />
+|SLIST_FOREACH(var, head, field)|遍历链表，相当于for循环。 <br>var: 结点类型的变量名称。 <br>head: 表头结点。 <br>field:链表中链域的名称。|</p>
+
+<p>singly-linked list 访问方法：</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|SLIST_EMPTY(head)| 判断链表是否为空。 <br>head: 表头结点。|<br />
+|SLIST_FIRST(head)| 访问链表里的第一个元素。 <br>head: 表头结点。|<br />
+|SLIST_NEXT(elm, field)|访问elm结点后一个元素。 <br>elm:某结点。 <br>field:链表中链域的名称。|</p>
+
+<p>简单例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    struct SListItem
+    {
+        int data;
+        SLIST_ENTRY(SListItem) entry;
+    };
+    /*
+     struct SListItem
+     {
+        int data;
+        struct {
+            struct SListItem* sle_next;
+        } entry;
+     }
+     */
+    void slist_demo()
+    {
+        struct SListItem* item = NULL;
+        SLIST_HEAD(SListHead, SListItem) shead;
+        /*
+         struct SListHead {
+             struct SListItem* slh_first;
+         } shead;
+         */
+        SLIST_INIT(&amp;shead);
+
+        item = (struct SListItem*)malloc(sizeof(struct SListItem));
+        item-&gt;data = 1;
+
+        SLIST_INSERT_HEAD(&amp;shead, item, entry);
+        /*
+         item-&gt;entry.sle_next = (&amp;shead)-&gt;slh_first;
+         (&amp;shead)-&gt;slh_first = item;
+         */
+
+        item = (struct SListItem*)malloc(sizeof(struct SListItem));
+        item-&gt;data = 2;
+
+        SLIST_INSERT_HEAD(&amp;shead, item, entry);
+        /*
+         item-&gt;entry.sle_next = (&amp;shead)-&gt;slh_first;
+         (&amp;shead)-&gt;slh_first = item;
+         */
+
+        SLIST_FOREACH(item, &amp;shead, entry){
+            printf(&#34;%d &#34;, item-&gt;data);
+        }
+        /*
+         for(item = (&amp;shead)-&gt;slh_first; item; item = item-&gt;entry.sle_next){
+            ...
+         }
+         */
+        printf(&#34;\n&#34;);
+
+        while(!SLIST_EMPTY(&amp;shead)){
+            item = SLIST_FIRST(&amp;shead);
+            printf(&#34;remove %d\n&#34;, item-&gt;data);
+            SLIST_REMOVE(&amp;shead, item, SListItem, entry);
+            free(item);
+        }
+        /*
+         while(!((&amp;shead)-&gt;slh_first == NULL)){
+             item = (&amp;shead)-&gt;slh_first;
+             ...
+             (&amp;shead)-&gt;slh_first = (&amp;shead)-&gt;slh_first-&gt;entry.sle_next;
+             ...
+         }
+         */
+    }
+    /*结果
+    2 1
+    remove 2
+    remove 1
+    */</pre></td></tr></table>
+</div>
+</div>
+<h3 id="双向链表-list">双向链表(list)</h3>
+
+<p>list就是双向链表，不过链域有点古怪，指向前一个结点是指针的指针。<br />
+list 相关定义</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|LIST_HEAD(name, type)|定义表头结点。 <br>name: 表头结点名。 <br>type: 结点类型。|<br />
+|LIST_HEAD_INITIALIZER(head)|   初始化头结点。 <br>head: 表头结点。|<br />
+|LIST_ENTRY(type)|定义链表的链域。 <br>type: 结点类型。|</p>
+
+<p>list函数</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|LIST_INIT(head)|初始化头结点。 <br>head: 表头结点|<br />
+|LIST_INSERT_AFTER(listelm, elm, field)|将结点elm插入到结点listelm后面。 <br>listelm：链表中某结点。 <br>elm:要插入的结点。 <br>field:链表中链域的名称。|<br />
+|LIST_INSERT_BEFORE(listelm, elm, field)|将结点elm插入到结点listelm前面。 <br>listelm：链表中某结点。 <br>elm:要插入的结点。 <br>field:链表中链域的名称。|
+|LIST_INSERT_HEAD(head, elm, field)|将结点elm插入到头结点head后面。 <br>head: 表头结点。 <br>elm:要插入的结点。 <br>field:链表中链域的名称。|<br />
+|LIST_REMOVE(elm, field)|移除将elm结点。 <br>elm:某结点。 <br>field:链表中链域的名称。|<br />
+|LIST_FOREACH(var, head, field)|遍历链表，相当于for循环。 <br>var: 结点类型的变量名称。 <br>head: 表头结点。 <br>field:链表中链域的名称。|</p>
+
+<p>list访问方法</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|LIST_EMPTY(head)|判断链表是否为空。 <br>head: 表头结点。|<br />
+|LIST_FIRST(head)|访问链表里的第一个元素。 <br>head: 表头结点。|<br />
+|LIST_NEXT(elm, field)|访问elm结点后一个元素。 <br>elm:某结点。 <br>field:链表中链域的名称。|</p>
+
+<p><strong><em>注意</em></strong>，因为list是双向链表，但在访问方法里没有写出访问前一个元素的宏。因而可以这样写一个，参数含义和LIST_NEXT一样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">   #define LIST_PRE(elm, field) \
+   (((elm)-&gt;field.le_pre) != &amp;elm ? *((elm)-&gt;field.le_pre) : NULL)  </pre></td></tr></table>
+</div>
+</div>
+<p>简单例子:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">   struct ListItem
+   {
+       int data;
+       LIST_ENTRY(ListItem) entry;
+   };
+   /*
+   struct ListItem
+   {
+       int data;
+       struct{
+           struct ListItem* le_next;
+           struct ListItem** le_prev;
+       } entry;
+   };
+   */
+   void list_demo()
+   {
+       struct ListItem* item = NULL;
+
+       LIST_HEAD(ListHead, ListItem) lhead;
+       /*
+       struct ListHead {
+           struct ListItem* lh_first;
+       } lhead;
+       */
+       LIST_INIT(&amp;lhead);
+       /*
+       do{
+            (&amp;lhead)-&gt;lh_first = NULL;
+       }while(0);
+       */
+
+       item = (struct ListItem*)malloc(sizeof(struct ListItem));
+       item-&gt;data = 1;
+
+       LIST_INSERT_HEAD(&amp;lhead, item, entry);
+
+       item = (struct ListItem*)malloc(sizeof(struct ListItem));
+       item-&gt;data = 2;
+
+       LIST_INSERT_HEAD(&amp;lhead, item, entry);
+       /*
+       do{
+           if(((item)-&gt;entry.le_next = (&amp;lhead)-&gt;lh_first) != NULL)
+               (&amp;lhead)-&gt;lh_first-&gt;entry.le_pre = &amp;(elm)-&gt;entry.le_next;
+           (&amp;lhead)-&gt;lh_first = (item);
+           (item)-&gt;entry.le_prev = &amp;(&amp;lhead)-&gt;lh_first;
+       }while(0);
+       */
+       LIST_FOREACH(item, &amp;lhead, entry){
+           printf(&#34;%d &#34;, item-&gt;data);
+       }
+       /*
+       for ((item) = ((&amp;lhead)-&gt;lh_first);
+           (item);
+           (item) = ((item)-&gt;entry.le_next)){
+           ...
+       }    
+       */
+       printf(&#34;\n&#34;);
+
+       while(!LIST_EMPTY(&amp;lhead)){
+           item = LIST_FIRST(&amp;lhead);
+           printf(&#34;remove %d\n&#34;, item-&gt;data);
+           LIST_REMOVE(item, entry);
+           free(item);
+       }
+       /*
+       while(!((&amp;lhead)-&gt;lh_first == NULL)){
+           item = ((&amp;lhead)-&gt;lh_first);
+           ...
+           do{
+             if ((item)-&gt;entry.le_next != NULL)                \
+               (item)-&gt;entry.le_next-&gt;entry.le_prev =             \
+                   (item)-&gt;entry.le_prev;                \
+             *(item)-&gt;entry.le_prev = (item)-&gt;entry.le_next;            \
+           } while (0);
+           ...
+       }
+       */
+   }
+   /*
+   结果
+   2 1
+   remove 2
+   remove 1
+   */</pre></td></tr></table>
+</div>
+</div>
+<h3 id="简单队列-simple-queue">简单队列(simple queue)</h3>
+
+<p>简单来说，就是表对有两个链域，分别指向头和尾。<br />
+simple queue 定义（具体说明不再写，可以参考list的，或者就直接展开宏）</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|SIMPLEQ_HEAD(name, type)||<br />
+|SIMPLEQ_HEAD_INITIALIZER(head)||<br />
+|SIMPLEQ_ENTRY(type)|<br>|</p>
+
+<p>simple queue函数（具体说明不再写，可以参考list的，或者就直接展开宏）</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|SIMPLEQ_INIT(head)||<br />
+|SIMPLEQ_INSERT_HEAD(head, elm, field)||<br />
+|SIMPLEQ_INSERT_TAIL(head, elm, field)||
+|SIMPLEQ_INSERT_AFTER(head, listelm, elm, field)||<br />
+|SIMPLEQ_REMOVE_HEAD(head, field)||<br />
+|SIMPLEQ_REMOVE(head, elm, type, field)||
+|SIMPLEQ_FOREACH(var, head, field)| <br>|</p>
+
+<p>simple queue方法（具体说明不再写，可以参考list的，或者就直接展开宏）</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|SIMPLEQ_EMPTY(head)||<br />
+|SIMPLEQ_FIRST(head)||<br />
+|SIMPLEQ_NEXT(elm, field)| <br>|</p>
+
+<p>简单例子：<br />
+用法与list用法类似，不再重复。</p>
+
+<h3 id="单链尾队列-singled-linked-tail-queue">单链尾队列(singled-linked tail queue)</h3>
+
+<p>这个和Simple queue是一样的，参考simple queue<br />
+singled-linked tail queue定义(具体说明不再写，可以参考list的，或者就直接展开宏)</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|STAILQ_HEAD(name, type)||<br />
+|STAILQ_HEAD_INITIALIZER(head)||<br />
+|STAILQ_ENTRY(type)| <br>|</p>
+
+<p>tail queue 函数（具体说明不再写，可以参考list的，或者就直接展开宏）</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|STAILQ_INIT(head)||<br />
+|STAILQ_INSERT_HEAD(head, elm, field)||<br />
+|STAILQ_INSERT_TAIL(head, elm, field)   ||
+|STAILQ_INSERT_AFTER(head, listelm, elm, field) ||<br />
+|STAILQ_REMOVE_HEAD(head, field)    ||<br />
+|STAILQ_REMOVE(head, elm, type, field)  ||
+|STAILQ_FOREACH(var, head, field)   | <br>|</p>
+
+<p>tail queue方法（具体说明不再写，可以参考list的，或者就直接展开宏）</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|STAILQ_EMPTY(head) ||<br />
+|STAILQ_FIRST(head)||<br />
+|STAILQ_NEXT(elm, field)| <br>|</p>
+
+<p>简单例子：<br />
+用法与list用法类似，不再重复。</p>
+
+<h3 id="循环队列-circle-queue">循环队列(circle queue)</h3>
+
+<p>循环队列。<br />
+circle queue定义（具体说明不再写，可以参考list的，或者就直接展开宏）</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|CIRCLEQ_HEAD(name, type)   ||<br />
+|CIRCLEQ_HEAD_INITIALIZER(head) ||<br />
+|CIRCLEQ_ENTRY(type)| <br>|</p>
+
+<p>circle queue函数（具体说明不再写，可以参考list的，或者就直接展开宏）</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|CIRCLEQ_INIT(head)||<br />
+|CIRCLEQ_INSERT_AFTER(head, listelm, elm, field) ||<br />
+|CIRCLEQ_INSERT_BEFORE(head, listelm, elm, field)||
+|CIRCLEQ_INSERT_HEAD(head, elm, field) ||<br />
+|CIRCLEQ_INSERT_TAIL(head, elm, field)||
+|CIRCLEQ_REMOVE(head, elm, field) ||
+|CIRCLEQ_REPLACE(head, elm, elm2, field)| <br>|</p>
+
+<p>circle queue访问方法（具体说明不再写，可以参考list的，或者就直接展开宏）</p>
+
+<p>|宏定义|   说明|<br />
+|&mdash;&ndash;|:&mdash;-|<br />
+|CIRCLEQ_FIRST(head)||<br />
+|CIRCLEQ_LAST(head)||<br />
+|CIRCLEQ_END(head)||
+|CIRCLEQ_NEXT(elm, field)   ||<br />
+|CIRCLEQ_PREV(elm, field)||<br />
+|CIRCLEQ_EMPTY(head)||
+|CIRCLEQ_FOREACH(var, head, field)  ||<br />
+|CIRCLEQ_FOREACH_REVERSE(var, head, field)| <br>|</p>
+
+<p>简单例子：<br />
+用法与list用法类似，不再重复。</p>
+
+<h2 id="小结">小结</h2>
+
+<p>&amp;emsp虽然这是linux/unix实现的经过长时间考验的成熟的数据结构，但是如果不是很熟悉的话，第一次用起来还是感觉挺不习惯的。但是好在各个数据结构的定义和方法都非常类似，接口比较统一，如果用多的了，熟悉了，感觉就不错了。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2012-05-02</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/c/">c</a>
+          <a href="/tags/linux/">linux</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2012-06-23-proccess-pool-server/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">基于libevent进程池服务器</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2012-02-09-simple-c&#43;&#43;-test-framework/">
+            <span class="next-text nav-default">Very Very Simple C&#43;&#43; Testing Framework</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2012-05-02 21:08:14 \x2b0000 UTC',
+        title: 'sys\/queue.h',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
