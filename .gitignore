@@ -50,3 +50,5 @@ yarn.lock
 __pycache__/
 .idea/
 *.pyc
+
+.hugo/content/talib-doc
