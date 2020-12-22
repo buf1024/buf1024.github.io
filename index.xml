@@ -44,7 +44,7 @@
       <pubDate>Thu, 10 Oct 2019 00:00:13 +0800</pubDate>
       
       <guid>https://luoguochun.cn/talib-doc/func_groups/pattern_recognition/</guid>
-      <description>Pattern Recognition Functions 形态识别函数 CDL2CROWS - Two Crows 函数名：CDL2CROWS 名称：Two Crows 两只乌鸦 简介：三日K线模式，第一天长阳，第二天高开收阴，第三天再次高开继续</description>
+      <description>Pattern Recognition Functions 形态识别函数 反转形态 CDLHAMMER - Hammer 函数名：CDLHAMMER 名称：Hammer 锤子线 简介： 属于反转形态 实体较小 下影线较长 , 通常是实体的2倍或以</description>
     </item>
     
     <item>
@@ -89,7 +89,7 @@
       <pubDate>Thu, 10 Oct 2019 00:00:08 +0800</pubDate>
       
       <guid>https://luoguochun.cn/talib-doc/func_groups/momentum_indicators/</guid>
-      <description>Momentum Indicator Functions 动量指标函数 ADX - Average Directional Movement Index 函数名：ADX 名称：平均趋向指数 简介：使用ADX指标，指标判断盘整、振荡和单边趋势。 公式： 一、先决定股价趋势（</description>
+      <description>Momentum Indicator Functions 动量指标函数 MINUS_DI - Minus Directional Indicator 函数名：DMI 中的DI指标 负方向指标 名称：下升动向值 简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情</description>
     </item>
     
     <item>
@@ -161,7 +161,7 @@
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0800</pubDate>
       
       <guid>https://luoguochun.cn/talib-doc/readme/</guid>
-      <description>本主题文档来自talib-document，可能根据具体情况作适当的调整。 为了感谢原作者的辛苦成功，请不吝赞赏:</description>
+      <description>本主题文档来自talib-document，可能根据具体情况作适当的调整。</description>
     </item>
     
     <item>

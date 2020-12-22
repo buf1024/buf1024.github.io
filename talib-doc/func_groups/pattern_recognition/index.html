@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="buf1024" /><meta name="description" content="Pattern Recognition Functions 形态识别函数 CDL2CROWS - Two Crows 函数名：CDL2CROWS 名称：Two Crows 两只乌鸦 简介：三日K线模式，第一天长阳，第二天高开收阴，第三天再次高开继续" /><meta name="keywords" content="blog, computer, luoguochun" />
+<meta name="author" content="buf1024" /><meta name="description" content="Pattern Recognition Functions 形态识别函数 反转形态 CDLHAMMER - Hammer 函数名：CDLHAMMER 名称：Hammer 锤子线 简介： 属于反转形态 实体较小 下影线较长 , 通常是实体的2倍或以" /><meta name="keywords" content="blog, computer, luoguochun" />
 
 
 
@@ -39,25 +39,25 @@
 
 
 <meta property="og:title" content="13 形态识别(Pattern Recognition Functions)" />
-<meta property="og:description" content="Pattern Recognition Functions 形态识别函数 CDL2CROWS - Two Crows 函数名：CDL2CROWS 名称：Two Crows 两只乌鸦 简介：三日K线模式，第一天长阳，第二天高开收阴，第三天再次高开继续" />
+<meta property="og:description" content="Pattern Recognition Functions 形态识别函数 反转形态 CDLHAMMER - Hammer 函数名：CDLHAMMER 名称：Hammer 锤子线 简介： 属于反转形态 实体较小 下影线较长 , 通常是实体的2倍或以" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luoguochun.cn/talib-doc/func_groups/pattern_recognition/" /><meta property="article:published_time" content="2019-10-10T00:00:13&#43;08:00"/>
 <meta property="article:modified_time" content="2019-10-10T00:00:13&#43;08:00"/>
 
 <meta itemprop="name" content="13 形态识别(Pattern Recognition Functions)">
-<meta itemprop="description" content="Pattern Recognition Functions 形态识别函数 CDL2CROWS - Two Crows 函数名：CDL2CROWS 名称：Two Crows 两只乌鸦 简介：三日K线模式，第一天长阳，第二天高开收阴，第三天再次高开继续">
+<meta itemprop="description" content="Pattern Recognition Functions 形态识别函数 反转形态 CDLHAMMER - Hammer 函数名：CDLHAMMER 名称：Hammer 锤子线 简介： 属于反转形态 实体较小 下影线较长 , 通常是实体的2倍或以">
 
 
 <meta itemprop="datePublished" content="2019-10-10T00:00:13&#43;08:00" />
 <meta itemprop="dateModified" content="2019-10-10T00:00:13&#43;08:00" />
-<meta itemprop="wordCount" content="6007">
+<meta itemprop="wordCount" content="13383">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="13 形态识别(Pattern Recognition Functions)"/>
-<meta name="twitter:description" content="Pattern Recognition Functions 形态识别函数 CDL2CROWS - Two Crows 函数名：CDL2CROWS 名称：Two Crows 两只乌鸦 简介：三日K线模式，第一天长阳，第二天高开收阴，第三天再次高开继续"/>
+<meta name="twitter:description" content="Pattern Recognition Functions 形态识别函数 反转形态 CDLHAMMER - Hammer 函数名：CDLHAMMER 名称：Hammer 锤子线 简介： 属于反转形态 实体较小 下影线较长 , 通常是实体的2倍或以"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -127,20 +127,743 @@
 
 <h1 id="pattern-recognition-functions-形态识别函数">Pattern Recognition Functions 形态识别函数</h1>
 
-<h3 id="cdl2crows-two-crows">CDL2CROWS - Two Crows</h3>
+<h1 id="反转形态">反转形态</h1>
+
+<h3 id="cdlhammer-hammer">CDLHAMMER - Hammer</h3>
 
 <blockquote>
-<p>函数名：CDL2CROWS<br />
-名称：Two Crows 两只乌鸦<br />
-简介：三日K线模式，第一天长阳，第二天高开收阴，第三天再次高开继续收阴，
-收盘比前一日收盘价低，预示股价下跌。</p>
-</blockquote>
+<p>函数名：CDLHAMMER<br />
+名称：Hammer 锤子线<br />
+简介： 属于反转形态</p>
+
+<ol>
+<li>实体较小<br /></li>
+<li>下影线较长 , 通常是实体的2倍或以上<br /></li>
+<li>没有或者上影线较小<br /></li>
+<li>实体在上一根蜡烛低点之下或附近<br /></li>
+</ol>
+
+<p>注意锤子线在下降趋势才有意义，出现锤子线也不一定意味着反转形态成立，需要等待其他信号验证。调用传参时，需要连续一段k线数据才可以计算出结果</p>
+
+<p>返回 <strong>100</strong> 成立</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - small real body
+</span><span class="cm"> * - long lower shadow
+</span><span class="cm"> * - no, or very short, upper shadow
+</span><span class="cm"> * - body below or near the lows of the previous candle
+</span><span class="cm"> * The meaning of &#34;short&#34;, &#34;long&#34; and &#34;near the lows&#34; is specified with TA_SetCandleSettings;
+</span><span class="cm"> * outInteger is positive (1 to 100): hammer is always bullish;
+</span><span class="cm"> * the user should consider that a hammer must appear in a downtrend, while this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL2CROWS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHAMMER</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlhangingman-hanging-man">CDLHANGINGMAN - Hanging Man</h3>
+
+<blockquote>
+<p>函数名：CDLHANGINGMAN<br />
+名称：Hanging Man 上吊线<br />
+简介：属于反转形态</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">1. 实体较小   
+2. 下影线较长 , 通常是实体的2倍或以上  
+3. 没有或者上影线较小  
+4. 实体在上一根蜡烛高点之上或附近  </pre></td></tr></table>
+</div>
+</div>
+<p>注意锤子线在上升趋势才有意义，出现上吊线也不一定意味着反转形态成立，需要等待其他信号验证。<br />
+调用传参时，需要连续一段k线数据才可以计算出结果</p>
+
+<p>返回 <strong>-100</strong> 成立</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - small real body
+</span><span class="cm"> * - long lower shadow
+</span><span class="cm"> * - no, or very short, upper shadow
+</span><span class="cm"> * - body above or near the highs of the previous candle
+</span><span class="cm"> * The meaning of &#34;short&#34;, &#34;long&#34; and &#34;near the highs&#34; is specified with TA_SetCandleSettings;
+</span><span class="cm"> * outInteger is negative (-1 to -100): hanging man is always bearish;
+</span><span class="cm"> * the user should consider that a hanging man must appear in an uptrend, while this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHANGINGMAN</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlengulfing-engulfing-pattern">CDLENGULFING - Engulfing Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLENGULFING<br />
+名称：Engulfing Pattern 吞没形体(包线形态)<br />
+简介：属于反转形态</p>
+
+<ol>
+<li>第一个k线: 白 (黑) 实体</li>
+<li>第一个k线: 黑 (白) 实体，和第一根颜色相反，并且吞没第一根的实体</li>
+</ol>
+
+<ul>
+<li>outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish;</li>
+</ul>
+
+<p>吞没形体(包线形态)在明确的趋势下有意义，出现吞没形体(包线形态)也不一定意味着反转形态成立，需要等待其他信号验证。调用传参时，需要连续一段k线数据才可以计算出结果</p>
+
+<p>返回 <strong>100</strong> 看涨，返回<strong>-100</strong> 看跌</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first: black (white) real body
+</span><span class="cm"> * - second: white (black) real body that engulfs the prior real body
+</span><span class="cm"> * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish;
+</span><span class="cm"> * the user should consider that an engulfing must appear in a downtrend if bullish or in an uptrend if bearish,
+</span><span class="cm"> * while this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLENGULFING</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdldarkcloudcover-dark-cloud-cover">CDLDARKCLOUDCOVER - Dark Cloud Cover</h3>
+
+<blockquote>
+<p>函数名：CDLDARKCLOUDCOVER<br />
+名称：Dark Cloud Cover 乌云盖顶形态(乌云线形态)<br />
+简介：属于反转形态</p>
+
+<ol>
+<li>第一根K线: 长白线</li>
+<li>第二根K线: 黑线在前一天最高点之上开市，而收市深扎入前一根K线白线实体内(一般50%以上)</li>
+</ol>
+
+<p>乌云盖顶形态需要出现在明确的上升趋势中才有意义，乌云盖顶形态也不一定意味着反转形态成立，需要等待其他信号验证。调用传参时，需要连续一段k线数据才可以计算出结果</p>
+
+<p>返回 -1 到 -100，表示看跌的程度，0表示不符合该形态。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long white candle
+</span><span class="cm"> * - second candle: black candle that opens above previous day high and closes within previous day real body; 
+</span><span class="cm"> * Greg Morris wants the close to be below the midpoint of the previous real body
+</span><span class="cm"> * The meaning of &#34;long&#34; is specified with TA_SetCandleSettings, the penetration of the first real body is specified
+</span><span class="cm"> * with optInPenetration
+</span><span class="cm"> * outInteger is negative (-1 to -100): dark cloud cover is always bearish
+</span><span class="cm"> * the user should consider that a dark cloud cover is significant when it appears in an uptrend, while 
+</span><span class="cm"> * this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLDARKCLOUDCOVER</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlpiercing-piercing-pattern">CDLPIERCING - Piercing Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLPIERCING<br />
+名称：Piercing Pattern 刺透形态(斩回线形态) &ndash; 和乌云盖顶相反的形态<br />
+简介：属于反转形态</p>
+
+<ol>
+<li>第一根K线: 长黑线</li>
+<li>第二根K线: 长白线，在前一天最低点之下开市，而收市深扎入前一根K线黑线实体内(一般50%以上)</li>
+</ol>
+
+<p>刺透形态(斩回线形态) 需要出现在明确的上升趋势中才有意义，刺透形态(斩回线形态) 也不一定意味着反转形态成立，需要等待其他信号验证。调用传参时，需要连续一段k线数据才可以计算出结果</p>
+
+<p>返回 1 到 100，表示看涨的程度，0表示不符合该形态。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long black candle
+</span><span class="cm"> * - second candle: long white candle with open below previous day low and close at least at 50% of previous day 
+</span><span class="cm"> * real body
+</span><span class="cm"> * The meaning of &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100): piercing pattern is always bullish
+</span><span class="cm"> * the user should consider that a piercing pattern is significant when it appears in a downtrend, while 
+</span><span class="cm"> * this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLPIERCING</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="星线">星线</h1>
+
+<h3 id="cdlmorningstar-morning-star">CDLMORNINGSTAR - Morning Star</h3>
+
+<blockquote>
+<p>函数名：CDLMORNINGSTAR<br />
+名称：Morning Star 启明星形态(晨星)<br />
+简介：属于星线模式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long black real body
+</span><span class="cm"> * - second candle: star (Short real body gapping down)
+</span><span class="cm"> * - third candle: white real body that moves well within the first candle&#39;s real body
+</span><span class="cm"> * The meaning of &#34;short&#34; and &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * The meaning of &#34;moves well within&#34; is specified with optInPenetration and &#34;moves&#34; should mean the real body should
+</span><span class="cm"> * not be short (&#34;short&#34; is specified with TA_SetCandleSettings) - Greg Morris wants it to be long, someone else want
+</span><span class="cm"> * it to be relatively long
+</span><span class="cm"> * outInteger is positive (1 to 100): morning star is always bullish; 
+</span><span class="cm"> * the user should consider that a morning star is significant when it appears in a downtrend, 
+</span><span class="cm"> * while this function does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLMORNINGSTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdleveningstar-evening-star">CDLEVENINGSTAR - Evening Star</h3>
+
+<blockquote>
+<p>函数名：CDLEVENINGSTAR<br />
+名称：Evening Star 黄昏星形态(暮星)<br />
+简介：属于星线模式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long white real body
+</span><span class="cm"> * - second candle: star (short real body gapping up)
+</span><span class="cm"> * - third candle: black real body that moves well within the first candle&#39;s real body
+</span><span class="cm"> * The meaning of &#34;short&#34; and &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * The meaning of &#34;moves well within&#34; is specified with optInPenetration and &#34;moves&#34; should mean the real body should
+</span><span class="cm"> * not be short (&#34;short&#34; is specified with TA_SetCandleSettings) - Greg Morris wants it to be long, someone else want
+</span><span class="cm"> * it to be relatively long
+</span><span class="cm"> * outInteger is negative (-1 to -100): evening star is always bearish; 
+</span><span class="cm"> * the user should consider that an evening star is significant when it appears in an uptrend, 
+</span><span class="cm"> * while this function does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLEVENINGSTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlmorningdojistar-morning-doji-star">CDLMORNINGDOJISTAR - Morning Doji Star</h3>
+
+<blockquote>
+<p>函数名：CDLMORNINGDOJISTAR<br />
+名称：Morning Doji Star 十字启明星形态(十字晨星)<br />
+简介：属于星线模式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long black real body
+</span><span class="cm"> * - second candle: doji gapping down
+</span><span class="cm"> * - third candle: white real body that moves well within the first candle&#39;s real body
+</span><span class="cm"> * The meaning of &#34;doji&#34; and &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * The meaning of &#34;moves well within&#34; is specified with optInPenetration and &#34;moves&#34; should mean the real body should
+</span><span class="cm"> * not be short (&#34;short&#34; is specified with TA_SetCandleSettings) - Greg Morris wants it to be long, someone else want
+</span><span class="cm"> * it to be relatively long
+</span><span class="cm"> * outInteger is positive (1 to 100): morning doji star is always bullish;
+</span><span class="cm"> * the user should consider that a morning star is significant when it appears in a downtrend, 
+</span><span class="cm"> * while this function does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLMORNINGDOJISTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdleveningdojistar-evening-doji-star">CDLEVENINGDOJISTAR - Evening Doji Star</h3>
+
+<blockquote>
+<p>函数名：CDLEVENINGDOJISTAR<br />
+名称：Evening Doji Star 黄昏星形态(十字暮星)<br />
+简介：属于星线形态</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long white real body
+</span><span class="cm"> * - second candle: doji gapping up
+</span><span class="cm"> * - third candle: black real body that moves well within the first candle&#39;s real body
+</span><span class="cm"> * The meaning of &#34;doji&#34; and &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * The meaning of &#34;moves well within&#34; is specified with optInPenetration and &#34;moves&#34; should mean the real body should
+</span><span class="cm"> * not be short (&#34;short&#34; is specified with TA_SetCandleSettings) - Greg Morris wants it to be long, someone else want
+</span><span class="cm"> * it to be relatively long
+</span><span class="cm"> * outInteger is negative (-1 to -100): evening star is always bearish; 
+</span><span class="cm"> * the user should consider that an evening star is significant when it appears in an uptrend, 
+</span><span class="cm"> * while this function does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLEVENINGDOJISTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlabandonedbaby-abandoned-baby">CDLABANDONEDBABY - Abandoned Baby</h3>
+
+<blockquote>
+<p>函数名：CDLABANDONEDBABY<br />
+名称：Abandoned Baby 弃婴 &ndash; 跳空的十字星<br />
+简介：属于星线形态
+比较罕见。
+<a href="[https://baike.baidu.com/item/%E5%BC%83%E5%A9%B4%E5%BD%A2%E6%80%81/8610721?fr=aladdin](https://baike.baidu.com/item/弃婴形态/8610721?fr=aladdin)">弃婴形态</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long white (black) real body
+</span><span class="cm"> * - second candle: doji
+</span><span class="cm"> * - third candle: black (white) real body that moves well within the first candle&#39;s real body
+</span><span class="cm"> * - upside (downside) gap between the first candle and the doji (the shadows of the two candles don&#39; touch)
+</span><span class="cm"> * - downside (upside) gap between the doji and the third candle (the shadows of the two candles don&#39;t touch)
+</span><span class="cm"> * The meaning of &#34;doji&#34; and &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * The meaning of &#34;moves well within&#34; is specified with optInPenetration and &#34;moves&#34; should mean the real body should
+</span><span class="cm"> * not be short (&#34;short&#34; is specified with TA_SetCandleSettings) - Greg Morris wants it to be long, someone else want
+</span><span class="cm"> * it to be relatively long
+</span><span class="cm"> * outInteger is positive (1 to 100) when it&#39;s an abandoned baby bottom or negative (-1 to -100) when it&#39;s 
+</span><span class="cm"> * an abandoned baby top; the user should consider that an abandoned baby is significant when it appears in 
+</span><span class="cm"> * an uptrend or downtrend, while this function does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLABANDONEDBABY</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlshootingstar-shooting-star">CDLSHOOTINGSTAR - Shooting Star</h3>
+
+<blockquote>
+<p>函数名：CDLSHOOTINGSTAR<br />
+名称：Shooting Star 流星形态<br />
+简介：属于星线模式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - small real body
+</span><span class="cm"> * - long upper shadow
+</span><span class="cm"> * - no, or very short, lower shadow
+</span><span class="cm"> * - gap up from prior real body
+</span><span class="cm"> * The meaning of &#34;short&#34;, &#34;very short&#34; and &#34;long&#34; is specified with TA_SetCandleSettings;
+</span><span class="cm"> * outInteger is negative (-1 to -100): shooting star is always bearish;
+</span><span class="cm"> * the user should consider that a shooting star must appear in an uptrend, while this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLSHOOTINGSTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlinvertedhammer-inverted-hammer">CDLINVERTEDHAMMER - Inverted Hammer</h3>
+
+<blockquote>
+<p>函数名：CDLINVERTEDHAMMER<br />
+名称：Inverted Hammer 倒锤子形态<br />
+简介：属于星线模式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - small real body
+</span><span class="cm"> * - long upper shadow
+</span><span class="cm"> * - no, or very short, lower shadow
+</span><span class="cm"> * - gap down
+</span><span class="cm"> * The meaning of &#34;short&#34;, &#34;very short&#34; and &#34;long&#34; is specified with TA_SetCandleSettings;
+</span><span class="cm"> * outInteger is positive (1 to 100): inverted hammer is always bullish;
+</span><span class="cm"> * the user should consider that an inverted hammer must appear in a downtrend, while this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLINVERTEDHAMMER</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="其他反转形态">其他反转形态</h1>
+
+<h3 id="cdlharami-harami-pattern">CDLHARAMI - Harami Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLHARAMI<br />
+名称：Harami Pattern 孕线形态<br />
+简介：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long white (black) real body
+</span><span class="cm"> * - second candle: short real body totally engulfed by the first
+</span><span class="cm"> * The meaning of &#34;short&#34; and &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish; 
+</span><span class="cm"> * the user should consider that a harami is significant when it appears in a downtrend if bullish or 
+</span><span class="cm"> * in an uptrend when bearish, while this function does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHARAMI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlharamicross-harami-cross-pattern">CDLHARAMICROSS - Harami Cross Pattern</h3>
+
+<blockquote>
+<p>函数名：CDLHARAMICROSS<br />
+名称：Harami Cross Pattern 十字孕线形态<br />
+简介：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long white (black) real body
+</span><span class="cm"> * - second candle: doji totally engulfed by the first
+</span><span class="cm"> * The meaning of &#34;doji&#34; and &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish; 
+</span><span class="cm"> * the user should consider that a harami cross is significant when it appears in a downtrend if bullish or 
+</span><span class="cm"> * in an uptrend when bearish, while this function does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHARAMICROSS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlbelthold-belt-hold">CDLBELTHOLD - Belt-hold</h3>
+
+<blockquote>
+<p>函数名：CDLBELTHOLD<br />
+名称：Belt-hold 捉腰带线<br />
+简介：能具有看涨的意义，也可能具有看跌的意义。</p>
+
+<p><a href="[https://baike.baidu.com/item/%E6%8D%89%E8%85%B0%E5%B8%A6%E7%BA%BF/4752336?fr=aladdin](https://baike.baidu.com/item/捉腰带线/4752336?fr=aladdin)">捉腰带线</a></p>
+
+<p><a href="https://www.sohu.com/a/83288995_380811">你未必知道的K线技术——捉腰带线 </a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - long white (black) real body
+</span><span class="cm"> * - no or very short lower (upper) shadow
+</span><span class="cm"> * The meaning of &#34;long&#34; and &#34;very short&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when white (bullish), negative (-1 to -100) when black (bearish)
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLBELTHOLD</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlupsidegap2crows-upside-gap-two-crows">CDLUPSIDEGAP2CROWS - Upside Gap Two Crows</h3>
+
+<blockquote>
+<p>函数名：CDLUPSIDEGAP2CROWS<br />
+名称：Upside Gap Two Crows 向上跳空的两只乌鸦<br />
+简介：三日K线模式，第一日阳线，第二日跳空以高于第一日最高价开盘，
+收阴线，第三日开盘价高于第二日，收阴线，与第一日比仍有缺口。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: white candle, usually long
+</span><span class="cm"> * - second candle: small black real body
+</span><span class="cm"> * - gap between the first and the second candle&#39;s real bodies
+</span><span class="cm"> * - third candle: black candle with a real body that engulfs the preceding candle 
+</span><span class="cm"> *   and closes above the white candle&#39;s close
+</span><span class="cm"> * The meaning of &#34;short&#34; and &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is negative (-1 to -100): upside gap two crows is always bearish; 
+</span><span class="cm"> * the user should consider that an upside gap two crows is significant when it appears in an uptrend, 
+</span><span class="cm"> * while this function does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLUPSIDEGAP2CROWS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="cdl3blackcrows-three-black-crows">CDL3BLACKCROWS - Three Black Crows</h3>
@@ -148,9 +871,39 @@
 <blockquote>
 <p>函数名：CDL3BLACKCROWS<br />
 名称：Three Black Crows 三只乌鸦<br />
-简介：三日K线模式，连续三根阴线，每日收盘价都下跌且接近最低价，
-每日开盘价都在上根K线实体内，预示股价下跌。</p>
-</blockquote>
+简介：三日K线模式，又称暴跌三杰，又称满天风雨谱，股价大涨后出现连续阴线，连续三根阴线，每日收盘价都下跌且接近最低价，每日开盘价都在上根K线实体内，预示股价下跌。  表明一波行情已走到尽头，巨大的获利筹码等待着套现出局。</p>
+
+<p><a href="https://baike.baidu.com/item/暴跌三杰">暴跌三杰</a></p>
+
+<p><a href="https://wiki.mbalib.com/wiki/&quot;满天风雨&quot;谱">满天风雨</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - three consecutive and declining black candlesticks
+</span><span class="cm"> * - each candle must have no or very short lower shadow
+</span><span class="cm"> * - each candle after the first must open within the prior candle&#39;s real body
+</span><span class="cm"> * - the first candle&#39;s close should be under the prior white candle&#39;s high
+</span><span class="cm"> * The meaning of &#34;very short&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is negative (-1 to -100): three black crows is always bearish; 
+</span><span class="cm"> * the user should consider that 3 black crows is significant when it appears after a mature advance or at high levels, 
+</span><span class="cm"> * while this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
@@ -159,20 +912,227 @@
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3BLACKCROWS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="cdl3inside-three-inside-up-down">CDL3INSIDE - Three Inside Up/Down</h3>
+<h3 id="cdlcounterattack-counterattack">CDLCOUNTERATTACK - Counterattack</h3>
 
 <blockquote>
-<p>函数名：CDL3INSIDE<br />
-名称： Three Inside Up/Down 三内部上涨和下跌<br />
-简介：三日K线模式，母子信号+长K线，以三内部上涨为例，K线为阴阳阳，
-第三天收盘价高于第一天开盘价，第二天K线在第一天K线内部，预示着股价上涨。</p>
-</blockquote>
+<p>函数名：CDLCOUNTERATTACK<br />
+名称：Counterattack 反击线形态(约会线形态)<br />
+简介：二日K线模式，与分离线类似。</p>
+
+<p><a href="https://baike.baidu.com/item/反击线形态/2171338?fr=aladdin">反击线</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long black (white)
+</span><span class="cm"> * - second candle: long white (black) with close equal to the prior close
+</span><span class="cm"> * The meaning of &#34;equal&#34; and &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish;
+</span><span class="cm"> * the user should consider that counterattack is significant in a trend, while this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3INSIDE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLCOUNTERATTACK</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="持续形态">持续形态</h1>
+
+<h3 id="cdltasukigap-tasuki-gap">CDLTASUKIGAP - Tasuki Gap</h3>
+
+<blockquote>
+<p>函数名：CDLTASUKIGAP<br />
+名称：Tasuki Gap 向上跳空和向下跳空并列阴阳线<br />
+简介：三日K线模式，分上涨和下跌，以上升为例，
+前两日阳线，第二日跳空，第三日阴线，收盘价于缺口中，上升趋势持续。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - upside (downside) gap
+</span><span class="cm"> * - first candle after the window: white (black) candlestick
+</span><span class="cm"> * - second candle: black (white) candlestick that opens within the previous real body and closes under (above)
+</span><span class="cm"> *   the previous real body inside the gap
+</span><span class="cm"> * - the size of two real bodies should be near the same
+</span><span class="cm"> * The meaning of &#34;near&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish;
+</span><span class="cm"> * the user should consider that tasuki gap is significant when it appears in a trend, while this function does 
+</span><span class="cm"> * not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLTASUKIGAP</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlgapsidesidewhite-up-down-gap-side-by-side-white-lines">CDLGAPSIDESIDEWHITE - Up/Down-gap side-by-side white lines</h3>
+
+<blockquote>
+<p>函数名：CDLGAPSIDESIDEWHITE<br />
+名称：Up/Down-gap side-by-side white lines 跳空并列白色蜡烛线形态<br />
+简介：二日K线模式，上升趋势向上跳空，下跌趋势向下跳空,
+第一日与第二日有相同开盘价，实体长度差不多，则趋势持续。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - upside or downside gap (between the bodies)
+</span><span class="cm"> * - first candle after the window: white candlestick
+</span><span class="cm"> * - second candle after the window: white candlestick with similar size (near the same) and about the same 
+</span><span class="cm"> *   open (equal) of the previous candle
+</span><span class="cm"> * - the second candle does not close the window
+</span><span class="cm"> * The meaning of &#34;near&#34; and &#34;equal&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) or negative (-1 to -100): the user should consider that upside 
+</span><span class="cm"> * or downside gap side-by-side white lines is significant when it appears in a trend, while this function 
+</span><span class="cm"> * does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLGAPSIDESIDEWHITE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlrisefall3methods-rising-falling-three-methods">CDLRISEFALL3METHODS - Rising/Falling Three Methods</h3>
+
+<blockquote>
+<p>函数名：CDLRISEFALL3METHODS
+名称：Rising/Falling Three Methods 上升三法和下降三法形态<br />
+简介： 五日K线模式，以上升三法为例，上涨趋势中，
+第一日长阳线，中间三日价格在第一日范围内小幅震荡，
+第五日长阳线，收盘价高于第一日收盘价，预示股价上升。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long white (black) candlestick
+</span><span class="cm"> * - then: group of falling (rising) small real body candlesticks (commonly black (white)) that hold within 
+</span><span class="cm"> *   the prior long candle&#39;s range: ideally they should be three but two or more than three are ok too
+</span><span class="cm"> * - final candle: long white (black) candle that opens above (below) the previous small candle&#39;s close 
+</span><span class="cm"> *   and closes above (below) the first long candle&#39;s close
+</span><span class="cm"> * The meaning of &#34;short&#34; and &#34;long&#34; is specified with TA_SetCandleSettings; here only patterns with 3 small candles
+</span><span class="cm"> * are considered;
+</span><span class="cm"> * outInteger is positive (1 to 100) or negative (-1 to -100)
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLRISEFALL3METHODS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdl3whitesoldiers-three-advancing-white-soldiers">CDL3WHITESOLDIERS - Three Advancing White Soldiers</h3>
+
+<blockquote>
+<p>函数名：CDL3WHITESOLDIERS<br />
+名称：Three Advancing White Soldiers 前进白色三兵形态<br />
+简介：三日K线模式，三日K线皆阳，
+每日收盘价变高且接近最高价，开盘价在前一日实体上半部，预示股价上升。</p>
+
+<p><a href="https://www.sohu.com/a/145377879_109022">三个白兵</a></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm">* Must have:
+</span><span class="cm">* - three white candlesticks with consecutively higher closes
+</span><span class="cm">* - Greg Morris wants them to be long, Steve Nison doesn&#39;t; anyway they should not be short
+</span><span class="cm">* - each candle opens within or near the previous white real body 
+</span><span class="cm">* - each candle must have no or very short upper shadow
+</span><span class="cm">* - to differentiate this pattern from advance block, each candle must not be far shorter than the prior candle
+</span><span class="cm">* The meanings of &#34;not short&#34;, &#34;very short shadow&#34;, &#34;far&#34; and &#34;near&#34; are specified with TA_SetCandleSettings;
+</span><span class="cm">* here the 3 candles must be not short, if you want them to be long use TA_SetCandleSettings on BodyShort;
+</span><span class="cm">* outInteger is positive (1 to 100): advancing 3 white soldiers is always bullish;
+</span><span class="cm">* the user should consider that 3 white soldiers is significant when it appears in downtrend, while this function 
+</span><span class="cm">* does not consider it
+</span><span class="cm">*/</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3WHITESOLDIERS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="cdl3linestrike-three-line-strike">CDL3LINESTRIKE - Three-Line Strike</h3>
@@ -181,14 +1141,411 @@
 <p>函数名：CDL3LINESTRIKE<br />
 名称： Three-Line Strike 三线打击<br />
 简介：四日K线模式，前三根阳线，每日收盘价都比前一日高，
-开盘价在前一日实体内，第四日市场高开，收盘价低于第一日开盘价，预示股价下跌。</p>
+开盘价在前一日实体内，第四日市场高开，收盘价低于第一日开盘价。三线打击”形态的出现不能简单地理解为将出现短线反弹，这种形态的神奇意义就在于其指示的往往都是中线涨升行情。</p>
+
+<p><a href="http://www.360doc.com/content/14/0618/13/2788984_387739599.shtml">k线形态之三线打击</a></p>
 </blockquote>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - three white soldiers (three black crows): three white (black) candlesticks with consecutively higher (lower) closes,
+</span><span class="cm"> * each opening within or near the previous real body
+</span><span class="cm"> * - fourth candle: black (white) candle that opens above (below) prior candle&#39;s close and closes below (above) 
+</span><span class="cm"> * the first candle&#39;s open
+</span><span class="cm"> * The meaning of &#34;near&#34; is specified with TA_SetCandleSettings;
+</span><span class="cm"> * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish;
+</span><span class="cm"> * the user should consider that 3-line strike is significant when it appears in a trend in the same direction of
+</span><span class="cm"> * the first three candles, while this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3LINESTRIKE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="神奇的十字线">神奇的十字线</h1>
+
+<h3 id="cdldoji-doji">CDLDOJI - Doji</h3>
+
+<blockquote>
+<p>函数名：CDLDOJI<br />
+名称：Doji 十字<br />
+简介：一日K线模式，开盘价与收盘价基本相同。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> *
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - open quite equal to close
+</span><span class="cm"> * How much can be the maximum distance between open and close is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is always positive (1 to 100) but this does not mean it is bullish: doji shows uncertainty and it is
+</span><span class="cm"> * neither bullish nor bearish when considered alone
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLDOJI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdldojistar-doji-star">CDLDOJISTAR - Doji Star</h3>
+
+<blockquote>
+<p>函数名：CDLDOJISTAR<br />
+名称：Doji Star 十字星<br />
+简介：一日K线模式，开盘价与收盘价基本相同，上下影线不会很长，预示着当前趋势反转。</p>
+
+<p><a href="https://baike.baidu.com/item/十字星/3686079?fr=aladdin">十字星</a></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long real body
+</span><span class="cm"> * - second candle: star (open gapping up in an uptrend or down in a downtrend) with a doji
+</span><span class="cm"> * The meaning of &#34;doji&#34; and &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish; 
+</span><span class="cm"> * it&#39;s defined bullish when the long candle is white and the star gaps up, bearish when the long candle 
+</span><span class="cm"> * is black and the star gaps down; the user should consider that a doji star is bullish when it appears 
+</span><span class="cm"> * in an uptrend and it&#39;s bearish when it appears in a downtrend, so to determine the bullishness or 
+</span><span class="cm"> * bearishness of the pattern the trend must be analyzed
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLDOJISTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlgravestonedoji-gravestone-doji">CDLGRAVESTONEDOJI - Gravestone Doji</h3>
+
+<blockquote>
+<p>函数名：CDLGRAVESTONEDOJI<br />
+名称：Gravestone Doji 墓碑十字线<br />
+简介：一日K线模式，开盘价与收盘价相同，上影线长，无下影线，预示底部反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> *
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - doji body
+</span><span class="cm"> * - open and close at the low of the day = no or very short lower shadow
+</span><span class="cm"> * - upper shadow (to distinguish from other dojis, here upper shadow should not be very short)
+</span><span class="cm"> * The meaning of &#34;doji&#34; and &#34;very short&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is always positive (1 to 100) but this does not mean it is bullish: gravestone doji must be considered
+</span><span class="cm"> * relatively to the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLGRAVESTONEDOJI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdldragonflydoji-dragonfly-doji">CDLDRAGONFLYDOJI - Dragonfly Doji</h3>
+
+<blockquote>
+<p>函数名：CDLDRAGONFLYDOJI<br />
+名称：Dragonfly Doji 蜻蜓十字/T形十字<br />
+简介：一日K线模式，开盘后价格一路走低，
+之后收复，收盘价与开盘价相同，预示趋势反转。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> *
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - doji body
+</span><span class="cm"> * - open and close at the high of the day = no or very short upper shadow
+</span><span class="cm"> * - lower shadow (to distinguish from other dojis, here lower shadow should not be very short)
+</span><span class="cm"> * The meaning of &#34;doji&#34; and &#34;very short&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is always positive (1 to 100) but this does not mean it is bullish: dragonfly doji must be considered
+</span><span class="cm"> * relatively to the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLDRAGONFLYDOJI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdltakuri-takuri-dragonfly-doji-with-very-long-lower-shadow">CDLTAKURI - Takuri (Dragonfly Doji with very long lower shadow)</h3>
+
+<blockquote>
+<p>函数名：CDLTAKURI<br />
+名称：Takuri (Dragonfly Doji with very long lower shadow)  探水竿<br />
+简介：一日K线模式，大致与蜻蜓十字相同，下影线长度长。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> *
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - doji body
+</span><span class="cm"> * - open and close at the high of the day = no or very short upper shadow
+</span><span class="cm"> * - very long lower shadow
+</span><span class="cm"> * The meaning of &#34;doji&#34;, &#34;very short&#34; and &#34;very long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is always positive (1 to 100) but this does not mean it is bullish: takuri must be considered
+</span><span class="cm"> * relatively to the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLTAKURI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdllongleggeddoji-long-legged-doji">CDLLONGLEGGEDDOJI - Long Legged Doji</h3>
+
+<blockquote>
+<p>函数名：CDLLONGLEGGEDDOJI<br />
+名称：Long Legged Doji 长脚十字<br />
+简介：一日K线模式，开盘价与收盘价相同居当日价格中部，上下影线长，
+表达市场不确定性。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> *
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - doji body
+</span><span class="cm"> * - one or two long shadows
+</span><span class="cm"> * The meaning of &#34;doji&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is always positive (1 to 100) but this does not mean it is bullish: long legged doji shows uncertainty
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLLONGLEGGEDDOJI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdlrickshawman-rickshaw-man">CDLRICKSHAWMAN - Rickshaw Man</h3>
+
+<blockquote>
+<p>函数名：CDLRICKSHAWMAN<br />
+名称：Rickshaw Man 黄包车夫<br />
+简介：一日K线模式，与长腿十字线类似，
+若实体正好处于价格振幅中点，称为黄包车夫。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> *
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - doji body
+</span><span class="cm"> * - two long shadows
+</span><span class="cm"> * - body near the midpoint of the high-low range
+</span><span class="cm"> * The meaning of &#34;doji&#34; and &#34;near&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is always positive (1 to 100) but this does not mean it is bullish: rickshaw man shows uncertainty
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLRICKSHAWMAN</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="其他未归类">其他未归类</h1>
+
+<h3 id="cdl2crows-two-crows">CDL2CROWS - Two Crows</h3>
+
+<blockquote>
+<p>函数名：CDL2CROWS<br />
+名称：Two Crows 两只乌鸦<br />
+简介：三日K线模式，第一天长阳，第二天高开收阴，留下向上跳空缺口，第三天再次高开在第二天蜡烛线实体内开盘，然后一路下滑，弥补第二天向上跳空的缺口，突破到第一天的实体部分内，继续收阴，
+说明市场原有的上升趋势将出现反转，两只乌鸦形态只能预测顶部反转和熊市反转。</p>
+
+<p><a href="http://www.yingjia360.com/kxtj/2014-11-15/11910.html">两只乌鸦Ｋ线形态分析</a></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long white candle
+</span><span class="cm"> * - second candle: black real body
+</span><span class="cm"> * - gap between the first and the second candle&#39;s real bodies
+</span><span class="cm"> * - third candle: black candle that opens within the second real body and closes within the first real body
+</span><span class="cm"> * The meaning of &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is negative (-1 to -100): two crows is always bearish; 
+</span><span class="cm"> * the user should consider that two crows is significant when it appears in an uptrend, while this function 
+</span><span class="cm"> * does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL2CROWS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdl3inside-three-inside-up-down">CDL3INSIDE - Three Inside Up/Down</h3>
+
+<blockquote>
+<p>函数名：CDL3INSIDE<br />
+名称： Three Inside Up/Down 三内部上涨和下跌<br />
+简介：三日K线模式，母子信号+长K线，预示趋势的反转。</p>
+
+<p><a href="https://www.jinse.com/bitcoin/313253.html">三内部上涨和下跌</a></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long white (black) real body
+</span><span class="cm"> * - second candle: short real body totally engulfed by the first
+</span><span class="cm"> * - third candle: black (white) candle that closes lower (higher) than the first candle&#39;s open
+</span><span class="cm"> * The meaning of &#34;short&#34; and &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) for the three inside up or negative (-1 to -100) for the three inside down; 
+</span><span class="cm"> * the user should consider that a three inside up is significant when it appears in a downtrend and a three inside
+</span><span class="cm"> * down is significant when it appears in an uptrend, while this function does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3INSIDE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="cdl3outside-three-outside-up-down">CDL3OUTSIDE - Three Outside Up/Down</h3>
@@ -201,10 +1558,80 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c">   <span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm">    * Must have:
+</span><span class="cm">    * - first: black (white) real body
+</span><span class="cm">    * - second: white (black) real body that engulfs the prior real body
+</span><span class="cm">    * - third: candle that closes higher (lower) than the second candle
+</span><span class="cm">    * outInteger is positive (1 to 100) for the three outside up or negative (-1 to -100) for the three outside down;
+</span><span class="cm">    * the user should consider that a three outside up must appear in a downtrend and three outside down must appear
+</span><span class="cm">    * in an uptrend, while this function does not consider it
+</span><span class="cm">    */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3OUTSIDE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="cdladvanceblock-advance-block">CDLADVANCEBLOCK - Advance Block</h3>
+
+<blockquote>
+<p>函数名：CDLADVANCEBLOCK<br />
+名称：Advance Block 大敌当前<br />
+简介：三日K线模式，三日都收阳，每日收盘价都比前一日高，
+开盘价都在前一日实体以内，实体变短，上影线变长。  空方力量逐步发展壮大。</p>
+
+<p><a href="http://www.yingjia360.com/kxzh/2015-08-08/21601.html">大敌当前K线形态</a></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - three white candlesticks with consecutively higher closes
+</span><span class="cm"> * - each candle opens within or near the previous white real body 
+</span><span class="cm"> * - first candle: long white with no or very short upper shadow (a short shadow is accepted too for more flexibility)
+</span><span class="cm"> * - second and third candles, or only third candle, show signs of weakening: progressively smaller white real bodies 
+</span><span class="cm"> * and/or relatively long upper shadows; see below for specific conditions
+</span><span class="cm"> * The meanings of &#34;long body&#34;, &#34;short shadow&#34;, &#34;far&#34; and &#34;near&#34; are specified with TA_SetCandleSettings;
+</span><span class="cm"> * outInteger is negative (-1 to -100): advance block is always bearish;
+</span><span class="cm"> * the user should consider that advance block is significant when it appears in uptrend, while this function 
+</span><span class="cm"> * does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLADVANCEBLOCK</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="cdl3starsinsouth-three-stars-in-the-south">CDL3STARSINSOUTH - Three Stars In The South</h3>
@@ -218,74 +1645,37 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long black candle with long lower shadow
+</span><span class="cm"> * - second candle: smaller black candle that opens higher than prior close but within prior candle&#39;s range 
+</span><span class="cm"> *   and trades lower than prior close but not lower than prior low and closes off of its low (it has a shadow)
+</span><span class="cm"> * - third candle: small black marubozu (or candle with very short shadows) engulfed by prior candle&#39;s range
+</span><span class="cm"> * The meanings of &#34;long body&#34;, &#34;short body&#34;, &#34;very short shadow&#34; are specified with TA_SetCandleSettings;
+</span><span class="cm"> * outInteger is positive (1 to 100): 3 stars in the south is always bullish;
+</span><span class="cm"> * the user should consider that 3 stars in the south is significant when it appears in downtrend, while this function 
+</span><span class="cm"> * does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3STARSINSOUTH</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdl3whitesoldiers-three-advancing-white-soldiers">CDL3WHITESOLDIERS - Three Advancing White Soldiers</h3>
-
-<blockquote>
-<p>函数名：CDL3WHITESOLDIERS<br />
-名称：Three Advancing White Soldiers 三个白兵<br />
-简介：三日K线模式，三日K线皆阳，
-每日收盘价变高且接近最高价，开盘价在前一日实体上半部，预示股价上升。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDL3WHITESOLDIERS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlabandonedbaby-abandoned-baby">CDLABANDONEDBABY - Abandoned Baby</h3>
-
-<blockquote>
-<p>函数名：CDLABANDONEDBABY<br />
-名称：Abandoned Baby 弃婴<br />
-简介：三日K线模式，第二日价格跳空且收十字星（开盘价与收盘价接近，
-最高价最低价相差不大），预示趋势反转，发生在顶部下跌，底部上涨。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLABANDONEDBABY</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdladvanceblock-advance-block">CDLADVANCEBLOCK - Advance Block</h3>
-
-<blockquote>
-<p>函数名：CDLADVANCEBLOCK<br />
-名称：Advance Block 大敌当前<br />
-简介：三日K线模式，三日都收阳，每日收盘价都比前一日高，
-开盘价都在前一日实体以内，实体变短，上影线变长。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLADVANCEBLOCK</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlbelthold-belt-hold">CDLBELTHOLD - Belt-hold</h3>
-
-<blockquote>
-<p>函数名：CDLBELTHOLD<br />
-名称：Belt-hold 捉腰带线<br />
-简介：两日K线模式，下跌趋势中，第一日阴线，
-第二日开盘价为最低价，阳线，收盘价接近最高价，预示价格上涨。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLBELTHOLD</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="cdlbreakaway-breakaway">CDLBREAKAWAY - Breakaway</h3>
@@ -293,10 +1683,40 @@
 <blockquote>
 <p>函数名：CDLBREAKAWAY<br />
 名称：Breakaway 脱离<br />
-简介：五日K线模式，以看涨脱离为例，下跌趋势中，第一日长阴线，第二日跳空阴线，延续趋势开始震荡，
-第五日长阳线，收盘价在第一天收盘价与第二天开盘价之间，预示价格上涨。</p>
+简介：五日K线模式，以看涨脱离为例，下跌趋势中，第一日长阴线，第二日跳空阴线，延续趋势开始震荡，第五日长阳线，收盘价在第一天收盘价与第二天开盘价之间，预示价格上涨。   同样也有下跌分离。</p>
+
+<p><a href="https://www.sohu.com/a/145377187_109022">K线形态详解之分离线</a></p>
 </blockquote>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long black (white)
+</span><span class="cm"> * - second candle: black (white) day whose body gaps down (up)
+</span><span class="cm"> * - third candle: black or white day with lower (higher) high and lower (higher) low than prior candle&#39;s
+</span><span class="cm"> * - fourth candle: black (white) day with lower (higher) high and lower (higher) low than prior candle&#39;s
+</span><span class="cm"> * - fifth candle: white (black) day that closes inside the gap, erasing the prior 3 days
+</span><span class="cm"> * The meaning of &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish;
+</span><span class="cm"> * the user should consider that breakaway is significant in a trend opposite to the last candle, while this 
+</span><span class="cm"> * function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
@@ -314,6 +1734,25 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - long white (black) real body
+</span><span class="cm"> * - no or very short upper (lower) shadow
+</span><span class="cm"> * The meaning of &#34;long&#34; and &#34;very short&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when white (bullish), negative (-1 to -100) when black (bearish)
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
@@ -325,234 +1764,43 @@
 <blockquote>
 <p>函数名：CDLCONCEALBABYSWALL<br />
 名称： Concealing Baby Swallow 藏婴吞没<br />
-简介：四日K线模式，下跌趋势中，前两日阴线无影线
-，第二日开盘、收盘价皆低于第二日，第三日倒锤头，
-第四日开盘价高于前一日最高价，收盘价低于前一日最低价，预示着底部反转。</p>
+简介：四日K线模式，下跌趋势中，前两日阴线无影线，第二日开盘、收盘价皆低于第二日，第三日倒锤头，第四日开盘价高于前一日最高价，收盘价低于前一日最低价，预示着底部反转。</p>
 </blockquote>
+
+<p><a href="http://www.yingjia360.com/kxtj/2014-11-17/11957.html">藏婴吞没形态的变化及简化</a></p>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: black marubozu (very short shadows)
+</span><span class="cm"> * - second candle: black marubozu (very short shadows)
+</span><span class="cm"> * - third candle: black candle that opens gapping down but has an upper shadow that extends into the prior body
+</span><span class="cm"> * - fourth candle: black candle that completely engulfs the third candle, including the shadows
+</span><span class="cm"> * The meanings of &#34;very short shadow&#34; are specified with TA_SetCandleSettings;
+</span><span class="cm"> * outInteger is positive (1 to 100): concealing baby swallow is always bullish;
+</span><span class="cm"> * the user should consider that concealing baby swallow is significant when it appears in downtrend, while 
+</span><span class="cm"> * this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLCONCEALBABYSWALL</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlcounterattack-counterattack">CDLCOUNTERATTACK - Counterattack</h3>
-
-<blockquote>
-<p>函数名：CDLCOUNTERATTACK<br />
-名称：Counterattack 反击线<br />
-简介：二日K线模式，与分离线类似。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLCOUNTERATTACK</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdldarkcloudcover-dark-cloud-cover">CDLDARKCLOUDCOVER - Dark Cloud Cover</h3>
-
-<blockquote>
-<p>函数名：CDLDARKCLOUDCOVER<br />
-名称：Dark Cloud Cover 乌云压顶<br />
-简介：二日K线模式，第一日长阳，第二日开盘价高于前一日最高价，
-收盘价处于前一日实体中部以下，预示着股价下跌。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLDARKCLOUDCOVER</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdldoji-doji">CDLDOJI - Doji</h3>
-
-<blockquote>
-<p>函数名：CDLDOJI<br />
-名称：Doji 十字<br />
-简介：一日K线模式，开盘价与收盘价基本相同。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLDOJI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdldojistar-doji-star">CDLDOJISTAR - Doji Star</h3>
-
-<blockquote>
-<p>函数名：CDLDOJISTAR<br />
-名称：Doji Star 十字星<br />
-简介：一日K线模式，开盘价与收盘价基本相同，上下影线不会很长，预示着当前趋势反转。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLDOJISTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdldragonflydoji-dragonfly-doji">CDLDRAGONFLYDOJI - Dragonfly Doji</h3>
-
-<blockquote>
-<p>函数名：CDLDRAGONFLYDOJI<br />
-名称：Dragonfly Doji 蜻蜓十字/T形十字<br />
-简介：一日K线模式，开盘后价格一路走低，
-之后收复，收盘价与开盘价相同，预示趋势反转。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLDRAGONFLYDOJI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlengulfing-engulfing-pattern">CDLENGULFING - Engulfing Pattern</h3>
-
-<blockquote>
-<p>函数名：CDLENGULFING<br />
-名称：Engulfing Pattern 吞噬模式<br />
-简介：两日K线模式，分多头吞噬和空头吞噬，以多头吞噬为例，第一日为阴线，
-第二日阳线，第一日的开盘价和收盘价在第二日开盘价收盘价之内，但不能完全相同。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLENGULFING</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdleveningdojistar-evening-doji-star">CDLEVENINGDOJISTAR - Evening Doji Star</h3>
-
-<blockquote>
-<p>函数名：CDLEVENINGDOJISTAR<br />
-名称：Evening Doji Star 十字暮星<br />
-简介：三日K线模式，基本模式为暮星，第二日收盘价和开盘价相同，预示顶部反转。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLEVENINGDOJISTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdleveningstar-evening-star">CDLEVENINGSTAR - Evening Star</h3>
-
-<blockquote>
-<p>函数名：CDLEVENINGSTAR<br />
-名称：Evening Star 暮星<br />
-简介：三日K线模式，与晨星相反，上升趋势中,
-第一日阳线，第二日价格振幅较小，第三日阴线，预示顶部反转。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLEVENINGSTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlgapsidesidewhite-up-down-gap-side-by-side-white-lines">CDLGAPSIDESIDEWHITE - Up/Down-gap side-by-side white lines</h3>
-
-<blockquote>
-<p>函数名：CDLGAPSIDESIDEWHITE<br />
-名称：Up/Down-gap side-by-side white lines 向上/下跳空并列阳线<br />
-简介：二日K线模式，上升趋势向上跳空，下跌趋势向下跳空,
-第一日与第二日有相同开盘价，实体长度差不多，则趋势持续。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLGAPSIDESIDEWHITE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlgravestonedoji-gravestone-doji">CDLGRAVESTONEDOJI - Gravestone Doji</h3>
-
-<blockquote>
-<p>函数名：CDLGRAVESTONEDOJI<br />
-名称：Gravestone Doji 墓碑十字/倒T十字<br />
-简介：一日K线模式，开盘价与收盘价相同，上影线长，无下影线，预示底部反转。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLGRAVESTONEDOJI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlhammer-hammer">CDLHAMMER - Hammer</h3>
-
-<blockquote>
-<p>函数名：CDLHAMMER<br />
-名称：Hammer 锤头<br />
-简介：一日K线模式，实体较短，无上影线，
-下影线大于实体长度两倍，处于下跌趋势底部，预示反转。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHAMMER</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlhangingman-hanging-man">CDLHANGINGMAN - Hanging Man</h3>
-
-<blockquote>
-<p>函数名：CDLHANGINGMAN<br />
-名称：Hanging Man 上吊线<br />
-简介：一日K线模式，形状与锤子类似，处于上升趋势的顶部，预示着趋势反转。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHANGINGMAN</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlharami-harami-pattern">CDLHARAMI - Harami Pattern</h3>
-
-<blockquote>
-<p>函数名：CDLHARAMI<br />
-名称：Harami Pattern 母子线<br />
-简介：二日K线模式，分多头母子与空头母子，两者相反，以多头母子为例，在下跌趋势中，第一日K线长阴，
-第二日开盘价收盘价在第一日价格振幅之内，为阳线，预示趋势反转，股价上升。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHARAMI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlharamicross-harami-cross-pattern">CDLHARAMICROSS - Harami Cross Pattern</h3>
-
-<blockquote>
-<p>函数名：CDLHARAMICROSS<br />
-名称：Harami Cross Pattern 十字孕线<br />
-简介：二日K线模式，与母子县类似，若第二日K线是十字线，
-便称为十字孕线，预示着趋势反转。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHARAMICROSS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="cdlhighwave-high-wave-candle">CDLHIGHWAVE - High-Wave Candle</h3>
@@ -563,6 +1811,27 @@
 简介：三日K线模式，具有极长的上/下影线与短的实体，预示着趋势反转。</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - short real body
+</span><span class="cm"> * - very long upper and lower shadow
+</span><span class="cm"> * The meaning of &#34;short&#34; and &#34;very long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when white or negative (-1 to -100) when black;
+</span><span class="cm"> * it does not mean bullish or bearish
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
@@ -579,13 +1848,40 @@
 第三日收盘价高于前两日，反转失败，趋势继续。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first and second candle: inside bar (2nd has lower high and higher low than 1st)
+</span><span class="cm"> * - third candle: lower high and lower low than 2nd (higher high and higher low than 2nd)
+</span><span class="cm"> * outInteger[hikkakebar] is positive (1 to 100) or negative (-1 to -100) meaning bullish or bearish hikkake
+</span><span class="cm"> * Confirmation could come in the next 3 days with:
+</span><span class="cm"> * - a day that closes higher than the high (lower than the low) of the 2nd candle
+</span><span class="cm"> * outInteger[confirmationbar] is equal to 100 + the bullish hikkake result or -100 - the bearish hikkake result
+</span><span class="cm"> * Note: if confirmation and a new hikkake come at the same bar, only the new hikkake is reported (the new hikkake
+</span><span class="cm"> * overwrites the confirmation of the old hikkake)
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHIKKAKE</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
-</div></blockquote>
-
+</div>
 <h3 id="cdlhikkakemod-modified-hikkake-pattern">CDLHIKKAKEMOD - Modified Hikkake Pattern</h3>
 
 <blockquote>
@@ -595,13 +1891,50 @@
 下跌趋势中，第三日跳空低开，反转失败，趋势继续。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle
+</span><span class="cm"> * - second candle: candle with range less than first candle and close near the bottom (near the top)
+</span><span class="cm"> * - third candle: lower high and higher low than 2nd
+</span><span class="cm"> * - fourth candle: lower high and lower low (higher high and higher low) than 3rd
+</span><span class="cm"> * outInteger[hikkake bar] is positive (1 to 100) or negative (-1 to -100) meaning bullish or bearish hikkake
+</span><span class="cm"> * Confirmation could come in the next 3 days with:
+</span><span class="cm"> * - a day that closes higher than the high (lower than the low) of the 3rd candle
+</span><span class="cm"> * outInteger[confirmationbar] is equal to 100 + the bullish hikkake result or -100 - the bearish hikkake result
+</span><span class="cm"> * Note: if confirmation and a new hikkake come at the same bar, only the new hikkake is reported (the new hikkake
+</span><span class="cm"> * overwrites the confirmation of the old hikkake);
+</span><span class="cm"> * the user should consider that modified hikkake is a reversal pattern, while hikkake could be both a reversal 
+</span><span class="cm"> * or a continuation pattern, so bullish (bearish) modified hikkake is significant when appearing in a downtrend 
+</span><span class="cm"> * (uptrend)
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLHIKKAKEMOD</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
-</div></blockquote>
-
+</div>
 <h3 id="cdlhomingpigeon-homing-pigeon">CDLHOMINGPIGEON - Homing Pigeon</h3>
 
 <blockquote>
@@ -611,6 +1944,29 @@
 第二日最高价、最低价都在第一日实体之内，预示着趋势反转。</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long black candle
+</span><span class="cm"> * - second candle: short black real body completely inside the previous day&#39;s body
+</span><span class="cm"> * The meaning of &#34;short&#34; and &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100): homing pigeon is always bullish; 
+</span><span class="cm"> * the user should consider that homing pigeon is significant when it appears in a downtrend,
+</span><span class="cm"> * while this function does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
@@ -628,6 +1984,33 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - three consecutive and declining black candlesticks
+</span><span class="cm"> * - each candle must have no or very short lower shadow
+</span><span class="cm"> * - each candle after the first must open at or very close to the prior candle&#39;s close
+</span><span class="cm"> * The meaning of &#34;very short&#34; is specified with TA_SetCandleSettings;
+</span><span class="cm"> * the meaning of &#34;very close&#34; is specified with TA_SetCandleSettings (Equal);
+</span><span class="cm"> * outInteger is negative (-1 to -100): identical three crows is always bearish; 
+</span><span class="cm"> * the user should consider that identical 3 crows is significant when it appears after a mature advance or at high levels, 
+</span><span class="cm"> * while this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
@@ -644,26 +2027,33 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLINNECK</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long black candle
+</span><span class="cm"> * - second candle: white candle with open below previous day low and close slightly into previous day body
+</span><span class="cm"> * The meaning of &#34;equal&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is negative (-1 to -100): in-neck is always bearish
+</span><span class="cm"> * the user should consider that in-neck is significant when it appears in a downtrend, while this function 
+</span><span class="cm"> * does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="cdlinvertedhammer-inverted-hammer">CDLINVERTEDHAMMER - Inverted Hammer</h3>
-
-<blockquote>
-<p>函数名：CDLINVERTEDHAMMER<br />
-名称：Inverted Hammer 倒锤头<br />
-简介：一日K线模式，上影线较长，长度为实体2倍以上，
-无下影线，在下跌趋势底部，预示着趋势反转。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLINVERTEDHAMMER</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLINNECK</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="cdlkicking-kicking">CDLKICKING - Kicking</h3>
@@ -674,6 +2064,27 @@
 简介：二日K线模式，与分离线类似，两日K线为秃线，颜色相反，存在跳空缺口。</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: marubozu
+</span><span class="cm"> * - second candle: opposite color marubozu
+</span><span class="cm"> * - gap between the two candles: upside gap if black then white, downside gap if white then black
+</span><span class="cm"> * The meaning of &#34;long body&#34; and &#34;very short shadow&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
@@ -689,6 +2100,29 @@
 简介：二日K线模式，与反冲形态类似，较长缺影线决定价格的涨跌。</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: marubozu
+</span><span class="cm"> * - second candle: opposite color marubozu
+</span><span class="cm"> * - gap between the two candles: upside gap if black then white, downside gap if white then black
+</span><span class="cm"> * The meaning of &#34;long body&#34; and &#34;very short shadow&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish; the longer of the two
+</span><span class="cm"> * marubozu determines the bullishness or bearishness of this pattern
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
@@ -707,26 +2141,35 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLLADDERBOTTOM</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - three black candlesticks with consecutively lower opens and closes
+</span><span class="cm"> * - fourth candle: black candle with an upper shadow (it&#39;s supposed to be not very short)
+</span><span class="cm"> * - fifth candle: white candle that opens above prior candle&#39;s body and closes above prior candle&#39;s high
+</span><span class="cm"> * The meaning of &#34;very short&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100): ladder bottom is always bullish; 
+</span><span class="cm"> * the user should consider that ladder bottom is significant when it appears in a downtrend, 
+</span><span class="cm"> * while this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="cdllongleggeddoji-long-legged-doji">CDLLONGLEGGEDDOJI - Long Legged Doji</h3>
-
-<blockquote>
-<p>函数名：CDLLONGLEGGEDDOJI<br />
-名称：Long Legged Doji 长脚十字<br />
-简介：一日K线模式，开盘价与收盘价相同居当日价格中部，上下影线长，
-表达市场不确定性。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLLONGLEGGEDDOJI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLLADDERBOTTOM</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="cdllongline-long-line-candle">CDLLONGLINE - Long Line Candle</h3>
@@ -738,6 +2181,25 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - long real body
+</span><span class="cm"> * - short upper and lower shadow
+</span><span class="cm"> * The meaning of &#34;long&#34; and &#34;short&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when white (bullish), negative (-1 to -100) when black (bearish)
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
@@ -746,11 +2208,32 @@
 </div>
 <h3 id="cdlmarubozu-marubozu">CDLMARUBOZU - Marubozu</h3>
 
+<blockquote>
 <p>函数名：CDLMARUBOZU<br />
 名称：Marubozu 光头光脚/缺影线<br />
 简介：一日K线模式，上下两头都没有影线的实体，
 阴线预示着熊市持续或者牛市反转，阳线相反。</p>
+</blockquote>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - long real body
+</span><span class="cm"> * - no or very short upper and lower shadow
+</span><span class="cm"> * The meaning of &#34;long&#34; and &#34;very short&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when white (bullish), negative (-1 to -100) when black (bearish)
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
@@ -768,6 +2251,25 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: black candle
+</span><span class="cm"> * - second candle: black candle with the close equal to the previous close
+</span><span class="cm"> * The meaning of &#34;equal&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is always positive (1 to 100): matching low is always bullish;
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
@@ -784,42 +2286,45 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long white candle
+</span><span class="cm"> * - upside gap between the first and the second bodies
+</span><span class="cm"> * - second candle: small black candle
+</span><span class="cm"> * - third and fourth candles: falling small real body candlesticks (commonly black) that hold within the long 
+</span><span class="cm"> *   white candle&#39;s body and are higher than the reaction days of the rising three methods
+</span><span class="cm"> * - fifth candle: white candle that opens above the previous small candle&#39;s close and closes higher than the 
+</span><span class="cm"> *   high of the highest reaction day
+</span><span class="cm"> * The meaning of &#34;short&#34; and &#34;long&#34; is specified with TA_SetCandleSettings; 
+</span><span class="cm"> * &#34;hold within&#34; means &#34;a part of the real body must be within&#34;;
+</span><span class="cm"> * optInPenetration is the maximum percentage of the first white body the reaction days can penetrate (it is 
+</span><span class="cm"> * to specify how much the reaction days should be &#34;higher than the reaction days of the rising three methods&#34;)
+</span><span class="cm"> * outInteger is positive (1 to 100): mat hold is always bullish
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLMATHOLD</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlmorningdojistar-morning-doji-star">CDLMORNINGDOJISTAR - Morning Doji Star</h3>
-
-<blockquote>
-<p>函数名：CDLMORNINGDOJISTAR<br />
-名称：Morning Doji Star 十字晨星<br />
-简介：三日K线模式，
-基本模式为晨星，第二日K线为十字星，预示底部反转。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLMORNINGDOJISTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlmorningstar-morning-star">CDLMORNINGSTAR - Morning Star</h3>
-
-<blockquote>
-<p>函数名：CDLMORNINGSTAR<br />
-名称：Morning Star 晨星<br />
-简介：三日K线模式，下跌趋势，第一日阴线，
-第二日价格振幅较小，第三天阳线，预示底部反转。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLMORNINGSTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">penetration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="cdlonneck-on-neck-pattern">CDLONNECK - On-Neck Pattern</h3>
@@ -832,59 +2337,33 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long black candle
+</span><span class="cm"> * - second candle: white candle with open below previous day low and close equal to previous day low
+</span><span class="cm"> * The meaning of &#34;equal&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is negative (-1 to -100): on-neck is always bearish
+</span><span class="cm"> * the user should consider that on-neck is significant when it appears in a downtrend, while this function 
+</span><span class="cm"> * does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLONNECK</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlpiercing-piercing-pattern">CDLPIERCING - Piercing Pattern</h3>
-
-<blockquote>
-<p>函数名：CDLPIERCING<br />
-名称：Piercing Pattern 刺透形态<br />
-简介：两日K线模式，下跌趋势中，第一日阴线，第二日收盘价低于前一日最低价，
-收盘价处在第一日实体上部，预示着底部反转。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLPIERCING</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div></blockquote>
-
-<h3 id="cdlrickshawman-rickshaw-man">CDLRICKSHAWMAN - Rickshaw Man</h3>
-
-<blockquote>
-<p>函数名：CDLRICKSHAWMAN<br />
-名称：Rickshaw Man 黄包车夫<br />
-简介：一日K线模式，与长腿十字线类似，
-若实体正好处于价格振幅中点，称为黄包车夫。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLRICKSHAWMAN</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdlrisefall3methods-rising-falling-three-methods">CDLRISEFALL3METHODS - Rising/Falling Three Methods</h3>
-
-<blockquote>
-<p>函数名：CDLRISEFALL3METHODS
-名称：Rising/Falling Three Methods 上升/下降三法<br />
-简介： 五日K线模式，以上升三法为例，上涨趋势中，
-第一日长阳线，中间三日价格在第一日范围内小幅震荡，
-第五日长阳线，收盘价高于第一日收盘价，预示股价上升。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLRISEFALL3METHODS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="cdlseparatinglines-separating-lines">CDLSEPARATINGLINES - Separating Lines</h3>
@@ -897,28 +2376,35 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: black (white) candle
+</span><span class="cm"> * - second candle: bullish (bearish) belt hold with the same open as the prior candle
+</span><span class="cm"> * The meaning of &#34;long body&#34; and &#34;very short shadow&#34; of the belt hold is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish;
+</span><span class="cm"> * the user should consider that separating lines is significant when coming in a trend and the belt hold has 
+</span><span class="cm"> * the same direction of the trend, while this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLSEPARATINGLINES</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="cdlshootingstar-shooting-star">CDLSHOOTINGSTAR - Shooting Star</h3>
-
-<blockquote>
-<p>函数名：CDLSHOOTINGSTAR<br />
-名称：Shooting Star 射击之星<br />
-简介：一日K线模式，上影线至少为实体长度两倍，
-没有下影线，预示着股价下跌</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLSHOOTINGSTAR</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div></blockquote>
-
 <h3 id="cdlshortline-short-line-candle">CDLSHORTLINE - Short Line Candle</h3>
 
 <blockquote>
@@ -927,6 +2413,27 @@
 简介：一日K线模式，实体短，无上下影线</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - short real body
+</span><span class="cm"> * - short upper and lower shadow
+</span><span class="cm"> * The meaning of &#34;short&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when white, negative (-1 to -100) when black;
+</span><span class="cm"> * it does not mean bullish or bearish
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
@@ -942,6 +2449,27 @@
 简介：一日K线，实体小。</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - small real body
+</span><span class="cm"> * - shadows longer than the real body
+</span><span class="cm"> * The meaning of &#34;short&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when white or negative (-1 to -100) when black;
+</span><span class="cm"> * it does not mean bullish or bearish
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
@@ -959,6 +2487,37 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - three white candlesticks with consecutively higher closes
+</span><span class="cm"> * - first candle: long white
+</span><span class="cm"> * - second candle: long white with no or very short upper shadow opening within or near the previous white real body
+</span><span class="cm"> * and closing higher than the prior candle
+</span><span class="cm"> * - third candle: small white that gaps away or &#34;rides on the shoulder&#34; of the prior long real body (= it&#39;s at 
+</span><span class="cm"> * the upper end of the prior real body)
+</span><span class="cm"> * The meanings of &#34;long&#34;, &#34;very short&#34;, &#34;short&#34;, &#34;near&#34; are specified with TA_SetCandleSettings;
+</span><span class="cm"> * outInteger is negative (-1 to -100): stalled pattern is always bearish;
+</span><span class="cm"> * the user should consider that stalled pattern is significant when it appears in uptrend, while this function 
+</span><span class="cm"> * does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
@@ -975,42 +2534,35 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: black candle
+</span><span class="cm"> * - second candle: white candle that trades only above the prior close (low &gt; prior close)
+</span><span class="cm"> * - third candle: black candle with the close equal to the first candle&#39;s close
+</span><span class="cm"> * The meaning of &#34;equal&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is always positive (1 to 100): stick sandwich is always bullish;
+</span><span class="cm"> * the user should consider that stick sandwich is significant when coming in a downtrend, 
+</span><span class="cm"> * while this function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLSTICKSANDWICH</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdltakuri-takuri-dragonfly-doji-with-very-long-lower-shadow">CDLTAKURI - Takuri (Dragonfly Doji with very long lower shadow)</h3>
-
-<blockquote>
-<p>函数名：CDLTAKURI<br />
-名称：Takuri (Dragonfly Doji with very long lower shadow)
-探水竿<br />
-简介：一日K线模式，大致与蜻蜓十字相同，下影线长度长。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLTAKURI</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="cdltasukigap-tasuki-gap">CDLTASUKIGAP - Tasuki Gap</h3>
-
-<blockquote>
-<p>函数名：CDLTASUKIGAP<br />
-名称：Tasuki Gap 跳空并列阴阳线<br />
-简介：三日K线模式，分上涨和下跌，以上升为例，
-前两日阳线，第二日跳空，第三日阴线，收盘价于缺口中，上升趋势持续。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLTASUKIGAP</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="cdlthrusting-thrusting-pattern">CDLTHRUSTING - Thrusting Pattern</h3>
@@ -1022,6 +2574,33 @@
 收盘价略低于前一日实体中部，与颈上线相比实体较长，预示着趋势持续。</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long black candle
+</span><span class="cm"> * - second candle: white candle with open below previous day low and close into previous day body under the midpoint;
+</span><span class="cm"> * to differentiate it from in-neck the close should not be equal to the black candle&#39;s close
+</span><span class="cm"> * The meaning of &#34;equal&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is negative (-1 to -100): thrusting pattern is always bearish
+</span><span class="cm"> * the user should consider that the thrusting pattern is significant when it appears in a downtrend and it could be 
+</span><span class="cm"> * even bullish &#34;when coming in an uptrend or occurring twice within several days&#34; (Steve Nison says), while this 
+</span><span class="cm"> * function does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
@@ -1039,6 +2618,25 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - 3 consecutive doji days
+</span><span class="cm"> * - the second doji is a star
+</span><span class="cm"> * The meaning of &#34;doji&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
@@ -1055,26 +2653,35 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLUNIQUE3RIVER</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: long black candle
+</span><span class="cm"> * - second candle: black harami candle with a lower low than the first candle&#39;s low
+</span><span class="cm"> * - third candle: small white candle with open not lower than the second candle&#39;s low, better if its open and 
+</span><span class="cm"> *   close are under the second candle&#39;s close
+</span><span class="cm"> * The meaning of &#34;short&#34; and &#34;long&#34; is specified with TA_SetCandleSettings
+</span><span class="cm"> * outInteger is positive (1 to 100): unique 3 river is always bullish and should appear in a downtrend 
+</span><span class="cm"> * to be significant, while this function does not consider the trend
+</span><span class="cm"> */</span></code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="cdlupsidegap2crows-upside-gap-two-crows">CDLUPSIDEGAP2CROWS - Upside Gap Two Crows</h3>
-
-<blockquote>
-<p>函数名：CDLUPSIDEGAP2CROWS<br />
-名称：Upside Gap Two Crows 向上跳空的两只乌鸦<br />
-简介：三日K线模式，第一日阳线，第二日跳空以高于第一日最高价开盘，
-收阴线，第三日开盘价高于第二日，收阴线，与第一日比仍有缺口。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLUPSIDEGAP2CROWS</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">integer</span> <span class="o">=</span> <span class="n">CDLUNIQUE3RIVER</span><span class="p">(</span><span class="nb">open</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="cdlxsidegap3methods-upside-downside-gap-three-methods">CDLXSIDEGAP3METHODS - Upside/Downside Gap Three Methods</h3>
@@ -1086,6 +2693,31 @@
 第五日长阳线，收盘价高于第一日收盘价，预示股价上升。</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* Proceed with the calculation for the requested range.
+</span><span class="cm"> * Must have:
+</span><span class="cm"> * - first candle: white (black) candle
+</span><span class="cm"> * - second candle: white (black) candle
+</span><span class="cm"> * - upside (downside) gap between the first and the second real bodies
+</span><span class="cm"> * - third candle: black (white) candle that opens within the second real body and closes within the first real body
+</span><span class="cm"> * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish;
+</span><span class="cm"> * the user should consider that up/downside gap 3 methods is significant when it appears in a trend, while this 
+</span><span class="cm"> * function does not consider it
+</span><span class="cm"> */</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
@@ -1143,7 +2775,7 @@
   <span class="copyright-year">
     &copy; 
     2011 - 
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

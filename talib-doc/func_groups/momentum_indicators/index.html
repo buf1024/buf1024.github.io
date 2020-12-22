@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="buf1024" /><meta name="description" content="Momentum Indicator Functions 动量指标函数 ADX - Average Directional Movement Index 函数名：ADX 名称：平均趋向指数 简介：使用ADX指标，指标判断盘整、振荡和单边趋势。 公式： 一、先决定股价趋势（" /><meta name="keywords" content="blog, computer, luoguochun" />
+<meta name="author" content="buf1024" /><meta name="description" content="Momentum Indicator Functions 动量指标函数 MINUS_DI - Minus Directional Indicator 函数名：DMI 中的DI指标 负方向指标 名称：下升动向值 简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情" /><meta name="keywords" content="blog, computer, luoguochun" />
 
 
 
@@ -39,25 +39,25 @@
 
 
 <meta property="og:title" content="08 动量指标(Momentum Indicator Functions)" />
-<meta property="og:description" content="Momentum Indicator Functions 动量指标函数 ADX - Average Directional Movement Index 函数名：ADX 名称：平均趋向指数 简介：使用ADX指标，指标判断盘整、振荡和单边趋势。 公式： 一、先决定股价趋势（" />
+<meta property="og:description" content="Momentum Indicator Functions 动量指标函数 MINUS_DI - Minus Directional Indicator 函数名：DMI 中的DI指标 负方向指标 名称：下升动向值 简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luoguochun.cn/talib-doc/func_groups/momentum_indicators/" /><meta property="article:published_time" content="2019-10-10T00:00:08&#43;08:00"/>
 <meta property="article:modified_time" content="2019-10-10T00:00:08&#43;08:00"/>
 
 <meta itemprop="name" content="08 动量指标(Momentum Indicator Functions)">
-<meta itemprop="description" content="Momentum Indicator Functions 动量指标函数 ADX - Average Directional Movement Index 函数名：ADX 名称：平均趋向指数 简介：使用ADX指标，指标判断盘整、振荡和单边趋势。 公式： 一、先决定股价趋势（">
+<meta itemprop="description" content="Momentum Indicator Functions 动量指标函数 MINUS_DI - Minus Directional Indicator 函数名：DMI 中的DI指标 负方向指标 名称：下升动向值 简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情">
 
 
 <meta itemprop="datePublished" content="2019-10-10T00:00:08&#43;08:00" />
 <meta itemprop="dateModified" content="2019-10-10T00:00:08&#43;08:00" />
-<meta itemprop="wordCount" content="6109">
+<meta itemprop="wordCount" content="6236">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="08 动量指标(Momentum Indicator Functions)"/>
-<meta name="twitter:description" content="Momentum Indicator Functions 动量指标函数 ADX - Average Directional Movement Index 函数名：ADX 名称：平均趋向指数 简介：使用ADX指标，指标判断盘整、振荡和单边趋势。 公式： 一、先决定股价趋势（"/>
+<meta name="twitter:description" content="Momentum Indicator Functions 动量指标函数 MINUS_DI - Minus Directional Indicator 函数名：DMI 中的DI指标 负方向指标 名称：下升动向值 简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -127,61 +127,147 @@
 
 <h1 id="momentum-indicator-functions-动量指标函数">Momentum Indicator Functions 动量指标函数</h1>
 
+<h3 id="minus-di-minus-directional-indicator">MINUS_DI - Minus Directional Indicator</h3>
+
+<blockquote>
+<p>函数名：DMI 中的DI指标 负方向指标<br />
+名称：下升动向值<br />
+简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情况，即多空双方的力量的变化受价格波动的影响而发生由均衡到失衡的循环过程，从而提供对趋势判断依据的一种技术指标。<br />
+分析和应用：<a href="https://baike.baidu.com/item/DMI%E6%8C%87%E6%A0%87/3423254?fr=aladdin">百度百科</a>
+<a href="https://zh.wikipedia.org/wiki/%E5%8B%95%E5%90%91%E6%8C%87%E6%95%B8">维基百科</a>
+<a href="http://www.iwencai.com/school/search?cg=100&amp;w=DMI">同花顺学院</a>
+NOTE: The <code>MINUS_DI</code> function has an unstable period.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">MINUS_DI</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Learn more about the Minus Directional Indicator at <a href="http://www.tadoc.org/indicator/MINUS_DI.htm">tadoc.org</a>.</p>
+
+<h3 id="plus-di-plus-directional-indicator">PLUS_DI - Plus Directional Indicator</h3>
+
+<p>NOTE: The <code>PLUS_DI</code> function has an unstable period.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">PLUS_DI</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Learn more about the Plus Directional Indicator at <a href="http://www.tadoc.org/indicator/PLUS_DI.htm">tadoc.org</a>.</p>
+
+<h3 id="minus-dm-minus-directional-movement">MINUS_DM - Minus Directional Movement</h3>
+
+<blockquote>
+<p>函数名：MINUS_DM<br />
+名称： 上升动向值 DMI中的DM代表正趋向变动值即上升动向值<br />
+简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情况，即多空双方的力量的变化受价格波动的影响而发生由均衡到失衡的循环过程，从而提供对趋势判断依据的一种技术指标。<br />
+分析和应用：<a href="https://baike.baidu.com/item/DMI%E6%8C%87%E6%A0%87/3423254?fr=aladdin">百度百科</a>
+<a href="https://zh.wikipedia.org/wiki/%E5%8B%95%E5%90%91%E6%8C%87%E6%95%B8">维基百科</a>
+<a href="http://www.iwencai.com/school/search?cg=100&amp;w=DMI">同花顺学院</a></p>
+</blockquote>
+
+<p>NOTE: The <code>MINUS_DM</code> function has an unstable period.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">MINUS_DM</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Learn more about the Minus Directional Movement at <a href="http://www.tadoc.org/indicator/MINUS_DM.htm">tadoc.org</a>.</p>
+
+<h3 id="plus-dm-plus-directional-movement">PLUS_DM - Plus Directional Movement</h3>
+
+<p>NOTE: The <code>PLUS_DM</code> function has an unstable period.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">PLUS_DM</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Learn more about the Plus Directional Movement at <a href="http://www.tadoc.org/indicator/PLUS_DM.htm">tadoc.org</a>.</p>
+
 <h3 id="adx-average-directional-movement-index">ADX - Average Directional Movement Index</h3>
 
 <blockquote>
 <p>函数名：ADX<br />
 名称：平均趋向指数<br />
 简介：使用ADX指标，指标判断盘整、振荡和单边趋势。</p>
-
-<h4 id="公式">公式：</h4>
-
-<p>一、先决定股价趋势（Directional Movement，DM）是上涨或下跌：<br />
-“所谓DM值，今日股价波动幅度大于昨日股价波动幅部分的最大值，可能是创高价的部分或创低价的部分；如果今日股价波动幅度较前一日小，则DM = 0。”<br />
-若股价高点持续走高，为上涨趋势，记作 +DM。<br />
-若为下跌趋势，记作 -DM。-DM的负号（–）是表示反向趋势（下跌），并非数值为负数。<br />
-其他状况：DM = 0。<br />
-二、寻找股价的真实波幅（True Range，TR）：<br />
-所谓真实波幅（TR）是以最高价，最低价，及前一日收盘价三个价格做比较，求出当日股价波动的最大幅度。<br />
-三、趋势方向需经由一段时间来观察，研判上才有意义。一般以14天为指标的观察周期：<br />
-先计算出 +DM、–DM及TR的14日算术平均数，得到 +DM14、–DM14及TR14三组数据作为起始值，再计算各自的移动平均值（EMA）。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma">    +DI14 = +DM/TR14*100
+<pre class="chroma">公式：
+一、先决定股价趋势（Directional Movement，DM）是上涨或下跌：   
+所谓DM值，今日股价波动幅度大于昨日股价波动幅部分的最大值，可能是创高价的部分或创低价的部分；如果今日股价波动幅度较前一日小，则DM = 0。  
+若股价高点持续走高，为上涨趋势，记作 +DM。   
+若为下跌趋势，记作 -DM。-DM的负号（–）是表示反向趋势（下跌），并非数值为负数。   
+其他状况：DM = 0。   
+二、寻找股价的真实波幅（True Range，TR）：   
+所谓真实波幅（TR）是以最高价，最低价，及前一日收盘价三个价格做比较，求出当日股价波动的最大幅度。   
+三、趋势方向需经由一段时间来观察，研判上才有意义。一般以14天为指标的观察周期：   
+先计算出 +DM、–DM及TR的14日算术平均数，得到 +DM14、–DM14及TR14三组数据作为起始值，再计算各自的移动平均值（EMA）。   
+
+    +DI14 = +DM/TR14*100
     -DI14 = +DM/TR14*100
     
     DX = |(+DI14)-(-DI14)| / |(+DI14)+(-DI14)|
     
-    DX运算结果取其绝对值，再将DX作移动平均，得到ADX。</pre></td></tr></table>
+    DX运算结果取其绝对值，再将DX作移动平均，得到ADX。
+
+特点：  
+* ADX无法告诉你趋势的发展方向。
+* 如果趋势存在，ADX可以衡量趋势的强度。不论上升趋势或下降趋势，ADX看起来都一样。
+* ADX的读数越大，趋势越明显。衡量趋势强度时，需要比较几天的ADX 读数，观察ADX究竟是上升或下降。ADX读数上升，代表趋势转强；如果ADX读数下降，意味着趋势转弱。
+* 当ADX曲线向上攀升，趋势越来越强，应该会持续发展。如果ADX曲线下滑，代表趋势开始转弱，反转的可能性增加。
+* 单就ADX本身来说，由于指标落后价格走势，所以算不上是很好的指标，不适合单就ADX进行操作。可是，如果与其他指标配合运用，ADX可以确认市场是否存在趋势，并衡量趋势的强度。
+
+指标应用：
+* +DI与–DI表示多空相反的二个动向，当据此绘出的两条曲线彼此纠结相缠时，代表上涨力道与下跌力道相当，多空势均力敌。当 +DI与–DI彼此穿越时，由下往上的一方其力道开始压过由上往下的另一方，此时出现买卖讯号。
+* ADX可作为趋势行情的判断依据，当行情明显朝多空任一方向进行时，ADX数值都会显著上升，趋势走强。若行情呈现盘整格局时，ADX会低于 +DI与–DI二条线。若ADX数值低于20，则不论DI表现如何，均显示市场没有明显趋势。
+* ADX持续偏高时，代表“超买”（Overbought）或“超卖”（Oversold）的现象，行情反转的机会将增加，此时则不适宜顺势操作。当ADX数值从上升趋势转为下跌时，则代表行情即将反转；若ADX数值由下跌趋势转为上升时，行情将止跌回升。
+* 总言之，DMI指标包含4条线：+DI、-DI、ADX和ADXR。+DI代表买盘的强度、-DI代表卖盘的强度；ADX代表趋势的强度、ADXR则为ADX的移动平均。</pre></td></tr></table>
 </div>
 </div></blockquote>
-
-<h4 id="特点">特点：</h4>
-
-<ul>
-<li>ADX无法告诉你趋势的发展方向。</li>
-<li>如果趋势存在，ADX可以衡量趋势的强度。不论上升趋势或下降趋势，ADX看起来都一样。</li>
-<li>ADX的读数越大，趋势越明显。衡量趋势强度时，需要比较几天的ADX 读数，观察ADX究竟是上升或下降。ADX读数上升，代表趋势转强；如果ADX读数下降，意味着趋势转弱。</li>
-<li>当ADX曲线向上攀升，趋势越来越强，应该会持续发展。如果ADX曲线下滑，代表趋势开始转弱，反转的可能性增加。</li>
-<li>单就ADX本身来说，由于指标落后价格走势，所以算不上是很好的指标，不适合单就ADX进行操作。可是，如果与其他指标配合运用，ADX可以确认市场是否存在趋势，并衡量趋势的强度。</li>
-</ul>
-
-<h4 id="指标应用">指标应用：</h4>
-
-<ul>
-<li>+DI与–DI表示多空相反的二个动向，当据此绘出的两条曲线彼此纠结相缠时，代表上涨力道与下跌力道相当，多空势均力敌。当 +DI与–DI彼此穿越时，由下往上的一方其力道开始压过由上往下的另一方，此时出现买卖讯号。</li>
-<li>ADX可作为趋势行情的判断依据，当行情明显朝多空任一方向进行时，ADX数值都会显著上升，趋势走强。若行情呈现盘整格局时，ADX会低于 +DI与–DI二条线。若ADX数值低于20，则不论DI表现如何，均显示市场没有明显趋势。</li>
-<li>ADX持续偏高时，代表“超买”（Overbought）或“超卖”（Oversold）的现象，行情反转的机会将增加，此时则不适宜顺势操作。当ADX数值从上升趋势转为下跌时，则代表行情即将反转；若ADX数值由下跌趋势转为上升时，行情将止跌回升。</li>
-<li>总言之，DMI指标包含4条线：+DI、-DI、ADX和ADXR。+DI代表买盘的强度、-DI代表卖盘的强度；ADX代表趋势的强度、ADXR则为ADX的移动平均。</li>
-</ul>
 
 <p>NOTE: The <code>ADX</code> function has an unstable period.</p>
 <div class="highlight"><div class="chroma">
@@ -215,6 +301,23 @@ NOTE: The <code>ADXR</code> function has an unstable period.</p>
 <h3 id="apo-absolute-price-oscillator">APO - Absolute Price Oscillator</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">The Absolute Price Oscillator displays the difference between two exponential
+moving averages of a security&#39;s price and is expressed as an absolute value.
+How this indicator works
+APO crossing above zero is considered bullish , while crossing below zero is bearish .
+A positive indicator value indicates an upward movement, while negative readings
+signal a downward trend.</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
@@ -229,35 +332,44 @@ NOTE: The <code>ADXR</code> function has an unstable period.</p>
 <p>函数名：AROON<br />
 名称：阿隆指标<br />
 简介：该指标是通过计算自价格达到近期最高值和最低值以来所经过的期间数，阿隆指标帮助你预测价格趋势到趋势区域（或者反过来，从趋势区域到趋势）的变化。</p>
-
-<h4 id="计算公式">计算公式：</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma">Aroon(上升)=[(计算期天数-最高价后的天数)/计算期天数]*100
-Aroon(下降)=[(计算期天数-最低价后的天数)/计算期天数]*100</pre></td></tr></table>
-</div>
-</div>
-<h4 id="指数应用">指数应用</h4>
+<pre class="chroma">计算公式：
 
-<p>1、极值0和100<br />
-当UP线达到100时，市场处于强势；如果维持在70~100之间，表示一个上升趋势。同样，如果Down线达到0，表示处于弱势，如果维持在0~30之间，表示处于下跌趋势。如果两条线同处于极值水平，则表明一个更强的趋势。<br />
-2、平行运动<br />
-如果两条线平行运动时，表明市场趋势被打破。可以预期该状况将持续下去，只到由极值水平或交叉穿行西安市出方向性运动为止。<br />
-3、交叉穿行<br />
-当下行线上穿上行线时，表明潜在弱势，预期价格开始趋于下跌。反之，表明潜在强势，预期价格趋于走高。</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
+Aroon(上升)=[(计算期天数-最高价后的天数)/计算期天数]*100
+Aroon(下降)=[(计算期天数-最低价后的天数)/计算期天数]*100
+
+#### 指数应用
+1、极值0和100  
+当UP线达到100时，市场处于强势；如果维持在70~100之间，表示一个上升趋势。同样，如果Down线达到0，表示处于弱势，如果维持在0~30之间，表示处于下跌趋势。如果两条线同处于极值水平，则表明一个更强的趋势。  
+2、平行运动  
+如果两条线平行运动时，表明市场趋势被打破。可以预期该状况将持续下去，只到由极值水平或交叉穿行西安市出方向性运动为止。  
+3、交叉穿行  
+当下行线上穿上行线时，表明潜在弱势，预期价格开始趋于下跌。反之，表明潜在强势，预期价格趋于走高。  </pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="n">aroondown</span><span class="p">,</span> <span class="n">aroonup</span> <span class="o">=</span> <span class="n">AROON</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
 </div>
-</div>
+</div></blockquote>
+
 <p>Learn more about the Aroon at <a href="http://www.tadoc.org/indicator/AROON.htm">tadoc.org</a>.</p>
 
 <h3 id="aroonosc-aroon-oscillator">AROONOSC - Aroon Oscillator</h3>
@@ -301,19 +413,42 @@ Aroon(下降)=[(计算期天数-最低价后的天数)/计算期天数]*100</pre
 名称：顺势指标<br />
 简介：CCI指标专门测量股价是否已超出常态分布范围</p>
 </blockquote>
-
-<h4 id="指标应用-1">指标应用</h4>
-
-<ul>
-<li>1.当CCI指标曲线在+100线～-100线的常态区间里运行时,CCI指标参考意义不大，可以用KDJ等其它技术指标进行研判。</li>
-<li>2.当CCI指标曲线从上向下突破+100线而重新进入常态区间时，表明市场价格的上涨阶段可能结束，将进入一个比较长时间的震荡整理阶段，应及时平多做空。</li>
-<li>3.当CCI指标曲线从上向下突破-100线而进入另一个非常态区间（超卖区）时，表明市场价格的弱势状态已经形成，将进入一个比较长的寻底过程，可以持有空单等待更高利润。如果CCI指标曲线在超卖区运行了相当长的一段时间后开始掉头向上，表明价格的短期底部初步探明，可以少量建仓。CCI指标曲线在超卖区运行的时间越长，确认短期的底部的准确度越高。</li>
-<li>4.CCI指标曲线从下向上突破-100线而重新进入常态区间时，表明市场价格的探底阶段可能结束，有可能进入一个盘整阶段，可以逢低少量做多。</li>
-<li>5.CCI指标曲线从下向上突破+100线而进入非常态区间(超买区)时，表明市场价格已经脱离常态而进入强势状态，如果伴随较大的市场交投，应及时介入成功率将很大。</li>
-<li>6.CCI指标曲线从下向上突破+100线而进入非常态区间(超买区)后，只要CCI指标曲线一直朝上运行，表明价格依然保持强势可以继续持有待涨。但是，如果在远离+100线的地方开始掉头向下时，则表明市场价格的强势状态将可能难以维持，涨势可能转弱，应考虑卖出。如果前期的短期涨幅过高同时价格回落时交投活跃，则应该果断逢高卖出或做空。</li>
-<li>CCI主要是在超买和超卖区域发生作用，对急涨急跌的行情检测性相对准确。非常适用于股票、外汇、贵金属等市场的短期操作。[1]</li>
-</ul>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">指标应用
+
+* 1.当CCI指标曲线在+100线～-100线的常态区间里运行时,CCI指标参考意义不大，可以用KDJ等其它技术指标进行研判。
+
+* 2.当CCI指标曲线从上向下突破+100线而重新进入常态区间时，表明市场价格的上涨阶段可能结束，将进入一个比较长时间的震荡整理阶段，应及时平多做空。
+
+* 3.当CCI指标曲线从上向下突破-100线而进入另一个非常态区间（超卖区）时，表明市场价格的弱势状态已经形成，将进入一个比较长的寻底过程，可以持有空单等待更高利润。如果CCI指标曲线在超卖区运行了相当长的一段时间后开始掉头向上，表明价格的短期底部初步探明，可以少量建仓。CCI指标曲线在超卖区运行的时间越长，确认短期的底部的准确度越高。
+
+* 4.CCI指标曲线从下向上突破-100线而重新进入常态区间时，表明市场价格的探底阶段可能结束，有可能进入一个盘整阶段，可以逢低少量做多。
+
+* 5.CCI指标曲线从下向上突破+100线而进入非常态区间(超买区)时，表明市场价格已经脱离常态而进入强势状态，如果伴随较大的市场交投，应及时介入成功率将很大。
+
+* 6.CCI指标曲线从下向上突破+100线而进入非常态区间(超买区)后，只要CCI指标曲线一直朝上运行，表明价格依然保持强势可以继续持有待涨。但是，如果在远离+100线的地方开始掉头向下时，则表明市场价格的强势状态将可能难以维持，涨势可能转弱，应考虑卖出。如果前期的短期涨幅过高同时价格回落时交投活跃，则应该果断逢高卖出或做空。
+
+* CCI主要是在超买和超卖区域发生作用，对急涨急跌的行情检测性相对准确。非常适用于股票、外汇、贵金属等市场的短期操作。[1] </pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
 </span></code></pre></td>
@@ -333,7 +468,7 @@ Aroon(下降)=[(计算期天数-最低价后的天数)/计算期天数]*100</pre
 其中：Su是今日收盘价与昨日收盘价（上涨日）差值加总。若当日下跌，则增加值为0；Sd是今日收盘价与做日收盘价（下跌日）差值的绝对值加总。若当日上涨，则增加值为0；</p>
 </blockquote>
 
-<h4 id="指标应用-2">指标应用</h4>
+<h4 id="指标应用">指标应用</h4>
 
 <ul>
 <li>本指标类似RSI指标。<br /></li>
@@ -453,49 +588,6 @@ NOTE: The <code>MFI</code> function has an unstable period.</p>
 
 <p>Learn more about the Money Flow Index at <a href="http://www.tadoc.org/indicator/MFI.htm">tadoc.org</a>.</p>
 
-<h3 id="minus-di-minus-directional-indicator">MINUS_DI - Minus Directional Indicator</h3>
-
-<blockquote>
-<p>函数名：DMI 中的DI指标 负方向指标<br />
-名称：下升动向值<br />
-简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情况，即多空双方的力量的变化受价格波动的影响而发生由均衡到失衡的循环过程，从而提供对趋势判断依据的一种技术指标。<br />
-分析和应用：<a href="https://baike.baidu.com/item/DMI%E6%8C%87%E6%A0%87/3423254?fr=aladdin">百度百科</a>
-<a href="https://zh.wikipedia.org/wiki/%E5%8B%95%E5%90%91%E6%8C%87%E6%95%B8">维基百科</a>
-<a href="http://www.iwencai.com/school/search?cg=100&amp;w=DMI">同花顺学院</a>
-NOTE: The <code>MINUS_DI</code> function has an unstable period.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">MINUS_DI</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div></blockquote>
-
-<p>Learn more about the Minus Directional Indicator at <a href="http://www.tadoc.org/indicator/MINUS_DI.htm">tadoc.org</a>.</p>
-
-<h3 id="minus-dm-minus-directional-movement">MINUS_DM - Minus Directional Movement</h3>
-
-<blockquote>
-<p>函数名：MINUS_DM<br />
-名称： 上升动向值 DMI中的DM代表正趋向变动值即上升动向值<br />
-简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情况，即多空双方的力量的变化受价格波动的影响而发生由均衡到失衡的循环过程，从而提供对趋势判断依据的一种技术指标。<br />
-分析和应用：<a href="https://baike.baidu.com/item/DMI%E6%8C%87%E6%A0%87/3423254?fr=aladdin">百度百科</a>
-<a href="https://zh.wikipedia.org/wiki/%E5%8B%95%E5%90%91%E6%8C%87%E6%95%B8">维基百科</a>
-<a href="http://www.iwencai.com/school/search?cg=100&amp;w=DMI">同花顺学院</a></p>
-</blockquote>
-
-<p>NOTE: The <code>MINUS_DM</code> function has an unstable period.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">MINUS_DM</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Learn more about the Minus Directional Movement at <a href="http://www.tadoc.org/indicator/MINUS_DM.htm">tadoc.org</a>.</p>
-
 <h3 id="mom-momentum-动量">MOM - Momentum  动量</h3>
 
 <blockquote>
@@ -515,32 +607,6 @@ NOTE: The <code>MINUS_DI</code> function has an unstable period.</p>
 </div>
 </div>
 <p>Learn more about the Momentum at <a href="http://www.tadoc.org/indicator/MOM.htm">tadoc.org</a>.</p>
-
-<h3 id="plus-di-plus-directional-indicator">PLUS_DI - Plus Directional Indicator</h3>
-
-<p>NOTE: The <code>PLUS_DI</code> function has an unstable period.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">PLUS_DI</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Learn more about the Plus Directional Indicator at <a href="http://www.tadoc.org/indicator/PLUS_DI.htm">tadoc.org</a>.</p>
-
-<h3 id="plus-dm-plus-directional-movement">PLUS_DM - Plus Directional Movement</h3>
-
-<p>NOTE: The <code>PLUS_DM</code> function has an unstable period.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">PLUS_DM</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Learn more about the Plus Directional Movement at <a href="http://www.tadoc.org/indicator/PLUS_DM.htm">tadoc.org</a>.</p>
 
 <h3 id="ppo-percentage-price-oscillator-价格震荡百分比指数">PPO - Percentage Price Oscillator 价格震荡百分比指数</h3>
 
@@ -786,7 +852,7 @@ PPO标准设定和MACD设定非常相似：12,26,9和PPO，和MACD一样说明�
   <span class="copyright-year">
     &copy; 
     2011 - 
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
