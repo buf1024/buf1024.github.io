@@ -6,10 +6,19 @@
     <description>Recent content on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 10 Oct 2019 00:00:16 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 12 Sep 2021 21:12:02 +0800</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>nom -- 乐高式富有语义的parser</title>
+      <link>https://luoguochun.cn/post/2021-09-12-rust-lib-nom-intro/</link>
+      <pubDate>Sun, 12 Sep 2021 21:12:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2021-09-12-rust-lib-nom-intro/</guid>
+      <description>简介 写过parser的人，不管是简单的自定义协议，或者复杂的协议，一般都是采用自上往下的解释方式，从第1个字节，一路开黑，到最后字节。遇到;</description>
+    </item>
     
     <item>
       <title>16 数学运算符(Math Operator Functions )</title>
@@ -89,7 +98,7 @@
       <pubDate>Thu, 10 Oct 2019 00:00:08 +0800</pubDate>
       
       <guid>https://luoguochun.cn/talib-doc/func_groups/momentum_indicators/</guid>
-      <description>Momentum Indicator Functions 动量指标函数 MINUS_DI - Minus Directional Indicator 函数名：DMI 中的DI指标 负方向指标 名称：下升动向值 简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情</description>
+      <description>Momentum Indicator Functions 动量指标函数 RSI - Relative Strength Index 相对强弱指数 函数名：RSI 名称：相对强弱指数 简介：是通过比较一段时期内的平均收盘涨数和平均收盘跌数来分析市场买沽</description>
     </item>
     
     <item>

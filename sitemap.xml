@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://luoguochun.cn/post/2021-09-12-rust-lib-nom-intro/</loc>
+    <lastmod>2021-09-12T21:12:02+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://luoguochun.cn/talib-doc/func_groups/math_operators/</loc>
     <lastmod>2019-10-10T00:00:16+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -459,7 +466,7 @@
   
   <url>
     <loc>https://luoguochun.cn/</loc>
-    <lastmod>2019-10-10T00:00:16+08:00</lastmod>
+    <lastmod>2021-09-12T21:12:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -479,7 +486,7 @@
   
   <url>
     <loc>https://luoguochun.cn/post/</loc>
-    <lastmod>2019-07-29T20:17:52+08:00</lastmod>
+    <lastmod>2021-09-12T21:12:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -809,6 +816,20 @@
   <url>
     <loc>https://luoguochun.cn/tags/rsa/</loc>
     <lastmod>2017-06-23T20:57:11+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://luoguochun.cn/categories/rust/</loc>
+    <lastmod>2021-09-12T21:12:02+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://luoguochun.cn/tags/rust-lib/</loc>
+    <lastmod>2021-09-12T21:12:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

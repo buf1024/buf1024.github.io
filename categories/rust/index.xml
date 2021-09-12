@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rust on BUF1024!!!</title>
+    <link>https://luoguochun.cn/categories/rust/</link>
+    <description>Recent content in rust on BUF1024!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 12 Sep 2021 21:12:02 +0800</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/categories/rust/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>nom -- 乐高式富有语义的parser</title>
+      <link>https://luoguochun.cn/post/2021-09-12-rust-lib-nom-intro/</link>
+      <pubDate>Sun, 12 Sep 2021 21:12:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2021-09-12-rust-lib-nom-intro/</guid>
+      <description>简介 写过parser的人，不管是简单的自定义协议，或者复杂的协议，一般都是采用自上往下的解释方式，从第1个字节，一路开黑，到最后字节。遇到;</description>
+    </item>
+    
+  </channel>
+</rss>

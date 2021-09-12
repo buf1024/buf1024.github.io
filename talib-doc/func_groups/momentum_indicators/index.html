@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="buf1024" /><meta name="description" content="Momentum Indicator Functions 动量指标函数 MINUS_DI - Minus Directional Indicator 函数名：DMI 中的DI指标 负方向指标 名称：下升动向值 简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情" /><meta name="keywords" content="blog, computer, luoguochun" />
+<meta name="author" content="buf1024" /><meta name="description" content="Momentum Indicator Functions 动量指标函数 RSI - Relative Strength Index 相对强弱指数 函数名：RSI 名称：相对强弱指数 简介：是通过比较一段时期内的平均收盘涨数和平均收盘跌数来分析市场买沽" /><meta name="keywords" content="blog, computer, luoguochun" />
 
 
 
@@ -39,13 +39,13 @@
 
 
 <meta property="og:title" content="08 动量指标(Momentum Indicator Functions)" />
-<meta property="og:description" content="Momentum Indicator Functions 动量指标函数 MINUS_DI - Minus Directional Indicator 函数名：DMI 中的DI指标 负方向指标 名称：下升动向值 简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情" />
+<meta property="og:description" content="Momentum Indicator Functions 动量指标函数 RSI - Relative Strength Index 相对强弱指数 函数名：RSI 名称：相对强弱指数 简介：是通过比较一段时期内的平均收盘涨数和平均收盘跌数来分析市场买沽" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luoguochun.cn/talib-doc/func_groups/momentum_indicators/" /><meta property="article:published_time" content="2019-10-10T00:00:08&#43;08:00"/>
 <meta property="article:modified_time" content="2019-10-10T00:00:08&#43;08:00"/>
 
 <meta itemprop="name" content="08 动量指标(Momentum Indicator Functions)">
-<meta itemprop="description" content="Momentum Indicator Functions 动量指标函数 MINUS_DI - Minus Directional Indicator 函数名：DMI 中的DI指标 负方向指标 名称：下升动向值 简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情">
+<meta itemprop="description" content="Momentum Indicator Functions 动量指标函数 RSI - Relative Strength Index 相对强弱指数 函数名：RSI 名称：相对强弱指数 简介：是通过比较一段时期内的平均收盘涨数和平均收盘跌数来分析市场买沽">
 
 
 <meta itemprop="datePublished" content="2019-10-10T00:00:08&#43;08:00" />
@@ -57,7 +57,7 @@
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="08 动量指标(Momentum Indicator Functions)"/>
-<meta name="twitter:description" content="Momentum Indicator Functions 动量指标函数 MINUS_DI - Minus Directional Indicator 函数名：DMI 中的DI指标 负方向指标 名称：下升动向值 简介：通过分析股票价格在涨跌过程中买卖双方力量均衡点的变化情"/>
+<meta name="twitter:description" content="Momentum Indicator Functions 动量指标函数 RSI - Relative Strength Index 相对强弱指数 函数名：RSI 名称：相对强弱指数 简介：是通过比较一段时期内的平均收盘涨数和平均收盘跌数来分析市场买沽"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,6 +126,110 @@
     
 
 <h1 id="momentum-indicator-functions-动量指标函数">Momentum Indicator Functions 动量指标函数</h1>
+
+<h3 id="rsi-relative-strength-index-相对强弱指数">RSI - Relative Strength Index  相对强弱指数</h3>
+
+<blockquote>
+<p>函数名：RSI<br />
+名称：相对强弱指数<br />
+简介：是通过比较一段时期内的平均收盘涨数和平均收盘跌数来分析市场买沽盘的意向和实力，从而作出未来市场的走势，比较价格升降运动以表达价格强度的技术分析工具。<br />
+维基解读: 根据威尔德的测量结果，当n=14时，指数最具代表性。他指出当某证券的RSI升至70时，代表该证券已被超买（Overbought），投资者应考虑出售该证券。相反，当证券RSI跌至30时，代表证券被超卖（Oversold），投资者应购入该证券。当某证券的价格变动倾向（上升或下跌）越趋极端，价格变动逆转的可能性将越大。当RSI达80或20时，证券已被严重超买或超卖，投资者此时更应小心留意此类证券。然而，当该衍生工具市场处于利市状态（即牛市），严重超买或超卖的数值应被适当地向上调升，反之亦然。在证券市场中，大幅波动对RSI有相当程度的影响，但这可能是错误的买卖讯号，投资者应配合其他技术分析指标以发挥相对强弱指数的功用。<br />
+分析和应用：<a href="https://zh.wikipedia.org/wiki/%E7%9B%B8%E5%B0%8D%E5%BC%B7%E5%BC%B1%E6%8C%87%E6%95%B8">维基百科</a> <a href="http://www.iwencai.com/yike/detail/auid/6a280c6cebcf140a">同花顺学院</a></p>
+</blockquote>
+
+<p>NOTE: The <code>RSI</code> function has an unstable period.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">RSI</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Learn more about the Relative Strength Index at <a href="http://www.tadoc.org/indicator/RSI.htm">tadoc.org</a>.</p>
+
+<h3 id="stochrsi-stochastic-relative-strength-index-随机相对强弱指数">STOCHRSI - Stochastic Relative Strength Index 随机相对强弱指数</h3>
+
+<p>NOTE: The <code>STOCHRSI</code> function has an unstable period.<br />
+名称：随机相对强弱指数
+简介：用于确定资产是否处于超买或超卖状态，也用于确定当前市场的态势。顾名思义，StochRSI是标准相对强弱指数（RSI）的衍生，因此被视为是一种能够衡量指数的指数。它是一种振荡器，在中心线的上方和下方波动。<br />
+维基解读: StochRSI指数如果出现在其范围的上限和下限附近，此时的意义是最重大的。因此，该指标的主要用途是确定潜在的买入和卖出点，以及价格发生的逆转。因此，0.2或以下的数值，会表明资产可能发生超卖，而0.8或以上的数值则表明该资产可能会发生超买。此外，更接近中心线的数值也可以为交易者提供有关市场趋势的信息。例如，当中心线作为支撑线并且StochRSI线稳定移动到0.5以上时，尤其是数值趋近于0.8，则可能表明其继续看涨或呈上升趋势。同样，当数值始终低于0.5，趋近于0.2时，则表明下跌或呈下降趋势趋势。<br />
+分析和应用：<a href="https://www.binance.vision/zh/economics/stochastic-rsi-explained">什么是随机相对强弱指数Stochastic RSI？</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">fastk</span><span class="p">,</span> <span class="n">fastd</span> <span class="o">=</span> <span class="n">STOCHRSI</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fastk_period</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">fastd_period</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">fastd_matype</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Learn more about the Stochastic Relative Strength Index at <a href="http://www.tadoc.org/indicator/STOCHRSI.htm">tadoc.org</a>.</p>
+
+<h3 id="cmo-chande-momentum-oscillator-钱德动量摆动指标">CMO - Chande Momentum Oscillator 钱德动量摆动指标</h3>
+
+<blockquote>
+<p>函数名：CMO<br />
+名称：钱德动量摆动指标<br />
+简介：与其他动量指标摆动指标如相对强弱指标（RSI）和随机指标（KDJ）不同，钱德动量指标在计算公式的分子中采用上涨日和下跌日的数据。
+计算公式：CMO=（Su－Sd）*100/（Su+Sd）<br />
+其中：Su是今日收盘价与昨日收盘价（上涨日）差值加总。若当日下跌，则增加值为0；Sd是今日收盘价与做日收盘价（下跌日）差值的绝对值加总。若当日上涨，则增加值为0；
+指标应用</p>
+
+<ul>
+<li>本指标类似RSI指标。<br /></li>
+<li>当本指标下穿-50水平时是买入信号，上穿+50水平是卖出信号。<br /></li>
+<li>钱德动量摆动指标的取值介于-100和100之间。<br /></li>
+<li>本指标也能给出良好的背离信号。<br /></li>
+<li>当股票价格创出新低而本指标未能创出新低时，出现牛市背离；<br /></li>
+<li>当股票价格创出新高而本指标未能创出新高时，当出现熊市背离时。</li>
+<li>我们可以用移动均值对该指标进行平滑。</li>
+</ul>
+</blockquote>
+
+<p>NOTE: The <code>CMO</code> function has an unstable period.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">CMO</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Learn more about the Chande Momentum Oscillator at <a href="http://www.tadoc.org/indicator/CMO.htm">tadoc.org</a>.</p>
+
+<h3 id="stoch-stochastic-随机指标-俗称kd">STOCH - Stochastic 随机指标,俗称KD</h3>
+
+<blockquote>
+<p>函数名：STOCH<br />
+名称：随机指标,俗称KD
+简介：指标通过比较收盘价格和价格的波动范围，预测价格趋势逆转的时间，采用超买和超卖的概念。<br />
+维基解读: 当价格与随机指标发生牛势背离（即价格下跌而随机指标指向上方），而%K线与%D线在超卖区（高于80%或低于20%）发生交叉，便是买入信号；反之则是卖出信号。%K线与%D线的简单交叉经常发生，<strong>很多时候并不可靠</strong>。投资者多在%D线筑顶或筑底后，等待%K线出现急剧的逆转并与%D线交叉。当市场波动性较大时，也可使用加权移动平均来定义%D线，以平整价格短时内大幅波动对指标产生的影响。<br />
+分析和应用：<a href="https://zh.wikipedia.org/wiki/%E9%9A%8F%E6%9C%BA%E6%8C%87%E6%A0%87">维基百科</a></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">slowk</span><span class="p">,</span> <span class="n">slowd</span> <span class="o">=</span> <span class="n">STOCH</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">fastk_period</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">slowk_period</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">slowk_matype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">slowd_period</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">slowd_matype</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Learn more about the Stochastic at <a href="http://www.tadoc.org/indicator/STOCH.htm">tadoc.org</a>.</p>
+
+<h3 id="stochf-stochastic-fast-快速stoch指标">STOCHF - Stochastic Fast 快速STOCH指标</h3>
+
+<p>名称：快速随机指标
+简介：和STOCH类似，不同的是使用的是快速周期。
+分析和应用：<a href="https://zh.wikipedia.org/wiki/%E9%9A%8F%E6%9C%BA%E6%8C%87%E6%A0%87">维基百科</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">fastk</span><span class="p">,</span> <span class="n">fastd</span> <span class="o">=</span> <span class="n">STOCHF</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">fastk_period</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">fastd_period</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">fastd_matype</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Learn more about the Stochastic Fast at <a href="http://www.tadoc.org/indicator/STOCHF.htm">tadoc.org</a>.</p>
 
 <h3 id="minus-di-minus-directional-indicator">MINUS_DI - Minus Directional Indicator</h3>
 
@@ -458,39 +562,6 @@ Aroon(下降)=[(计算期天数-最低价后的天数)/计算期天数]*100
 </div>
 <p>Learn more about the Commodity Channel Index at <a href="http://www.tadoc.org/indicator/CCI.htm">tadoc.org</a>.</p>
 
-<h3 id="cmo-chande-momentum-oscillator-钱德动量摆动指标">CMO - Chande Momentum Oscillator 钱德动量摆动指标</h3>
-
-<blockquote>
-<p>函数名：CMO<br />
-名称：钱德动量摆动指标<br />
-简介：与其他动量指标摆动指标如相对强弱指标（RSI）和随机指标（KDJ）不同，钱德动量指标在计算公式的分子中采用上涨日和下跌日的数据。
-计算公式：CMO=（Su－Sd）*100/（Su+Sd）<br />
-其中：Su是今日收盘价与昨日收盘价（上涨日）差值加总。若当日下跌，则增加值为0；Sd是今日收盘价与做日收盘价（下跌日）差值的绝对值加总。若当日上涨，则增加值为0；</p>
-</blockquote>
-
-<h4 id="指标应用">指标应用</h4>
-
-<ul>
-<li>本指标类似RSI指标。<br /></li>
-<li>当本指标下穿-50水平时是买入信号，上穿+50水平是卖出信号。<br /></li>
-<li>钱德动量摆动指标的取值介于-100和100之间。<br /></li>
-<li>本指标也能给出良好的背离信号。<br /></li>
-<li>当股票价格创出新低而本指标未能创出新低时，出现牛市背离；<br /></li>
-<li>当股票价格创出新高而本指标未能创出新高时，当出现熊市背离时。</li>
-<li>我们可以用移动均值对该指标进行平滑。</li>
-</ul>
-
-<p>NOTE: The <code>CMO</code> function has an unstable period.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">CMO</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Learn more about the Chande Momentum Oscillator at <a href="http://www.tadoc.org/indicator/CMO.htm">tadoc.org</a>.</p>
-
 <h3 id="dx-directional-movement-index-dmi指标又叫动向指标或趋向指标">DX - Directional Movement Index DMI指标又叫动向指标或趋向指标</h3>
 
 <blockquote>
@@ -680,78 +751,6 @@ PPO标准设定和MACD设定非常相似：12,26,9和PPO，和MACD一样说明�
 </div>
 <p>Learn more about the Rate of change ratio 100 scale: (price/prevPrice)*100 at <a href="http://www.tadoc.org/indicator/ROCR100.htm">tadoc.org</a>.</p>
 
-<h3 id="rsi-relative-strength-index-相对强弱指数">RSI - Relative Strength Index  相对强弱指数</h3>
-
-<blockquote>
-<p>函数名：RSI<br />
-名称：相对强弱指数<br />
-简介：是通过比较一段时期内的平均收盘涨数和平均收盘跌数来分析市场买沽盘的意向和实力，从而作出未来市场的走势，比较价格升降运动以表达价格强度的技术分析工具。<br />
-维基解读: 根据威尔德的测量结果，当n=14时，指数最具代表性。他指出当某证券的RSI升至70时，代表该证券已被超买（Overbought），投资者应考虑出售该证券。相反，当证券RSI跌至30时，代表证券被超卖（Oversold），投资者应购入该证券。当某证券的价格变动倾向（上升或下跌）越趋极端，价格变动逆转的可能性将越大。当RSI达80或20时，证券已被严重超买或超卖，投资者此时更应小心留意此类证券。然而，当该衍生工具市场处于利市状态（即牛市），严重超买或超卖的数值应被适当地向上调升，反之亦然。在证券市场中，大幅波动对RSI有相当程度的影响，但这可能是错误的买卖讯号，投资者应配合其他技术分析指标以发挥相对强弱指数的功用。<br />
-分析和应用：<a href="https://zh.wikipedia.org/wiki/%E7%9B%B8%E5%B0%8D%E5%BC%B7%E5%BC%B1%E6%8C%87%E6%95%B8">维基百科</a> <a href="http://www.iwencai.com/yike/detail/auid/6a280c6cebcf140a">同花顺学院</a></p>
-</blockquote>
-
-<p>NOTE: The <code>RSI</code> function has an unstable period.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">RSI</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Learn more about the Relative Strength Index at <a href="http://www.tadoc.org/indicator/RSI.htm">tadoc.org</a>.</p>
-
-<h3 id="stoch-stochastic-随机指标-俗称kd">STOCH - Stochastic 随机指标,俗称KD</h3>
-
-<blockquote>
-<p>函数名：STOCH<br />
-名称：随机指标,俗称KD
-简介：指标通过比较收盘价格和价格的波动范围，预测价格趋势逆转的时间，采用超买和超卖的概念。<br />
-维基解读: 当价格与随机指标发生牛势背离（即价格下跌而随机指标指向上方），而%K线与%D线在超卖区（高于80%或低于20%）发生交叉，便是买入信号；反之则是卖出信号。%K线与%D线的简单交叉经常发生，<strong>很多时候并不可靠</strong>。投资者多在%D线筑顶或筑底后，等待%K线出现急剧的逆转并与%D线交叉。当市场波动性较大时，也可使用加权移动平均来定义%D线，以平整价格短时内大幅波动对指标产生的影响。<br />
-分析和应用：<a href="https://zh.wikipedia.org/wiki/%E9%9A%8F%E6%9C%BA%E6%8C%87%E6%A0%87">维基百科</a></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">slowk</span><span class="p">,</span> <span class="n">slowd</span> <span class="o">=</span> <span class="n">STOCH</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">fastk_period</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">slowk_period</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">slowk_matype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">slowd_period</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">slowd_matype</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div></blockquote>
-
-<p>Learn more about the Stochastic at <a href="http://www.tadoc.org/indicator/STOCH.htm">tadoc.org</a>.</p>
-
-<h3 id="stochf-stochastic-fast-快速stoch指标">STOCHF - Stochastic Fast 快速STOCH指标</h3>
-
-<p>名称：快速随机指标
-简介：和STOCH类似，不同的是使用的是快速周期。
-分析和应用：<a href="https://zh.wikipedia.org/wiki/%E9%9A%8F%E6%9C%BA%E6%8C%87%E6%A0%87">维基百科</a></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">fastk</span><span class="p">,</span> <span class="n">fastd</span> <span class="o">=</span> <span class="n">STOCHF</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">fastk_period</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">fastd_period</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">fastd_matype</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Learn more about the Stochastic Fast at <a href="http://www.tadoc.org/indicator/STOCHF.htm">tadoc.org</a>.</p>
-
-<h3 id="stochrsi-stochastic-relative-strength-index-随机相对强弱指数">STOCHRSI - Stochastic Relative Strength Index 随机相对强弱指数</h3>
-
-<p>NOTE: The <code>STOCHRSI</code> function has an unstable period.<br />
-名称：随机相对强弱指数
-简介：用于确定资产是否处于超买或超卖状态，也用于确定当前市场的态势。顾名思义，StochRSI是标准相对强弱指数（RSI）的衍生，因此被视为是一种能够衡量指数的指数。它是一种振荡器，在中心线的上方和下方波动。<br />
-维基解读: StochRSI指数如果出现在其范围的上限和下限附近，此时的意义是最重大的。因此，该指标的主要用途是确定潜在的买入和卖出点，以及价格发生的逆转。因此，0.2或以下的数值，会表明资产可能发生超卖，而0.8或以上的数值则表明该资产可能会发生超买。此外，更接近中心线的数值也可以为交易者提供有关市场趋势的信息。例如，当中心线作为支撑线并且StochRSI线稳定移动到0.5以上时，尤其是数值趋近于0.8，则可能表明其继续看涨或呈上升趋势。同样，当数值始终低于0.5，趋近于0.2时，则表明下跌或呈下降趋势趋势。<br />
-分析和应用：<a href="https://www.binance.vision/zh/economics/stochastic-rsi-explained">什么是随机相对强弱指数Stochastic RSI？</a></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">fastk</span><span class="p">,</span> <span class="n">fastd</span> <span class="o">=</span> <span class="n">STOCHRSI</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fastk_period</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">fastd_period</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">fastd_matype</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Learn more about the Stochastic Relative Strength Index at <a href="http://www.tadoc.org/indicator/STOCHRSI.htm">tadoc.org</a>.</p>
-
 <h3 id="trix-1-day-rate-of-change-roc-of-a-triple-smooth-ema">TRIX - 1-day Rate-Of-Change (ROC) of a Triple Smooth EMA</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -852,7 +851,7 @@ PPO标准设定和MACD设定非常相似：12,26,9和PPO，和MACD一样说明�
   <span class="copyright-year">
     &copy; 
     2011 - 
-    2020
+    2021
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
