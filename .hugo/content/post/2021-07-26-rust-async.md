@@ -25,7 +25,7 @@ fn main() {
 }
 ```
 
-不深入使用方式，写多了自然领会，不写怎么也不会记得。
+rust想个大懒虫，只提供关于异步的的最小集合，runtime就让社区去折腾去实现，因而runtime就有3个相对比较流行的: [tokio](https://toko.rs), [async-std](https://github.com/async-rs/async-std)和[smol](https://github.com/smol-rs/smol)。对于使用方式不做过多介绍，异步代码的编写方式和其他语言基本类似。
 
 ## 原理
 

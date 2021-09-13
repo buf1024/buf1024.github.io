@@ -6,10 +6,19 @@
     <description>Recent content in rust-lib on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 12 Sep 2021 21:12:02 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 13 Sep 2021 01:12:02 +0800</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/tags/rust-lib/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>lazy_static -- 静态变量延迟初始化</title>
+      <link>https://luoguochun.cn/post/2021-09-13-rust-lib-lazy-static-intro/</link>
+      <pubDate>Mon, 13 Sep 2021 01:12:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2021-09-13-rust-lib-lazy-static-intro/</guid>
+      <description>全局静态变量初化，在他编程语言里面，是一个很简单又自然的事，然而在rust里面并非容易。如果像下面定义全局静态变量，那么会报错： 1 2 staticrefVEC_VAL: Vec&amp;lt;String&amp;gt;=vec![&amp;#34;1, 2, 3&amp;#34;.into()];</description>
+    </item>
     
     <item>
       <title>nom -- 乐高式富有语义的parser</title>
