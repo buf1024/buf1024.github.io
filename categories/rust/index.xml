@@ -29,5 +29,14 @@
       <description>简介 写过parser的人，不管是简单的自定义协议，或者复杂的协议，一般都是采用自上往下的解释方式，从第1个字节，一路开黑，到最后字节。遇到;</description>
     </item>
     
+    <item>
+      <title>rust 异步编程粗略理解 async/.await</title>
+      <link>https://luoguochun.cn/post/2021-07-26-rust-async/</link>
+      <pubDate>Mon, 26 Jul 2021 22:12:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2021-07-26-rust-async/</guid>
+      <description>简介 协程已经是非常成熟的概念了，很多编程语言(比如JS, PYTHON, DART等等)已提供原生的支持了，并且几乎提供相同的关键字async/await。</description>
+    </item>
+    
   </channel>
 </rss>

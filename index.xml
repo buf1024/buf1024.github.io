@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>rust 异步编程粗略理解 async/.await</title>
+      <link>https://luoguochun.cn/post/2021-07-26-rust-async/</link>
+      <pubDate>Mon, 26 Jul 2021 22:12:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2021-07-26-rust-async/</guid>
+      <description>简介 协程已经是非常成熟的概念了，很多编程语言(比如JS, PYTHON, DART等等)已提供原生的支持了，并且几乎提供相同的关键字async/await。</description>
+    </item>
+    
+    <item>
       <title>16 数学运算符(Math Operator Functions )</title>
       <link>https://luoguochun.cn/talib-doc/func_groups/math_operators/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:16 +0800</pubDate>
