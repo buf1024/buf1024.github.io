@@ -186,7 +186,7 @@ impl Db {
         // Release the mutex before notifying the background task. This helps
         // reduce contention by avoiding the background task waking up only to
         // be unable to acquire the mutex due to this function still holding it.
-        // 提前drop
+        // 提前drop，如此其他task可以wakeup，tokio的runtime不一定是单线程
         drop(state);
 
         if notify {

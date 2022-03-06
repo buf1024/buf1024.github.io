@@ -40,7 +40,7 @@ async fn my_exit() -> io::Result<()> {
         signal::ctrl_c().await?;
         match is_press {
             Some(_) if now.elapsed() > TIMEOUT  => {
-                debug!("press once more to exit");
+                debug!("some press once more to exit");
             }
             None => {
                 debug!("press once more to exit");
