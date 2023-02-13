@@ -6,10 +6,19 @@
     <description>Recent content in http on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 28 Apr 2017 22:10:32 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 May 2017 22:10:31 +0000</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/tags/http/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GCC不常见，但有用特别选项</title>
+      <link>https://luoguochun.cn/post/2017-05-01-gcc-missing/</link>
+      <pubDate>Mon, 01 May 2017 22:10:31 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2017-05-01-gcc-missing/</guid>
+      <description>-isystem dir 1 2 3 4 5 6 7 8 9 Search dir for header files, after all directories specified by -I but before the standard system directories. Mark it as a system directory, so that it gets the same special treatment as is applied to the standard system directories. If dir begins with &amp;#34;=&amp;#34;, then the &amp;#34;=&amp;#34; will be replaced by the sysroot prefix; see --sysroot and -isysroot. 标</description>
+    </item>
     
     <item>
       <title>lwan http 服务器</title>

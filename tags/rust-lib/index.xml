@@ -29,5 +29,14 @@
       <description>简介 写过parser的人，不管是简单的自定义协议，或者复杂的协议，一般都是采用自上往下的解释方式，从第1个字节，一路开黑，到最后字节。遇到;</description>
     </item>
     
+    <item>
+      <title>config-rs -- 多种数据配置格式</title>
+      <link>https://luoguochun.cn/post/2022-08-02-rust-lib-config-rs-intro/</link>
+      <pubDate>Mon, 02 Aug 2021 10:12:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2022-08-02-rust-lib-config-rs-intro/</guid>
+      <description>简介 读取配置文件是一个比较常见的需求，不过不同的人可能会选择不同的配置文件格式，有的人选择toml，有的人选择ini，又或者是从环境变量钟获</description>
+    </item>
+    
   </channel>
 </rss>

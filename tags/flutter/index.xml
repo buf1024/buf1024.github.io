@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Flutter on BUF1024!!!</title>
+    <title>flutter on BUF1024!!!</title>
     <link>https://luoguochun.cn/tags/flutter/</link>
-    <description>Recent content in Flutter on BUF1024!!!</description>
+    <description>Recent content in flutter on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 21 Jun 2019 17:09:02 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jul 2019 16:12:10 +0800</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Flutter -- 写app的另一种姿态</title>
-      <link>https://luoguochun.cn/post/2019-06-21-flutter-try/</link>
-      <pubDate>Fri, 21 Jun 2019 17:09:02 +0800</pubDate>
+      <title>Flutter 一丢丢代码片段</title>
+      <link>https://luoguochun.cn/post/2019-07-05-flutter-gist/</link>
+      <pubDate>Fri, 05 Jul 2019 16:12:10 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2019-06-21-flutter-try/</guid>
-      <description>简介 Flutter，如果不是专门去搜索，很少开发者会留意这个ui框架。即使搜索到，一了解到使用的是一种听都没听过的全新编程语言&amp;ndash;</description>
+      <guid>https://luoguochun.cn/post/2019-07-05-flutter-gist/</guid>
+      <description>Flutter路由 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 # 方式一，手动调用Navigator方法: # 或 Navigator.of(context).push ...</description>
+    </item>
+    
+    <item>
+      <title>Flutter desktop mac 隐藏标题栏</title>
+      <link>https://luoguochun.cn/post/2019-06-02-flutter-desktop-hide-title/</link>
+      <pubDate>Sun, 02 Jun 2019 15:13:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2019-06-02-flutter-desktop-hide-title/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flutter Trouble shoot</title>
+      <link>https://luoguochun.cn/post/2019-06-01-flutter-trouble-shoot/</link>
+      <pubDate>Sat, 01 Jun 2019 19:13:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2019-06-01-flutter-trouble-shoot/</guid>
+      <description>Flutter升级无法翻墙 1 2 3 4 5 6 7 升级没法fq的，运行报错的，可以做以下操作将sdk中 flutter/packages/flutter_tools/gradle/resolve_dependencies.gradle flutter/packages/flutter_tools/gradle/aar_init_script.gradle flutter/packages/flutter_tools/gradle/flutter.gradle 3个文件中的 https://storage.googleapis.com/download.flutter.io 替换为： http://download.flutter.io Flutter upgrade 经常失败或超时</description>
     </item>
     
   </channel>

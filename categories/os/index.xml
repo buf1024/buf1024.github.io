@@ -6,10 +6,19 @@
     <description>Recent content in os on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 18 Jan 2016 11:12:36 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 19 Jan 2016 11:12:36 +0000</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/categories/os/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ld常用特别选项</title>
+      <link>https://luoguochun.cn/post/2016-01-19-ld-special/</link>
+      <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2016-01-19-ld-special/</guid>
+      <description>链接器ld的一些特别选项，编译OS时有用到。 -N 1 2 3 4 5 --omagic Set the text and data sections to be readable and writable. Also, do not page-align the data segment, and disable linking against shared libraries. If the output format supports Unix style magic numbers, mark the output as &amp;#34;OMAGIC&amp;#34;. Note: Although a</description>
+    </item>
     
     <item>
       <title>minix 3</title>

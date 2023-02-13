@@ -6,10 +6,19 @@
     <description>Recent content in vim on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 17 Oct 2015 22:11:41 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 18:02:12 +0800</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>vim一些小技巧</title>
+      <link>https://luoguochun.cn/post/2019-03-01-vim-tricks/</link>
+      <pubDate>Fri, 01 Mar 2019 18:02:12 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2019-03-01-vim-tricks/</guid>
+      <description>命令行编辑 1 2 3 q:打开命令窗口 CTL+R 加上寄存器名称，复制寄存器内容 关于函数跳转： 注意VIM，编辑源代码时，先生成tag文件，和设置好inclu</description>
+    </item>
     
     <item>
       <title>ycm 选项</title>

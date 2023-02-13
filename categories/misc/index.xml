@@ -6,10 +6,19 @@
     <description>Recent content in misc on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 17 Sep 2014 19:12:17 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 May 2019 11:12:02 +0800</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/categories/misc/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>物理机新建xubuntu一些问题</title>
+      <link>https://luoguochun.cn/post/2019-05-05-new-xubuntu-problem/</link>
+      <pubDate>Sun, 05 May 2019 11:12:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2019-05-05-new-xubuntu-problem/</guid>
+      <description>无线网卡驱动问题 &amp;ndash; 无法显示wifi 解决方法: https://jingyan.baidu.com/article/ca2d939dd4f1b4eb6c31ce09.html PS： 下载需要联网，可以使用手机usb共享网络。 * 新建用户密码过于简单 1 2 # 去掉Crackli</description>
+    </item>
     
     <item>
       <title>bt种子文件文件结构</title>
@@ -36,6 +45,51 @@
       
       <guid>https://luoguochun.cn/post/2014-06-25-server-mode/</guid>
       <description>服务器开发貌似有固定的模式，性能和复杂度各异，现总结下常见的模式。当然服务器的开发并没有固定的模式，除了以下总结的外，实际根据业务的不同，生</description>
+    </item>
+    
+    <item>
+      <title>memcpy造成其他变量值改变</title>
+      <link>https://luoguochun.cn/post/2014-04-09-memcpy-error/</link>
+      <pubDate>Wed, 09 Apr 2014 19:12:17 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-04-09-memcpy-error/</guid>
+      <description>以前C/C++遇到过很多很多的问题，有时候费了很久很久时间，很大很大的努力才解决。但是都没有记录下来，现在想想以前的遇到的问题，只知道这样的</description>
+    </item>
+    
+    <item>
+      <title>Linux -- yum</title>
+      <link>https://luoguochun.cn/post/2012-09-13-linux-yum/</link>
+      <pubDate>Thu, 13 Sep 2012 20:10:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-09-13-linux-yum/</guid>
+      <description>Red Hat/CentOS/SuSE等都是采用RPM或者基于RPM的软件包来安装的。而yum则可以认为是rpm的软件仓库。大致的命令如下（前面加</description>
+    </item>
+    
+    <item>
+      <title>libevent 概述</title>
+      <link>https://luoguochun.cn/post/2012-03-21-libevent-intro/</link>
+      <pubDate>Wed, 21 Mar 2012 21:05:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-03-21-libevent-intro/</guid>
+      <description>声明，本文章东搬西扯抄来过的，并非原创，写给自己参考的。 关于libevent的描述，有两个百科的连接可以参考： libevent百度百科 lib</description>
+    </item>
+    
+    <item>
+      <title>迷你日志类Minilog</title>
+      <link>https://luoguochun.cn/post/2012-02-18-minlog/</link>
+      <pubDate>Sat, 18 Feb 2012 10:15:09 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-02-18-minlog/</guid>
+      <description>简介 日志，在一般系统里是非常非常重要的，它不仅跟踪到程序的执行，同时也是对系统进行各方面分析的基础。其重要性在这里不再一一说明，有兴趣可自行</description>
+    </item>
+    
+    <item>
+      <title>MyJson, JSON C&#43;&#43; 的另一种实现</title>
+      <link>https://luoguochun.cn/post/2012-02-10-myjson-intro/</link>
+      <pubDate>Fri, 10 Feb 2012 21:05:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-02-10-myjson-intro/</guid>
+      <description>JSON，JavaScript Object Notation, 是一种轻量级的数据交换格式。本质上来说，它和XML, YAML等格式化的数据格式没有什么区别。都是为了方便（</description>
     </item>
     
   </channel>

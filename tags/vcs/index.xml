@@ -6,10 +6,28 @@
     <description>Recent content in vcs on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 10 Oct 2016 14:46:23 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Jul 2017 19:56:18 +0000</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/tags/vcs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>git 合并commit</title>
+      <link>https://luoguochun.cn/post/2017-07-15-git-merge-commit/</link>
+      <pubDate>Sat, 15 Jul 2017 19:56:18 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2017-07-15-git-merge-commit/</guid>
+      <description>git合并commit，主要是fork别人的仓库，想合并到别人的仓库的时候，合并commit。如此一来，cmmit的历史笔记清晰，没有乱七八</description>
+    </item>
+    
+    <item>
+      <title>git推送多个远程分支</title>
+      <link>https://luoguochun.cn/post/2017-07-05-git-push_multi/</link>
+      <pubDate>Wed, 05 Jul 2017 20:56:18 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2017-07-05-git-push_multi/</guid>
+      <description>查看.git/config 1 2 3 4 5 6 7 8 9 10 11 12 13 [core] repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true ignorecase = true precomposeunicode = true [remote &amp;#34;origin&amp;#34;] url = git@gitee.com:heidonglgc/k-map.git fetch = +refs/heads/*:refs/remotes/origin/* [branch &amp;#34;master&amp;#34;] remote = origin merge = refs/heads/master 增加一个名为mir</description>
+    </item>
     
     <item>
       <title>git 版本控制</title>

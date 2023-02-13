@@ -11,6 +11,24 @@
     
     
     <item>
+      <title>Linux</title>
+      <link>https://luoguochun.cn/categories/linux/</link>
+      <pubDate>Mon, 01 Oct 2018 10:54:00 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>android</title>
+      <link>https://luoguochun.cn/categories/android/</link>
+      <pubDate>Mon, 01 Jul 2019 15:12:00 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>app</title>
       <link>https://luoguochun.cn/categories/app/</link>
       <pubDate>Fri, 21 Jun 2019 17:09:02 +0800</pubDate>
@@ -22,7 +40,7 @@
     <item>
       <title>asm</title>
       <link>https://luoguochun.cn/categories/asm/</link>
-      <pubDate>Tue, 02 Feb 2016 14:13:05 +0000</pubDate>
+      <pubDate>Tue, 01 Mar 2016 14:13:05 +0000</pubDate>
       
       <guid>https://luoguochun.cn/categories/asm/</guid>
       <description></description>
@@ -47,11 +65,38 @@
     </item>
     
     <item>
+      <title>flutter</title>
+      <link>https://luoguochun.cn/categories/flutter/</link>
+      <pubDate>Fri, 05 Jul 2019 16:12:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/flutter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>gcc</title>
       <link>https://luoguochun.cn/categories/gcc/</link>
-      <pubDate>Fri, 31 May 2013 17:08:14 +0000</pubDate>
+      <pubDate>Mon, 01 May 2017 22:10:31 +0000</pubDate>
       
       <guid>https://luoguochun.cn/categories/gcc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gdb</title>
+      <link>https://luoguochun.cn/categories/gdb/</link>
+      <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/gdb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://luoguochun.cn/categories/git/</link>
+      <pubDate>Sat, 15 Jul 2017 19:56:18 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/git/</guid>
       <description></description>
     </item>
     
@@ -92,9 +137,18 @@
     </item>
     
     <item>
+      <title>mac</title>
+      <link>https://luoguochun.cn/categories/mac/</link>
+      <pubDate>Fri, 06 Jul 2018 11:02:16 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>misc</title>
       <link>https://luoguochun.cn/categories/misc/</link>
-      <pubDate>Wed, 17 Sep 2014 19:12:17 +0000</pubDate>
+      <pubDate>Sun, 05 May 2019 11:12:02 +0800</pubDate>
       
       <guid>https://luoguochun.cn/categories/misc/</guid>
       <description></description>
@@ -112,7 +166,7 @@
     <item>
       <title>os</title>
       <link>https://luoguochun.cn/categories/os/</link>
-      <pubDate>Mon, 18 Jan 2016 11:12:36 +0000</pubDate>
+      <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
       
       <guid>https://luoguochun.cn/categories/os/</guid>
       <description></description>
@@ -121,7 +175,7 @@
     <item>
       <title>python</title>
       <link>https://luoguochun.cn/categories/python/</link>
-      <pubDate>Fri, 29 Aug 2014 22:31:35 +0000</pubDate>
+      <pubDate>Wed, 03 Feb 2021 19:10:00 +0800</pubDate>
       
       <guid>https://luoguochun.cn/categories/python/</guid>
       <description></description>
@@ -142,6 +196,15 @@
       <pubDate>Mon, 13 Sep 2021 01:12:02 +0800</pubDate>
       
       <guid>https://luoguochun.cn/categories/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>https://luoguochun.cn/categories/ssh/</link>
+      <pubDate>Sun, 01 Mar 2015 18:12:15 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/ssh/</guid>
       <description></description>
     </item>
     
@@ -184,7 +247,7 @@
     <item>
       <title>vim</title>
       <link>https://luoguochun.cn/categories/vim/</link>
-      <pubDate>Sat, 17 Oct 2015 22:11:41 +0000</pubDate>
+      <pubDate>Fri, 01 Mar 2019 18:02:12 +0800</pubDate>
       
       <guid>https://luoguochun.cn/categories/vim/</guid>
       <description></description>

@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>config-rs -- 多种数据配置格式</title>
+      <link>https://luoguochun.cn/post/2022-08-02-rust-lib-config-rs-intro/</link>
+      <pubDate>Mon, 02 Aug 2021 10:12:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2022-08-02-rust-lib-config-rs-intro/</guid>
+      <description>简介 读取配置文件是一个比较常见的需求，不过不同的人可能会选择不同的配置文件格式，有的人选择toml，有的人选择ini，又或者是从环境变量钟获</description>
+    </item>
+    
+    <item>
       <title>rust 异步编程粗略理解 async/.await</title>
       <link>https://luoguochun.cn/post/2021-07-26-rust-async/</link>
       <pubDate>Mon, 26 Jul 2021 22:12:02 +0800</pubDate>

@@ -6,10 +6,19 @@
     <description>Recent content in asm on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 02 Feb 2016 14:13:05 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Mar 2016 14:13:05 +0000</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/categories/asm/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>内联ASM</title>
+      <link>https://luoguochun.cn/post/2016-03-01-inline-asm/</link>
+      <pubDate>Tue, 01 Mar 2016 14:13:05 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2016-03-01-inline-asm/</guid>
+      <description>一、最基本格式: 1 2 3 4 5 6 7 8 9 `asm(&amp;#34;assembly code&amp;#34;)` 注意： 1. 汇编代码必须用双引号括起来 2. 如果汇编代码有多行，下一行必须有制表符开始 例子： 1 2 3 4 5 asm ( “m</description>
+    </item>
     
     <item>
       <title>AT&amp;T Stype GAS Assembly</title>

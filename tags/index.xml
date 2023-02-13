@@ -6,10 +6,19 @@
     <description>Recent content in Tags on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 21 Jun 2019 17:09:02 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 09 Apr 2014 19:12:17 +0000</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>C</title>
+      <link>https://luoguochun.cn/tags/c/</link>
+      <pubDate>Wed, 09 Apr 2014 19:12:17 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/tags/c/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Flutter</title>
@@ -21,9 +30,27 @@
     </item>
     
     <item>
+      <title>Linux</title>
+      <link>https://luoguochun.cn/tags/linux/</link>
+      <pubDate>Mon, 01 Oct 2018 10:54:00 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>android</title>
+      <link>https://luoguochun.cn/tags/android/</link>
+      <pubDate>Mon, 01 Jul 2019 15:12:00 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>asm</title>
       <link>https://luoguochun.cn/tags/asm/</link>
-      <pubDate>Tue, 02 Feb 2016 14:13:05 +0000</pubDate>
+      <pubDate>Tue, 01 Mar 2016 14:13:05 +0000</pubDate>
       
       <guid>https://luoguochun.cn/tags/asm/</guid>
       <description></description>
@@ -84,6 +111,15 @@
     </item>
     
     <item>
+      <title>flutter</title>
+      <link>https://luoguochun.cn/tags/flutter/</link>
+      <pubDate>Fri, 05 Jul 2019 16:12:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/tags/flutter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>frontend</title>
       <link>https://luoguochun.cn/tags/frontend/</link>
       <pubDate>Thu, 25 Jan 2018 09:32:32 +0000</pubDate>
@@ -95,7 +131,7 @@
     <item>
       <title>gas</title>
       <link>https://luoguochun.cn/tags/gas/</link>
-      <pubDate>Tue, 02 Feb 2016 14:13:05 +0000</pubDate>
+      <pubDate>Tue, 01 Mar 2016 14:13:05 +0000</pubDate>
       
       <guid>https://luoguochun.cn/tags/gas/</guid>
       <description></description>
@@ -111,9 +147,18 @@
     </item>
     
     <item>
+      <title>gdb</title>
+      <link>https://luoguochun.cn/tags/gdb/</link>
+      <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/tags/gdb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>git</title>
       <link>https://luoguochun.cn/tags/git/</link>
-      <pubDate>Mon, 10 Oct 2016 14:46:23 +0000</pubDate>
+      <pubDate>Sat, 15 Jul 2017 19:56:18 +0000</pubDate>
       
       <guid>https://luoguochun.cn/tags/git/</guid>
       <description></description>
@@ -149,7 +194,7 @@
     <item>
       <title>http</title>
       <link>https://luoguochun.cn/tags/http/</link>
-      <pubDate>Fri, 28 Apr 2017 22:10:32 +0000</pubDate>
+      <pubDate>Mon, 01 May 2017 22:10:31 +0000</pubDate>
       
       <guid>https://luoguochun.cn/tags/http/</guid>
       <description></description>
@@ -210,6 +255,15 @@
     </item>
     
     <item>
+      <title>mac</title>
+      <link>https://luoguochun.cn/tags/mac/</link>
+      <pubDate>Fri, 06 Jul 2018 11:02:16 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/tags/mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>makefile</title>
       <link>https://luoguochun.cn/tags/makefile/</link>
       <pubDate>Fri, 04 Jul 2014 16:45:00 +0000</pubDate>
@@ -221,9 +275,18 @@
     <item>
       <title>minix3</title>
       <link>https://luoguochun.cn/tags/minix3/</link>
-      <pubDate>Mon, 18 Jan 2016 11:12:36 +0000</pubDate>
+      <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
       
       <guid>https://luoguochun.cn/tags/minix3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>misc</title>
+      <link>https://luoguochun.cn/tags/misc/</link>
+      <pubDate>Sun, 05 May 2019 11:12:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/tags/misc/</guid>
       <description></description>
     </item>
     
@@ -239,7 +302,7 @@
     <item>
       <title>os</title>
       <link>https://luoguochun.cn/tags/os/</link>
-      <pubDate>Mon, 18 Jan 2016 11:12:36 +0000</pubDate>
+      <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
       
       <guid>https://luoguochun.cn/tags/os/</guid>
       <description></description>
@@ -257,7 +320,7 @@
     <item>
       <title>python</title>
       <link>https://luoguochun.cn/tags/python/</link>
-      <pubDate>Sun, 28 Dec 2014 21:08:34 +0000</pubDate>
+      <pubDate>Wed, 03 Feb 2021 19:10:00 +0800</pubDate>
       
       <guid>https://luoguochun.cn/tags/python/</guid>
       <description></description>
@@ -336,6 +399,15 @@
     </item>
     
     <item>
+      <title>ssh</title>
+      <link>https://luoguochun.cn/tags/ssh/</link>
+      <pubDate>Sun, 01 Mar 2015 18:12:15 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ssl/tls</title>
       <link>https://luoguochun.cn/tags/ssl-tls/</link>
       <pubDate>Wed, 16 Nov 2016 11:17:11 +0000</pubDate>
@@ -401,7 +473,7 @@
     <item>
       <title>vcs</title>
       <link>https://luoguochun.cn/tags/vcs/</link>
-      <pubDate>Mon, 10 Oct 2016 14:46:23 +0000</pubDate>
+      <pubDate>Sat, 15 Jul 2017 19:56:18 +0000</pubDate>
       
       <guid>https://luoguochun.cn/tags/vcs/</guid>
       <description></description>
@@ -410,7 +482,7 @@
     <item>
       <title>vim</title>
       <link>https://luoguochun.cn/tags/vim/</link>
-      <pubDate>Sat, 17 Oct 2015 22:11:41 +0000</pubDate>
+      <pubDate>Fri, 01 Mar 2019 18:02:12 +0800</pubDate>
       
       <guid>https://luoguochun.cn/tags/vim/</guid>
       <description></description>

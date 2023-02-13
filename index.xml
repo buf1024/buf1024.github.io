@@ -30,12 +30,48 @@
     </item>
     
     <item>
+      <title>config-rs -- 多种数据配置格式</title>
+      <link>https://luoguochun.cn/post/2022-08-02-rust-lib-config-rs-intro/</link>
+      <pubDate>Mon, 02 Aug 2021 10:12:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2022-08-02-rust-lib-config-rs-intro/</guid>
+      <description>简介 读取配置文件是一个比较常见的需求，不过不同的人可能会选择不同的配置文件格式，有的人选择toml，有的人选择ini，又或者是从环境变量钟获</description>
+    </item>
+    
+    <item>
       <title>rust 异步编程粗略理解 async/.await</title>
       <link>https://luoguochun.cn/post/2021-07-26-rust-async/</link>
       <pubDate>Mon, 26 Jul 2021 22:12:02 +0800</pubDate>
       
       <guid>https://luoguochun.cn/post/2021-07-26-rust-async/</guid>
       <description>简介 协程已经是非常成熟的概念了，很多编程语言(比如JS, PYTHON, DART等等)已提供原生的支持了，并且几乎提供相同的关键字async/await。</description>
+    </item>
+    
+    <item>
+      <title>flask极简简介</title>
+      <link>https://luoguochun.cn/post/2021-02-03-flask-intro/</link>
+      <pubDate>Wed, 03 Feb 2021 19:10:00 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2021-02-03-flask-intro/</guid>
+      <description>todo: flask环境变量 &amp;ndash; FLASK_ENV, FLASK_DEBUG flask可以支持热更新式的开发，PyCharm的设置方式是在Run Configuration上面勾上DEBUG选</description>
+    </item>
+    
+    <item>
+      <title>fabric极简简介</title>
+      <link>https://luoguochun.cn/post/2021-01-15-fabric-intro/</link>
+      <pubDate>Fri, 15 Jan 2021 19:12:00 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2021-01-15-fabric-intro/</guid>
+      <description>fabric主要用于自动化运维，可以使用类似于make命令一样执行python的函数。 fabric主要依赖于pyinvoke和paramik</description>
+    </item>
+    
+    <item>
+      <title>python 使用到的一丢丢代码片段</title>
+      <link>https://luoguochun.cn/post/2021-01-01-py-gist/</link>
+      <pubDate>Fri, 01 Jan 2021 11:12:08 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2021-01-01-py-gist/</guid>
+      <description>python 装饰器终极写法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 # 假如需要用到装饰的功能（建议经常使用），那么建议使用下面写法 # 目的</description>
     </item>
     
     <item>
@@ -210,6 +246,24 @@
     </item>
     
     <item>
+      <title>Flutter 一丢丢代码片段</title>
+      <link>https://luoguochun.cn/post/2019-07-05-flutter-gist/</link>
+      <pubDate>Fri, 05 Jul 2019 16:12:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2019-07-05-flutter-gist/</guid>
+      <description>Flutter路由 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 # 方式一，手动调用Navigator方法: # 或 Navigator.of(context).push ...</description>
+    </item>
+    
+    <item>
+      <title>android国内源</title>
+      <link>https://luoguochun.cn/post/2019-07-01-android-source/</link>
+      <pubDate>Mon, 01 Jul 2019 15:12:00 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2019-07-01-android-source/</guid>
+      <description>如果是Flutter框架，同时要flutter框架修改文件 flutter\packages\flutter_tools\gradle\flutter.gradle grep找出build.gradle文件 凡是和google相关的，全部替换为 1 2</description>
+    </item>
+    
+    <item>
       <title>Flutter -- 写app的另一种姿态</title>
       <link>https://luoguochun.cn/post/2019-06-21-flutter-try/</link>
       <pubDate>Fri, 21 Jun 2019 17:09:02 +0800</pubDate>
@@ -219,12 +273,66 @@
     </item>
     
     <item>
+      <title>Flutter desktop mac 隐藏标题栏</title>
+      <link>https://luoguochun.cn/post/2019-06-02-flutter-desktop-hide-title/</link>
+      <pubDate>Sun, 02 Jun 2019 15:13:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2019-06-02-flutter-desktop-hide-title/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flutter Trouble shoot</title>
+      <link>https://luoguochun.cn/post/2019-06-01-flutter-trouble-shoot/</link>
+      <pubDate>Sat, 01 Jun 2019 19:13:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2019-06-01-flutter-trouble-shoot/</guid>
+      <description>Flutter升级无法翻墙 1 2 3 4 5 6 7 升级没法fq的，运行报错的，可以做以下操作将sdk中 flutter/packages/flutter_tools/gradle/resolve_dependencies.gradle flutter/packages/flutter_tools/gradle/aar_init_script.gradle flutter/packages/flutter_tools/gradle/flutter.gradle 3个文件中的 https://storage.googleapis.com/download.flutter.io 替换为： http://download.flutter.io Flutter upgrade 经常失败或超时</description>
+    </item>
+    
+    <item>
+      <title>物理机新建xubuntu一些问题</title>
+      <link>https://luoguochun.cn/post/2019-05-05-new-xubuntu-problem/</link>
+      <pubDate>Sun, 05 May 2019 11:12:02 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2019-05-05-new-xubuntu-problem/</guid>
+      <description>无线网卡驱动问题 &amp;ndash; 无法显示wifi 解决方法: https://jingyan.baidu.com/article/ca2d939dd4f1b4eb6c31ce09.html PS： 下载需要联网，可以使用手机usb共享网络。 * 新建用户密码过于简单 1 2 # 去掉Crackli</description>
+    </item>
+    
+    <item>
+      <title>vim一些小技巧</title>
+      <link>https://luoguochun.cn/post/2019-03-01-vim-tricks/</link>
+      <pubDate>Fri, 01 Mar 2019 18:02:12 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2019-03-01-vim-tricks/</guid>
+      <description>命令行编辑 1 2 3 q:打开命令窗口 CTL+R 加上寄存器名称，复制寄存器内容 关于函数跳转： 注意VIM，编辑源代码时，先生成tag文件，和设置好inclu</description>
+    </item>
+    
+    <item>
+      <title>防火墙放开端口</title>
+      <link>https://luoguochun.cn/post/2018-10-01-firewall-cmd/</link>
+      <pubDate>Mon, 01 Oct 2018 10:54:00 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2018-10-01-firewall-cmd/</guid>
+      <description>firewall-cmd &amp;ndash;permanent &amp;ndash;zone=public &amp;ndash;add-port=8484/tcp &amp;ndash;zone #作用域 &amp;ndash;add-port=8484/tcp #添加端口，格式为：端口/通讯协议 &amp;ndash;permanent #永久生效，没有此参数重启后失效 firewall-cmd &amp;ndash;reload 1、firewalld的基本使用 启动： systemctl start firewalld 查看</description>
+    </item>
+    
+    <item>
       <title>高可用系统</title>
       <link>https://luoguochun.cn/post/2018-09-01-high-available-loadbalance/</link>
       <pubDate>Sat, 01 Sep 2018 19:54:09 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2018-09-01-high-available-loadbalance/</guid>
       <description>很久之前，在公司鼎盛的时期，还存在运维人员的时候，我们开发应用的时候，就会和运维人员讨论一下部署的方案，听的比较多的是，运维人员说的比较多的</description>
+    </item>
+    
+    <item>
+      <title>Macos一丢丢小技巧</title>
+      <link>https://luoguochun.cn/post/2018-07-06-mac-newbie/</link>
+      <pubDate>Fri, 06 Jul 2018 11:02:16 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2018-07-06-mac-newbie/</guid>
+      <description>有的人认为用mac是纯粹了了装X，不过用过的人自然才知道什么是无知。 摘录一些常见的问题和使用用的技巧。 Mac cpu占用高 Mac系统中 mdwork</description>
     </item>
     
     <item>
@@ -264,6 +372,24 @@
     </item>
     
     <item>
+      <title>git 合并commit</title>
+      <link>https://luoguochun.cn/post/2017-07-15-git-merge-commit/</link>
+      <pubDate>Sat, 15 Jul 2017 19:56:18 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2017-07-15-git-merge-commit/</guid>
+      <description>git合并commit，主要是fork别人的仓库，想合并到别人的仓库的时候，合并commit。如此一来，cmmit的历史笔记清晰，没有乱七八</description>
+    </item>
+    
+    <item>
+      <title>git推送多个远程分支</title>
+      <link>https://luoguochun.cn/post/2017-07-05-git-push_multi/</link>
+      <pubDate>Wed, 05 Jul 2017 20:56:18 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2017-07-05-git-push_multi/</guid>
+      <description>查看.git/config 1 2 3 4 5 6 7 8 9 10 11 12 13 [core] repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true ignorecase = true precomposeunicode = true [remote &amp;#34;origin&amp;#34;] url = git@gitee.com:heidonglgc/k-map.git fetch = +refs/heads/*:refs/remotes/origin/* [branch &amp;#34;master&amp;#34;] remote = origin merge = refs/heads/master 增加一个名为mir</description>
+    </item>
+    
+    <item>
       <title>golang 私钥&#34;加密&#34;公钥&#34;解密&#34;</title>
       <link>https://luoguochun.cn/post/2017-06-23-golang-private-public-crypt/</link>
       <pubDate>Fri, 23 Jun 2017 20:57:11 +0000</pubDate>
@@ -279,6 +405,15 @@
       
       <guid>https://luoguochun.cn/post/2017-06-03-synchronize-atomic-variable/</guid>
       <description>无论是基于多线程还是多进程并发的程序，同步控制总是不可避免的。按照自己的思维和使用习惯，自然会想到的是互斥量(mutext)和自旋锁(spi</description>
+    </item>
+    
+    <item>
+      <title>GCC不常见，但有用特别选项</title>
+      <link>https://luoguochun.cn/post/2017-05-01-gcc-missing/</link>
+      <pubDate>Mon, 01 May 2017 22:10:31 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2017-05-01-gcc-missing/</guid>
+      <description>-isystem dir 1 2 3 4 5 6 7 8 9 Search dir for header files, after all directories specified by -I but before the standard system directories. Mark it as a system directory, so that it gets the same special treatment as is applied to the standard system directories. If dir begins with &amp;#34;=&amp;#34;, then the &amp;#34;=&amp;#34; will be replaced by the sysroot prefix; see --sysroot and -isysroot. 标</description>
     </item>
     
     <item>
@@ -336,12 +471,30 @@
     </item>
     
     <item>
+      <title>内联ASM</title>
+      <link>https://luoguochun.cn/post/2016-03-01-inline-asm/</link>
+      <pubDate>Tue, 01 Mar 2016 14:13:05 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2016-03-01-inline-asm/</guid>
+      <description>一、最基本格式: 1 2 3 4 5 6 7 8 9 `asm(&amp;#34;assembly code&amp;#34;)` 注意： 1. 汇编代码必须用双引号括起来 2. 如果汇编代码有多行，下一行必须有制表符开始 例子： 1 2 3 4 5 asm ( “m</description>
+    </item>
+    
+    <item>
       <title>AT&amp;T Stype GAS Assembly</title>
       <link>https://luoguochun.cn/post/2016-02-02-at-t-stype-gas-assembly/</link>
       <pubDate>Tue, 02 Feb 2016 14:13:05 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2016-02-02-at-t-stype-gas-assembly/</guid>
       <description>简单回顾了下IA-32汇编语言，大学教科书学的8086是基于Intel语法的，使用的是nasm，这次整理了一下AT&amp;amp;T格式的，使用的</description>
+    </item>
+    
+    <item>
+      <title>ld常用特别选项</title>
+      <link>https://luoguochun.cn/post/2016-01-19-ld-special/</link>
+      <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2016-01-19-ld-special/</guid>
+      <description>链接器ld的一些特别选项，编译OS时有用到。 -N 1 2 3 4 5 --omagic Set the text and data sections to be readable and writable. Also, do not page-align the data segment, and disable linking against shared libraries. If the output format supports Unix style magic numbers, mark the output as &amp;#34;OMAGIC&amp;#34;. Note: Although a</description>
     </item>
     
     <item>
@@ -378,6 +531,24 @@
       
       <guid>https://luoguochun.cn/post/2015-07-22-vim-xx-things/</guid>
       <description>关于中文乱码 跟字符编码方式有关的选项: encoding, fileencoding, fileencodings, *termencoding*。更详细的信息可看vim 帮助文档: :help encoding-names。简</description>
+    </item>
+    
+    <item>
+      <title>gdb一丢丢常见问题</title>
+      <link>https://luoguochun.cn/post/2015-04-01-gdb-common-issue/</link>
+      <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2015-04-01-gdb-common-issue/</guid>
+      <description>一、gdb 无法自动加载当前文件 .gdbinit文件 提示： warning: File &amp;ldquo;/home/heidong/privt/proj/osv6/.gdbinit&amp;rdquo; auto-loading has been declined by your `auto-load safe-path&amp;rsquo; set to &amp;ldquo;$debugdir:$datadir/auto-load&amp;rdquo;. To enable execution of this file add 1 add-auto-load-safe-path /home/heidong/privt/proj/osv6/.gdbinit line to your configuration file &amp;ldquo;/home/heidong/.gdbinit&amp;rdquo;. To completely disable this security protection add 1 set auto-load safe-path /</description>
+    </item>
+    
+    <item>
+      <title>ssh 隧道访问局域网机器</title>
+      <link>https://luoguochun.cn/post/2015-03-01-ssh-tunnel/</link>
+      <pubDate>Sun, 01 Mar 2015 18:12:15 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2015-03-01-ssh-tunnel/</guid>
+      <description>1 SSH 免登陆密码 1.1 生产 RSA密钥对 1 2 3 `$ssh-keygen -t rsa` ~/.ssh目录将生成id_rsa（私钥）和id_rsa.pub（公钥） 1.2 将公钥复制到需要自动登</description>
     </item>
     
     <item>
@@ -534,6 +705,15 @@
     </item>
     
     <item>
+      <title>memcpy造成其他变量值改变</title>
+      <link>https://luoguochun.cn/post/2014-04-09-memcpy-error/</link>
+      <pubDate>Wed, 09 Apr 2014 19:12:17 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-04-09-memcpy-error/</guid>
+      <description>以前C/C++遇到过很多很多的问题，有时候费了很久很久时间，很大很大的努力才解决。但是都没有记录下来，现在想想以前的遇到的问题，只知道这样的</description>
+    </item>
+    
+    <item>
       <title>C 简单单元测试框架</title>
       <link>https://luoguochun.cn/post/2014-01-11-ctest/</link>
       <pubDate>Sat, 11 Jan 2014 23:48:14 +0000</pubDate>
@@ -570,6 +750,15 @@
     </item>
     
     <item>
+      <title>Linux -- yum</title>
+      <link>https://luoguochun.cn/post/2012-09-13-linux-yum/</link>
+      <pubDate>Thu, 13 Sep 2012 20:10:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-09-13-linux-yum/</guid>
+      <description>Red Hat/CentOS/SuSE等都是采用RPM或者基于RPM的软件包来安装的。而yum则可以认为是rpm的软件仓库。大致的命令如下（前面加</description>
+    </item>
+    
+    <item>
       <title>Windows Shell Extension</title>
       <link>https://luoguochun.cn/post/2012-06-24-windows-shell-extension/</link>
       <pubDate>Sun, 24 Jun 2012 00:00:43 +0000</pubDate>
@@ -597,6 +786,33 @@
     </item>
     
     <item>
+      <title>libevent 概述</title>
+      <link>https://luoguochun.cn/post/2012-03-21-libevent-intro/</link>
+      <pubDate>Wed, 21 Mar 2012 21:05:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-03-21-libevent-intro/</guid>
+      <description>声明，本文章东搬西扯抄来过的，并非原创，写给自己参考的。 关于libevent的描述，有两个百科的连接可以参考： libevent百度百科 lib</description>
+    </item>
+    
+    <item>
+      <title>迷你日志类Minilog</title>
+      <link>https://luoguochun.cn/post/2012-02-18-minlog/</link>
+      <pubDate>Sat, 18 Feb 2012 10:15:09 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-02-18-minlog/</guid>
+      <description>简介 日志，在一般系统里是非常非常重要的，它不仅跟踪到程序的执行，同时也是对系统进行各方面分析的基础。其重要性在这里不再一一说明，有兴趣可自行</description>
+    </item>
+    
+    <item>
+      <title>MyJson, JSON C&#43;&#43; 的另一种实现</title>
+      <link>https://luoguochun.cn/post/2012-02-10-myjson-intro/</link>
+      <pubDate>Fri, 10 Feb 2012 21:05:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-02-10-myjson-intro/</guid>
+      <description>JSON，JavaScript Object Notation, 是一种轻量级的数据交换格式。本质上来说，它和XML, YAML等格式化的数据格式没有什么区别。都是为了方便（</description>
+    </item>
+    
+    <item>
       <title>Very Very Simple C&#43;&#43; Testing Framework</title>
       <link>https://luoguochun.cn/post/2012-02-09-simple-c&#43;&#43;-test-framework/</link>
       <pubDate>Thu, 09 Feb 2012 20:50:00 +0000</pubDate>
@@ -620,7 +836,7 @@
       <pubDate>Sun, 04 Jun 1989 20:00:00 +0000</pubDate>
       
       <guid>https://luoguochun.cn/about/</guid>
-      <description>hello, world. hello, world! hello, world? hello, the world! 邮箱： NDUwMTcxMDk0QHFxLmNvbQ== 站点： aHR0cDovL2x1b2d1b2NodW4uY24=</description>
+      <description>不务正业 TALIB-DOC &amp;ndash; 现在不会还有人相信靠技术分析能赚钱吧？ 2017 百度前端学院 &amp;ndash; 虽然有点out 说好了为了不生疏每月定更 &amp;ndash; 然后没了然后 偶尔写写自己用的 PyPi &amp;ndash; 当</description>
     </item>
     
   </channel>
