@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>TCP温故而知新 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="TCP是什么 TCP是面向连接的，可靠的，基于字节流的传输协议。 面向连接，指的是一对一的，不是一对多。 可靠性，指的是不管网络环境多么的复杂多变" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2023-02-14-tcp-renew/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="TCP温故而知新" />
+<meta property="og:description" content="TCP是什么 TCP是面向连接的，可靠的，基于字节流的传输协议。 面向连接，指的是一对一的，不是一对多。 可靠性，指的是不管网络环境多么的复杂多变" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2023-02-14-tcp-renew/" /><meta property="article:published_time" content="2023-02-02T14:15:12&#43;08:00"/>
+<meta property="article:modified_time" content="2023-02-02T14:15:12&#43;08:00"/>
+
+<meta itemprop="name" content="TCP温故而知新">
+<meta itemprop="description" content="TCP是什么 TCP是面向连接的，可靠的，基于字节流的传输协议。 面向连接，指的是一对一的，不是一对多。 可靠性，指的是不管网络环境多么的复杂多变">
+
+
+<meta itemprop="datePublished" content="2023-02-02T14:15:12&#43;08:00" />
+<meta itemprop="dateModified" content="2023-02-02T14:15:12&#43;08:00" />
+<meta itemprop="wordCount" content="9805">
+
+
+
+<meta itemprop="keywords" content="tcp," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TCP温故而知新"/>
+<meta name="twitter:description" content="TCP是什么 TCP是面向连接的，可靠的，基于字节流的传输协议。 面向连接，指的是一对一的，不是一对多。 可靠性，指的是不管网络环境多么的复杂多变"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">TCP温故而知新</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2023-02-02 </span>
+        <div class="post-category">
+            <a href="/categories/tcp/"> tcp </a>
+            </div>
+          <span class="more-meta"> 约 9805 字 </span>
+          <span class="more-meta"> 预计阅读 20 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#tcp是什么">TCP是什么</a></li>
+<li><a href="#tcp的建立">TCP的建立</a>
+<ul>
+<li>
+<ul>
+<li><a href="#三次握手">三次握手</a></li>
+<li><a href="#syn-flood攻击">SYN Flood攻击</a></li>
+<li><a href="#半连接队列和全连接队列">半连接队列和全连接队列</a></li>
+<li><a href="#连接优化">连接优化</a></li>
+<li><a href="#拔掉网线断连接">拔掉网线断连接？</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#tcp的终止">TCP的终止</a>
+<ul>
+<li>
+<ul>
+<li><a href="#四次挥手">四次挥手</a></li>
+<li><a href="#终止的优化">终止的优化</a>
+<ul>
+<li><a href="#fin-wait-1优化">FIN_WAIT_1优化</a></li>
+<li><a href="#fin-wait-2优化">FIN_WAIT_2优化</a></li>
+<li><a href="#time-wait优化">TIME_WAIT优化</a></li>
+<li><a href="#close-wait优化">CLOSE_WAIT优化</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#重传">重传</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#超时重传">超时重传</a></li>
+<li><a href="#快速重传">快速重传</a></li>
+<li><a href="#重传方式">重传方式</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#流量控制">流量控制</a>
+<ul>
+<li>
+<ul>
+<li><a href="#滑动窗口">滑动窗口</a>
+<ul>
+<li>
+<ul>
+<li><a href="#糊涂窗口综合征">糊涂窗口综合征</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#阻塞控制">阻塞控制</a></li>
+<li><a href="#小结">小结</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h1 id="tcp是什么">TCP是什么</h1>
+
+<p>TCP是面向连接的，可靠的，基于字节流的传输协议。</p>
+
+<ul>
+<li>面向连接，指的是一对一的，不是一对多。</li>
+<li>可靠性，指的是不管网络环境多么的复杂多变，它总是能够可靠的传输数据给对方。</li>
+<li>基于字节流，指的是它就是一个流的协议，没有消息的边界。不管接受方是先接受到后面发送来的数据还是前面的数据，又或者是重复的数据等等，它都不是单纯的丢给应用处理（当然带外数据是例外的，这个不写了，因为基本淘汰没人用了，另外自己也写过），而是等数据完整有序了，按序丢给应用程序。</li>
+</ul>
+
+<p>那么什么是连接呢？TCP只是传输层的一个协议，不可能是用一条网线直接连接的。所谓的连接是指通讯的双方为了保证可靠性，流量控制，阻塞控制等等所维护一组状态，而这组状态是通过协议通信来变更和维护的。</p>
+
+<p>那么唯一确定一个链接的是什么？这个简单了，源地址+源端口+目标地址+目标端口便可以确定，这四个东西合在一起，称之为四元组。</p>
+
+<h1 id="tcp的建立">TCP的建立</h1>
+
+<h3 id="三次握手">三次握手</h3>
+
+<p>先看一个正常的TCP在怎么样建立连接(下部分是四次挥手的，暂时忽略)：</p>
+
+<p><img src="/img/tcp/tcp-3w-4w.png" alt="image" /></p>
+
+<p>TCP的建立，离不开说这个三次握手，大体的流程：</p>
+
+<ol>
+<li>客户端发送<code>SYN</code>​包给服务端</li>
+<li>服务端收到客户端的<code>SYN</code>​然后发生送<code>ACK</code>​</li>
+<li>服务端发送<code>SYN</code>​给客户端</li>
+<li>客户端发送<code>ACK</code>​回给服务端</li>
+</ol>
+
+<p>如此，一个正常流程的TCP连接便建立起来了，步骤是四步，不过TCP交互的时候，第二步和第三步合成一步了。</p>
+
+<p>有没有发现图中，第一个<code>SYN</code>​包里面的<code>Seq=ISN</code>​？<code>ISN</code>​是初始序列号，<code>Seq</code>​是保证可靠传输的一个重要数据，握手过程中交换 的最重要的一个数据。那么<code>ISN</code>​要设置成多少才比较合适呢？0么？在大鲨鱼里面看到的<code>ISN</code>​就是0开始的，不过不要被大鲨鱼骗了，大鲨鱼为了让你好查看，才贴心的使用偏移量，所以看起来是0而已。事实上<code>ISN</code>​的生产是有一定的规则的，总体上是递增的，而且还加上一些随机值，目的就是为了不被一些不法份子猜测到。</p>
+
+<p>那么问题来了，为什么要TCP建立连接三次握手，我两次握手行不行吗？这个还真不行，我记忆一下，大概有以下三方面原因：</p>
+
+<ul>
+<li>为了避免资源的了混论</li>
+</ul>
+
+<p>因为网络本身就是非常复杂的，充斥着各种迷途报文和重复报文，如果服务端收到的此类无主的报文不是傻叉了？
+* 为了正确交换<code>ISN</code>​，保证传输的可靠性</p>
+
+<p>服务端收到了<code>SYN</code>​报文，这仅仅的代表服务端收到了<code>ISN</code>​。此话怎么讲，上图不是在第二步的时候，也产生了服务端的<code>ISN</code>​么？上图的第二步服务端的<code>SYN</code>​报文加上客户端的<code>ACK</code>​和在一起了，如果不合在一起，那就客户端就无法知道服务端的初始<code>ISN</code>​。如果合在一起，那么一个<code>SYN</code>​必须要等一个<code>ACK</code>​,如果不是三次握手，那服务端一直收不到这个<code>ACK</code>​，那它岂不是一直在重发那个<code>SYN</code>​报文？
+* 为了资源不被浪费</p>
+
+<p>这个容易理解了，如果丢包了，客户端不断的重复<code>SYN</code>​报文，服务端就不断的建立连接，很快服务端资源就被耗尽了，根本就不用什么攻击手段了。</p>
+
+<h3 id="syn-flood攻击">SYN Flood攻击</h3>
+
+<p>网络充斥着无限的可能性，回到上面三次握手的图，如果服务端发送的<code>SYN+ACK</code>​超时了怎么办？超时就重发呗，大部分人估计都想到这点。那么到底是怎么重发的呢？是马上重发，还是等一下再重发，重发一次还是重发几次？这些都是有一定的算法的。在Linux下面是阶段性重发，默认好像是总共重发5次，重试的时间间隔为，1，2，4，8，16，32，所有总耗时约63秒，。</p>
+
+<p>这和<code>SYN</code>​Flood有什么干系？<code>SYN</code>​Flood就是我这大量发送你<code>SYN</code>​，对你的应答<code>ACK</code>​一律不理，让你不断的重发，让你的资源得不到释放（半连接<code>SYN</code>​队列满了），从而达到*DDos*的目的。</p>
+
+<p>那么，面对<code>SYN</code>​​Flood，该怎么办呢？</p>
+
+<ul>
+<li>既然<code>SYN</code>​Flood是重发引起的，那么通过设置调整<code>tcp_synack_retries</code>​减少重试次数来减轻症状。</li>
+<li>通过调整<code>tcp_max_syn_backlog</code>​参数，设置更大的半连接<code>SYN</code>​队列，不过还要调整内核参数<code>somaxconn</code>​，另外一个就是应用程序设置的<code>listen</code>​函数的参数<code>backlog</code>​。半连接<code>SYN</code>​队列大小和这三个参数相关。</li>
+<li>设置<code>tcp_abort_on_overflow</code>​，<code>SYN</code>​队列溢出了，直接拒绝连接。</li>
+<li>又或者干脆就不用<code>SYN</code>​队列，开启<code>tcp_syncookies</code>​,<code>SYN</code>​队列了之后，直接生成一个<code>cookie</code>​给客户端，如果是正常的客户端，收到这个<code>cookie</code>​，会返回来，建立连接的。</li>
+</ul>
+
+<h3 id="半连接队列和全连接队列">半连接队列和全连接队列</h3>
+
+<p>上面说到半连接队列<code>SYN</code>​队列，除了这个，还有一个全连接队列，也称之为<code>accept</code>​队列。这是内核维护的两个队列。服务端收到客户端建立连接的<code>SYN</code>​包的时候，会把它丢进<code>SYN</code>​队列，当服务端收到第三次握手的<code>ACK</code>​包的时候，把<code>SYN</code>​队列的连接信息搞出来，把它丢到全连接队列。当应用程序调用<code>accpt</code>​的时候，又从全连接队列里面把连接信息搞出来，从而才真正意义的建立起连接。说的比较蒙圈，还是上一个图比较清晰一点。</p>
+
+<p><img src="/img/tcp/tcp-queue.png" alt="image" /></p>
+
+<p>一段话啰嗦那么久，还不如一个图来的清爽利落。凡是队列，都有长度限制，超出长度，都有溢出的可能，如果溢出了，那么内核就有可能丢弃，或者直接拒绝连接。</p>
+
+<p>半连接队列参考上面的SYN Flood攻击。</p>
+
+<p>当服务有大量的连接请求，而全连接队列又比较小的时候，就容易出现溢出，后续的服务请求都将被服务器无情的拒绝，这样也是导致服务端连接请求不上去的一个原因。不过默认的行为是可以改变，也是这个选项<code>tcp_abort_on_overflow</code>​，可见设置一个参数处理<code>SYN</code>​flood也会影响其他行为，要全盘评估。<code>tcp_abort_on_overflow</code>​设置为1时，直接拒绝新连接，设置为0时，就直接丢弃这个<code>SYN</code>​报文。不过建议的设置是<code>tcp_abort_on_overflow</code>​设置为0，因为正常的情况之下，全连接队列满只是暂时的事情，队列里面的连接被<code>accpt</code>​了之后，队列随时有空位，客户端重发的<code>SYN</code>​报文又可以让连接正确的建立起来。</p>
+
+<p>那有没办法改变全连接队列的大小呢？答案是肯定的。这主要是两个参数，一个是内核参数<code>somaxconn</code>​，另外一个就是<code>listen</code>​函数的参数<code>backlog</code>​。全队列的大小是<code>somaxconn</code>​和<code>backlog</code>​的最小值。很多人设置的时候，只是编程上只设置<code>listen</code>​的<code>backlog</code>​，这是不正确滴。</p>
+
+<h3 id="连接优化">连接优化</h3>
+
+<p>如果是大量短连接（比如http，https），那么TCP三次握手是比较浪费网络资源的，传输效率并不高，所以有人就动歪脑筋了，能不能在可靠性的前提之下，建立连接是否可以绕过三次握手？还真给这批人想出来了，这就是TCP Fast Open，而且这个TCP Fast Open还有牛掰之处就是可以携带数据。</p>
+
+<p>客户端首次建立连接的时候，还是需要三次握手的，而且和三次握手并没有太大的区别。只是客户端第一次握手的时候会带上TFO的选项以及空的cookie。在第二次握手时，服务端会生成cookie，并在<code>SYN-ACK</code>​携带上，而客户端在收到后，会在本地储存这个cookie。</p>
+
+<p>重点是之后的流程，如果客户再次向服务端建立连接的时候，情况就有所不一样了。</p>
+
+<ul>
+<li>客户端发送<code>SYN</code>​并携带数据，已经之前存储的cookie。</li>
+<li>服务端收到客户端的请求之后，会检验发送来的cookie。如果cookie是有效的，那么就直接发送<code>SYN-ACK</code>​，而且这个<code>SYN-ACK</code>​包括了对数据的校验信息，同时直接把数据丢个应用程序处理。直接就在握手阶段就处理数据了，不得不说牛叉，这样交互就减少了。如果这个cookie是无效的，那么只是正常的发送<code>SYN-ACK</code>​不携带私货。</li>
+<li>客户端收到服务端<code>SYN-ACK</code>​后，看有没有携带私货。如果没有，那就再重新发送数据。</li>
+<li>剩下的数据传输和普通的TCP传输数据没有区别了。</li>
+</ul>
+
+<p>那么如何打开TFO选项的?<code>tcp_fastopen</code>​。需要配置为同时作为客户端和服务端打开，才有效。</p>
+
+<h3 id="拔掉网线断连接">拔掉网线断连接？</h3>
+
+<p>想到一个有意思的问题，建立连接的双突然被拔了网线，连接会断开么？上面所说，TCP是面向连接的，所谓的连接是双维护的一组状态，而这组状态是通过双方的通讯来更新维护的。所以说，拔了网线，这个动作并不会干扰到这个状态，TCP连接的状态还是建立的。那么拔了网线之后，发生什么事情，就要分情况说了。</p>
+
+<ol>
+<li><p>第一种情况是，如果拔了网线，期间有数据传输。</p>
+
+<p>这个时候，TCP是有重传机制，按照上面所说的，如果没做参数调整，那么报文重传需要一分多钟，如果在这段时间内突然又把网线插上了，那么就什么事情都没有发生，就像是网络抖动了一下而已。如果重传超时了，那就说明这个连接已经挂了，连接自然就断开。</p></li>
+
+<li><p>第二种情况，如果拔了网线，期间没有数据传输。</p>
+
+<p>这个时候，又可细分两种情况。一种是没有设置了TCP的保活机制的，另外一种是设置了。所谓的TCP的保活机制，包括内核<code>tcp_keepalive_time=7200 tcp_keepalive_intvl=75 tcp_keepalive_probes=9</code>​这几个参数以及对应应用程序设置的<code>SO_KEEPALIVE*</code>​选项。如果没有保活机制，那么连接一直都存在的，并不会因为断开了网线而导致连接断开，毕竟只是内核的一个状态而已。如果是设置了保活机制，那么到保活机制就会发生探测报文，如果超时的时间段内没有插上网线，就可以确认连接断开了。好像默认情况下是开启了保活机制的。</p></li>
+</ol>
+
+<h1 id="tcp的终止">TCP的终止</h1>
+
+<h3 id="四次挥手">四次挥手</h3>
+
+<p>再来回顾一下这张图（忽略建立连接部分）：</p>
+
+<p><img src="/img/tcp/tcp-3w-4w.png" alt="image" /></p>
+
+<p>TCP的终止是四次握手，大体的流程为：</p>
+
+<ol>
+<li>客户端关闭连接，发送<code>FIN</code>​，进入<code>FIN_WAIT_1</code>​状态。</li>
+<li>服务端收到客户端的<code>FIN</code>​后，发送确认<code>ACK</code>​，然后进入<code>CLOSE_WAIT</code>​状态，然后服务端努力将没发完的数据发完。客户端收到<code>ACK</code>​进入<code>FIN_WAIT_2</code>​状态。</li>
+<li>此时，服务端发送完数据了，随后发送<code>FIN</code>​，进入<code>LAST_ACK</code>​，等待最后的<code>ACK</code>​就关闭连接了。</li>
+<li>而此时的客户端，收到后，发送<code>ACK</code>​，正式进入<code>TIME_WAIT</code>​状态。</li>
+</ol>
+
+<p>看起来比较清晰，不过看TCP的状态装换图，好像没那么简单。</p>
+
+<p><img src="/img/tcp/tcp-state.png" alt="image" /></p>
+
+<p>比如客户端可以直接从<code>FIN_WAIT_1</code>​到<code>TIME_WAIT</code>​，又或者经过<code>CLOSING</code>​之后，再进入<code>TIME_WAIT</code>​，当然，箭头上面转换的条件。</p>
+
+<p>那么终止连接一定是需要四次握手吗？记得某次回答说，挥手也可以是三次的，结果刚回答完，直接让我回去等通知了。难道答错了？</p>
+
+<p>上面建立连接的时候，服务端把<code>SYN+ACK</code>​​合成了一步，所以变成了三次握手。那么挥手难道就不可以合成一步？在服务端收到<code>FIN</code>​​的时候，如果服务端没数据要发送，又或者把数据随同<code>ACK</code>​​发送给对方，那么不就是可以直接变成三次挥手了？那么服务端直接瞬间由<code>CLOSE_WAIT</code>​​直接进入<code>LAST_ACK</code>​​，而客户端收到<code>FIN+ACK</code>​​直接不经过<code>FIN_WAIT_2</code>​​，变成<code>TIME_WAIT</code>​​?</p>
+
+<p>当然，以上不是猜测，终止连接三次挥手是可以的，不过前提是开启延迟确认。延迟确认是什么鬼东西？延迟确认就是不想一个<code>SYN</code>​一个<code>ACK</code>​，那么一来一回的，太低效了，就是为了解决确认这种效率低的问题的，它的策略也是很简单的：</p>
+
+<ul>
+<li>如果响应有数据要发送，那么数据会随同<code>ACK</code>​一起发送</li>
+<li>如果没有数据发生，那么<code>ACK</code>​就等一会，等待是否有数据发送</li>
+<li>如果延迟等待期间，有数据来了，就发送携带数据的​<code>ACK</code>​</li>
+</ul>
+
+<p>不过，Linux下面是默认开启延迟确认的，服务端直接合并数据发送是可能的，也就是服务端收到客户过来的<code>FIN</code>​报文后，并没有直接<code>ACK</code>​客户端，此时服务端马上调用了<code>close</code>​函数,接着就把<code>FIN+ACK</code>​一起发了回去，这不就是三次挥手了么？所以啊，骚年，如果你是抓过包的，肯定会发现过有三次挥手的，而且不在少数的。但是，如果你只是背书没有实践过的，那么肯定认为不可能存在什么狗屁三次挥手的情况。当然如果是在面试过程中，别人如果认为你是错的了，那也就错了，那也是没办法的事情了。</p>
+
+<h3 id="终止的优化">终止的优化</h3>
+
+<p>都终止了，还要优化？答案是肯定的，就是为了让那些不工作又占坑位的人早早把坑位让出来。否则很多想工作的骚年又不能投入工作，给社会的发展带来不稳定性。记住宇宙第一法则，资源是有限的，必须要充分利用。说人话就是，计算子的资源可能会被耗尽。</p>
+
+<p>优化分关闭主动方和被动方。说优化之前，先介绍两个函数：<code>close</code>​和<code>shutdown</code>​。</p>
+
+<p>​<code>close</code>​是完全断开连接，调用该函数之后，既不能接收数据，也不能发送数据。在没有释放之前，这样的连接称之为孤儿连接。<code>shutdown</code>​并没有完全断开连接，而是可选的有或没读写的能力，也就是说，调用之后，还可能有一定的能力接受或发送数据。在没有释放之前，这样的连接称之为半关闭连接。</p>
+
+<h4 id="fin-wait-1优化">FIN_WAIT_1优化</h4>
+
+<p>​<code>FIN_WAIT_1</code>​是指主动关闭反发送了<code>FIN</code>​而没有收到<code>ACK</code>​这种情况。这个时候<code>FIN</code>​会不断尝试重发，这个时候设置<code>tcp_orphan_retries</code>​会减轻这个症状，虽然名字有孤儿这两个字，不过对所有<code>FIN_WAIT_1</code>​都适用的。超过<code>tcp_orphan_retries</code>​的配置数，就会直接断开连接。正常情况之下配置这个参数就可以了。</p>
+
+<p>不过网络充满了异常，有时间后<code>FIN</code>​根本或者很难发送出去。为什么难发不出去？原因有二：</p>
+
+<ul>
+<li>缓存里面还有数据，数据是有序发送的，必须等数据发生完毕再发送<code>FIN</code>​。</li>
+<li>接受反的窗口大小为0，告诉你，不能发送了。</li>
+</ul>
+
+<p>此时，你只能狠下心，超出一定数量，就直接关闭了，参数是<code>tcp_max_orphans</code>​。</p>
+
+<h4 id="fin-wait-2优化">FIN_WAIT_2优化</h4>
+
+<p>​<code>FIN_WAIT_2</code>​状态是等待被动关闭方的<code>FIN</code>​。如果是<code>shutdown</code>​进入的，表明它可能还是需要接受或者发送数据，属于正常的一直情况。如果是<code>close</code>​进入的，那么这个状态不会持续太久，如果出现大量了，那估计有问题了，<code>tcp_fin_timeout</code>​这个参数可以配置这个状态持续的时长，一般和2MSL一致。</p>
+
+<h4 id="time-wait优化">TIME_WAIT优化</h4>
+
+<p>终于到了TCP终止的过程涉及的一个不得不说的明星状态&ndash;<code>TIME_WAIT</code>​了，它的存活时间是2MSL，为什么是2MSL？因为这是报文在网络中存活的最大时间，这个时间在Linux上面默认是1分钟。</p>
+
+<p>那么问题又来了，为什么要等2MSL？主要无非有两方面的原因：</p>
+
+<ul>
+<li>保证被动关闭的一方一定收到<code>ACK</code>​，因为如果没收到<code>ACK</code>​，被动关闭的一方会重发<code>FIN</code>​。如果没有这个<code>TIME_WAIT</code>​，那么怎么消耗这个<code>FIN</code>​报文？它是不是可能又变傻了？</li>
+<li>第二个就是为了避免重用这个连接，从而避免脏数据影响连接。虽然这个概率小，不过也不能排除这个可能。</li>
+</ul>
+
+<p>那么<code>TIME_WAIT</code>​它有什么问题，让人那么害怕它？</p>
+
+<p>无非也就是资源，一切都是资源。如果<code>TIME_WAIT</code>​发生在服务端，那么它占用了这个连接资源。如果是发生在客户端，如果有大量的连接，那么将不能再发起连接，不过这种可能性并不大，所以主要问题还是要吹服务端的。</p>
+
+<p>好了，既然知道了问题，那该如何解这个<code>TIME_WAIT</code>​问题呢？</p>
+
+<ul>
+<li>快速回收，不等2MSL就回收连接了。</li>
+</ul>
+
+<p>使用的是<code>tcp_tw_recycle</code>​这个参数，不过使用这个参数的前提是<code>tcp_timestamp</code>​也开启的。但是这个听说这个方法不靠谱，如果是在多台局域网内，对外只有一个ip，那么是无法保证<code>tcp_timestamp</code>​是严格递增的，这样会导致很多报文被认为是过期的报文而被丢弃掉。也因此在新版本的内核里已经去掉这个参数的配置。
+* 重用这个状态资源，不用等，1秒就重用了，不用等1分钟。</p>
+
+<p>使用的是<code>tcp_tw_reuse</code>​这个参数，不过使用这个参数的前提也是<code>tcp_timestamp</code>​也开启的。需要注意的是这个和选项<code>SO_REUSEADDR</code>​是有区别的。<code>tcp_tw_reuse</code>​是内核参数，而<code>SO_REUSEADDR</code>​是应用程序设置的TCP选项，意思是说，如果要监听的端口是处于<code>TIME_WAIT</code>​状态，那么就是可以使用，否则就报错，报错一般是端口已经在使用之类的。
+* 限制<code>TIME_WAIT</code>​数量</p>
+
+<p>使用的是<code>tcp_max_tw_buckets</code>​,意思是说，超过这个设置的<code>TIME_WAIT</code>​数量时，就直接关闭连接，不让这个<code>TIME_WAIT</code>​出现了。
+* 大杀器<code>SO_LINGER</code>​​</p>
+
+<p>它能提供异常终止的能力，设置调用<code>close</code>​时，不发送<code>FIN</code>​,直接发送<code>RST</code>​，让客户端直接报错，<code>Connection reset by peer</code>​。这样四次挥手什么的不会有，自然也就不会出现<code>TIME_WAIT</code>​。不过这种方法过于粗暴，不美好，并不提倡。</p>
+
+<h4 id="close-wait优化">CLOSE_WAIT优化</h4>
+
+<p>另外说一下这个<code>CLOSE_WAIT</code>​状态，当服务器出现大量的<code>CLOSE_WAIT</code>​，一般是认为你的应用程序出现问题了。<code>CLOSE_WAIT</code>​是被动关闭的那一端收到了<code>FIN</code>​然后<code>ACK</code>​了，但是没有发送自己的<code>FIN</code>​，一般是忘了调用<code>close</code>​函数。但是，如果事情如果是那么简单，那就爽了。真实的情况，或者是你程序出现死循环了，死锁了，锁表了等等跟着复杂的情形。不过不要忘记，不管什么情况，那肯定是你运行在服务上程序出现了问题，你需要细心检查你的代码，看哪里出错了。</p>
+
+<h1 id="重传">重传</h1>
+
+<h4 id="超时重传">超时重传</h4>
+
+<p>超时重传是以时间驱动来重传的。假如发送方发送了12345这5个包给对方，对方收到了1245，而3这个包丢失了，按顺序的原则，回复最大收到的连续包，那么接受方只能<code>ACK</code>​3，让发送发重发345。</p>
+
+<p>好，重发就重发，可是发送方犯愁了，345，我是发送过了，我该什么时候重发呢？是丢包了呢，还是网络稍微有点延迟而已？这就是涉及一个专业的名词<code>RTT</code>​，报文往返的时间。再根据这个<code>RTT</code>​算出一个<code>RTO</code>​，超时重发时间。<code>RTO</code>​太大了，那么重传是效率太低，性能太差。如果<code>RTO</code>​太小了，那么会加塞网络。</p>
+
+<p>所以这个<code>RTT</code>​怎么评估又是个难题，不可能几个<code>RTT</code>​算一个平均值吧？所有为了算出这个<code>RTT</code>​又安照统计学的方法进行采样。算出了<code>RTT</code>​再算<code>RTO</code>​又是一个难题，Linux的上有几个神奇的参数：<code>α = 0.125，β = 0.25， μ = 1，∂ = 4</code>​，这几个参数不是计算出来的，而是在各种复杂的网络中做无数次试验调试出来的相对比较理想的值。</p>
+
+<h4 id="快速重传">快速重传</h4>
+
+<p>超时重传是一时间的维度来进行重传的，如果在网络比较差的情况之下用超时重传没什么问题，当是如果网络情况是比较好的话，报文只是丢失了，那么你还等那么久，就不太合理了。所以又有了以数据驱动快速重传的算法。</p>
+
+<p>快速重传的算法简单来说就是不等超时时间过期，而是发现收到三个连续<code>ACK</code>​就马上启动重传。以超时重传是报文为例子：</p>
+
+<ul>
+<li>1报文收到<code>ACK</code>​2，2报文收到<code>ACK</code>​3</li>
+<li>3报文丢失了</li>
+<li>4报文收到<code>ACK</code>​3，5报文收到<code>ACK</code>​3</li>
+</ul>
+
+<p>在超时的时间只能，连续收到了3个一样的<code>ACK</code>​报文，所以确认只是网络丢包了而已，没必要等到<code>RTO</code>​超时，现在就可以可以重传了。</p>
+
+<p>不过现在又有一个问题了，重传345报文呢，还是重传3报文呢？</p>
+
+<h4 id="重传方式">重传方式</h4>
+
+<p>​<code>SACK(Selective ACK)</code>​选择性<code>ACK</code>​。回到上面的问题，显然只需要发送丢失的3报文是合适的。这就是<code>SACK</code>​，在<code>ACK</code>​里面不再是回复单独的一个报文，而是包括SACK，比如上面的回复：<code>ACK 3, SACK4-5</code>​。</p>
+
+<p>​<code>D-SACK(Duplicate Selective ACK)</code>​，<code>D-SACK</code>​是<code>SACK</code>​是扩展，来处理重复的。比如：发送方连续发送的两个报文没有收到<code>ACK</code>​，后面发送的报文却收到了，回复发送方你不要发重复过来了，我已经收到你的报文了。</p>
+
+<h1 id="流量控制">流量控制</h1>
+
+<h3 id="滑动窗口">滑动窗口</h3>
+
+<p>在发送方和接收方各自己维护一个窗口，发送方的那个称之为<code>Offered Window</code>​，也称为发送窗口，接收方的那个就叫为<code>Received Window</code>​，也称之为接收窗口。</p>
+
+<p>在发送窗口的数据从左到右，数据划分为：发送已接收到<code>ACK</code>​的，发送没收到<code>ACK</code>​的，可以发送的，不可以发送的。当发送没有收到<code>ACK</code>​的那部分收到了<code>ACK</code>​后，这部分数据就会变成，发送已接收到<code>ACK</code>​的，可以发送的那部分数据就发送，变成了发送没收到<code>ACK</code>​的，不可发送的部分分数据变味可以发送的，看起来就像是一个窗口像右移动那个样子。所以称之为滑动窗口。说的不是很清楚，上图就清晰了：</p>
+
+<p><img src="/img/tcp/tcp-sliding-window-snd.png" alt="tcp-send-wnd" /></p>
+
+<p>同样接受窗口也类似，直接上图领悟。</p>
+
+<p><img src="/img/tcp/tcp-sliding-window-rcv.png" alt="tcp-rcev-wnd" /></p>
+
+<p>滑动窗口进行流量控制就是通过<code>ACK</code>​告知对方，自己的窗口大小，从而进行速率控制的。滑动窗口的大小可以通过<code>SO_RECVBUF SO_SENDBUF</code>​来设置，不过这个值的大小不一定完全相等。</p>
+
+<p>那么又来问题了，如果告知的窗口大小是0，那太什么办？发送方告知窗口大小为0，窗口的大小<code>ACK</code>​告知的，既然窗口为0了，让我不能发送报文了，那么我怎么知道你的窗口大小什么时候不为0？</p>
+
+<p>不要慌，TCP有个<code>Zero Window probe</code>​的东西，就是定时发送这样一个东西给对方，让对方告知窗口的大小。一般是最多发送3次，一次大概间隔为30到60s，如果3次发送的窗口还是0，那么就可以咔嚓掉这个链接了。</p>
+
+<h5 id="糊涂窗口综合征">糊涂窗口综合征</h5>
+
+<p>如果建立连接的双方，发送方产生的效率很慢，又或者是接收方消耗的速率及其慢，这样导致一个问题就是，接受方每次回复很小的窗口，然后发送方每次都发送很少的数据，tcp报文的头部是很大的，而你每次都发送那么一丢丢，是非常不经济的。这种情况被称之为糊涂窗口综合征。</p>
+
+<p>解决这个办法也是挺简单的。</p>
+
+<ul>
+<li>​<code>Nagle算法</code>​</li>
+</ul>
+
+<p>我不发送小数据，等数据量足够大了才一起发送，又或者超出了一点时间才发送，就可以了，这个办法称为<code>Nagle算法</code>​。Linux是默认打开这个算法的，不过这个办法有弊端，如果在一个实时的系统里面，一个请求经过了好多个服务，你累计起来就会超时。所以实时系统一般要关闭它，设置的选项是: <code>TCP_NODELAY</code>​。
+* ​<code>Cork</code>​算法</p>
+
+<p>这个算法就是用点小技巧造假，我的接受窗口比较小了，那我不告诉你我真实的窗口大小，而是告诉你0，等到窗口大一点了，我才告诉你实际上的窗口。注意，这个在实时系统上也是不行的。
+* 延迟确认</p>
+
+<p>延迟确认就是接受到报文，不确认，等到窗口一定大小了，再进行确认。不过这个有一个问题，可能会引起报文重发。</p>
+
+<h1 id="阻塞控制">阻塞控制</h1>
+
+<p>为什么要进行流量控制？网络的环境是复杂多变的，时而畅通，时而拥堵，你在网络畅通的时候没有理由不加快传输是速率，同样，在拥堵时，没道理一个劲的发包呗了。用来进行流量的那个东西叫做滑动窗口。</p>
+
+<p>为什么既然有流量控制，那么还要有阻塞控制？流量控制是针对通讯双方的窗口来说的，并没有考虑到网络的整体环境，网路环境如人心那样复杂多变，不可能无脑的一直塞数据吧？而阻塞控制考虑的是整网络环境。</p>
+
+<p>说到阻塞控制，要引入一个<code>Congestion Window, cwnd</code>​,称之为阻塞窗口。这个阻塞窗口和发送窗口的关系是，真实的发送窗口为这两个窗口的最小值。知道了为什么设置<code>SO_SENDBUF</code>​后，抓包显示的窗口值不一定是这个的原因了吧……</p>
+
+<p>而这个<code>cwnd</code>​的大小并非固定值，而是根据网络状况而调节，网络好的时候，那就搞变大一点，网络差的时候，就变的小一点。</p>
+
+<p>那么经典的阻塞控制算法是什么呢？用比较粗俗的话来描述：</p>
+
+<ol>
+<li><p>慢启动，去探一下路，慢慢一丢丢的增加发送速率。</p>
+
+<p>慢启动并非是一下子就提高发送的速率，而速率增加是线性夹杂着指数增长的，当<code>ACK</code>​​确认的速率是很快的时候，慢启动是接近指数增长的。</p></li>
+
+<li><p>阻塞避免，差不多了，再提高速率可能就超速</p>
+
+<p>阻塞避免就是发送速率达到了自己估算的一个阈值，超过这个阈值可能就会出现网络丢包的问题的，当时自己又不确认这个阈值是否就是最高值。所以这个时候的网络增长速率缓慢的线性的</p></li>
+
+<li><p>阻塞发生，超速了</p>
+
+<p>什么时候发送阻塞呢？那就是触发了重传机制。按上面所言，重传有两种方式，一种是超时重传，另外一种便是快速重传。如果发生了超时重传，那么证明车速太快了，网络情况太差了。所以有变成了从慢启动开始。如果发生了快速重传，那么还好，只是开车太快了而已，其实网络还好</p></li>
+
+<li><p>快速恢复，车速太快，调整一下。</p>
+
+<p>快速恢复就是把<code>cwnd</code>​变小点，把丢失的报文补上，随后进入阻塞避免算法，速率又缓慢增长。</p></li>
+</ol>
+
+<p>其实所那么多废话，还不如上一图：</p>
+
+<p><img src="/img/tcp/congress-algo.png" alt="congress-algo" /></p>
+
+<p>‍</p>
+
+<p>好像也不怎么复杂？千万不要有这种想法，而这只是其中经典的算法而已，只是阻塞控制描述的很少一部分。</p>
+
+<p><img src="/img/tcp/congress-control.png" alt="congress-control" /></p>
+
+<p>‍</p>
+
+<h1 id="小结">小结</h1>
+
+<p>先肝到此。</p>
+
+<p>2016年曾写过一篇<a href="/post/2016-09-23-tcp-fuck/">tcp协议小结</a>，事隔多年，又来复习复习。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2023-02-02</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/tcp/">tcp</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/2021-09-13-rust-lib-lazy-static-intro/">
+            <span class="next-text nav-default">lazy_static -- 静态变量延迟初始化</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2023-02-02 14:15:12 \x2b0800 CST',
+        title: 'TCP温故而知新',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2023
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

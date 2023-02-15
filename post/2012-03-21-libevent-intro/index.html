@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>libevent 概述 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="声明，本文章东搬西扯抄来过的，并非原创，写给自己参考的。 关于libevent的描述，有两个百科的连接可以参考： libevent百度百科 lib" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2012-03-21-libevent-intro/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="libevent 概述" />
+<meta property="og:description" content="声明，本文章东搬西扯抄来过的，并非原创，写给自己参考的。 关于libevent的描述，有两个百科的连接可以参考： libevent百度百科 lib" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2012-03-21-libevent-intro/" /><meta property="article:published_time" content="2012-03-21T21:05:10&#43;00:00"/>
+<meta property="article:modified_time" content="2012-03-21T21:05:10&#43;00:00"/>
+
+<meta itemprop="name" content="libevent 概述">
+<meta itemprop="description" content="声明，本文章东搬西扯抄来过的，并非原创，写给自己参考的。 关于libevent的描述，有两个百科的连接可以参考： libevent百度百科 lib">
+
+
+<meta itemprop="datePublished" content="2012-03-21T21:05:10&#43;00:00" />
+<meta itemprop="dateModified" content="2012-03-21T21:05:10&#43;00:00" />
+<meta itemprop="wordCount" content="1368">
+
+
+
+<meta itemprop="keywords" content="C," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="libevent 概述"/>
+<meta name="twitter:description" content="声明，本文章东搬西扯抄来过的，并非原创，写给自己参考的。 关于libevent的描述，有两个百科的连接可以参考： libevent百度百科 lib"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">libevent 概述</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2012-03-21 </span>
+        <div class="post-category">
+            <a href="/categories/misc/"> misc </a>
+            </div>
+          <span class="more-meta"> 约 1368 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#相关组件">相关组件</a></li>
+<li><a href="#相关库">相关库</a></li>
+<li><a href="#相关头文件">相关头文件</a></li>
+<li><a href="#其它">其它</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p>声明，本文章东搬西扯抄来过的，并非原创，写给自己参考的。</p>
+
+<p>关于libevent的描述，有两个百科的连接可以参考：</p>
+
+<p><a href="http://baike.baidu.com/view/1590523.htm">libevent百度百科</a></p>
+
+<p><a href="http://zh.wikipedia.org/wiki/Libevent">libevent维基百科</a></p>
+
+<p>在维基百科时，有几个有用的连接可以参考：</p>
+
+<p><a href="http://www.wangafu.net/~nickm/libevent-book/">libevent 2.0参考书籍（英文）</a></p>
+
+<p>还有另一个竞争力的事件库：</p>
+
+<p><a href="http://software.schmorp.de/pkg/libev.html">libev(另一个有竞争力的事件库)</a></p>
+
+<p>libevent是一个事件触发的网络库，适用于windows、linux、bsd等多种平台，内部使用select、epoll、kqueue等系统调用管理事件机制。libevent支持用户使用三种类型的事件，分别是网络IO、定时器、信号三种。Libevent提供了DNS，HTTP Server，RPC等组件。</p>
+
+<h1 id="相关组件">相关组件</h1>
+
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>evutil</td>
+<td>不同平台网络实现的通用功能函数。</td>
+</tr>
+
+<tr>
+<td>event 和event_base</td>
+<td>libevent的核心。提供与平台无关的事件驱动的非阻塞IO后端的API。它可以让你知道socket何时可读可写，超时处理和系统信号探测。</td>
+</tr>
+
+<tr>
+<td>bufferevent</td>
+<td>提供event_base更方便的封装函数。提供缓冲支持。bufferevent同样提供多种IO后端。</td>
+</tr>
+
+<tr>
+<td>evbuffer</td>
+<td>bufferevent的缓冲机制底层实现。并提供更方便和高效的缓冲访问。</td>
+</tr>
+
+<tr>
+<td>evhttp</td>
+<td>简单的HTTP客户端服务端实现。</td>
+</tr>
+
+<tr>
+<td>evdns</td>
+<td>简单的DNS客户端服务端实现。</td>
+</tr>
+
+<tr>
+<td>evrpc</td>
+<td>简单的RPC客户端服务端实现。</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="相关库">相关库</h1>
+
+<table>
+<thead>
+<tr>
+<th>库</th>
+<th>说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>libevent_core</td>
+<td>核心事件和缓冲功能。包含所有的event_base, evbuffer, bufferevent, 和工具函数。</td>
+</tr>
+
+<tr>
+<td>libevent_extra</td>
+<td>协议相关的功能，包含HTTP, DNS, 和RPC。</td>
+</tr>
+
+<tr>
+<td>libevent</td>
+<td>包含libevent_core和libevent_extra。由于历史的原因而存在。新应用程序不应该连接这个库。</td>
+</tr>
+
+<tr>
+<td>libevent_pthread</td>
+<td>依赖事pthread线程库，提供线程和锁实现。当你使用pthread多线程时，才连接这个库。（只在某些平台存在）</td>
+</tr>
+
+<tr>
+<td>libevent_openssl</td>
+<td>依赖于OpenSSL库的加密通信支持。当你使用加密通信时，才连接这个库。（只在某些平台存在）</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="相关头文件">相关头文件</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    所有的头文件安装在event2目录下。头文件大类别如下表：</pre></td></tr></table>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>API头文件</td>
+<td>这个是libevent的对外头文件，文件没有任何后辍。</td>
+</tr>
+
+<tr>
+<td>兼容头文件</td>
+<td>兼容头文件包含抛弃的函数定义，除非是为了移值旧的程序，否则不要使用。文件以_compat.h结尾。</td>
+</tr>
+
+<tr>
+<td>结构体头文件</td>
+<td>libevent结构体定义的头文件。文件以_struct.h结尾。</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    除了上述提到的头文件外，还有一些为了兼容旧程序而使用的头文件。它们不放在event2目录。放在这个目录的上一层。这些文件其实是新文件的包装而已。对应该关系如下表。</pre></td></tr></table>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>旧头文件</th>
+<th>被替换的头文件</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>event.h</td>
+<td>event2/event<em>.h, event2/buffer</em>.h, event2/bufferedevent<em>.h, event2/tag</em>.h</td>
+</tr>
+
+<tr>
+<td>evdns.h</td>
+<td>event2/dns*.h</td>
+</tr>
+
+<tr>
+<td>evhttp.h</td>
+<td>event2/http*.h</td>
+</tr>
+
+<tr>
+<td>rvrpc</td>
+<td>event2/rpc*.h</td>
+</tr>
+
+<tr>
+<td>evutil</td>
+<td>event2/util*.h</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="其它">其它</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    本文大多剽窃自[libevent-book](http://www.wangafu.net/~nickm/libevent-book/)。具体请详细参考之。另外很多懒人不太习惯LINUX的编程调试环境，所以根据libevent提供的Makefile建了个VC2008的解决方案，直接解压出来丢到libevent目录，分别编译各个库。另，只为了调试搞DEBUG版本的，RELEASE的动都没动，sameple工程包括所有的例子了，直接编译是不通的。所以如果你要分别测试的话，要搞掉其它的。最简单的方法就是#if 0 #endif之类的。[下载VC2008解决方案](http://download.imlgc.com/lib/libevent/vcbuild.zip)。</pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2012-03-21</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/c/">C</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2012-05-02-sys-queue-h/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">sys/queue.h</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2012-02-18-minlog/">
+            <span class="next-text nav-default">迷你日志类Minilog</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2012-03-21 21:05:10 \x2b0000 UTC',
+        title: 'libevent 概述',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2023
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

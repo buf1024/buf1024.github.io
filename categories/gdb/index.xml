@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gdb on BUF1024!!!</title>
+    <link>https://luoguochun.cn/categories/gdb/</link>
+    <description>Recent content in gdb on BUF1024!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 01 Apr 2015 17:12:10 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/categories/gdb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>gdb一丢丢常见问题</title>
+      <link>https://luoguochun.cn/post/2015-04-01-gdb-common-issue/</link>
+      <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2015-04-01-gdb-common-issue/</guid>
+      <description>一、gdb 无法自动加载当前文件 .gdbinit文件 提示： warning: File &amp;ldquo;/home/heidong/privt/proj/osv6/.gdbinit&amp;rdquo; auto-loading has been declined by your `auto-load safe-path&amp;rsquo; set to &amp;ldquo;$debugdir:$datadir/auto-load&amp;rdquo;. To enable execution of this file add 1 add-auto-load-safe-path /home/heidong/privt/proj/osv6/.gdbinit line to your configuration file &amp;ldquo;/home/heidong/.gdbinit&amp;rdquo;. To completely disable this security protection add 1 set auto-load safe-path /</description>
+    </item>
+    
+  </channel>
+</rss>

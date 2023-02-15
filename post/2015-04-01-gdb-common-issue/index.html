@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>gdb一丢丢常见问题 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="一、gdb 无法自动加载当前文件 .gdbinit文件 提示： warning: File &amp;ldquo;/home/heidong/privt/proj/osv6/.gdbinit&amp;rdquo; auto-loading has been declined by your `auto-load safe-path&amp;rsquo; set to &amp;ldquo;$debugdir:$datadir/auto-load&amp;rdquo;. To enable execution of this file add 1 add-auto-load-safe-path /home/heidong/privt/proj/osv6/.gdbinit line to your configuration file &amp;ldquo;/home/heidong/.gdbinit&amp;rdquo;. To completely disable this security protection add 1 set auto-load safe-path /" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2015-04-01-gdb-common-issue/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="gdb一丢丢常见问题" />
+<meta property="og:description" content="一、gdb 无法自动加载当前文件 .gdbinit文件 提示： warning: File &ldquo;/home/heidong/privt/proj/osv6/.gdbinit&rdquo; auto-loading has been declined by your `auto-load safe-path&rsquo; set to &ldquo;$debugdir:$datadir/auto-load&rdquo;. To enable execution of this file add 1 add-auto-load-safe-path /home/heidong/privt/proj/osv6/.gdbinit line to your configuration file &ldquo;/home/heidong/.gdbinit&rdquo;. To completely disable this security protection add 1 set auto-load safe-path /" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2015-04-01-gdb-common-issue/" /><meta property="article:published_time" content="2015-04-01T17:12:10&#43;00:00"/>
+<meta property="article:modified_time" content="2015-04-01T17:12:10&#43;00:00"/>
+
+<meta itemprop="name" content="gdb一丢丢常见问题">
+<meta itemprop="description" content="一、gdb 无法自动加载当前文件 .gdbinit文件 提示： warning: File &ldquo;/home/heidong/privt/proj/osv6/.gdbinit&rdquo; auto-loading has been declined by your `auto-load safe-path&rsquo; set to &ldquo;$debugdir:$datadir/auto-load&rdquo;. To enable execution of this file add 1 add-auto-load-safe-path /home/heidong/privt/proj/osv6/.gdbinit line to your configuration file &ldquo;/home/heidong/.gdbinit&rdquo;. To completely disable this security protection add 1 set auto-load safe-path /">
+
+
+<meta itemprop="datePublished" content="2015-04-01T17:12:10&#43;00:00" />
+<meta itemprop="dateModified" content="2015-04-01T17:12:10&#43;00:00" />
+<meta itemprop="wordCount" content="1017">
+
+
+
+<meta itemprop="keywords" content="gdb," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="gdb一丢丢常见问题"/>
+<meta name="twitter:description" content="一、gdb 无法自动加载当前文件 .gdbinit文件 提示： warning: File &ldquo;/home/heidong/privt/proj/osv6/.gdbinit&rdquo; auto-loading has been declined by your `auto-load safe-path&rsquo; set to &ldquo;$debugdir:$datadir/auto-load&rdquo;. To enable execution of this file add 1 add-auto-load-safe-path /home/heidong/privt/proj/osv6/.gdbinit line to your configuration file &ldquo;/home/heidong/.gdbinit&rdquo;. To completely disable this security protection add 1 set auto-load safe-path /"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">gdb一丢丢常见问题</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-04-01 </span>
+        <div class="post-category">
+            <a href="/categories/gdb/"> gdb </a>
+            </div>
+          <span class="more-meta"> 约 1017 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>一、gdb 无法自动加载当前文件 .gdbinit文件</p>
+
+<p>提示：</p>
+
+<p>warning: File &ldquo;/home/heidong/privt/proj/osv6/.gdbinit&rdquo; auto-loading has been declined by your `auto-load safe-path&rsquo; set to &ldquo;$debugdir:$datadir/auto-load&rdquo;.</p>
+
+<p>To enable execution of this file add</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">add-auto-load-safe-path /home/heidong/privt/proj/osv6/.gdbinit</pre></td></tr></table>
+</div>
+</div>
+<p>line to your configuration file &ldquo;/home/heidong/.gdbinit&rdquo;.</p>
+
+<p>To completely disable this security protection add</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">set auto-load safe-path /</pre></td></tr></table>
+</div>
+</div>
+<p>line to your configuration file &ldquo;/home/heidong/.gdbinit&rdquo;.</p>
+
+<p>For more information about this security protection see the</p>
+
+<p>&ldquo;Auto-loading safe path&rdquo; section in the GDB manual.  E.g., run from the shell:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">info &#34;(gdb)Auto-loading safe path&#34;</pre></td></tr></table>
+</div>
+</div>
+<p>解决：</p>
+
+<ol>
+<li>You can add the line:</li>
+</ol>
+
+<p>set auto-load safe-path /</p>
+
+<p>To your home directory’s .gdbinit file. This will override ALL security and GDB will ALWAYS open a .gdbinit file if it finds one. If you are developing on your own machine, or a secure machine (however you would like to define that), then this is probably the quickest and easiest solution.</p>
+
+<ol>
+<li>If you want to be a little more careful, you can add the directories individually to your home directory’s .gdbinit file:</li>
+</ol>
+
+<p>set auto-load safe-path /home/faye/workspace/todo/Debug</p>
+
+<p>Or you can say that ALL sub-paths under your home directory are OK:</p>
+
+<p>set auto-load safe-path /home/faye</p>
+
+<ol>
+<li>Finally, you can pass a path in on start-up:</li>
+</ol>
+
+<p>gdb -iex &ldquo;set auto-load safe-path /path/to/.gdbinit/file&rdquo;</p>
+
+<p>If you want to see all the trusted paths, just type:</p>
+
+<p>show auto-load safe-path</p>
+
+<p>二、printf打印不全</p>
+
+<p>set print element 0</p>
+
+<ol>
+<li><p>默认设置下，在调试多进程程序时GDB只会调试主进程。但是GDB（&gt;V7.0）支持多进程的分别以及同时调试，换句话说，GDB可以同时调试多个程序。只需要设置follow-fork-mode(默认值：parent)和detach-on-fork（默认值：on）即可。</p>
+
+<p>follow-fork-mode  detach-on-fork   说明</p></li>
+</ol>
+
+<p>parent                   on               只调试主进程（GDB默认）</p>
+
+<p>child                     on               只调试子进程</p>
+
+<p>parent                   off              同时调试两个进程，gdb跟主进程，子进程block在fork位置</p>
+
+<p>child                     off              同时调试两个进程，gdb跟子进程，主进程block在fork位置</p>
+
+<p>设置方法：set follow-fork-mode [parent|child]   set detach-on-fork [on|off]</p>
+
+<p>查询正在调试的进程：info inferiors</p>
+
+<p>切换调试的进程： inferior</p>
+
+<p>添加新的调试进程： add-inferior [-copies n] [-exec executable] ,可以用file executable来分配给inferior可执行文件。</p>
+
+<p>其他：remove-inferiors infno， detach inferior</p>
+
+<p>线程调试命令</p>
+
+<p>(gdb)info threads</p>
+
+<p>显示当前可调试的所有线程，每个线程会有一个GDB为其分配的ID，后面操作线程的时候会用到这个ID。</p>
+
+<p>前面有*的是当前调试的线程。</p>
+
+<p>(gdb)thread ID</p>
+
+<p>切换当前调试的线程为指定ID的线程。</p>
+
+<p>(gdb)thread apply ID1 ID2 command</p>
+
+<p>让一个或者多个线程执行GDB命令command。</p>
+
+<p>(gdb)thread apply all command</p>
+
+<p>让所有被调试线程执行GDB命令command。</p>
+
+<p>(gdb)set scheduler-locking off|on|step</p>
+
+<p>估计是实际使用过多线程调试的人都可以发现，在使用step或者continue命令调试当前被调试线程的时候，其他线程也是同时执行的，怎么只让被调试程序执行呢？通过这个命令就可以实现这个需求。</p>
+
+<p>off 不锁定任何线程，也就是所有线程都执行，这是默认值。</p>
+
+<p>on 只有当前被调试程序会执行。</p>
+
+<p>step 在单步的时候，除了next过一个函数的情况(熟悉情况的人可能知道，这其实是一个设置断点然后continue的行为)以外，只有当前线程会执行。</p>
+
+<p>//显示线程堆栈信息</p>
+
+<p>(gdb) bt</p>
+
+<p>察看所有的调用栈</p>
+
+<p>(gdb) f 3</p>
+
+<p>调用框层次</p>
+
+<p>(gdb) i locals</p>
+
+<p>显示所有当前调用栈的所有变量。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2015-04-01</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/gdb/">gdb</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2015-07-22-vim-xx-things/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">VIM XX THINGS</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2015-03-01-ssh-tunnel/">
+            <span class="next-text nav-default">ssh 隧道访问局域网机器</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2015-04-01 17:12:10 \x2b0000 UTC',
+        title: 'gdb一丢丢常见问题',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2023
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

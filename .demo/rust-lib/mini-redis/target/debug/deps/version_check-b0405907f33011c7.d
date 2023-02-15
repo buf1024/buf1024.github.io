@@ -1,0 +1,10 @@
+/Users/luoguochun/privt/proj/coding-blog/.demo/rust-lib/mini-redis/target/debug/deps/version_check-b0405907f33011c7.rmeta: /Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/lib.rs /Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/version.rs /Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/channel.rs /Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/date.rs
+
+/Users/luoguochun/privt/proj/coding-blog/.demo/rust-lib/mini-redis/target/debug/deps/libversion_check-b0405907f33011c7.rlib: /Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/lib.rs /Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/version.rs /Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/channel.rs /Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/date.rs
+
+/Users/luoguochun/privt/proj/coding-blog/.demo/rust-lib/mini-redis/target/debug/deps/version_check-b0405907f33011c7.d: /Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/lib.rs /Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/version.rs /Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/channel.rs /Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/date.rs
+
+/Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/lib.rs:
+/Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/version.rs:
+/Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/channel.rs:
+/Users/luoguochun/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/version_check-0.9.2/src/date.rs:

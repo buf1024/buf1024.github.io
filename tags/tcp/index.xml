@@ -6,10 +6,19 @@
     <description>Recent content in tcp on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 23 Sep 2016 21:20:10 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Feb 2023 14:15:12 +0800</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>TCP温故而知新</title>
+      <link>https://luoguochun.cn/post/2023-02-14-tcp-renew/</link>
+      <pubDate>Thu, 02 Feb 2023 14:15:12 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2023-02-14-tcp-renew/</guid>
+      <description>TCP是什么 TCP是面向连接的，可靠的，基于字节流的传输协议。 面向连接，指的是一对一的，不是一对多。 可靠性，指的是不管网络环境多么的复杂多变</description>
+    </item>
     
     <item>
       <title>tcp 协议小结</title>

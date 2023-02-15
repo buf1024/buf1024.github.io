@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>GCC不常见，但有用特别选项 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="-isystem dir 1 2 3 4 5 6 7 8 9 Search dir for header files, after all directories specified by -I but before the standard system directories. Mark it as a system directory, so that it gets the same special treatment as is applied to the standard system directories. If dir begins with &amp;#34;=&amp;#34;, then the &amp;#34;=&amp;#34; will be replaced by the sysroot prefix; see --sysroot and -isysroot. 标" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2017-05-01-gcc-missing/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="GCC不常见，但有用特别选项" />
+<meta property="og:description" content="-isystem dir 1 2 3 4 5 6 7 8 9 Search dir for header files, after all directories specified by -I but before the standard system directories. Mark it as a system directory, so that it gets the same special treatment as is applied to the standard system directories. If dir begins with &#34;=&#34;, then the &#34;=&#34; will be replaced by the sysroot prefix; see --sysroot and -isysroot. 标" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2017-05-01-gcc-missing/" /><meta property="article:published_time" content="2017-05-01T22:10:31&#43;00:00"/>
+<meta property="article:modified_time" content="2017-05-01T22:10:31&#43;00:00"/>
+
+<meta itemprop="name" content="GCC不常见，但有用特别选项">
+<meta itemprop="description" content="-isystem dir 1 2 3 4 5 6 7 8 9 Search dir for header files, after all directories specified by -I but before the standard system directories. Mark it as a system directory, so that it gets the same special treatment as is applied to the standard system directories. If dir begins with &#34;=&#34;, then the &#34;=&#34; will be replaced by the sysroot prefix; see --sysroot and -isysroot. 标">
+
+
+<meta itemprop="datePublished" content="2017-05-01T22:10:31&#43;00:00" />
+<meta itemprop="dateModified" content="2017-05-01T22:10:31&#43;00:00" />
+<meta itemprop="wordCount" content="1373">
+
+
+
+<meta itemprop="keywords" content="http,c," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GCC不常见，但有用特别选项"/>
+<meta name="twitter:description" content="-isystem dir 1 2 3 4 5 6 7 8 9 Search dir for header files, after all directories specified by -I but before the standard system directories. Mark it as a system directory, so that it gets the same special treatment as is applied to the standard system directories. If dir begins with &#34;=&#34;, then the &#34;=&#34; will be replaced by the sysroot prefix; see --sysroot and -isysroot. 标"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">GCC不常见，但有用特别选项</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-05-01 </span>
+        <div class="post-category">
+            <a href="/categories/gcc/"> gcc </a>
+            </div>
+          <span class="more-meta"> 约 1373 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>-isystem dir</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       Search dir for header files, after all directories specified by -I but before the
+
+       standard system directories.  Mark it as a system directory, so that it gets the same
+
+       special treatment as is applied to the standard system directories.  If dir begins
+
+       with &#34;=&#34;, then the &#34;=&#34; will be replaced by the sysroot prefix; see --sysroot and
+
+       -isysroot.</pre></td></tr></table>
+</div>
+</div>
+<p>标记 DIR 为系统DIR，搜索头文件顺序： 1. -I路径 2. -isystem DIR 3. 系统路径</p>
+
+<p>&ndash;sysroot=dir</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       Use dir as the logical root directory for headers and libraries.  For example, if the
+
+       compiler normally searches for headers in /usr/include and libraries in /usr/lib, it
+
+       instead searches dir/usr/include and dir/usr/lib.
+
+       If you use both this option and the -isysroot option, then the --sysroot option
+
+       applies to libraries, but the -isysroot option applies to header files.</pre></td></tr></table>
+</div>
+</div>
+<p>标记DIR为头文件的根目录</p>
+
+<p>-static</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       On systems that support dynamic linking, this prevents linking with the shared libraries.
+
+       On other systems, this option has no effect.</pre></td></tr></table>
+</div>
+</div>
+<p>链接静态库</p>
+
+<p>-M</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">      Instead of outputting the result of preprocessing, output a rule suitable for make describing the dependencies of the main source file.
+
+      The preprocessor outputs one make rule containing the object file name for that source file, a colon, and the names of all the included files,
+
+      including those coming from -include or -imacros command line options.
+
+      Unless specified explicitly (with -MT or -MQ), the object file name consists of the name of the source file with any suffix replaced with object
+
+      file suffix and with any leading directory parts  removed.  If there are many included files then the rule is split into several lines using \-newline.
+
+      The rule has no commands.
+
+      This option does not suppress the preprocessor&#39;s debug output, such as -dM.  To avoid mixing such debug output with the dependency
+
+      rules you should explicitly specify the dependency output file
+
+       with -MF, or use an environment variable like DEPENDENCIES_OUTPUT.  Debug output will still be sent to the regular output stream as normal.
+
+       Passing -M to the driver implies -E, and suppresses warnings with an implicit -w.</pre></td></tr></table>
+</div>
+</div>
+<p>生依赖文件，-E 为预编译，和-MF “文件”，生产依赖到文件，-MD生产依赖到，XXX.d文件，以上所描述几个，均为加快编译。</p>
+
+<p>-O</p>
+
+<p>-O1 Optimize.  Optimizing compilation takes somewhat more time, and a lot more memory for</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       a large function.
+
+       With -O, the compiler tries to reduce code size and execution time, without performing
+
+       any optimizations that take a great deal of compilation time.
+
+       -O turns on the following optimization flags:
+
+       -fauto-inc-dec -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdelayed-branch
+
+       -fdse -fguess-branch-probability -fif-conversion2 -fif-conversion -fipa-pure-const
+
+       -fipa-profile -fipa-reference -fmerge-constants -fsplit-wide-types -ftree-bit-ccp
+
+       -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-copyrename -ftree-dce
+
+       -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-slsr
+
+       -ftree-sra -ftree-pta -ftree-ter -funit-at-a-time
+
+       -O also turns on -fomit-frame-pointer on machines where doing so does not interfere
+
+       with debugging.</pre></td></tr></table>
+</div>
+</div>
+<p>-O2 Optimize even more.  GCC performs nearly all supported optimizations that do not</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       involve a space-speed tradeoff.  As compared to -O, this option increases both
+
+       compilation time and the performance of the generated code.
+
+       -O2 turns on all optimization flags specified by -O.  It also turns on the following
+
+       optimization flags: -fthread-jumps -falign-functions  -falign-jumps -falign-loops
+
+       -falign-labels -fcaller-saves -fcrossjumping -fcse-follow-jumps  -fcse-skip-blocks
+
+       -fdelete-null-pointer-checks -fdevirtualize -fexpensive-optimizations -fgcse
+
+       -fgcse-lm -fhoist-adjacent-loads -finline-small-functions -findirect-inlining
+
+       -fipa-sra -foptimize-sibling-calls -fpartial-inlining -fpeephole2 -fregmove
+
+       -freorder-blocks  -freorder-functions -frerun-cse-after-loop -fsched-interblock
+
+       -fsched-spec -fschedule-insns  -fschedule-insns2 -fstrict-aliasing -fstrict-overflow
+
+       -ftree-switch-conversion -ftree-tail-merge -ftree-pre -ftree-vrp
+
+       Please note the warning under -fgcse about invoking -O2 on programs that use computed
+
+       gotos.
+
+       NOTE: In Ubuntu 8.10 and later versions, -D_FORTIFY_SOURCE=2 is set by default, and is
+
+       activated when -O is set to 2 or higher.  This enables additional compile-time and
+
+       run-time checks for several libc functions.  To disable, specify either
+
+       -U_FORTIFY_SOURCE or -D_FORTIFY_SOURCE=0.</pre></td></tr></table>
+</div>
+</div>
+<p>-O3 Optimize yet more.  -O3 turns on all optimizations specified by -O2 and also turns on</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       the -finline-functions, -funswitch-loops, -fpredictive-commoning, -fgcse-after-reload,
+
+       -ftree-vectorize, -fvect-cost-model, -ftree-partial-pre and -fipa-cp-clone options.</pre></td></tr></table>
+</div>
+</div>
+<p>-O0 Reduce compilation time and make debugging produce the expected results.  This is the</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       default.</pre></td></tr></table>
+</div>
+</div>
+<p>-Os Optimize for size.  -Os enables all -O2 optimizations that do not typically increase</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       code size.  It also performs further optimizations designed to reduce code size.
+
+       -Os disables the following optimization flags: -falign-functions  -falign-jumps
+
+       -falign-loops -falign-labels  -freorder-blocks  -freorder-blocks-and-partition
+
+       -fprefetch-loop-arrays  -ftree-vect-loop-version</pre></td></tr></table>
+</div>
+</div>
+<p>-Ofast</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       Disregard strict standards compliance.  -Ofast enables all -O3 optimizations.  It also
+
+       enables optimizations that are not valid for all standard-compliant programs.  It
+
+       turns on -ffast-math and the Fortran-specific -fno-protect-parens and -fstack-arrays.</pre></td></tr></table>
+</div>
+</div>
+<p>-Og Optimize debugging experience.  -Og enables optimizations that do not interfere with</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       debugging. It should be the optimization level of choice for the standard edit-
+
+       compile-debug cycle, offering a reasonable level of optimization while maintaining
+
+       fast compilation and a good debugging experience.
+
+       If you use multiple -O options, with or without level numbers, the last such option is
+
+       the one that is effective.
+
+      优化等级</pre></td></tr></table>
+</div>
+</div>
+<p>-fstack-protector</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       Emit extra code to check for buffer overflows, such as stack smashing attacks.  This
+
+       is done by adding a guard variable to functions with vulnerable objects.  This
+
+       includes functions that call &#34;alloca&#34;, and functions with buffers larger than 8 bytes.
+
+       The guards are initialized when a function is entered and then checked when the
+
+       function exits.  If a guard check fails, an error message is printed and the program
+
+       exits
+
+       检查栈溢出，相反的      -fno-stack-protector</pre></td></tr></table>
+</div>
+</div>
+<p>-nostdinc</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       Do not search the standard system directories for header files.  Only the directories
+
+       you have specified with -I options (and the directory of the current file, if
+
+       appropriate) are searched.
+
+       不使用标准C头文件</pre></td></tr></table>
+</div>
+</div>
+<p>-nostdinc++</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       Do not search for header files in the C++-specific standard directories, but do still
+
+       search the other standard directories.  (This option is used when building the C++
+
+       library.)
+
+      不使用标准C++头文件</pre></td></tr></table>
+</div>
+</div>
+<p>-Wall</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       This enables all the warnings about constructions that some users consider
+
+       questionable, and that are easy to avoid (or modify to prevent the warning), even in
+
+       conjunction with macros.  This also enables some language-specific warnings described
+
+       in C++ Dialect Options and Objective-C and Objective-C++ Dialect Options.</pre></td></tr></table>
+</div>
+</div>
+<p>打开警告（并非所有），打开绝大部分，还要加-Wextral</p>
+
+<p>-Wextra</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       This enables some extra warning flags that are not enabled by -Wall. (This option used
+
+       to be called -W.  The older name is still supported, but the newer name is more
+
+       descriptive.)
+
+       打开额外的警告，同-W（旧名）</pre></td></tr></table>
+</div>
+</div>
+<p>-Werror</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       Make all warnings into hard errors.  Source code which triggers warnings will be
+
+       rejected.</pre></td></tr></table>
+</div>
+</div>
+<p>警告即报错。</p>
+
+<p>-w  Suppress all warnings, including those which GNU CPP issues by default.</p>
+
+<p>关闭所有的错误警告</p>
+
+<p>-Wa,option</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">       Pass option as an option to the assembler.  If option contains commas, it is split
+
+       into multiple options at the commas</pre></td></tr></table>
+</div>
+</div>
+<p>传选项给汇编器</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2017-05-01</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/http/">http</a>
+          <a href="/tags/c/">c</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2017-06-03-synchronize-atomic-variable/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">线程同步与原子变量</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2017-04-28-lwan-http-server/">
+            <span class="next-text nav-default">lwan http 服务器</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-05-01 22:10:31 \x2b0000 UTC',
+        title: 'GCC不常见，但有用特别选项',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2023
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

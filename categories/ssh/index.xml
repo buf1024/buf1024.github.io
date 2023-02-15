@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ssh on BUF1024!!!</title>
+    <link>https://luoguochun.cn/categories/ssh/</link>
+    <description>Recent content in ssh on BUF1024!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 01 Mar 2015 18:12:15 +0000</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/categories/ssh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ssh 隧道访问局域网机器</title>
+      <link>https://luoguochun.cn/post/2015-03-01-ssh-tunnel/</link>
+      <pubDate>Sun, 01 Mar 2015 18:12:15 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2015-03-01-ssh-tunnel/</guid>
+      <description>1 SSH 免登陆密码 1.1 生产 RSA密钥对 1 2 3 `$ssh-keygen -t rsa` ~/.ssh目录将生成id_rsa（私钥）和id_rsa.pub（公钥） 1.2 将公钥复制到需要自动登</description>
+    </item>
+    
+  </channel>
+</rss>

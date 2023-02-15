@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>vim一些小技巧 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="命令行编辑 1 2 3 q:打开命令窗口 CTL&#43;R 加上寄存器名称，复制寄存器内容 关于函数跳转： 注意VIM，编辑源代码时，先生成tag文件，和设置好inclu" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2019-03-01-vim-tricks/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="vim一些小技巧" />
+<meta property="og:description" content="命令行编辑 1 2 3 q:打开命令窗口 CTL&#43;R 加上寄存器名称，复制寄存器内容 关于函数跳转： 注意VIM，编辑源代码时，先生成tag文件，和设置好inclu" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2019-03-01-vim-tricks/" /><meta property="article:published_time" content="2019-03-01T18:02:12&#43;08:00"/>
+<meta property="article:modified_time" content="2019-03-01T18:02:12&#43;08:00"/>
+
+<meta itemprop="name" content="vim一些小技巧">
+<meta itemprop="description" content="命令行编辑 1 2 3 q:打开命令窗口 CTL&#43;R 加上寄存器名称，复制寄存器内容 关于函数跳转： 注意VIM，编辑源代码时，先生成tag文件，和设置好inclu">
+
+
+<meta itemprop="datePublished" content="2019-03-01T18:02:12&#43;08:00" />
+<meta itemprop="dateModified" content="2019-03-01T18:02:12&#43;08:00" />
+<meta itemprop="wordCount" content="382">
+
+
+
+<meta itemprop="keywords" content="vim," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="vim一些小技巧"/>
+<meta name="twitter:description" content="命令行编辑 1 2 3 q:打开命令窗口 CTL&#43;R 加上寄存器名称，复制寄存器内容 关于函数跳转： 注意VIM，编辑源代码时，先生成tag文件，和设置好inclu"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">vim一些小技巧</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-01 </span>
+        <div class="post-category">
+            <a href="/categories/vim/"> vim </a>
+            </div>
+          <span class="more-meta"> 约 382 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#命令行编辑">命令行编辑</a></li>
+<li><a href="#关于函数跳转">关于函数跳转：</a></li>
+<li><a href="#关于map映射">关于map映射</a></li>
+<li><a href="#其他杂项">其他杂项</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h3 id="命令行编辑">命令行编辑</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="nl">q</span><span class="p">:</span><span class="err">打开命令窗口</span>
+
+<span class="n">CTL</span><span class="o">+</span><span class="n">R</span> <span class="err">加上寄存器名称，复制寄存器内容</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="关于函数跳转">关于函数跳转：</h3>
+
+<p>注意VIM，编辑源代码时，先生成tag文件，和设置好include路径。</p>
+
+<p>[+ctrl+i 跳转到函数、变量和#define</p>
+
+<p>[+ctrl+d 跳转到#define处</p>
+
+<p>ctrl+i 向前跳到前几次光标位置</p>
+
+<p>ctrl+o 向后跳到后几次光标位置</p>
+
+<p>gf 跳转到对应到头文件后，跳回ctrl+6</p>
+
+<h3 id="关于map映射">关于map映射</h3>
+
+<p>对于map, unmap, mapclear而言，可以有多种组合，不带前缀的map在普通模式和可视模式生效，命令组合，可能有这么几种前缀:</p>
+
+<ol>
+<li>nore 表示非递归(可能是no recursive的缩写)</li>
+<li>n 表示在普通模式下生效</li>
+<li>v 表示在可视模式下生效</li>
+<li>i 表示在插入模式下生效</li>
+<li>c 表示在命令行模式下生效</li>
+</ol>
+
+<p>所以map有以下命令，分别作用于不同的模式:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="o">:</span><span class="nl">map</span> <span class="p">:</span><span class="nl">noremap</span> <span class="p">:</span><span class="nl">unmap</span> <span class="p">:</span><span class="nl">mapclear</span>
+<span class="p">:</span><span class="nl">nmap</span> <span class="p">:</span><span class="nl">nnoremap</span> <span class="p">:</span><span class="nl">nunmap</span> <span class="p">:</span><span class="nl">nmapclear</span>
+<span class="p">:</span><span class="nl">vmap</span> <span class="p">:</span><span class="nl">vnoremap</span> <span class="p">:</span><span class="nl">vunmap</span> <span class="p">:</span><span class="nl">vmapclear</span>
+<span class="p">:</span><span class="nl">imap</span> <span class="p">:</span><span class="nl">inoremap</span> <span class="p">:</span><span class="nl">iunmap</span> <span class="p">:</span><span class="nl">imapclear</span>
+<span class="p">:</span><span class="nl">cmap</span> <span class="p">:</span><span class="nl">cnoremap</span> <span class="p">:</span><span class="nl">cunmap</span> <span class="p">:</span><span class="n">cmapclear</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="其他杂项">其他杂项</h3>
+
+<ol>
+<li>gu或者gU</li>
+</ol>
+
+<p>nvim 打开系统剪切板</p>
+
+<ol>
+<li>安装以下任一软件</li>
+</ol>
+
+<ul>
+<li>xclip</li>
+<li>xsel (newer alternative to xclip)</li>
+<li>pbcopy/pbpaste (only for Mac OS X)</li>
+</ul>
+
+<ol>
+<li>.vimrc添加</li>
+</ol>
+
+<p>set clipboard+=unnamedplus</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019-03-01</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/vim/">vim</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2019-05-05-new-xubuntu-problem/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">物理机新建xubuntu一些问题</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2018-10-01-firewall-cmd/">
+            <span class="next-text nav-default">防火墙放开端口</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-03-01 18:02:12 \x2b0800 CST',
+        title: 'vim一些小技巧',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2023
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

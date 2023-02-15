@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>android on BUF1024!!!</title>
+    <link>https://luoguochun.cn/tags/android/</link>
+    <description>Recent content in android on BUF1024!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 01 Jul 2019 15:12:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://luoguochun.cn/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>android国内源</title>
+      <link>https://luoguochun.cn/post/2019-07-01-android-source/</link>
+      <pubDate>Mon, 01 Jul 2019 15:12:00 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2019-07-01-android-source/</guid>
+      <description>如果是Flutter框架，同时要flutter框架修改文件 flutter\packages\flutter_tools\gradle\flutter.gradle grep找出build.gradle文件 凡是和google相关的，全部替换为 1 2</description>
+    </item>
+    
+  </channel>
+</rss>
