@@ -6,10 +6,19 @@
     <description>Recent content on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 02 Feb 2023 14:15:12 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Mar 2023 14:10:12 +0800</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>TCP未建立之前，丢失的SYN报文会不会重传？</title>
+      <link>https://luoguochun.cn/post/2023-03-02-tcp-setup/</link>
+      <pubDate>Thu, 02 Mar 2023 14:10:12 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2023-03-02-tcp-setup/</guid>
+      <description>记得以前，有人问TCP问题的时候，也出现过一次像这样的争论。争论的问题是，TCP四次挥手为什么要四次，三次为什么不可以。我的答案是可以的，只</description>
+    </item>
     
     <item>
       <title>TCP温故而知新</title>
