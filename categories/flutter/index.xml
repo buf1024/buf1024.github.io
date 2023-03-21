@@ -6,10 +6,19 @@
     <description>Recent content in flutter on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 16 Mar 2023 08:10:12 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 21 Mar 2023 08:10:12 +0800</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/categories/flutter/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>android https 抓包</title>
+      <link>https://luoguochun.cn/post/2023-03-21-android-https/</link>
+      <pubDate>Tue, 21 Mar 2023 08:10:12 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2023-03-21-android-https/</guid>
+      <description>前几天有个需求，要破解一下某个app的部分通讯协议，需要了解一下某部分功能如何实现，甚至通过其协议抓取一些数据。而这个app只有androi</description>
+    </item>
     
     <item>
       <title>为爱发电终是不能长久的……</title>

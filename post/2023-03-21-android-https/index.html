@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>android https 抓包 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="前几天有个需求，要破解一下某个app的部分通讯协议，需要了解一下某部分功能如何实现，甚至通过其协议抓取一些数据。而这个app只有androi" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2023-03-21-android-https/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="android https 抓包" />
+<meta property="og:description" content="前几天有个需求，要破解一下某个app的部分通讯协议，需要了解一下某部分功能如何实现，甚至通过其协议抓取一些数据。而这个app只有androi" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2023-03-21-android-https/" /><meta property="article:published_time" content="2023-03-21T08:10:12&#43;08:00"/>
+<meta property="article:modified_time" content="2023-03-21T08:10:12&#43;08:00"/>
+
+<meta itemprop="name" content="android https 抓包">
+<meta itemprop="description" content="前几天有个需求，要破解一下某个app的部分通讯协议，需要了解一下某部分功能如何实现，甚至通过其协议抓取一些数据。而这个app只有androi">
+
+
+<meta itemprop="datePublished" content="2023-03-21T08:10:12&#43;08:00" />
+<meta itemprop="dateModified" content="2023-03-21T08:10:12&#43;08:00" />
+<meta itemprop="wordCount" content="1993">
+
+
+
+<meta itemprop="keywords" content="android,量化," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="android https 抓包"/>
+<meta name="twitter:description" content="前几天有个需求，要破解一下某个app的部分通讯协议，需要了解一下某部分功能如何实现，甚至通过其协议抓取一些数据。而这个app只有androi"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">android https 抓包</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2023-03-21 </span>
+        <div class="post-category">
+            <a href="/categories/flutter/"> flutter </a>
+            <a href="/categories/%E9%87%8F%E5%8C%96/"> 量化 </a>
+            </div>
+          <span class="more-meta"> 约 1993 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#普通-https-抓包">普通 https 抓包</a></li>
+<li><a href="#android7以上https抓包">android7以上https抓包</a></li>
+<li><a href="#小小结">小小结</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p>前几天有个需求，要破解一下某个app的部分通讯协议，需要了解一下某部分功能如何实现，甚至通过其协议抓取一些数据。而这个app只有android版本和ios版本。从初步看，这个app是同React Native写的。</p>
+
+<p>虽然https是加密的，不过查看https本来感觉这并不是什么太复杂的事情，引入一个中间人就可以了。虽然在浏览器会弹出CA不可信任的警告，不过对于app来说，如果不作特殊处理（一般人也不会特殊处理），一般没什么影响。而这事在很久之前也是做过的了。没想到现在的android却提高了难度。记录一下步骤，以备后续可能需要查看。</p>
+
+<h3 id="普通-https-抓包">普通 https 抓包</h3>
+
+<p>在mac下面最常用的是charles，其他平台有类似的软件。 步骤如下：</p>
+
+<ul>
+<li><p>charles打开代理</p>
+
+<p>如图示，如此经过操作后，经过此代理的http/https报文即可被捕获（中间人）。</p>
+
+<p>代理设置:</p>
+
+<p><img src="/img/charles/step0-1.png" alt="代理设置" /></p>
+
+<p>SSL设置:</p>
+
+<p><img src="/img/charles/step0-0.png" alt="SSL设置" /></p>
+
+<p>打开代理:</p>
+
+<p><img src="/img/charles/step0-2.png" alt="打开代理" /></p></li>
+
+<li><p>配置服务端客户端证书</p>
+
+<p>经过上述配置，虽然可以实现了中间人捕获报文，可是https的内容是无法查看的，所以需要配置证书后才可以解密。步骤如图示：</p>
+
+<ul>
+<li><p>电脑端：</p>
+
+<p>添加证书：</p>
+
+<p><img src="/img/charles/step1-1.png" alt="添加信任证书" /></p>
+
+<p>设置信任证书：</p>
+
+<p><img src="/img/charles/step1-2.png" alt="设置信任" /></p></li>
+
+<li><p>手机端：</p>
+
+<p>设置代理：</p>
+
+<p><img src="/img/charles/step2-1.png" alt="设置代理" /></p>
+
+<p>添加信任的证书：</p>
+
+<p><img src="/img/charles/step2-2.png" alt="添加信任的证书" /></p></li>
+</ul></li>
+</ul>
+
+<p>以上便是网上能搜索到的方式，也是以前自己抓取https报文的步骤，如果一切那么顺利便不会有这篇记录。因为在从android7.0开始后，android手机即使你添加信任的证书后，系统依然是不信任你的证书的，只信任系统的证书。所以，任何请求都不会使用到这个用户证书，也因此，https的报文依然是无法解密的。</p>
+
+<h3 id="android7以上https抓包">android7以上https抓包</h3>
+
+<p>针对android7.0以上系统，这个办法的解决方式也是挺粗暴的，既然只信任系统证书，那么就移动真是到系统目录不就可以了？而此方式必须要系统root方可以。这是不愿意做的，除非可以使用一个已经root的模拟器，不过这个好像比较难找。</p>
+
+<p>除此之外，网上还有一种方式，那就是自己编码让其信任用户证书。具体的步骤也挺简单的，如下：</p>
+
+<ul>
+<li><p>新建network_security_conf.xml文件</p>
+
+<p>放在res/xml下面，此文件意思就告诉系统，让系统信任用户证书，内容大体如下：</p></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">  <span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+
+<span class="nt">&lt;network-security-config&gt;</span>
+    <span class="nt">&lt;trust-anchors&gt;</span>
+        <span class="c">&lt;!-- 信任系统预装 CA 证书 --&gt;</span>
+        <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;system&#34;</span> <span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- 信任用户添加的 CA 证书，Charles 和 Fiddler 抓包工具安装的证书属于此类 --&gt;</span>
+        <span class="nt">&lt;certificates</span> <span class="na">src=</span><span class="s">&#34;user&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/trust-anchors&gt;</span>
+<span class="nt">&lt;/network-security-config&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li><p>AndroidManifest.xml修改</p>
+
+<p>与此同时在AndroidManifest.xml文件的application字段后增加<code>android:usesCleartextTraffic=&quot;true&quot; android:networkSecurityConfig=&quot;@xml/network_security_config&quot;</code>内容。</p></li>
+</ul>
+
+<p>然而，这个app并非自己所写的，本来就没有源码，所以必须反编译后修改，再重新签名。这个方式网上也有比较详细的方式，大体涉及三个工具：</p>
+
+<ol>
+<li><p>apktool，编译和反编译apk，从apk中提取图片和布局资源</p></li>
+
+<li><p>dex2jar，将可运行文件classes.dex反编译为jar源码文件</p></li>
+
+<li><p>jd-gui，查看jar源码文件</p></li>
+</ol>
+
+<p>网上已经有比较详细的方式，这里不再累赘。而现实修改的只涉及资源文件，所以，只用到apktool即可，而且只需要两个命令。</p>
+
+<p>解包：<code>apktool d -o dec xx.apk</code>  重新打包：<code>apktool b -o yy.apk dec/</code></p>
+
+<p>重新打包后的apk需要经过重新签名之后，方可安装，步骤：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#1 使用keytool生成密钥，如</span>
+keytool -genkeypair -v -keystore hello.keystore -alias hello -keyalg RSA <span class="se">\
+</span><span class="se"></span>          -keysize <span class="m">2048</span> -validity <span class="m">10000</span>
+
+<span class="c1">#2 重新打包</span>
+apktool b -o yy.apk dec/
+
+<span class="c1">#3 重新签名，使用android sdk tool自带的工具</span>
+<span class="nv">$ANDROID_HOME</span>/build-tools/30.0.3/apksigner sign --ks hello.keystore --ks-key-alias hello yy.apk</code></pre></td></tr></table>
+</div>
+</div>
+<p>apktool重新打包时，有一个坑。在AndroidManifest.xml文件里，如果<code>android:extractNativeLibs=&quot;false&quot;</code>，则需要修改为<code>android:extractNativeLibs=&quot;true&quot;</code>，否则按装时会报错。</p>
+
+<p>按照上述修改后，本以为就可以了，可事实上，压根就没有解决https无法查看的问题。这就如同说TCP挥手必须要四次才行的那些背八股文的人一样，根本就没有经过实践，把不完整的知识当是真理。当然，因为这是修改别的软件，不知道自己编写的软件这么修改后，有没有效果。</p>
+
+<p>经过一番瞎折腾和摸索，才找到网上基本没有说过的修改方式（重点）：</p>
+
+<p>既然你是android 7.0以下才可以用，那么我就把你运行目标修改为这个目标，是不是可以？修改点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#1 AndroidManifest.xml 修改为
+platformBuildVersionCode=&#34;23&#34;
+
+#2 apktool.yml修改为
+sdkInfo:
+  minSdkVersion: &#39;23&#39;
+  targetSdkVersion: &#39;23&#39;</pre></td></tr></table>
+</div>
+</div>
+<p>然后，然后，结果居然行了！！！</p>
+
+<p><img src="/img/charles/https_crack.png" alt="https-crack" /></p>
+
+<h3 id="小小结">小小结</h3>
+
+<ol>
+<li>原来apk反编译重新打包如此简单（修改源码例外，特别是混淆之后的）</li>
+<li>android 7后http是抓包变得繁杂</li>
+<li>网上的答案很多的复制黏贴，不一定正确，自己实践过的才是可靠的，然而并不是所有人实践过，万一他们一直认为他们没实践过的是真理……</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2023-03-21</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/android/">android</a>
+          <a href="/tags/%E9%87%8F%E5%8C%96/">量化</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/2023-03-16-love-for-insterest/">
+            <span class="next-text nav-default">为爱发电终是不能长久的……</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2023-03-21 08:10:12 \x2b0800 CST',
+        title: 'android https 抓包',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2023
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
