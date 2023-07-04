@@ -6,10 +6,19 @@
     <description>Recent content on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 21 Mar 2023 08:10:12 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Jul 2023 18:00:10 +0800</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>hiqradio 一个简单的收音机软件</title>
+      <link>https://luoguochun.cn/post/2023-07-04-hiqradio/</link>
+      <pubDate>Tue, 04 Jul 2023 18:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2023-07-04-hiqradio/</guid>
+      <description>有一段时间，在B站那里刷视频的时候，无意刷到一个德生的收音机视频。突然让我想起了我的中学时代，我的中学时代是在收音机的陪伴之下成长的。那个时</description>
+    </item>
     
     <item>
       <title>android https 抓包</title>
