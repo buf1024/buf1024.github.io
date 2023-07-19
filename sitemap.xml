@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://luoguochun.cn/post/2023-07-19-flutter-muti-window/</loc>
+    <lastmod>2023-07-19T18:00:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://luoguochun.cn/post/2023-07-04-hiqradio/</loc>
     <lastmod>2023-07-04T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -683,7 +690,7 @@
   
   <url>
     <loc>https://luoguochun.cn/</loc>
-    <lastmod>2023-07-04T18:00:10+08:00</lastmod>
+    <lastmod>2023-07-19T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -724,7 +731,7 @@
   
   <url>
     <loc>https://luoguochun.cn/post/</loc>
-    <lastmod>2023-07-04T18:00:10+08:00</lastmod>
+    <lastmod>2023-07-19T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -836,14 +843,14 @@
   
   <url>
     <loc>https://luoguochun.cn/tags/flutter/</loc>
-    <lastmod>2023-03-16T08:10:12+08:00</lastmod>
+    <lastmod>2023-07-19T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://luoguochun.cn/categories/flutter/</loc>
-    <lastmod>2023-07-04T18:00:10+08:00</lastmod>
+    <lastmod>2023-07-19T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1040,6 +1047,13 @@
   <url>
     <loc>https://luoguochun.cn/categories/misc/</loc>
     <lastmod>2019-05-05T11:12:02+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://luoguochun.cn/categories/multi_window/</loc>
+    <lastmod>2023-07-19T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

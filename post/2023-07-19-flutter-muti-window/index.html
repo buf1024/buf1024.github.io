@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Flutter 桌面端多窗口支持 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="多窗口 Flutter的已经支持桌面端开发已经一段时间了，不过关注桌面端开发的应该也知道，flutter的桌面端并不支持多窗口。虽然官方表示以" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2023-07-19-flutter-muti-window/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Flutter 桌面端多窗口支持" />
+<meta property="og:description" content="多窗口 Flutter的已经支持桌面端开发已经一段时间了，不过关注桌面端开发的应该也知道，flutter的桌面端并不支持多窗口。虽然官方表示以" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2023-07-19-flutter-muti-window/" /><meta property="article:published_time" content="2023-07-19T18:00:10&#43;08:00"/>
+<meta property="article:modified_time" content="2023-07-19T18:00:10&#43;08:00"/>
+
+<meta itemprop="name" content="Flutter 桌面端多窗口支持">
+<meta itemprop="description" content="多窗口 Flutter的已经支持桌面端开发已经一段时间了，不过关注桌面端开发的应该也知道，flutter的桌面端并不支持多窗口。虽然官方表示以">
+
+
+<meta itemprop="datePublished" content="2023-07-19T18:00:10&#43;08:00" />
+<meta itemprop="dateModified" content="2023-07-19T18:00:10&#43;08:00" />
+<meta itemprop="wordCount" content="2533">
+
+
+
+<meta itemprop="keywords" content="flutter," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Flutter 桌面端多窗口支持"/>
+<meta name="twitter:description" content="多窗口 Flutter的已经支持桌面端开发已经一段时间了，不过关注桌面端开发的应该也知道，flutter的桌面端并不支持多窗口。虽然官方表示以"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Flutter 桌面端多窗口支持</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2023-07-19 </span>
+        <div class="post-category">
+            <a href="/categories/flutter/"> flutter </a>
+            <a href="/categories/multi_window/"> multi_window </a>
+            </div>
+          <span class="more-meta"> 约 2533 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#多窗口">多窗口</a></li>
+<li><a href="#坑">坑</a></li>
+<li><a href="#小结">小结</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h3 id="多窗口">多窗口</h3>
+
+<p>Flutter的已经支持桌面端开发已经一段时间了，不过关注桌面端开发的应该也知道，flutter的桌面端并不支持多窗口。虽然官方表示以后会支持，但，Flutter作为一个一开始就定位为移动端的跨平台开发框架，Flutter多窗口的支持的优先级一直排在很低很低。所以什么时候真正得到官方的支持，还不知道等到猴年马月。因为桌面端的开发解决方案很多，而且基于web方案，如Electron等框架的流行起来，似乎采用Flutter作为解决方案的实际应用并不多，所以社区的解决方案也不多。能用，并且有实际的程序的似乎就只有一个: <a href="https://github.com/MixinNetwork/flutter-plugins/tree/main/packages/desktop_multi_window" title="desktop_multi_window">desktop_multi_window</a>。</p>
+
+<p>对于<a href="https://github.com/MixinNetwork/flutter-plugins/tree/main/packages/desktop_multi_window" title="desktop_multi_window">desktop_multi_window</a>，他能提供的功能并不多，有些实际上开发所需要的功能（比如，窗口resize事件，失去焦点时间等等），它并没有提供。不过，社区对于上述缺失去的功能，其他库有提供，比如：<a href="https://github.com/leanflutter/window_manager">window_manager</a>, <a href="https://github.com/bitsdojo/bitsdojo_window" title="bitsdojo_window">bitsdojo_window</a>等，这单窗口的库相对还是多一点点。因此，就有些项目将此类库合并一起，作为自己项目使用，比如<a href="https://github.com/rustdesk/rustdesk">restdesk</a>的<a href="https://github.com/Kingtous/rustdesk_desktop_multi_window">restdesk_desktop_multi_window</a>。<a href="https://github.com/Kingtous/rustdesk_desktop_multi_window">restdesk_desktop_multi_window</a>，是专门为自己项目定制的，而且更新也是基于自己项目，所以，不具备通用性。真正使用时还是结合使用<a href="https://github.com/MixinNetwork/flutter-plugins/tree/main/packages/desktop_multi_window" title="desktop_multi_window">desktop_multi_window</a>和<a href="https://github.com/leanflutter/window_manager">window_manager</a>, <a href="https://github.com/bitsdojo/bitsdojo_window" title="bitsdojo_window">bitsdojo_window</a>等。相对来说<a href="https://github.com/MixinNetwork/flutter-plugins/tree/main/packages/desktop_multi_window" title="desktop_multi_window">desktop_multi_window</a>，也是为了自己项目而剥离出来的，似乎也不为了推广，它文档什么的几乎为零。当然，使用这个东西也不复杂，看看他提供的例子便知道如何上手。不过，也因为没有文档，所包含的坑也必须一个一个的踩过。</p>
+
+<h3 id="坑">坑</h3>
+
+<p>一个正常的项目，肯定有依赖很多其他库的。<a href="https://github.com/MixinNetwork/flutter-plugins/tree/main/packages/desktop_multi_window" title="desktop_multi_window">desktop_multi_window</a>的第一个坑就是<code>MissingPluginException</code>​。这个异常是在创建子窗口的时候抛出来的，创建子窗口的时候<code>main</code>​函数会再调用一次，子窗口和主窗口的不同在意，创建主窗口时传过来的参数是空的，而子窗口会传三个参数过来，分别是第一个固定值<code>multi_window</code>​，第二个窗口id，已经传给子窗口的和应用相关的参数。根据此来区分主子窗口以及业务功能。不过在子窗口时，如果不把子窗口所依赖的<code>Plugin</code>​注册，那么就会抛出<code>MissingPluginException</code>​，这个修改简单。以macos为例，所修改的代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// macos/Runner/MainFlutterWindow.swift</span>
+<span class="kd">import</span> <span class="nc">Cocoa</span>
+<span class="kd">import</span> <span class="nc">FlutterMacOS</span>
+<span class="o">+</span> <span class="kd">import</span> <span class="nc">desktop_multi_window</span>
+<span class="o">+</span> <span class="kd">import</span> <span class="nc">screen_retriever</span>
+<span class="o">+</span> <span class="kd">import</span> <span class="nc">window_manager</span>
+<span class="o">+</span> <span class="kd">import</span> <span class="nc">hotkey_manager</span>
+
+<span class="kd">class</span> <span class="nc">MainFlutterWindow</span><span class="p">:</span> <span class="n">NSWindow</span> <span class="p">{</span>
+  <span class="kr">override</span> <span class="kd">func</span> <span class="nf">awakeFromNib</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">flutterViewController</span> <span class="p">=</span> <span class="n">FlutterViewController</span><span class="p">()</span>
+    <span class="kd">let</span> <span class="nv">windowFrame</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">frame</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">contentViewController</span> <span class="p">=</span> <span class="n">flutterViewController</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">setFrame</span><span class="p">(</span><span class="n">windowFrame</span><span class="p">,</span> <span class="n">display</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+
+    <span class="n">RegisterGeneratedPlugins</span><span class="p">(</span><span class="n">registry</span><span class="p">:</span> <span class="n">flutterViewController</span><span class="p">)</span>
+
+<span class="o">+</span>      <span class="n">FlutterMultiWindowPlugin</span><span class="p">.</span><span class="n">setOnWindowCreatedCallback</span> <span class="p">{</span> <span class="n">controller</span> <span class="k">in</span>
+<span class="o">+</span>      <span class="c1">// Register the plugin which you want access from other isolate.</span>
+<span class="o">+</span>    
+<span class="o">+</span>
+<span class="o">+</span>       <span class="n">WindowManagerPlugin</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="n">with</span><span class="p">:</span> <span class="n">controller</span><span class="p">.</span><span class="n">registrar</span><span class="p">(</span><span class="n">forPlugin</span><span class="p">:</span> <span class="s">&#34;WindowManagerPlugin&#34;</span><span class="p">))</span>
+<span class="o">+</span>       <span class="n">HotkeyManagerPlugin</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="n">with</span><span class="p">:</span> <span class="n">controller</span><span class="p">.</span><span class="n">registrar</span><span class="p">(</span><span class="n">forPlugin</span><span class="p">:</span> <span class="s">&#34;HotkeyManagerPlugin&#34;</span><span class="p">))</span>
+<span class="o">+</span>       <span class="n">ScreenRetrieverPlugin</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="n">with</span><span class="p">:</span> <span class="n">controller</span><span class="p">.</span><span class="n">registrar</span><span class="p">(</span><span class="n">forPlugin</span><span class="p">:</span> <span class="s">&#34;ScreenRetrieverPlugin&#34;</span><span class="p">))</span>
+<span class="o">+</span>    <span class="p">}</span>
+
+    <span class="kc">super</span><span class="p">.</span><span class="n">awakeFromNib</span><span class="p">()</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>这个注册，不单单是依赖的插件的<code>Plugin</code>​，还有所依赖的<code>Plugin</code>​依赖的<code>Plugin</code>​, 比如<code>window_manager</code>​这个，它还依赖<code>screen_retriever</code>​，你必须把两个都注册进来。这就比较烦人了，你怎么知道你导入的库，还依赖哪个插件，所依赖的那个插件由叫什么名字呢？所以，必须一个一个的试等到异常抛出来之后，去网上找到对应的库，找到代码中的名称，才能确定，然后才能添加到代码之中。</p>
+
+<p>踩过第一坑之后，马上便迎来第二个坑。在我设置场景中，主窗口丢失焦点之后，就进行关闭，由系统托盘管理，关闭子窗口的时候，子窗口将完全关闭，还有一个功能，就是窗口关闭之后，点docker程序是恢复到主窗口的（系统托盘了，不应该还有docker window的，不过这是测试）。实现docker恢复，大体增加的代码:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// macos/Runner/AppDelegate.swift</span>
+<span class="kd">import</span> <span class="nc">Cocoa</span>
+<span class="kd">import</span> <span class="nc">FlutterMacOS</span>
+
+<span class="kr">@NSApplicationMain</span>
+<span class="kd">class</span> <span class="nc">AppDelegate</span><span class="p">:</span> <span class="n">FlutterAppDelegate</span> <span class="p">{</span>
+  <span class="kr">override</span> <span class="kd">func</span> <span class="nf">applicationShouldTerminateAfterLastWindowClosed</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="n">NSApplication</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+ <span class="o">-</span>   <span class="k">return</span> <span class="kc">true</span>
+ <span class="o">+</span>   <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+ <span class="o">+</span><span class="kr">override</span> <span class="kd">func</span> <span class="nf">applicationShouldHandleReopen</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="n">NSApplication</span><span class="p">,</span> <span class="n">hasVisibleWindows</span> <span class="n">flag</span><span class="p">:</span> <span class="nb">Bool</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+ <span class="o">+</span>   <span class="k">if</span> <span class="o">!</span><span class="n">flag</span> <span class="p">{</span>
+ <span class="o">+</span>     <span class="k">for</span> <span class="n">window</span> <span class="k">in</span> <span class="n">NSApp</span><span class="p">.</span><span class="n">windows</span> <span class="p">{</span>
+ <span class="o">+</span>       <span class="c1">// if window.parent == nil {</span>
+ <span class="o">+</span>       <span class="k">if</span> <span class="o">!</span><span class="n">window</span><span class="p">.</span><span class="n">isVisible</span> <span class="p">{</span>
+ <span class="o">+</span>         <span class="n">window</span><span class="p">.</span><span class="n">setIsVisible</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+ <span class="o">+</span>       <span class="p">}</span>
+ <span class="o">+</span>       <span class="n">window</span><span class="p">.</span><span class="n">makeKeyAndOrderFront</span><span class="p">(</span><span class="kc">self</span><span class="p">)</span>
+ <span class="o">+</span>       <span class="n">NSApp</span><span class="p">.</span><span class="n">activate</span><span class="p">(</span><span class="n">ignoringOtherApps</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+ <span class="o">+</span>       <span class="c1">// break</span>
+ <span class="o">+</span>       <span class="c1">// }</span>
+ <span class="o">+</span>     <span class="p">}</span>
+ <span class="o">+</span>   <span class="p">}</span>
+ <span class="o">+</span>   <span class="k">return</span> <span class="kc">true</span>
+ <span class="o">+</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>场景示意：</p>
+
+<p>​<img src="assets/image-20230719170917-4ab2jt8.png" alt="image" />​</p>
+
+<p>由代码恢复看，是把所有非可见的窗口，全部重新显示出来，包括所有的主窗口和子窗口。当然也可以像，代码注释里的那样，只显示主窗口，不过那窗口一直都在那里，根本就没有关闭。</p>
+
+<p>所以解决的方式也简单，就是调用关闭窗口时，完全关闭窗口即可。则<a href="https://github.com/leanflutter/window_manager">window_manager</a>里面，关闭的函数:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// lib/macos/Classes/WindowManager.swift</span>
+  <span class="kd">public</span> <span class="kd">func</span> <span class="nf">close</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">mainWindow</span><span class="p">.</span><span class="n">performClose</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
+    <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>而<code>performClose</code>​在苹果文档里面只是模拟关闭的这按钮而已，所以肯定是关闭不了的了。查看所有<a href="https://github.com/leanflutter/window_manager">window_manager</a>的函数，并没有一个可以关闭的函数了。不过好在苹果的文档够详细，而且有了样板代码在那里，即使不会swift语言，不会写Flutter Plugin，往里面添加功能还是很容易的。完全关闭，也很简单（当然，使之能够被flutter调用，还有添加其他代码，此处忽略）:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-swift" data-lang="swift">    <span class="kd">public</span> <span class="kd">func</span> <span class="nf">forceClose</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">mainWindow</span><span class="p">.</span><span class="n">isReleasedWhenClosed</span> <span class="p">=</span> <span class="kc">true</span>
+        <span class="n">mainWindow</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>解决了上述坑之外，就以为没坑了？非也，最大的坑还在后面，<a href="https://github.com/MixinNetwork/flutter-plugins/tree/main/packages/desktop_multi_window" title="desktop_multi_window">desktop_multi_window</a>所创建的字窗口，和其他窗口是完全独立的，几乎相当于新起了一个程序，所以，应用程序的状态并不能共享，更加不会得到更新。所以它用自己独特的消息传递方式，用<code>DesktopMultiWindow.setMethodHandler</code>​监听消息，用<code>DesktopMultiWindow.invokeMethod</code>​发送消息，把名字写得像远程调用似的，不过也像是远程调用。而这种通讯方式，最大的弊端就是，对代码有极高的入侵性，你必须要按照这种模式来思考和构建你的程序。如果Flutter真的开始支持了多窗口，那么程序也必须重写一次，不过好在Flutter界面开发的高效率，重构所花费的时间感觉也是可以接受。</p>
+
+<h3 id="小结">小结</h3>
+
+<p>你以为上面就上面一点坑？感觉解决起来也不难啊！哈，上面只是罗列一小点点而已，Flutter桌面开发的坑是一步一个坑，两步三个坑，三步五个坑，坑坑不断啊。不过相对于Electron而言，Flutter桌面的运行效率高不少，打包的尺寸也少一半以上，开发效率更是杠杆的，在坑与效率之间均衡其实也是可以选择的。当然，Flutter的劣势就是人员的缺乏，缺乏人才储备的企业使用的确要慎重，个人或者有人才的则大胆用之。</p>
+
+<p>‍</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2023-07-19</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/flutter/">flutter</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/2023-07-04-hiqradio/">
+            <span class="next-text nav-default">hiqradio 一个简单的收音机软件</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2023-07-19 18:00:10 \x2b0800 CST',
+        title: 'Flutter 桌面端多窗口支持',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2023
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

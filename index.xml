@@ -6,10 +6,19 @@
     <description>Recent content on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 04 Jul 2023 18:00:10 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 19 Jul 2023 18:00:10 +0800</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Flutter 桌面端多窗口支持</title>
+      <link>https://luoguochun.cn/post/2023-07-19-flutter-muti-window/</link>
+      <pubDate>Wed, 19 Jul 2023 18:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2023-07-19-flutter-muti-window/</guid>
+      <description>多窗口 Flutter的已经支持桌面端开发已经一段时间了，不过关注桌面端开发的应该也知道，flutter的桌面端并不支持多窗口。虽然官方表示以</description>
+    </item>
     
     <item>
       <title>hiqradio 一个简单的收音机软件</title>
