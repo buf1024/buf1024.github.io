@@ -84,7 +84,7 @@ class AppDelegate: FlutterAppDelegate {
 
 场景示意：
 
-​![image](assets/image-20230719170917-4ab2jt8.png)​
+​![image](/img/flutter/hiqspotlight.png)​
 
 由代码恢复看，是把所有非可见的窗口，全部重新显示出来，包括所有的主窗口和子窗口。当然也可以像，代码注释里的那样，只显示主窗口，不过那窗口一直都在那里，根本就没有关闭。
 
