@@ -55,4 +55,3 @@ __pycache__/
 .idea
 *.lock
 
-./.demo/**/target
