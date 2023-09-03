@@ -54,3 +54,5 @@ __pycache__/
 .hugo/content/talib-doc
 .idea
 *.lock
+
+./.demo/**/target
