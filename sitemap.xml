@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://luoguochun.cn/post/2023-09-21-rust-panic/</loc>
+    <lastmod>2023-09-21T18:00:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://luoguochun.cn/post/2023-07-19-flutter-muti-window/</loc>
     <lastmod>2023-07-19T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -690,7 +697,7 @@
   
   <url>
     <loc>https://luoguochun.cn/</loc>
-    <lastmod>2023-07-19T18:00:10+08:00</lastmod>
+    <lastmod>2023-09-21T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -731,7 +738,7 @@
   
   <url>
     <loc>https://luoguochun.cn/post/</loc>
-    <lastmod>2023-07-19T18:00:10+08:00</lastmod>
+    <lastmod>2023-09-21T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1144,14 +1151,14 @@
   
   <url>
     <loc>https://luoguochun.cn/tags/rust/</loc>
-    <lastmod>2021-07-26T22:12:02+08:00</lastmod>
+    <lastmod>2023-09-21T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://luoguochun.cn/categories/rust/</loc>
-    <lastmod>2021-09-13T01:12:02+08:00</lastmod>
+    <lastmod>2023-09-21T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

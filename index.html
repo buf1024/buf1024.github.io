@@ -44,7 +44,7 @@
 <meta property="og:description" content="luoguochun&#39;s personal page!" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://luoguochun.cn/" />
-<meta property="og:updated_time" content="2023-07-19T18:00:10&#43;08:00"/>
+<meta property="og:updated_time" content="2023-09-21T18:00:10&#43;08:00"/>
 
 <meta itemprop="name" content="BUF1024!!!">
 <meta itemprop="description" content="luoguochun&#39;s personal page!">
@@ -116,6 +116,29 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2023-09-21 </span>
+      <div class="post-category">
+          <a href="/categories/rust/"> rust </a>
+          </div>
+        <span class="more-meta"> 约 929 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 5 // 敏感信息去掉 format!(&#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;X_=xadf0&#34;,code=&amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22co
+    </div>
+    <div class="read-more">
+      <a href="/post/2023-09-21-rust-panic/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a></h1>
@@ -323,29 +346,6 @@
     </div>
     <div class="read-more">
       <a href="/post/2022-08-02-rust-lib-config-rs-intro/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2021-07-26-rust-async/">rust 异步编程粗略理解 async/.await</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2021-07-26 </span>
-      <div class="post-category">
-          <a href="/categories/rust/"> rust </a>
-          </div>
-        <span class="more-meta"> 约 2007 字 </span>
-        <span class="more-meta"> 预计阅读 5 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      简介 协程已经是非常成熟的概念了，很多编程语言(比如JS, PYTHON, DART等等)已提供原生的支持了，并且几乎提供相同的关键字async/await。
-    </div>
-    <div class="read-more">
-      <a href="/post/2021-07-26-rust-async/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
