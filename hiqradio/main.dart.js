@@ -92641,7 +92641,7 @@ A.Ua.prototype={
 Lv(){var s=0,r=A.o(t.H),q=this,p,o,n,m
 var $async$Lv=A.k(function(a,b){if(a===1)return A.l(b,r)
 while(true)switch(s){case 0:A.dr("initDio")
-p=A.dF("https://all.api.radio-browser.info",0,null).j(0)
+p=A.dF("http://all.api.radio-browser.info",0,null).j(0)
 o=q.b
 n=o.wO$
 n===$&&A.b()
