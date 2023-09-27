@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on BUF1024!!!</title>
+    <title>Linux on BUF1024!!!</title>
     <link>https://luoguochun.cn/categories/linux/</link>
-    <description>Recent content in linux on BUF1024!!!</description>
+    <description>Recent content in Linux on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 28 Jul 2014 14:57:18 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Oct 2018 10:54:00 +0000</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>linux /proc 伪文件系统</title>
-      <link>https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/</link>
-      <pubDate>Mon, 28 Jul 2014 14:57:18 +0000</pubDate>
+      <title>防火墙放开端口</title>
+      <link>https://luoguochun.cn/post/2018-10-01-firewall-cmd/</link>
+      <pubDate>Mon, 01 Oct 2018 10:54:00 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/</guid>
-      <description>linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一</description>
+      <guid>https://luoguochun.cn/post/2018-10-01-firewall-cmd/</guid>
+      <description>firewall-cmd &amp;ndash;permanent &amp;ndash;zone=public &amp;ndash;add-port=8484/tcp &amp;ndash;zone #作用域 &amp;ndash;add-port=8484/tcp #添加端口，格式为：端口/通讯协议 &amp;ndash;permanent #永久生效，没有此参数重启后失效 firewall-cmd &amp;ndash;reload 1、firewalld的基本使用 启动： systemctl start firewalld 查看</description>
     </item>
     
-    <item>
-      <title>gcov 简述</title>
-      <link>https://luoguochun.cn/post/2013-05-31-linux-gcov/</link>
-      <pubDate>Fri, 31 May 2013 17:08:14 +0000</pubDate>
+  </channel>
+</rss>te>Fri, 31 May 2013 17:08:14 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2013-05-31-linux-gcov/</guid>
       <description>代码覆盖率是单元测试的一个指标，通常覆盖率越高，单元测试就做得更完备。（然而，覆盖率是不是和软件质量成正比关系呢？）gcov是GNU工具链中</description>
