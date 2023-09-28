@@ -13,8 +13,8 @@ date: 1989-06-04 20:00:00
 
 - [偶尔写写自己用的 PyPi -- 当是备份咯](https://pypi.org/user/buf1024/) `还在用一年交一次费的吐share？out了！要么用免费的akshare或者这个用rust写用pyo3封装的，速度不是飞一般快！`
 
-- [怀旧的人会听听收音机](https://github.com/buf1024/hiqradio) 体验一下: [Github Page](https://luoguochun.cn/hiqradio/) 或
-[Vercel](https://buf1024-github-io.vercel.app/hiqradio)。
+- [怀旧的人会听听收音机](https://github.com/buf1024/hiqradio) 体验一下？响应式，手机上访问效果佳，功能阉割: [Github Page](https://luoguochun.cn/hiqradio/) 或
+[Vercel](https://buf1024.vercel.app/hiqradio)。
 
 
 
