@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2018-01-25T09:32:32&#43;00:00" />
 <meta itemprop="dateModified" content="2018-01-25T09:32:32&#43;00:00" />
-<meta itemprop="wordCount" content="5289">
+<meta itemprop="wordCount" content="5258">
 
 
 
@@ -131,7 +131,7 @@
         <div class="post-category">
             <a href="/categories/reactjs/"> reactjs </a>
             </div>
-          <span class="more-meta"> 约 5289 字 </span>
+          <span class="more-meta"> 约 5258 字 </span>
           <span class="more-meta"> 预计阅读 11 分钟 </span>
         
       </div>
@@ -233,11 +233,12 @@
 </code></pre></td></tr></table>
 </div>
 </div>
-<p>另外的组件方法是用类实现，可以包括状态和生命周期。<code>props</code>和<code>state</code>的区别：<code>props</code>为外部传递给组件的，而<code>state</code>为组件内部的状态。<code>this.state</code>代表组件的状态，关于state：
-1. 不要直接更新状态
-  更新方式：<code>this.setState({comment: 'Hello'})</code></p>
+<p>另外的组件方法是用类实现，可以包括状态和生命周期。<code>props</code>和<code>state</code>的区别：<code>props</code>为外部传递给组件的，而<code>state</code>为组件内部的状态。<code>this.state</code>代表组件的状态，关于state：</p>
 
 <ol>
+<li><p>不要直接更新状态
+更新方式：<code>this.setState({comment: 'Hello'})</code></p></li>
+
 <li><p>状态更新可能是异步的</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -331,21 +332,30 @@
 </code></pre></td></tr></table>
 </div>
 </div>
-<p>组件的生命周期(详细参考: <a href="https://segmentfault.com/a/1190000004168886">React：组件的生命周期</a>)分成三个状态：
-  - Mounting：已插入真实 DOM
-  - Updating：正在被重新渲染
-  - Unmounting：已移出真实 DOM</p>
+<p>组件的生命周期(详细参考: <a href="https://segmentfault.com/a/1190000004168886">React：组件的生命周期</a>)分成三个状态：</p>
 
-<p>组件对应的生命周期
-  - componentWillMount()
-  - componentDidMount()
-  - componentWillUpdate(object nextProps, object nextState)
-  - componentDidUpdate(object prevProps, object prevState)
-  - componentWillUnmount()</p>
+<ul>
+<li>Mounting：已插入真实 DOM</li>
+<li>Updating：正在被重新渲染</li>
+<li>Unmounting：已移出真实 DOM</li>
+</ul>
 
-<p>额外的生命周期
-  - componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用
-  - shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用</p>
+<p>组件对应的生命周期</p>
+
+<ul>
+<li>componentWillMount()</li>
+<li>componentDidMount()</li>
+<li>componentWillUpdate(object nextProps, object nextState)</li>
+<li>componentDidUpdate(object prevProps, object prevState)</li>
+<li>componentWillUnmount()</li>
+</ul>
+
+<p>额外的生命周期</p>
+
+<ul>
+<li>componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用</li>
+<li>shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用</li>
+</ul>
 
 <p>组件类似于面向对象的类，外部是不需要知道内部的状态。</p>
 
@@ -385,37 +395,53 @@
 
 <p>应用中所有的 state 都以一个对象树的形式储存在一个单一的 store 中。惟一改变 state 的办法是触发 action，一个描述发生什么的对象。为了描述 action 如何改变 state 树，你需要编写 reducers。</p>
 
-<p>三大原则：
-- 单一数据源, 整个应用的 state 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 store 中。
-- State 是只读的, 惟一改变 state 的方法就是触发 action，action 是一个用于描述已发生事件的普通对象。
-- 使用纯函数来执行修改, 为了描述 action 如何改变 state tree ，你需要编写 reducers。</p>
-
-<p>一般来说你会通过 store.dispatch() 将 action 传到 store。action 内必须使用一个字符串类型的 type 字段来表示将要执行的动作。除了 type 字段外，action 对象的结构完全由你自己决定。我们应该尽量减少在 action 中传递的数据
-Action 创建函数 就是生成 action 的方法。Action 只是描述了有事情发生了这一事实，并没有指明应用如何更新 state。而这正是 reducer 要做的事情。reducer 就是一个纯函数，接收旧的 state 和 action，返回新的 state。</p>
-
-<p>注意:
-- 不要修改 state。 使用 Object.assign() 新建了一个副本。
-- 在 default 情况下返回旧的 state</p>
-
-<p>Store 有以下职责：
-  - 维持应用的 state；
-  - 提供 getState() 方法获取 state；
-  - 提供 dispatch(action) 方法更新 state；
-  - 通过 subscribe(listener) 注册监听器;
-  - 通过 subscribe(listener) 返回的函数注销监听器</p>
-
-<p>Redux 的设计思想很简单
-1. Web 应用是一个状态机，视图与状态是一一对应的。
-2. 所有的状态，保存在一个对象里面。</p>
-
-<p>异步操作的差别是它要发出三种 Action。
-  - 操作发起时的 Action
-  - 操作成功时的 Action
-  - 操作失败时的 Action</p>
+<p>三大原则：</p>
 
 <ul>
-<li>操作开始时，送出一个 Action，触发 State 更新为&rdquo;正在操作&rdquo;状态，View 重新渲染</li>
-<li>操作结束后，再送出一个 Action，触发 State 更新为&rdquo;操作结束&rdquo;状态，View 再一次重新渲染</li>
+<li>单一数据源, 整个应用的 state 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 store 中。</li>
+<li>State 是只读的, 惟一改变 state 的方法就是触发 action，action 是一个用于描述已发生事件的普通对象。</li>
+<li>使用纯函数来执行修改, 为了描述 action 如何改变 state tree ，你需要编写 reducers。</li>
+</ul>
+
+<p>一般来说你会通过 store.dispatch() 将 action 传到 store。action 内必须使用一个字符串类型的 type 字段来表示将要执行的动作。除了 type 字段外，action 对象的结构完全由你自己决定。我们应该尽量减少在 action 中传递的数据</p>
+
+<p>Action 创建函数 就是生成 action 的方法。Action 只是描述了有事情发生了这一事实，并没有指明应用如何更新 state。而这正是 reducer 要做的事情。reducer 就是一个纯函数，接收旧的 state 和 action，返回新的 state。</p>
+
+<p>注意:</p>
+
+<ul>
+<li>不要修改 state。 使用 Object.assign() 新建了一个副本。</li>
+<li>在 default 情况下返回旧的 state</li>
+</ul>
+
+<p>Store 有以下职责：</p>
+
+<ul>
+<li>维持应用的 state；</li>
+<li>提供 getState() 方法获取 state；</li>
+<li>提供 dispatch(action) 方法更新 state；</li>
+<li>通过 subscribe(listener) 注册监听器;</li>
+<li>通过 subscribe(listener) 返回的函数注销监听器</li>
+</ul>
+
+<p>Redux 的设计思想很简单</p>
+
+<ol>
+<li>Web 应用是一个状态机，视图与状态是一一对应的。</li>
+<li>所有的状态，保存在一个对象里面。</li>
+</ol>
+
+<p>异步操作的差别是它要发出三种 Action。</p>
+
+<ul>
+<li>操作发起时的 Action</li>
+<li>操作成功时的 Action</li>
+
+<li><p>操作失败时的 Action</p></li>
+
+<li><p>操作开始时，送出一个 Action，触发 State 更新为&rdquo;正在操作&rdquo;状态，View 重新渲染</p></li>
+
+<li><p>操作结束后，再送出一个 Action，触发 State 更新为&rdquo;操作结束&rdquo;状态，View 再一次重新渲染</p></li>
 </ul>
 
 <p>action creator的写法：</p>
@@ -637,11 +663,12 @@ Action 创建函数 就是生成 action 的方法。Action 只是描述了有事
 </div>
 <h2 id="总结">总结</h2>
 
-<p>这次试水React并不算怎么顺利。可能的原因：
-1. 不安规定制定接口
-前后分离的开发模式，需要开发前制定接口，然后各自开发。但现实却是，接口制定完全由后端控制，后端自己先开发完毕了一个接口功能，就制定一个接口。这样前端就处于一个非常被动的地位，很容易成为开发的瓶颈。</p>
+<p>这次试水React并不算怎么顺利。可能的原因：</p>
 
 <ol>
+<li><p>不安规定制定接口
+前后分离的开发模式，需要开发前制定接口，然后各自开发。但现实却是，接口制定完全由后端控制，后端自己先开发完毕了一个接口功能，就制定一个接口。这样前端就处于一个非常被动的地位，很容易成为开发的瓶颈。</p></li>
+
 <li><p>后端接口实现的缺陷，沟通困难。
 安照原型图，后端制定的接口里面，有不少需要的字段缺少的，而且对接口测试不足，完全依赖于前端输入。举个栗子，有个入库的接口，前端填好相关ID和名字后，让后端进行入库，后端完全不校验数据的合法性，不管前端传输的任何和数据，都直接入库。这样导致后台的审核的系统，报错。当然这些缺陷的软件开发这不是问题，最关键的问题是，后台人员沟通比较困难，要后台修改一个问题，像大爷一样求着修改。后来了解到，之前另外一个java后台沟通更困难。本来前后分离，是减轻后端的开发工作量的，没有料到的是，沟通和不合作却成为一个困难。可能这也跟公司的前景相关</p></li>
 
@@ -649,11 +676,14 @@ Action 创建函数 就是生成 action 的方法。Action 只是描述了有事
 前端的开发中有不少相似的页面和逻辑，按照复用的原则理论上可以让代码更少，然而可能是经验方面的不足，写了很多冗余的代码，这是需要提高</p></li>
 </ol>
 
-<p>最后，总结：
-1. 如果决定了采用前后分离的开发模式，那么前后端的开发都必须达成一致，同意这种开发的模式，积极参与进来，否则导致后面的沟通问题
-2. 前后方的接口制定，需要双方同时制定，不能由一方制定后，再给另外一方，中途出现问题，再做修改，然后同时开发，必须同时分别进行接口测试。
-3. 如果后端同事较多，可以让后端同事适当参与前端开发，毕竟后端向端开发的转化还相对容易
-4. 如果原来的技术栈可以适应当前的业务情景，组内兴趣对新技术兴趣不高，那么还是保留使用原来的技术栈</p>
+<p>最后，总结：</p>
+
+<ol>
+<li>如果决定了采用前后分离的开发模式，那么前后端的开发都必须达成一致，同意这种开发的模式，积极参与进来，否则导致后面的沟通问题</li>
+<li>前后方的接口制定，需要双方同时制定，不能由一方制定后，再给另外一方，中途出现问题，再做修改，然后同时开发，必须同时分别进行接口测试。</li>
+<li>如果后端同事较多，可以让后端同事适当参与前端开发，毕竟后端向端开发的转化还相对容易</li>
+<li>如果原来的技术栈可以适应当前的业务情景，组内兴趣对新技术兴趣不高，那么还是保留使用原来的技术栈</li>
+</ol>
 
 <p>P.S:
 这里没有针对任何人。</p>

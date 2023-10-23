@@ -54,6 +54,7 @@ Welcome.defaultProps = {
 ```
 
 另外的组件方法是用类实现，可以包括状态和生命周期。`props`和`state`的区别：`props`为外部传递给组件的，而`state`为组件内部的状态。`this.state`代表组件的状态，关于state：
+
 1. 不要直接更新状态
   更新方式：`this.setState({comment: 'Hello'})`
 
@@ -104,11 +105,13 @@ ReactDOM.render(
 ```
 
 组件的生命周期(详细参考: [React：组件的生命周期](https://segmentfault.com/a/1190000004168886))分成三个状态：
+
   - Mounting：已插入真实 DOM
   - Updating：正在被重新渲染
   - Unmounting：已移出真实 DOM
 
 组件对应的生命周期
+
   - componentWillMount()
   - componentDidMount()
   - componentWillUpdate(object nextProps, object nextState)
@@ -116,6 +119,7 @@ ReactDOM.render(
   - componentWillUnmount()
 
 额外的生命周期
+
   - componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用
   - shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用
 
@@ -141,18 +145,22 @@ ReactDOM.render(
 应用中所有的 state 都以一个对象树的形式储存在一个单一的 store 中。惟一改变 state 的办法是触发 action，一个描述发生什么的对象。为了描述 action 如何改变 state 树，你需要编写 reducers。
 
 三大原则：
+
 - 单一数据源, 整个应用的 state 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 store 中。
 - State 是只读的, 惟一改变 state 的方法就是触发 action，action 是一个用于描述已发生事件的普通对象。
 - 使用纯函数来执行修改, 为了描述 action 如何改变 state tree ，你需要编写 reducers。
 
 一般来说你会通过 store.dispatch() 将 action 传到 store。action 内必须使用一个字符串类型的 type 字段来表示将要执行的动作。除了 type 字段外，action 对象的结构完全由你自己决定。我们应该尽量减少在 action 中传递的数据
+
 Action 创建函数 就是生成 action 的方法。Action 只是描述了有事情发生了这一事实，并没有指明应用如何更新 state。而这正是 reducer 要做的事情。reducer 就是一个纯函数，接收旧的 state 和 action，返回新的 state。
 
 注意:
+
 - 不要修改 state。 使用 Object.assign() 新建了一个副本。
 - 在 default 情况下返回旧的 state
 
 Store 有以下职责：
+
   - 维持应用的 state；
   - 提供 getState() 方法获取 state；
   - 提供 dispatch(action) 方法更新 state；
@@ -160,10 +168,12 @@ Store 有以下职责：
   - 通过 subscribe(listener) 返回的函数注销监听器
 
 Redux 的设计思想很简单
+
 1. Web 应用是一个状态机，视图与状态是一一对应的。
 2. 所有的状态，保存在一个对象里面。
 
 异步操作的差别是它要发出三种 Action。
+
   - 操作发起时的 Action
   - 操作成功时的 Action
   - 操作失败时的 Action
@@ -279,6 +289,7 @@ class WorkBenchLayout extends Component {
 ```
 ## 总结
 这次试水React并不算怎么顺利。可能的原因：
+
 1. 不安规定制定接口
 前后分离的开发模式，需要开发前制定接口，然后各自开发。但现实却是，接口制定完全由后端控制，后端自己先开发完毕了一个接口功能，就制定一个接口。这样前端就处于一个非常被动的地位，很容易成为开发的瓶颈。
 
@@ -289,6 +300,7 @@ class WorkBenchLayout extends Component {
 前端的开发中有不少相似的页面和逻辑，按照复用的原则理论上可以让代码更少，然而可能是经验方面的不足，写了很多冗余的代码，这是需要提高
 
 最后，总结：
+
 1. 如果决定了采用前后分离的开发模式，那么前后端的开发都必须达成一致，同意这种开发的模式，积极参与进来，否则导致后面的沟通问题
 2. 前后方的接口制定，需要双方同时制定，不能由一方制定后，再给另外一方，中途出现问题，再做修改，然后同时开发，必须同时分别进行接口测试。
 3. 如果后端同事较多，可以让后端同事适当参与前端开发，毕竟后端向端开发的转化还相对容易
