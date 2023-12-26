@@ -17,7 +17,7 @@
       <pubDate>Tue, 26 Dec 2023 16:00:10 +0800</pubDate>
       
       <guid>https://luoguochun.cn/post/2023-12-26-rust-proc-macro/</guid>
-      <description>简介 Rust 编程语言里面有两种宏系统，一种是声明宏（[Declarative Macros]()），另一种为过程宏（Procedural Macros</description>
+      <description>简介 Rust 编程语言里面有两种宏系统，一种是声明宏（Declarative Macros），另一种为过程宏（Procedural Macros）。声明</description>
     </item>
     
     <item>
