@@ -7,7 +7,7 @@ tags: [rust]
 ---
 ### 简介
 
-[Rust](https://www.rust-lang.org/zh-CN/) 编程语言里面有两种宏系统，一种是声明宏（[Declarative Macros]()），另一种为过程宏（[Procedural Macros](https://doc.rust-lang.org/book/ch19-06-macros.html#procedural-macros-for-generating-code-from-attributes)）。声明宏和过程宏是两种基本上完全不一样的宏系统，编写的方式也完全不一致，使用方式除了函数式外也不一致。关于声明宏学习，[Rust 宏小册](https://zjp-cn.github.io/tlborm/introduction.html) 里面有比较详细的说明，这里不再啰嗦。而对于过程宏，网上是可以搜索到的资料则相对较少，系统介绍学习的资料就更加少了。
+[Rust](https://www.rust-lang.org/zh-CN/) 编程语言里面有两种宏系统，一种是声明宏（[Declarative Macros](https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming)），另一种为过程宏（[Procedural Macros](https://doc.rust-lang.org/book/ch19-06-macros.html#procedural-macros-for-generating-code-from-attributes)）。声明宏和过程宏是两种基本上完全不一样的宏系统，编写的方式也完全不一致，使用方式除了函数式外也不一致。关于声明宏学习，[Rust 宏小册](https://zjp-cn.github.io/tlborm/introduction.html) 里面有比较详细的说明，这里不再啰嗦。而对于过程宏，网上是可以搜索到的资料则相对较少，系统介绍学习的资料就更加少了。
 
 过程宏所做的事情则是从输入中获**取到标记流**，**处理这些标记流或者生成新的标记流**，然后将处理后的标记流返回给编译器作下一步的处理。需要注意的是，过程宏操作的是[Rust](https://www.rust-lang.org/zh-CN/) `AST`（抽象语法树），所以即使是在宏里面，也必须是合法[Rust](https://www.rust-lang.org/zh-CN/)的语法结构。这也就意味着，解析过程宏的过程中，`var`表示的是一个合法的标识符，而`6var`则是非法的。
 
@@ -108,7 +108,7 @@ pub fn fetch_data(url: String) -> Result<MyData> {
 
 #### `quote`
 
-``是将编写的代码转换为[Rust](https://www.rust-lang.org/zh-CN/) token的方式，提供一种称之为`quasi-quoting`的方式，将代码视为数据，并可以进行插值。比较常用的是这两个宏：`parse_quote!`，`quote!`，以及`format_ident!`。
+`quote`是将编写的代码转换为[Rust](https://www.rust-lang.org/zh-CN/) token的方式，提供一种称之为`quasi-quoting`的方式，将代码视为数据，并可以进行插值。比较常用的是这两个宏：`parse_quote!`，`quote!`，以及`format_ident!`。
 
 #### `syn`
 
