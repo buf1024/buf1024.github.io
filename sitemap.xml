@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://luoguochun.cn/post/2023-12-26-rust-proc-macro/</loc>
+    <lastmod>2023-12-26T16:00:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://luoguochun.cn/post/2023-09-21-rust-panic/</loc>
     <lastmod>2023-09-21T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -697,7 +704,7 @@
   
   <url>
     <loc>https://luoguochun.cn/</loc>
-    <lastmod>2023-09-21T18:00:10+08:00</lastmod>
+    <lastmod>2023-12-26T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -738,7 +745,7 @@
   
   <url>
     <loc>https://luoguochun.cn/post/</loc>
-    <lastmod>2023-09-21T18:00:10+08:00</lastmod>
+    <lastmod>2023-12-26T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1151,14 +1158,14 @@
   
   <url>
     <loc>https://luoguochun.cn/tags/rust/</loc>
-    <lastmod>2023-09-21T18:00:10+08:00</lastmod>
+    <lastmod>2023-12-26T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://luoguochun.cn/categories/rust/</loc>
-    <lastmod>2023-09-21T18:00:10+08:00</lastmod>
+    <lastmod>2023-12-26T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>rust 过程宏 - BUF1024!!!</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="buf1024" /><meta name="description" content="简介 Rust 编程语言里面有两种宏系统，一种是声明宏（[Declarative Macros]()），另一种为过程宏（Procedural Macros" /><meta name="keywords" content="blog, computer, luoguochun" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://luoguochun.cn/post/2023-12-26-rust-proc-macro/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="rust 过程宏" />
+<meta property="og:description" content="简介 Rust 编程语言里面有两种宏系统，一种是声明宏（[Declarative Macros]()），另一种为过程宏（Procedural Macros" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luoguochun.cn/post/2023-12-26-rust-proc-macro/" /><meta property="article:published_time" content="2023-12-26T16:00:10&#43;08:00"/>
+<meta property="article:modified_time" content="2023-12-26T16:00:10&#43;08:00"/>
+
+<meta itemprop="name" content="rust 过程宏">
+<meta itemprop="description" content="简介 Rust 编程语言里面有两种宏系统，一种是声明宏（[Declarative Macros]()），另一种为过程宏（Procedural Macros">
+
+
+<meta itemprop="datePublished" content="2023-12-26T16:00:10&#43;08:00" />
+<meta itemprop="dateModified" content="2023-12-26T16:00:10&#43;08:00" />
+<meta itemprop="wordCount" content="5171">
+
+
+
+<meta itemprop="keywords" content="rust," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="rust 过程宏"/>
+<meta name="twitter:description" content="简介 Rust 编程语言里面有两种宏系统，一种是声明宏（[Declarative Macros]()），另一种为过程宏（Procedural Macros"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">BUF1024!</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">BUF1024!</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">rust 过程宏</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2023-12-26 </span>
+        <div class="post-category">
+            <a href="/categories/rust/"> rust </a>
+            </div>
+          <span class="more-meta"> 约 5171 字 </span>
+          <span class="more-meta"> 预计阅读 11 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#三种过程宏形式">三种过程宏形式</a>
+<ul>
+<li><a href="#derive-式"><code>derive</code> 式</a></li>
+<li><a href="#函数式">函数式</a></li>
+<li><a href="#属性式">属性式</a></li>
+</ul></li>
+<li><a href="#quote-syn-proc-macro2-以及-trybuild-和-cargo-expand-https-github-com-dtolnay-cargo-expand"><code>quote</code>, <code>syn</code>, <code>proc_macro2</code>以及<code>trybuild</code>和<a href="https://github.com/dtolnay/cargo-expand"><code>cargo-expand</code></a></a>
+<ul>
+<li><a href="#proc-macro2"><code>proc_macro2</code></a></li>
+<li><a href="#quote"><code>quote</code></a></li>
+<li><a href="#syn"><code>syn</code></a></li>
+<li><a href="#trybuild"><code>trybuild</code></a></li>
+<li><a href="#cargo-expand-https-github-com-dtolnay-cargo-expand"><a href="https://github.com/dtolnay/cargo-expand"><code>cargo-expand</code></a></a></li>
+</ul></li>
+<li><a href="#示例-derive-式">示例：<code>derive</code> 式</a></li>
+<li><a href="#示例-属性式">示例：属性式</a></li>
+<li><a href="#示例-函数式">示例：函数式</a></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h3 id="简介">简介</h3>
+
+<p><a href="https://www.rust-lang.org/zh-CN/">Rust</a> 编程语言里面有两种宏系统，一种是声明宏（[Declarative Macros]()），另一种为过程宏（<a href="https://doc.rust-lang.org/book/ch19-06-macros.html#procedural-macros-for-generating-code-from-attributes">Procedural Macros</a>）。声明宏和过程宏是两种基本上完全不一样的宏系统，编写的方式也完全不一致，使用方式除了函数式外也不一致。关于声明宏学习，<a href="https://zjp-cn.github.io/tlborm/introduction.html">Rust 宏小册</a> 里面有比较详细的说明，这里不再啰嗦。而对于过程宏，网上是可以搜索到的资料则相对较少，系统介绍学习的资料就更加少了。</p>
+
+<p>过程宏所做的事情则是从输入中获<strong>取到标记流</strong>，<strong>处理这些标记流或者生成新的标记流</strong>，然后将处理后的标记流返回给编译器作下一步的处理。需要注意的是，过程宏操作的是<a href="https://www.rust-lang.org/zh-CN/">Rust</a> <code>AST</code>（抽象语法树），所以即使是在宏里面，也必须是合法<a href="https://www.rust-lang.org/zh-CN/">Rust</a>的语法结构。这也就意味着，解析过程宏的过程中，<code>var</code>表示的是一个合法的标识符，而<code>6var</code>则是非法的。</p>
+
+<p>这篇文章是，对过程宏进行一些不完全的探讨和学习。</p>
+
+<h3 id="三种过程宏形式">三种过程宏形式</h3>
+
+<p>过程宏必须是一个独立的库（很多开源项目喜欢用<code>xxx_derive</code>的名称命名），这个库只导出过程宏的函数，而这个宏是被编译器调用的。<code>Cargo.toml</code>里面必须有以下内容表明是一个过程宏：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="p">[</span><span class="n">lib</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="kr">proc</span><span class="o">-</span><span class="kr">macro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p><a href="https://doc.rust-lang.org/stable/proc_macro/index.html"><code>proc_macro</code></a> 是 <a href="https://www.rust-lang.org/zh-CN/">Rust</a> 编译器提供的编写过程宏所需的类型和工具，过程宏有以下三种表示形式：</p>
+
+<h4 id="derive-式"><code>derive</code> 式</h4>
+
+<ol>
+<li>函数带有<code>#[proc_macro_derive(Name)]</code> 属性或者<code>#[proc_macro_derive(Name, attributes(attr))]</code>属性</li>
+<li>函数签名为 <code>pub fn xxxx (proc_macro::TokenStream) -&gt; proc_macro::TokenStream</code></li>
+</ol>
+
+<p>函数的名称叫什么并不重要，使用时是使用<code>proc_macro_derive</code>里面的名称，如下例子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[proc_macro_derive(Getters, attributes(getter))]</span><span class="w">
+</span><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">getters</span><span class="p">(</span><span class="n">input</span>: <span class="nc">TokenStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">TokenStream</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">  </span><span class="c1">//...
+</span><span class="c1"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[derive(Getters)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">Test</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">  </span><span class="cp">#[getter(name=get_name)]</span><span class="w">
+</span><span class="w">  </span><span class="n">name</span>: <span class="nb">String</span>
+<span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="函数式">函数式</h4>
+
+<ol>
+<li>函数带有 <code>#[proc_macro]</code>属性</li>
+<li>函数签名为 <code>pub fn xxx (proc_macro::TokenStream) -&gt; proc_macro::TokenStream</code></li>
+</ol>
+
+<p>函数的名称就是使用时名称，如下例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[proc_macro]</span><span class="w">
+</span><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">lazy_static</span><span class="p">(</span><span class="n">input</span>: <span class="nc">TokenStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">TokenStream</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">  </span><span class="c1">//...
+</span><span class="c1"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>使用方式和声明宏调用一摸一样</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="n">lazy_static</span><span class="o">!</span><span class="p">{</span><span class="w">
+</span><span class="w"> </span><span class="c1">//...
+</span><span class="c1"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="属性式">属性式</h4>
+
+<ol>
+<li>函数带有<code>#[proc_macro_attribute]</code>属性</li>
+<li>函数签名为 <code>pub fn xxx(proc_macro::TokenStream, proc_macro::TokenStream) -&gt; proc_macro::TokenStream</code></li>
+</ol>
+
+<p>函数的名称就是使用时名称，如下例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[proc_macro_attribute]</span><span class="w">
+</span><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">retry</span><span class="p">(</span><span class="n">attr</span>: <span class="nc">TokenStream</span><span class="p">,</span><span class="w"> </span><span class="n">input</span>: <span class="nc">TokenStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">TokenStream</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">  </span><span class="c1">//...
+</span><span class="c1"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>使用方式和<code>Python</code>装饰器的使用方式类似</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[retry(times=5, timeout=60s)]</span><span class="w">
+</span><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">fetch_data</span><span class="p">(</span><span class="n">url</span>: <span class="nb">String</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="n">MyData</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">  </span><span class="c1">//...
+</span><span class="c1"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>一般来说，<code>derive</code> 式是对原有功能的扩展，<strong>原有的声明是保留下的</strong>，更多是在原有基础上<strong>增加功能</strong>，比如增加<code>impl</code>函数，增加泛型约束等等。<strong>函数式</strong>则更多的是用于自定义语法的解析，如果声明宏描述语法困难一般可以考虑用函数式来替代。而属性式则是完全对原有功能的改写了，属于替代性的。特别需要注意的是，<strong>过程并不是卫生性</strong>的，这点是和声明宏不一样。也就是说，过程宏它是会污染当前模块。所以，在过程宏里面定义或使用类型时，必须要用全路径的形式，而自定生成的函数变量等等命名也要特殊考虑，以防止污染了当前模块。</p>
+
+<h3 id="quote-syn-proc-macro2-以及-trybuild-和-cargo-expand-https-github-com-dtolnay-cargo-expand"><code>quote</code>, <code>syn</code>, <code>proc_macro2</code>以及<code>trybuild</code>和<a href="https://github.com/dtolnay/cargo-expand"><code>cargo-expand</code></a></h3>
+
+<p>编写过程宏，编译器只提供<a href="https://doc.rust-lang.org/stable/proc_macro/index.html"><code>proc_macro</code></a>这个<code>crate</code>，不过它所提供的功能非常有限，单独使用这个库的话，编写比较啰嗦和麻烦。因此大神<a href="https://github.com/dtolnay">dtolnay</a>提供了<code>,</code>和`<code>这三个库来简化过程宏的编写，有了这三个</code>crate`，编写过程宏就如同编写普通的代码一样，除了调试困难一点外，基本没什么差别。这三个库基本成功编写过程宏事实上的标准。</p>
+
+<p>同时为了使编写过程更加温柔点而不至于暴躁，<a href="https://github.com/dtolnay">dtolnay</a>提供了<code>trybuild</code>这个库用于编写宏的单元测试，<a href="https://github.com/dtolnay/cargo-expand"><code>cargo-expand</code></a>用于过程宏的展开。</p>
+
+<h4 id="proc-macro2"><code>proc_macro2</code></h4>
+
+<p><a href="https://doc.rust-lang.org/stable/proc_macro/index.html"><code>proc_macro</code></a>所提供的<code>TokenStream</code>和<code>quote</code>和<code>syn</code>所处理的<code>TokenStream</code>是不兼容的，所以另外增加一个 <code>proc_macro2</code>，用于和<a href="https://doc.rust-lang.org/stable/proc_macro/index.html"><code>proc_macro</code></a>的<code>TokenStream</code>互相转换。实际上这个库的使用，只是在最后返回值里面调用一下<code>into</code>而已。</p>
+
+<h4 id="quote"><code>quote</code></h4>
+
+<p>`<code>是将编写的代码转换为[Rust](https://www.rust-lang.org/zh-CN/) token的方式，提供一种称之为</code>quasi-quoting<code>的方式，将代码视为数据，并可以进行插值。比较常用的是这两个宏：</code>parse_quote!<code>，</code>quote!<code>，以及</code>format_ident!`。</p>
+
+<h4 id="syn"><code>syn</code></h4>
+
+<p>这是编写过程宏最重要的一个，大部分时间都是和这个库进行打交道，它表示了一个完整的<a href="https://www.rust-lang.org/zh-CN/">Rust</a> 语法，如果看语言的<a href="https://doc.rust-lang.org/nightly/reference/">Reference</a>感觉到抽象，最好来这里看代码，它以非常具体的编码实现告诉你这个<a href="https://doc.rust-lang.org/nightly/reference/">Reference</a>是怎么表示的。</p>
+
+<h4 id="trybuild"><code>trybuild</code></h4>
+
+<p>平常的单元测试是编译好的代码，然后再运行测试用例。然而过程宏的的测试，处需要测试是否编译通过，也需要编译出错的结果是否正确。这是需要这个<code>trybuild</code>库了。</p>
+
+<h4 id="cargo-expand-https-github-com-dtolnay-cargo-expand"><a href="https://github.com/dtolnay/cargo-expand"><code>cargo-expand</code></a></h4>
+
+<p><a href="https://github.com/dtolnay/cargo-expand"><code>cargo-expand</code></a>用于宏代码的展开，需要注意的是，需要正常编译通过的代码才可以进行展开。</p>
+
+<p>使用这<code>quote</code>, <code>syn</code>, <code>proc_macro2</code>三个库来编写过程宏后，框架代码基本一致，一般有如下三个步骤，如下方式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">proc_macro</span>::<span class="n">TokenStream</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">quote</span>::<span class="n">quote</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">syn</span>::<span class="p">{</span><span class="n">parse_macro_input</span><span class="p">,</span><span class="w"> </span><span class="n">DeriveInput</span><span class="p">};</span><span class="w">
+</span><span class="w"></span><span class="cp">#[proc_macro_derive(MyMacro)]</span><span class="w">
+</span><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">my_macro</span><span class="p">(</span><span class="n">input</span>: <span class="nc">TokenStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">TokenStream</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="c1">// 将输入的标记解析成语法树
+</span><span class="c1"></span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse_macro_input</span><span class="o">!</span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">DeriveInput</span><span class="p">);</span><span class="w">
+</span><span class="w">  
+</span><span class="w">	</span><span class="c1">// 使用quote！进行插值处理
+</span><span class="c1"></span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">expanded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quote</span><span class="o">!</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="c1">// ...
+</span><span class="c1"></span><span class="w">    </span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="c1">// 将proc_macro2的TokenStream转换为proc_macro的TokenStream
+</span><span class="c1"></span><span class="w">    </span><span class="n">TokenStream</span>::<span class="n">from</span><span class="p">(</span><span class="n">expanded</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>以下，编写三种形式是示例，来看下着三种形式的过程过程宏怎么编写以及怎么使用。示例代码仓库：<a href="https://github.com/buf1024/my_macro_demo">https://github.com/buf1024/my_macro_demo</a></p>
+
+<h3 id="示例-derive-式">示例：<code>derive</code> 式</h3>
+
+<p>假设我们需要为结构体生成一系列的<code>getter</code>函数，当然<code>getter</code>的名字是可以自定义的也可以根据默认的字段名称生成，也可以设置<code>getter</code>的可见性，同时根据是否注释生成对应的<code>desc</code>函数。不需要考虑这样的功能在实际工作中是否有意义，这里的重点是学校过程宏的编写过程。</p>
+
+<p>首先编写宏就是为了使用它，所以第一步，要了解是怎么使用这个宏：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="c1">// 首先可以是这样简单使用
+</span><span class="c1"></span><span class="cp">#[derive(Getters)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">MyStruct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">data</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">// 又或者想变更一下它的名称
+</span><span class="c1"></span><span class="cp">#[derive(Getters)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">MyStruct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="cp">#[getter(name=get_fuck_data)]</span><span class="w">
+</span><span class="w">    </span><span class="n">data</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">// 又或者是这样
+</span><span class="c1"></span><span class="cp">#[derive(Getters)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">MyStruct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">	</span><span class="cp">#[getter(vis=pub(crate))]</span><span class="w">
+</span><span class="w">    </span><span class="cp">#[getter(name=get_fuck_data)]</span><span class="w">
+</span><span class="w">    </span><span class="n">data</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">// 以及可能有注释
+</span><span class="c1"></span><span class="cp">#[derive(Getters)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">MyStruct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="sd">/// 这是一个data的属性
+</span><span class="sd"></span><span class="w">	</span><span class="cp">#[getter(vis=pub(crate))]</span><span class="w">
+</span><span class="w">    </span><span class="cp">#[getter(name=get_fuck_data)]</span><span class="w">
+</span><span class="w">    </span><span class="n">data</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">// 设置机构体可能复杂, 带上了生命周期参数和泛型
+</span><span class="c1"></span><span class="cp">#[derive(Getters)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">MyStruct</span><span class="o">&lt;</span><span class="na">&#39;a</span><span class="p">,</span><span class="w"> </span><span class="n">T</span>: <span class="nb">Sync</span><span class="o">+</span><span class="nb">Send</span><span class="o">+</span><span class="n">Constraint</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">	</span><span class="cp">#[getter(vis=pub(crate))]</span><span class="w">
+</span><span class="w">    </span><span class="cp">#[getter(name=get_fuck_data)]</span><span class="w">
+</span><span class="w">    </span><span class="n">data</span>: <span class="kp">&amp;</span><span class="na">&#39;a</span><span class="w"> </span><span class="kt">str</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">constraint</span>: <span class="nc">T</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>确定了过程宏的使用方式后，我就可以可以定义我们的导出函数了:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[proc_macro_derive(Getters, attributes(getter))]</span><span class="w">
+</span><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">getters</span><span class="p">(</span><span class="n">input</span>: <span class="nc">TokenStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">TokenStream</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse_macro_input</span><span class="o">!</span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">DeriveInput</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">token_stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">expand_getters</span><span class="p">(</span><span class="n">input</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="n">token_stream</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">into_compile_error</span><span class="p">())</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">into</span><span class="p">()</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>我们将输入<code>token</code>流解析为<code>DeriveInput</code>，是因为<code>DeriveInput</code>实现了<code>Parse</code> trait。定义如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">pub</span><span class="w"> </span><span class="k">trait</span><span class="w"> </span><span class="n">Parse</span>: <span class="nb">Sized</span> <span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">parse</span><span class="p">(</span><span class="n">input</span>: <span class="nc">ParseStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="n">Self</span><span class="o">&gt;</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">struct</span> <span class="nc">DeriveInput</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">pub</span><span class="w"> </span><span class="n">attrs</span>: <span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Attribute</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+</span><span class="w">        </span><span class="k">pub</span><span class="w"> </span><span class="n">vis</span>: <span class="nc">Visibility</span><span class="p">,</span><span class="w">
+</span><span class="w">        </span><span class="k">pub</span><span class="w"> </span><span class="n">ident</span>: <span class="nc">Ident</span><span class="p">,</span><span class="w">
+</span><span class="w">        </span><span class="k">pub</span><span class="w"> </span><span class="n">generics</span>: <span class="nc">Generics</span><span class="p">,</span><span class="w">
+</span><span class="w">        </span><span class="k">pub</span><span class="w"> </span><span class="n">data</span>: <span class="nc">Data</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">enum</span> <span class="nc">Data</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="n">Struct</span><span class="p">(</span><span class="n">DataStruct</span><span class="p">),</span><span class="w">
+</span><span class="w">        </span><span class="n">Enum</span><span class="p">(</span><span class="n">DataEnum</span><span class="p">),</span><span class="w">
+</span><span class="w">        </span><span class="n">Union</span><span class="p">(</span><span class="n">DataUnion</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>从<code>DeriveInput</code>所实现的<code>Parse</code>和<code>DeriveInput</code>数据结构可以看出，<code>derive</code> 式过程宏只支持<code>Struct</code>，<code>Enum</code>和<code>Union</code>三种数据结构。</p>
+
+<p>写过程宏的一个重要的工作就是获取所修饰的数据结构的基本信息，而对于<code>derive</code> 式过程宏来说，这些数据放到<code>attrs</code>这个属性里面，用<code>Attribute</code>这个结构来表示，<code>Meta</code>则是存储这样数据的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">pub</span><span class="w"> </span><span class="k">struct</span> <span class="nc">Attribute</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">pub</span><span class="w"> </span><span class="n">pound_token</span>: <span class="nc">Token</span><span class="o">!</span><span class="p">[</span><span class="err">#</span><span class="p">],</span><span class="w">
+</span><span class="w">        </span><span class="k">pub</span><span class="w"> </span><span class="n">style</span>: <span class="nc">AttrStyle</span><span class="p">,</span><span class="w">
+</span><span class="w">        </span><span class="k">pub</span><span class="w"> </span><span class="n">bracket_token</span>: <span class="nc">token</span>::<span class="n">Bracket</span><span class="p">,</span><span class="w">
+</span><span class="w">        </span><span class="k">pub</span><span class="w"> </span><span class="n">meta</span>: <span class="nc">Meta</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">enum</span> <span class="nc">Meta</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="n">Path</span><span class="p">(</span><span class="n">Path</span><span class="p">),</span><span class="w">
+</span><span class="w">
+</span><span class="w">        </span><span class="sd">/// A structured list within an attribute, like `derive(Copy, Clone)`.
+</span><span class="sd"></span><span class="w">        </span><span class="n">List</span><span class="p">(</span><span class="n">MetaList</span><span class="p">),</span><span class="w">
+</span><span class="w">
+</span><span class="w">        </span><span class="sd">/// A name-value pair within an attribute, like `feature = &#34;nightly&#34;`.
+</span><span class="sd"></span><span class="w">        </span><span class="n">NameValue</span><span class="p">(</span><span class="n">MetaNameValue</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Meta是什么鬼？按照<code>syn</code>的文档：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="w">    </span><span class="sd">/// text
+</span><span class="sd"></span><span class="w">    </span><span class="sd">/// #[derive(Copy, Clone)]
+</span><span class="sd"></span><span class="w">    </span><span class="sd">///   ~~~~~~Path
+</span><span class="sd"></span><span class="w">    </span><span class="sd">///   ^^^^^^^^^^^^^^^^^^^Meta::List
+</span><span class="sd"></span><span class="w">    </span><span class="sd">///
+</span><span class="sd"></span><span class="w">    </span><span class="sd">/// #[path = &#34;sys/windows.rs&#34;]
+</span><span class="sd"></span><span class="w">    </span><span class="sd">///   ~~~~Path
+</span><span class="sd"></span><span class="w">    </span><span class="sd">///   ^^^^^^^^^^^^^^^^^^^^^^^Meta::NameValue
+</span><span class="sd"></span><span class="w">    </span><span class="sd">///
+</span><span class="sd"></span><span class="w">    </span><span class="sd">/// #[test]
+</span><span class="sd"></span><span class="w">    </span><span class="sd">///   ^^^^Meta::Path
+</span><span class="sd"></span><span class="w">    </span><span class="sd">/// 
+</span><span class="sd"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>需要注意的是，注释文档是解析为<code>#[doc = r&quot; Single line doc comments&quot;]</code>的。所以，文档注释的获取：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="kd">let</span><span class="w"> </span><span class="n">doc_str</span>: <span class="nb">String</span> <span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="w">
+</span><span class="w">                </span><span class="p">.</span><span class="n">attrs</span><span class="w">
+</span><span class="w">                </span><span class="p">.</span><span class="n">iter</span><span class="p">()</span><span class="w">
+</span><span class="w">                </span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">attr</span><span class="o">|</span><span class="w"> </span><span class="n">attr</span><span class="p">.</span><span class="n">path</span><span class="p">().</span><span class="n">is_ident</span><span class="p">(</span><span class="s">&#34;doc&#34;</span><span class="p">))</span><span class="w">
+</span><span class="w">                </span><span class="p">.</span><span class="n">try_fold</span><span class="p">(</span><span class="nb">String</span>::<span class="n">new</span><span class="p">(),</span><span class="w"> </span><span class="o">|</span><span class="n">acc</span><span class="p">,</span><span class="w"> </span><span class="n">attr</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                    </span><span class="kd">let</span><span class="w"> </span><span class="n">mnv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="o">&amp;</span><span class="n">attr</span><span class="p">.</span><span class="n">meta</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                        </span><span class="n">syn</span>::<span class="n">Meta</span>::<span class="n">NameValue</span><span class="p">(</span><span class="n">mnv</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">mnv</span><span class="p">,</span><span class="w">
+</span><span class="w">                        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">syn</span>::<span class="n">Error</span>::<span class="n">new_spanned</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;expect name value!&#34;</span><span class="p">)),</span><span class="w">
+</span><span class="w">                    </span><span class="p">};</span><span class="w">
+</span><span class="w">                    </span><span class="kd">let</span><span class="w"> </span><span class="n">doc_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mnv</span><span class="p">.</span><span class="n">value</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                        </span><span class="n">syn</span>::<span class="n">Expr</span>::<span class="n">Lit</span><span class="p">(</span><span class="n">syn</span>::<span class="n">ExprLit</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                            </span><span class="n">lit</span>: <span class="nc">syn</span>::<span class="n">Lit</span>::<span class="n">Str</span><span class="p">(</span><span class="n">lit</span><span class="p">),</span><span class="w">
+</span><span class="w">                            </span><span class="p">..</span><span class="w">
+</span><span class="w">                        </span><span class="p">})</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">lit</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span><span class="w">
+</span><span class="w">
+</span><span class="w">                        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">syn</span>::<span class="n">Error</span>::<span class="n">new_spanned</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;expect string literal!&#34;</span><span class="p">)),</span><span class="w">
+</span><span class="w">                    </span><span class="p">};</span><span class="w">
+</span><span class="w">                    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">format</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;{}</span><span class="se">\n</span><span class="s">{}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">acc</span><span class="p">,</span><span class="w"> </span><span class="n">doc_str</span><span class="p">))</span><span class="w">
+</span><span class="w">                </span><span class="p">})</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>前面提到<code>DeriveInput</code>实现了<code>Parse</code>trait进行解析，而我们要对<code>Attribute</code>里面的内容进行解析，则是需要实现该trait：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">impl</span><span class="w"> </span><span class="n">Parse</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">GetterMeta</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">parse</span><span class="p">(</span><span class="n">input</span>: <span class="nc">syn</span>::<span class="n">parse</span>::<span class="n">ParseStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="n">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">lookahead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">lookahead1</span><span class="p">();</span><span class="w">
+</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">lookahead</span><span class="p">.</span><span class="n">peek</span><span class="p">(</span><span class="n">kw</span>::<span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span>: <span class="nc">kw</span>::<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span>: <span class="nc">Token</span><span class="o">!</span><span class="p">[</span><span class="o">=</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">name</span>: <span class="nc">Ident</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">peek</span><span class="p">(</span><span class="n">LitStr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">sl</span>: <span class="nc">LitStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sl</span><span class="p">.</span><span class="n">value</span><span class="p">();</span><span class="w">
+</span><span class="w">
+</span><span class="w">                </span><span class="n">format_ident</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;{}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">.</span><span class="n">trim</span><span class="p">())</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="w">
+</span><span class="w">            </span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Self</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="n">name</span>: <span class="nb">Some</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w">
+</span><span class="w">                </span><span class="n">vis</span>: <span class="nb">None</span><span class="p">,</span><span class="w">
+</span><span class="w">            </span><span class="p">})</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">lookahead</span><span class="p">.</span><span class="n">peek</span><span class="p">(</span><span class="n">kw</span>::<span class="n">vis</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span>: <span class="nc">kw</span>::<span class="n">vis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span>: <span class="nc">Token</span><span class="o">!</span><span class="p">[</span><span class="o">=</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">vis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Self</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="n">name</span>: <span class="nb">None</span><span class="p">,</span><span class="w">
+</span><span class="w">                </span><span class="n">vis</span>: <span class="nb">Some</span><span class="p">(</span><span class="n">vis</span><span class="p">),</span><span class="w">
+</span><span class="w">            </span><span class="p">})</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="nb">Err</span><span class="p">(</span><span class="n">lookahead</span><span class="p">.</span><span class="n">error</span><span class="p">())</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>写法可以完全参考<code>DeriveInput</code>的写法，调用<code>Atrribute</code>的，<code>parse_args</code>或<code>parse_args_with</code>，则可以调用到<code>Parse</code>trait。</p>
+
+<p>获取到基本的数据后，自然就生成代码，这里两个重要的宏: <code>quote!</code>和<code>parse_quote!</code>。最后生成的代码用<code>#[automatically_derived]</code>进行装饰，说明这是自动生成的代码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">impl_generic</span><span class="p">,</span><span class="w"> </span><span class="n">type_generic</span><span class="p">,</span><span class="w"> </span><span class="n">where_clause</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">generics</span><span class="p">.</span><span class="n">split_for_impl</span><span class="p">();</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">quote</span><span class="o">!</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="cp">#[automatically_derived]</span><span class="w">
+</span><span class="w">        </span><span class="k">impl</span><span class="w"> </span><span class="err">#</span><span class="n">impl_generic</span><span class="w"> </span><span class="err">#</span><span class="n">st_name</span><span class="w"> </span><span class="err">#</span><span class="n">type_generic</span><span class="w"> </span><span class="err">#</span><span class="n">where_clause</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">hello</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;hello!&#34;</span><span class="p">);</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w">
+</span><span class="w">            </span><span class="err">#</span><span class="n">getters</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">})</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>过程宏写好之后，我们就要写单元测试了，当然也可以先写单元测试，再写过程宏，这称为测试用例驱动的开发模式。不过，作为示例，我们不写很详细的测试用例，我们只写两个测试用例，一个是成功的，一个是失败的，展示怎么使用即可。失败的用例，我们需要提供一个和测试文件一致，以<code>.stderr</code>结尾的输出，如果编译器的输出一致则测试通过，这个输出可以先编译出来，让编译器生成，然后自己对比是不是自己想要的结果。</p>
+
+<p>过程宏使用后，是否符合自己的需要，需要宏展开来观察，使用是<code>cargo exand</code>命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#![allow(dead_code)]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">my_derive</span>::<span class="n">Getters</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Getters)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">MyStructRef</span><span class="o">&lt;</span><span class="na">&#39;a</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="sd">/// 你好呀
+</span><span class="sd"></span><span class="w">    </span><span class="cp">#[getter(vis=pub(crate))]</span><span class="w">
+</span><span class="w">    </span><span class="cp">#[getter(name = </span><span class="s">&#34;get_fuck_data&#34;</span><span class="cp">)]</span><span class="w">
+</span><span class="w">    </span><span class="n">data</span>: <span class="kp">&amp;</span><span class="na">&#39;a</span><span class="w"> </span><span class="kt">str</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">//展开代码
+</span><span class="c1"></span><span class="w">
+</span><span class="w"></span><span class="cp">#![feature(prelude_import)]</span><span class="w">
+</span><span class="w"></span><span class="cp">#![allow(dead_code)]</span><span class="w">
+</span><span class="w"></span><span class="cp">#[prelude_import]</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">prelude</span>::<span class="n">rust_2021</span>::<span class="o">*</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="cp">#[macro_use]</span><span class="w">
+</span><span class="w"></span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">std</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">my_derive</span>::<span class="n">Getters</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">MyStructRef</span><span class="o">&lt;</span><span class="na">&#39;a</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="sd">/// 你好呀
+</span><span class="sd"></span><span class="w">    </span><span class="cp">#[getter(vis = pub(crate))]</span><span class="w">
+</span><span class="w">    </span><span class="cp">#[getter(name = </span><span class="s">&#34;get_fuck_data&#34;</span><span class="cp">)]</span><span class="w">
+</span><span class="w">    </span><span class="n">data</span>: <span class="kp">&amp;</span><span class="na">&#39;a</span><span class="w"> </span><span class="kt">str</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="cp">#[automatically_derived]</span><span class="w">
+</span><span class="w"></span><span class="k">impl</span><span class="o">&lt;</span><span class="na">&#39;a</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MyStructRef</span><span class="o">&lt;</span><span class="na">&#39;a</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">hello</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span>::<span class="n">std</span>::<span class="n">io</span>::<span class="n">_print</span><span class="p">(</span><span class="n">format_args</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;hello!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">));</span><span class="w">
+</span><span class="w">        </span><span class="p">};</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="k">pub</span><span class="p">(</span><span class="k">crate</span><span class="p">)</span><span class="w"> </span><span class="k">fn</span> <span class="nf">get_fuck_data</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kp">&amp;</span><span class="na">&#39;a</span><span class="w"> </span><span class="kt">str</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">data</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">get_fuck_data_desc</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kp">&amp;</span><span class="nb">&#39;static</span><span class="w"> </span><span class="kt">str</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="s">&#34;你好呀&#34;</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="示例-属性式">示例：属性式</h3>
+
+<p>假设我们有这样一个需求，可以对原有函数进行增加一些其他功能，比如<code>retry</code>，可以设置调用超时时间，超时后或者出错后，可以进行重新调用，类似于Python装饰器，可以考虑用属性式过程宏表示。同样，因为是测试例子，所以，没有超时和重试功能，只做怎么获取属性宏的数据和生成代码。</p>
+
+<p>首先确定调用的形式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[retry(times=5, timeout=60)]</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">remote_request</span><span class="p">(</span><span class="n">a</span>: <span class="kt">i32</span><span class="p">,</span><span class="w"> </span><span class="n">b</span>: <span class="kt">i32</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">i32</span> <span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;@remote_request!&#34;</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>再确定其展开形式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="c1">// cargo exapnd 生成的
+</span><span class="c1"></span><span class="k">fn</span> <span class="nf">remote_request</span><span class="p">(</span><span class="n">a</span>: <span class="kt">i32</span><span class="p">,</span><span class="w"> </span><span class="n">b</span>: <span class="kt">i32</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">i32</span> <span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">__new_remote_request</span><span class="p">(</span><span class="n">a</span>: <span class="kt">i32</span><span class="p">,</span><span class="w"> </span><span class="n">b</span>: <span class="kt">i32</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">i32</span> <span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span>::<span class="n">std</span>::<span class="n">io</span>::<span class="n">_print</span><span class="p">(</span><span class="n">format_args</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;@remote_request!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">));</span><span class="w">
+</span><span class="w">        </span><span class="p">};</span><span class="w">
+</span><span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">5</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="n">__new_remote_request</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="p">..</span><span class="mi">60</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="n">__new_remote_request</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="n">__new_remote_request</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>属性式的签名是这个样子的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[proc_macro_attribute]</span><span class="w">
+</span><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">retry</span><span class="p">(</span><span class="n">attr</span>: <span class="nc">TokenStream</span><span class="p">,</span><span class="w"> </span><span class="n">input</span>: <span class="nc">TokenStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">TokenStream</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>属性和输入流已经作为参数传递给我们了，而我需所要做的是需要将属性解析出来和对原函数的重写。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">item_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse_macro_input</span><span class="o">!</span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">ItemFn</span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse_macro_input</span><span class="o">!</span><span class="p">(</span><span class="n">attr</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">Args</span><span class="p">);</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>和<code>derive</code>式的一样，通过实现<code>Parse</code>trait来解析：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">impl</span><span class="w"> </span><span class="n">Parse</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">RetryAttr</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">parse</span><span class="p">(</span><span class="n">input</span>: <span class="nc">syn</span>::<span class="n">parse</span>::<span class="n">ParseStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="n">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">lookahead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">lookahead1</span><span class="p">();</span><span class="w">
+</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">lookahead</span><span class="p">.</span><span class="n">peek</span><span class="p">(</span><span class="n">kw</span>::<span class="n">times</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span>: <span class="nc">kw</span>::<span class="n">times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span>: <span class="nc">Token</span><span class="o">!</span><span class="p">[</span><span class="o">=</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">times</span>: <span class="nc">LitInt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">peek</span><span class="p">(</span><span class="n">LitInt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">lookahead</span><span class="p">.</span><span class="n">error</span><span class="p">());</span><span class="w">
+</span><span class="w">            </span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Self</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="n">times</span>: <span class="nb">Some</span><span class="p">(</span><span class="n">times</span><span class="p">),</span><span class="w">
+</span><span class="w">                </span><span class="n">timeout</span>: <span class="nb">None</span><span class="p">,</span><span class="w">
+</span><span class="w">            </span><span class="p">})</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">lookahead</span><span class="p">.</span><span class="n">peek</span><span class="p">(</span><span class="n">kw</span>::<span class="n">timeout</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span>: <span class="nc">kw</span>::<span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span>: <span class="nc">Token</span><span class="o">!</span><span class="p">[</span><span class="o">=</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">timeout</span>: <span class="nc">LitInt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">peek</span><span class="p">(</span><span class="n">LitInt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">lookahead</span><span class="p">.</span><span class="n">error</span><span class="p">());</span><span class="w">
+</span><span class="w">            </span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Self</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="n">times</span>: <span class="nb">None</span><span class="p">,</span><span class="w">
+</span><span class="w">                </span><span class="n">timeout</span>: <span class="nb">Some</span><span class="p">(</span><span class="n">timeout</span><span class="p">),</span><span class="w">
+</span><span class="w">            </span><span class="p">})</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="nb">Err</span><span class="p">(</span><span class="n">lookahead</span><span class="p">.</span><span class="n">error</span><span class="p">())</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="示例-函数式">示例：函数式</h3>
+
+<p>假设我们要计算二元二次方程组的值，我们计划是这样使用的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">formula</span><span class="o">!</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">);</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>这个宏直接就在编译期间就计算出x，y的值（当然是存在有解的情况下），无解就<code>panic</code>。为了使问题简单，我们假设x，y前面都是有系数的。过程宏的操作过程就是解析出里面的表达式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">pub</span><span class="p">(</span><span class="k">crate</span><span class="p">)</span><span class="w"> </span><span class="k">struct</span> <span class="nc">FormulaArgs</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">formula</span>: <span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Formula</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">impl</span><span class="w"> </span><span class="n">Parse</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">FormulaArgs</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">parse</span><span class="p">(</span><span class="n">input</span>: <span class="nc">syn</span>::<span class="n">parse</span>::<span class="n">ParseStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="n">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">attrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Punctuated</span>::<span class="o">&lt;</span><span class="n">Formula</span><span class="p">,</span><span class="w"> </span><span class="n">Token</span><span class="o">!</span><span class="p">[,]</span><span class="o">&gt;</span>::<span class="n">parse_terminated</span><span class="p">(</span><span class="n">input</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">formula</span>: <span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrs</span><span class="p">.</span><span class="n">into_iter</span><span class="p">().</span><span class="n">collect</span><span class="p">();</span><span class="w">
+</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">formula</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="n">panic</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;require two formula&#34;</span><span class="p">)</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">FormulaArgs</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">formula</span><span class="w"> </span><span class="p">})</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Default)]</span><span class="w">
+</span><span class="w"></span><span class="k">pub</span><span class="p">(</span><span class="k">crate</span><span class="p">)</span><span class="w"> </span><span class="k">struct</span> <span class="nc">Formula</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">x</span>: <span class="kt">i32</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">y</span>: <span class="kt">i32</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">rs</span>: <span class="kt">i32</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">impl</span><span class="w"> </span><span class="n">Parse</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Formula</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">parse</span><span class="p">(</span><span class="n">input</span>: <span class="nc">syn</span>::<span class="n">parse</span>::<span class="n">ParseStream</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="n">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">lookahead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">lookahead1</span><span class="p">();</span><span class="w">
+</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">lookahead</span><span class="p">.</span><span class="n">peek</span><span class="p">(</span><span class="n">LitInt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">x_lit</span>: <span class="nc">LitInt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">x</span>: <span class="kt">i32</span> <span class="o">=</span><span class="w"> </span><span class="n">x_lit</span><span class="p">.</span><span class="n">to_string</span><span class="p">().</span><span class="n">parse</span><span class="p">().</span><span class="n">unwrap</span><span class="p">();</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span>: <span class="nc">Token</span><span class="o">!</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span>: <span class="nc">kw</span>::<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">            </span><span class="n">x</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">lookahead</span><span class="p">.</span><span class="n">error</span><span class="p">());</span><span class="w">
+</span><span class="w">        </span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">r1</span>: <span class="nb">Result</span><span class="o">&lt;</span><span class="n">Token</span><span class="o">!</span><span class="p">[</span><span class="o">+</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">();</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">r2</span>: <span class="nb">Result</span><span class="o">&lt;</span><span class="n">Token</span><span class="o">!</span><span class="p">[</span><span class="o">-</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">();</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">factor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="p">(</span><span class="n">r1</span><span class="p">,</span><span class="w"> </span><span class="n">r2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="p">(</span><span class="nb">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">),</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">_</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="w">            </span><span class="p">(</span><span class="nb">Err</span><span class="p">(</span><span class="n">_</span><span class="p">),</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="w">            </span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">lookahead</span><span class="p">.</span><span class="n">error</span><span class="p">()),</span><span class="w">
+</span><span class="w">        </span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w">        </span><span class="c1">// let factor = if lookahead.peek(Token![+]) {
+</span><span class="c1"></span><span class="w">        </span><span class="c1">//     let _: Token![+] = input.parse()?;
+</span><span class="c1"></span><span class="w">        </span><span class="c1">//     1
+</span><span class="c1"></span><span class="w">        </span><span class="c1">// } else if lookahead.peek(Token![-]) {
+</span><span class="c1"></span><span class="w">        </span><span class="c1">//     let _: Token![-] = input.parse()?;
+</span><span class="c1"></span><span class="w">        </span><span class="c1">//     -1
+</span><span class="c1"></span><span class="w">        </span><span class="c1">// } else {
+</span><span class="c1"></span><span class="w">        </span><span class="c1">//     return Err(lookahead.error());
+</span><span class="c1"></span><span class="w">        </span><span class="c1">// };
+</span><span class="c1"></span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">lookahead</span><span class="p">.</span><span class="n">peek</span><span class="p">(</span><span class="n">LitInt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">y_lit</span>: <span class="nc">LitInt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">y</span>: <span class="kt">i32</span> <span class="o">=</span><span class="w"> </span><span class="n">y_lit</span><span class="p">.</span><span class="n">to_string</span><span class="p">().</span><span class="n">parse</span><span class="p">().</span><span class="n">unwrap</span><span class="p">();</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span>: <span class="nc">Token</span><span class="o">!</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span>: <span class="nc">kw</span>::<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">            </span><span class="n">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">factor</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">lookahead</span><span class="p">.</span><span class="n">error</span><span class="p">());</span><span class="w">
+</span><span class="w">        </span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span>: <span class="nc">Token</span><span class="o">!</span><span class="p">[</span><span class="o">=</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">rs_lit</span>: <span class="nc">LitInt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">rs</span>: <span class="kt">i32</span> <span class="o">=</span><span class="w"> </span><span class="n">rs_lit</span><span class="p">.</span><span class="n">to_string</span><span class="p">().</span><span class="n">parse</span><span class="p">().</span><span class="n">unwrap</span><span class="p">();</span><span class="w">
+</span><span class="w">
+</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">rs</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">syn</span>::<span class="n">Error</span>::<span class="n">new_spanned</span><span class="p">(</span><span class="n">rs_lit</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;invalid equal&#34;</span><span class="p">));</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Self</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">rs</span><span class="w"> </span><span class="p">})</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>当解析出所需要的数据后，直接就可以进行插值生成自己所需要的数据。</p>
+
+<h3 id="总结">总结</h3>
+
+<p>过程宏的编写过程有两个步骤。</p>
+
+<p>首先是解析出过程宏所需要的信息，这个步骤一般是通过实现<code>syn</code>所提供的<code>Parse</code>trait实现的。由于syn表示的也是合法的语法结构，所以并不是所以的写法都是支持的。有时候，解析的时候出出现一些莫名奇妙解析不了的问题，比如解析二元方程时：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="w">       </span><span class="c1">// let factor = if lookahead.peek(Token![+]) {
+</span><span class="c1"></span><span class="w">        </span><span class="c1">//     let _: Token![+] = input.parse()?;
+</span><span class="c1"></span><span class="w">        </span><span class="c1">//     1
+</span><span class="c1"></span><span class="w">        </span><span class="c1">// } else if lookahead.peek(Token![-]) {
+</span><span class="c1"></span><span class="w">        </span><span class="c1">//     let _: Token![-] = input.parse()?;
+</span><span class="c1"></span><span class="w">        </span><span class="c1">//     -1
+</span><span class="c1"></span><span class="w">        </span><span class="c1">// } else {
+</span><span class="c1"></span><span class="w">        </span><span class="c1">//     return Err(lookahead.error());
+</span><span class="c1"></span><span class="w">        </span><span class="c1">// };
+</span><span class="c1"></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>这段代码总是无法解析成功，原因未解，或者使用姿势不对，又或者是<code>syn</code>可能潜在有<code>bug</code>。不过都有变通的方法实现。</p>
+
+<p>其次解析出自己所要的数据后，就可以根据具体的情况进行插值处理，只有是使用到<code>quote</code>这个库，而大多数情况之下只使用到两个宏: <code>quote!</code>和<code>parse_quote!</code>。当然也不是说没有坑。比如说解析出函数的<code>block</code>时，再重组时，要加上大扩号。再比如，解析出行数调用列表时，解析成一个元组表达式，而插值时，可以放个函数名称在前面，就变成了函数调用。而这些都是变成过程宏编写的惯例吧，习惯就好。</p>
+
+<p>错误处理是给宏的使用者看的，友好的错误提示很容易就让调用者知道哪里错了。而使用错误处理是比较简单的，直接掉用<code>syn::Error</code>生成一个<code>Span</code>即可，<code>Span</code>也是可以<code>combine</code>的里面有个<code>token</code>的参数。不过如果不知道<code>token</code>的情况之下怎么处理呢？目前自己的做法是<code>panic</code>，这并非是一种明智的方式。或者有更加灵活的处理方式。</p>
+
+<p>使用<code>cargo expand</code>是可以查看到宏展开的内容，不过<code>cargo expand</code>的问题是过程宏没有问题时，才可以正常的展开，出现编译问题不展开，这也就造成了调试过程宏的困难，目前也没有什么好的办法去解决。</p>
+
+<p>总体来说，过程宏的编写并不是非常困难，<code>syn</code>表示了一个完整的<a href="https://www.rust-lang.org/zh-CN/">Rust</a>语法，查看里面语法的表示，比看语言<a href="https://doc.rust-lang.org/nightly/reference/items.html">Reference</a>强太多了，而这对于更深入了解声明宏的<a href="https://doc.rust-lang.org/nightly/reference/macros-by-example.html#metavariables">片段分类符</a>更有帮助！<a href="https://github.com/dtolnay/proc-macro-workshop">proc-macro-workshop</a> 是大神<a href="https://github.com/dtolnay">dtolnay</a>设计的过程宏系统，全部做出来，估计写过程宏没有什么问题了。</p>
+
+<p>再贴一下示例代码仓库：<a href="https://github.com/buf1024/my_macro_demo">https://github.com/buf1024/my_macro_demo</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">buf1024</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2023-12-26</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/rust/">rust</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/2023-09-21-rust-panic/">
+            <span class="next-text nav-default">一行代码让 rustc panic</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2023-12-26 16:00:10 \x2b0800 CST',
+        title: 'rust 过程宏',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
+  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2011 - 
+    2023
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">buf1024</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

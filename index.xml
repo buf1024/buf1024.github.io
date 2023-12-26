@@ -6,10 +6,19 @@
     <description>Recent content on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 21 Sep 2023 18:00:10 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 Dec 2023 16:00:10 +0800</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>rust 过程宏</title>
+      <link>https://luoguochun.cn/post/2023-12-26-rust-proc-macro/</link>
+      <pubDate>Tue, 26 Dec 2023 16:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2023-12-26-rust-proc-macro/</guid>
+      <description>简介 Rust 编程语言里面有两种宏系统，一种是声明宏（[Declarative Macros]()），另一种为过程宏（Procedural Macros</description>
+    </item>
     
     <item>
       <title>一行代码让 rustc panic</title>
