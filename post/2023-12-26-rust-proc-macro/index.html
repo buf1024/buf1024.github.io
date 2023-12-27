@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2023-12-26T16:00:10&#43;08:00" />
 <meta itemprop="dateModified" content="2023-12-26T16:00:10&#43;08:00" />
-<meta itemprop="wordCount" content="5134">
+<meta itemprop="wordCount" content="5151">
 
 
 
@@ -131,7 +131,7 @@
         <div class="post-category">
             <a href="/categories/rust/"> rust </a>
             </div>
-          <span class="more-meta"> 约 5134 字 </span>
+          <span class="more-meta"> 约 5151 字 </span>
           <span class="more-meta"> 预计阅读 11 分钟 </span>
         
       </div>
@@ -326,7 +326,7 @@
 
 <h3 id="quote-syn-proc-macro2-以及-trybuild-和-cargo-expand-https-github-com-dtolnay-cargo-expand"><code>quote</code>, <code>syn</code>, <code>proc_macro2</code>以及<code>trybuild</code>和<a href="https://github.com/dtolnay/cargo-expand"><code>cargo-expand</code></a></h3>
 
-<p>编写过程宏，编译器只提供<a href="https://doc.rust-lang.org/stable/proc_macro/index.html"><code>proc_macro</code></a>这个<code>crate</code>，不过它所提供的功能非常有限，单独使用这个库的话，编写比较啰嗦和麻烦。因此大神<a href="https://github.com/dtolnay">dtolnay</a>提供了<code>,</code>和`<code>这三个库来简化过程宏的编写，有了这三个</code>crate`，编写过程宏就如同编写普通的代码一样，除了调试困难一点外，基本没什么差别。这三个库基本成功编写过程宏事实上的标准。</p>
+<p>编写过程宏，编译器只提供<a href="https://doc.rust-lang.org/stable/proc_macro/index.html"><code>proc_macro</code></a>这个<code>crate</code>，不过它所提供的功能非常有限，单独使用这个库的话，编写比较啰嗦和麻烦。因此大神<a href="https://github.com/dtolnay">dtolnay</a>提供了<code>quote</code>, <code>syn</code>和<code>proc_macro2</code>这三个库来简化过程宏的编写，有了这三个<code>crate</code>，编写过程宏就如同编写普通的代码一样，除了调试困难一点外，基本没什么差别。这三个库基本成功编写过程宏事实上的标准。</p>
 
 <p>同时为了使编写过程更加温柔点而不至于暴躁，<a href="https://github.com/dtolnay">dtolnay</a>提供了<code>trybuild</code>这个库用于编写宏的单元测试，<a href="https://github.com/dtolnay/cargo-expand"><code>cargo-expand</code></a>用于过程宏的展开。</p>
 

@@ -98,7 +98,7 @@ pub fn fetch_data(url: String) -> Result<MyData> {
 
 ### `quote`, `syn`, `proc_macro2`以及`trybuild`和[`cargo-expand`](https://github.com/dtolnay/cargo-expand)
 
-编写过程宏，编译器只提供[`proc_macro`](https://doc.rust-lang.org/stable/proc_macro/index.html)这个`crate`，不过它所提供的功能非常有限，单独使用这个库的话，编写比较啰嗦和麻烦。因此大神[dtolnay](https://github.com/dtolnay)提供了``, ``和``这三个库来简化过程宏的编写，有了这三个`crate`，编写过程宏就如同编写普通的代码一样，除了调试困难一点外，基本没什么差别。这三个库基本成功编写过程宏事实上的标准。
+编写过程宏，编译器只提供[`proc_macro`](https://doc.rust-lang.org/stable/proc_macro/index.html)这个`crate`，不过它所提供的功能非常有限，单独使用这个库的话，编写比较啰嗦和麻烦。因此大神[dtolnay](https://github.com/dtolnay)提供了`quote`, `syn`和`proc_macro2`这三个库来简化过程宏的编写，有了这三个`crate`，编写过程宏就如同编写普通的代码一样，除了调试困难一点外，基本没什么差别。这三个库基本成功编写过程宏事实上的标准。
 
 同时为了使编写过程更加温柔点而不至于暴躁，[dtolnay](https://github.com/dtolnay)提供了`trybuild`这个库用于编写宏的单元测试，[`cargo-expand`](https://github.com/dtolnay/cargo-expand)用于过程宏的展开。
 
