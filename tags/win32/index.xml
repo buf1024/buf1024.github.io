@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>win32 on BUF1024!!!</title>
+    <title>win32 on BUF1024</title>
     <link>https://luoguochun.cn/tags/win32/</link>
-    <description>Recent content in win32 on BUF1024!!!</description>
+    <description>Recent content in win32 on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyletf buf2024</copyright>
     <lastBuildDate>Sun, 24 Jun 2012 00:00:43 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/win32/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Windows Shell Extension</title>
@@ -14,15 +13,14 @@
       <pubDate>Sun, 24 Jun 2012 00:00:43 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2012-06-24-windows-shell-extension/</guid>
-      <description>&lt;p&gt;分享1，2年前自己还在搞WINDOWS开发时写的一个小工具（当时在公司无聊的时候写了很多小工具啊，只不过拿不出源代码，杯具），个人觉得挺实用的。当时这个东西叫做Filekeeper，目标就是监控程序对核心API的调用。后来搞得不伦不类。这个是从中提出的一部分源代码搞成一个实用的工具，改名为LGCUtil了，不过很多东西没改。&lt;/p&gt;
-&lt;p&gt;运行结果如下：&lt;br&gt;
-&lt;img src=&#34;https://luoguochun.cn/img/winshext/win-shell-ext.jpg&#34; alt=&#34;WinShellExt&#34;&gt;&lt;/p&gt;
-&lt;p&gt;目前只加两个命令，不过增加其它命令是非常容易的。连我这么多年不接触WINDOWS了，还是可以轻松加进去的。&lt;br&gt;
-源代码下载: &lt;a href=&#34;https://luoguochun.cn/raw/winshext/LGCUtil.Src.zip&#34;&gt;LGCUtil.Src&lt;/a&gt;&lt;br&gt;
-二进制文件下载：&lt;a href=&#34;https://luoguochun.cn/raw/winshext/LGCUtil.Bin.zip&#34;&gt;LGCUtil.Bin&lt;/a&gt;&lt;br&gt;
-注意，下载二进制文件时，里面有两个批处理文件，修改里面的路径为你实际文件的路径。在WINDOWS 7/VISTA下面用管理员身份下载。&lt;br&gt;
-因为失恋，又拿旧东西分享了一下。&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            分享1，2年前自己还在搞WINDOWS开发时写的一个小工具（当时在公司无聊的时候写了很多小工具啊，只不过拿不出源代码，杯具），个人觉得挺实用
+          
+          
+        
+      </description>
     </item>
     
   </channel>

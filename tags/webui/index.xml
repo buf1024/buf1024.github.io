@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>webui on BUF1024!!!</title>
+    <title>webui on BUF1024</title>
     <link>https://luoguochun.cn/tags/webui/</link>
-    <description>Recent content in webui on BUF1024!!!</description>
+    <description>Recent content in webui on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyletf buf2024</copyright>
     <lastBuildDate>Tue, 07 Oct 2014 21:36:56 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/webui/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>jquery selector小结</title>
@@ -14,105 +13,14 @@
       <pubDate>Tue, 07 Oct 2014 21:36:56 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-10-07-jquery-summary/</guid>
-      <description>&lt;h2 id=&#34;jquery-概述&#34;&gt;jQuery 概述 &lt;a href=&#34;#jquery-%e6%a6%82%e8%bf%b0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;现代网站基本上都离不开jQuery。它是轻量级的js库，兼容css3，还有各种浏览器。文档齐全而详细，还有众多而成熟的插件可用。jQuery就个人理解，主要有以下几方面功能： 统一的DOM选择器，统一事件处理，动画和ajax等，它大大的简化了html，css和js的耦合度。jQuery UI，bootstrap等非常优秀和方便的前端UI库也是紧紧依赖jQuery，对于这些UI的使用后面将也会做些小结，对于不懂前端而又不想非常深入的人来说，这些优秀UI库，是非常好的神器。&lt;br&gt;
-jQuery库 使用 jQuery() 或 $()使用，$是jQuery的一个别名，如果使用第三方库和$冲突，可以调用&lt;code&gt;jQuery.noConfig()&lt;/code&gt;来避免冲突。&lt;br&gt;
-废话少说，总结下jQuery，不是专门的UI人员，也没有很深的研究，所以避免不了很多错误。&lt;/p&gt;
-&lt;h2 id=&#34;jquery-dom选择器&#34;&gt;jQuery DOM选择器 &lt;a href=&#34;#jquery-dom%e9%80%89%e6%8b%a9%e5%99%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;jQuery的选择器很灵活，这里是非常笼统的归类，而且不一定齐全(官方有自己的归类方法，可以参考相关文档: &lt;a href=&#34;http://api.jquery.com/category/selectors/&#34;&gt;selectors&lt;/a&gt;)，以下归类是有可能重复的。而且所有的选择器都不是分开独立使用的，可以任君随意组合。&lt;/p&gt;
-&lt;h5 id=&#34;1-css选择器&#34;&gt;1. CSS选择器 &lt;a href=&#34;#1-css%e9%80%89%e6%8b%a9%e5%99%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;jQuery是兼容CSS的，因而CSS选择器也适用于jQuery。如 &lt;code&gt;#id .class element&lt;/code&gt;等。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    例子：         
-             
-    $(&amp;quot;p&amp;quot;)            -&amp;gt; 匹配所有的&amp;lt;p&amp;gt;的元素     
-    $(&amp;quot;.class&amp;quot;)       -&amp;gt; 匹配所有的class属性为&amp;quot;class&amp;quot;的元素   
-    $(&amp;quot;#id&amp;quot;)          -&amp;gt; 匹配所有的id属性为&amp;quot;id&amp;quot;的元素   
-    $(&amp;quot;p.class#id&amp;quot;)   -&amp;gt; 匹配所有的&amp;lt;p&amp;gt;元素,class属性为&amp;quot;class&amp;quot;, id属性为&amp;quot;id&amp;quot;的元素   
-    $(&amp;quot;p a.class#id&amp;quot;) -&amp;gt; 匹配所有的&amp;lt;p&amp;gt;元素, 后代（孩子，孙子等）
-                      -&amp;gt; 为&amp;lt;a&amp;gt;元素class属性为&amp;quot;class&amp;quot;, id属性为&amp;quot;id&amp;quot;的元素 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;除此之后， 还多个选择器可以同时使用，用&lt;code&gt;,&lt;/code&gt;分隔。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    例子：
-                     
-    $(&amp;quot;p,div&amp;quot;)        -&amp;gt; 匹配所有的&amp;lt;p&amp;gt;和&amp;lt;div&amp;gt;的元素        
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h5 id=&#34;2-容器属性选择器&#34;&gt;2. 容器属性选择器 &lt;a href=&#34;#2-%e5%ae%b9%e5%99%a8%e5%b1%9e%e6%80%a7%e9%80%89%e6%8b%a9%e5%99%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;有时元素的选择需求是比较bt的，选择的元素可能是某个元素的直接孩子，或者又是要求某属性值等于多少，于是就有了这类元素的选择器。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    例子：       
+      <description>
+        
           
-    $(&amp;quot;*&amp;quot;)              -&amp;gt; 匹配所有的元素
-    $(&amp;quot;E&amp;quot;)              -&amp;gt; 匹配所有的&amp;lt;E&amp;gt;元素
-    $(&amp;quot;E F&amp;quot;)            -&amp;gt; 匹配所有的&amp;lt;E&amp;gt;后代为&amp;lt;F&amp;gt;元素
-    $(&amp;quot;E&amp;gt;F&amp;quot;)            -&amp;gt; 匹配所有的&amp;lt;E&amp;gt;直接孩子为&amp;lt;F&amp;gt;元素
-    $(&amp;quot;E+F&amp;quot;)            -&amp;gt; 匹配所有的&amp;lt;E&amp;gt;直接兄弟为&amp;lt;F&amp;gt;元素
-    $(&amp;quot;E~F&amp;quot;)            -&amp;gt; 匹配所有的&amp;lt;E&amp;gt;兄弟为&amp;lt;F&amp;gt;元素
-    $(&amp;quot;E.C&amp;quot;)            -&amp;gt; 匹配所有的&amp;lt;E&amp;gt;class属性为&amp;quot;C&amp;quot;元素
-    $(&amp;quot;E#I&amp;quot;)            -&amp;gt; 匹配所有的&amp;lt;E&amp;gt;id属性为&amp;quot;I&amp;quot;元素
-    $(&amp;quot;E[A]&amp;quot;)           -&amp;gt; 匹配所有的&amp;lt;E&amp;gt;含有属性A元素
-    $(&amp;quot;E[A=&#39;V&#39;]&amp;quot;)       -&amp;gt; 匹配所有的&amp;lt;E&amp;gt;含有属性A且值为&#39;V&#39;元素
-    $(&amp;quot;E[A^=&#39;V&#39;]&amp;quot;)      -&amp;gt; 匹配所有的&amp;lt;E&amp;gt;含有属性A且值以&#39;V&#39;开头元素
-    $(&amp;quot;E[A$=&#39;V&#39;]&amp;quot;)      -&amp;gt; 匹配所有的&amp;lt;E&amp;gt;含有属性A且值以&#39;V&#39;结尾元素
-    $(&amp;quot;E[A!=&#39;V&#39;]&amp;quot;)      -&amp;gt; 匹配所有的&amp;lt;E&amp;gt;不含有属性A或者含属性A且值不为&#39;V&#39;元素
-    $(&amp;quot;E[A*=&#39;V&#39;]&amp;quot;)      -&amp;gt; 匹配所有的&amp;lt;E&amp;gt;含有属性A且值包含&#39;V&#39;元素
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h5 id=&#34;3-位置过滤器&#34;&gt;3. 位置过滤器 &lt;a href=&#34;#3-%e4%bd%8d%e7%bd%ae%e8%bf%87%e6%bb%a4%e5%99%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;有时，我们还需要根据元素的位置选择，于是有了这类选择器。 这类选择器是从匹配的元素中选出特定位置的元素。如，$(&amp;ldquo;p a:first&amp;rdquo;)，选择所有p元素，后代为a中的第一个元素集合。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    例子：       
+            jQuery 概述 现代网站基本上都离不开jQuery。它是轻量级的js库，兼容css3，还有各种浏览器。文档齐全而详细，还有众多而成熟的插件可用。jQu
           
-    :first               -&amp;gt; 在所有匹配元素中匹配所有的第一个元素，
-                         -&amp;gt; 如, $(&amp;quot;li a:first&amp;quot;)
-    :last                -&amp;gt; 在所有匹配元素中匹配所有的最后一个元素，
-                         -&amp;gt; 如, $(&amp;quot;li a:last&amp;quot;)
-    :first-child         -&amp;gt; 在所有匹配元素中匹配所有的第一个孩子元素，
-                         -&amp;gt; 如, $(&amp;quot;li:first-child&amp;quot;)
-    :last-child          -&amp;gt; 在所有匹配元素中匹配所有的最后一个孩子元素，
-                         -&amp;gt; 如, $(&amp;quot;li:last-child&amp;quot;)
-    :only-child          -&amp;gt; 在所有匹配元素中匹配所有的没有兄弟元素，
-                         -&amp;gt; 如, $(&amp;quot;li:only-child&amp;quot;)
-    :nth-child(n)        -&amp;gt; 在所有匹配元素中匹配所有的第n个孩子元素，
-                         -&amp;gt; 如, $(&amp;quot;li:nth-child(2)&amp;quot;)
-    :nth-child(even|odd) -&amp;gt; 在所有匹配元素中匹配所有的第偶数或奇数个孩子元素，
-                         -&amp;gt; 如, $(&amp;quot;li:nth-child(even)&amp;quot;)
-    :nth-child(Xn+Y)     -&amp;gt; 在所有匹配元素中匹配所有的符合公式&amp;quot;Xn+Y&amp;quot;个孩子元素，
-                         -&amp;gt; 如, $(&amp;quot;li:nth-child(3n+1)&amp;quot;)
-    :event               -&amp;gt; 在所有匹配元素中匹配所有的偶数孩子元素，
-                         -&amp;gt; 如, $(&amp;quot;li:even&amp;quot;)
-    :odd                 -&amp;gt; 在所有匹配元素中匹配所有的奇数元素，
-                         -&amp;gt; 如, $(&amp;quot;li:odd&amp;quot;)
-    :eq(n)               -&amp;gt; 在所有匹配元素中匹配所有的第n个元素，
-                         -&amp;gt; 如, $(&amp;quot;li:eq(2)&amp;quot;)
-    :gt(n)               -&amp;gt; 在所有匹配元素中匹配所有的大于n元素，
-                         -&amp;gt; 如, $(&amp;quot;li:gt(4)&amp;quot;)
-    :lt(n)               -&amp;gt; 在所有匹配元素中匹配所有的小于n元素，
-                         -&amp;gt; 如, $(&amp;quot;li:lt(5)&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h5 id=&#34;4-选择过滤器&#34;&gt;4. 选择过滤器 &lt;a href=&#34;#4-%e9%80%89%e6%8b%a9%e8%bf%87%e6%bb%a4%e5%99%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;有时，我们还需要根据选择的元素进行过滤，于是有了这类选择器。jQuery提供的大量的过滤器给我们使用，基本上很bt的需求都可以满足。如，$(&amp;quot;:checkbox:checked:enabled&amp;quot;)，选择所有&amp;quot;enabled&amp;quot;和&amp;quot;checked&amp;quot;的checkbox。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    例子：       
           
-    :animated            -&amp;gt; 匹配所有的正动画控制中元素
-    :button              -&amp;gt; 匹配所有的&amp;quot;button&amp;quot;元素,
-                         -&amp;gt; &amp;quot;button&amp;quot;包括: input[type=&#39;submit&#39;], input[type=&#39;reset&#39;], 
-                         -&amp;gt;               input[type=&#39;button&#39;]和 button。
-    :checkbox            -&amp;gt; 匹配所有的&amp;quot;checkbox&amp;quot;元素，指input[type=&#39;checkbox&#39;]
-    :checked             -&amp;gt; 匹配所有的&amp;quot;checkbox&amp;quot;或&amp;quot;radio&amp;quot;在&amp;quot;checked&amp;quot;状态元素
-    :contains(food)      -&amp;gt; 匹配所有的包含文本&amp;quot;food&amp;quot;元素
-    :disabled            -&amp;gt; 匹配所有的在&amp;quot;disabled&amp;quot;状态元素
-    :enabled             -&amp;gt; 匹配所有的在&amp;quot;enabled&amp;quot;状态元素
-    :file                -&amp;gt; 匹配所有的文件输入元素，指input[type=&#39;file&#39;]
-    :has(selector)       -&amp;gt; 匹配所有的包含在&amp;quot;selector&amp;quot;中元素
-    :header              -&amp;gt; 匹配所有的&amp;quot;header&amp;quot;元素，指&amp;lt;h1&amp;gt; 到 &amp;lt;h6&amp;gt;
-    :hidden              -&amp;gt; 匹配所有的隐藏状态元素
-    :image               -&amp;gt; 匹配所有的图像元素，指input[type=&#39;image&#39;]
-    :input               -&amp;gt; 匹配所有的&amp;quot;form&amp;quot;元素，指input, select, textarea, button
-    :not(selector)       -&amp;gt; 匹配所有的不包含在&amp;quot;selector&amp;quot;中元素
-    :parent              -&amp;gt; 匹配所有的包括孩子而且孩子非空元素
-    :password            -&amp;gt; 匹配所有的文件密码元素，指input[type=&#39;password&#39;]
-    :radio               -&amp;gt; 匹配所有的文件&amp;quot;radio&amp;quot;元素，指input[type=&#39;radio&#39;]
-    :reset               -&amp;gt; 匹配所有的文件&amp;quot;reset&amp;quot;元素，
-                         -&amp;gt; 指input[type=&#39;reset&#39;]或button[type=&#39;reset&#39;]
-    :selected            -&amp;gt; 匹配所有的在&amp;quot;selected&amp;quot;状态元素
-    :submit              -&amp;gt; 匹配所有的文件&amp;quot;submit&amp;quot;元素，
-                         -&amp;gt; 指input[type=&#39;submit&#39;]或button[type=&#39;submit&#39;]
-    :text                -&amp;gt; 匹配所有的&amp;quot;text&amp;quot;元素，指input[type=&#39;text&#39;]
-    :visible             -&amp;gt; 匹配所有的可见状态元素
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;jquery-其他杂项&#34;&gt;jQuery 其他杂项 &lt;a href=&#34;#jquery-%e5%85%b6%e4%bb%96%e6%9d%82%e9%a1%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;参考&lt;a href=&#34;http://api.jquery.com/&#34;&gt;jQuery API文档&lt;/a&gt;&lt;/p&gt;
-</description>
+        
+      </description>
     </item>
     
   </channel>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>tcpdump on BUF1024!!!</title>
+    <title>tcpdump on BUF1024</title>
     <link>https://luoguochun.cn/tags/tcpdump/</link>
-    <description>Recent content in tcpdump on BUF1024!!!</description>
+    <description>Recent content in tcpdump on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyletf buf2024</copyright>
     <lastBuildDate>Sat, 25 Jul 2015 14:26:04 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/tcpdump/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>tcpdump usage</title>
@@ -14,58 +13,14 @@
       <pubDate>Sat, 25 Jul 2015 14:26:04 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2015-07-25-tcpdump-usage/</guid>
-      <description>&lt;h4 id=&#34;tcpdump使用方法&#34;&gt;Tcpdump使用方法 &lt;a href=&#34;#tcpdump%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;（1）&lt;strong&gt;第一种是关于类型的关键字主要包括&lt;code&gt;host&lt;/code&gt;，&lt;code&gt;net&lt;/code&gt;，&lt;code&gt;port&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;
-例如： &lt;code&gt;host 210.27.48.2&lt;/code&gt;，指明 &lt;code&gt;210.27.48.2&lt;/code&gt;是一台主机，&lt;code&gt;net 202.0.0.0&lt;/code&gt; 指明&lt;code&gt;202.0.0.0&lt;/code&gt;是一个网络地址，&lt;code&gt;port 23&lt;/code&gt; 指明端口号是&lt;code&gt;23&lt;/code&gt;。如果没有指定类型，缺省的类型是&lt;code&gt;host&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;（2）第二种是确定传输方向的关键字主要包括&lt;code&gt;src&lt;/code&gt; , &lt;code&gt;dst&lt;/code&gt; ,&lt;code&gt;dst or src&lt;/code&gt;, &lt;code&gt;dst and src&lt;/code&gt;&lt;br&gt;
-这些关键字指明了传输的方向，例如：&lt;code&gt;src 210.27.48.2&lt;/code&gt;，指明ip包中源地址是&lt;code&gt;210.27.48.2&lt;/code&gt; , &lt;code&gt;dst net 202.0.0.0&lt;/code&gt; 指明目的网络地址是&lt;code&gt;202.0.0.0&lt;/code&gt;。如果没有指明方向关键字，则缺省是&lt;code&gt;src or dst&lt;/code&gt;关键字。&lt;/p&gt;
-&lt;p&gt;（3）第三种是协议的关键字，主要包括&lt;code&gt;fddi&lt;/code&gt;，&lt;code&gt;ip&lt;/code&gt;，&lt;code&gt;arp&lt;/code&gt;，&lt;code&gt;rarp&lt;/code&gt;，&lt;code&gt;tcp&lt;/code&gt;，&lt;code&gt;udp&lt;/code&gt;等类型&lt;br&gt;
-Fddi指明是在FDDI(分布式光纤数据接口网络)上的特定的网络协议，实际上它是&amp;quot;ether&amp;quot;的别名，fddi和ether具有类似的源地址和目的地址，所以可以将fddi协议包当作ether的包进行处理和分析。其他的几个关键字就是指明了监听的包的协议内容。如果没有指定任何协议，则tcpdump将会监听所有协议的信息包。&lt;/p&gt;
-&lt;p&gt;除了这三种类型的关键字之外，其他重要的关键字如下：&lt;code&gt;gateway&lt;/code&gt;, &lt;code&gt;broadcast&lt;/code&gt;,&lt;code&gt;less&lt;/code&gt;,&lt;code&gt;greater&lt;/code&gt;,还有三种逻辑运算，取非运算是&lt;code&gt;not&lt;/code&gt; ，&lt;code&gt;!&lt;/code&gt;，与运算是&lt;code&gt;and&lt;/code&gt;，&lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;;或运算 是&lt;code&gt;or&lt;/code&gt;，&lt;code&gt;││&lt;/code&gt;；这些关键字可以组合起来构成强大的组合条件来满足人们的需要，下面举几个例子来说明。普通情况下，直接启动tcpdump将监视第一个网络界面上所有流过的数据包。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;A. tcpdump –i eth0 –c 10  
-使用-i参数指定tcpdump监听的网络界面，这在计算机具有多个网络界面时非常有用，
-使用-c参数指定要监听的数据包数量，
-使用-w参数指定将监听到的数据包写入文件中保存
- 
-B.想要截获主机172.16.14.107和主机172.16.14.27或172.16.14.99的通信，使用命令：（在命令行中使用括号时，一定要用’\’
-tcpdump host 172.16.14.107 and \ (172.16.14.27or172.16.14.99 \)
-
-C.如果想要获取主机172.16.14.107除了和主机172.16.14.27之外所有主机通信的ip包，使用命令：
-tcpdump ip host 172.16.14.107 and ! 172.16.14.27
-
-D.如果想要获取主机172.16.14.107接收或发出的telnet包，使用如下命令：
-tcpdump tcp port 23 host 172.16.14.107
-
-E.对本机的udp 123 端口进行监视 （123 为ntp的服务端口）
-tcpdump udp port 123
-
-F.系统将只对名为hostname的主机的通信数据包进行监视。主机名可以是本地主机，
-也可以是网络上的任何一台计算机。下面的命令可以读取主机hostname发送的所有数据： 
-tcpdump -i eth0 src host hostname
-
-G.下面的命令可以监视所有送到主机hostname的数据包： 
-tcpdump -i eth0 dst host hostname
-#src表示源，即发送
-#dst表示目的地，即接收
-
-H.我们还可以监视通过指定网关的数据包： 
-tcpdump -i eth0 gateway Gatewayname
-
-I.如果你还想监视编址到指定端口的TCP或UDP数据包，那么执行以下命令： 
-tcpdump -i eth0 host hostname and port 80
-
-J.如果想要获取主机172.16.14.107接收或发出的telnet包，使用如下命令：
-tcpdump tcp port 23 host 172.16.14.107
-
-K. 如果我们只需要列出送到80端口的数据包，用dst port 80；如果我们只希望看到返回80端口的数据包，用src port 80。 
-tcpdump –i eth0 host hostname and dst port 80  #目的端口是80 或者
-tcpdump –i eth0 host hostname and src port 80  #源端口是80, 80端口一般是提供http的服务的主机
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;tcpdump输出格式:&lt;br&gt;
-总的的输出格式为：系统时间 来源主机.端口 &amp;gt; 目标主机.端口 数据包参数&lt;/p&gt;
-&lt;p&gt;如果要用wireshark分析数据，须加上&lt;code&gt;-s –w&lt;/code&gt;选项，否则wireshark不能识别文件格式：&lt;br&gt;
-&lt;code&gt;tcpdump -i eth0 -c 100 -s 0 -w /home/data.pcap&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;实际上就是&lt;code&gt;BPF&lt;/code&gt;语法，此语法同时适用于WIRESHARK获取报文的语法。&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            Tcpdump使用方法 （1）第一种是关于类型的关键字主要包括host，net，port 例如： host 210.27.48.2，指明 210.27.48
+          
+          
+        
+      </description>
     </item>
     
   </channel>

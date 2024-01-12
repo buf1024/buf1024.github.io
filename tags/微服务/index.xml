@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>微服务 on BUF1024!!!</title>
+    <title>微服务 on BUF1024</title>
     <link>https://luoguochun.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
-    <description>Recent content in 微服务 on BUF1024!!!</description>
+    <description>Recent content in 微服务 on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyletf buf2024</copyright>
     <lastBuildDate>Mon, 29 Jul 2019 20:17:52 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微服务架构一些事</title>
@@ -14,42 +13,14 @@
       <pubDate>Mon, 29 Jul 2019 20:17:52 +0800</pubDate>
       
       <guid>https://luoguochun.cn/post/2019-07-30-micro-service/</guid>
-      <description>&lt;h1 id=&#34;简介&#34;&gt;简介 &lt;a href=&#34;#%e7%ae%80%e4%bb%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;微服务是最近几年比较热的一个话题，并且随着容器技术(&lt;a href=&#34;https://github.com/moby/moby&#34;&gt;docker&lt;/a&gt;, &lt;a href=&#34;https://github.com/kubernetes/kubernetes&#34;&gt;k8s&lt;/a&gt;等)的不断发展只会越来越热，同时也有各种各样的大中小公司尝试着拥抱微服务构架。先不管这种做法是否正确，但在这种情势下，作为一个后台程序员，如果你不了解一下微服务，是会被人笑话的。&lt;/p&gt;
-&lt;p&gt;那什么是微服务？&lt;/p&gt;
-&lt;p&gt;很多介绍微服务的定义的，都会引用&lt;a href=&#34;https://martinfowler.com/&#34;&gt;Martin Fowler&lt;/a&gt;的定义: &lt;a href=&#34;https://martinfowler.com/articles/microservices.html&#34;&gt;Microservices&lt;/a&gt;。按Martin Fowler的定义，微服务构架是一系列可独立部署的服务，没有明确的定义，围绕业务能力，自动化部署，终端智能化，分布式语言和数据。简而言之，单一的应用程序由一系列的微小的服务组成，微小服务运行在自己的进程内并通过轻量级的机制(如REST, RPC等)通讯，这些微小服务围绕业务能力，自动化独立部署，可以有少量集中化管理的机制协调这些服务，微小服务可以使用不同语言和不同的数据存储技术。&lt;/p&gt;
-&lt;p&gt;盗用Martin Fowler文章中的图（出处: &lt;a href=&#34;https://martinfowler.com/articles/microservices/images/sketch.png&#34;&gt;https://martinfowler.com/articles/microservices/images/sketch.png&lt;/a&gt;）:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://martinfowler.com/articles/microservices/images/sketch.png&#34; alt=&#34;什么是微服务&#34;&gt;&lt;/p&gt;
-&lt;p&gt;以前的构架有什么不好的地方？&lt;/p&gt;
-&lt;p&gt;很多介绍微服务的文章，都喜欢和单体程序做比较，当作为一名后台程序员，印象中极少公司是单体程序，大多都根据业务功能进行模块划分(比如，用户管理模块，订单模块，库存模块，出入金模块等等)，模块又可能包括多个应用程序协调运行。这样的构架相对于微服务有什么不好的地方？模块的划分，虽然可以使复杂的业务得到分解，但相对于“微”来说还是巨大的单体，而且随着业务的发展，软件复杂度与之相应增强，而且不够弹性，比如搞活动是订单模块超忙，用户管理模块却相对空闲。&lt;/p&gt;
-&lt;p&gt;个人认为，微服务以前模块划分，SOA等方式发展而来，克服旧构架可能存在的问题，它以明确或通用的构架的方式明确怎么去构架一个良好的系统。微服务就是为了解决软件的复杂性和弹性的问题，微服务，它更易于理解，使团队专注于自己的业务，独立开发、发布、管理微服务，独立部署、扩展和管理，彼此隔离，复用现有服务，在现有服务基础上构建全新的功能。&lt;/p&gt;
-&lt;p&gt;听起来微服务很爽，是不是都需要使用这种新的构架模式呢？每一个看过构架的书籍，都看过这样一样话，构架是根据业务发展而来的，不能为了技术而技术。用不用”微服务“需要个人觉得需要&lt;strong&gt;根据自身业务情况&lt;/strong&gt;而决定。因为”微服务“的构架模式需要新的基础框，同时也带来新的问题，如果业务不是过于复杂，在原有构架很好适应的情况下，盲目拥护微服务的代价并不一定高于收益。&lt;/p&gt;
-&lt;h1 id=&#34;服务注册发现和健康检查&#34;&gt;服务注册、发现和健康检查 &lt;a href=&#34;#%e6%9c%8d%e5%8a%a1%e6%b3%a8%e5%86%8c%e5%8f%91%e7%8e%b0%e5%92%8c%e5%81%a5%e5%ba%b7%e6%a3%80%e6%9f%a5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;由于微服务构架将应用划分为一系列的细粒度的单一职责的服务，所以系统内存在N多的服务组成的服务网(Service mesh)，这些服务通过轻量级的通讯机制进行联通，N多服务构成网状的结构。在这种情况下必定会引入服务注册发现的概念，当服务启动起来的时候，必须有一个地方宣告，我能提供什么样的服务，同时调用者也能感知到有多少个服务的提供者。通常提供这些功能的，是由一个去中心化的分布式&lt;strong&gt;注册中心&lt;/strong&gt;框架完成，常见的如: &lt;a href=&#34;https://zookeeper.apache.org/&#34;&gt;zookeeper&lt;/a&gt;, &lt;a href=&#34;https://github.com/etcd-io/etcd&#34;&gt;etcd&lt;/a&gt;, &lt;a href=&#34;https://www.consul.io/&#34;&gt;consul&lt;/a&gt;, &lt;a href=&#34;https://github.com/Netflix/eureka&#34;&gt;Eureka&lt;/a&gt;等等。&lt;/p&gt;
-&lt;p&gt;任何一个程序都可能存在bug，服务可能存在挂掉，假死，慢，忙等各种情况，服务调用者需要知道服务是否可用，甚至是否过载等情况，以确定是否调用该服务，所以服务需要健康检查。健康检查一般两方面做，一个在服务向注册中心注册时，告知服务&lt;strong&gt;TTL&lt;/strong&gt;，同时服务在&lt;strong&gt;TTL&lt;/strong&gt;时间内每隔一段时间进行一次重新注册，类似于心跳报文；另外一方面，在注册中心内部对注册上来的服务运用各种手段进行检测，比如telnet端口，http访问特定连接，运行特定检查脚本等。&lt;/p&gt;
-&lt;p&gt;实施微服务，需要要增加的是注册中心群集，必须熟悉注册中心的运维(安全，权限等)，同时应用开发者也必须熟悉注册中心的注册和发现等api使用。&lt;/p&gt;
-&lt;p&gt;consul注册中心例:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/micro-service/ms-reg.png&#34; alt=&#34;consul注册中心实例&#34;&gt;&lt;/p&gt;
-&lt;h1 id=&#34;配置中心&#34;&gt;配置中心 &lt;a href=&#34;#%e9%85%8d%e7%bd%ae%e4%b8%ad%e5%bf%83&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;由于微服务构架服务的数量众多，每个服务对应的机器使用一套配置文件的方式是不太现实的，由此又引用一个概念，分布式配置中心。&lt;strong&gt;配置中心&lt;/strong&gt;框架，使服务统一从一个中心读取配置文件，同时能够感知到配置的变化从而进行服务的重新初始化。更有甚者，配置中心还支持灰度发布，分环境、分集群管理配置，完善的权限、审核机制等等。目前开源的配置中心也是比较多，比如&lt;a href=&#34;https://github.com/knightliao/disconf&#34;&gt;disconf&lt;/a&gt;,
-&lt;a href=&#34;https://github.com/ctripcorp/apollo/&#34;&gt;ctrip apollo&lt;/a&gt;等。&lt;/p&gt;
-&lt;p&gt;当然，一般上面的&lt;strong&gt;注册中心&lt;/strong&gt;也是提供简单的键值存储，如果要求不是很高，也是可以用做简单的配置中心，当然也是可以开发一个配置中心的RPC服务。&lt;/p&gt;
-&lt;p&gt;实施微服务，需要增加配置中心群集，必须熟悉配置中心的运维(安全，权限等)，同时应用开发者也必须熟悉配置中心配置获取，配置的变化感知等。&lt;/p&gt;
-&lt;p&gt;consul配置中心例:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/micro-service/ms-conf.png&#34; alt=&#34;consul配置中心实例&#34;&gt;&lt;/p&gt;
-&lt;h1 id=&#34;服务网关和负载均衡&#34;&gt;服务网关和负载均衡 &lt;a href=&#34;#%e6%9c%8d%e5%8a%a1%e7%bd%91%e5%85%b3%e5%92%8c%e8%b4%9f%e8%bd%bd%e5%9d%87%e8%a1%a1&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;将内部服务暴露于外的组件，称之为服务网关。服务网关最重要的功能是将外部的请求路由到内部的服务，除此之外，网关通常还具备鉴权(请求鉴权中心或自己是鉴权中心)，反爬虫，限流容错，监控等功能。通常我们需要在服务网关框架上，根据自己业务需求进行进一步开发。这里只是介绍概念，这里描述的很简单，事实上服务网关对外提供唯一的出口，实现起来可能很复杂。&lt;/p&gt;
-&lt;p&gt;无论是服务网关调用后端的服务，或是内部服务调用后端服务，都涉及调用哪个服务的问题，即是负载均衡，通常是实现方式是在客户端上实现，一般有现成框架，在其基础上进行扩展。当然实现方式是多样的，也有不少把请求丢到消息队列，事件总线等。不管实现方式如何，目标是服务的负载需要均衡。&lt;/p&gt;
-&lt;h1 id=&#34;其他&#34;&gt;其他 &lt;a href=&#34;#%e5%85%b6%e4%bb%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;降级，熔断，限流
-一个前端请求一般会依赖于多个后端服务，突发流量可能造成单个服务延迟致雪崩效应，如何限流，降级，熔断？&lt;/li&gt;
-&lt;li&gt;监控链路跟踪和日志收集
-一个业务分布于多个服务的调用之中，如何追踪调用链路？日志又如何收集，如&lt;strong&gt;ELK&lt;/strong&gt;栈？&lt;/li&gt;
-&lt;li&gt;快速部署扩容缩容
-docker/k8s/istio快速部署？&lt;/li&gt;
-&lt;li&gt;分布式事务
-分布式事务是微服务经常遇到的问题也是比较困难的问题，使用网上说的复杂的2PC，TCC等，还是简单的补偿？？&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;小结&#34;&gt;小结 &lt;a href=&#34;#%e5%b0%8f%e7%bb%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;本来想每个部分都简单写写，列一下常用的方式，做法是什么。但是很多东西自己都只是有一个概念，并没有认真的去实践，没有经过自己实践过的东西也不知道写什么，倒是网上却又很多的介绍，总结的都挺好。每一部分都有N多的解决方案，直接参考网上搜索结果即可。&lt;/p&gt;
-&lt;p&gt;由上，微服务架构需要掌握的东西和概念很多，能否在原来业务上转为微服务，或在新业务上使用微服务？熟练了为服务的模式，会不会开展业务更舒畅？或许是，也或许不是，因为并没有尝试过，不过倒是很乐意去尝试一下。&lt;/p&gt;
-&lt;p&gt;微服务尝试: &lt;a href=&#34;https://github.com/buf1024/monthproj/tree/master/ms-exam/stock&#34;&gt;stock&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            简介 微服务是最近几年比较热的一个话题，并且随着容器技术(docker, k8s等)的不断发展只会越来越热，同时也有各种各样的大中小公司尝试着拥
+          
+          
+        
+      </description>
     </item>
     
   </channel>

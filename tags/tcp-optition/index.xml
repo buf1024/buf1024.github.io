@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>tcp optition on BUF1024!!!</title>
+    <title>tcp optition on BUF1024</title>
     <link>https://luoguochun.cn/tags/tcp-optition/</link>
-    <description>Recent content in tcp optition on BUF1024!!!</description>
+    <description>Recent content in tcp optition on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyletf buf2024</copyright>
     <lastBuildDate>Wed, 22 Oct 2014 17:01:08 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/tcp-optition/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>tcp_nodelay选项</title>
@@ -14,12 +13,14 @@
       <pubDate>Wed, 22 Oct 2014 17:01:08 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-10-22-tcp_nodelay/</guid>
-      <description>&lt;p&gt;今天遇到了&lt;code&gt;TCP_NODELAY&lt;/code&gt;的问题，简单记录一下。具体的表现是，客户端进行清算查询时，老是超时。这个问题出现很久了，运维一直都有反映查询不到数据。因为程序不是我写的，又有几个同事在负责跟进这个问题，所以一直不怎么理，让他们自己解决去。&lt;/p&gt;
-&lt;p&gt;因为服务端都是采用非阻塞的模型，每个socket的缓存都是可以配置的。最最开始的时候，同事查看日志，发现有报缓存不足的错误，就以为是缓存的问题，于是将缓存调大。这样搞好，的确可以查询成功了，虽然速度很慢，但至少可以用了。后来数据大的时候，查询又超时了。客户端，前端接入都骚动的找问题。经过查日志，发现后端发送数据是成功的，但是前端接收的时候看起来很慢，通过抓包发现，报文发了一段时间后，接收数据的速度就慢了很多。前端接入以为是自己程序缓存不足，接收不了那么快造成的，但是前端接入无法像后端那样自由的调整缓存大小，于是想到了一个动态缓存的复杂方法，这样修改完了后。貌似结果还行，第一天测试速度虽然慢，但是还是查询结果出来了。但是今天测试，居然又不行了。这下子神奇了。&lt;/p&gt;
-&lt;p&gt;今天，又在讨论为何不行了，在研究抓包报文，研究为何每个报文要延迟一段时间后才收到，为何发送端发送成功了，接收端却要延时。解决问题的同事在我面前讨论，我突然冒出，是不是系统缓存不足了，调下系统缓存看看。于是，他们调了之后测试，发现没有效果。于是我要一下抓包的报文，过滤后，一看，这么有规律，为了减少TCP应答报文头的带宽损耗，将小包搞成大包发送，不就是传说的“Nxx”算法吗？于是让同事在tcp accept后，设置这个TCP_NODELAY选项，禁用这个鸟算法测试。果然，效果非常可观，原来在几十秒甚至几分钟内都没有查询结果，现在3秒左右，结果就出来了。&lt;/p&gt;
-&lt;p&gt;google一下，发现还有不少哥们遇到这个问题，比如这哥们： &lt;a href=&#34;http://jerrypeng.me/2013/08/mythical-40ms-delay-and-tcp-nodelay/#sec-4-2&#34;&gt;mythical-40ms-delay-and-tcp-nodelay&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;总结下，只有不断的尝试，才有最终的完美结果~&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            今天遇到了TCP_NODELAY的问题，简单记录一下。具体的表现是，客户端进行清算查询时，老是超时。这个问题出现很久了，运维一直都有反映查询
+          
+          
+        
+      </description>
     </item>
     
   </channel>

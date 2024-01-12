@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>微信 on BUF1024!!!</title>
+    <title>微信 on BUF1024</title>
     <link>https://luoguochun.cn/tags/%E5%BE%AE%E4%BF%A1/</link>
-    <description>Recent content in 微信 on BUF1024!!!</description>
+    <description>Recent content in 微信 on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyletf buf2024</copyright>
     <lastBuildDate>Thu, 20 Apr 2017 21:12:03 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/%E5%BE%AE%E4%BF%A1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微信web通信协议</title>
@@ -14,22 +13,14 @@
       <pubDate>Thu, 20 Apr 2017 21:12:03 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2017-04-20-weixin-web-proto/</guid>
-      <description>&lt;p&gt;微信有网页版，&lt;a href=&#34;https://wx.qq.com/&#34;&gt;网页版的微信&lt;/a&gt;具备手机微信大部分功能。理论上，放在web页面上的所有东西，都是可以被破解的。对于web微信协议的破解，一些没有接触过前端的后端程序员，可能会想到两个方法：1. 研究网页js代码; 2. 大鲨鱼(wireshark)抓包分析（ps：参考之前写过&lt;a href=&#34;https://luoguochun.cn/2015/07/25/tcpdump-usage/&#34;&gt;tcpdump usage&lt;/a&gt;，&lt;a href=&#34;https://luoguochun.cn/2016/09/23/tcp-fuck/&#34;&gt;tcp 协议小结&lt;/a&gt;, &lt;a href=&#34;https://luoguochun.cn/2016/11/16/https-handshake/&#34;&gt;ssl/tls 握手&lt;/a&gt;）。对于方法1，现在js的编写方法和以前有很大的不同，web前端通常用模块化方法进行js编写，在发布时，用webpack等工具进行压缩混淆，所以该方法不太可行。对于方法2. 因为现在大多web都采用https进行传输，传输过程中的数据全是加密的，所以这种办法更不可行。对于web前端和与web前端有交互的后端开发人员，都清楚还有这么一个非常常用的方式： 使用浏览器自带的开发者工具即可。理论上我们只要认真分析web微信和服务端的交互过程，分析请求参数和应答结果，即可得出相关的协议。下图为chrome开发者工具的截图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/weixin/weixinchrome.png&#34; alt=&#34;chrome微信&#34;&gt;&lt;/p&gt;
-&lt;p&gt;微信的web协议网上已经有很多人进行分析过，网上进行搜索即可找到，虽然有些字段与现有web版微信有些差别，但大部分协议都是可用的。如，发现不一致导致无法使用，用浏览器开发者工具进行分析一下即可发现差别。结合前人的分析和自己的摸索，web版微信大致的工作流程如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/weixin/weixinweb.png&#34; alt=&#34;chrome微信&#34;&gt;&lt;/p&gt;
-&lt;p&gt;因为http是无状态的协议，web版微信又不是采用websocke协议，所以在获取到二维码后，需要查询登陆状态，在登陆后，需要定时进行Sync Check获取微信状态，并进行Sync实现获取消息和秘钥同步。&lt;/p&gt;
-&lt;p&gt;在获取web微信协议后，采用微信web协议进行开发的本质就是模拟桌面版的web浏览器。所以在开发需要注意：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;设置http头User-Agent为桌面        -&amp;gt; 服务端会根据此字段判断是否为桌面&lt;/li&gt;
-&lt;li&gt;设置http头Referer为微信的url      -&amp;gt; 可能会判断来源&lt;/li&gt;
-&lt;li&gt;设置cookie                       -&amp;gt; 保存服务端的cookie，并上传服务端&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;用&lt;code&gt;golang&lt;/code&gt;进行了一些登陆的模拟，代码：&lt;a href=&#34;https://github.com/buf1024/weixinweb&#34;&gt;weixinweb&lt;/a&gt;，结果如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/weixin/weixinsim.png&#34; alt=&#34;微信登陆模拟&#34;&gt;&lt;/p&gt;
-&lt;p&gt;这里没有对微信web协议的进行详细分析，详细分析还需要分析各个交互请求参数以及返回结果的含义，只是一时兴趣记录一下web应用的分析过程和分析方法。对于web微信协议，可自行搜索之。&lt;/p&gt;
-&lt;p&gt;完。&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            微信有网页版，网页版的微信具备手机微信大部分功能。理论上，放在web页面上的所有东西，都是可以被破解的。对于web微信协议的破解，一些没有接
+          
+          
+        
+      </description>
     </item>
     
   </channel>

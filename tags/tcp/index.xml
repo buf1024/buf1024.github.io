@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>tcp on BUF1024!!!</title>
+    <title>tcp on BUF1024</title>
     <link>https://luoguochun.cn/tags/tcp/</link>
-    <description>Recent content in tcp on BUF1024!!!</description>
+    <description>Recent content in tcp on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyletf buf2024</copyright>
     <lastBuildDate>Thu, 02 Mar 2023 14:10:12 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TCP未建立之前，丢失的SYN报文会不会重传？</title>
@@ -14,13 +13,14 @@
       <pubDate>Thu, 02 Mar 2023 14:10:12 +0800</pubDate>
       
       <guid>https://luoguochun.cn/post/2023-03-02-tcp-setup/</guid>
-      <description>&lt;p&gt;记得以前，有人问TCP问题的时候，也出现过一次像这样的争论。争论的问题是，TCP四次挥手为什么要四次，三次为什么不可以。我的答案是可以的，只要开启延迟确认，或者没有数据发送的时候，那就可以了，事后也抓包确认了，三次的确可以挥手。&lt;/p&gt;
-&lt;p&gt;而今天的问题是TCP为什么要三次，而不是两次引出的，其中的回答的一个理由是，重发的SYN报文可能导致服务端重新建立链接，导致服务端的资源耗尽。而对方观点在于建立之前，建立连接的&lt;code&gt;SYN&lt;/code&gt;包在建立之前，是不会重发。&lt;/p&gt;
-&lt;p&gt;争论是没有用的，大鲨鱼抓一个包试试就知道了，结果如下：
-&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-setup-retry-sync.png&#34; alt=&#34;retry-sync&#34;&gt;&lt;/p&gt;
-&lt;p&gt;在未建立连接之前，不止重传了，而且还重传了10次！！&lt;/p&gt;
-&lt;p&gt;哎，一声叹息。闻道有先后，术业有专攻。&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            记得以前，有人问TCP问题的时候，也出现过一次像这样的争论。争论的问题是，TCP四次挥手为什么要四次，三次为什么不可以。我的答案是可以的，只
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -29,206 +29,14 @@
       <pubDate>Thu, 02 Feb 2023 14:15:12 +0800</pubDate>
       
       <guid>https://luoguochun.cn/post/2023-02-14-tcp-renew/</guid>
-      <description>&lt;h1 id=&#34;tcp是什么&#34;&gt;TCP是什么 &lt;a href=&#34;#tcp%e6%98%af%e4%bb%80%e4%b9%88&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;TCP是面向连接的，可靠的，基于字节流的传输协议。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;面向连接，指的是一对一的，不是一对多。&lt;/li&gt;
-&lt;li&gt;可靠性，指的是不管网络环境多么的复杂多变，它总是能够可靠的传输数据给对方。&lt;/li&gt;
-&lt;li&gt;基于字节流，指的是它就是一个流的协议，没有消息的边界。不管接受方是先接受到后面发送来的数据还是前面的数据，又或者是重复的数据等等，它都不是单纯的丢给应用处理（当然带外数据是例外的，这个不写了，因为基本淘汰没人用了，另外自己也写过），而是等数据完整有序了，按序丢给应用程序。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;那么什么是连接呢？TCP只是传输层的一个协议，不可能是用一条网线直接连接的。所谓的连接是指通讯的双方为了保证可靠性，流量控制，阻塞控制等等所维护一组状态，而这组状态是通过协议通信来变更和维护的。&lt;/p&gt;
-&lt;p&gt;那么唯一确定一个链接的是什么？这个简单了，源地址+源端口+目标地址+目标端口便可以确定，这四个东西合在一起，称之为四元组。&lt;/p&gt;
-&lt;h1 id=&#34;tcp的建立&#34;&gt;TCP的建立 &lt;a href=&#34;#tcp%e7%9a%84%e5%bb%ba%e7%ab%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;h3 id=&#34;三次握手&#34;&gt;三次握手 &lt;a href=&#34;#%e4%b8%89%e6%ac%a1%e6%8f%a1%e6%89%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;先看一个正常的TCP在怎么样建立连接(下部分是四次挥手的，暂时忽略)：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-3w-4w.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
-&lt;p&gt;TCP的建立，离不开说这个三次握手，大体的流程：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;客户端发送&lt;code&gt;SYN&lt;/code&gt;​包给服务端&lt;/li&gt;
-&lt;li&gt;服务端收到客户端的&lt;code&gt;SYN&lt;/code&gt;​然后发生送&lt;code&gt;ACK&lt;/code&gt;​&lt;/li&gt;
-&lt;li&gt;服务端发送&lt;code&gt;SYN&lt;/code&gt;​给客户端&lt;/li&gt;
-&lt;li&gt;客户端发送&lt;code&gt;ACK&lt;/code&gt;​回给服务端&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;如此，一个正常流程的TCP连接便建立起来了，步骤是四步，不过TCP交互的时候，第二步和第三步合成一步了。&lt;/p&gt;
-&lt;p&gt;有没有发现图中，第一个&lt;code&gt;SYN&lt;/code&gt;​包里面的&lt;code&gt;Seq=ISN&lt;/code&gt;​？&lt;code&gt;ISN&lt;/code&gt;​是初始序列号，&lt;code&gt;Seq&lt;/code&gt;​是保证可靠传输的一个重要数据，握手过程中交换 的最重要的一个数据。那么&lt;code&gt;ISN&lt;/code&gt;​要设置成多少才比较合适呢？0么？在大鲨鱼里面看到的&lt;code&gt;ISN&lt;/code&gt;​就是0开始的，不过不要被大鲨鱼骗了，大鲨鱼为了让你好查看，才贴心的使用偏移量，所以看起来是0而已。事实上&lt;code&gt;ISN&lt;/code&gt;​的生产是有一定的规则的，总体上是递增的，而且还加上一些随机值，目的就是为了不被一些不法份子猜测到。&lt;/p&gt;
-&lt;p&gt;那么问题来了，为什么要TCP建立连接三次握手，我两次握手行不行吗？这个还真不行，我记忆一下，大概有以下三方面原因：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;为了避免资源的了混论&lt;/p&gt;
-&lt;p&gt;因为网络本身就是非常复杂的，充斥着各种迷途报文和重复报文，如果服务端收到的此类无主的报文不是傻叉了？&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;为了正确交换&lt;code&gt;ISN&lt;/code&gt;​，保证传输的可靠性&lt;/p&gt;
-&lt;p&gt;服务端收到了&lt;code&gt;SYN&lt;/code&gt;​报文，这仅仅的代表服务端收到了&lt;code&gt;ISN&lt;/code&gt;​。此话怎么讲，上图不是在第二步的时候，也产生了服务端的&lt;code&gt;ISN&lt;/code&gt;​么？上图的第二步服务端的&lt;code&gt;SYN&lt;/code&gt;​报文加上客户端的&lt;code&gt;ACK&lt;/code&gt;​和在一起了，如果不合在一起，那就客户端就无法知道服务端的初始&lt;code&gt;ISN&lt;/code&gt;​。如果合在一起，那么一个&lt;code&gt;SYN&lt;/code&gt;​必须要等一个&lt;code&gt;ACK&lt;/code&gt;​,如果不是三次握手，那服务端一直收不到这个&lt;code&gt;ACK&lt;/code&gt;​，那它岂不是一直在重发那个&lt;code&gt;SYN&lt;/code&gt;​报文？&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;为了资源不被浪费&lt;/p&gt;
-&lt;p&gt;这个容易理解了，如果丢包了，客户端不断的重复&lt;code&gt;SYN&lt;/code&gt;​报文，服务端就不断的建立连接，很快服务端资源就被耗尽了，根本就不用什么攻击手段了。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;syn-flood攻击&#34;&gt;SYN Flood攻击 &lt;a href=&#34;#syn-flood%e6%94%bb%e5%87%bb&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;网络充斥着无限的可能性，回到上面三次握手的图，如果服务端发送的&lt;code&gt;SYN+ACK&lt;/code&gt;​超时了怎么办？超时就重发呗，大部分人估计都想到这点。那么到底是怎么重发的呢？是马上重发，还是等一下再重发，重发一次还是重发几次？这些都是有一定的算法的。在Linux下面是阶段性重发，默认好像是总共重发5次，重试的时间间隔为，1，2，4，8，16，32，所有总耗时约63秒，。&lt;/p&gt;
-&lt;p&gt;这和&lt;code&gt;SYN&lt;/code&gt;​Flood有什么干系？&lt;code&gt;SYN&lt;/code&gt;​Flood就是我这大量发送你&lt;code&gt;SYN&lt;/code&gt;​，对你的应答&lt;code&gt;ACK&lt;/code&gt;​一律不理，让你不断的重发，让你的资源得不到释放（半连接&lt;code&gt;SYN&lt;/code&gt;​队列满了），从而达到&lt;em&gt;DDos&lt;/em&gt;的目的。&lt;/p&gt;
-&lt;p&gt;那么，面对&lt;code&gt;SYN&lt;/code&gt;​​Flood，该怎么办呢？&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;既然&lt;code&gt;SYN&lt;/code&gt;​Flood是重发引起的，那么通过设置调整&lt;code&gt;tcp_synack_retries&lt;/code&gt;​减少重试次数来减轻症状。&lt;/li&gt;
-&lt;li&gt;通过调整&lt;code&gt;tcp_max_syn_backlog&lt;/code&gt;​参数，设置更大的半连接&lt;code&gt;SYN&lt;/code&gt;​队列，不过还要调整内核参数&lt;code&gt;somaxconn&lt;/code&gt;​，另外一个就是应用程序设置的&lt;code&gt;listen&lt;/code&gt;​函数的参数&lt;code&gt;backlog&lt;/code&gt;​。半连接&lt;code&gt;SYN&lt;/code&gt;​队列大小和这三个参数相关。&lt;/li&gt;
-&lt;li&gt;设置&lt;code&gt;tcp_abort_on_overflow&lt;/code&gt;​，&lt;code&gt;SYN&lt;/code&gt;​队列溢出了，直接拒绝连接。&lt;/li&gt;
-&lt;li&gt;又或者干脆就不用&lt;code&gt;SYN&lt;/code&gt;​队列，开启&lt;code&gt;tcp_syncookies&lt;/code&gt;​,&lt;code&gt;SYN&lt;/code&gt;​队列了之后，直接生成一个&lt;code&gt;cookie&lt;/code&gt;​给客户端，如果是正常的客户端，收到这个&lt;code&gt;cookie&lt;/code&gt;​，会返回来，建立连接的。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;半连接队列和全连接队列&#34;&gt;半连接队列和全连接队列 &lt;a href=&#34;#%e5%8d%8a%e8%bf%9e%e6%8e%a5%e9%98%9f%e5%88%97%e5%92%8c%e5%85%a8%e8%bf%9e%e6%8e%a5%e9%98%9f%e5%88%97&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;上面说到半连接队列&lt;code&gt;SYN&lt;/code&gt;​队列，除了这个，还有一个全连接队列，也称之为&lt;code&gt;accept&lt;/code&gt;​队列。这是内核维护的两个队列。服务端收到客户端建立连接的&lt;code&gt;SYN&lt;/code&gt;​包的时候，会把它丢进&lt;code&gt;SYN&lt;/code&gt;​队列，当服务端收到第三次握手的&lt;code&gt;ACK&lt;/code&gt;​包的时候，把&lt;code&gt;SYN&lt;/code&gt;​队列的连接信息搞出来，把它丢到全连接队列。当应用程序调用&lt;code&gt;accpt&lt;/code&gt;​的时候，又从全连接队列里面把连接信息搞出来，从而才真正意义的建立起连接。说的比较蒙圈，还是上一个图比较清晰一点。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-queue.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
-&lt;p&gt;一段话啰嗦那么久，还不如一个图来的清爽利落。凡是队列，都有长度限制，超出长度，都有溢出的可能，如果溢出了，那么内核就有可能丢弃，或者直接拒绝连接。&lt;/p&gt;
-&lt;p&gt;半连接队列参考上面的SYN Flood攻击。&lt;/p&gt;
-&lt;p&gt;当服务有大量的连接请求，而全连接队列又比较小的时候，就容易出现溢出，后续的服务请求都将被服务器无情的拒绝，这样也是导致服务端连接请求不上去的一个原因。不过默认的行为是可以改变，也是这个选项&lt;code&gt;tcp_abort_on_overflow&lt;/code&gt;​，可见设置一个参数处理&lt;code&gt;SYN&lt;/code&gt;​flood也会影响其他行为，要全盘评估。&lt;code&gt;tcp_abort_on_overflow&lt;/code&gt;​设置为1时，直接拒绝新连接，设置为0时，就直接丢弃这个&lt;code&gt;SYN&lt;/code&gt;​报文。不过建议的设置是&lt;code&gt;tcp_abort_on_overflow&lt;/code&gt;​设置为0，因为正常的情况之下，全连接队列满只是暂时的事情，队列里面的连接被&lt;code&gt;accpt&lt;/code&gt;​了之后，队列随时有空位，客户端重发的&lt;code&gt;SYN&lt;/code&gt;​报文又可以让连接正确的建立起来。&lt;/p&gt;
-&lt;p&gt;那有没办法改变全连接队列的大小呢？答案是肯定的。这主要是两个参数，一个是内核参数&lt;code&gt;somaxconn&lt;/code&gt;​，另外一个就是&lt;code&gt;listen&lt;/code&gt;​函数的参数&lt;code&gt;backlog&lt;/code&gt;​。全队列的大小是&lt;code&gt;somaxconn&lt;/code&gt;​和&lt;code&gt;backlog&lt;/code&gt;​的最小值。很多人设置的时候，只是编程上只设置&lt;code&gt;listen&lt;/code&gt;​的&lt;code&gt;backlog&lt;/code&gt;​，这是不正确滴。&lt;/p&gt;
-&lt;h3 id=&#34;连接优化&#34;&gt;连接优化 &lt;a href=&#34;#%e8%bf%9e%e6%8e%a5%e4%bc%98%e5%8c%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;如果是大量短连接（比如http，https），那么TCP三次握手是比较浪费网络资源的，传输效率并不高，所以有人就动歪脑筋了，能不能在可靠性的前提之下，建立连接是否可以绕过三次握手？还真给这批人想出来了，这就是TCP Fast Open，而且这个TCP Fast Open还有牛掰之处就是可以携带数据。&lt;/p&gt;
-&lt;p&gt;客户端首次建立连接的时候，还是需要三次握手的，而且和三次握手并没有太大的区别。只是客户端第一次握手的时候会带上TFO的选项以及空的cookie。在第二次握手时，服务端会生成cookie，并在&lt;code&gt;SYN-ACK&lt;/code&gt;​携带上，而客户端在收到后，会在本地储存这个cookie。&lt;/p&gt;
-&lt;p&gt;重点是之后的流程，如果客户再次向服务端建立连接的时候，情况就有所不一样了。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;客户端发送&lt;code&gt;SYN&lt;/code&gt;​并携带数据，已经之前存储的cookie。&lt;/li&gt;
-&lt;li&gt;服务端收到客户端的请求之后，会检验发送来的cookie。如果cookie是有效的，那么就直接发送&lt;code&gt;SYN-ACK&lt;/code&gt;​，而且这个&lt;code&gt;SYN-ACK&lt;/code&gt;​包括了对数据的校验信息，同时直接把数据丢个应用程序处理。直接就在握手阶段就处理数据了，不得不说牛叉，这样交互就减少了。如果这个cookie是无效的，那么只是正常的发送&lt;code&gt;SYN-ACK&lt;/code&gt;​不携带私货。&lt;/li&gt;
-&lt;li&gt;客户端收到服务端&lt;code&gt;SYN-ACK&lt;/code&gt;​后，看有没有携带私货。如果没有，那就再重新发送数据。&lt;/li&gt;
-&lt;li&gt;剩下的数据传输和普通的TCP传输数据没有区别了。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;那么如何打开TFO选项的?&lt;code&gt;tcp_fastopen&lt;/code&gt;​。需要配置为同时作为客户端和服务端打开，才有效。&lt;/p&gt;
-&lt;h3 id=&#34;拔掉网线断连接&#34;&gt;拔掉网线断连接？ &lt;a href=&#34;#%e6%8b%94%e6%8e%89%e7%bd%91%e7%ba%bf%e6%96%ad%e8%bf%9e%e6%8e%a5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;想到一个有意思的问题，建立连接的双突然被拔了网线，连接会断开么？上面所说，TCP是面向连接的，所谓的连接是双维护的一组状态，而这组状态是通过双方的通讯来更新维护的。所以说，拔了网线，这个动作并不会干扰到这个状态，TCP连接的状态还是建立的。那么拔了网线之后，发生什么事情，就要分情况说了。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;第一种情况是，如果拔了网线，期间有数据传输。&lt;/p&gt;
-&lt;p&gt;这个时候，TCP是有重传机制，按照上面所说的，如果没做参数调整，那么报文重传需要一分多钟，如果在这段时间内突然又把网线插上了，那么就什么事情都没有发生，就像是网络抖动了一下而已。如果重传超时了，那就说明这个连接已经挂了，连接自然就断开。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;第二种情况，如果拔了网线，期间没有数据传输。&lt;/p&gt;
-&lt;p&gt;这个时候，又可细分两种情况。一种是没有设置了TCP的保活机制的，另外一种是设置了。所谓的TCP的保活机制，包括内核&lt;code&gt;tcp_keepalive_time=7200 tcp_keepalive_intvl=75 tcp_keepalive_probes=9&lt;/code&gt;​这几个参数以及对应应用程序设置的&lt;code&gt;SO_KEEPALIVE*&lt;/code&gt;​选项。如果没有保活机制，那么连接一直都存在的，并不会因为断开了网线而导致连接断开，毕竟只是内核的一个状态而已。如果是设置了保活机制，那么到保活机制就会发生探测报文，如果超时的时间段内没有插上网线，就可以确认连接断开了。好像默认情况下是开启了保活机制的。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;tcp的终止&#34;&gt;TCP的终止 &lt;a href=&#34;#tcp%e7%9a%84%e7%bb%88%e6%ad%a2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;h3 id=&#34;四次挥手&#34;&gt;四次挥手 &lt;a href=&#34;#%e5%9b%9b%e6%ac%a1%e6%8c%a5%e6%89%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;再来回顾一下这张图（忽略建立连接部分）：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-3w-4w.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
-&lt;p&gt;TCP的终止是四次握手，大体的流程为：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;客户端关闭连接，发送&lt;code&gt;FIN&lt;/code&gt;​，进入&lt;code&gt;FIN_WAIT_1&lt;/code&gt;​状态。&lt;/li&gt;
-&lt;li&gt;服务端收到客户端的&lt;code&gt;FIN&lt;/code&gt;​后，发送确认&lt;code&gt;ACK&lt;/code&gt;​，然后进入&lt;code&gt;CLOSE_WAIT&lt;/code&gt;​状态，然后服务端努力将没发完的数据发完。客户端收到&lt;code&gt;ACK&lt;/code&gt;​进入&lt;code&gt;FIN_WAIT_2&lt;/code&gt;​状态。&lt;/li&gt;
-&lt;li&gt;此时，服务端发送完数据了，随后发送&lt;code&gt;FIN&lt;/code&gt;​，进入&lt;code&gt;LAST_ACK&lt;/code&gt;​，等待最后的&lt;code&gt;ACK&lt;/code&gt;​就关闭连接了。&lt;/li&gt;
-&lt;li&gt;而此时的客户端，收到后，发送&lt;code&gt;ACK&lt;/code&gt;​，正式进入&lt;code&gt;TIME_WAIT&lt;/code&gt;​状态。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;看起来比较清晰，不过看TCP的状态装换图，好像没那么简单。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-state.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;
-&lt;p&gt;比如客户端可以直接从&lt;code&gt;FIN_WAIT_1&lt;/code&gt;​到&lt;code&gt;TIME_WAIT&lt;/code&gt;​，又或者经过&lt;code&gt;CLOSING&lt;/code&gt;​之后，再进入&lt;code&gt;TIME_WAIT&lt;/code&gt;​，当然，箭头上面转换的条件。&lt;/p&gt;
-&lt;p&gt;那么终止连接一定是需要四次握手吗？记得某次回答说，挥手也可以是三次的，结果刚回答完，直接让我回去等通知了。难道答错了？&lt;/p&gt;
-&lt;p&gt;上面建立连接的时候，服务端把&lt;code&gt;SYN+ACK&lt;/code&gt;​​合成了一步，所以变成了三次握手。那么挥手难道就不可以合成一步？在服务端收到&lt;code&gt;FIN&lt;/code&gt;​​的时候，如果服务端没数据要发送，又或者把数据随同&lt;code&gt;ACK&lt;/code&gt;​​发送给对方，那么不就是可以直接变成三次挥手了？那么服务端直接瞬间由&lt;code&gt;CLOSE_WAIT&lt;/code&gt;​​直接进入&lt;code&gt;LAST_ACK&lt;/code&gt;​​，而客户端收到&lt;code&gt;FIN+ACK&lt;/code&gt;​​直接不经过&lt;code&gt;FIN_WAIT_2&lt;/code&gt;​​，变成&lt;code&gt;TIME_WAIT&lt;/code&gt;​​?&lt;/p&gt;
-&lt;p&gt;当然，以上不是猜测，终止连接三次挥手是可以的，不过前提是开启延迟确认。延迟确认是什么鬼东西？延迟确认就是不想一个&lt;code&gt;SYN&lt;/code&gt;​一个&lt;code&gt;ACK&lt;/code&gt;​，那么一来一回的，太低效了，就是为了解决确认这种效率低的问题的，它的策略也是很简单的：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果响应有数据要发送，那么数据会随同&lt;code&gt;ACK&lt;/code&gt;​一起发送&lt;/li&gt;
-&lt;li&gt;如果没有数据发生，那么&lt;code&gt;ACK&lt;/code&gt;​就等一会，等待是否有数据发送&lt;/li&gt;
-&lt;li&gt;如果延迟等待期间，有数据来了，就发送携带数据的​&lt;code&gt;ACK&lt;/code&gt;​&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;不过，Linux下面是默认开启延迟确认的，服务端直接合并数据发送是可能的，也就是服务端收到客户过来的&lt;code&gt;FIN&lt;/code&gt;​报文后，并没有直接&lt;code&gt;ACK&lt;/code&gt;​客户端，此时服务端马上调用了&lt;code&gt;close&lt;/code&gt;​函数,接着就把&lt;code&gt;FIN+ACK&lt;/code&gt;​一起发了回去，这不就是三次挥手了么？所以啊，骚年，如果你是抓过包的，肯定会发现过有三次挥手的，而且不在少数的。但是，如果你只是背书没有实践过的，那么肯定认为不可能存在什么狗屁三次挥手的情况。当然如果是在面试过程中，别人如果认为你是错的了，那也就错了，那也是没办法的事情了。&lt;/p&gt;
-&lt;h3 id=&#34;终止的优化&#34;&gt;终止的优化 &lt;a href=&#34;#%e7%bb%88%e6%ad%a2%e7%9a%84%e4%bc%98%e5%8c%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;都终止了，还要优化？答案是肯定的，就是为了让那些不工作又占坑位的人早早把坑位让出来。否则很多想工作的骚年又不能投入工作，给社会的发展带来不稳定性。记住宇宙第一法则，资源是有限的，必须要充分利用。说人话就是，计算子的资源可能会被耗尽。&lt;/p&gt;
-&lt;p&gt;优化分关闭主动方和被动方。说优化之前，先介绍两个函数：&lt;code&gt;close&lt;/code&gt;​和&lt;code&gt;shutdown&lt;/code&gt;​。&lt;/p&gt;
-&lt;p&gt;​&lt;code&gt;close&lt;/code&gt;​是完全断开连接，调用该函数之后，既不能接收数据，也不能发送数据。在没有释放之前，这样的连接称之为孤儿连接。&lt;code&gt;shutdown&lt;/code&gt;​并没有完全断开连接，而是可选的有或没读写的能力，也就是说，调用之后，还可能有一定的能力接受或发送数据。在没有释放之前，这样的连接称之为半关闭连接。&lt;/p&gt;
-&lt;h4 id=&#34;fin_wait_1优化&#34;&gt;FIN_WAIT_1优化 &lt;a href=&#34;#fin_wait_1%e4%bc%98%e5%8c%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;​&lt;code&gt;FIN_WAIT_1&lt;/code&gt;​是指主动关闭反发送了&lt;code&gt;FIN&lt;/code&gt;​而没有收到&lt;code&gt;ACK&lt;/code&gt;​这种情况。这个时候&lt;code&gt;FIN&lt;/code&gt;​会不断尝试重发，这个时候设置&lt;code&gt;tcp_orphan_retries&lt;/code&gt;​会减轻这个症状，虽然名字有孤儿这两个字，不过对所有&lt;code&gt;FIN_WAIT_1&lt;/code&gt;​都适用的。超过&lt;code&gt;tcp_orphan_retries&lt;/code&gt;​的配置数，就会直接断开连接。正常情况之下配置这个参数就可以了。&lt;/p&gt;
-&lt;p&gt;不过网络充满了异常，有时间后&lt;code&gt;FIN&lt;/code&gt;​根本或者很难发送出去。为什么难发不出去？原因有二：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;缓存里面还有数据，数据是有序发送的，必须等数据发生完毕再发送&lt;code&gt;FIN&lt;/code&gt;​。&lt;/li&gt;
-&lt;li&gt;接受反的窗口大小为0，告诉你，不能发送了。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;此时，你只能狠下心，超出一定数量，就直接关闭了，参数是&lt;code&gt;tcp_max_orphans&lt;/code&gt;​。&lt;/p&gt;
-&lt;h4 id=&#34;fin_wait_2优化&#34;&gt;FIN_WAIT_2优化 &lt;a href=&#34;#fin_wait_2%e4%bc%98%e5%8c%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;​&lt;code&gt;FIN_WAIT_2&lt;/code&gt;​状态是等待被动关闭方的&lt;code&gt;FIN&lt;/code&gt;​。如果是&lt;code&gt;shutdown&lt;/code&gt;​进入的，表明它可能还是需要接受或者发送数据，属于正常的一直情况。如果是&lt;code&gt;close&lt;/code&gt;​进入的，那么这个状态不会持续太久，如果出现大量了，那估计有问题了，&lt;code&gt;tcp_fin_timeout&lt;/code&gt;​这个参数可以配置这个状态持续的时长，一般和2MSL一致。&lt;/p&gt;
-&lt;h4 id=&#34;time_wait优化&#34;&gt;TIME_WAIT优化 &lt;a href=&#34;#time_wait%e4%bc%98%e5%8c%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;终于到了TCP终止的过程涉及的一个不得不说的明星状态&amp;ndash;&lt;code&gt;TIME_WAIT&lt;/code&gt;​了，它的存活时间是2MSL，为什么是2MSL？因为这是报文在网络中存活的最大时间，这个时间在Linux上面默认是1分钟。&lt;/p&gt;
-&lt;p&gt;那么问题又来了，为什么要等2MSL？主要无非有两方面的原因：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;保证被动关闭的一方一定收到&lt;code&gt;ACK&lt;/code&gt;​，因为如果没收到&lt;code&gt;ACK&lt;/code&gt;​，被动关闭的一方会重发&lt;code&gt;FIN&lt;/code&gt;​。如果没有这个&lt;code&gt;TIME_WAIT&lt;/code&gt;​，那么怎么消耗这个&lt;code&gt;FIN&lt;/code&gt;​报文？它是不是可能又变傻了？&lt;/li&gt;
-&lt;li&gt;第二个就是为了避免重用这个连接，从而避免脏数据影响连接。虽然这个概率小，不过也不能排除这个可能。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;那么&lt;code&gt;TIME_WAIT&lt;/code&gt;​它有什么问题，让人那么害怕它？&lt;/p&gt;
-&lt;p&gt;无非也就是资源，一切都是资源。如果&lt;code&gt;TIME_WAIT&lt;/code&gt;​发生在服务端，那么它占用了这个连接资源。如果是发生在客户端，如果有大量的连接，那么将不能再发起连接，不过这种可能性并不大，所以主要问题还是要吹服务端的。&lt;/p&gt;
-&lt;p&gt;好了，既然知道了问题，那该如何解这个&lt;code&gt;TIME_WAIT&lt;/code&gt;​问题呢？&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;快速回收，不等2MSL就回收连接了。&lt;/p&gt;
-&lt;p&gt;使用的是&lt;code&gt;tcp_tw_recycle&lt;/code&gt;​这个参数，不过使用这个参数的前提是&lt;code&gt;tcp_timestamp&lt;/code&gt;​也开启的。但是这个听说这个方法不靠谱，如果是在多台局域网内，对外只有一个ip，那么是无法保证&lt;code&gt;tcp_timestamp&lt;/code&gt;​是严格递增的，这样会导致很多报文被认为是过期的报文而被丢弃掉。也因此在新版本的内核里已经去掉这个参数的配置。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;重用这个状态资源，不用等，1秒就重用了，不用等1分钟。&lt;/p&gt;
-&lt;p&gt;使用的是&lt;code&gt;tcp_tw_reuse&lt;/code&gt;​这个参数，不过使用这个参数的前提也是&lt;code&gt;tcp_timestamp&lt;/code&gt;​也开启的。需要注意的是这个和选项&lt;code&gt;SO_REUSEADDR&lt;/code&gt;​是有区别的。&lt;code&gt;tcp_tw_reuse&lt;/code&gt;​是内核参数，而&lt;code&gt;SO_REUSEADDR&lt;/code&gt;​是应用程序设置的TCP选项，意思是说，如果要监听的端口是处于&lt;code&gt;TIME_WAIT&lt;/code&gt;​状态，那么就是可以使用，否则就报错，报错一般是端口已经在使用之类的。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;限制&lt;code&gt;TIME_WAIT&lt;/code&gt;​数量&lt;/p&gt;
-&lt;p&gt;使用的是&lt;code&gt;tcp_max_tw_buckets&lt;/code&gt;​,意思是说，超过这个设置的&lt;code&gt;TIME_WAIT&lt;/code&gt;​数量时，就直接关闭连接，不让这个&lt;code&gt;TIME_WAIT&lt;/code&gt;​出现了。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;大杀器&lt;code&gt;SO_LINGER&lt;/code&gt;​​&lt;/p&gt;
-&lt;p&gt;它能提供异常终止的能力，设置调用&lt;code&gt;close&lt;/code&gt;​时，不发送&lt;code&gt;FIN&lt;/code&gt;​,直接发送&lt;code&gt;RST&lt;/code&gt;​，让客户端直接报错，&lt;code&gt;Connection reset by peer&lt;/code&gt;​。这样四次挥手什么的不会有，自然也就不会出现&lt;code&gt;TIME_WAIT&lt;/code&gt;​。不过这种方法过于粗暴，不美好，并不提倡。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;close_wait优化&#34;&gt;CLOSE_WAIT优化 &lt;a href=&#34;#close_wait%e4%bc%98%e5%8c%96&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;另外说一下这个&lt;code&gt;CLOSE_WAIT&lt;/code&gt;​状态，当服务器出现大量的&lt;code&gt;CLOSE_WAIT&lt;/code&gt;​，一般是认为你的应用程序出现问题了。&lt;code&gt;CLOSE_WAIT&lt;/code&gt;​是被动关闭的那一端收到了&lt;code&gt;FIN&lt;/code&gt;​然后&lt;code&gt;ACK&lt;/code&gt;​了，但是没有发送自己的&lt;code&gt;FIN&lt;/code&gt;​，一般是忘了调用&lt;code&gt;close&lt;/code&gt;​函数。但是，如果事情如果是那么简单，那就爽了。真实的情况，或者是你程序出现死循环了，死锁了，锁表了等等跟着复杂的情形。不过不要忘记，不管什么情况，那肯定是你运行在服务上程序出现了问题，你需要细心检查你的代码，看哪里出错了。&lt;/p&gt;
-&lt;h1 id=&#34;重传&#34;&gt;重传 &lt;a href=&#34;#%e9%87%8d%e4%bc%a0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;h4 id=&#34;超时重传&#34;&gt;超时重传 &lt;a href=&#34;#%e8%b6%85%e6%97%b6%e9%87%8d%e4%bc%a0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;超时重传是以时间驱动来重传的。假如发送方发送了12345这5个包给对方，对方收到了1245，而3这个包丢失了，按顺序的原则，回复最大收到的连续包，那么接受方只能&lt;code&gt;ACK&lt;/code&gt;​3，让发送发重发345。&lt;/p&gt;
-&lt;p&gt;好，重发就重发，可是发送方犯愁了，345，我是发送过了，我该什么时候重发呢？是丢包了呢，还是网络稍微有点延迟而已？这就是涉及一个专业的名词&lt;code&gt;RTT&lt;/code&gt;​，报文往返的时间。再根据这个&lt;code&gt;RTT&lt;/code&gt;​算出一个&lt;code&gt;RTO&lt;/code&gt;​，超时重发时间。&lt;code&gt;RTO&lt;/code&gt;​太大了，那么重传是效率太低，性能太差。如果&lt;code&gt;RTO&lt;/code&gt;​太小了，那么会加塞网络。&lt;/p&gt;
-&lt;p&gt;所以这个&lt;code&gt;RTT&lt;/code&gt;​怎么评估又是个难题，不可能几个&lt;code&gt;RTT&lt;/code&gt;​算一个平均值吧？所有为了算出这个&lt;code&gt;RTT&lt;/code&gt;​又安照统计学的方法进行采样。算出了&lt;code&gt;RTT&lt;/code&gt;​再算&lt;code&gt;RTO&lt;/code&gt;​又是一个难题，Linux的上有几个神奇的参数：&lt;code&gt;α = 0.125，β = 0.25， μ = 1，∂ = 4&lt;/code&gt;​，这几个参数不是计算出来的，而是在各种复杂的网络中做无数次试验调试出来的相对比较理想的值。&lt;/p&gt;
-&lt;h4 id=&#34;快速重传&#34;&gt;快速重传 &lt;a href=&#34;#%e5%bf%ab%e9%80%9f%e9%87%8d%e4%bc%a0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;超时重传是一时间的维度来进行重传的，如果在网络比较差的情况之下用超时重传没什么问题，当是如果网络情况是比较好的话，报文只是丢失了，那么你还等那么久，就不太合理了。所以又有了以数据驱动快速重传的算法。&lt;/p&gt;
-&lt;p&gt;快速重传的算法简单来说就是不等超时时间过期，而是发现收到三个连续&lt;code&gt;ACK&lt;/code&gt;​就马上启动重传。以超时重传是报文为例子：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;1报文收到&lt;code&gt;ACK&lt;/code&gt;​2，2报文收到&lt;code&gt;ACK&lt;/code&gt;​3&lt;/li&gt;
-&lt;li&gt;3报文丢失了&lt;/li&gt;
-&lt;li&gt;4报文收到&lt;code&gt;ACK&lt;/code&gt;​3，5报文收到&lt;code&gt;ACK&lt;/code&gt;​3&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在超时的时间只能，连续收到了3个一样的&lt;code&gt;ACK&lt;/code&gt;​报文，所以确认只是网络丢包了而已，没必要等到&lt;code&gt;RTO&lt;/code&gt;​超时，现在就可以可以重传了。&lt;/p&gt;
-&lt;p&gt;不过现在又有一个问题了，重传345报文呢，还是重传3报文呢？&lt;/p&gt;
-&lt;h4 id=&#34;重传方式&#34;&gt;重传方式 &lt;a href=&#34;#%e9%87%8d%e4%bc%a0%e6%96%b9%e5%bc%8f&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;​&lt;code&gt;SACK(Selective ACK)&lt;/code&gt;​选择性&lt;code&gt;ACK&lt;/code&gt;​。回到上面的问题，显然只需要发送丢失的3报文是合适的。这就是&lt;code&gt;SACK&lt;/code&gt;​，在&lt;code&gt;ACK&lt;/code&gt;​里面不再是回复单独的一个报文，而是包括SACK，比如上面的回复：&lt;code&gt;ACK 3, SACK4-5&lt;/code&gt;​。&lt;/p&gt;
-&lt;p&gt;​&lt;code&gt;D-SACK(Duplicate Selective ACK)&lt;/code&gt;​，&lt;code&gt;D-SACK&lt;/code&gt;​是&lt;code&gt;SACK&lt;/code&gt;​是扩展，来处理重复的。比如：发送方连续发送的两个报文没有收到&lt;code&gt;ACK&lt;/code&gt;​，后面发送的报文却收到了，回复发送方你不要发重复过来了，我已经收到你的报文了。&lt;/p&gt;
-&lt;h1 id=&#34;流量控制&#34;&gt;流量控制 &lt;a href=&#34;#%e6%b5%81%e9%87%8f%e6%8e%a7%e5%88%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;h3 id=&#34;滑动窗口&#34;&gt;滑动窗口 &lt;a href=&#34;#%e6%bb%91%e5%8a%a8%e7%aa%97%e5%8f%a3&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在发送方和接收方各自己维护一个窗口，发送方的那个称之为&lt;code&gt;Offered Window&lt;/code&gt;​，也称为发送窗口，接收方的那个就叫为&lt;code&gt;Received Window&lt;/code&gt;​，也称之为接收窗口。&lt;/p&gt;
-&lt;p&gt;在发送窗口的数据从左到右，数据划分为：发送已接收到&lt;code&gt;ACK&lt;/code&gt;​的，发送没收到&lt;code&gt;ACK&lt;/code&gt;​的，可以发送的，不可以发送的。当发送没有收到&lt;code&gt;ACK&lt;/code&gt;​的那部分收到了&lt;code&gt;ACK&lt;/code&gt;​后，这部分数据就会变成，发送已接收到&lt;code&gt;ACK&lt;/code&gt;​的，可以发送的那部分数据就发送，变成了发送没收到&lt;code&gt;ACK&lt;/code&gt;​的，不可发送的部分分数据变味可以发送的，看起来就像是一个窗口像右移动那个样子。所以称之为滑动窗口。说的不是很清楚，上图就清晰了：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-sliding-window-snd.png&#34; alt=&#34;tcp-send-wnd&#34;&gt;&lt;/p&gt;
-&lt;p&gt;同样接受窗口也类似，直接上图领悟。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-sliding-window-rcv.png&#34; alt=&#34;tcp-rcev-wnd&#34;&gt;&lt;/p&gt;
-&lt;p&gt;滑动窗口进行流量控制就是通过&lt;code&gt;ACK&lt;/code&gt;​告知对方，自己的窗口大小，从而进行速率控制的。滑动窗口的大小可以通过&lt;code&gt;SO_RECVBUF SO_SENDBUF&lt;/code&gt;​来设置，不过这个值的大小不一定完全相等。&lt;/p&gt;
-&lt;p&gt;那么又来问题了，如果告知的窗口大小是0，那太什么办？发送方告知窗口大小为0，窗口的大小&lt;code&gt;ACK&lt;/code&gt;​告知的，既然窗口为0了，让我不能发送报文了，那么我怎么知道你的窗口大小什么时候不为0？&lt;/p&gt;
-&lt;p&gt;不要慌，TCP有个&lt;code&gt;Zero Window probe&lt;/code&gt;​的东西，就是定时发送这样一个东西给对方，让对方告知窗口的大小。一般是最多发送3次，一次大概间隔为30到60s，如果3次发送的窗口还是0，那么就可以咔嚓掉这个链接了。&lt;/p&gt;
-&lt;h5 id=&#34;糊涂窗口综合征&#34;&gt;糊涂窗口综合征 &lt;a href=&#34;#%e7%b3%8a%e6%b6%82%e7%aa%97%e5%8f%a3%e7%bb%bc%e5%90%88%e5%be%81&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h5&gt;&lt;p&gt;如果建立连接的双方，发送方产生的效率很慢，又或者是接收方消耗的速率及其慢，这样导致一个问题就是，接受方每次回复很小的窗口，然后发送方每次都发送很少的数据，tcp报文的头部是很大的，而你每次都发送那么一丢丢，是非常不经济的。这种情况被称之为糊涂窗口综合征。&lt;/p&gt;
-&lt;p&gt;解决这个办法也是挺简单的。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;​&lt;code&gt;Nagle算法&lt;/code&gt;​&lt;/p&gt;
-&lt;p&gt;我不发送小数据，等数据量足够大了才一起发送，又或者超出了一点时间才发送，就可以了，这个办法称为&lt;code&gt;Nagle算法&lt;/code&gt;​。Linux是默认打开这个算法的，不过这个办法有弊端，如果在一个实时的系统里面，一个请求经过了好多个服务，你累计起来就会超时。所以实时系统一般要关闭它，设置的选项是: &lt;code&gt;TCP_NODELAY&lt;/code&gt;​。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;​&lt;code&gt;Cork&lt;/code&gt;​算法&lt;/p&gt;
-&lt;p&gt;这个算法就是用点小技巧造假，我的接受窗口比较小了，那我不告诉你我真实的窗口大小，而是告诉你0，等到窗口大一点了，我才告诉你实际上的窗口。注意，这个在实时系统上也是不行的。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;延迟确认&lt;/p&gt;
-&lt;p&gt;延迟确认就是接受到报文，不确认，等到窗口一定大小了，再进行确认。不过这个有一个问题，可能会引起报文重发。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;阻塞控制&#34;&gt;阻塞控制 &lt;a href=&#34;#%e9%98%bb%e5%a1%9e%e6%8e%a7%e5%88%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;为什么要进行流量控制？网络的环境是复杂多变的，时而畅通，时而拥堵，你在网络畅通的时候没有理由不加快传输是速率，同样，在拥堵时，没道理一个劲的发包呗了。用来进行流量的那个东西叫做滑动窗口。&lt;/p&gt;
-&lt;p&gt;为什么既然有流量控制，那么还要有阻塞控制？流量控制是针对通讯双方的窗口来说的，并没有考虑到网络的整体环境，网路环境如人心那样复杂多变，不可能无脑的一直塞数据吧？而阻塞控制考虑的是整网络环境。&lt;/p&gt;
-&lt;p&gt;说到阻塞控制，要引入一个&lt;code&gt;Congestion Window, cwnd&lt;/code&gt;​,称之为阻塞窗口。这个阻塞窗口和发送窗口的关系是，真实的发送窗口为这两个窗口的最小值。知道了为什么设置&lt;code&gt;SO_SENDBUF&lt;/code&gt;​后，抓包显示的窗口值不一定是这个的原因了吧……&lt;/p&gt;
-&lt;p&gt;而这个&lt;code&gt;cwnd&lt;/code&gt;​的大小并非固定值，而是根据网络状况而调节，网络好的时候，那就搞变大一点，网络差的时候，就变的小一点。&lt;/p&gt;
-&lt;p&gt;那么经典的阻塞控制算法是什么呢？用比较粗俗的话来描述：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;慢启动，去探一下路，慢慢一丢丢的增加发送速率。&lt;/p&gt;
-&lt;p&gt;慢启动并非是一下子就提高发送的速率，而速率增加是线性夹杂着指数增长的，当&lt;code&gt;ACK&lt;/code&gt;​​确认的速率是很快的时候，慢启动是接近指数增长的。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;阻塞避免，差不多了，再提高速率可能就超速&lt;/p&gt;
-&lt;p&gt;阻塞避免就是发送速率达到了自己估算的一个阈值，超过这个阈值可能就会出现网络丢包的问题的，当时自己又不确认这个阈值是否就是最高值。所以这个时候的网络增长速率缓慢的线性的&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;阻塞发生，超速了&lt;/p&gt;
-&lt;p&gt;什么时候发送阻塞呢？那就是触发了重传机制。按上面所言，重传有两种方式，一种是超时重传，另外一种便是快速重传。如果发生了超时重传，那么证明车速太快了，网络情况太差了。所以有变成了从慢启动开始。如果发生了快速重传，那么还好，只是开车太快了而已，其实网络还好&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;快速恢复，车速太快，调整一下。&lt;/p&gt;
-&lt;p&gt;快速恢复就是把&lt;code&gt;cwnd&lt;/code&gt;​变小点，把丢失的报文补上，随后进入阻塞避免算法，速率又缓慢增长。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;其实所那么多废话，还不如上一图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/tcp/congress-algo.png&#34; alt=&#34;congress-algo&#34;&gt;&lt;/p&gt;
-&lt;p&gt;‍&lt;/p&gt;
-&lt;p&gt;好像也不怎么复杂？千万不要有这种想法，而这只是其中经典的算法而已，只是阻塞控制描述的很少一部分。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/tcp/congress-control.png&#34; alt=&#34;congress-control&#34;&gt;&lt;/p&gt;
-&lt;p&gt;‍&lt;/p&gt;
-&lt;h1 id=&#34;小结&#34;&gt;小结 &lt;a href=&#34;#%e5%b0%8f%e7%bb%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;先肝到此。&lt;/p&gt;
-&lt;p&gt;2016年曾写过一篇&lt;a href=&#34;https://luoguochun.cn/post/2016-09-23-tcp-fuck/&#34;&gt;tcp协议小结&lt;/a&gt;，事隔多年，又来复习复习。&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            TCP是什么 TCP是面向连接的，可靠的，基于字节流的传输协议。 面向连接，指的是一对一的，不是一对多。 可靠性，指的是不管网络环境多么的复杂多变
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -237,302 +45,14 @@
       <pubDate>Fri, 23 Sep 2016 21:20:10 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2016-09-23-tcp-fuck/</guid>
-      <description>&lt;p&gt;tcp协议是一个比较复杂的协议，对tcp协议深入理解的，真的非常少非常少；对tcp协议误理解或理解片面的，真的非常多非常多。当然这也包括自己在内，当然也可能包括这篇小结在内。
-P.S.: 《TCP/IP详解卷1:协议》是介绍TCP/IP协议栈最经典的著作(神级已故人物&lt;a href=&#34;http://baike.baidu.com/link?url=5f_wcdexs92JUD0PxwyKhGPSi6a1sOHhrKWHUewqy5-0RQJtyAfHtCDLJ5L7gOaXr6efGrfxv3FR9C2Xkb5jda&#34;&gt;W.Richard Stevens&lt;/a&gt;经典书籍之一)，然而个人觉得这个“详解”对于tcp的介绍有点简略或者理解起来印象非深，读了一次，一次又一次，还是概念模糊。当然这也与中文译本烂得一塌糊涂有关。同时这本经典书籍也有了它的更新版，不同的是作者已经不是原来的神级人物，相同的是译文继续烂。&lt;/p&gt;
-&lt;h2 id=&#34;tcp协议头&#34;&gt;tcp协议头 &lt;a href=&#34;#tcp%e5%8d%8f%e8%ae%ae%e5%a4%b4&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-header2.png&#34; alt=&#34;tcp协议头&#34;&gt;
-tcp基本协议头占用20个字节，协议中&lt;code&gt;Header Length(4bits)&lt;/code&gt;中标明协议头的长度，含义是多少个32bit数据，该字段占用4位，所有整个tcp头最多可以占用60字节。当tcp建立时，主机会生成一个初始的序列号(ISN, Initial Sequence Number)，在tcpdump程序抓取的报文中可以看到该初始Sequence，Sequence的生成方式有一定的算法，一般tcp分析很少关注。如果tcpdump查看报文，可以发现，第一个&lt;code&gt;SYN&lt;/code&gt;包收到&lt;code&gt;ACK&lt;/code&gt;后，后续的SEQ都变成了ISN的偏移量。如果是用大鲨鱼wireshark查看报文，则可以发现，seq总是从0开始，并提示这个值是相对值，大鲨鱼已经处理好这些细节。如：
-&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-tcpdump-isn.png&#34; alt=&#34;tcpdump seq&#34;&gt;
-&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-wireshark-isn.png&#34; alt=&#34;wireshark seq&#34;&gt;&lt;/p&gt;
-&lt;p&gt;tcp报文&lt;code&gt;SYN ACK&lt;/code&gt;的计算如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;     A -&amp;gt; B SYN J ACK K LEN L
-     B -&amp;gt; A SYN K ACK J+L LEN M
-     A -&amp;gt; B SYN J+L ACK K+M
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;需要注意到的是，注意，对于&lt;code&gt;DATA LEN&lt;/code&gt;为0的，发送的&lt;code&gt;SYN&lt;/code&gt;包和&lt;code&gt;FIN&lt;/code&gt;包，需要消耗一个序号。为了提高传送的效率，&lt;code&gt;ACK&lt;/code&gt;是支持累计的，也就是说没必要对每个&lt;code&gt;SYN&lt;/code&gt;进行&lt;code&gt;ACK&lt;/code&gt;。如：发送端连续发送3个报文，那么接收端收到3个报文后，可以直接应答一个&lt;code&gt;ACK&lt;/code&gt;。&lt;/p&gt;
-&lt;h3 id=&#34;tcp标志位&#34;&gt;tcp标志位 &lt;a href=&#34;#tcp%e6%a0%87%e5%bf%97%e4%bd%8d&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;CWR&lt;/strong&gt;(Congestion Window Reduced) &amp;amp; &lt;strong&gt;ECN&lt;/strong&gt;（ECN-Echo, Explicit Congestion Notification）
-&lt;strong&gt;CWR&lt;/strong&gt; 阻塞窗口已减少，意思是告诉对端我已经按照你的要求，进行阻塞窗口减少了，并启动阻塞算法来控制我的发包速度； &lt;strong&gt;ECN&lt;/strong&gt; 显式阻塞窗口通知，意思通知发送方，我接收的报文出现了阻塞，请控制发包速度。也就是说，&lt;strong&gt;CWR&lt;/strong&gt; 和 &lt;strong&gt;ECN&lt;/strong&gt; 必须配合使用，&lt;strong&gt;CWR&lt;/strong&gt; 是收到 &lt;strong&gt;ECN&lt;/strong&gt; 的应答。此外，在tcp三次握手时，这两个标志表明tcp端是否支持&lt;strong&gt;ECN&lt;/strong&gt;。如果建立连接一方支持，则在发送的&lt;code&gt;SYN&lt;/code&gt;包，将 &lt;strong&gt;ECN&lt;/strong&gt; 标志置为1，如果服务端也支持，则在&lt;code&gt;ACK&lt;/code&gt;包只设置&lt;strong&gt;ECN&lt;/strong&gt;。缘由：tcp建立连接后，报文经过经过路由或网关等网络设备后，在路由器或网关等网络设备出现阻塞时，路由器或网关等设备设置&lt;strong&gt;IP&lt;/strong&gt;层的某个标志表明出现阻塞，这样接收可以明确知道报文出现了阻塞。然而，需要知道阻塞进行阻塞控制的是报文发送方而非接收方。所以接收方会在&lt;code&gt;ACK&lt;/code&gt;报文中设置&lt;strong&gt;ECN&lt;/strong&gt;标志，同时发送方在&lt;code&gt;ACK&lt;/code&gt;中设置&lt;strong&gt;CWR&lt;/strong&gt;标志，表明已经收到&lt;strong&gt;ECN&lt;/strong&gt;，并进行了减少阻塞窗口操作和启用阻塞算法。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;URG&lt;/strong&gt;(Urgent)
-这就是传说中的带外数据。因为tcp是没有消息边界的，假如有一种情况，你已经发送了一些数据，但是此时，你要发送一些数据优先处理，就可以设置这些标志。同时如果设置了这个标志，紧急指针(报文头中, &lt;code&gt;Urgent Pointer(16Bit)&lt;/code&gt;部分)也会设置为相应的偏移。当接受方收到&lt;strong&gt;URG&lt;/strong&gt;数据时，不缓存在接收窗口，直接往上传给上层。具体的使用带外数据大体的方法，就是，调用&lt;code&gt;send&lt;/code&gt;和&lt;code&gt;recv&lt;/code&gt;是要加上&lt;code&gt;MSG_OOB&lt;/code&gt;参数。同时接收方要处理&lt;code&gt;SIGURG&lt;/code&gt;信号。使用&lt;code&gt;MSG_OOB&lt;/code&gt;是需要注意：&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ol&gt;
-&lt;li&gt;紧急指针只能标示一个字节数据，所以如果发送带外数据多于一个字节，其他数据将当成是正常的数据。&lt;/li&gt;
-&lt;li&gt;接收端需要调用&lt;code&gt;fcntl(sockfd,F_SETOWN, getpid());&lt;/code&gt;，对socket描述符号进行宿主设置，否则无法捕获&lt;code&gt;SIGURG&lt;/code&gt;信号。&lt;/li&gt;
-&lt;li&gt;如果设置选项&lt;code&gt;SO_OOBINLINE&lt;/code&gt;，那么将不能使用&lt;code&gt;MSG_OOB&lt;/code&gt;参数接收的报文(调用报错)，紧急指针的字符将被正常读出来，如果需要判断是否紧急数据，则需要提前判断：&lt;code&gt;ioctl (fd,SIOCATMARK,&amp;amp;flag);if (flag) {read(sockfd,&amp;amp;ch,1);&lt;/code&gt;。
-不过，据说这个带外数据在实际上，用得很少。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;PSH&lt;/strong&gt;（Push）
-tcp报文的流动，先是发送方塞进发送方的缓存再发送；同样接收方是先塞到接收方的缓存再投递到应用。&lt;strong&gt;PSH&lt;/strong&gt;标志的意思是，无论接收或发送方，都不用缓存报文，直接接收投递给上层应用或直接发送。&lt;strong&gt;PSH&lt;/strong&gt;标志可以提供报文发送的实时性。如果设置了&lt;code&gt;SO_NODELAY&lt;/code&gt;选项(也就是关闭&lt;code&gt;Nagle&lt;/code&gt;算法)，可以强制设置这个标志。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;SYN&lt;/strong&gt;(Synchronize), &lt;strong&gt;ACK&lt;/strong&gt;(Acknowledgement), &lt;strong&gt;FIN&lt;/strong&gt;（Finish）和 &lt;strong&gt;RST&lt;/strong&gt;(Reset)
-这几个标记比较容易理解。&lt;strong&gt;SYN&lt;/strong&gt;, Synchronize sequence numbers。&lt;strong&gt;ACK&lt;/strong&gt;, &lt;code&gt;Acknowledgement Number&lt;/code&gt;有效，应答标记。&lt;strong&gt;FIN&lt;/strong&gt;,发送端结束发送。&lt;strong&gt;RST&lt;/strong&gt;连接不可达。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;tcp-选项不完全&#34;&gt;tcp 选项(不完全) &lt;a href=&#34;#tcp-%e9%80%89%e9%a1%b9%e4%b8%8d%e5%ae%8c%e5%85%a8&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;tcp 除了20字节基本数据外，后面还包括了最多40个字节的tcp的选项。tcp选项一般存储为&lt;code&gt;kind/type(1byte) length(1byte) value&lt;/code&gt;的格式式，不同的选项具体格式有所不同。这里简单罗列一些常见的tcp选项并做简单介绍。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;MSS&lt;/strong&gt;(Maximum Segment Size)
-tcp报文最大传输长读，tcp在三次握手建立阶段，在&lt;code&gt;SYN&lt;/code&gt;报文交互该值，注意的是，这个数值并非协商出来的，而是由网络设备属性得出。&lt;strong&gt;MSS&lt;/strong&gt;一个常见的值是1460(&lt;strong&gt;MTU&lt;/strong&gt;1500 - &lt;strong&gt;IP&lt;/strong&gt;头部 - &lt;strong&gt;TCP&lt;/strong&gt;头部)。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;SACK&lt;/strong&gt;(Selective Acknowledgements)
-选择ACK，用于处理segment不连续的情况，这样可以减少报文重传。比如： A 向B发送4个segment，B收到了1,2,4个segment，网络丢失了3这个segment。B收到1,2segment后，回应&lt;code&gt;ACK&lt;/code&gt; 3，表示1,2这两个&lt;code&gt;ACK&lt;/code&gt;已经收到，同时在选项字段里面，包括4这个段，表示4这个segment也收到了。于是A就重传3这个segment，不必重传4这个segment。B收到3这个segment后，直接&lt;code&gt;ACK&lt;/code&gt; 5，表明3,4都收到了。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;WS&lt;/strong&gt;(Window Scale)
-在tcp头部，&lt;code&gt;Window Size(16Bit)&lt;/code&gt;表面接收窗口大小，但是对于现代网络而言，这个值太小了。所以tcp通过选项来增加这个窗口的值。&lt;strong&gt;WS&lt;/strong&gt;值的范围0～14，表示&lt;code&gt;Window Size(16Bit)&lt;/code&gt;数值先向左移动的位数。这样实际上窗口的大小可达31位。在程序网络设计时，有个&lt;code&gt;SO_RECVBUF&lt;/code&gt;，表示设置接收缓冲的大小，然而需要注意的是，这个值和接收窗口的大小不完全相等，但是这个数值和接收窗口存在一定的关系，在内核配置的范围内，大小比较接近。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;TS&lt;/strong&gt;(Timestamps)
-Timestamps在tcp选项中包括两个32位的timestamp: &lt;strong&gt;TSval&lt;/strong&gt;(Timestamp value)和&lt;strong&gt;TSecr&lt;/strong&gt;(Timestamp Echo Reply)。如果设置了&lt;strong&gt;TS&lt;/strong&gt;这个选项，发送方发送时，将当前时间填入&lt;strong&gt;TSval&lt;/strong&gt;，接收方回应时，将发送方的&lt;strong&gt;TSval&lt;/strong&gt;填入&lt;strong&gt;TSecr&lt;/strong&gt;即可(注意发送或接收都有设置&lt;strong&gt;TSval&lt;/strong&gt;和&lt;strong&gt;TSecr&lt;/strong&gt; )。&lt;strong&gt;TS&lt;/strong&gt; 选项的存在有两个重要作用：一是可以更加精确计算RTT(Round-Trip-Time)，只需要在回应报文里面用当前时间减去&lt;strong&gt;TSecr&lt;/strong&gt;即可；二是PAWS(Protection Against Wrapped Sequence number, 防止sequence回绕)，什么意思呢？比如说，发送大量的数据：0-10G，假设segment比较大为1G而且sequence比较小为5G，接收端接收1,3,4,5数据段正常接收，收到的发送时间分别1,3,4,5，第2 segment丢失了，由于&lt;strong&gt;SACK&lt;/strong&gt;，导致2被重传，在接收6时，sequence由于回绕变成了1，这时收到的发送时间为6，然后又收到迷途的2，seq为2，发送时间为2，这个时间比6小，是不合法的，tcp直接丢弃这个迷途的报文。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;UTO&lt;/strong&gt;(User Timeout)
-&lt;strong&gt;UTO&lt;/strong&gt;指的是发送&lt;code&gt;SYN&lt;/code&gt;，收到&lt;code&gt;ACK&lt;/code&gt;的超时时间，如果在&lt;strong&gt;UTO&lt;/strong&gt;内没有收到，则认为对端已挂。
-在网络程序设计的时候，为了探测对端是否存活，经常涉及心跳报文，通过tcp的keepalive和&lt;strong&gt;UTO&lt;/strong&gt;机制也可以实现，两者的区别是，前者可以通过心跳报文实时知道对端是否存活，二后者只有等待下次调用发送或接收函数才可以断定：&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;SO_KEEPALIVE&lt;/code&gt;相关选项
-设置&lt;code&gt;SO_KEEPALIVE&lt;/code&gt; 选项，打开keepalive机制。
-设置&lt;code&gt;TCP_KEEPIDLE&lt;/code&gt; 选项，空闲时间间隔启动keepalive机制，默认为2小时。
-设置&lt;code&gt;TCP_KEEPINTVL&lt;/code&gt;选项，keepalive机制启动后，每隔多长时间发送一个keepalive报文。默认为75秒。
-设置&lt;code&gt;TCP_KEEPCNT&lt;/code&gt;选项，设置发送多少个keepalive数据包都没有正常响应，则断定对端已经崩溃。默认为9。
-由于tcp有超时重传机制，如果对于&lt;code&gt;ACK&lt;/code&gt;丢失的情况，keepalive机制将有可能失效。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;TCP_USER_TIMEOUT&lt;/code&gt;相关选项
-&lt;code&gt;TCP_USER_TIMEOUT&lt;/code&gt;选项的函义是多久没有收到&lt;code&gt;ACK&lt;/code&gt;则认为对端已经挂了。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;配合&lt;code&gt;SO_KEEPALIVE&lt;/code&gt;和&lt;code&gt;TCP_USER_TIMEOUT&lt;/code&gt;选项，可以利用tcp机制实现探测对端存活。&lt;/p&gt;
-&lt;h2 id=&#34;tcp-建立和终止&#34;&gt;tcp 建立和终止 &lt;a href=&#34;#tcp-%e5%bb%ba%e7%ab%8b%e5%92%8c%e7%bb%88%e6%ad%a2&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;正常情况下，tcp的建立需要进行3次握手，tcp断开需要进行4次挥手。抓包看下建立连接和断开过程，通过抓取22端口报文，用telnent远程连接22端口测试，测试命令如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    heidong@HEIDONGVM:~$ sudo tcpdump -i eth0 port 22 -s 0 -w tcpdump-est-fin.cap
-    
-    heidong@HEIDONGVM:~$ telnet 192.168.1.101 22
-    Trying 192.168.1.101...
-    Connected to 192.168.1.101.
-    Escape character is &#39;^]&#39;.
-    SSH-2.0-OpenSSH_6.1
-   ^]
-   
-    telnet&amp;gt; quit
-    Connection closed.
-    heidong@HEIDONGVM:~$
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-tcpdump-est-fin.png&#34; alt=&#34;wireshark tcp 报文&#34;&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;TCP3次握手的过程是帧1到3&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;第1帧，发送SYN J:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;   36600→22 [SYN] Seq=0 Win=29200 Len=0 MSS=1460 SACK_PERM=1 TSval=1488865 TSecr=0 WS=128
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;从主机10.0.2.15:36600 -&amp;gt; 192.168.1.101:22报文，&lt;code&gt;MSS=1460&lt;/code&gt;， &lt;code&gt;Win=29200&lt;/code&gt;，由于后面有&lt;code&gt;WS=128&lt;/code&gt;选项，所以&lt;code&gt;Window=29200*128&lt;/code&gt;。&lt;code&gt;SACK_PERM=1&lt;/code&gt;表明10.0.2.15这台主机支持 &lt;strong&gt;SACK&lt;/strong&gt;。&lt;code&gt;TSval&lt;/code&gt;和&lt;code&gt;TSecr&lt;/code&gt;为 &lt;strong&gt;TS&lt;/strong&gt;的两个数值。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;第2帧，发送SYN K， ACK J+1:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  22→36600 [SYN, ACK] Seq=0 Ack=1 Win=65535 Len=0 MSS=1460
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;从主机192.168.1.101:22 -&amp;gt; 10.0.2.15:36600报文，&lt;code&gt;SYN&lt;/code&gt;报文将消耗一个字节，所以这里&lt;code&gt;ACK&lt;/code&gt;为1。192.168.1.101这太主机的&lt;code&gt;MSS=1460&lt;/code&gt;, &lt;code&gt;win=65535&lt;/code&gt;没有&lt;strong&gt;WS&lt;/strong&gt;。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;第3帧，发送ACK K+1:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  36600→22 [ACK] Seq=1 Ack=1 Win=29200 Len=0 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这是建立TCP连接的第3次握手，是主机10.0.2.15对第二帧的应答，这时&lt;code&gt;win=29200&lt;/code&gt;，意思是，接收窗口的大小。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;当这3次交互完成后，连接真正建立，就可以接收和发送数据了。&lt;/p&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;TCP终止连接的4次挥手过程是帧6到9&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;第6帧，发送FIN J, ACK K:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  36600→22 [FIN, ACK] Seq=1 Ack=22 Win=29200 Len=0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;主机10.0.2.15：36600主动关闭连接，发送&lt;code&gt;FIN&lt;/code&gt;，和上个报文的&lt;code&gt;ACK&lt;/code&gt;，这是第一次交换。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;第7帧，发送ACK J+1:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;   22→36600 [ACK] Seq=22 Ack=2 Win=65535 Len=0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;主机192.168.1.101:22，回应第6帧&lt;code&gt;FIN&lt;/code&gt;。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;第8帧，FIN K, ACK J+1:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;   22→36600 [FIN, ACK] Seq=22 Ack=2 Win=65535 Len=0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;主机192.168.1.101:22关闭socket，发送&lt;code&gt;FIN&lt;/code&gt;。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;第9帧，ACK K+1:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;   36600→22 [ACK] Seq=2 Ack=23 Win=29200 Len=0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;主机10.0.2.15:36600，回应第5帧&lt;code&gt;FIN&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;至此，tcp进行了正常的关闭，10.0.2.15：36600进入了&lt;code&gt;TIME_WAIT&lt;/code&gt;状态。此次交互是非常理想的4次挥手过程，现实中，4次挥手的每一次交互的过程中都有可能携带额外的数据。
-另外，tcp在结束连接时，例如它断开发送能力时，却依然希望能够接收数据。这属于tcp的半关闭功能。在程序实现时，不是调用&lt;code&gt;close&lt;/code&gt;函数，而是调用&lt;code&gt;shutdown&lt;/code&gt;函数，&lt;code&gt;shutdown&lt;/code&gt;函数有个参数指明怎么关闭连接。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;异常情况&#34;&gt;异常情况 &lt;a href=&#34;#%e5%bc%82%e5%b8%b8%e6%83%85%e5%86%b5&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;建立连接异常
-1.1 建立连接端口不存在
-如果对端的端口不存在，那么在报文中回应&lt;code&gt;RST&lt;/code&gt;标志，表示连接不可达。事实上发送端在需要重复一次&lt;code&gt;SYN&lt;/code&gt;报文，对端才会响应&lt;code&gt;RST&lt;/code&gt;。如:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; heidong@HEIDONGVM:~$ telnet 192.168.1.101 9900
- Trying 192.168.1.101...
- telnet: Unable to connect to remote host: Connection refused
- heidong@HEIDONGVM:~$ 
-
- heidong@HEIDONGVM:~$ sudo tcpdump -i eth0 host 192.168.1.101
- [sudo] password for heidong: 
- tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
- listening on eth0, link-type EN10MB (Ethernet), capture size 65535 bytes
- 21:19:36.424426 IP 10.0.2.15.52519 &amp;gt; 192.168.1.101.9900: Flags [S], seq 4012293140, win 29200, options [mss 1460,sackOK,TS val 5302548 ecr 0,nop,wscale 7], length 0
- 21:19:37.424498 IP 10.0.2.15.52519 &amp;gt; 192.168.1.101.9900: Flags [S], seq 4012293140, win 29200, options [mss 1460,sackOK,TS val 5302798 ecr 0,nop,wscale 7], length 0
- 21:19:37.516340 IP 192.168.1.101.9900 &amp;gt; 10.0.2.15.52519: Flags [R.], seq 0, ack 4012293141, win 0, length 0
- ^C
- 3 packets captured
- 3 packets received by filter
- 0 packets dropped by kernel
- heidong@HEIDONGVM:~$ 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;1.2 建立连接主机不存在
-如果连接的主机不存在，那么tcp 会重发报文&lt;code&gt;SYN&lt;/code&gt;。重发的次数在内核参数了&lt;code&gt;net.ipv4.tcp_syn_retries&lt;/code&gt;配置，如:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    heidong@HEIDONGVM:~$ cat /proc/sys/net/ipv4/tcp_syn_retries 
-    6
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;重连重试的是时间分别是。2^X-1秒。如:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    heidong@HEIDONGVM:~$ telnet 192.168.1.101 9900
-    Trying 192.168.1.101...
-    telnet: Unable to connect to remote host: Connection refused
-    heidong@HEIDONGVM:~$ telnet 192.168.1.156 9900
-    Trying 192.168.1.156...
-    telnet: Unable to connect to remote host: Connection timed out
-    heidong@HEIDONGVM:~$
-
-    heidong@HEIDONGVM:~$ sudo tcpdump -i eth0 host 192.168.1.156
-    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
-    listening on eth0, link-type EN10MB (Ethernet), capture size 65535 bytes
-    21:39:58.109141 IP 10.0.2.15.38610 &amp;gt; 192.168.1.156.9900: Flags [S], seq 1424720904, win 29200, options [mss 1460,sackOK,TS val 5607969 ecr 0,nop,wscale 7], length 0
-    21:39:59.109694 IP 10.0.2.15.38610 &amp;gt; 192.168.1.156.9900: Flags [S], seq 1424720904, win 29200, options [mss 1460,sackOK,TS val 5608219 ecr 0,nop,wscale 7], length 0
-    21:40:01.112512 IP 10.0.2.15.38610 &amp;gt; 192.168.1.156.9900: Flags [S], seq 1424720904, win 29200, options [mss 1460,sackOK,TS val 5608720 ecr 0,nop,wscale 7], length 0
-    21:40:05.119962 IP 10.0.2.15.38610 &amp;gt; 192.168.1.156.9900: Flags [S], seq 1424720904, win 29200, options [mss 1460,sackOK,TS val 5609722 ecr 0,nop,wscale 7], length 0
-    21:40:13.146103 IP 10.0.2.15.38610 &amp;gt; 192.168.1.156.9900: Flags [S], seq 1424720904, win 29200, options [mss 1460,sackOK,TS val 5611728 ecr 0,nop,wscale 7], length 0
-    21:40:29.176601 IP 10.0.2.15.38610 &amp;gt; 192.168.1.156.9900: Flags [S], seq 1424720904, win 29200, options [mss 1460,sackOK,TS val 5615736 ecr 0,nop,wscale 7], length 0
-    21:41:01.208154 IP 10.0.2.15.38610 &amp;gt; 192.168.1.156.9900: Flags [S], seq 1424720904, win 29200, options [mss 1460,sackOK,TS val 5623744 ecr 0,nop,wscale 7], length 0
-    ^C
-    7 packets captured
-    7 packets received by filter
-    0 packets dropped by kernel
-    heidong@HEIDONGVM:~$ 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;断开连接异常
-对于没有正常收到&lt;code&gt;FIN&lt;/code&gt;异常终止连接的情况，tcp回应&lt;code&gt;RST&lt;/code&gt;。
-另外，&lt;code&gt;SO_LINGER&lt;/code&gt;选项提供异常终止的能力：
-默认的情况下，使用&lt;code&gt;close&lt;/code&gt;函数关闭一个连接，tcp默认的行为是，1) 如果发送缓冲没有数据，发送&lt;code&gt;FIN&lt;/code&gt;并直接返回 2) 如果缓冲存在数据，tcp将尽力把数据发送出去，然后发送&lt;code&gt;FIN&lt;/code&gt;并返回。&lt;code&gt;SO_LINGER&lt;/code&gt;选项可以改变这默认行为，相关数据结构&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; struct linger {
-     int l_onoff; /* 0=off, nozero=on */
-     int l_linger; /* linger time, POSIX specifies units as seconds*/
- }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;l_onoff&lt;/code&gt; = 0，&lt;code&gt;l_linger&lt;/code&gt;被忽略，同默认行为&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;l_onoff&lt;/code&gt; 非0，&lt;code&gt;l_linger&lt;/code&gt;为0，&lt;code&gt;close&lt;/code&gt;清空发送缓冲，并发送&lt;code&gt;RST&lt;/code&gt;，然后返回，这中情况下，可以避免&lt;code&gt;TIME_WAIT&lt;/code&gt;状态的产生。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;l_onoff&lt;/code&gt;非0，&lt;code&gt;l_linger&lt;/code&gt;大于0，&lt;code&gt;close&lt;/code&gt;将使内核推延一段时间。如果缓冲有数据，进程将进入睡眠状态，直到数据发送完毕并收到对方的&lt;code&gt;ACK&lt;/code&gt;或者滞留超时(&lt;code&gt;close&lt;/code&gt;返回&lt;code&gt;EWOULDBLOCK&lt;/code&gt;)，缓冲去数据丢失。(如果是非阻塞，则直接返回&lt;code&gt;EWOULDBLOCK&lt;/code&gt;)
-&lt;code&gt;shutdown&lt;/code&gt;使用可以避免关闭时还有数据的处理。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;tcp状态机&#34;&gt;tcp状态机 &lt;a href=&#34;#tcp%e7%8a%b6%e6%80%81%e6%9c%ba&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;tcp在每个时刻都存在于一个特定的状态(&lt;strong&gt;CLOSED&lt;/strong&gt;状态为假想状态)，这里的状态和&lt;code&gt;netstat&lt;/code&gt;显示的状态是一致的，各个状态以及状态转换如下：
-&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-state.png&#34; alt=&#34;TCP状态机&#34;&gt;
-&lt;strong&gt;TIME_WAIT&lt;/strong&gt;也称为&lt;strong&gt;2MSL&lt;/strong&gt;(Maximum Segment Lifetime)状态，它可以保证对端发送最后的&lt;code&gt;FIN&lt;/code&gt;(重发的)，能够响应&lt;code&gt;ACK&lt;/code&gt;，另外一个含是，保证端口在&lt;strong&gt;2MSL&lt;/strong&gt;端口不被重发使用。在服务端编程的时候，我们通常会使用&lt;code&gt;SO_REUSEADDR&lt;/code&gt;这个选项，这样可以避免如果服务端进入&lt;strong&gt;TIME_WAIT&lt;/strong&gt;状态后，可以及时重启。
-&lt;strong&gt;FIN_WAIT_2&lt;/strong&gt;状态是在发送&lt;code&gt;FIN&lt;/code&gt;，接收到&lt;code&gt;ACK&lt;/code&gt;时，进入的状态，如果对端没有发送&lt;code&gt;FIN&lt;/code&gt;那么，将无法进入&lt;strong&gt;TIME_WAIT&lt;/strong&gt;状态，这时对端一直是&lt;strong&gt;CLOSE_WAIT&lt;/strong&gt;状态，当服务器出现大量的&lt;strong&gt;FIN_WAIT_2&lt;/strong&gt; 或 &lt;strong&gt;CLOSE_WAIT&lt;/strong&gt;状态时，一般都是被动关闭那端忘记了调用&lt;code&gt;close&lt;/code&gt;函数关闭socket。&lt;/p&gt;
-&lt;h2 id=&#34;tcp数据传输&#34;&gt;TCP数据传输 &lt;a href=&#34;#tcp%e6%95%b0%e6%8d%ae%e4%bc%a0%e8%be%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;滑动窗口
-在tcp头部，窗口大小占用16位，再加上&lt;strong&gt;WS&lt;/strong&gt;选项，实际上可以达31位。已经建立连接的&lt;strong&gt;TCP&lt;/strong&gt;双方，都维护两个窗口，分别为接收窗口和接收窗口。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;1.1 发送方窗口
-&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-sliding-window-snd.png&#34; alt=&#34;发送方窗口&#34;&gt;
-如图示，在任意一时刻，发送方的发送窗口数据可分4大类：1) 已经发送并收到&lt;code&gt;ACK&lt;/code&gt;的，2) 已经发送并未收到&lt;code&gt;ACK&lt;/code&gt;的，3) 准备发送的，4) 未发送的。第1和第2类数据之间的边界称为&lt;strong&gt;左边界&lt;/strong&gt;；第3和第4类之间的数据称之为&lt;strong&gt;右边界&lt;/strong&gt;。第2和第3类数据之间的窗口称之为&lt;code&gt;Offered Window&lt;/code&gt;，是接收方通告的窗口大小。&lt;strong&gt;左边界&lt;/strong&gt;向做右移动，称为窗口合拢；&lt;strong&gt;右边界&lt;/strong&gt;向右移动，称为窗口张开；&lt;strong&gt;右边界&lt;/strong&gt;向左移动，称为窗口的收缩(实际tcp实现不一定有)。如果&lt;strong&gt;左边界&lt;/strong&gt;到达&lt;strong&gt;右边界&lt;/strong&gt;，那么窗口为0，不能发送任何数据。当窗口变为0时，这里存在一个问题：因为接收方的窗口大小是通过&lt;code&gt;ACK&lt;/code&gt;告知的，如果窗口为0了，那么哪里来的&lt;code&gt;ACK&lt;/code&gt;呢？解决的办法是，发送方会发送&lt;code&gt;ZWP(Zero Windonw Probe)&lt;/code&gt;的报文给接收端，让接收端应答&lt;code&gt;ACK&lt;/code&gt;告知窗口大小，当发送方发送3次&lt;code&gt;ZWP&lt;/code&gt;后(一般设置3次，每次给30~60秒)，如果窗口依然是0，那么有些tcp实现将关闭连接。在当发送方收到发送数据的&lt;code&gt;ACK&lt;/code&gt;时，&lt;strong&gt;左边界&lt;/strong&gt;向右合拢或窗口向右移动。注意到，只有收到&lt;code&gt;ACK&lt;/code&gt;时，&lt;strong&gt;左边界&lt;/strong&gt;才会右移。&lt;/p&gt;
-&lt;p&gt;1.2 接收方窗口
-&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-sliding-window-rcv.png&#34; alt=&#34;接收方窗口&#34;&gt;
-如图示，类似发送方窗口，接收方窗口分为3大类，1) 已经接收并发送&lt;code&gt;ACK&lt;/code&gt;的，2) 将接收存储的，3) 不能接收的。第1和2类之间的边界称为&lt;strong&gt;左边界&lt;/strong&gt;，第2和第3类数据之间的边界称之为&lt;strong&gt;右边界&lt;/strong&gt;。当接收方收到报文的&lt;strong&gt;SEQ&lt;/strong&gt;小与&lt;strong&gt;左边界&lt;/strong&gt;，则当做是重发报文直接丢弃；当接收的报文的&lt;strong&gt;SEQ&lt;/strong&gt;大于&lt;strong&gt;右边界&lt;/strong&gt;，则认为是溢出也直接丢弃，只有报文在&lt;strong&gt;左边界&lt;/strong&gt;和&lt;strong&gt;右边界&lt;/strong&gt; 之间的报文才允许接收。如果在&lt;strong&gt;左边界&lt;/strong&gt;和&lt;strong&gt;右边界&lt;/strong&gt; 之间收到的非连续的报文(由于&lt;strong&gt;SACK&lt;/strong&gt;，报文将缓存)，那么&lt;strong&gt;左边界&lt;/strong&gt;并不会向右移动，等待重传数据连续后，才移动。&lt;/p&gt;
-&lt;p&gt;由于滑动窗口的这些特性，接收方可以进行窗口的控制，通过告知对方窗口大大小，让发送方进行控制调整，从而具备流量控制功能。&lt;/p&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;糊涂窗口综合症(&lt;code&gt;SWS&lt;/code&gt;)
-如果建立连接的双方，当发送方产生的数据速度很慢，或者接收发消耗的数据很慢或者两者都有，这样会导致发送方向接收方发送极少量的数据，接收方回应很小的窗口。这样就会导致网络上存在大量的小数据包，tcp头部至少占20字节，加上&lt;strong&gt;IP&lt;/strong&gt;头部的20字节，这个传输一个小包，耗费这么大的网络资源，这样是很不经济的，出现的这种情况称之为糊涂窗口综合症&lt;code&gt;Silly Window Syndrome(SWS)&lt;/code&gt;，&lt;code&gt;SWS&lt;/code&gt;导致网络利用的低效率。&lt;code&gt;SWS&lt;/code&gt;可由发送方或接收方造成，解决方法：
-2.1 发送方&lt;strong&gt;Nagle算法&lt;/strong&gt;
-&lt;strong&gt;Nagle算法&lt;/strong&gt;最多允许有一个为确认的未完成小分组(小于&lt;strong&gt;MSS&lt;/strong&gt;)，在该分组的&lt;strong&gt;ACK&lt;/strong&gt;到达之前，不能发送其他小分组。也就是说，如果对端&lt;code&gt;ACK&lt;/code&gt;回应的很快的话，&lt;strong&gt;Nagle算法&lt;/strong&gt;并不会合并多少数据包(也就是说并不会启用)，在“低速”网络环境里面才会出现更多的小分组合并发送。tcp协议默认是打开 &lt;strong&gt;Nagle算法&lt;/strong&gt;的，发送报文条件是：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;如果包长度达到&lt;strong&gt;MSS&lt;/strong&gt;，则允许发送；&lt;/li&gt;
-&lt;li&gt;如果该包含有&lt;code&gt;FIN&lt;/code&gt;，则允许发送；&lt;/li&gt;
-&lt;li&gt;所有发出去的小数据包（包长度小于&lt;strong&gt;MSS&lt;/strong&gt;）均被确认，则允许发送；&lt;/li&gt;
-&lt;li&gt;上述条件都未满足，但发生了超时（一般设置延迟&lt;code&gt;ACK&lt;/code&gt;，一般为200ms），则立即发送。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;TCP_NODELAY&lt;/code&gt;选项可以关闭&lt;strong&gt;Nagle算法&lt;/strong&gt;。关闭后，只要有数据就立刻进行发送。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;2.2 接收方&lt;strong&gt;Cork算法&lt;/strong&gt;或延长&lt;code&gt;ACK&lt;/code&gt;
-如果接收方处理比较慢，&lt;code&gt;ACK&lt;/code&gt;的窗口很小，这样接收端就引起&lt;code&gt;SWS&lt;/code&gt;。&lt;strong&gt;Cork算法&lt;/strong&gt;就是只要有数据达到，就回应，但是回应的窗口大小为0，直到空闲窗口已经可以放入&lt;strong&gt;MSS&lt;/strong&gt;的报文长度，或者窗口的空间一半已经变为可用，这时才回应真实的可用窗口。&lt;code&gt;TCP_CORK&lt;/code&gt;选项可以启用这个算法。另外的一种机制是延迟确认，接收端收到报文时，并不立刻进行确认，等到有足够的窗口空间，才进行确认。延迟确认会引入另外一个问题，就是会导致tcp发送方进行报文重发，现在延迟确认的数据定义为500毫秒。&lt;code&gt;TCP_QUICKACK&lt;/code&gt;选项可以关闭延迟&lt;code&gt;ACK&lt;/code&gt;，然而这个选项并非是永久的，需要每次接收数据后，重新设置一次。&lt;/p&gt;
-&lt;h2 id=&#34;tcp阻塞控制&#34;&gt;TCP阻塞控制 &lt;a href=&#34;#tcp%e9%98%bb%e5%a1%9e%e6%8e%a7%e5%88%b6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在复杂和经常变化的网络环境中，当网络程序阻塞时，tcp不是一味的发送数据加塞网络，而是进行自我调整。传统的阻塞控制算法有4种：慢启动(Slow Start)，阻塞避免(Congestion Avoidance)，快速重传(Fast Retransmit)，快速恢复(Fast Recovery)。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;慢启动
-&lt;strong&gt;慢启动&lt;/strong&gt;算法启动发生在建立tcp连接后，或者报文重传超时(Retransmit Timeout, RTO)后，也有可能是tcp空闲某段时间后。慢启动为&lt;strong&gt;TCP&lt;/strong&gt;增加了一个阻塞窗口(Congestion Window, cwnd)，&lt;strong&gt;cwnd&lt;/strong&gt;以&lt;strong&gt;MSS&lt;/strong&gt; 为单位，发送时，取 &lt;strong&gt;cwnd&lt;/strong&gt;和通告的窗口大小最小值为发送上限。慢启动算法:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;cwnd&lt;/strong&gt;通常初始化为1个&lt;strong&gt;MSS&lt;/strong&gt;(Linux 3.0或以上，设置为10&lt;strong&gt;MSS&lt;/strong&gt;)&lt;/li&gt;
-&lt;li&gt;在没有出现丢包的情况下，每收到一个&lt;code&gt;ACK&lt;/code&gt;，&lt;strong&gt;cwnd&lt;/strong&gt; = &lt;strong&gt;cwnd&lt;/strong&gt; * 2&lt;/li&gt;
-&lt;li&gt;当&lt;strong&gt;cwnd&lt;/strong&gt;增长的一个阈值，(slow start threshold, ssthresh)，即&lt;strong&gt;cwnd&lt;/strong&gt; &amp;gt;= &lt;strong&gt;ssthresh&lt;/strong&gt;，tcp 进入避免阻塞算法&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;当&lt;strong&gt;RTO&lt;/strong&gt;时，ssthresh = &lt;strong&gt;cwnd&lt;/strong&gt; / 2，&lt;strong&gt;cwnd&lt;/strong&gt; = 1，重启慢启动算法。&lt;/p&gt;
-&lt;p&gt;由上可知，当 &lt;code&gt;ACK&lt;/code&gt; 很快时，慢启动算法的增长速率是很快的。如果存在延迟确认，那么增长速率并不快，所以在建立连接的慢启动算法启动期间，延迟确认是关闭的。&lt;/p&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;阻塞避免
-当&lt;strong&gt;cwnd&lt;/strong&gt; &amp;gt;= &lt;strong&gt;ssthresh&lt;/strong&gt;时，就会启用避免阻塞算法，算法如下：&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ol&gt;
-&lt;li&gt;每收到一个非重复的&lt;code&gt;ACK&lt;/code&gt;，&lt;strong&gt;cwnd&lt;/strong&gt; = &lt;strong&gt;cwnd&lt;/strong&gt; + 1/&lt;strong&gt;cwnd&lt;/strong&gt;
-避免阻塞算法，避免了慢启动那种指数级别的快速增长，而变成了缓慢的线性增长，慢慢调整到网络最佳值。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;快速重传
-当收到一连串3个或以上的重复&lt;code&gt;ACK&lt;/code&gt;时，则可以认为有报文段丢失了，这个时候，不需要得等&lt;strong&gt;RTO&lt;/strong&gt;，直接重传丢失的报文。这就是快速重传算法。但启用快速重传算法后，tcp并不启用慢启动算法，因为接收端已经在高速接收数据了，tcp不想突然减速，而是启动另个一个算法，快速恢复。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;快速恢复
-当收到3个或以上重发&lt;code&gt;ACK&lt;/code&gt;，快速恢复算法启动，算法如下：&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;ssthresh&lt;/strong&gt; = &lt;strong&gt;cwnd&lt;/strong&gt; / 2&lt;/li&gt;
-&lt;li&gt;每次收到重复的&lt;code&gt;ACK&lt;/code&gt;， &lt;strong&gt;cwnd&lt;/strong&gt; = &lt;strong&gt;cwnd&lt;/strong&gt; + 1&lt;/li&gt;
-&lt;li&gt;收到新数据&lt;code&gt;ACK&lt;/code&gt;，&lt;strong&gt;cwnd&lt;/strong&gt; = &lt;strong&gt;ssthresh&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;由上，网络出现阻塞时，快速恢复算法将发送速率降低了。&lt;/p&gt;
-&lt;h2 id=&#34;小结&#34;&gt;小结 &lt;a href=&#34;#%e5%b0%8f%e7%bb%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;这里小结只是tcp的很小一部分，没有涉及到tcp的方方面面，也没有涉及到内核调优，编程技巧等方方面面。另外tcp目前还是发展中的协议，随着时间推移，有很多新的功能特性添加进来，这里也没有涉及到。对于tcp的熟悉，必须通过抓包实践才能进行一步了解，停留在读书计理论，永远无法理解。期待以后有更全面的认识！&lt;/p&gt;
-&lt;p&gt;tcpdump 使用参考： &lt;a href=&#34;https://luoguochun.cn/2015/07/25/tcpdump-usage/&#34;&gt;https://luoguochun.cn/2015/07/25/tcpdump-usage/&lt;/a&gt;
-完。&lt;/p&gt;
-&lt;p&gt;一些参考：
-&lt;a href=&#34;https://www.cnblogs.com/KevinT/p/3810824.html&#34;&gt;TCP_DEFER_ACCEPT&lt;/a&gt;
-&lt;a href=&#34;http://blog.51cto.com/davidbj/1426220&#34;&gt;TFO&amp;ndash;TCP Fast Open&lt;/a&gt; &amp;ndash; 由于存在安全隐患而没有广泛使用。&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            tcp协议是一个比较复杂的协议，对tcp协议深入理解的，真的非常少非常少；对tcp协议误理解或理解片面的，真的非常多非常多。当然这也包括自己
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -541,58 +61,14 @@ Timestamps在tcp选项中包括两个32位的timestamp: &lt;strong&gt;TSval&lt;/
       <pubDate>Sat, 25 Jul 2015 14:26:04 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2015-07-25-tcpdump-usage/</guid>
-      <description>&lt;h4 id=&#34;tcpdump使用方法&#34;&gt;Tcpdump使用方法 &lt;a href=&#34;#tcpdump%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;（1）&lt;strong&gt;第一种是关于类型的关键字主要包括&lt;code&gt;host&lt;/code&gt;，&lt;code&gt;net&lt;/code&gt;，&lt;code&gt;port&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;
-例如： &lt;code&gt;host 210.27.48.2&lt;/code&gt;，指明 &lt;code&gt;210.27.48.2&lt;/code&gt;是一台主机，&lt;code&gt;net 202.0.0.0&lt;/code&gt; 指明&lt;code&gt;202.0.0.0&lt;/code&gt;是一个网络地址，&lt;code&gt;port 23&lt;/code&gt; 指明端口号是&lt;code&gt;23&lt;/code&gt;。如果没有指定类型，缺省的类型是&lt;code&gt;host&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;（2）第二种是确定传输方向的关键字主要包括&lt;code&gt;src&lt;/code&gt; , &lt;code&gt;dst&lt;/code&gt; ,&lt;code&gt;dst or src&lt;/code&gt;, &lt;code&gt;dst and src&lt;/code&gt;&lt;br&gt;
-这些关键字指明了传输的方向，例如：&lt;code&gt;src 210.27.48.2&lt;/code&gt;，指明ip包中源地址是&lt;code&gt;210.27.48.2&lt;/code&gt; , &lt;code&gt;dst net 202.0.0.0&lt;/code&gt; 指明目的网络地址是&lt;code&gt;202.0.0.0&lt;/code&gt;。如果没有指明方向关键字，则缺省是&lt;code&gt;src or dst&lt;/code&gt;关键字。&lt;/p&gt;
-&lt;p&gt;（3）第三种是协议的关键字，主要包括&lt;code&gt;fddi&lt;/code&gt;，&lt;code&gt;ip&lt;/code&gt;，&lt;code&gt;arp&lt;/code&gt;，&lt;code&gt;rarp&lt;/code&gt;，&lt;code&gt;tcp&lt;/code&gt;，&lt;code&gt;udp&lt;/code&gt;等类型&lt;br&gt;
-Fddi指明是在FDDI(分布式光纤数据接口网络)上的特定的网络协议，实际上它是&amp;quot;ether&amp;quot;的别名，fddi和ether具有类似的源地址和目的地址，所以可以将fddi协议包当作ether的包进行处理和分析。其他的几个关键字就是指明了监听的包的协议内容。如果没有指定任何协议，则tcpdump将会监听所有协议的信息包。&lt;/p&gt;
-&lt;p&gt;除了这三种类型的关键字之外，其他重要的关键字如下：&lt;code&gt;gateway&lt;/code&gt;, &lt;code&gt;broadcast&lt;/code&gt;,&lt;code&gt;less&lt;/code&gt;,&lt;code&gt;greater&lt;/code&gt;,还有三种逻辑运算，取非运算是&lt;code&gt;not&lt;/code&gt; ，&lt;code&gt;!&lt;/code&gt;，与运算是&lt;code&gt;and&lt;/code&gt;，&lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;;或运算 是&lt;code&gt;or&lt;/code&gt;，&lt;code&gt;││&lt;/code&gt;；这些关键字可以组合起来构成强大的组合条件来满足人们的需要，下面举几个例子来说明。普通情况下，直接启动tcpdump将监视第一个网络界面上所有流过的数据包。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;A. tcpdump –i eth0 –c 10  
-使用-i参数指定tcpdump监听的网络界面，这在计算机具有多个网络界面时非常有用，
-使用-c参数指定要监听的数据包数量，
-使用-w参数指定将监听到的数据包写入文件中保存
- 
-B.想要截获主机172.16.14.107和主机172.16.14.27或172.16.14.99的通信，使用命令：（在命令行中使用括号时，一定要用’\’
-tcpdump host 172.16.14.107 and \ (172.16.14.27or172.16.14.99 \)
-
-C.如果想要获取主机172.16.14.107除了和主机172.16.14.27之外所有主机通信的ip包，使用命令：
-tcpdump ip host 172.16.14.107 and ! 172.16.14.27
-
-D.如果想要获取主机172.16.14.107接收或发出的telnet包，使用如下命令：
-tcpdump tcp port 23 host 172.16.14.107
-
-E.对本机的udp 123 端口进行监视 （123 为ntp的服务端口）
-tcpdump udp port 123
-
-F.系统将只对名为hostname的主机的通信数据包进行监视。主机名可以是本地主机，
-也可以是网络上的任何一台计算机。下面的命令可以读取主机hostname发送的所有数据： 
-tcpdump -i eth0 src host hostname
-
-G.下面的命令可以监视所有送到主机hostname的数据包： 
-tcpdump -i eth0 dst host hostname
-#src表示源，即发送
-#dst表示目的地，即接收
-
-H.我们还可以监视通过指定网关的数据包： 
-tcpdump -i eth0 gateway Gatewayname
-
-I.如果你还想监视编址到指定端口的TCP或UDP数据包，那么执行以下命令： 
-tcpdump -i eth0 host hostname and port 80
-
-J.如果想要获取主机172.16.14.107接收或发出的telnet包，使用如下命令：
-tcpdump tcp port 23 host 172.16.14.107
-
-K. 如果我们只需要列出送到80端口的数据包，用dst port 80；如果我们只希望看到返回80端口的数据包，用src port 80。 
-tcpdump –i eth0 host hostname and dst port 80  #目的端口是80 或者
-tcpdump –i eth0 host hostname and src port 80  #源端口是80, 80端口一般是提供http的服务的主机
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;tcpdump输出格式:&lt;br&gt;
-总的的输出格式为：系统时间 来源主机.端口 &amp;gt; 目标主机.端口 数据包参数&lt;/p&gt;
-&lt;p&gt;如果要用wireshark分析数据，须加上&lt;code&gt;-s –w&lt;/code&gt;选项，否则wireshark不能识别文件格式：&lt;br&gt;
-&lt;code&gt;tcpdump -i eth0 -c 100 -s 0 -w /home/data.pcap&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;实际上就是&lt;code&gt;BPF&lt;/code&gt;语法，此语法同时适用于WIRESHARK获取报文的语法。&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            Tcpdump使用方法 （1）第一种是关于类型的关键字主要包括host，net，port 例如： host 210.27.48.2，指明 210.27.48
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -601,12 +77,14 @@ tcpdump –i eth0 host hostname and src port 80  #源端口是80, 80端口一般
       <pubDate>Wed, 22 Oct 2014 17:01:08 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-10-22-tcp_nodelay/</guid>
-      <description>&lt;p&gt;今天遇到了&lt;code&gt;TCP_NODELAY&lt;/code&gt;的问题，简单记录一下。具体的表现是，客户端进行清算查询时，老是超时。这个问题出现很久了，运维一直都有反映查询不到数据。因为程序不是我写的，又有几个同事在负责跟进这个问题，所以一直不怎么理，让他们自己解决去。&lt;/p&gt;
-&lt;p&gt;因为服务端都是采用非阻塞的模型，每个socket的缓存都是可以配置的。最最开始的时候，同事查看日志，发现有报缓存不足的错误，就以为是缓存的问题，于是将缓存调大。这样搞好，的确可以查询成功了，虽然速度很慢，但至少可以用了。后来数据大的时候，查询又超时了。客户端，前端接入都骚动的找问题。经过查日志，发现后端发送数据是成功的，但是前端接收的时候看起来很慢，通过抓包发现，报文发了一段时间后，接收数据的速度就慢了很多。前端接入以为是自己程序缓存不足，接收不了那么快造成的，但是前端接入无法像后端那样自由的调整缓存大小，于是想到了一个动态缓存的复杂方法，这样修改完了后。貌似结果还行，第一天测试速度虽然慢，但是还是查询结果出来了。但是今天测试，居然又不行了。这下子神奇了。&lt;/p&gt;
-&lt;p&gt;今天，又在讨论为何不行了，在研究抓包报文，研究为何每个报文要延迟一段时间后才收到，为何发送端发送成功了，接收端却要延时。解决问题的同事在我面前讨论，我突然冒出，是不是系统缓存不足了，调下系统缓存看看。于是，他们调了之后测试，发现没有效果。于是我要一下抓包的报文，过滤后，一看，这么有规律，为了减少TCP应答报文头的带宽损耗，将小包搞成大包发送，不就是传说的“Nxx”算法吗？于是让同事在tcp accept后，设置这个TCP_NODELAY选项，禁用这个鸟算法测试。果然，效果非常可观，原来在几十秒甚至几分钟内都没有查询结果，现在3秒左右，结果就出来了。&lt;/p&gt;
-&lt;p&gt;google一下，发现还有不少哥们遇到这个问题，比如这哥们： &lt;a href=&#34;http://jerrypeng.me/2013/08/mythical-40ms-delay-and-tcp-nodelay/#sec-4-2&#34;&gt;mythical-40ms-delay-and-tcp-nodelay&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;总结下，只有不断的尝试，才有最终的完美结果~&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            今天遇到了TCP_NODELAY的问题，简单记录一下。具体的表现是，客户端进行清算查询时，老是超时。这个问题出现很久了，运维一直都有反映查询
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -615,77 +93,14 @@ tcpdump –i eth0 host hostname and src port 80  #源端口是80, 80端口一般
       <pubDate>Wed, 23 Jul 2014 15:28:16 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-07-23-wireshark-tcp/</guid>
-      <description>&lt;p&gt;注：本文比较简略，且存在错漏。更详细的总结参考&lt;a href=&#34;https://luoguochun.cn/2016/09/23/tcp-fuck&#34;&gt;tcp协议小结&lt;/a&gt;，后续如若发现有错漏，则同时在&lt;a href=&#34;https://luoguochun.cn/2016/09/23/tcp-fuck&#34;&gt;tcp协议小结&lt;/a&gt;中进行修正，本文不再做维护。   &amp;ndash;2016-09-23&lt;/p&gt;
-&lt;p&gt;虽然知道wireshark是抓包神器，只会大概大概用一下，还用一下下tcpdump，略懂一点BPF过滤器，也知道一点怎么用wirkshark过滤相关的报文，但是对于详细的字段的含义，如何查看TCP的交互情况还不是非常的了解。现在，简单分析一下。PS：这次抓包的对象是传说中通过公安局多少多少级认证的本公司开发的交易系统，本来看到他的验证码倾斜的很有规律，叫的斑斑点点也不是很密集。就想写个小程序练习一下验证码识别，可是我失望了，在wireshark里面居然没有抓到任何报文，这个东西的验证码居然是客户端生成的，无语。于是，抓下登录过程的报文，看看能否破解，相关的TCP报文：&lt;a href=&#34;https://luoguochun.cn/raw/tcp/wiresharktcp-crack.pcapng&#34;&gt;crack.pcapng&lt;/a&gt;。关于报文分析，有一个很好的E文网站:&lt;a href=&#34;http://packetlife.net/&#34;&gt;packetlife&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;废话少说，简单在看看TCP的协议头：
-&lt;img src=&#34;https://luoguochun.cn/img/tcp/tcp-header.png&#34; alt=&#34;TCP协议头&#34;&gt;
-这张图片有点过期，保留位是6位，实际的情况是，保留位的后2位已经被使用了。保留位的第5位是Congestion Window Reduced(&lt;em&gt;CWR&lt;/em&gt;)，第6位是ECN-Echo(&lt;em&gt;ECN&lt;/em&gt;)。TCP协议的其他部分不说，先看看TCP协议的几个不是很了解标志是什么意思。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;CWR&lt;/em&gt;(Congestion Window Reduced)&lt;br&gt;
-简单来说就是网络不是很畅通了，通知对方减少阻塞窗口，发包速度发慢一点。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;ECN&lt;/em&gt;（ECN-Echo）&lt;br&gt;
-&lt;em&gt;ECN&lt;/em&gt;两个作用，在TCP三次握手时表明TCP端是否支持ECN；在传输数据时，发送方是无法知道网络是否畅通的，但是经过重重的路由后，路由根据网络的情况可以知道是否阻塞，路由会设置在IP层会设置的相应的标志，即接收端发现了拥塞。&lt;em&gt;CWR&lt;/em&gt;为发送端缩小拥塞窗口标志，用来通知发送端它已经收到了设置&lt;em&gt;ECN&lt;/em&gt;标志，应该减慢发包速度。关于&lt;em&gt;ECN&lt;/em&gt;的详细描述请参考：&lt;a href=&#34;http://blog.csdn.net/zhangskd/article/details/7246503&#34;&gt;&lt;em&gt;ECN&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;URG&lt;/em&gt;(Urgent)&lt;br&gt;
-这就是传说中的带外数据。因为TCP是没有消息边界的，假如有一种情况，你已经发送了一些数据，但是此时，你要发送一些数据优先处理，就可以设置这些标志，同时如果设置了这个标志，紧急指针也会设置为相应的偏移。当接受方收到&lt;em&gt;URG&lt;/em&gt;数据时，不缓存在接收窗口，直接往上传给上层。具体的使用可以参考&lt;a href=&#34;http://wenku.baidu.com/view/f04a4dff9e31433239689341.html&#34;&gt;TCP带外数据&lt;/a&gt;。大体来说，就是，调用&lt;code&gt;send&lt;/code&gt;和&lt;code&gt;recv&lt;/code&gt;是要加上&lt;code&gt;MSG_OOB&lt;/code&gt;参数。同时接收方要处理&lt;code&gt;SIGURG&lt;/code&gt;信号。不过据说这个带外数据在实际上，用得很少。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;PSH&lt;/em&gt;（Push）&lt;br&gt;
-简单来说，就是告诉对方，我发这么多数据了，你可以处理了，不用缓冲在接收窗口了，直接交数据给上层吧。如果设置了&lt;code&gt;SO_NODELAY&lt;/code&gt;选项，可以强制设置这个标志，如果设置了这个标志，数据就不缓冲在发送窗口那里，直接发送。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;TCP报文SYN ACK的计算如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    A -&amp;gt; B SYN J ACK K LEN L  
-    B -&amp;gt; A SYN K ACK J+L LEN M  
-    A -&amp;gt; B SYN J+L ACK K+M
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;具体看下wireshark抓到的报文：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;TCP3次握手的部分是帧1到帧3。
-&lt;img src=&#34;https://luoguochun.cn/img/tcp/wiresharktcp-tcp-cap-1.png&#34; alt=&#34;建立连接&#34;&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;第1帧，发送SYN J:&lt;br&gt;
-A -&amp;gt; B seq = 0, win = 8192, len = 0, MSS = 1440, WS = 4, SACK_PERM = 1&lt;br&gt;
-WS(Window Scale), 4表示左移动4位，原来窗口大小是16为，现在是20为，现代扩大了2^4倍，关于WS，这里有比较详细的描述&lt;a href=&#34;http://packetlife.net/blog/2010/aug/4/tcp-windows-and-window-scaling/&#34;&gt;tcp-windows-and-window-scaling&lt;/a&gt;。这里比较疑惑的就是SACK_PERM这个TCP选项。SACK（Select ACKnowledgement）的目的就是当出现大量的报文丢失时增加恢复时间来用的，类似于累计ACK，就是说N多个ACK合成一个SACK。关于SACK，有两个地方描述的比较详细&lt;a href=&#34;http://kb.pert.geant.net/PERTKB/SelectiveAcknowledgements&#34;&gt;SelectiveAcknowledgements&lt;/a&gt;,&lt;a href=&#34;http://msdn.microsoft.com/en-us/library/aa917455.aspx&#34;&gt;TCP Selective Acknowledgment&lt;/a&gt;。&lt;/li&gt;
-&lt;li&gt;第2帧，发送SYN K， ACK J+1:&lt;br&gt;
-B -&amp;gt; A seq = 0, ACK = 1, Win = 14600, Len = 0, MSS = 1448, SACK_PERM = 1 WS = 128&lt;br&gt;
-这些含义看第1帧，win = 14600, WS = 128，可以看到这台服务器的窗口非常大，WS也很多，网络性能应该不错的（事实也如此）。&lt;/li&gt;
-&lt;li&gt;第3帧，发送SYN J+1， ACK K+1:
-A -&amp;gt; B seq = 1, ACK = 1, win = 66608, Len = 0&lt;br&gt;
-这是建立TCP连接的第3次握手，这时win = 66608了，转换为2进制有17位比16位长，因为再第1帧第2帧的交互中已经交互了各种的TCP选项，所以这次的确认不带有TCP选项。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;当这3次交互完成后，连接真正建立，只要服务端accept后，就可以接收和发送数据了。&lt;/p&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;TCP数据传输&lt;br&gt;
-&lt;img src=&#34;https://luoguochun.cn/img/tcp/wiresharktcp-tcp-cap-2.png&#34; alt=&#34;普通数据传输&#34;&gt;&lt;br&gt;
-截图的是报文的第7帧，这个帧报文在这次抓的报文中相对有代表性点的。这个帧的报文设置了&lt;code&gt;PSH&lt;/code&gt;标志，而且是TCP分片传输的报文，因为此帧的报文是第6帧报文分片传输的，从&lt;code&gt;ACK = 125&lt;/code&gt;可以看出。传输数据的报文没有什么特别可以说的：~&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;TCP终止连接的4次交换的部分是帧19到帧21（可以发现，这里的交互是有问题的）。&lt;br&gt;
-&lt;img src=&#34;https://luoguochun.cn/img/tcp/wiresharktcp-tcp-cap-2.png&#34; alt=&#34;终止连接&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;第19帧，发送FIN J, ACK K:&lt;br&gt;
-A -&amp;gt; B seq = 2559, ack = 2361, win = 65812, len = 0&lt;br&gt;
-客户端发起FIN主动关闭连接和上个报文的ACK（应该是接收完了数据，关闭SOCKET），客户端最后应该会变成TIME_WAIT状态。这是第一次交换。&lt;/li&gt;
-&lt;li&gt;第20帧，发送FIN K， ACK J+1:&lt;br&gt;
-B -&amp;gt; A seq = 2361, ack = 2560, Win = 26240, Len = 37&lt;br&gt;
-这次交换中，除了对客户端的ACK外，同时发送FIN，但同时带有37字节的数据，这37个数据不是我们期待有的。可以猜测一下，可能是服务端里面有37个字节还没有发送，在收到FIN后，把缓存里面的数据全部发送过去。服务端如果忘记的关闭连接，会变成CLOSE_WAIT状态。这里两次的交换合并在一起了。&lt;/li&gt;
-&lt;li&gt;第21帧，发送RST， ACK K+Len:
-A -&amp;gt; B seq = 2560, ACK = 2398, win = 0, Len = 0&lt;br&gt;
-主动关闭一方收到FIN，回应ACK。但是这里却有一个不是我们期待的&lt;code&gt;RST&lt;/code&gt;标志。&lt;code&gt;RST&lt;/code&gt;标志表明往已经关闭连接发送数据，这是个错误。这是第四次交换。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;这里的客户端与服务端的交换是有问题的，在第20帧，收到FIN时，不应该再发送数据，这样发送的数据很有可能收到的就是&lt;code&gt;RST&lt;/code&gt;。但是这并不一定是发送数据一方的问题，很有可能是客户端还没有接受完数据就关闭连接了。但可以肯定的是，在客户端或服务端某个地方肯定存在BUG。&lt;/p&gt;
-&lt;p&gt;这个就是某交易系统登录的报文，报文涉及5次数据交互（请求-应答）。这有5次交换，第1，2次交换，很可能是交换RSA公钥（猜的，因为报文数据有OpenSSL标志：~）。然而后面的还有3次数据交互，并不是我期待的一次交互。难道还要同步其他密钥之类的？有空问下相关开发人员。如果是单纯破解报文的话，存在比较大的难度，但是如果是&lt;code&gt;DOS&lt;/code&gt;攻击的话，这应该是非常简单的……&lt;/p&gt;
-&lt;p&gt;注：本文比较简略，且存在错漏。更详细的总结参考&lt;a href=&#34;https://luoguochun.cn/2016/09/23/tcp-fuck&#34;&gt;tcp协议小结&lt;/a&gt;，后续如若发现有错漏，则同时在&lt;a href=&#34;https://luoguochun.cn/2016/09/23/tcp-fuck&#34;&gt;tcp协议小结&lt;/a&gt;中进行修正，本文不再做维护。   &amp;ndash;2016-09-23&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            注：本文比较简略，且存在错漏。更详细的总结参考tcp协议小结，后续如若发现有错漏，则同时在tcp协议小结中进行修正，本文不再做维护。 &amp;ndash;2016-09-23 虽然知
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -694,78 +109,14 @@ A -&amp;gt; B seq = 2560, ACK = 2398, win = 0, Len = 0&lt;br&gt;
       <pubDate>Sat, 23 Jun 2012 11:08:14 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2012-06-23-proccess-pool-server/</guid>
-      <description>&lt;p&gt;本程序仅是为了学习libevent而写的，但可以当作是简单的程序框架扩展为实际的应用。程序本身没有经过广泛的功能测试和压力测试，仅作简单的功能测试，如果在实际应用中产生任何问题与作者无关，也不提供任何技术支持。但欢迎讨论相关技术问题。&lt;/p&gt;
-&lt;p&gt;本程序设计思路很简单，一个控制进程，M个业务进程（M可以配置），其中一个业务进程又负责N个TCP连接（N可以配置，因为是在同一个进程内，又没有用于线程，所以从本质来说，还是属于同步传输数据的）。控制进程负责监听连接，当接收到一个TCP连接的时候，按照一定的规则分发到空闲的业务进程中。每个业务进程就负责处理各个分配到的连接，接收到数据后又分发到业务模块，业务模块是可以根据实际的需要扩展的（本程序中则是一个回射服务器的）。&lt;/p&gt;
-&lt;p&gt;这个程序且叫一个名字：jmm。下载：&lt;a href=&#34;https://github.com/buf1024/jmm/archive/jmm-1.0.0.zip&#34;&gt;jmm&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;压缩包里一些特别的文件介绍。&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;文件名&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Makefile&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Makefile 文件。如果是扩展应用，则修改第6行 &amp;lt;&amp;gt;JMM_MY_OBJ=myserver.o 改为自己的要编译的文件即可。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;jmm.conf&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;一个简单的配置。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;myserver.c&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;业务实现模块。这个就是简单的回射而已。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;jmm_cmmhdr.h&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;对外提供的扩展程序的头文件，包含一些常量的定义。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;jmm.h&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;对外提供的扩展程序的头文件&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;clog.h &lt;!-- raw HTML omitted --&gt;clog.c&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;简单的日志处理模块。可独立应用于任何应用程序。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;ciniconfig.h &lt;!-- raw HTML omitted --&gt;ciniconfig.c&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;简单的读取INI配置文件的模块。可独立应用于任何应用程序。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;编译说明：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;安装libevent. 下载地址：&lt;a href=&#34;www.libevent.org&#34;&gt;libevent.org&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;建立文件夹mkdir conf log bin&lt;/li&gt;
-&lt;li&gt;最后make可以了。&lt;/li&gt;
-&lt;li&gt;如果会Makefile直接看Makefile&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;扩展说明：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    typedef struct jmm_hook 
-    { 
-    const char* (*prog_name)(); 
-    const char* (*prog_version)(); 
-    const char* (*prog_desc)();
-    
-    int (*prog_init)(char*); 
-    int (*prog_service)(jmm_prog_in*, jmm_prog_out*); 
-    int (*prog_uninit)();
-    
-    void* (*prog_malloc)(size_t); // sys/types.h 
-    void (*prog_free)(void*);
-    
-    }jmm_hook;
-    
-    typedef void (*prog_init_hook)(jmm_hook* hook);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;除了分配内存的那个外，提供其它所有函数的实现。&lt;/p&gt;
-&lt;p&gt;用REG_INIT_HOOK_FUN(myserver_init_hook)注册回调函数。&lt;/p&gt;
-&lt;p&gt;参考myserver.c&lt;/p&gt;
-&lt;p&gt;烦躁，不写了。&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            本程序仅是为了学习libevent而写的，但可以当作是简单的程序框架扩展为实际的应用。程序本身没有经过广泛的功能测试和压力测试，仅作简单的功
+          
+          
+        
+      </description>
     </item>
     
   </channel>

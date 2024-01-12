@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>minix3 on BUF1024!!!</title>
+    <title>minix3 on BUF1024</title>
     <link>https://luoguochun.cn/tags/minix3/</link>
-    <description>Recent content in minix3 on BUF1024!!!</description>
+    <description>Recent content in minix3 on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyletf buf2024</copyright>
     <lastBuildDate>Tue, 19 Jan 2016 11:12:36 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/minix3/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ld常用特别选项</title>
@@ -14,44 +13,14 @@
       <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2016-01-19-ld-special/</guid>
-      <description>&lt;p&gt;链接器ld的一些特别选项，编译OS时有用到。&lt;/p&gt;
-&lt;p&gt;-N&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;   --omagic
-
-       Set the text and data sections to be readable and writable.  Also, do not page-align the data segment, and disable linking against shared libraries.  If the output format supports Unix style
-
-       magic numbers, mark the output as &amp;quot;OMAGIC&amp;quot;. Note: Although a writable text section is allowed for PE-COFF targets, it does not conform to the format specification published by Microsoft.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;致命text段和data段可读写，同事关闭data段页面对齐以及禁止链接动态库&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;   --no-omagic
-
-       This option negates most of the effects of the -N option.  It sets the text section to be read-only, and forces the data segment to be page-aligned.  Note - this option does not enable linking
-
-       against shared libraries.  Use -Bdynamic for this.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;-e entry&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;   --entry=entry
-
-       Use entry as the explicit symbol for beginning execution of your program, rather than the default entry point.  If there is no symbol named entry, the linker will try to parse entry as a number,
-
-       and use that as the entry address (the number will be interpreted in base 10; you may use a leading 0x for base 16, or a leading 0 for base 8).
-
-       指明程序入口点
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;ndash;section-start=sectionname=org&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;       Locate a section in the output file at the absolute address given by org.  You may use this option as many times as necessary to locate multiple sections in the command line.  org must be a
-
-       single hexadecimal integer; for compatibility with other linkers, you may omit the leading 0x usually associated with hexadecimal values.  Note: there should be no white space between
-
-       sectionname, the equals sign (&amp;quot;=&amp;quot;), and org.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;-Tbss=org&lt;/p&gt;
-&lt;p&gt;-Tdata=org&lt;/p&gt;
-&lt;p&gt;-Ttext=org&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;       Same as --section-start, with &amp;quot;.bss&amp;quot;, &amp;quot;.data&amp;quot; or &amp;quot;.text&amp;quot; as the sectionname.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;指定段起启位置&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            链接器ld的一些特别选项，编译OS时有用到。 -N --omagic Set the text and data sections to be readable and writable. Also, do not page-align the data segment, and disable linking against shared libraries. If the output format supports Unix style magic numbers, mark the output as &amp;quot;OMAGIC&amp;quot;. Note: Although a writable text section is allowed
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -60,11 +29,14 @@
       <pubDate>Mon, 18 Jan 2016 11:12:36 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2016-01-18-minix-3/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/torvalds/linux&#34;&gt;linux&lt;/a&gt;非常庞大，虽然有很多参考的资料，但是啃这样庞大的东西还是很费力，如果是业余啃，那难度或许更大。然而，我们可以绕道看下另外一个小巧，却深远影响&lt;a href=&#34;https://github.com/torvalds/linux&#34;&gt;linux&lt;/a&gt;的另外一个内核&lt;a href=&#34;https://github.com/minix3/minix&#34;&gt;minx3&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/torvalds/linux&#34;&gt;linux&lt;/a&gt;基于于“巨内核”的思想，也就是所有的驱动，内核等等东西都堆积在一起，现在大部分的操作系统，如Windows，Unix都基本属于这一类。&lt;a href=&#34;https://github.com/minix3/minix&#34;&gt;minx3&lt;/a&gt;基于“微内核”的思想，也就是说，运行于内核模式的内核应该足够精简，其它的驱动，文件服务等属于操作系统的东西设计为有特权的用户模块。当然这两种方法都有争议，时至今日，还可以看到&lt;a href=&#34;http://www.minix3.org/index.html&#34;&gt;minix&lt;/a&gt;最原始的作者对“巨内核”批评，not reliable。对于我们学习实践来说，无论哪种，都可以从中学到很多东西，只要做够简单理解设计的原理和足够简单的实践。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/minix3/minix&#34;&gt;minx3&lt;/a&gt;，你可以很简单的就可以hack进它的内部，模块化的设计，可以让你陷入其中，有不至于陷入其中，通过修改它的源代码，即可编译你需要的动能。&lt;/p&gt;
-&lt;p&gt;开始玩玩&lt;a href=&#34;https://github.com/minix3/minix&#34;&gt;minx3&lt;/a&gt;。：~&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            linux非常庞大，虽然有很多参考的资料，但是啃这样庞大的东西还是很费力，如果是业余啃，那难度或许更大。然而，我们可以绕道看下另外一个小巧，
+          
+          
+        
+      </description>
     </item>
     
   </channel>

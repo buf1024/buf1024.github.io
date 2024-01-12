@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>go on BUF1024!!!</title>
+    <title>go on BUF1024</title>
     <link>https://luoguochun.cn/tags/go/</link>
-    <description>Recent content in go on BUF1024!!!</description>
+    <description>Recent content in go on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyletf buf2024</copyright>
     <lastBuildDate>Fri, 23 Jun 2017 20:57:11 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>golang 私钥&#34;加密&#34;公钥&#34;解密&#34;</title>
@@ -14,15 +13,14 @@
       <pubDate>Fri, 23 Jun 2017 20:57:11 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2017-06-23-golang-private-public-crypt/</guid>
-      <description>&lt;p&gt;之前工作主要使用C/C++与银行/第三方支付对接，但C/C++无法满足客户”当天给协议明天实盘上载“的开发速度以及现公司一些特殊情况，所以决定用go来尝试实现。基本的框架已经按照原来C/C++非阻塞框架实现一次，内部涉及加密方式也用go重新实现一遍，但一个数字证书加密的方式着实坑爹了一把，同时这个问题，也看到了openssl的命名混乱。&lt;/p&gt;
-&lt;p&gt;关于这个加密方式的描述是：发送方用私钥进行rsa加密，接受方使用公钥进行rsa解密。看到这样的加密方式描述，感觉和自己的理解是有点不一样，不知道是不是自己对这方面了解不够深入，自己的理解是（之前使用过的加密方式）：公钥是公开的，私钥是自己保存的，用私钥对数据进行&lt;strong&gt;签名&lt;/strong&gt;，用公钥&lt;strong&gt;验证&lt;/strong&gt;签名。感觉画风不一样，翻查一下openssl，的确也是存在这样的函数：
-&lt;code&gt;RSA_private_encrypt&lt;/code&gt;和&lt;code&gt;RSA_public_decrypt&lt;/code&gt;，&lt;a href=&#34;https://www.openssl.org/docs/manmaster/man3/RSA_private_encrypt.html&#34;&gt;参考文档&lt;/a&gt;。用openssl很容易就实现这样一个加密解密。但用纯go语言实现，不可能再用cgo来调用c函数，翻查一下go的文档，存在在类似的函数(&lt;code&gt;crypt/rsa&lt;/code&gt;)：
-&lt;code&gt;func DecryptPKCS1v15(rand io.Reader, priv *PrivateKey, ciphertext []byte) ([]byte, error)&lt;/code&gt;和&lt;code&gt;func EncryptPKCS1v15(rand io.Reader, pub *PublicKey, msg []byte) ([]byte, error) &lt;/code&gt;。但仔细看，这里是使用&lt;strong&gt;公钥进行加密&lt;/strong&gt;，使用&lt;strong&gt;私钥进行解密&lt;/strong&gt;，和描述刚好相反。除了这两个涉及公私钥加密的函数外，似乎在go里面找不到其他类似的函数了。&lt;/p&gt;
-&lt;p&gt;在google(科学上网lanttern)里面，能够搜索到的答案似乎不多，最后在stackoverflow找到结果：&lt;a href=&#34;https://stackoverflow.com/questions/18011708/encrypt-message-with-rsa-private-key-as-in-openssls-rsa-private-encrypt&#34;&gt;Encrypt message with RSA private key (as in OpenSSL&amp;rsquo;s RSA_private_encrypt&lt;/a&gt;。一哥们手工搞定，其代码放在&lt;a href=&#34;https://play.golang.org/p/jrqN2KnUEM&#34;&gt;goplaygound&lt;/a&gt;。看了一下代码，如果不是对go内部的数据结构非常熟悉，而且对rsa机制非常清楚，很难写出正常代码。难道go就没有现成的代码完成这个功能？后面，有人就说，这是什么狗屁加密，压根就是一rsa签名，就用&lt;code&gt;crypt/rsa&lt;/code&gt;里面，&lt;code&gt;func SignPKCS1v15(rand io.Reader, priv *PrivateKey, hash crypto.Hash, hashed []byte) ([]byte, error)&lt;/code&gt;实现的。尼玛的，测试结果还真是一样。后来，回头看一下openssl里面的&lt;a href=&#34;https://www.openssl.org/docs/manmaster/man3/RSA_private_encrypt.html&#34;&gt;参考文档&lt;/a&gt;说明，&lt;strong&gt;These functions handle RSA signatures at a low level.&lt;/strong&gt;，这就是签名啊，既然是签名，为何命名&lt;strong&gt;encrypt/decrypt&lt;/strong&gt;？是不是因为命名问题，广为传播为私钥&amp;quot;加密&amp;quot;公钥&amp;quot;解密&amp;quot;呢？&lt;/p&gt;
-&lt;p&gt;go不知道是不是受不了这样私钥&amp;quot;加密&amp;quot;公钥&amp;quot;解密&amp;quot;这种混乱的说法，不像其他语言一样提供类似的函数呢？至于公钥&amp;quot;解密&amp;quot;，网上搜索不到满意答案，不过，既然私钥&amp;quot;加密&amp;quot;是rsa签名，那么公钥&amp;quot;解密&amp;quot;那么应该就是验证签名了。既然网上找不到满意的答案，那么只能修改一下go的&lt;code&gt;func VerifyPKCS1v15(pub *PublicKey, hash crypto.Hash, hashed []byte, sig []byte) error&lt;/code&gt;函数。证实，这个想法是可行的。用openssl加密的数据，可以解密，加密的数据同时可以被openssl解密。&lt;/p&gt;
-&lt;p&gt;相关代码：https://github.com/buf1024/golib/tree/master/crypt 只简单导出&lt;code&gt;PrivateEncrypt&lt;/code&gt;和&lt;code&gt;PublicDecrypt&lt;/code&gt;两个函数。&lt;/p&gt;
-&lt;p&gt;最后，openssl的确存在一些非常混乱的命名方式，而其他语言/库，妥协这种混乱情况，那么混乱看起来即变为普遍。如不是非常熟悉，那么到一个不再妥协这种混乱时，那么及其容易使自己混乱啊。&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            之前工作主要使用C/C++与银行/第三方支付对接，但C/C++无法满足客户”当天给协议明天实盘上载“的开发速度以及现公司一些特殊情况，所以决
+          
+          
+        
+      </description>
     </item>
     
   </channel>

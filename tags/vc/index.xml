@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>vc on BUF1024!!!</title>
+    <title>vc on BUF1024</title>
     <link>https://luoguochun.cn/tags/vc/</link>
-    <description>Recent content in vc on BUF1024!!!</description>
+    <description>Recent content in vc on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>Copyletf buf2024</copyright>
     <lastBuildDate>Wed, 25 Jun 2014 13:00:43 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/vc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>c构造函数</title>
@@ -14,44 +13,14 @@
       <pubDate>Wed, 25 Jun 2014 13:00:43 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-06-25-c-constructor/</guid>
-      <description>&lt;h3 id=&#34;构造函数&#34;&gt;构造函数 &lt;a href=&#34;#%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;任何一们面向对象语言里都会涉及构造函数这一概念，只是实现的方式各有差异。需要这main函数之前执行一段代码是非常容易的事情，只需要声明一对象的全局变量，在构造函数可以为&lt;em&gt;所欲为&lt;/em&gt;干你想干的事情。然而，对于面向过程的语言比如C，需要实现全局的构造函数就比较奇葩。当然gcc会有很优雅的解决方式，VC则猥琐点。&lt;/p&gt;
-&lt;h3 id=&#34;为何需要这个&#34;&gt;为何需要这个 &lt;a href=&#34;#%e4%b8%ba%e4%bd%95%e9%9c%80%e8%a6%81%e8%bf%99%e4%b8%aa&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;其实在main函数里面调用一下就可以了，是的，这样是可以，但是对于框架的实现来说，这却是不太好的，客户使用起来不自由。当然也可以说，我是屌丝，我可以装逼点。&lt;/p&gt;
-&lt;h3 id=&#34;如何实现&#34;&gt;如何实现 &lt;a href=&#34;#%e5%a6%82%e4%bd%95%e5%ae%9e%e7%8e%b0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;gcc实现&lt;br&gt;
-gcc 实现是非常简单的事情。在全局构造函数前叫以下编译器属性即可：&lt;br&gt;
-&lt;strong&gt;attribute&lt;/strong&gt;((constructor))&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;vc实现
-vc的实现比较奇葩，VC本身没有类似·&lt;strong&gt;attribute&lt;/strong&gt;·这样的属性，你需要将全局函数编译到某个特定的代码段里面。MSDN对于这部分有详细的说明：&lt;a href=&#34;http://msdn.microsoft.com/en-us/library/bb918180.aspx&#34;&gt;CRT Initialization&lt;/a&gt;&lt;br&gt;
-简单来说就是将你的全局构造函数的函数指针编译到·.CRT$XCU·段里面。如何编译到·.CRT$XCU·段？VC有VC的语法。&lt;/p&gt;
-&lt;p&gt;// 声明在段·.CRT$XCU·里面生成代码 &lt;br&gt;
-#pragma section(&amp;quot;.CRT$XCU&amp;quot;,read) &lt;br&gt;
-// 声明需要调用的函数 &lt;br&gt;
-__declspec(allocate(&amp;quot;.CRT$XCU&amp;quot;)) void (__cdecl *a)(void) = func; &lt;br&gt;
-// 调用的函数实现 &lt;br&gt;
-void func(void){}&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;以上实现可以用下面实现：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#ifdef _MSC_VER    
-#define __CCALL __cdecl    
-#define __func__ __FUNCTION__    
-#define snprintf _snprintf    
-#pragma warning(disable:4996) // this is very violent    
-#pragma section(&amp;quot;.CRT$XCU&amp;quot;,read)
-#define __CONSTRCT(a, b)                                             \    
-  void __CCALL __##a##__##b##__ ## 520hjm(void);                   \    
-  __declspec(allocate(&amp;quot;.CRT$XCU&amp;quot;))                                 \    
-  void (__CCALL * __ctor__##a##__##b##__ ## 520hjm)(void) =        \    
-  __##a##__##b##__ ## 520hjm;    
-#else    
-#define __CCALL    
-#define __CONSTRCT(a, b) __attribute__((constructor))    
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;额外参考&#34;&gt;额外参考 &lt;a href=&#34;#%e9%a2%9d%e5%a4%96%e5%8f%82%e8%80%83&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;仿照&lt;a href=&#34;https://code.google.com/p/googletest/&#34;&gt;gtest&lt;/a&gt;的简易单元测试&lt;a href=&#34;https://github.com/buf1024/ctest&#34;&gt;ctest&lt;/a&gt;就是用的这方面的知识。&lt;/p&gt;
-</description>
+      <description>
+        
+          
+            构造函数 任何一们面向对象语言里都会涉及构造函数这一概念，只是实现的方式各有差异。需要这main函数之前执行一段代码是非常容易的事情，只需要声
+          
+          
+        
+      </description>
     </item>
     
   </channel>
