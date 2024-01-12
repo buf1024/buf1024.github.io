@@ -6,10 +6,19 @@
     <description>Recent content in Posts on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 26 Dec 2023 16:00:10 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jan 2024 16:00:10 +0800</lastBuildDate>
     
 	<atom:link href="https://luoguochun.cn/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>前端保姆级配置</title>
+      <link>https://luoguochun.cn/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 08 Jan 2024 16:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/</guid>
+      <description>20240108 前端配置 感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。 目前一般使用vite​作为前端构建工具，下</description>
+    </item>
     
     <item>
       <title>rust 过程宏</title>

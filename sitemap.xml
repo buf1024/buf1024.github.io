@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://luoguochun.cn/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2024-01-08T16:00:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://luoguochun.cn/post/2023-12-26-rust-proc-macro/</loc>
     <lastmod>2023-12-26T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -704,7 +711,7 @@
   
   <url>
     <loc>https://luoguochun.cn/</loc>
-    <lastmod>2023-12-26T16:00:10+08:00</lastmod>
+    <lastmod>2024-01-08T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -745,7 +752,7 @@
   
   <url>
     <loc>https://luoguochun.cn/post/</loc>
-    <lastmod>2023-12-26T16:00:10+08:00</lastmod>
+    <lastmod>2024-01-08T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -872,6 +879,13 @@
   <url>
     <loc>https://luoguochun.cn/tags/frontend/</loc>
     <lastmod>2018-01-25T09:32:32+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://luoguochun.cn/categories/frontend/</loc>
+    <lastmod>2024-01-08T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1299,6 +1313,13 @@
   <url>
     <loc>https://luoguochun.cn/categories/vim/</loc>
     <lastmod>2019-03-01T18:02:12+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://luoguochun.cn/tags/vite/</loc>
+    <lastmod>2024-01-08T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
