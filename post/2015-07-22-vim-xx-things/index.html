@@ -1,248 +1,168 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>VIM XX THINGS - BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="关于中文乱码 跟字符编码方式有关的选项: encoding, fileencoding, fileencodings, *termencoding*。更详细的信息可看vim 帮助文档: :help encoding-names。简" /><meta name="keywords" content="blog, computer, luoguochun" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/post/2015-07-22-vim-xx-things/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="VIM XX THINGS" />
-<meta property="og:description" content="关于中文乱码 跟字符编码方式有关的选项: encoding, fileencoding, fileencodings, *termencoding*。更详细的信息可看vim 帮助文档: :help encoding-names。简" />
+<title>VIM XX THINGS | BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/post/2015-07-22-vim-xx-things/">
+<meta name="description" content="关于中文乱码 🔗跟字符编码方式有关的选项: encoding, fileencoding, fileencodings, termencoding。更详细的信息可看vim 帮助文档: :help encoding-names。简略" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luoguochun.cn/post/2015-07-22-vim-xx-things/" /><meta property="article:published_time" content="2015-07-22T15:25:00&#43;00:00"/>
-<meta property="article:modified_time" content="2015-07-22T15:25:00&#43;00:00"/>
-
-<meta itemprop="name" content="VIM XX THINGS">
-<meta itemprop="description" content="关于中文乱码 跟字符编码方式有关的选项: encoding, fileencoding, fileencodings, *termencoding*。更详细的信息可看vim 帮助文档: :help encoding-names。简">
-
-
-<meta itemprop="datePublished" content="2015-07-22T15:25:00&#43;00:00" />
-<meta itemprop="dateModified" content="2015-07-22T15:25:00&#43;00:00" />
-<meta itemprop="wordCount" content="487">
+<meta property="og:title" content="VIM XX THINGS | BUF1024!!!" />
+<meta property="og:url" content="https://luoguochun.cn/post/2015-07-22-vim-xx-things/" />
+<meta property="og:description" content="关于中文乱码 🔗跟字符编码方式有关的选项: encoding, fileencoding, fileencodings, termencoding。更详细的信息可看vim 帮助文档: :help encoding-names。简略" />
 
 
 
-<meta itemprop="keywords" content="vim," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="VIM XX THINGS"/>
-<meta name="twitter:description" content="关于中文乱码 跟字符编码方式有关的选项: encoding, fileencoding, fileencodings, *termencoding*。更详细的信息可看vim 帮助文档: :help encoding-names。简"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">VIM XX THINGS</h1>
+    <main class="main-wrapper">
 
-      <div class="post-meta">
-        <span class="post-time"> 2015-07-22 </span>
-        <div class="post-category">
-            <a href="/categories/vim/"> vim </a>
-            </div>
-          <span class="more-meta"> 约 487 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
+
+<section class="single">
+    <h1 class="title">VIM XX THINGS</h1>
+
+    <div class="tip">
+        <time datetime="2015-07-22 15:25:00 &#43;0000 UTC">2015/07/22</time>
+        <span class="split">·</span>
+        <span> 470 words </span>
+        <span class="split">·</span>
+        <span>
+            1 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
         
-      </div>
-    </header>
+        <div>
+            Categories:
+            
+                <a href="/categories/vim">vim</a>
+            
+        </div>
+        
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-    <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#关于中文乱码">关于中文乱码</a></li>
-<li><a href="#关于map映射">关于map映射</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/vim">vim</a>
+                
+            </div>
+        
+    </div>
 
-<h3 id="关于中文乱码">关于中文乱码</h3>
+    <hr />
 
-<p>跟字符编码方式有关的选项:<br />
-<em>encoding</em>, <em>fileencoding</em>, <em>fileencodings</em>, *termencoding*。更详细的信息可看vim 帮助文档: <code>:help encoding-names</code>。简略含义如下：<br />
-1. *encoding*： Vim 内部使用的字符编码方式，包括 Vim 的 buffer (缓冲区)、菜单文本、消息文本等。<br />
-2. *fileencoding*： Vim 中当前编辑的文件的字符编码方式<br />
-3. *fileencodings*： Vim 启动时会按照它所列出的字符编码方式逐一探测即将打开的文件的字符编码方式，并且将 fileencoding 设置为最终探测到的字符编码方式。
-4. termencoding: Vim 所工作的终端 (或者 Windows 的 Console 窗口) 的字符编码方式。<br />
-所以在一般情况下，<code>~/.vimrc</code>里面设置如下配置，则可解决大多数中文乱码问题:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">let &amp;termencoding=&amp;encoding
-set fileencodings=ucs-bom,utf-8,gbk,cp936,gb18030,big5,euc-jp,euc-kr,latin1</pre></td></tr></table>
-</div>
-</div>
-<h3 id="关于map映射">关于map映射</h3>
-
-<p>对于<code>map</code>, <code>unmap</code>, <code>mapclear</code>而言，可以有多种组合，不带前缀的<code>map</code>在普通模式和可视模式生效，命令组合，可能有这么几种前缀:</p>
-
+    <div class="content">
+        <h3 id="关于中文乱码">关于中文乱码 <a href="#%e5%85%b3%e4%ba%8e%e4%b8%ad%e6%96%87%e4%b9%b1%e7%a0%81" class="anchor">🔗</a></h3><p>跟字符编码方式有关的选项:<br>
+<em>encoding</em>, <em>fileencoding</em>, <em>fileencodings</em>, <em>termencoding</em>。更详细的信息可看vim 帮助文档: <code>:help encoding-names</code>。简略含义如下：</p>
 <ol>
-<li><code>nore</code> 表示非递归(可能是no recursive的缩写)<br /></li>
-<li><code>n</code> 表示在普通模式下生效<br /></li>
-<li><code>v</code> 表示在可视模式下生效<br /></li>
-<li><code>i</code> 表示在插入模式下生效<br /></li>
-<li><code>c</code> 表示在命令行模式下生效<br /></li>
+<li>
+<p><em>encoding</em>： Vim 内部使用的字符编码方式，包括 Vim 的 buffer (缓冲区)、菜单文本、消息文本等。</p>
+</li>
+<li>
+<p><em>fileencoding</em>： Vim 中当前编辑的文件的字符编码方式</p>
+</li>
+<li>
+<p><em>fileencodings</em>： Vim 启动时会按照它所列出的字符编码方式逐一探测即将打开的文件的字符编码方式，并且将 fileencoding 设置为最终探测到的字符编码方式。</p>
+</li>
+<li>
+<p>termencoding: Vim 所工作的终端 (或者 Windows 的 Console 窗口) 的字符编码方式。<br>
+所以在一般情况下，<code>~/.vimrc</code>里面设置如下配置，则可解决大多数中文乱码问题:</p>
+<p>let &amp;termencoding=&amp;encoding
+set fileencodings=ucs-bom,utf-8,gbk,cp936,gb18030,big5,euc-jp,euc-kr,latin1</p>
+</li>
 </ol>
-
+<h3 id="关于map映射">关于map映射 <a href="#%e5%85%b3%e4%ba%8emap%e6%98%a0%e5%b0%84" class="anchor">🔗</a></h3><p>对于<code>map</code>, <code>unmap</code>, <code>mapclear</code>而言，可以有多种组合，不带前缀的<code>map</code>在普通模式和可视模式生效，命令组合，可能有这么几种前缀:</p>
+<ol>
+<li><code>nore</code> 表示非递归(可能是no recursive的缩写)</li>
+<li><code>n</code> 表示在普通模式下生效</li>
+<li><code>v</code> 表示在可视模式下生效</li>
+<li><code>i</code> 表示在插入模式下生效</li>
+<li><code>c</code> 表示在命令行模式下生效</li>
+</ol>
 <p>所以<code>map</code>有以下命令，分别作用于不同的模式:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">:map :noremap :unmap :mapclear
+<pre><code>:map :noremap :unmap :mapclear
 :nmap :nnoremap :nunmap :nmapclear
 :vmap :vnoremap :vunmap :vmapclear
 :imap :inoremap :iunmap :imapclear
-:cmap :cnoremap :cunmap :cmapclear</pre></td></tr></table>
-</div>
-</div>
+:cmap :cnoremap :cunmap :cmapclear
+</code></pre>
+
     </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">buf1024</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2015-07-22</span>
-  </p>
-  
-  
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/vim/">vim</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/2015-07-25-tcpdump-usage/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">tcpdump usage</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/2015-04-01-gdb-common-issue/">
-            <span class="next-text nav-default">gdb一丢丢常见问题</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        <div id="gitalk-container"></div>
+    
+</section>
+
+
+                <hr>
+                
+
+<div id="gitalk-container"></div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2015-07-22 15:25:00 \x2b0000 UTC',
+        id: '2015-07-22 15:25:00 \u002b0000 UTC',
         title: 'VIM XX THINGS',
         clientID: '72786bf87c19beec6abe',
         clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
@@ -255,57 +175,489 @@ set fileencodings=ucs-bom,utf-8,gbk,cp936,gb18030,big5,euc-jp,euc-kr,latin1</pre
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
-      </div>
+            </div>
+        </div>
+
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     </main>
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        id: '2015-07-22 15:25:00 \u002b0000 UTC',
+        title: 'VIM XX THINGS',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+    });
+    gitalk.render('gitalk-container');
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by
+        gitalk.</a></noscript>
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
+    
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
-
-
-
-
-
-
-
-
+    
 </body>
+
 </html>

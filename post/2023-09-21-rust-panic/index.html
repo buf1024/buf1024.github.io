@@ -1,172 +1,138 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>一行代码让 rustc panic - BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 5 // 敏感信息去掉 format!(&amp;#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;amp;X_=xadf0&amp;#34;,code=&amp;amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22co" /><meta name="keywords" content="blog, computer, luoguochun" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/post/2023-09-21-rust-panic/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="一行代码让 rustc panic" />
-<meta property="og:description" content="今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 5 // 敏感信息去掉 format!(&#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;X_=xadf0&#34;,code=&amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22co" />
+<title>一行代码让 rustc panic | BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/post/2023-09-21-rust-panic/">
+<meta name="description" content="今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 // 敏感信息去掉 format!(&#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;X_=xadf0&#34;, code = &amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luoguochun.cn/post/2023-09-21-rust-panic/" /><meta property="article:published_time" content="2023-09-21T18:00:10&#43;08:00"/>
-<meta property="article:modified_time" content="2023-09-21T18:00:10&#43;08:00"/>
-
-<meta itemprop="name" content="一行代码让 rustc panic">
-<meta itemprop="description" content="今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 5 // 敏感信息去掉 format!(&#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;X_=xadf0&#34;,code=&amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22co">
-
-
-<meta itemprop="datePublished" content="2023-09-21T18:00:10&#43;08:00" />
-<meta itemprop="dateModified" content="2023-09-21T18:00:10&#43;08:00" />
-<meta itemprop="wordCount" content="929">
+<meta property="og:title" content="一行代码让 rustc panic | BUF1024!!!" />
+<meta property="og:url" content="https://luoguochun.cn/post/2023-09-21-rust-panic/" />
+<meta property="og:description" content="今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 // 敏感信息去掉 format!(&#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;X_=xadf0&#34;, code = &amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22" />
 
 
 
-<meta itemprop="keywords" content="rust," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="一行代码让 rustc panic"/>
-<meta name="twitter:description" content="今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 5 // 敏感信息去掉 format!(&#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;X_=xadf0&#34;,code=&amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22co"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">一行代码让 rustc panic</h1>
+    <main class="main-wrapper">
 
-      <div class="post-meta">
-        <span class="post-time"> 2023-09-21 </span>
-        <div class="post-category">
-            <a href="/categories/rust/"> rust </a>
-            </div>
-          <span class="more-meta"> 约 929 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
+
+<section class="single">
+    <h1 class="title">一行代码让 rustc panic</h1>
+
+    <div class="tip">
+        <time datetime="2023-09-21 18:00:10 &#43;0800 CST">2023/09/21</time>
+        <span class="split">·</span>
+        <span> 1060 words </span>
+        <span class="split">·</span>
+        <span>
+            3 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
         
-      </div>
-    </header>
+        <div>
+            Categories:
+            
+                <a href="/categories/rust">rust</a>
+            
+        </div>
+        
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-    
-  </div>
-</div>
-    <div class="post-content">
-      <p>今天遇到一个非常特殊的问题，源自于以下一段代码：</p>
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/rust">rust</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>今天遇到一个非常特殊的问题，源自于以下一段代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="c1">// 敏感信息去掉
-</span><span class="c1"></span><span class="n">format</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;https://xxxget?\
-</span><span class="s">         a=(ab%3D%22code%22)&amp;X_=xadf0&#34;</span><span class="p">,</span><span class="w">
-</span><span class="w">         </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">code</span><span class="p">[</span><span class="mi">2</span><span class="p">..]);</span><span class="w">
-</span><span class="w"></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="c1">// 敏感信息去掉
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="fm">format!</span><span class="p">(</span><span class="s">&#34;https://xxxget?</span><span class="se">\</span><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">         a=(ab%3D%22code%22)&amp;X_=xadf0&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">code</span><span class="p">[</span><span class="mi">2</span><span class="o">..</span><span class="p">]);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>这是一段拼接url的代码，以上代码是错误的写法，<code>%3D%22code%22</code>​这里应该是<code>b%3D%22{code}%22</code>​，这样才能传递参数进行格式化，由于自己的粗心写错了。</p>
-
+</div><p>这是一段拼接url的代码，以上代码是错误的写法，<code>%3D%22code%22</code>​这里应该是<code>b%3D%22{code}%22</code>​，这样才能传递参数进行格式化，由于自己的粗心写错了。</p>
 <p>​<code>rls</code>​没有检测出来，本来传说中的非常强大的编译应该检测出来，只不过这个简单的问题，却导致编译器<code>panic</code>​了!并生成了<code>rustc-ice</code>​文件，并让我提交<code>issue</code>​。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -202,56 +168,52 @@
 </span><span class="lnt">34
 </span><span class="lnt">35
 </span><span class="lnt">36
-</span><span class="lnt">37
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="n">thread</span><span class="w"> </span><span class="na">&#39;rustc</span><span class="err">&#39;</span><span class="w"> </span><span class="n">panicked</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">compiler</span><span class="o">/</span><span class="n">rustc_builtin_macros</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">format_foreign</span><span class="p">.</span><span class="n">rs</span>:<span class="mi">272</span>:<span class="mi">55</span>:
-<span class="nc">invalid</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="err">`</span><span class="s">&#34;22600000&#34;</span><span class="err">`</span><span class="w">
-</span><span class="w"></span><span class="n">stack</span><span class="w"> </span><span class="n">backtrace</span>:
-   <span class="mi">0</span>:        <span class="mh">0x1063bb42f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span>::<span class="n">backtrace</span>::<span class="n">Backtrace</span>::<span class="n">create</span>::<span class="n">h276e52d394804866</span><span class="w">
-</span><span class="w">   </span><span class="mi">1</span>:        <span class="mh">0x1063bb375</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span>::<span class="n">backtrace</span>::<span class="n">Backtrace</span>::<span class="n">force_capture</span>::<span class="n">hf01754881169428b</span><span class="w">
-</span><span class="w">   </span><span class="mi">2</span>:        <span class="mh">0x112daf7e1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span><span class="p">[</span><span class="mi">1347</span><span class="n">dba3eeb2185a</span><span class="p">]</span>::<span class="n">panicking</span>::<span class="n">update_hook</span>::<span class="o">&lt;</span><span class="n">alloc</span><span class="p">[</span><span class="mi">1</span><span class="n">cfb2b8206dd332</span><span class="p">]</span>::<span class="n">boxed</span>::<span class="nb">Box</span><span class="o">&lt;</span><span class="n">rustc_driver_impl</span><span class="p">[</span><span class="mi">38518</span><span class="n">a20a95be9f6</span><span class="p">]</span>::<span class="n">install_ice_hook</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">0</span><span class="p">}</span><span class="o">&gt;&gt;</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">0</span><span class="p">}</span><span class="w">
-</span><span class="w">   </span><span class="mi">3</span>:        <span class="mh">0x1063d6596</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span>::<span class="n">panicking</span>::<span class="n">rust_panic_with_hook</span>::<span class="n">hc06cecb314d2e534</span><span class="w">
-</span><span class="w">   </span><span class="mi">4</span>:        <span class="mh">0x1063d632d</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span>::<span class="n">panicking</span>::<span class="n">begin_panic_handler</span>::<span class="p">{{</span><span class="n">closure</span><span class="p">}}</span>::<span class="n">hb0f4c27b60ad4000</span><span class="w">
-</span><span class="w">   </span><span class="mi">5</span>:        <span class="mh">0x1063d3009</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span>::<span class="n">sys_common</span>::<span class="n">backtrace</span>::<span class="n">__rust_end_short_backtrace</span>::<span class="n">h62f21dd221c17a86</span><span class="w">
-</span><span class="w">   </span><span class="mi">6</span>:        <span class="mh">0x1063d605d</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">_rust_begin_unwind</span><span class="w">
-</span><span class="w">   </span><span class="mi">7</span>:        <span class="mh">0x10645e395</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">core</span>::<span class="n">panicking</span>::<span class="n">panic_fmt</span>::<span class="n">h74b5171bcf212936</span><span class="w">
-</span><span class="w">   </span><span class="mi">8</span>:        <span class="mh">0x11290024c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;</span><span class="n">rustc_builtin_macros</span><span class="p">[</span><span class="n">c397c70d617caee1</span><span class="p">]</span>::<span class="n">format_foreign</span>::<span class="n">printf</span>::<span class="n">Substitutions</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">iter</span>::<span class="n">traits</span>::<span class="n">iterator</span>::<span class="nb">Iterator</span><span class="o">&gt;</span>::<span class="n">next</span><span class="w">
-</span><span class="w">   </span><span class="mi">9</span>:        <span class="mh">0x11290e77c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_builtin_macros</span><span class="p">[</span><span class="n">c397c70d617caee1</span><span class="p">]</span>::<span class="n">format</span>::<span class="n">make_format_args</span><span class="w">
-</span><span class="w">  </span><span class="mi">10</span>:        <span class="mh">0x1129117cb</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_builtin_macros</span><span class="p">[</span><span class="n">c397c70d617caee1</span><span class="p">]</span>::<span class="n">format</span>::<span class="n">expand_format_args_impl</span><span class="w">
-</span><span class="w">  </span><span class="mi">11</span>:        <span class="mh">0x112f18c3b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;</span><span class="n">rustc_expand</span><span class="p">[</span><span class="mi">33739</span><span class="n">c2ad659c2f6</span><span class="p">]</span>::<span class="n">expand</span>::<span class="n">MacroExpander</span><span class="o">&gt;</span>::<span class="n">fully_expand_fragment</span><span class="w">
-</span><span class="w">  </span><span class="mi">12</span>:        <span class="mh">0x112f17760</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;</span><span class="n">rustc_expand</span><span class="p">[</span><span class="mi">33739</span><span class="n">c2ad659c2f6</span><span class="p">]</span>::<span class="n">expand</span>::<span class="n">MacroExpander</span><span class="o">&gt;</span>::<span class="n">expand_crate</span><span class="w">
-</span><span class="w">  </span><span class="mi">13</span>:        <span class="mh">0x1135a2ccd</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;</span><span class="n">rustc_session</span><span class="p">[</span><span class="n">ae81351961406b05</span><span class="p">]</span>::<span class="n">session</span>::<span class="n">Session</span><span class="o">&gt;</span>::<span class="n">time</span>::<span class="o">&lt;</span><span class="n">rustc_ast</span><span class="p">[</span><span class="mi">95</span><span class="n">b967775af3a4bd</span><span class="p">]</span>::<span class="n">ast</span>::<span class="n">Crate</span><span class="p">,</span><span class="w"> </span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">passes</span>::<span class="n">configure_and_expand</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">1</span><span class="p">}</span><span class="o">&gt;</span><span class="w">
-</span><span class="w">  </span><span class="mi">14</span>:        <span class="mh">0x11359cf1a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">passes</span>::<span class="n">resolver_for_lowering</span><span class="w">
-</span><span class="w">  </span><span class="mi">15</span>:        <span class="mh">0x11411385d</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_query_impl</span><span class="p">[</span><span class="mi">91</span><span class="n">ec14b0b4344d37</span><span class="p">]</span>::<span class="n">plumbing</span>::<span class="n">__rust_begin_short_backtrace</span>::<span class="o">&lt;</span><span class="n">rustc_query_impl</span><span class="p">[</span><span class="mi">91</span><span class="n">ec14b0b4344d37</span><span class="p">]</span>::<span class="n">query_impl</span>::<span class="n">resolver_for_lowering</span>::<span class="n">dynamic_query</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">2</span><span class="p">}</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">rustc_middle</span><span class="p">[</span><span class="n">ac208c32f4486d9f</span><span class="p">]</span>::<span class="n">query</span>::<span class="n">erase</span>::<span class="n">Erased</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">u8</span><span class="p">;</span><span class="w"> </span><span class="mi">8</span><span class="k">usize</span><span class="p">]</span><span class="o">&gt;&gt;</span><span class="w">
-</span><span class="w">  </span><span class="mi">16</span>:        <span class="mh">0x1141578a9</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;</span><span class="n">rustc_query_impl</span><span class="p">[</span><span class="mi">91</span><span class="n">ec14b0b4344d37</span><span class="p">]</span>::<span class="n">query_impl</span>::<span class="n">resolver_for_lowering</span>::<span class="n">dynamic_query</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">2</span><span class="p">}</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">ops</span>::<span class="n">function</span>::<span class="nb">FnOnce</span><span class="o">&lt;</span><span class="p">(</span><span class="n">rustc_middle</span><span class="p">[</span><span class="n">ac208c32f4486d9f</span><span class="p">]</span>::<span class="n">ty</span>::<span class="n">context</span>::<span class="n">TyCtxt</span><span class="p">,</span><span class="w"> </span><span class="p">())</span><span class="o">&gt;&gt;</span>::<span class="n">call_once</span><span class="w">
-</span><span class="w">  </span><span class="mi">17</span>:        <span class="mh">0x11406730f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_query_system</span><span class="p">[</span><span class="n">f5b2597d247dc7ad</span><span class="p">]</span>::<span class="n">query</span>::<span class="n">plumbing</span>::<span class="n">try_execute_query</span>::<span class="o">&lt;</span><span class="n">rustc_query_impl</span><span class="p">[</span><span class="mi">91</span><span class="n">ec14b0b4344d37</span><span class="p">]</span>::<span class="n">DynamicConfig</span><span class="o">&lt;</span><span class="n">rustc_query_system</span><span class="p">[</span><span class="n">f5b2597d247dc7ad</span><span class="p">]</span>::<span class="n">query</span>::<span class="n">caches</span>::<span class="n">SingleCache</span><span class="o">&lt;</span><span class="n">rustc_middle</span><span class="p">[</span><span class="n">ac208c32f4486d9f</span><span class="p">]</span>::<span class="n">query</span>::<span class="n">erase</span>::<span class="n">Erased</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">u8</span><span class="p">;</span><span class="w"> </span><span class="mi">8</span><span class="k">usize</span><span class="p">]</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">rustc_query_impl</span><span class="p">[</span><span class="mi">91</span><span class="n">ec14b0b4344d37</span><span class="p">]</span>::<span class="n">plumbing</span>::<span class="n">QueryCtxt</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="o">&gt;</span><span class="w">
-</span><span class="w">  </span><span class="mi">18</span>:        <span class="mh">0x114173ee3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_query_impl</span><span class="p">[</span><span class="mi">91</span><span class="n">ec14b0b4344d37</span><span class="p">]</span>::<span class="n">query_impl</span>::<span class="n">resolver_for_lowering</span>::<span class="n">get_query_incr</span>::<span class="n">__rust_end_short_backtrace</span><span class="w">
-</span><span class="w">  </span><span class="mi">19</span>:        <span class="mh">0x112dc37e5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;</span><span class="n">rustc_middle</span><span class="p">[</span><span class="n">ac208c32f4486d9f</span><span class="p">]</span>::<span class="n">ty</span>::<span class="n">context</span>::<span class="n">GlobalCtxt</span><span class="o">&gt;</span>::<span class="n">enter</span>::<span class="o">&lt;</span><span class="n">rustc_driver_impl</span><span class="p">[</span><span class="mi">38518</span><span class="n">a20a95be9f6</span><span class="p">]</span>::<span class="n">run_compiler</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">1</span><span class="p">}</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">2</span><span class="p">}</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">4</span><span class="p">},</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rustc_data_structures</span><span class="p">[</span><span class="mi">6</span><span class="n">dcb2c1aaf93e55a</span><span class="p">]</span>::<span class="n">steal</span>::<span class="n">Steal</span><span class="o">&lt;</span><span class="p">(</span><span class="n">rustc_middle</span><span class="p">[</span><span class="n">ac208c32f4486d9f</span><span class="p">]</span>::<span class="n">ty</span>::<span class="n">ResolverAstLowering</span><span class="p">,</span><span class="w"> </span><span class="n">alloc</span><span class="p">[</span><span class="mi">1</span><span class="n">cfb2b8206dd332</span><span class="p">]</span>::<span class="n">rc</span>::<span class="n">Rc</span><span class="o">&lt;</span><span class="n">rustc_ast</span><span class="p">[</span><span class="mi">95</span><span class="n">b967775af3a4bd</span><span class="p">]</span>::<span class="n">ast</span>::<span class="n">Crate</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="w">
-</span><span class="w">  </span><span class="mi">20</span>:        <span class="mh">0x112d79485</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">set_source_map</span>::<span class="o">&lt;</span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">interface</span>::<span class="n">run_compiler</span><span class="o">&lt;</span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">rustc_driver_impl</span><span class="p">[</span><span class="mi">38518</span><span class="n">a20a95be9f6</span><span class="p">]</span>::<span class="n">run_compiler</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">1</span><span class="p">}</span><span class="o">&gt;</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">0</span><span class="p">}</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">0</span><span class="p">}</span><span class="o">&gt;</span><span class="w">
-</span><span class="w">  </span><span class="mi">21</span>:        <span class="mh">0x112dae7a3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span><span class="p">[</span><span class="mi">1347</span><span class="n">dba3eeb2185a</span><span class="p">]</span>::<span class="n">sys_common</span>::<span class="n">backtrace</span>::<span class="n">__rust_begin_short_backtrace</span>::<span class="o">&lt;</span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">util</span>::<span class="n">run_in_thread_with_globals</span><span class="o">&lt;</span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">interface</span>::<span class="n">run_compiler</span><span class="o">&lt;</span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">rustc_driver_impl</span><span class="p">[</span><span class="mi">38518</span><span class="n">a20a95be9f6</span><span class="p">]</span>::<span class="n">run_compiler</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">1</span><span class="p">}</span><span class="o">&gt;</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;&gt;</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">0</span><span class="p">}</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;&gt;</span><span class="w">
-</span><span class="w">  </span><span class="mi">22</span>:        <span class="mh">0x112dafb7e</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="p">[</span><span class="mi">1347</span><span class="n">dba3eeb2185a</span><span class="p">]</span>::<span class="n">thread</span>::<span class="n">Builder</span><span class="o">&gt;</span>::<span class="n">spawn_unchecked_</span><span class="o">&lt;</span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">util</span>::<span class="n">run_in_thread_with_globals</span><span class="o">&lt;</span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">interface</span>::<span class="n">run_compiler</span><span class="o">&lt;</span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">rustc_driver_impl</span><span class="p">[</span><span class="mi">38518</span><span class="n">a20a95be9f6</span><span class="p">]</span>::<span class="n">run_compiler</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">1</span><span class="p">}</span><span class="o">&gt;</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;&gt;</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">0</span><span class="p">}</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;&gt;</span>::<span class="p">{</span><span class="n">closure</span><span class="err">#</span><span class="mi">1</span><span class="p">}</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">ops</span>::<span class="n">function</span>::<span class="nb">FnOnce</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;&gt;</span>::<span class="n">call_once</span>::<span class="p">{</span><span class="n">shim</span>:<span class="nc">vtable</span><span class="err">#</span><span class="mi">0</span><span class="p">}</span><span class="w">
-</span><span class="w">  </span><span class="mi">23</span>:        <span class="mh">0x1063e0439</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span>::<span class="n">sys</span>::<span class="n">unix</span>::<span class="n">thread</span>::<span class="n">Thread</span>:<span class="err">🆕</span>:<span class="nc">thread_start</span>::<span class="n">hab308b3b916baab6</span><span class="w">
-</span><span class="w">  </span><span class="mi">24</span>:     <span class="mh">0x7ff8169484e1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">__pthread_start</span><span class="w">
-</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">rustc</span><span class="w"> </span><span class="n">version</span>: <span class="mf">1.74.0</span><span class="o">-</span><span class="n">nightly</span><span class="w"> </span><span class="p">(</span><span class="mi">3223</span><span class="n">b0b5e</span><span class="w"> </span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span><span class="w">
-</span><span class="w"></span><span class="n">platform</span>: <span class="nc">x86_64</span><span class="o">-</span><span class="n">apple</span><span class="o">-</span><span class="n">darwin</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">query</span><span class="w"> </span><span class="n">stack</span><span class="w"> </span><span class="n">during</span><span class="w"> </span><span class="n">panic</span>:
-<span class="err">#</span><span class="mi">0</span><span class="w"> </span><span class="p">[</span><span class="n">resolver_for_lowering</span><span class="p">]</span><span class="w"> </span><span class="n">getting</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">resolver</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">lowering</span><span class="w">
-</span><span class="w"></span><span class="n">end</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="n">stack</span><span class="w">
-</span><span class="w"></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="n">thread</span><span class="w"> </span><span class="na">&#39;rustc&#39;</span><span class="w"> </span><span class="n">panicked</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">compiler</span><span class="o">/</span><span class="n">rustc_builtin_macros</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">format_foreign</span><span class="p">.</span><span class="n">rs</span>:<span class="mi">272</span>:<span class="mi">55</span>:
+</span></span><span class="line"><span class="cl"><span class="nc">invalid</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="err">`</span><span class="s">&#34;22600000&#34;</span><span class="err">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">stack</span><span class="w"> </span><span class="n">backtrace</span>:
+</span></span><span class="line"><span class="cl">   <span class="mi">0</span>:        <span class="mh">0x1063bb42f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span>::<span class="n">backtrace</span>::<span class="n">Backtrace</span>::<span class="n">create</span>::<span class="n">h276e52d394804866</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="mi">1</span>:        <span class="mh">0x1063bb375</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span>::<span class="n">backtrace</span>::<span class="n">Backtrace</span>::<span class="n">force_capture</span>::<span class="n">hf01754881169428b</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="mi">2</span>:        <span class="mh">0x112daf7e1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span><span class="p">[</span><span class="mi">1347</span><span class="n">dba3eeb2185a</span><span class="p">]</span>::<span class="n">panicking</span>::<span class="n">update_hook</span>::<span class="o">&lt;</span><span class="n">alloc</span><span class="p">[</span><span class="mi">1</span><span class="n">cfb2b8206dd332</span><span class="p">]</span>::<span class="n">boxed</span>::<span class="nb">Box</span><span class="o">&lt;</span><span class="n">rustc_driver_impl</span><span class="p">[</span><span class="mi">38518</span><span class="n">a20a95be9f6</span><span class="p">]</span>::<span class="n">install_ice_hook</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">0</span><span class="p">}</span><span class="o">&gt;&gt;</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">0</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="mi">3</span>:        <span class="mh">0x1063d6596</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span>::<span class="n">panicking</span>::<span class="n">rust_panic_with_hook</span>::<span class="n">hc06cecb314d2e534</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="mi">4</span>:        <span class="mh">0x1063d632d</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span>::<span class="n">panicking</span>::<span class="n">begin_panic_handler</span>::<span class="p">{{</span><span class="n">closure</span><span class="p">}}</span>::<span class="n">hb0f4c27b60ad4000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="mi">5</span>:        <span class="mh">0x1063d3009</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span>::<span class="n">sys_common</span>::<span class="n">backtrace</span>::<span class="n">__rust_end_short_backtrace</span>::<span class="n">h62f21dd221c17a86</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="mi">6</span>:        <span class="mh">0x1063d605d</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">_rust_begin_unwind</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="mi">7</span>:        <span class="mh">0x10645e395</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">core</span>::<span class="n">panicking</span>::<span class="n">panic_fmt</span>::<span class="n">h74b5171bcf212936</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="mi">8</span>:        <span class="mh">0x11290024c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;</span><span class="n">rustc_builtin_macros</span><span class="p">[</span><span class="n">c397c70d617caee1</span><span class="p">]</span>::<span class="n">format_foreign</span>::<span class="n">printf</span>::<span class="n">Substitutions</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">iter</span>::<span class="n">traits</span>::<span class="n">iterator</span>::<span class="nb">Iterator</span><span class="o">&gt;</span>::<span class="n">next</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="mi">9</span>:        <span class="mh">0x11290e77c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_builtin_macros</span><span class="p">[</span><span class="n">c397c70d617caee1</span><span class="p">]</span>::<span class="n">format</span>::<span class="n">make_format_args</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">10</span>:        <span class="mh">0x1129117cb</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_builtin_macros</span><span class="p">[</span><span class="n">c397c70d617caee1</span><span class="p">]</span>::<span class="n">format</span>::<span class="n">expand_format_args_impl</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">11</span>:        <span class="mh">0x112f18c3b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;</span><span class="n">rustc_expand</span><span class="p">[</span><span class="mi">33739</span><span class="n">c2ad659c2f6</span><span class="p">]</span>::<span class="n">expand</span>::<span class="n">MacroExpander</span><span class="o">&gt;</span>::<span class="n">fully_expand_fragment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">12</span>:        <span class="mh">0x112f17760</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;</span><span class="n">rustc_expand</span><span class="p">[</span><span class="mi">33739</span><span class="n">c2ad659c2f6</span><span class="p">]</span>::<span class="n">expand</span>::<span class="n">MacroExpander</span><span class="o">&gt;</span>::<span class="n">expand_crate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">13</span>:        <span class="mh">0x1135a2ccd</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;</span><span class="n">rustc_session</span><span class="p">[</span><span class="n">ae81351961406b05</span><span class="p">]</span>::<span class="n">session</span>::<span class="n">Session</span><span class="o">&gt;</span>::<span class="n">time</span>::<span class="o">&lt;</span><span class="n">rustc_ast</span><span class="p">[</span><span class="mi">95</span><span class="n">b967775af3a4bd</span><span class="p">]</span>::<span class="n">ast</span>::<span class="n">Crate</span><span class="p">,</span><span class="w"> </span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">passes</span>::<span class="n">configure_and_expand</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">1</span><span class="p">}</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">14</span>:        <span class="mh">0x11359cf1a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">passes</span>::<span class="n">resolver_for_lowering</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">15</span>:        <span class="mh">0x11411385d</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_query_impl</span><span class="p">[</span><span class="mi">91</span><span class="n">ec14b0b4344d37</span><span class="p">]</span>::<span class="n">plumbing</span>::<span class="n">__rust_begin_short_backtrace</span>::<span class="o">&lt;</span><span class="n">rustc_query_impl</span><span class="p">[</span><span class="mi">91</span><span class="n">ec14b0b4344d37</span><span class="p">]</span>::<span class="n">query_impl</span>::<span class="n">resolver_for_lowering</span>::<span class="n">dynamic_query</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">2</span><span class="p">}</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">rustc_middle</span><span class="p">[</span><span class="n">ac208c32f4486d9f</span><span class="p">]</span>::<span class="n">query</span>::<span class="n">erase</span>::<span class="n">Erased</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">u8</span><span class="p">;</span><span class="w"> </span><span class="mi">8</span><span class="k">usize</span><span class="p">]</span><span class="o">&gt;&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">16</span>:        <span class="mh">0x1141578a9</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;</span><span class="n">rustc_query_impl</span><span class="p">[</span><span class="mi">91</span><span class="n">ec14b0b4344d37</span><span class="p">]</span>::<span class="n">query_impl</span>::<span class="n">resolver_for_lowering</span>::<span class="n">dynamic_query</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">2</span><span class="p">}</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">ops</span>::<span class="n">function</span>::<span class="nb">FnOnce</span><span class="o">&lt;</span><span class="p">(</span><span class="n">rustc_middle</span><span class="p">[</span><span class="n">ac208c32f4486d9f</span><span class="p">]</span>::<span class="n">ty</span>::<span class="n">context</span>::<span class="n">TyCtxt</span><span class="p">,</span><span class="w"> </span><span class="p">())</span><span class="o">&gt;&gt;</span>::<span class="n">call_once</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">17</span>:        <span class="mh">0x11406730f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_query_system</span><span class="p">[</span><span class="n">f5b2597d247dc7ad</span><span class="p">]</span>::<span class="n">query</span>::<span class="n">plumbing</span>::<span class="n">try_execute_query</span>::<span class="o">&lt;</span><span class="n">rustc_query_impl</span><span class="p">[</span><span class="mi">91</span><span class="n">ec14b0b4344d37</span><span class="p">]</span>::<span class="n">DynamicConfig</span><span class="o">&lt;</span><span class="n">rustc_query_system</span><span class="p">[</span><span class="n">f5b2597d247dc7ad</span><span class="p">]</span>::<span class="n">query</span>::<span class="n">caches</span>::<span class="n">SingleCache</span><span class="o">&lt;</span><span class="n">rustc_middle</span><span class="p">[</span><span class="n">ac208c32f4486d9f</span><span class="p">]</span>::<span class="n">query</span>::<span class="n">erase</span>::<span class="n">Erased</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">u8</span><span class="p">;</span><span class="w"> </span><span class="mi">8</span><span class="k">usize</span><span class="p">]</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">rustc_query_impl</span><span class="p">[</span><span class="mi">91</span><span class="n">ec14b0b4344d37</span><span class="p">]</span>::<span class="n">plumbing</span>::<span class="n">QueryCtxt</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">18</span>:        <span class="mh">0x114173ee3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_query_impl</span><span class="p">[</span><span class="mi">91</span><span class="n">ec14b0b4344d37</span><span class="p">]</span>::<span class="n">query_impl</span>::<span class="n">resolver_for_lowering</span>::<span class="n">get_query_incr</span>::<span class="n">__rust_end_short_backtrace</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">19</span>:        <span class="mh">0x112dc37e5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;</span><span class="n">rustc_middle</span><span class="p">[</span><span class="n">ac208c32f4486d9f</span><span class="p">]</span>::<span class="n">ty</span>::<span class="n">context</span>::<span class="n">GlobalCtxt</span><span class="o">&gt;</span>::<span class="n">enter</span>::<span class="o">&lt;</span><span class="n">rustc_driver_impl</span><span class="p">[</span><span class="mi">38518</span><span class="n">a20a95be9f6</span><span class="p">]</span>::<span class="n">run_compiler</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">1</span><span class="p">}</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">2</span><span class="p">}</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">4</span><span class="p">},</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rustc_data_structures</span><span class="p">[</span><span class="mi">6</span><span class="n">dcb2c1aaf93e55a</span><span class="p">]</span>::<span class="n">steal</span>::<span class="n">Steal</span><span class="o">&lt;</span><span class="p">(</span><span class="n">rustc_middle</span><span class="p">[</span><span class="n">ac208c32f4486d9f</span><span class="p">]</span>::<span class="n">ty</span>::<span class="n">ResolverAstLowering</span><span class="p">,</span><span class="w"> </span><span class="n">alloc</span><span class="p">[</span><span class="mi">1</span><span class="n">cfb2b8206dd332</span><span class="p">]</span>::<span class="n">rc</span>::<span class="n">Rc</span><span class="o">&lt;</span><span class="n">rustc_ast</span><span class="p">[</span><span class="mi">95</span><span class="n">b967775af3a4bd</span><span class="p">]</span>::<span class="n">ast</span>::<span class="n">Crate</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">20</span>:        <span class="mh">0x112d79485</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">set_source_map</span>::<span class="o">&lt;</span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">interface</span>::<span class="n">run_compiler</span><span class="o">&lt;</span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">rustc_driver_impl</span><span class="p">[</span><span class="mi">38518</span><span class="n">a20a95be9f6</span><span class="p">]</span>::<span class="n">run_compiler</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">1</span><span class="p">}</span><span class="o">&gt;</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">0</span><span class="p">}</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">0</span><span class="p">}</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">21</span>:        <span class="mh">0x112dae7a3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span><span class="p">[</span><span class="mi">1347</span><span class="n">dba3eeb2185a</span><span class="p">]</span>::<span class="n">sys_common</span>::<span class="n">backtrace</span>::<span class="n">__rust_begin_short_backtrace</span>::<span class="o">&lt;</span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">util</span>::<span class="n">run_in_thread_with_globals</span><span class="o">&lt;</span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">interface</span>::<span class="n">run_compiler</span><span class="o">&lt;</span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">rustc_driver_impl</span><span class="p">[</span><span class="mi">38518</span><span class="n">a20a95be9f6</span><span class="p">]</span>::<span class="n">run_compiler</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">1</span><span class="p">}</span><span class="o">&gt;</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;&gt;</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">0</span><span class="p">}</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">22</span>:        <span class="mh">0x112dafb7e</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="p">[</span><span class="mi">1347</span><span class="n">dba3eeb2185a</span><span class="p">]</span>::<span class="n">thread</span>::<span class="n">Builder</span><span class="o">&gt;</span>::<span class="n">spawn_unchecked_</span><span class="o">&lt;</span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">util</span>::<span class="n">run_in_thread_with_globals</span><span class="o">&lt;</span><span class="n">rustc_interface</span><span class="p">[</span><span class="mi">9</span><span class="n">ea207dfe3565402</span><span class="p">]</span>::<span class="n">interface</span>::<span class="n">run_compiler</span><span class="o">&lt;</span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">rustc_driver_impl</span><span class="p">[</span><span class="mi">38518</span><span class="n">a20a95be9f6</span><span class="p">]</span>::<span class="n">run_compiler</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">1</span><span class="p">}</span><span class="o">&gt;</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;&gt;</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">0</span><span class="p">}</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">result</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">rustc_span</span><span class="p">[</span><span class="mi">78</span><span class="n">dc5708a39e8e6c</span><span class="p">]</span>::<span class="n">ErrorGuaranteed</span><span class="o">&gt;&gt;</span>::<span class="p">{</span><span class="n">closure</span>#<span class="mi">1</span><span class="p">}</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">core</span><span class="p">[</span><span class="n">a5946ab14a20e1f4</span><span class="p">]</span>::<span class="n">ops</span>::<span class="n">function</span>::<span class="nb">FnOnce</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;&gt;</span>::<span class="n">call_once</span>::<span class="p">{</span><span class="n">shim</span>:<span class="nc">vtable</span>#<span class="mi">0</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">23</span>:        <span class="mh">0x1063e0439</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span>::<span class="n">sys</span>::<span class="n">unix</span>::<span class="n">thread</span>::<span class="n">Thread</span>::<span class="n">new</span>::<span class="n">thread_start</span>::<span class="n">hab308b3b916baab6</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="mi">24</span>:     <span class="mh">0x7ff8169484e1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">__pthread_start</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">rustc</span><span class="w"> </span><span class="n">version</span>: <span class="mf">1.74.0</span><span class="o">-</span><span class="n">nightly</span><span class="w"> </span><span class="p">(</span><span class="mi">3223</span><span class="n">b0b5e</span><span class="w"> </span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">20</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">platform</span>: <span class="nc">x86_64</span><span class="o">-</span><span class="n">apple</span><span class="o">-</span><span class="n">darwin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">query</span><span class="w"> </span><span class="n">stack</span><span class="w"> </span><span class="n">during</span><span class="w"> </span><span class="n">panic</span>:
+</span></span><span class="line"><span class="cl">#<span class="mi">0</span><span class="w"> </span><span class="p">[</span><span class="n">resolver_for_lowering</span><span class="p">]</span><span class="w"> </span><span class="n">getting</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">resolver</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">lowering</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">end</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="n">stack</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>从这个<code>panic</code>​信息，想定位到代码哪一行出问题，是无法下手的，只有编译器的调用堆栈。既然提示说是编译器的BUG，并让我提交issue，那么或者更新编译器可能可以解决。不过更新之后，问题依旧，查了一下rust仓库的issue，并没有类似的问题。</p>
-
+</div><p>从这个<code>panic</code>​信息，想定位到代码哪一行出问题，是无法下手的，只有编译器的调用堆栈。既然提示说是编译器的BUG，并让我提交issue，那么或者更新编译器可能可以解决。不过更新之后，问题依旧，查了一下rust仓库的issue，并没有类似的问题。</p>
 <p>本着不服输的姿态，我要定位到到底是哪一行代码导出编译器<code>panic</code>​了，于是便像之前写C++那样，一行一行代码的删除，直到最后定位到文中开头的那一行。原来就是自己的粗心导致的，稍微做一下修改便可以让编译器正常通过。</p>
-
 <p>然而，无论如何，编译器都不能挂的。难道强大的rust编译器就那么脆弱，一个简单的<code>format</code>​宏就能让编译器挂了？于是，便把那一行单独的拿出来试，这个时候，奇怪的事情发生了，它居然能正确之处问题的所在，它又展示了它的强大之处：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -270,75 +232,48 @@
 </span><span class="lnt">17
 </span><span class="lnt">18
 </span><span class="lnt">19
-</span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="n">error</span>: <span class="nc">named</span><span class="w"> </span><span class="n">argument</span><span class="w"> </span><span class="n">never</span><span class="w"> </span><span class="n">used</span><span class="w">
-</span><span class="w"> </span><span class="o">-</span>-&gt; <span class="nc">a</span><span class="p">.</span><span class="n">rs</span>:<span class="mi">7</span>:<span class="mi">18</span><span class="w">
-</span><span class="w">  </span><span class="o">|</span><span class="w">
-</span><span class="w"></span><span class="mi">7</span><span class="w"> </span><span class="o">|</span><span class="w">             </span><span class="n">code</span><span class="o">=</span><span class="s">&#34;abc&#34;</span><span class="p">);</span><span class="w">
-</span><span class="w">  </span><span class="o">|</span><span class="w">                  </span><span class="o">^^^^^</span><span class="w"> </span><span class="n">named</span><span class="w"> </span><span class="n">argument</span><span class="w"> </span><span class="n">never</span><span class="w"> </span><span class="n">used</span><span class="w">
-</span><span class="w">  </span><span class="o">|</span><span class="w">
-</span><span class="w"></span><span class="n">note</span>: <span class="nc">format</span><span class="w"> </span><span class="n">specifiers</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="n">curly</span><span class="w"> </span><span class="n">braces</span><span class="p">,</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">conversion</span><span class="w"> </span><span class="n">specifier</span><span class="w"> </span><span class="err">`</span><span class="n">D</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">unknown</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">unsupported</span><span class="w">
-</span><span class="w"> </span><span class="o">-</span>-&gt; <span class="nc">a</span><span class="p">.</span><span class="n">rs</span>:<span class="mi">5</span>:<span class="mi">20</span><span class="w">
-</span><span class="w">  </span><span class="o">|</span><span class="w">
-</span><span class="w"></span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">             </span><span class="n">filter</span><span class="o">=</span><span class="p">(</span><span class="n">SE</span><span class="o">%</span><span class="mi">3</span><span class="n">D</span><span class="o">%</span><span class="mi">22123</span><span class="o">%</span><span class="mi">22</span><span class="p">)</span><span class="o">&amp;</span><span class="err">\</span><span class="w">
-</span><span class="w">  </span><span class="o">|</span><span class="w">                    </span><span class="o">^^^</span><span class="w">
-</span><span class="w"></span><span class="n">note</span>: <span class="nc">format</span><span class="w"> </span><span class="n">specifiers</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="n">curly</span><span class="w"> </span><span class="n">braces</span><span class="p">,</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">conversion</span><span class="w"> </span><span class="n">specifier</span><span class="w"> </span><span class="err">`</span><span class="o">%</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">unknown</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">unsupported</span><span class="w">
-</span><span class="w"> </span><span class="o">-</span>-&gt; <span class="nc">a</span><span class="p">.</span><span class="n">rs</span>:<span class="mi">5</span>:<span class="mi">23</span><span class="w">
-</span><span class="w">  </span><span class="o">|</span><span class="w">
-</span><span class="w"></span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">             </span><span class="n">filter</span><span class="o">=</span><span class="p">(</span><span class="n">SE</span><span class="o">%</span><span class="mi">3</span><span class="n">D</span><span class="o">%</span><span class="mi">22123</span><span class="o">%</span><span class="mi">22</span><span class="p">)</span><span class="o">&amp;</span><span class="err">\</span><span class="w">
-</span><span class="w">  </span><span class="o">|</span><span class="w">                       </span><span class="o">^^^^^^^</span><span class="w">
-</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">note</span>: <span class="nc">printf</span><span class="w"> </span><span class="n">formatting</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">supported</span><span class="p">;</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">documentation</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="err">`</span><span class="n">std</span>::<span class="n">fmt</span><span class="err">`</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">error</span>: <span class="nc">aborting</span><span class="w"> </span><span class="n">due</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">error</span><span class="w">
-</span><span class="w"></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="n">error</span>: <span class="nc">named</span><span class="w"> </span><span class="n">argument</span><span class="w"> </span><span class="n">never</span><span class="w"> </span><span class="n">used</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">-</span>-&gt; <span class="nc">a</span><span class="p">.</span><span class="n">rs</span>:<span class="mi">7</span>:<span class="mi">18</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">7</span><span class="w"> </span><span class="o">|</span><span class="w">             </span><span class="n">code</span><span class="o">=</span><span class="s">&#34;abc&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">|</span><span class="w">                  </span><span class="o">^^^^^</span><span class="w"> </span><span class="n">named</span><span class="w"> </span><span class="n">argument</span><span class="w"> </span><span class="n">never</span><span class="w"> </span><span class="n">used</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">note</span>: <span class="nc">format</span><span class="w"> </span><span class="n">specifiers</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="n">curly</span><span class="w"> </span><span class="n">braces</span><span class="p">,</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">conversion</span><span class="w"> </span><span class="n">specifier</span><span class="w"> </span><span class="err">`</span><span class="n">D</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">unknown</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">unsupported</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">-</span>-&gt; <span class="nc">a</span><span class="p">.</span><span class="n">rs</span>:<span class="mi">5</span>:<span class="mi">20</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">             </span><span class="n">filter</span><span class="o">=</span><span class="p">(</span><span class="no">SE</span><span class="o">%</span><span class="mi">3</span><span class="n">D</span><span class="o">%</span><span class="mi">22123</span><span class="o">%</span><span class="mi">22</span><span class="p">)</span><span class="o">&amp;</span><span class="err">\</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">|</span><span class="w">                    </span><span class="o">^^^</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">note</span>: <span class="nc">format</span><span class="w"> </span><span class="n">specifiers</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="n">curly</span><span class="w"> </span><span class="n">braces</span><span class="p">,</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">conversion</span><span class="w"> </span><span class="n">specifier</span><span class="w"> </span><span class="err">`</span><span class="o">%</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">unknown</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">unsupported</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="o">-</span>-&gt; <span class="nc">a</span><span class="p">.</span><span class="n">rs</span>:<span class="mi">5</span>:<span class="mi">23</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">             </span><span class="n">filter</span><span class="o">=</span><span class="p">(</span><span class="no">SE</span><span class="o">%</span><span class="mi">3</span><span class="n">D</span><span class="o">%</span><span class="mi">22123</span><span class="o">%</span><span class="mi">22</span><span class="p">)</span><span class="o">&amp;</span><span class="err">\</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">|</span><span class="w">                       </span><span class="o">^^^^^^^</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">note</span>: <span class="nc">printf</span><span class="w"> </span><span class="n">formatting</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">supported</span><span class="p">;</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">documentation</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="err">`</span><span class="n">std</span>::<span class="n">fmt</span><span class="err">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">error</span>: <span class="nc">aborting</span><span class="w"> </span><span class="n">due</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">error</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>尝试了很久，在单独的文件，或cargo工程之中，并不能让该问题复现。不过，在原来代码的项目中，它又挂了一次又一次。</p>
-
+</div><p>尝试了很久，在单独的文件，或cargo工程之中，并不能让该问题复现。不过，在原来代码的项目中，它又挂了一次又一次。</p>
 <p>所以，这个编译器的<code>panic</code>​，是哪特殊的上下文下面，才能复现，至于哪个特殊的上下文，这估计不是我的能力范围。也因此，不能提供一个稳定的复现bug的场景，也就没有提交issue，代码比较大。</p>
-
 <p>李某琦先生，我实实在在的在这个简单的问题上面，耗费了一个下午，这并非我不努力，而是我努力了也没有进展。</p>
 
     </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">buf1024</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2023-09-21</span>
-  </p>
-  
-  
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/rust/">rust</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/2023-12-26-rust-proc-macro/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">rust 过程宏</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/2023-07-19-flutter-muti-window/">
-            <span class="next-text nav-default">Flutter 桌面端多窗口支持</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        <div id="gitalk-container"></div>
+    
+</section>
+
+
+                <hr>
+                
+
+<div id="gitalk-container"></div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2023-09-21 18:00:10 \x2b0800 CST',
+        id: '2023-09-21 18:00:10 \u002b0800 CST',
         title: '一行代码让 rustc panic',
         clientID: '72786bf87c19beec6abe',
         clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
@@ -351,57 +286,489 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
-      </div>
+            </div>
+        </div>
+
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     </main>
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        id: '2023-09-21 18:00:10 \u002b0800 CST',
+        title: '一行代码让 rustc panic',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+    });
+    gitalk.render('gitalk-container');
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by
+        gitalk.</a></noscript>
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
+    
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
-
-
-
-
-
-
-
-
+    
 </body>
+
 </html>

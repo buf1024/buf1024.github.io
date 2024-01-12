@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vim on BUF1024!!!</title>
@@ -6,18 +6,73 @@
     <description>Recent content in vim on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 01 Mar 2019 18:02:12 +0800</lastBuildDate>
-    
-	<atom:link href="https://luoguochun.cn/tags/vim/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 01 Mar 2019 18:02:12 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>vim一些小技巧</title>
       <link>https://luoguochun.cn/post/2019-03-01-vim-tricks/</link>
       <pubDate>Fri, 01 Mar 2019 18:02:12 +0800</pubDate>
       
       <guid>https://luoguochun.cn/post/2019-03-01-vim-tricks/</guid>
-      <description>命令行编辑 1 2 3 q:打开命令窗口 CTL+R 加上寄存器名称，复制寄存器内容 关于函数跳转： 注意VIM，编辑源代码时，先生成tag文件，和设置好inclu</description>
+      <description>&lt;h3 id=&#34;命令行编辑&#34;&gt;命令行编辑 &lt;a href=&#34;#%e5%91%bd%e4%bb%a4%e8%a1%8c%e7%bc%96%e8%be%91&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nl&#34;&gt;q&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;打开命令窗口&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;CTL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;加上寄存器名称，复制寄存器内容&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;关于函数跳转&#34;&gt;关于函数跳转： &lt;a href=&#34;#%e5%85%b3%e4%ba%8e%e5%87%bd%e6%95%b0%e8%b7%b3%e8%bd%ac&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;注意VIM，编辑源代码时，先生成tag文件，和设置好include路径。&lt;/p&gt;
+&lt;p&gt;[+ctrl+i 跳转到函数、变量和#define&lt;/p&gt;
+&lt;p&gt;[+ctrl+d 跳转到#define处&lt;/p&gt;
+&lt;p&gt;ctrl+i 向前跳到前几次光标位置&lt;/p&gt;
+&lt;p&gt;ctrl+o 向后跳到后几次光标位置&lt;/p&gt;
+&lt;p&gt;gf 跳转到对应到头文件后，跳回ctrl+6&lt;/p&gt;
+&lt;h3 id=&#34;关于map映射&#34;&gt;关于map映射 &lt;a href=&#34;#%e5%85%b3%e4%ba%8emap%e6%98%a0%e5%b0%84&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;对于map, unmap, mapclear而言，可以有多种组合，不带前缀的map在普通模式和可视模式生效，命令组合，可能有这么几种前缀:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;nore 表示非递归(可能是no recursive的缩写)&lt;/li&gt;
+&lt;li&gt;n 表示在普通模式下生效&lt;/li&gt;
+&lt;li&gt;v 表示在可视模式下生效&lt;/li&gt;
+&lt;li&gt;i 表示在插入模式下生效&lt;/li&gt;
+&lt;li&gt;c 表示在命令行模式下生效&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所以map有以下命令，分别作用于不同的模式:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;map&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;noremap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;unmap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;mapclear&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;nmap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;nnoremap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;nunmap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;nmapclear&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;vmap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;vnoremap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;vunmap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;vmapclear&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;imap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;inoremap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;iunmap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;imapclear&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;cmap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;cnoremap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;cunmap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cmapclear&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;其他杂项&#34;&gt;其他杂项 &lt;a href=&#34;#%e5%85%b6%e4%bb%96%e6%9d%82%e9%a1%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;gu或者gU&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;nvim 打开系统剪切板&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装以下任一软件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;xclip&lt;/li&gt;
+&lt;li&gt;xsel (newer alternative to xclip)&lt;/li&gt;
+&lt;li&gt;pbcopy/pbpaste (only for Mac OS X)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;.vimrc添加&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;set clipboard+=unnamedplus&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -26,7 +81,241 @@
       <pubDate>Sat, 17 Oct 2015 22:11:41 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2015-10-17-ycm-opt/</guid>
-      <description>YouCompleteMe, vim/neovim 语义补全利器，按照参见YouCompleteMe github网页。下面看看简单选项和命令，不保证解释准确，只做粗略参考。 命令 1 2 3 4 5 6</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/Valloric/YouCompleteMe&#34;&gt;YouCompleteMe&lt;/a&gt;, &lt;a href=&#34;https://github.com/vim/vim&#34;&gt;vim&lt;/a&gt;/&lt;a href=&#34;https://github.com/neovim/neovim&#34;&gt;neovim&lt;/a&gt; 语义补全利器，按照参见&lt;a href=&#34;https://github.com/Valloric/YouCompleteMe&#34;&gt;YouCompleteMe&lt;/a&gt; github网页。下面看看简单选项和命令，不保证解释准确，只做粗略参考。&lt;/p&gt;
+&lt;h2 id=&#34;命令&#34;&gt;命令 &lt;a href=&#34;#%e5%91%bd%e4%bb%a4&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&amp;quot;重启Ycm服务器
+:YcmRestartServer    
+
+&amp;quot;立马让YCM重新编译你的文件并显示编译诊断信息
+&amp;quot;为了方便，通常该命令做映射，如：nnoremap &amp;lt;F5&amp;gt; :YcmForceCompileAndDiagnostics&amp;lt;CR&amp;gt;
+:YcmForceCompileAndDiagnostics
+
+&amp;quot;显示YCM探测到的错误或警告
+:YcmDiags
+
+&amp;quot;显示光标下面的详细诊断信息
+:YcmShowDetailedDiagnostic
+
+&amp;quot;显示当前文件的调试信息
+:YcmdDebugInfo
+
+&amp;quot;调用补全专门的命令，如果第一个补全参数是 ft=..
+&amp;quot;则使用指定类型的补全插件，否则，使用当前缓存文件类型的补全插件
+:YcmCompleter
+
+&amp;quot;跳转到声明 支持的文件类型：c, cpp, objc, objcpp, python, cs
+:YcmCompleter GoToDeclaration 
+
+&amp;quot;跳转到定义 支持的文件类型：c, cpp, objc, objcpp, python, cs, typescript
+:YcmCompleter GoToDefinition 
+
+&amp;quot;盲跳 支持的文件类型：c, cpp, objc, objcpp, python, cs
+:YcmCompleter GoTo 
+
+&amp;quot;同GoTo，快，非精确 支持的文件类型：c, cpp, objc, objcpp, python, cs
+:YcmCompleter GoToImprecise 
+
+&amp;quot;清空YCM编译缓存，支持的文件类型：c, cpp, objc, objcpp
+:YcmCompleter ClearCompilationFlagCache 
+
+&amp;quot;显示变量类型 支持的文件类型：c, cpp, objc, objcpp, typescript
+:YcmCompleter GetType 
+
+&amp;quot;显示语补全的父类型 支持的文件类型：c, cpp, objc, objcpp
+:YcmCompleter GetParent 
+
+&amp;quot;修正YCM诊断的光标附近的错误 支持的文件类型：c, cpp, objc, objcpp, cs
+:YcmCompleter FixIt 
+
+&amp;quot;预览窗口展示文档 支持的文件类型：c, cpp, objc, objcpp, cs, python, typescript
+:YcmCompleter GetDoc 
+
+&amp;quot;启动语义引擎服务器， 支持的文件类型：cs
+:YcmCompleter StartServer 
+
+&amp;quot;停止语义引擎服务器， 支持的文件类型：cs
+:YcmCompleter StopServer 
+
+&amp;quot;重启语义引擎服务器， 支持的文件类型：cs
+:YcmCompleter RestartServer 
+
+&amp;quot;重加载文件， 支持的文件类型：cs
+:YcmCompleter ReloadSolution 
+
+&amp;quot;跳到实现， 支持的文件类型：cs
+:YcmCompleter GoToImplementation 
+
+&amp;quot;跳到实现或声明， 支持的文件类型：cs
+:YcmCompleter GoToImplementationElseDeclaration 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;配置选项&#34;&gt;配置选项 &lt;a href=&#34;#%e9%85%8d%e7%bd%ae%e9%80%89%e9%a1%b9&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&amp;quot;开启自动补全输入的最少字符数，默认2
+g:ycm_min_num_of_chars_for_completion
+
+&amp;quot;弹出的自动补全最少候选数，默认0，表示不限制
+g:ycm_min_num_identifier_candidate_chars
+
+&amp;quot;输入语义字符（如c++的. -&amp;gt;）自动补全是否启动，默认1
+g:ycm_auto_trigger
+
+&amp;quot;自动补全白名单，默认{&#39;*&#39; : 1}
+g:ycm_filetype_whitelist
+
+&amp;quot;自动补全黑名单，默认：
+&amp;quot;{
+  \ &#39;tagbar&#39; : 1,
+  \ &#39;qf&#39; : 1,
+  \ &#39;notes&#39; : 1,
+  \ &#39;markdown&#39; : 1,
+  \ &#39;unite&#39; : 1,
+  \ &#39;text&#39; : 1,
+  \ &#39;vimwiki&#39; : 1,
+  \ &#39;pandoc&#39; : 1,
+  \ &#39;infolog&#39; : 1,
+  \ &#39;mail&#39; : 1
+  \}
+g:ycm_filetype_blacklist
+
+&amp;quot;自动补全禁止文件，默认{&#39;gitcommit&#39; : 1}
+g:ycm_filetype_specific_completion_to_disable
+
+&amp;quot;自动补全诊断UI，默认1
+g:ycm_filetype_specific_completion_to_disable
+
+&amp;quot;自动补全诊断出现错误的符号，默认 &amp;gt;&amp;gt;
+g:ycm_error_symbol
+
+&amp;quot;自动补全诊断出现警告的符号，默认 &amp;gt;&amp;gt;
+g:ycm_error_symbol
+
+&amp;quot;是否允许自动补全诊断符号，默认 1
+g:ycm_enable_diagnostic_signs 
+
+&amp;quot;是否自动补全诊断符号高亮，默认 1
+g:ycm_enable_diagnostic_highlighting  
+
+&amp;quot;是否显示自动补全诊断，默认 1
+g:ycm_echo_current_diagnostic   
+
+&amp;quot;是否显示自动补全诊断location list，默认 0
+g:ycm_always_populate_location_list   
+
+&amp;quot;强制编译后，是否显示location list和诊断，默认 1
+g:ycm_open_loclist_on_ycm_diags   
+
+&amp;quot;是否允许更新VIM更新时间，默认 1
+g:ycm_allow_changing_updatetime    
+
+&amp;quot;是否自动补全注释，默认 0
+g:ycm_allow_changing_updatetime  
+
+&amp;quot;是否在变量的值内实现自动补全，默认 1
+g:ycm_complete_in_strings   
+
+&amp;quot;是否收集注释和字符变量值作为自动补全信息，默认 0
+g:ycm_collect_identifiers_from_comments_and_strings
+
+&amp;quot;是否tags文件作为自动补全信息，默认 0
+g:ycm_collect_identifiers_from_tags_files 
+
+&amp;quot;不明白什么意思，默认 0
+g:ycm_seed_identifiers_with_syntax  
+
+&amp;quot;与.ycm_extra_conf.py文件中FlagsForFile函数交换的参数，默认 []
+g:ycm_extra_conf_vim_data  
+
+&amp;quot;python解释器的路径，默认 &#39;&#39;
+g:ycm_path_to_python_interpreter   
+
+&amp;quot;ycm日志是否使用stdout，默认 0
+g:ycm_server_use_vim_stdout    
+
+&amp;quot;当ycm服务器退出时，是否保存日志，默认 0
+g:ycm_server_keep_logfiles     
+
+&amp;quot;ycm服务器日志级别，有debug, info, warning, error, critical，默认 info
+g:ycm_server_log_level  
+
+&amp;quot;是否自动启动c#自动补全服务器，默认 1
+g:ycm_auto_start_csharp_server    
+
+&amp;quot;是否自动停止c#自动补全服务器，默认 1
+g:ycm_auto_start_csharp_server 
+
+&amp;quot;c#自动补全服务器端口，默认 0，即任意端口
+g:ycm_csharp_server_port  
+
+&amp;quot;c#自动补全插入命名空间表达式，默认 &#39;&#39;
+g:ycm_csharp_insert_namespace_expr   
+
+&amp;quot;是否展示预览窗口，默认 0
+g:ycm_add_preview_to_completeopt    
+
+&amp;quot;当补全完成时，是否自动关闭展示的预览窗口，默认 0
+g:ycm_autoclose_preview_window_after_completion 
+
+&amp;quot;当补全插入时，是否自动关闭展示的预览窗口，默认 0
+g:ycm_autoclose_preview_window_after_insertion 
+
+&amp;quot;诊断信息的条数，默认 30
+g:ycm_max_diagnostics_to_display  
+
+&amp;quot;选择自动补全信息的按键，默认 [&#39;&amp;lt;TAB&amp;gt;&#39;, &#39;&amp;lt;Down&amp;gt;&#39;]
+g:ycm_key_list_select_completion   
+
+&amp;quot;选择前一个自动补全信息的按键，默认 [&#39;&amp;lt;S-TAB&amp;gt;&#39;, &#39;&amp;lt;Up&amp;gt;&#39;]
+g:ycm_key_list_previous_completion   
+
+&amp;quot;调用自动补全信息的按键，默认 &amp;lt;C-Space&amp;gt;
+g:ycm_key_invoke_completion   
+
+&amp;quot;详细诊断信息的按键，默认 &amp;lt;leader&amp;gt;d
+g:ycm_key_detailed_diagnostics   
+
+&amp;quot;全局的ycm_extra_conf文件，默认 &#39;&#39;
+g:ycm_global_ycm_extra_conf  
+
+&amp;quot;载入ycm_extra_conf文件，是否提示确认 默认 1
+g:ycm_confirm_extra_conf
+
+&amp;quot;ycm_extra_conf文件，通配符 默认 []
+g:ycm_extra_conf_globlist
+
+&amp;quot;自动补全是否使用当前工作目录 默认 0
+g:ycm_filepath_completion_use_working_dir 
+
+&amp;quot;语义触发的字符 默认
+&amp;quot; {
+&amp;quot; \   &#39;c&#39; : [&#39;-&amp;gt;&#39;, &#39;.&#39;],
+&amp;quot; \   &#39;objc&#39; : [&#39;-&amp;gt;&#39;, &#39;.&#39;, &#39;re!\[[_a-zA-Z]+\w*\s&#39;, &#39;re!^\s*[^\W\d]\w*\s&#39;,
+&amp;quot;  \             &#39;re!\[.*\]\s&#39;],
+&amp;quot;  \   &#39;ocaml&#39; : [&#39;.&#39;, &#39;#&#39;],
+&amp;quot;  \   &#39;cpp,objcpp&#39; : [&#39;-&amp;gt;&#39;, &#39;.&#39;, &#39;::&#39;],
+&amp;quot;  \   &#39;perl&#39; : [&#39;-&amp;gt;&#39;],
+&amp;quot; \   &#39;php&#39; : [&#39;-&amp;gt;&#39;, &#39;::&#39;],
+&amp;quot;  \   &#39;cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go&#39; : [&#39;.&#39;],
+&amp;quot;  \   &#39;ruby&#39; : [&#39;.&#39;, &#39;::&#39;],
+&amp;quot;  \   &#39;lua&#39; : [&#39;.&#39;, &#39;:&#39;],
+&amp;quot; \   &#39;erlang&#39; : [&#39;:&#39;],
+&amp;quot;  \ }
+g:ycm_semantic_triggers
+
+&amp;quot;是否缓存，omnifunc 默认 1
+g:ycm_cache_omnifunc
+
+&amp;quot;是否缓存omnifunc 默认 1
+g:ycm_cache_omnifunc
+
+&amp;quot;是否使用ultisnips 插件自动补全 默认 1
+g:ycm_use_ultisnips_completer 
+
+&amp;quot;GoTo*命令的打开方式，可选值为：
+&amp;quot;[ &#39;same-buffer&#39;, &#39;horizontal-split&#39;, &#39;vertical-split&#39;, &#39;new-tab&#39;, &#39;new-or-existing-tab&#39; ]
+&amp;quot;默认 &#39;same-buffer&#39;
+g:ycm_goto_buffer_command  
+
+&amp;quot;不使用自动补全的文件大小，单位为KB,0表示不检测 默认 1000
+g:ycm_disable_for_files_larger_than_kb  
+&lt;/code&gt;&lt;/pre&gt;
+</description>
     </item>
     
     <item>
@@ -35,7 +324,41 @@
       <pubDate>Wed, 22 Jul 2015 15:25:00 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2015-07-22-vim-xx-things/</guid>
-      <description>关于中文乱码 跟字符编码方式有关的选项: encoding, fileencoding, fileencodings, *termencoding*。更详细的信息可看vim 帮助文档: :help encoding-names。简</description>
+      <description>&lt;h3 id=&#34;关于中文乱码&#34;&gt;关于中文乱码 &lt;a href=&#34;#%e5%85%b3%e4%ba%8e%e4%b8%ad%e6%96%87%e4%b9%b1%e7%a0%81&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;跟字符编码方式有关的选项:&lt;br&gt;
+&lt;em&gt;encoding&lt;/em&gt;, &lt;em&gt;fileencoding&lt;/em&gt;, &lt;em&gt;fileencodings&lt;/em&gt;, &lt;em&gt;termencoding&lt;/em&gt;。更详细的信息可看vim 帮助文档: &lt;code&gt;:help encoding-names&lt;/code&gt;。简略含义如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;encoding&lt;/em&gt;： Vim 内部使用的字符编码方式，包括 Vim 的 buffer (缓冲区)、菜单文本、消息文本等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;fileencoding&lt;/em&gt;： Vim 中当前编辑的文件的字符编码方式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;fileencodings&lt;/em&gt;： Vim 启动时会按照它所列出的字符编码方式逐一探测即将打开的文件的字符编码方式，并且将 fileencoding 设置为最终探测到的字符编码方式。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;termencoding: Vim 所工作的终端 (或者 Windows 的 Console 窗口) 的字符编码方式。&lt;br&gt;
+所以在一般情况下，&lt;code&gt;~/.vimrc&lt;/code&gt;里面设置如下配置，则可解决大多数中文乱码问题:&lt;/p&gt;
+&lt;p&gt;let &amp;amp;termencoding=&amp;amp;encoding
+set fileencodings=ucs-bom,utf-8,gbk,cp936,gb18030,big5,euc-jp,euc-kr,latin1&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;关于map映射&#34;&gt;关于map映射 &lt;a href=&#34;#%e5%85%b3%e4%ba%8emap%e6%98%a0%e5%b0%84&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;对于&lt;code&gt;map&lt;/code&gt;, &lt;code&gt;unmap&lt;/code&gt;, &lt;code&gt;mapclear&lt;/code&gt;而言，可以有多种组合，不带前缀的&lt;code&gt;map&lt;/code&gt;在普通模式和可视模式生效，命令组合，可能有这么几种前缀:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;nore&lt;/code&gt; 表示非递归(可能是no recursive的缩写)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;n&lt;/code&gt; 表示在普通模式下生效&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;v&lt;/code&gt; 表示在可视模式下生效&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;i&lt;/code&gt; 表示在插入模式下生效&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;c&lt;/code&gt; 表示在命令行模式下生效&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所以&lt;code&gt;map&lt;/code&gt;有以下命令，分别作用于不同的模式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:map :noremap :unmap :mapclear
+:nmap :nnoremap :nunmap :nmapclear
+:vmap :vnoremap :vunmap :vmapclear
+:imap :inoremap :iunmap :imapclear
+:cmap :cnoremap :cunmap :cmapclear
+&lt;/code&gt;&lt;/pre&gt;
+</description>
     </item>
     
   </channel>

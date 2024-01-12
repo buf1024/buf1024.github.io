@@ -1,435 +1,236 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>jquery selector小结 - BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="jQuery 概述 现代网站基本上都离不开jQuery。它是轻量级的js库，兼容css3，还有各种浏览器。文档齐全而详细，还有众多而成熟的插件可用。jQu" /><meta name="keywords" content="blog, computer, luoguochun" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/post/2014-10-07-jquery-summary/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="jquery selector小结" />
-<meta property="og:description" content="jQuery 概述 现代网站基本上都离不开jQuery。它是轻量级的js库，兼容css3，还有各种浏览器。文档齐全而详细，还有众多而成熟的插件可用。jQu" />
+<title>jquery selector小结 | BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/post/2014-10-07-jquery-summary/">
+<meta name="description" content="jQuery 概述 🔗现代网站基本上都离不开jQuery。它是轻量级的js库，兼容css3，还有各种浏览器。文档齐全而详细，还有众多而成熟的插件可用。jQ" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luoguochun.cn/post/2014-10-07-jquery-summary/" /><meta property="article:published_time" content="2014-10-07T21:36:56&#43;00:00"/>
-<meta property="article:modified_time" content="2014-10-07T21:36:56&#43;00:00"/>
-
-<meta itemprop="name" content="jquery selector小结">
-<meta itemprop="description" content="jQuery 概述 现代网站基本上都离不开jQuery。它是轻量级的js库，兼容css3，还有各种浏览器。文档齐全而详细，还有众多而成熟的插件可用。jQu">
-
-
-<meta itemprop="datePublished" content="2014-10-07T21:36:56&#43;00:00" />
-<meta itemprop="dateModified" content="2014-10-07T21:36:56&#43;00:00" />
-<meta itemprop="wordCount" content="2996">
+<meta property="og:title" content="jquery selector小结 | BUF1024!!!" />
+<meta property="og:url" content="https://luoguochun.cn/post/2014-10-07-jquery-summary/" />
+<meta property="og:description" content="jQuery 概述 🔗现代网站基本上都离不开jQuery。它是轻量级的js库，兼容css3，还有各种浏览器。文档齐全而详细，还有众多而成熟的插件可用。jQ" />
 
 
 
-<meta itemprop="keywords" content="javascript,jquery,webui," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="jquery selector小结"/>
-<meta name="twitter:description" content="jQuery 概述 现代网站基本上都离不开jQuery。它是轻量级的js库，兼容css3，还有各种浏览器。文档齐全而详细，还有众多而成熟的插件可用。jQu"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">jquery selector小结</h1>
+    <main class="main-wrapper">
 
-      <div class="post-meta">
-        <span class="post-time"> 2014-10-07 </span>
-        <div class="post-category">
-            <a href="/categories/webui/"> webui </a>
-            </div>
-          <span class="more-meta"> 约 2996 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
+
+<section class="single">
+    <h1 class="title">jquery selector小结</h1>
+
+    <div class="tip">
+        <time datetime="2014-10-07 21:36:56 &#43;0000 UTC">2014/10/07</time>
+        <span class="split">·</span>
+        <span> 2840 words </span>
+        <span class="split">·</span>
+        <span>
+            6 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
         
-      </div>
-    </header>
+        <div>
+            Categories:
+            
+                <a href="/categories/webui">webui</a>
+            
+        </div>
+        
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-    <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#jquery-概述">jQuery 概述</a></li>
-<li><a href="#jquery-dom选择器">jQuery DOM选择器</a>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#1-css选择器">1. CSS选择器</a></li>
-<li><a href="#2-容器属性选择器">2. 容器属性选择器</a></li>
-<li><a href="#3-位置过滤器">3. 位置过滤器</a></li>
-<li><a href="#4-选择过滤器">4. 选择过滤器</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li><a href="#jquery-其他杂项">jQuery 其他杂项</a></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/javascript">javascript</a>
+                
+                    <a href="/tags/jquery">jquery</a>
+                
+                    <a href="/tags/webui">webui</a>
+                
+            </div>
+        
+    </div>
 
-<h2 id="jquery-概述">jQuery 概述</h2>
+    <hr />
 
-<p>现代网站基本上都离不开jQuery。它是轻量级的js库，兼容css3，还有各种浏览器。文档齐全而详细，还有众多而成熟的插件可用。jQuery就个人理解，主要有以下几方面功能： 统一的DOM选择器，统一事件处理，动画和ajax等，它大大的简化了html，css和js的耦合度。jQuery UI，bootstrap等非常优秀和方便的前端UI库也是紧紧依赖jQuery，对于这些UI的使用后面将也会做些小结，对于不懂前端而又不想非常深入的人来说，这些优秀UI库，是非常好的神器。<br />
- jQuery库 使用 jQuery() 或 $()使用，$是jQuery的一个别名，如果使用第三方库和$冲突，可以调用<code>jQuery.noConfig()</code>来避免冲突。<br />
- 废话少说，总结下jQuery，不是专门的UI人员，也没有很深的研究，所以避免不了很多错误。</p>
-
-<h2 id="jquery-dom选择器">jQuery DOM选择器</h2>
-
-<p>jQuery的选择器很灵活，这里是非常笼统的归类，而且不一定齐全(官方有自己的归类方法，可以参考相关文档: <a href="http://api.jquery.com/category/selectors/">selectors</a>)，以下归类是有可能重复的。而且所有的选择器都不是分开独立使用的，可以任君随意组合。</p>
-
-<h5 id="1-css选择器">1. CSS选择器</h5>
-
-<p>jQuery是兼容CSS的，因而CSS选择器也适用于jQuery。如 <code>#id .class element</code>等。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    例子：         
-
-    $(&#34;p&#34;)            -&gt; 匹配所有的&lt;p&gt;的元素     
-    $(&#34;.class&#34;)       -&gt; 匹配所有的class属性为&#34;class&#34;的元素   
-    $(&#34;#id&#34;)          -&gt; 匹配所有的id属性为&#34;id&#34;的元素   
-    $(&#34;p.class#id&#34;)   -&gt; 匹配所有的&lt;p&gt;元素,class属性为&#34;class&#34;, id属性为&#34;id&#34;的元素   
-    $(&#34;p a.class#id&#34;) -&gt; 匹配所有的&lt;p&gt;元素, 后代（孩子，孙子等）
-                      -&gt; 为&lt;a&gt;元素class属性为&#34;class&#34;, id属性为&#34;id&#34;的元素 </pre></td></tr></table>
-</div>
-</div>
+    <div class="content">
+        <h2 id="jquery-概述">jQuery 概述 <a href="#jquery-%e6%a6%82%e8%bf%b0" class="anchor">🔗</a></h2><p>现代网站基本上都离不开jQuery。它是轻量级的js库，兼容css3，还有各种浏览器。文档齐全而详细，还有众多而成熟的插件可用。jQuery就个人理解，主要有以下几方面功能： 统一的DOM选择器，统一事件处理，动画和ajax等，它大大的简化了html，css和js的耦合度。jQuery UI，bootstrap等非常优秀和方便的前端UI库也是紧紧依赖jQuery，对于这些UI的使用后面将也会做些小结，对于不懂前端而又不想非常深入的人来说，这些优秀UI库，是非常好的神器。<br>
+jQuery库 使用 jQuery() 或 $()使用，$是jQuery的一个别名，如果使用第三方库和$冲突，可以调用<code>jQuery.noConfig()</code>来避免冲突。<br>
+废话少说，总结下jQuery，不是专门的UI人员，也没有很深的研究，所以避免不了很多错误。</p>
+<h2 id="jquery-dom选择器">jQuery DOM选择器 <a href="#jquery-dom%e9%80%89%e6%8b%a9%e5%99%a8" class="anchor">🔗</a></h2><p>jQuery的选择器很灵活，这里是非常笼统的归类，而且不一定齐全(官方有自己的归类方法，可以参考相关文档: <a href="http://api.jquery.com/category/selectors/">selectors</a>)，以下归类是有可能重复的。而且所有的选择器都不是分开独立使用的，可以任君随意组合。</p>
+<h5 id="1-css选择器">1. CSS选择器 <a href="#1-css%e9%80%89%e6%8b%a9%e5%99%a8" class="anchor">🔗</a></h5><p>jQuery是兼容CSS的，因而CSS选择器也适用于jQuery。如 <code>#id .class element</code>等。</p>
+<pre><code>    例子：         
+             
+    $(&quot;p&quot;)            -&gt; 匹配所有的&lt;p&gt;的元素     
+    $(&quot;.class&quot;)       -&gt; 匹配所有的class属性为&quot;class&quot;的元素   
+    $(&quot;#id&quot;)          -&gt; 匹配所有的id属性为&quot;id&quot;的元素   
+    $(&quot;p.class#id&quot;)   -&gt; 匹配所有的&lt;p&gt;元素,class属性为&quot;class&quot;, id属性为&quot;id&quot;的元素   
+    $(&quot;p a.class#id&quot;) -&gt; 匹配所有的&lt;p&gt;元素, 后代（孩子，孙子等）
+                      -&gt; 为&lt;a&gt;元素class属性为&quot;class&quot;, id属性为&quot;id&quot;的元素 
+</code></pre>
 <p>除此之后， 还多个选择器可以同时使用，用<code>,</code>分隔。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    例子：
-
-    $(&#34;p,div&#34;)        -&gt; 匹配所有的&lt;p&gt;和&lt;div&gt;的元素        </pre></td></tr></table>
-</div>
-</div>
-<h5 id="2-容器属性选择器">2. 容器属性选择器</h5>
-
-<p>有时元素的选择需求是比较bt的，选择的元素可能是某个元素的直接孩子，或者又是要求某属性值等于多少，于是就有了这类元素的选择器。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    例子：       
-
-    $(&#34;*&#34;)              -&gt; 匹配所有的元素
-    $(&#34;E&#34;)              -&gt; 匹配所有的&lt;E&gt;元素
-    $(&#34;E F&#34;)            -&gt; 匹配所有的&lt;E&gt;后代为&lt;F&gt;元素
-    $(&#34;E&gt;F&#34;)            -&gt; 匹配所有的&lt;E&gt;直接孩子为&lt;F&gt;元素
-    $(&#34;E+F&#34;)            -&gt; 匹配所有的&lt;E&gt;直接兄弟为&lt;F&gt;元素
-    $(&#34;E~F&#34;)            -&gt; 匹配所有的&lt;E&gt;兄弟为&lt;F&gt;元素
-    $(&#34;E.C&#34;)            -&gt; 匹配所有的&lt;E&gt;class属性为&#34;C&#34;元素
-    $(&#34;E#I&#34;)            -&gt; 匹配所有的&lt;E&gt;id属性为&#34;I&#34;元素
-    $(&#34;E[A]&#34;)           -&gt; 匹配所有的&lt;E&gt;含有属性A元素
-    $(&#34;E[A=&#39;V&#39;]&#34;)       -&gt; 匹配所有的&lt;E&gt;含有属性A且值为&#39;V&#39;元素
-    $(&#34;E[A^=&#39;V&#39;]&#34;)      -&gt; 匹配所有的&lt;E&gt;含有属性A且值以&#39;V&#39;开头元素
-    $(&#34;E[A$=&#39;V&#39;]&#34;)      -&gt; 匹配所有的&lt;E&gt;含有属性A且值以&#39;V&#39;结尾元素
-    $(&#34;E[A!=&#39;V&#39;]&#34;)      -&gt; 匹配所有的&lt;E&gt;不含有属性A或者含属性A且值不为&#39;V&#39;元素
-    $(&#34;E[A*=&#39;V&#39;]&#34;)      -&gt; 匹配所有的&lt;E&gt;含有属性A且值包含&#39;V&#39;元素</pre></td></tr></table>
-</div>
-</div>
-<h5 id="3-位置过滤器">3. 位置过滤器</h5>
-
-<p>有时，我们还需要根据元素的位置选择，于是有了这类选择器。 这类选择器是从匹配的元素中选出特定位置的元素。如，$(&ldquo;p a:first&rdquo;)，选择所有p元素，后代为a中的第一个元素集合。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    例子：       
-
+<pre><code>    例子：
+                     
+    $(&quot;p,div&quot;)        -&gt; 匹配所有的&lt;p&gt;和&lt;div&gt;的元素        
+</code></pre>
+<h5 id="2-容器属性选择器">2. 容器属性选择器 <a href="#2-%e5%ae%b9%e5%99%a8%e5%b1%9e%e6%80%a7%e9%80%89%e6%8b%a9%e5%99%a8" class="anchor">🔗</a></h5><p>有时元素的选择需求是比较bt的，选择的元素可能是某个元素的直接孩子，或者又是要求某属性值等于多少，于是就有了这类元素的选择器。</p>
+<pre><code>    例子：       
+          
+    $(&quot;*&quot;)              -&gt; 匹配所有的元素
+    $(&quot;E&quot;)              -&gt; 匹配所有的&lt;E&gt;元素
+    $(&quot;E F&quot;)            -&gt; 匹配所有的&lt;E&gt;后代为&lt;F&gt;元素
+    $(&quot;E&gt;F&quot;)            -&gt; 匹配所有的&lt;E&gt;直接孩子为&lt;F&gt;元素
+    $(&quot;E+F&quot;)            -&gt; 匹配所有的&lt;E&gt;直接兄弟为&lt;F&gt;元素
+    $(&quot;E~F&quot;)            -&gt; 匹配所有的&lt;E&gt;兄弟为&lt;F&gt;元素
+    $(&quot;E.C&quot;)            -&gt; 匹配所有的&lt;E&gt;class属性为&quot;C&quot;元素
+    $(&quot;E#I&quot;)            -&gt; 匹配所有的&lt;E&gt;id属性为&quot;I&quot;元素
+    $(&quot;E[A]&quot;)           -&gt; 匹配所有的&lt;E&gt;含有属性A元素
+    $(&quot;E[A='V']&quot;)       -&gt; 匹配所有的&lt;E&gt;含有属性A且值为'V'元素
+    $(&quot;E[A^='V']&quot;)      -&gt; 匹配所有的&lt;E&gt;含有属性A且值以'V'开头元素
+    $(&quot;E[A$='V']&quot;)      -&gt; 匹配所有的&lt;E&gt;含有属性A且值以'V'结尾元素
+    $(&quot;E[A!='V']&quot;)      -&gt; 匹配所有的&lt;E&gt;不含有属性A或者含属性A且值不为'V'元素
+    $(&quot;E[A*='V']&quot;)      -&gt; 匹配所有的&lt;E&gt;含有属性A且值包含'V'元素
+</code></pre>
+<h5 id="3-位置过滤器">3. 位置过滤器 <a href="#3-%e4%bd%8d%e7%bd%ae%e8%bf%87%e6%bb%a4%e5%99%a8" class="anchor">🔗</a></h5><p>有时，我们还需要根据元素的位置选择，于是有了这类选择器。 这类选择器是从匹配的元素中选出特定位置的元素。如，$(&ldquo;p a:first&rdquo;)，选择所有p元素，后代为a中的第一个元素集合。</p>
+<pre><code>    例子：       
+          
     :first               -&gt; 在所有匹配元素中匹配所有的第一个元素，
-                         -&gt; 如, $(&#34;li a:first&#34;)
+                         -&gt; 如, $(&quot;li a:first&quot;)
     :last                -&gt; 在所有匹配元素中匹配所有的最后一个元素，
-                         -&gt; 如, $(&#34;li a:last&#34;)
+                         -&gt; 如, $(&quot;li a:last&quot;)
     :first-child         -&gt; 在所有匹配元素中匹配所有的第一个孩子元素，
-                         -&gt; 如, $(&#34;li:first-child&#34;)
+                         -&gt; 如, $(&quot;li:first-child&quot;)
     :last-child          -&gt; 在所有匹配元素中匹配所有的最后一个孩子元素，
-                         -&gt; 如, $(&#34;li:last-child&#34;)
+                         -&gt; 如, $(&quot;li:last-child&quot;)
     :only-child          -&gt; 在所有匹配元素中匹配所有的没有兄弟元素，
-                         -&gt; 如, $(&#34;li:only-child&#34;)
+                         -&gt; 如, $(&quot;li:only-child&quot;)
     :nth-child(n)        -&gt; 在所有匹配元素中匹配所有的第n个孩子元素，
-                         -&gt; 如, $(&#34;li:nth-child(2)&#34;)
+                         -&gt; 如, $(&quot;li:nth-child(2)&quot;)
     :nth-child(even|odd) -&gt; 在所有匹配元素中匹配所有的第偶数或奇数个孩子元素，
-                         -&gt; 如, $(&#34;li:nth-child(even)&#34;)
-    :nth-child(Xn+Y)     -&gt; 在所有匹配元素中匹配所有的符合公式&#34;Xn+Y&#34;个孩子元素，
-                         -&gt; 如, $(&#34;li:nth-child(3n+1)&#34;)
+                         -&gt; 如, $(&quot;li:nth-child(even)&quot;)
+    :nth-child(Xn+Y)     -&gt; 在所有匹配元素中匹配所有的符合公式&quot;Xn+Y&quot;个孩子元素，
+                         -&gt; 如, $(&quot;li:nth-child(3n+1)&quot;)
     :event               -&gt; 在所有匹配元素中匹配所有的偶数孩子元素，
-                         -&gt; 如, $(&#34;li:even&#34;)
+                         -&gt; 如, $(&quot;li:even&quot;)
     :odd                 -&gt; 在所有匹配元素中匹配所有的奇数元素，
-                         -&gt; 如, $(&#34;li:odd&#34;)
+                         -&gt; 如, $(&quot;li:odd&quot;)
     :eq(n)               -&gt; 在所有匹配元素中匹配所有的第n个元素，
-                         -&gt; 如, $(&#34;li:eq(2)&#34;)
+                         -&gt; 如, $(&quot;li:eq(2)&quot;)
     :gt(n)               -&gt; 在所有匹配元素中匹配所有的大于n元素，
-                         -&gt; 如, $(&#34;li:gt(4)&#34;)
+                         -&gt; 如, $(&quot;li:gt(4)&quot;)
     :lt(n)               -&gt; 在所有匹配元素中匹配所有的小于n元素，
-                         -&gt; 如, $(&#34;li:lt(5)&#34;)</pre></td></tr></table>
-</div>
-</div>
-<h5 id="4-选择过滤器">4. 选择过滤器</h5>
-
-<p>有时，我们还需要根据选择的元素进行过滤，于是有了这类选择器。jQuery提供的大量的过滤器给我们使用，基本上很bt的需求都可以满足。如，$(&rdquo;:checkbox:checked:enabled&rdquo;)，选择所有&rdquo;enabled&rdquo;和&rdquo;checked&rdquo;的checkbox。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    例子：       
-
+                         -&gt; 如, $(&quot;li:lt(5)&quot;)
+</code></pre>
+<h5 id="4-选择过滤器">4. 选择过滤器 <a href="#4-%e9%80%89%e6%8b%a9%e8%bf%87%e6%bb%a4%e5%99%a8" class="anchor">🔗</a></h5><p>有时，我们还需要根据选择的元素进行过滤，于是有了这类选择器。jQuery提供的大量的过滤器给我们使用，基本上很bt的需求都可以满足。如，$(&quot;:checkbox:checked:enabled&quot;)，选择所有&quot;enabled&quot;和&quot;checked&quot;的checkbox。</p>
+<pre><code>    例子：       
+          
     :animated            -&gt; 匹配所有的正动画控制中元素
-    :button              -&gt; 匹配所有的&#34;button&#34;元素,
-                         -&gt; &#34;button&#34;包括: input[type=&#39;submit&#39;], input[type=&#39;reset&#39;], 
-                         -&gt;               input[type=&#39;button&#39;]和 button。
-    :checkbox            -&gt; 匹配所有的&#34;checkbox&#34;元素，指input[type=&#39;checkbox&#39;]
-    :checked             -&gt; 匹配所有的&#34;checkbox&#34;或&#34;radio&#34;在&#34;checked&#34;状态元素
-    :contains(food)      -&gt; 匹配所有的包含文本&#34;food&#34;元素
-    :disabled            -&gt; 匹配所有的在&#34;disabled&#34;状态元素
-    :enabled             -&gt; 匹配所有的在&#34;enabled&#34;状态元素
-    :file                -&gt; 匹配所有的文件输入元素，指input[type=&#39;file&#39;]
-    :has(selector)       -&gt; 匹配所有的包含在&#34;selector&#34;中元素
-    :header              -&gt; 匹配所有的&#34;header&#34;元素，指&lt;h1&gt; 到 &lt;h6&gt;
+    :button              -&gt; 匹配所有的&quot;button&quot;元素,
+                         -&gt; &quot;button&quot;包括: input[type='submit'], input[type='reset'], 
+                         -&gt;               input[type='button']和 button。
+    :checkbox            -&gt; 匹配所有的&quot;checkbox&quot;元素，指input[type='checkbox']
+    :checked             -&gt; 匹配所有的&quot;checkbox&quot;或&quot;radio&quot;在&quot;checked&quot;状态元素
+    :contains(food)      -&gt; 匹配所有的包含文本&quot;food&quot;元素
+    :disabled            -&gt; 匹配所有的在&quot;disabled&quot;状态元素
+    :enabled             -&gt; 匹配所有的在&quot;enabled&quot;状态元素
+    :file                -&gt; 匹配所有的文件输入元素，指input[type='file']
+    :has(selector)       -&gt; 匹配所有的包含在&quot;selector&quot;中元素
+    :header              -&gt; 匹配所有的&quot;header&quot;元素，指&lt;h1&gt; 到 &lt;h6&gt;
     :hidden              -&gt; 匹配所有的隐藏状态元素
-    :image               -&gt; 匹配所有的图像元素，指input[type=&#39;image&#39;]
-    :input               -&gt; 匹配所有的&#34;form&#34;元素，指input, select, textarea, button
-    :not(selector)       -&gt; 匹配所有的不包含在&#34;selector&#34;中元素
+    :image               -&gt; 匹配所有的图像元素，指input[type='image']
+    :input               -&gt; 匹配所有的&quot;form&quot;元素，指input, select, textarea, button
+    :not(selector)       -&gt; 匹配所有的不包含在&quot;selector&quot;中元素
     :parent              -&gt; 匹配所有的包括孩子而且孩子非空元素
-    :password            -&gt; 匹配所有的文件密码元素，指input[type=&#39;password&#39;]
-    :radio               -&gt; 匹配所有的文件&#34;radio&#34;元素，指input[type=&#39;radio&#39;]
-    :reset               -&gt; 匹配所有的文件&#34;reset&#34;元素，
-                         -&gt; 指input[type=&#39;reset&#39;]或button[type=&#39;reset&#39;]
-    :selected            -&gt; 匹配所有的在&#34;selected&#34;状态元素
-    :submit              -&gt; 匹配所有的文件&#34;submit&#34;元素，
-                         -&gt; 指input[type=&#39;submit&#39;]或button[type=&#39;submit&#39;]
-    :text                -&gt; 匹配所有的&#34;text&#34;元素，指input[type=&#39;text&#39;]
-    :visible             -&gt; 匹配所有的可见状态元素</pre></td></tr></table>
-</div>
-</div>
-<h2 id="jquery-其他杂项">jQuery 其他杂项</h2>
-
-<p>参考<a href="http://api.jquery.com/">jQuery API文档</a></p>
+    :password            -&gt; 匹配所有的文件密码元素，指input[type='password']
+    :radio               -&gt; 匹配所有的文件&quot;radio&quot;元素，指input[type='radio']
+    :reset               -&gt; 匹配所有的文件&quot;reset&quot;元素，
+                         -&gt; 指input[type='reset']或button[type='reset']
+    :selected            -&gt; 匹配所有的在&quot;selected&quot;状态元素
+    :submit              -&gt; 匹配所有的文件&quot;submit&quot;元素，
+                         -&gt; 指input[type='submit']或button[type='submit']
+    :text                -&gt; 匹配所有的&quot;text&quot;元素，指input[type='text']
+    :visible             -&gt; 匹配所有的可见状态元素
+</code></pre>
+<h2 id="jquery-其他杂项">jQuery 其他杂项 <a href="#jquery-%e5%85%b6%e4%bb%96%e6%9d%82%e9%a1%b9" class="anchor">🔗</a></h2><p>参考<a href="http://api.jquery.com/">jQuery API文档</a></p>
 
     </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">buf1024</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2014-10-07</span>
-  </p>
-  
-  
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/javascript/">javascript</a>
-          <a href="/tags/jquery/">jquery</a>
-          <a href="/tags/webui/">webui</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/2014-10-22-tcp_nodelay/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">tcp_nodelay选项</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/2014-09-17-bt-file-structure/">
-            <span class="next-text nav-default">bt种子文件文件结构</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        <div id="gitalk-container"></div>
+    
+</section>
+
+
+                <hr>
+                
+
+<div id="gitalk-container"></div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2014-10-07 21:36:56 \x2b0000 UTC',
+        id: '2014-10-07 21:36:56 \u002b0000 UTC',
         title: 'jquery selector小结',
         clientID: '72786bf87c19beec6abe',
         clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
@@ -442,57 +243,489 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
-      </div>
+            </div>
+        </div>
+
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     </main>
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        id: '2014-10-07 21:36:56 \u002b0000 UTC',
+        title: 'jquery selector小结',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+    });
+    gitalk.render('gitalk-container');
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by
+        gitalk.</a></noscript>
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
+    
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
-
-
-
-
-
-
-
-
+    
 </body>
+
 </html>

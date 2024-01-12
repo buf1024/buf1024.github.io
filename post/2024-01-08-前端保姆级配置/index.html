@@ -1,195 +1,125 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>前端保姆级配置 - BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="20240108 前端配置 感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。 目前一般使用vite​作为前端构建工具，下" /><meta name="keywords" content="blog, computer, luoguochun" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="前端保姆级配置" />
-<meta property="og:description" content="20240108 前端配置 感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。 目前一般使用vite​作为前端构建工具，下" />
+<title>前端保姆级配置 | BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">
+<meta name="description" content="感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。 目前一般使用vite​作为前端构建工具，下面所记录的" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luoguochun.cn/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/" /><meta property="article:published_time" content="2024-01-08T16:00:10&#43;08:00"/>
-<meta property="article:modified_time" content="2024-01-08T16:00:10&#43;08:00"/>
-
-<meta itemprop="name" content="前端保姆级配置">
-<meta itemprop="description" content="20240108 前端配置 感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。 目前一般使用vite​作为前端构建工具，下">
-
-
-<meta itemprop="datePublished" content="2024-01-08T16:00:10&#43;08:00" />
-<meta itemprop="dateModified" content="2024-01-08T16:00:10&#43;08:00" />
-<meta itemprop="wordCount" content="5419">
+<meta property="og:title" content="前端保姆级配置 | BUF1024!!!" />
+<meta property="og:url" content="https://luoguochun.cn/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/" />
+<meta property="og:description" content="感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。 目前一般使用vite​作为前端构建工具，下面所记录的" />
 
 
 
-<meta itemprop="keywords" content="vite," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="前端保姆级配置"/>
-<meta name="twitter:description" content="20240108 前端配置 感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。 目前一般使用vite​作为前端构建工具，下"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">前端保姆级配置</h1>
+    <main class="main-wrapper">
 
-      <div class="post-meta">
-        <span class="post-time"> 2024-01-08 </span>
-        <div class="post-category">
-            <a href="/categories/frontend/"> frontend </a>
-            </div>
-          <span class="more-meta"> 约 5419 字 </span>
-          <span class="more-meta"> 预计阅读 11 分钟 </span>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
+
+<section class="single">
+    <h1 class="title">前端保姆级配置</h1>
+
+    <div class="tip">
+        <time datetime="2024-01-08 16:00:10 &#43;0800 CST">2024/01/08</time>
+        <span class="split">·</span>
+        <span> 5422 words </span>
+        <span class="split">·</span>
+        <span>
+            11 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
         
-      </div>
-    </header>
+        <div>
+            Categories:
+            
+                <a href="/categories/frontend">frontend</a>
+            
+        </div>
+        
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#20240108-前端配置">20240108 前端配置</a>
-<ul>
-<li><a href="#代码规范">代码规范</a>
-<ul>
-<li><a href="#eslint-代码检查"><code>eslint</code>​代码检查</a></li>
-<li><a href="#prettier-代码格式化"><code>prettier</code>​代码格式化</a></li>
-<li><a href="#husky-git-提交规范">husky git 提交规范</a></li>
-</ul></li>
-<li><a href="#vite配置">Vite配置</a>
-<ul>
-<li><a href="#别名">别名</a></li>
-<li><a href="#环境变量-env文件">环境变量.env文件</a></li>
-<li><a href="#按需加载和自动导入">按需加载和自动导入</a></li>
-<li><a href="#代理">代理</a></li>
-<li><a href="#mock">mock</a></li>
-</ul></li>
-<li><a href="#其他">其他</a>
-<ul>
-<li><a href="#防抖和节流">防抖和节流</a></li>
-</ul></li>
-<li><a href="#其他问题">其他问题</a>
-<ul>
-<li><a href="#extends">extends</a></li>
-<li><a href="#esm">esm</a></li>
-</ul></li>
-<li><a href="#参考">参考</a></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/vite">vite</a>
+                
+            </div>
+        
+    </div>
 
-<h1 id="20240108-前端配置">20240108 前端配置</h1>
+    <hr />
 
-<p>感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。</p>
-
+    <div class="content">
+        <p>感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。</p>
 <p>目前一般使用<code>vite</code>​作为前端构建工具，下面所记录的是使用<code>vite</code>​，在<code>vscode</code>​编辑器下面的配置，其他构建工具和编辑器可参考，大体类似。使用<code>vite</code>​初始化项目后，一般需要作一下配置，才更加符合前端工程化特点。</p>
-
-<h2 id="代码规范">代码规范</h2>
-
-<p>​<code>eslint</code>​​代码检查工具，按照规定的规则检测代码可能存在的问题。<code>prettier</code>​​则是代码格式化的工具。配合<code>vscode</code>​对应的两个扩展<a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint</a>和<a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier - Code formatter</a>，代码编写起来如虎添翼。关于Prettier不生效解决办法参考：20240101 VS Code Prettier格式化不生效解决方式。</p>
-
+<h2 id="代码规范">代码规范 <a href="#%e4%bb%a3%e7%a0%81%e8%a7%84%e8%8c%83" class="anchor">🔗</a></h2><p>​<code>eslint</code>​​代码检查工具，按照规定的规则检测代码可能存在的问题。<code>prettier</code>​​则是代码格式化的工具。配合<code>vscode</code>​对应的两个扩展<a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint</a>和<a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier - Code formatter</a>，代码编写起来如虎添翼。关于Prettier不生效解决办法参考：20240101 VS Code Prettier格式化不生效解决方式。</p>
 <p>扩展安装：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -197,26 +127,21 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">#</span> <span class="err">eslint支持</span>
-<span class="err">pnpm</span> <span class="err">add</span> <span class="err">-D</span> <span class="err">eslint</span> <span class="err">eslint-plugin-vue</span> <span class="err">eslint-define-config</span>
-<span class="err">#</span> <span class="err">prettier</span> <span class="err">支持</span>
-<span class="err">pnpm</span> <span class="err">add</span> <span class="err">-D</span> <span class="err">prettier</span> <span class="err">eslint-plugin-prettier</span> <span class="err">@vue/eslint-config-prettier</span>
-<span class="err">#</span> <span class="err">对ts的支持</span>
-<span class="err">pnpm</span> <span class="err">add</span> <span class="err">-D</span> <span class="err">@vue/eslint-config-typescript</span> <span class="err">@typescript-eslint/eslint-plugin</span> <span class="err">@typescript-eslint/parser</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># eslint支持</span>
+</span></span><span class="line"><span class="cl">pnpm add -D eslint eslint-plugin-vue eslint-define-config
+</span></span><span class="line"><span class="cl"><span class="c1"># prettier 支持</span>
+</span></span><span class="line"><span class="cl">pnpm add -D prettier eslint-plugin-prettier @vue/eslint-config-prettier
+</span></span><span class="line"><span class="cl"><span class="c1"># 对ts的支持</span>
+</span></span><span class="line"><span class="cl">pnpm add -D @vue/eslint-config-typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>其中<code>eslint</code>​​，<code>prettier和eslint-plugin-prettier</code>​​是必须要安装的，<code>eslint-define-config</code>​​使之更加容易编写配置，添加<code>ts</code>​支持，增加<code>ts</code>​的代码检测。</p>
-
+</div><p>其中<code>eslint</code>​​，<code>prettier和eslint-plugin-prettier</code>​​是必须要安装的，<code>eslint-define-config</code>​​使之更加容易编写配置，添加<code>ts</code>​支持，增加<code>ts</code>​的代码检测。</p>
 <p>需要注意的是，<code>vscode</code>​对于这些配置不是立马生效的，如果遇到不生效，可以尝试<strong>重启</strong>，看是否能解决问题。</p>
-
-<h3 id="eslint-代码检查"><code>eslint</code>​代码检查</h3>
-
-<p>安装好<code>eslint</code>​之后，运行<code>npx eslint --init</code>​初始化可生成<code>eslint</code>​的配置，跟着提示一步一步的来即可，在当前目录就可以生成对应的配置文件。需要注意的是，默认生成的是<code>CommonJS</code>​格式的，扩展为<code>cjs</code>​的。不过，手工配置更加灵活，不过需要注意的时候，最好用<code>npx eslint --init</code>​生成的名字，否则可能会出现以下莫名其妙的问题。</p>
-
+<h3 id="eslint代码检查"><code>eslint</code>​代码检查 <a href="#eslint%e4%bb%a3%e7%a0%81%e6%a3%80%e6%9f%a5" class="anchor">🔗</a></h3><p>安装好<code>eslint</code>​之后，运行<code>npx eslint --init</code>​初始化可生成<code>eslint</code>​的配置，跟着提示一步一步的来即可，在当前目录就可以生成对应的配置文件。需要注意的是，默认生成的是<code>CommonJS</code>​格式的，扩展为<code>cjs</code>​的。不过，手工配置更加灵活，不过需要注意的时候，最好用<code>npx eslint --init</code>​生成的名字，否则可能会出现以下莫名其妙的问题。</p>
 <p>​<code>.eslintrc.cjs</code>​参考配置(<code>vue</code>​)：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -309,124 +234,118 @@
 </span><span class="lnt">91
 </span><span class="lnt">92
 </span><span class="lnt">93
-</span><span class="lnt">94
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// 需要安装依赖:  npm i eslint-define-config
-</span><span class="c1"></span><span class="k">const</span> <span class="p">{</span> <span class="nx">defineFlatConfig</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;eslint-define-config&#39;</span><span class="p">)</span>
-
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">defineFlatConfig</span><span class="p">({</span>
-  <span class="nx">root</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="cm">/* 指定如何解析语法。*/</span>
-  <span class="nx">parser</span><span class="o">:</span> <span class="s1">&#39;vue-eslint-parser&#39;</span><span class="p">,</span>
-  <span class="cm">/* 优先级低于parse的语法解析配置 */</span>
-  <span class="nx">parserOptions</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">parser</span><span class="o">:</span> <span class="s1">&#39;@typescript-eslint/parser&#39;</span><span class="p">,</span>
-    <span class="c1">//模块化方案
-</span><span class="c1"></span>    <span class="nx">sourceType</span><span class="o">:</span> <span class="s1">&#39;module&#39;</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">browser</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">es2021</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">node</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="c1">// 解决 defineProps and defineEmits generate no-undef warnings
-</span><span class="c1"></span>    <span class="s1">&#39;vue/setup-compiler-macros&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="c1">// https://eslint.bootcss.com/docs/user-guide/configuring#specifying-globals
-</span><span class="c1"></span>  <span class="nx">globals</span><span class="o">:</span> <span class="p">{},</span>
-  <span class="k">extends</span><span class="o">:</span> <span class="p">[</span>
-    <span class="s1">&#39;plugin:vue/vue3-recommended&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;eslint:recommended&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;plugin:@typescript-eslint/recommended&#39;</span><span class="p">,</span> <span class="c1">// typescript-eslint推荐规则,
-</span><span class="c1"></span>    <span class="s1">&#39;prettier&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;plugin:prettier/recommended&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;./.eslintrc-auto-import.json&#39;</span><span class="p">,</span>
-  <span class="p">],</span>
-  <span class="c1">// https://cn.eslint.org/docs/rules/
-</span><span class="c1"></span>  <span class="nx">rules</span><span class="o">:</span> <span class="p">{</span>
-    <span class="c1">// 禁止使用 var
-</span><span class="c1"></span>    <span class="s1">&#39;no-var&#39;</span><span class="o">:</span> <span class="s1">&#39;error&#39;</span><span class="p">,</span>
-    <span class="nx">semi</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span>
-    <span class="c1">// 优先使用 interface 而不是 type
-</span><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/consistent-type-definitions&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="s1">&#39;interface&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;@typescript-eslint/no-explicit-any&#39;</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span> <span class="c1">// 可以使用 any 类型
-</span><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/explicit-module-boundary-types&#39;</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span>
-    <span class="c1">// 解决使用 require() Require statement not part of import statement. 的问题
-</span><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/no-var-requires&#39;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="c1">// https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/ban-types.md
-</span><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/ban-types&#39;</span><span class="o">:</span> <span class="p">[</span>
-      <span class="s1">&#39;error&#39;</span><span class="p">,</span>
-      <span class="p">{</span>
-        <span class="nx">types</span><span class="o">:</span> <span class="p">{</span>
-          <span class="c1">// add a custom message to help explain why not to use it
-</span><span class="c1"></span>          <span class="nx">Foo</span><span class="o">:</span> <span class="s2">&#34;Don&#39;t use Foo because it is unsafe&#34;</span><span class="p">,</span>
-
-          <span class="c1">// add a custom message, AND tell the plugin how to fix it
-</span><span class="c1"></span>          <span class="nb">String</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Use string instead&#39;</span><span class="p">,</span>
-            <span class="nx">fixWith</span><span class="o">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
-          <span class="p">},</span>
-
-          <span class="s1">&#39;{}&#39;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Use object instead&#39;</span><span class="p">,</span>
-            <span class="nx">fixWith</span><span class="o">:</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span>
-          <span class="p">},</span>
-        <span class="p">},</span>
-      <span class="p">},</span>
-    <span class="p">],</span>
-    <span class="c1">// 禁止出现未使用的变量
-</span><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/no-unused-vars&#39;</span><span class="o">:</span> <span class="p">[</span>
-      <span class="s1">&#39;error&#39;</span><span class="p">,</span>
-      <span class="p">{</span> <span class="nx">vars</span><span class="o">:</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="nx">args</span><span class="o">:</span> <span class="s1">&#39;after-used&#39;</span><span class="p">,</span> <span class="nx">ignoreRestSiblings</span><span class="o">:</span> <span class="kc">false</span> <span class="p">},</span>
-    <span class="p">],</span>
-    <span class="s1">&#39;vue/html-indent&#39;</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span>
-    <span class="c1">// 关闭此规则 使用 prettier 的格式化规则，
-</span><span class="c1"></span>    <span class="s1">&#39;vue/max-attributes-per-line&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;off&#39;</span><span class="p">],</span>
-    <span class="c1">// vue3.2.25之后为props使用解耦赋值语法，删除警告
-</span><span class="c1"></span>    <span class="s1">&#39;vue/no-setup-props-destructure&#39;</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span>
-    <span class="c1">// 优先使用驼峰，element 组件除外
-</span><span class="c1"></span>    <span class="s1">&#39;vue/component-name-in-template-casing&#39;</span><span class="o">:</span> <span class="p">[</span>
-      <span class="s1">&#39;error&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;PascalCase&#39;</span><span class="p">,</span>
-      <span class="p">{</span>
-        <span class="nx">ignores</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;/^el-/&#39;</span><span class="p">,</span> <span class="s1">&#39;/^router-/&#39;</span><span class="p">],</span>
-        <span class="nx">registeredComponentsOnly</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-      <span class="p">},</span>
-    <span class="p">],</span>
-    <span class="c1">// 强制使用驼峰
-</span><span class="c1"></span>    <span class="nx">camelcase</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">properties</span><span class="o">:</span> <span class="s1">&#39;always&#39;</span> <span class="p">}],</span>
-    <span class="c1">// 优先使用 const
-</span><span class="c1"></span>    <span class="s1">&#39;prefer-const&#39;</span><span class="o">:</span> <span class="p">[</span>
-      <span class="s1">&#39;error&#39;</span><span class="p">,</span>
-      <span class="p">{</span>
-        <span class="nx">destructuring</span><span class="o">:</span> <span class="s1">&#39;any&#39;</span><span class="p">,</span>
-        <span class="nx">ignoreReadBeforeAssign</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-      <span class="p">},</span>
-    <span class="p">],</span>
-  <span class="p">},</span>
-<span class="p">})</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 需要安装依赖:  npm i eslint-define-config
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="p">{</span> <span class="nx">defineFlatConfig</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;eslint-define-config&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">defineFlatConfig</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">root</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* 指定如何解析语法。*/</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">parser</span><span class="o">:</span> <span class="s1">&#39;vue-eslint-parser&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* 优先级低于parse的语法解析配置 */</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">parserOptions</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">parser</span><span class="o">:</span> <span class="s1">&#39;@typescript-eslint/parser&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//模块化方案
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">sourceType</span><span class="o">:</span> <span class="s1">&#39;module&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">browser</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">es2021</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">node</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 解决 defineProps and defineEmits generate no-undef warnings
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;vue/setup-compiler-macros&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// https://eslint.bootcss.com/docs/user-guide/configuring#specifying-globals
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">globals</span><span class="o">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">extends</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;plugin:vue/vue3-recommended&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;eslint:recommended&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;plugin:@typescript-eslint/recommended&#39;</span><span class="p">,</span> <span class="c1">// typescript-eslint推荐规则,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;prettier&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;plugin:prettier/recommended&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;./.eslintrc-auto-import.json&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// https://cn.eslint.org/docs/rules/
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">rules</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 禁止使用 var
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;no-var&#39;</span><span class="o">:</span> <span class="s1">&#39;error&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">semi</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 优先使用 interface 而不是 type
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/consistent-type-definitions&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="s1">&#39;interface&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;@typescript-eslint/no-explicit-any&#39;</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span> <span class="c1">// 可以使用 any 类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/explicit-module-boundary-types&#39;</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 解决使用 require() Require statement not part of import statement. 的问题
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/no-var-requires&#39;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/ban-types.md
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/ban-types&#39;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;error&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">types</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// add a custom message to help explain why not to use it
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>          <span class="nx">Foo</span><span class="o">:</span> <span class="s2">&#34;Don&#39;t use Foo because it is unsafe&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          <span class="c1">// add a custom message, AND tell the plugin how to fix it
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>          <span class="nb">String</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Use string instead&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fixWith</span><span class="o">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          <span class="s1">&#39;{}&#39;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Use object instead&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fixWith</span><span class="o">:</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 禁止出现未使用的变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/no-unused-vars&#39;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;error&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span> <span class="nx">vars</span><span class="o">:</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="nx">args</span><span class="o">:</span> <span class="s1">&#39;after-used&#39;</span><span class="p">,</span> <span class="nx">ignoreRestSiblings</span><span class="o">:</span> <span class="kc">false</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;vue/html-indent&#39;</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 关闭此规则 使用 prettier 的格式化规则，
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;vue/max-attributes-per-line&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;off&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// vue3.2.25之后为props使用解耦赋值语法，删除警告
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;vue/no-setup-props-destructure&#39;</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 优先使用驼峰，element 组件除外
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;vue/component-name-in-template-casing&#39;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;error&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;PascalCase&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ignores</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;/^el-/&#39;</span><span class="p">,</span> <span class="s1">&#39;/^router-/&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">registeredComponentsOnly</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 强制使用驼峰
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">camelcase</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">properties</span><span class="o">:</span> <span class="s1">&#39;always&#39;</span> <span class="p">}],</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 优先使用 const
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;prefer-const&#39;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;error&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">destructuring</span><span class="o">:</span> <span class="s1">&#39;any&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ignoreReadBeforeAssign</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>大神做好了自己的配置：<a href="https://github.com/antfu/eslint-config">https://github.com/antfu/eslint-config</a>，也可以参考。</p>
-
+</div><p>大神做好了自己的配置：<a href="https://github.com/antfu/eslint-config">https://github.com/antfu/eslint-config</a>，也可以参考。</p>
 <p>在<code>vite</code>​运行时，也希望运行<code>eslint</code>​进行代码检查，那么可以这么做：</p>
-
 <p>安装包：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
-</span><span class="lnt">2
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">pnpm</span> <span class="nx">add</span> <span class="o">-</span><span class="nx">D</span> <span class="nx">vite</span><span class="o">-</span><span class="nx">plugin</span><span class="o">-</span><span class="nx">eslint</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">pnpm</span> <span class="nx">add</span> <span class="o">-</span><span class="nx">D</span> <span class="nx">vite</span><span class="o">-</span><span class="nx">plugin</span><span class="o">-</span><span class="nx">eslint</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>对<code>vite.config.js</code>​配置进行修改：</p>
+</div><p>对<code>vite.config.js</code>​配置进行修改：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -439,33 +358,28 @@
 </span><span class="lnt">11
 </span><span class="lnt">12
 </span><span class="lnt">13
-</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">import</span> <span class="p">{</span> <span class="nx">defineConfig</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vite&#39;</span>
-<span class="k">import</span> <span class="nx">vue</span> <span class="nx">from</span> <span class="s1">&#39;@vitejs/plugin-vue&#39;</span>
-<span class="k">import</span> <span class="nx">eslintPlugin</span> <span class="nx">from</span> <span class="s1">&#39;vite-plugin-eslint&#39;</span> <span class="c1">//导入包
-</span><span class="c1"></span>
-<span class="k">export</span> <span class="k">default</span> <span class="nx">defineConfig</span><span class="p">({</span>
-  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
-    <span class="nx">vue</span><span class="p">(),</span>
-    <span class="c1">// 增加下面的配置项,这样在运行时就能检查eslint规范
-</span><span class="c1"></span>    <span class="nx">eslintPlugin</span><span class="p">({</span>
-      <span class="nx">include</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;src/**/*.js&#39;</span><span class="p">,</span> <span class="s1">&#39;src/**/*.vue&#39;</span><span class="p">,</span> <span class="s1">&#39;src/*.js&#39;</span><span class="p">,</span> <span class="s1">&#39;src/*.vue&#39;</span><span class="p">]</span>
-    <span class="p">})</span>
-  <span class="p">]</span>
-<span class="p">})</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">defineConfig</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vite&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">vue</span> <span class="nx">from</span> <span class="s1">&#39;@vitejs/plugin-vue&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">eslintPlugin</span> <span class="nx">from</span> <span class="s1">&#39;vite-plugin-eslint&#39;</span> <span class="c1">//导入包
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">defineConfig</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">vue</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 增加下面的配置项,这样在运行时就能检查eslint规范
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">eslintPlugin</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">include</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;src/**/*.js&#39;</span><span class="p">,</span> <span class="s1">&#39;src/**/*.vue&#39;</span><span class="p">,</span> <span class="s1">&#39;src/*.js&#39;</span><span class="p">,</span> <span class="s1">&#39;src/*.vue&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="prettier-代码格式化"><code>prettier</code>​代码格式化</h3>
-
-<p>​<code>eslint</code>​也可以进行代码格式化的，不过代码格式用的人比较多的还是<code>prettier</code>​。</p>
-
+</div><h3 id="prettier代码格式化"><code>prettier</code>​代码格式化 <a href="#prettier%e4%bb%a3%e7%a0%81%e6%a0%bc%e5%bc%8f%e5%8c%96" class="anchor">🔗</a></h3><p>​<code>eslint</code>​也可以进行代码格式化的，不过代码格式用的人比较多的还是<code>prettier</code>​。</p>
 <p>这里是<code>.prettierrc.js</code>​的参考：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -488,39 +402,37 @@
 </span><span class="lnt">21
 </span><span class="lnt">22
 </span><span class="lnt">23
-</span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// 在项目根目录创建文件 .prettierrc.js
-</span><span class="c1">// 以下配置视自己情况而定,并步是每个都需要的
-</span><span class="c1"></span><span class="p">{</span>
-  <span class="nx">tabWidth</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>               <span class="c1">// 使用4个空格缩进
-</span><span class="c1"></span>  <span class="nx">semi</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>               <span class="c1">// 代码结尾是否加分号
-</span><span class="c1"></span>  <span class="nx">trailingComma</span><span class="o">:</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>     <span class="c1">// 代码末尾不需要逗号
-</span><span class="c1"></span>  <span class="nx">singleQuote</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>         <span class="c1">// 是否使用单引号
-</span><span class="c1"></span>  <span class="nx">printWidth</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>           <span class="c1">// 超过多少字符强制换行
-</span><span class="c1"></span>  <span class="nx">arrowParens</span><span class="o">:</span> <span class="s1">&#39;avoid&#39;</span><span class="p">,</span>      <span class="c1">// 单个参数的箭头函数不加括号 x =&gt; x
-</span><span class="c1"></span>  <span class="nx">bracketSpacing</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>      <span class="c1">// 对象大括号内两边是否加空格 { a:0 }
-</span><span class="c1"></span>
-  <span class="nx">endOfLine</span><span class="o">:</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>         <span class="c1">// 文件换行格式 LF/CRLF
-</span><span class="c1"></span>  <span class="nx">useTabs</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>            <span class="c1">// 不使用缩进符,而使用空格
-</span><span class="c1"></span>  <span class="nx">quoteProps</span><span class="o">:</span> <span class="s1">&#39;as-needed&#39;</span><span class="p">,</span>   <span class="c1">// 对象的key仅在必要时用引号
-</span><span class="c1"></span>  <span class="nx">jsxSingleQuote</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>     <span class="c1">// jsx不使用单引号,而使用双引号
-</span><span class="c1"></span>  <span class="nx">jsxBracketSameLine</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// jsx标签的反尖括号需要换行
-</span><span class="c1"></span>  <span class="nx">rangeStart</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>             <span class="c1">// 每个文件格式化的范围是文件的全部内容
-</span><span class="c1"></span>  <span class="nx">rangeEnd</span><span class="o">:</span> <span class="kc">Infinity</span><span class="p">,</span>        <span class="c1">// 结尾
-</span><span class="c1"></span>  <span class="nx">requirePragma</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>      <span class="c1">// 不需要写文件开头的 @prettier
-</span><span class="c1"></span>  <span class="nx">insertPragma</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>       <span class="c1">// 不需要自动在文件开头插入 @prettier
-</span><span class="c1"></span>  <span class="nx">proseWrap</span><span class="o">:</span> <span class="s1">&#39;preserve&#39;</span><span class="p">,</span>     <span class="c1">// 使用默认的折行标准
-</span><span class="c1"></span>  <span class="nx">htmlWhitespaceSensitivity</span><span class="o">:</span> <span class="s1">&#39;css&#39;</span>  <span class="c1">// 根据显示样式决定html要不要折行
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 在项目根目录创建文件 .prettierrc.js
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 以下配置视自己情况而定,并步是每个都需要的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">tabWidth</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>               <span class="c1">// 使用4个空格缩进
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">semi</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>               <span class="c1">// 代码结尾是否加分号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">trailingComma</span><span class="o">:</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>     <span class="c1">// 代码末尾不需要逗号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">singleQuote</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>         <span class="c1">// 是否使用单引号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">printWidth</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>           <span class="c1">// 超过多少字符强制换行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">arrowParens</span><span class="o">:</span> <span class="s1">&#39;avoid&#39;</span><span class="p">,</span>      <span class="c1">// 单个参数的箭头函数不加括号 x =&gt; x
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">bracketSpacing</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>      <span class="c1">// 对象大括号内两边是否加空格 { a:0 }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">  <span class="nx">endOfLine</span><span class="o">:</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>         <span class="c1">// 文件换行格式 LF/CRLF
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">useTabs</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>            <span class="c1">// 不使用缩进符,而使用空格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">quoteProps</span><span class="o">:</span> <span class="s1">&#39;as-needed&#39;</span><span class="p">,</span>   <span class="c1">// 对象的key仅在必要时用引号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">jsxSingleQuote</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>     <span class="c1">// jsx不使用单引号,而使用双引号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">jsxBracketSameLine</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// jsx标签的反尖括号需要换行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">rangeStart</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>             <span class="c1">// 每个文件格式化的范围是文件的全部内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">rangeEnd</span><span class="o">:</span> <span class="kc">Infinity</span><span class="p">,</span>        <span class="c1">// 结尾
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">requirePragma</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>      <span class="c1">// 不需要写文件开头的 @prettier
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">insertPragma</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>       <span class="c1">// 不需要自动在文件开头插入 @prettier
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">proseWrap</span><span class="o">:</span> <span class="s1">&#39;preserve&#39;</span><span class="p">,</span>     <span class="c1">// 使用默认的折行标准
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">htmlWhitespaceSensitivity</span><span class="o">:</span> <span class="s1">&#39;css&#39;</span>  <span class="c1">// 根据显示样式决定html要不要折行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>自用的配置参考如下（单引号，末尾没有分号，这里添加了<code>tailwindcss</code>​）：</p>
+</div><p>自用的配置参考如下（单引号，末尾没有分号，这里添加了<code>tailwindcss</code>​）：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -533,84 +445,72 @@
 </span><span class="lnt">11
 </span><span class="lnt">12
 </span><span class="lnt">13
-</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="cm">/** @type {import { Config  } from &#34;prettier&#34;;}*/</span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="nx">useTabs</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="nx">bracketSameLine</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">bracketSpacing</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">trailingComma</span><span class="o">:</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
-  <span class="nx">tabWidth</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
-  <span class="nx">semi</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="nx">singleQuote</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">quoteProps</span><span class="o">:</span> <span class="s1">&#39;as-needed&#39;</span><span class="p">,</span>
-  <span class="nx">printWidth</span><span class="o">:</span> <span class="mi">120</span><span class="p">,</span>
-  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;prettier-plugin-tailwindcss&#39;</span><span class="p">],</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="cm">/** @type {import { Config  } from &#34;prettier&#34;;}*/</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">useTabs</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">bracketSameLine</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">bracketSpacing</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">trailingComma</span><span class="o">:</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">tabWidth</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">semi</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">singleQuote</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">quoteProps</span><span class="o">:</span> <span class="s1">&#39;as-needed&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">printWidth</span><span class="o">:</span> <span class="mi">120</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;prettier-plugin-tailwindcss&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="husky-git-提交规范">husky git 提交规范</h3>
-
-<p>​<code>husky</code>​是<code>git</code>​钩子，所谓的钩子，就是在<code>commit，push</code>​等操作之前，检测是否符合规范，如果不符合则直接拒绝。</p>
-
+</div><h3 id="husky-git-提交规范">husky git 提交规范 <a href="#husky-git-%e6%8f%90%e4%ba%a4%e8%a7%84%e8%8c%83" class="anchor">🔗</a></h3><p>​<code>husky</code>​是<code>git</code>​钩子，所谓的钩子，就是在<code>commit，push</code>​等操作之前，检测是否符合规范，如果不符合则直接拒绝。</p>
 <p>安装：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
-</span><span class="lnt">2
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">npx</span> <span class="nx">husky</span><span class="o">-</span><span class="nx">init</span> <span class="o">&amp;&amp;</span> <span class="nx">pnpm</span> <span class="nx">i</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">npx</span> <span class="nx">husky</span><span class="o">-</span><span class="nx">init</span> <span class="o">&amp;&amp;</span> <span class="nx">pnpm</span> <span class="nx">i</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>安装之后，在<code>package.json</code>​自动增加：</p>
+</div><p>安装之后，在<code>package.json</code>​自动增加：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript">  <span class="s2">&#34;scripts&#34;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="p">...</span>
-    <span class="s2">&#34;prepare&#34;</span><span class="o">:</span> <span class="s2">&#34;husky install&#34;</span>
-    <span class="p">...</span>
-  <span class="p">},</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">  <span class="s2">&#34;scripts&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;prepare&#34;</span><span class="o">:</span> <span class="s2">&#34;husky install&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>会在当前项目的目录增加<code>.husky</code>​目录，目录有个脚本文件<code>pre-commit</code>​，提交代码之前，会运行里面的脚本。所以，一般在<code>package.json</code>​增加命令：</p>
+</div><p>会在当前项目的目录增加<code>.husky</code>​目录，目录有个脚本文件<code>pre-commit</code>​，提交代码之前，会运行里面的脚本。所以，一般在<code>package.json</code>​增加命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"> <span class="s2">&#34;scripts&#34;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="p">...</span>
-	<span class="s2">&#34;lint&#34;</span><span class="o">:</span> <span class="s2">&#34;eslint src --fix --ext .js,.ts,.jsx,.tsx,.vue &amp;&amp; prettier --write \&#34;src/**/*.{js,ts,json,tsx,css,scss,vue,html,md}\&#34; --ignore-unknown&#34;</span><span class="p">,</span>
-	<span class="p">...</span>
-  <span class="p">},</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"> <span class="s2">&#34;scripts&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl"> <span class="s2">&#34;lint&#34;</span><span class="o">:</span> <span class="s2">&#34;eslint src --fix --ext .js,.ts,.jsx,.tsx,.vue &amp;&amp; prettier --write \&#34;src/**/*.{js,ts,json,tsx,css,scss,vue,html,md}\&#34; --ignore-unknown&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>然后，<code>pre-commit</code>​增加调用<code>pnpm lint</code>​则可以提交之前，对代码进行检查和格式化。</p>
-
+</div><p>然后，<code>pre-commit</code>​增加调用<code>pnpm lint</code>​则可以提交之前，对代码进行检查和格式化。</p>
 <p>这样配置的一个问题是，无论我们改动多少，都会对整个项目代码进行检查和格式化，效率不高的，我们的目标是只对改动的代码做检测和格式化。这个时候要用到另外一个包：<code>lint-staged</code>​，对<code>git add</code>​的暂存区进行检查和格式化。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -623,31 +523,28 @@
 </span><span class="lnt">11
 </span><span class="lnt">12
 </span><span class="lnt">13
-</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">pnpm</span> <span class="nx">add</span> <span class="o">-</span><span class="nx">D</span> <span class="nx">lint</span><span class="o">-</span><span class="nx">staged</span>
-
-<span class="c1">// package.json 新增
-</span><span class="c1"></span><span class="s2">&#34;lint-staged&#34;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&#34;*.{vue,js,ts,tsx,jsx}&#34;</span><span class="o">:</span> <span class="p">[</span>
-      <span class="s2">&#34;eslint --fix&#34;</span><span class="p">,</span>
-      <span class="s2">&#34;prettier --write --ignore-unknown&#34;</span>
-    <span class="p">]</span>
-  <span class="p">},</span>
-
-<span class="c1">// .husky/pre-commit改动：
-</span><span class="c1">// pnpm lint替换为
-</span><span class="c1"></span><span class="nx">npx</span> <span class="nx">lint</span><span class="o">-</span><span class="nx">staged</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">pnpm</span> <span class="nx">add</span> <span class="o">-</span><span class="nx">D</span> <span class="nx">lint</span><span class="o">-</span><span class="nx">staged</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// package.json 新增
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="s2">&#34;lint-staged&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;*.{vue,js,ts,tsx,jsx}&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;eslint --fix&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;prettier --write --ignore-unknown&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// .husky/pre-commit改动：
+</span></span></span><span class="line"><span class="cl"><span class="c1">// pnpm lint替换为
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">npx</span> <span class="nx">lint</span><span class="o">-</span><span class="nx">staged</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>前面的提交约束是代码，下面约束的时候提交的文档，避免无意义的提交说明。</p>
-
+</div><p>前面的提交约束是代码，下面约束的时候提交的文档，避免无意义的提交说明。</p>
 <p>安装（也可以全局安装，这样各个项目都可以用到）：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -658,78 +555,61 @@
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
-</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">pnpm</span> <span class="nx">add</span> <span class="o">-</span><span class="nx">D</span> <span class="nx">commitizen</span>
-
-<span class="c1">// 运行以下命令初始化 --force视具体情况添加
-</span><span class="c1"></span><span class="nx">$</span> <span class="nx">commitizen</span> <span class="nx">init</span> <span class="nx">cz</span><span class="o">-</span><span class="nx">conventional</span><span class="o">-</span><span class="nx">changelog</span> <span class="o">--</span><span class="nx">pnpm</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">dev</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">exact</span> <span class="o">--</span><span class="nx">force</span>
-
-<span class="c1">// package.json 增加可以pnpm commit，不过不习惯这个commit方法
-</span><span class="c1"></span><span class="s2">&#34;scripts&#34;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="p">...</span>
-    <span class="s2">&#34;commit&#34;</span><span class="o">:</span> <span class="s2">&#34;cz&#34;</span>
-    <span class="p">...</span>
-  <span class="p">},</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">pnpm</span> <span class="nx">add</span> <span class="o">-</span><span class="nx">D</span> <span class="nx">commitizen</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 运行以下命令初始化 --force视具体情况添加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">$</span> <span class="nx">commitizen</span> <span class="nx">init</span> <span class="nx">cz</span><span class="o">-</span><span class="nx">conventional</span><span class="o">-</span><span class="nx">changelog</span> <span class="o">--</span><span class="nx">pnpm</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">dev</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">exact</span> <span class="o">--</span><span class="nx">force</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// package.json 增加可以pnpm commit，不过不习惯这个commit方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="s2">&#34;scripts&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;commit&#34;</span><span class="o">:</span> <span class="s2">&#34;cz&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>这样之后，就可以用<code>git cz</code>​ 或<code>pnpm commit</code>​进行代码的提交。在命令行操作或者感觉不方便，vscode也有提供插件：<a href="https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-commitizen">Visual Studio Code Commitizen Support</a>。安装之后，点一点按钮即可：</p>
-
-<p><img src="/img/commitcz.png" alt="image" /></p>
-
+</div><p>这样之后，就可以用<code>git cz</code>​ 或<code>pnpm commit</code>​进行代码的提交。在命令行操作或者感觉不方便，vscode也有提供插件：<a href="https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-commitizen">Visual Studio Code Commitizen Support</a>。安装之后，点一点按钮即可：</p>
+<p><img src="/img/commitcz.png" alt="image"></p>
 <p>为了强制提交的<code>messsage</code>​必须符合规范，用<code>commitlint</code>​配合<code>husky</code>​使用的。</p>
-
 <p>安装：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
-</span><span class="lnt">2
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">pnpm</span> <span class="nx">add</span> <span class="o">-</span><span class="nx">D</span> <span class="err">@</span><span class="nx">commitlint</span><span class="err">/config-conventional @commitlint/cli</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">pnpm</span> <span class="nx">add</span> <span class="o">-</span><span class="nx">D</span> <span class="err">@</span><span class="nx">commitlint</span><span class="o">/</span><span class="nx">config</span><span class="o">-</span><span class="nx">conventional</span> <span class="err">@</span><span class="nx">commitlint</span><span class="o">/</span><span class="nx">cli</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>安装后，增加配置文件<code>commitlint.config.cjs</code>​:</p>
+</div><p>安装后，增加配置文件<code>commitlint.config.cjs</code>​:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="k">extends</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;@commitlint/config-conventional&#39;</span><span class="p">],</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">extends</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;@commitlint/config-conventional&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>然后，添加到<code>husky</code>​:</p>
+</div><p>然后，添加到<code>husky</code>​:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
-</span><span class="lnt">2
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">pnpm</span> <span class="nx">husky</span> <span class="nx">add</span> <span class="p">.</span><span class="nx">husky</span><span class="err">/commit-msg &#34;npx --no-install commitlint --edit \&#34;$1\&#34;&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">pnpm</span> <span class="nx">husky</span> <span class="nx">add</span> <span class="p">.</span><span class="nx">husky</span><span class="o">/</span><span class="nx">commit</span><span class="o">-</span><span class="nx">msg</span> <span class="s2">&#34;npx --no-install commitlint --edit \&#34;$1\&#34;&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>如此依赖<code>pre-commit</code>​和<code>commit-msg</code>​脚本里面的命令都可以运行到了。</p>
-
-<h2 id="vite配置">Vite配置</h2>
-
-<p>目前大多数前端都是使用<code>vite</code>​构建工具，所以也选择<code>vite</code>​作为例子。</p>
-
-<h3 id="别名">别名</h3>
-
-<p>别名设置就是为了导入其他文件的时候，不必要写全路径，比如<code>import { useUserStore } from '@/store'</code>​。</p>
+</div><p>如此依赖<code>pre-commit</code>​和<code>commit-msg</code>​脚本里面的命令都可以运行到了。</p>
+<h2 id="vite配置">Vite配置 <a href="#vite%e9%85%8d%e7%bd%ae" class="anchor">🔗</a></h2><p>目前大多数前端都是使用<code>vite</code>​构建工具，所以也选择<code>vite</code>​作为例子。</p>
+<h3 id="别名">别名 <a href="#%e5%88%ab%e5%90%8d" class="anchor">🔗</a></h3><p>别名设置就是为了导入其他文件的时候，不必要写全路径，比如<code>import { useUserStore } from '@/store'</code>​。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -744,54 +624,46 @@
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
-</span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// tsconfig.json compilerOptions 内增加
-</span><span class="c1"></span>    <span class="s2">&#34;baseUrl&#34;</span><span class="o">:</span> <span class="s2">&#34;.&#34;</span><span class="p">,</span>
-    <span class="s2">&#34;paths&#34;</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">&#34;@/*&#34;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;src/*&#34;</span><span class="p">]</span>
-    <span class="p">}</span>
-
-<span class="c1">// vite.config.js defineConfig 内增加
-</span><span class="c1">// 需增加 pnpm install -D @types/node
-</span><span class="c1"></span><span class="k">import</span> <span class="p">{</span> <span class="nx">fileURLToPath</span><span class="p">,</span> <span class="nx">URL</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;node:url&#34;</span><span class="p">;</span>
-<span class="p">...</span>
-<span class="nx">resolve</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">alias</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">&#34;@&#34;</span><span class="o">:</span> <span class="nx">fileURLToPath</span><span class="p">(</span><span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="s2">&#34;./src&#34;</span><span class="p">,</span> <span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">url</span><span class="p">)),</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// tsconfig.json compilerOptions 内增加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;baseUrl&#34;</span><span class="o">:</span> <span class="s2">&#34;.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;paths&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;@/*&#34;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;src/*&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// vite.config.js defineConfig 内增加
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 需增加 pnpm install -D @types/node
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">fileURLToPath</span><span class="p">,</span> <span class="nx">URL</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;node:url&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="nx">resolve</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">alias</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;@&#34;</span><span class="o">:</span> <span class="nx">fileURLToPath</span><span class="p">(</span><span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="s2">&#34;./src&#34;</span><span class="p">,</span> <span class="kr">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">url</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>这样，<code>@</code>​就可以<code>alias</code>​为全<code>src</code>​的全路径，导入时，直接可以使用该前缀。当然是可以指定多个不同文件的前缀的，比如有些项目喜欢将<code>components</code>​目录用<code>cpns</code>​简称。</p>
-
-<h3 id="环境变量-env文件">环境变量.env文件</h3>
-
-<p>环境变量是使用<a href="https://github.com/motdotla/dotenv">dotenv</a>通过<code>.env</code>​文件提供，使用<a href="https://github.com/motdotla/dotenv-expand">dotenv-expand</a>扩展变量。如：</p>
+</div><p>这样，<code>@</code>​就可以<code>alias</code>​为全<code>src</code>​的全路径，导入时，直接可以使用该前缀。当然是可以指定多个不同文件的前缀的，比如有些项目喜欢将<code>components</code>​目录用<code>cpns</code>​简称。</p>
+<h3 id="环境变量env文件">环境变量.env文件 <a href="#%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8fenv%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h3><p>环境变量是使用<a href="https://github.com/motdotla/dotenv">dotenv</a>通过<code>.env</code>​文件提供，使用<a href="https://github.com/motdotla/dotenv-expand">dotenv-expand</a>扩展变量。如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">env</span>                <span class="err">#</span> <span class="nx">所有情况下都会加载</span>
-<span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">local</span>          <span class="err">#</span> <span class="nx">所有情况下都会加载</span><span class="err">，</span><span class="nx">但会被</span> <span class="nx">git</span> <span class="nx">忽略</span>
-<span class="p">.</span><span class="nx">env</span><span class="p">.[</span><span class="nx">mode</span><span class="p">]</span>         <span class="err">#</span> <span class="nx">只在指定模式下加载</span>
-<span class="p">.</span><span class="nx">env</span><span class="p">.[</span><span class="nx">mode</span><span class="p">].</span><span class="nx">local</span>   <span class="err">#</span> <span class="nx">只在指定模式下加载</span><span class="err">，</span><span class="nx">但会被</span> <span class="nx">git</span> <span class="nx">忽略</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span>                <span class="err">#</span> <span class="nx">所有情况下都会加载</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">local</span>          <span class="err">#</span> <span class="nx">所有情况下都会加载</span><span class="err">，</span><span class="nx">但会被</span> <span class="nx">git</span> <span class="nx">忽略</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span><span class="p">.[</span><span class="nx">mode</span><span class="p">]</span>         <span class="err">#</span> <span class="nx">只在指定模式下加载</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span><span class="p">.[</span><span class="nx">mode</span><span class="p">].</span><span class="nx">local</span>   <span class="err">#</span> <span class="nx">只在指定模式下加载</span><span class="err">，</span><span class="nx">但会被</span> <span class="nx">git</span> <span class="nx">忽略</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>环境变量有优先级，如<code>.env&lt;.env.local&lt;.env.[mode]&lt;.env.[mode].local</code>​。</p>
-
+</div><p>环境变量有优先级，如<code>.env&lt;.env.local&lt;.env.[mode]&lt;.env.[mode].local</code>​。</p>
 <p>如果使用的是typescript，为了使环境变量有提示，需要在<code>env.d.ts</code>​文件（如果没有则创建）下，添加：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -801,26 +673,115 @@
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
-</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">/// &lt;reference types=&#34;vite/client&#34; /&gt;
-</span><span class="c1"></span>
-<span class="kr">interface</span> <span class="nx">ImportMetaEnv</span> <span class="p">{</span>
-  <span class="nx">readonly</span> <span class="nx">VITE_APP_TITLE</span><span class="o">:</span> <span class="nx">string</span>
-  <span class="c1">// 更多环境变量...
-</span><span class="c1"></span><span class="p">}</span>
-
-<span class="kr">interface</span> <span class="nx">ImportMeta</span> <span class="p">{</span>
-  <span class="nx">readonly</span> <span class="nx">env</span><span class="o">:</span> <span class="nx">ImportMetaEnv</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">/// &lt;reference types=&#34;vite/client&#34; /&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">ImportMetaEnv</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">readonly</span> <span class="nx">VITE_APP_TITLE</span><span class="o">:</span> <span class="nx">string</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 更多环境变量...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">ImportMeta</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">readonly</span> <span class="nx">env</span><span class="o">:</span> <span class="nx">ImportMetaEnv</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>如果没有修改<code>envPrefix</code>​，那么访问环境变量使用的是<code>import.meta.env.VITE_SOME_KEY</code>​的方式，只有<code>VITE_</code>​才能被访问到。需要注意的是，这是<code>vite</code>​启动后才能访问到，如果没启动前，在<code>vite.config.ts</code>​怎么访问的环境变量呢？做法是通过<code>loadEnv</code>​函数，如：</p>
+</div><p>如果没有修改<code>envPrefix</code>​，那么访问环境变量使用的是<code>import.meta.env.VITE_SOME_KEY</code>​的方式，只有<code>VITE_</code>​才能被访问到。需要注意的是，这是<code>vite</code>​启动后才能访问到，如果没启动前，在<code>vite.config.ts</code>​怎么访问的环境变量呢？做法是通过<code>loadEnv</code>​函数，如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">defineConfig</span><span class="p">,</span> <span class="nx">loadEnv</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vite&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">defineConfig</span><span class="p">(({</span> <span class="nx">mode</span> <span class="p">}</span><span class="o">:</span> <span class="nx">ConfigEnv</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">env</span> <span class="o">=</span> <span class="nx">loadEnv</span><span class="p">(</span><span class="nx">mode</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`env: </span><span class="si">${</span><span class="nx">env</span><span class="p">.</span><span class="nx">VITE_APP_API_BASE_URL</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>环境变量是配置在<code>.env</code>​文件里面的，使用的是<code>dotenv</code>​，使用<a href="https://github.com/motdotla/dotenv-expand">dotenv-expand</a>扩展变量，根据不同的环境加载不同的环境变量。如果环境变量名一样，优先级也不一样，越少详细的，优先级越高如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span>                <span class="err">#</span> <span class="nx">所有情况下都会加载</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">local</span>          <span class="err">#</span> <span class="nx">所有情况下都会加载</span><span class="err">，</span><span class="nx">但会被</span> <span class="nx">git</span> <span class="nx">忽略</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span><span class="p">.[</span><span class="nx">mode</span><span class="p">]</span>         <span class="err">#</span> <span class="nx">只在指定模式下加载</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span><span class="p">.[</span><span class="nx">mode</span><span class="p">].</span><span class="nx">local</span>   <span class="err">#</span> <span class="nx">只在指定模式下加载</span><span class="err">，</span><span class="nx">但会被</span> <span class="nx">git</span> <span class="nx">忽略</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">/// &lt;reference types=&#34;vite/client&#34; /&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">ImportMetaEnv</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">readonly</span> <span class="nx">VITE_APP_TITLE</span><span class="o">:</span> <span class="nx">string</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 更多环境变量...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">ImportMeta</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">readonly</span> <span class="nx">env</span><span class="o">:</span> <span class="nx">ImportMetaEnv</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="按需加载和自动导入">按需加载和自动导入 <a href="#%e6%8c%89%e9%9c%80%e5%8a%a0%e8%bd%bd%e5%92%8c%e8%87%aa%e5%8a%a8%e5%af%bc%e5%85%a5" class="anchor">🔗</a></h3><p>一般我们使用库的时候，使用的是库的很小部分功能，如果整个库导入的话，那么必定会导致最终的打包文件过大。所以一般来说，我们要求最终的打包文件都是按需导入的。这是通过<code>unplugin-vue-components</code>​这个插件来完成，<code>unplugin-vue-components</code>​插件内部内置了多个常用的库，比如<code>ElementPlus</code>​的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 我们需要配置dts: &#39;src/type/components.d.ts&#39;, 否则ts-lint会报错
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">Components</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">resolvers</span><span class="o">:</span> <span class="p">[</span><span class="nx">ElementPlusResolver</span><span class="p">()],</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">dts</span><span class="o">:</span> <span class="s1">&#39;src/type/components.d.ts&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>自动导入是自动帮你导入对应的函数等，而不必要自己手工导入，使用的是：<code>unplugin-auto-import</code>​这个插件，比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -831,123 +792,21 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">import</span> <span class="p">{</span> <span class="nx">defineConfig</span><span class="p">,</span> <span class="nx">loadEnv</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vite&#39;</span>
-<span class="p">...</span>
-<span class="k">export</span> <span class="k">default</span> <span class="nx">defineConfig</span><span class="p">(({</span> <span class="nx">mode</span> <span class="p">}</span><span class="o">:</span> <span class="nx">ConfigEnv</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="p">...</span>
-  <span class="k">const</span> <span class="nx">env</span> <span class="o">=</span> <span class="nx">loadEnv</span><span class="p">(</span><span class="nx">mode</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">())</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`env: </span><span class="si">${</span><span class="nx">env</span><span class="p">.</span><span class="nx">VITE_APP_API_BASE_URL</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-  <span class="p">...</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 没使用unplugin-auto-import写法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">computed</span><span class="p">,</span> <span class="nx">ref</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">doubled</span> <span class="o">=</span> <span class="nx">computed</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">count</span><span class="p">.</span><span class="nx">value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 使用unplugin-auto-import的写法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">doubled</span> <span class="o">=</span> <span class="nx">computed</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">count</span><span class="p">.</span><span class="nx">value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>环境变量是配置在<code>.env</code>​文件里面的，使用的是<code>dotenv</code>​，使用<a href="https://github.com/motdotla/dotenv-expand">dotenv-expand</a>扩展变量，根据不同的环境加载不同的环境变量。如果环境变量名一样，优先级也不一样，越少详细的，优先级越高如：</p>
+</div><p>配置：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">env</span>                <span class="err">#</span> <span class="nx">所有情况下都会加载</span>
-<span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">local</span>          <span class="err">#</span> <span class="nx">所有情况下都会加载</span><span class="err">，</span><span class="nx">但会被</span> <span class="nx">git</span> <span class="nx">忽略</span>
-<span class="p">.</span><span class="nx">env</span><span class="p">.[</span><span class="nx">mode</span><span class="p">]</span>         <span class="err">#</span> <span class="nx">只在指定模式下加载</span>
-<span class="p">.</span><span class="nx">env</span><span class="p">.[</span><span class="nx">mode</span><span class="p">].</span><span class="nx">local</span>   <span class="err">#</span> <span class="nx">只在指定模式下加载</span><span class="err">，</span><span class="nx">但会被</span> <span class="nx">git</span> <span class="nx">忽略</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">/// &lt;reference types=&#34;vite/client&#34; /&gt;
-</span><span class="c1"></span>
-<span class="kr">interface</span> <span class="nx">ImportMetaEnv</span> <span class="p">{</span>
-  <span class="nx">readonly</span> <span class="nx">VITE_APP_TITLE</span><span class="o">:</span> <span class="nx">string</span>
-  <span class="c1">// 更多环境变量...
-</span><span class="c1"></span><span class="p">}</span>
-
-<span class="kr">interface</span> <span class="nx">ImportMeta</span> <span class="p">{</span>
-  <span class="nx">readonly</span> <span class="nx">env</span><span class="o">:</span> <span class="nx">ImportMetaEnv</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="按需加载和自动导入">按需加载和自动导入</h3>
-
-<p>一般我们使用库的时候，使用的是库的很小部分功能，如果整个库导入的话，那么必定会导致最终的打包文件过大。所以一般来说，我们要求最终的打包文件都是按需导入的。这是通过<code>unplugin-vue-components</code>​这个插件来完成，<code>unplugin-vue-components</code>​插件内部内置了多个常用的库，比如<code>ElementPlus</code>​的配置：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// 我们需要配置dts: &#39;src/type/components.d.ts&#39;, 否则ts-lint会报错
-</span><span class="c1"></span><span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
-      <span class="p">...</span>
-      <span class="nx">Components</span><span class="p">({</span>
-        <span class="nx">resolvers</span><span class="o">:</span> <span class="p">[</span><span class="nx">ElementPlusResolver</span><span class="p">()],</span>
-        <span class="nx">dts</span><span class="o">:</span> <span class="s1">&#39;src/type/components.d.ts&#39;</span><span class="p">,</span>
-      <span class="p">}),</span>
-      <span class="p">...</span>
-    <span class="p">],</span>
-  <span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div>
-<p>自动导入是自动帮你导入对应的函数等，而不必要自己手工导入，使用的是：<code>unplugin-auto-import</code>​这个插件，比如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// 没使用unplugin-auto-import写法
-</span><span class="c1"></span><span class="k">import</span> <span class="p">{</span> <span class="nx">computed</span><span class="p">,</span> <span class="nx">ref</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
-
-<span class="k">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="k">const</span> <span class="nx">doubled</span> <span class="o">=</span> <span class="nx">computed</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">count</span><span class="p">.</span><span class="nx">value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="c1">// 使用unplugin-auto-import的写法
-</span><span class="c1"></span><span class="k">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="k">const</span> <span class="nx">doubled</span> <span class="o">=</span> <span class="nx">computed</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">count</span><span class="p">.</span><span class="nx">value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div>
-<p>配置：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -965,40 +824,62 @@
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
-      <span class="p">...</span>
-      <span class="nx">AutoImport</span><span class="p">({</span>
-        <span class="nx">resolvers</span><span class="o">:</span> <span class="p">[</span><span class="nx">ElementPlusResolver</span><span class="p">()],</span>
-        <span class="c1">// 自定引入 Vue VueRouter API,如果还需要其他的可以自行引入
-</span><span class="c1"></span>        <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;vue&#39;</span><span class="p">,</span> <span class="s1">&#39;vue-router&#39;</span><span class="p">],</span>
-        <span class="c1">// 调整自动引入的文件位置
-</span><span class="c1"></span>        <span class="nx">dts</span><span class="o">:</span> <span class="s1">&#39;src/type/auto-import.d.ts&#39;</span><span class="p">,</span>
-        <span class="c1">// 解决自动引入eslint报错问题 需要在eslintrc的extend选项中引入
-</span><span class="c1"></span>        <span class="nx">eslintrc</span><span class="o">:</span> <span class="p">{</span>
-          <span class="nx">enabled</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-          <span class="c1">// 配置文件的位置
-</span><span class="c1"></span>          <span class="nx">filepath</span><span class="o">:</span> <span class="s1">&#39;./.eslintrc-auto-import.json&#39;</span><span class="p">,</span>
-          <span class="nx">globalsPropValue</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="p">},</span>
-      <span class="p">}),</span>
-      <span class="p">...</span>
-  <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">AutoImport</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">resolvers</span><span class="o">:</span> <span class="p">[</span><span class="nx">ElementPlusResolver</span><span class="p">()],</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 自定引入 Vue VueRouter API,如果还需要其他的可以自行引入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;vue&#39;</span><span class="p">,</span> <span class="s1">&#39;vue-router&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 调整自动引入的文件位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">dts</span><span class="o">:</span> <span class="s1">&#39;src/type/auto-import.d.ts&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 解决自动引入eslint报错问题 需要在eslintrc的extend选项中引入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">eslintrc</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">enabled</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// 配置文件的位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>          <span class="nx">filepath</span><span class="o">:</span> <span class="s1">&#39;./.eslintrc-auto-import.json&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">globalsPropValue</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>vscode等一写编辑器也会自动导入库，自己输入函数时就有弹框选择，与此不同的是，直接的文件上面自动导入。至于是否需要使用这个库，看每个人的口味。</p>
-
+</div><p>vscode等一写编辑器也会自动导入库，自己输入函数时就有弹框选择，与此不同的是，直接的文件上面自动导入。至于是否需要使用这个库，看每个人的口味。</p>
 <p>需要注意的是，此两个插件是<code>vite</code>​的插件，需要运行<code>vite</code>​的时候，才会生成对应的<code>.d.ts</code>​文件。</p>
-
-<h3 id="代理">代理</h3>
-
-<p>代理主要是为了解决跨域问题，后端服务可能有多个，有时候也要和后端开发联调。<code>vite</code>​配置如下：</p>
+<h3 id="代理">代理 <a href="#%e4%bb%a3%e7%90%86" class="anchor">🔗</a></h3><p>代理主要是为了解决跨域问题，后端服务可能有多个，有时候也要和后端开发联调。<code>vite</code>​配置如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">server</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">proxy</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 使用 proxy 实例，VITE_APP_API_BASE_URL可以配置在环境变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="s1">&#39;/api&#39;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">target</span><span class="o">:</span> <span class="nx">env</span><span class="p">.</span><span class="nx">VITE_APP_API_BASE_URL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">changeOrigin</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">rewrite</span><span class="o">:</span> <span class="nx">path</span> <span class="p">=&gt;</span> <span class="nx">path</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^\/api/</span><span class="p">,</span> <span class="s1">&#39;/api&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意的时候<code>target</code>​是要以<code>http</code>​或<code>https</code>​开头，根据不同的环境配置不同<code>target</code>​。</p>
+<h3 id="mock">mock <a href="#mock" class="anchor">🔗</a></h3><p>在后端还没有开发好或者不具备联调，而且接口文档已经制定好的情况下，前端可以直接<code>mock</code>​数据进行测试。又或者是要做演示的时候，也可以使用<code>mock</code>​数据。是通过<code>vite-plugin-mock</code>​插件实现的，<code>mock</code>​数据的生成可以使用<code>mockjs</code>​。<code>vite</code>​配置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1011,58 +892,23 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">server</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">proxy</span><span class="o">:</span> <span class="p">{</span>
-        <span class="c1">// 使用 proxy 实例，VITE_APP_API_BASE_URL可以配置在环境变量
-</span><span class="c1"></span>        <span class="s1">&#39;/api&#39;</span><span class="o">:</span> <span class="p">{</span>
-          <span class="nx">target</span><span class="o">:</span> <span class="nx">env</span><span class="p">.</span><span class="nx">VITE_APP_API_BASE_URL</span><span class="p">,</span>
-          <span class="nx">changeOrigin</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-          <span class="nx">rewrite</span><span class="o">:</span> <span class="nx">path</span> <span class="p">=&gt;</span> <span class="nx">path</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^\/api/</span><span class="p">,</span> <span class="s1">&#39;/api&#39;</span><span class="p">),</span>
-        <span class="p">},</span>
-      <span class="p">},</span>
-    <span class="p">},</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// 配置mock
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">viteMockServe</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">mockPath</span><span class="o">:</span> <span class="s1">&#39;mock&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 根据实际情况开启或者关闭
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">enable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">logger</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>注意的时候<code>target</code>​是要以<code>http</code>​或<code>https</code>​开头，根据不同的环境配置不同<code>target</code>​。</p>
-
-<h3 id="mock">mock</h3>
-
-<p>在后端还没有开发好或者不具备联调，而且接口文档已经制定好的情况下，前端可以直接<code>mock</code>​数据进行测试。又或者是要做演示的时候，也可以使用<code>mock</code>​数据。是通过<code>vite-plugin-mock</code>​插件实现的，<code>mock</code>​数据的生成可以使用<code>mockjs</code>​。<code>vite</code>​配置如下：</p>
+</div><p>​<code>mock</code>​目录文件示例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
-      <span class="p">...</span>
-      <span class="c1">// 配置mock
-</span><span class="c1"></span>      <span class="nx">viteMockServe</span><span class="p">({</span>
-        <span class="nx">mockPath</span><span class="o">:</span> <span class="s1">&#39;mock&#39;</span><span class="p">,</span>
-        <span class="c1">// 根据实际情况开启或者关闭
-</span><span class="c1"></span>        <span class="nx">enable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">logger</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="p">}),</span>
-      <span class="p">...</span>
-    <span class="p">],</span>
-</code></pre></td></tr></table>
-</div>
-</div>
-<p>​<code>mock</code>​目录文件示例：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1086,60 +932,44 @@
 </span><span class="lnt">22
 </span><span class="lnt">23
 </span><span class="lnt">24
-</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">import</span> <span class="p">{</span> <span class="nx">MockMethod</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vite-plugin-mock&#39;</span>
-
-<span class="k">const</span> <span class="nx">mockList</span><span class="o">:</span> <span class="nx">MockMethod</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
- <span class="p">...</span>
-  <span class="p">{</span>
-    <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/api/login&#39;</span><span class="p">,</span>
-    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="c1">// 请求方式
-</span><span class="c1"></span>    <span class="nx">statusCode</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span> <span class="c1">// 返回的http状态码
-</span><span class="c1"></span>    <span class="nx">response</span><span class="o">:</span> <span class="nx">opt</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">opt</span><span class="p">)</span>
-
-      <span class="k">return</span> <span class="p">{</span>
-        <span class="c1">// 返回的结果集
-</span><span class="c1"></span>        <span class="nx">statusCode</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-        <span class="nx">desc</span><span class="o">:</span> <span class="s1">&#39;登录成功&#39;</span><span class="p">,</span>
-        <span class="nx">result</span><span class="o">:</span> <span class="p">{</span>
-          <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span>
-        <span class="p">},</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="p">...</span>
-<span class="p">]</span>
-<span class="k">export</span> <span class="k">default</span> <span class="nx">mockList</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">MockMethod</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vite-plugin-mock&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">mockList</span><span class="o">:</span> <span class="nx">MockMethod</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl"> <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/api/login&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="c1">// 请求方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">statusCode</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span> <span class="c1">// 返回的http状态码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">response</span><span class="o">:</span> <span class="nx">opt</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">opt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 返回的结果集
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">statusCode</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">desc</span><span class="o">:</span> <span class="s1">&#39;登录成功&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">result</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">mockList</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>当开启<code>mock</code>​时，<code>proxy</code>​不生效。</p>
-
-<h2 id="其他">其他</h2>
-
-<h3 id="防抖和节流">防抖和节流</h3>
-
-<p>防抖和节流是前端性能优化的两种方法，同时也可以避免一些后端考虑不周出现的一些意外问题(比如短时间内出现多起同样的业务)。</p>
-
+</div><p>当开启<code>mock</code>​时，<code>proxy</code>​不生效。</p>
+<h2 id="其他">其他 <a href="#%e5%85%b6%e4%bb%96" class="anchor">🔗</a></h2><h3 id="防抖和节流">防抖和节流 <a href="#%e9%98%b2%e6%8a%96%e5%92%8c%e8%8a%82%e6%b5%81" class="anchor">🔗</a></h3><p>防抖和节流是前端性能优化的两种方法，同时也可以避免一些后端考虑不周出现的一些意外问题(比如短时间内出现多起同样的业务)。</p>
 <p>防抖的意思是：指触发事件后，在n秒内函数只执行一次，如果在n秒内又触发了事件，则会重新计算函数执行时间。简单来说，就是让某个函数在一定时间内只执行一次，如果期间有多次调用，则以<code>最后一次为准</code>​。</p>
-
 <p>节流的意思是：指连续触发事件但是在n秒内只执行一次函数。简单来说，<code>就是某个函数在一定时间内只执行一次</code>​，无论用户触发了多少次。</p>
-
 <p>两者区别在于执行的时机，防抖是在<strong>某个时间段内最后一次触发后执行</strong>，而<strong>节流是在某个时间段内均匀执行一次</strong>。</p>
-
 <p>实现这两个功能，一般使用的时候<code>lodash</code>​库，<code>debounce</code>​函数实现防抖，<code>throttle</code>​实现节流。</p>
-
-<h2 id="其他问题">其他问题</h2>
-
-<h3 id="extends">extends</h3>
-
-<p>从旧的项目来，经常会碰到在tsconfig的配置里面<code>extends</code>​的配置项，由于新版删除了这些配置，所以直接报错，修改：</p>
+<h2 id="其他问题">其他问题 <a href="#%e5%85%b6%e4%bb%96%e9%97%ae%e9%a2%98" class="anchor">🔗</a></h2><h3 id="extends">extends <a href="#extends" class="anchor">🔗</a></h3><p>从旧的项目来，经常会碰到在tsconfig的配置里面<code>extends</code>​的配置项，由于新版删除了这些配置，所以直接报错，修改：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1155,34 +985,30 @@
 </span><span class="lnt">14
 </span><span class="lnt">15
 </span><span class="lnt">16
-</span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="s2">&#34;extends&#34;</span><span class="o">:</span> <span class="p">[</span>
-    <span class="s2">&#34;@vue/tsconfig/tsconfig.web.json&#34;</span>
-  <span class="p">],</span>
-<span class="p">=&gt;</span>
-<span class="s2">&#34;extends&#34;</span><span class="o">:</span> <span class="p">[</span>
-    <span class="s2">&#34;@vue/tsconfig/tsconfig.dom.json&#34;</span><span class="p">,</span>
-    <span class="s2">&#34;@vue/tsconfig/tsconfig.lib.json&#34;</span>
-  <span class="p">],</span>
-
-<span class="s2">&#34;extends&#34;</span><span class="o">:</span> <span class="p">[</span>
-    <span class="s2">&#34;@vue/tsconfig/tsconfig.node.json&#34;</span>
-  <span class="p">],</span>
-<span class="p">=&gt;</span>
-<span class="s2">&#34;extends&#34;</span><span class="o">:</span> <span class="p">[</span>
-    <span class="s2">&#34;@vue/tsconfig/tsconfig.json&#34;</span>
-  <span class="p">],</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="s2">&#34;extends&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;@vue/tsconfig/tsconfig.web.json&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;extends&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;@vue/tsconfig/tsconfig.dom.json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;@vue/tsconfig/tsconfig.lib.json&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;extends&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;@vue/tsconfig/tsconfig.node.json&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;extends&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;@vue/tsconfig/tsconfig.json&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="esm">esm</h3>
-
-<p>新生成的项目基本都是全面拥抱esm，具体的表现为，在<code>package.json</code>​里面多了一个配置项：<code>&quot;type&quot;: &quot;module&quot;。</code>​而很多工具生成的是<code>CommonJS</code>​格式，导致报错，最简单的方式是把<code>js</code>​扩展名改为<code>cjs</code>​扩展名。或者改为esm模式，比如<code>postcss.config.js</code>​：</p>
+</div><h3 id="esm">esm <a href="#esm" class="anchor">🔗</a></h3><p>新生成的项目基本都是全面拥抱esm，具体的表现为，在<code>package.json</code>​里面多了一个配置项：<code>&quot;type&quot;: &quot;module&quot;。</code>​而很多工具生成的是<code>CommonJS</code>​格式，导致报错，最简单的方式是把<code>js</code>​扩展名改为<code>cjs</code>​扩展名。或者改为esm模式，比如<code>postcss.config.js</code>​：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1195,65 +1021,41 @@
 </span><span class="lnt">11
 </span><span class="lnt">12
 </span><span class="lnt">13
-</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// module.exports = {
-</span><span class="c1">//   plugins: {
-</span><span class="c1">//     tailwindcss: {},
-</span><span class="c1">//     autoprefixer: {},
-</span><span class="c1">//   },
-</span><span class="c1">// }
-</span><span class="c1"></span>
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="nx">plugins</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">tailwindcss</span><span class="o">:</span> <span class="p">{},</span>
-    <span class="nx">autoprefixer</span><span class="o">:</span> <span class="p">{},</span>
-  <span class="p">},</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// module.exports = {
+</span></span></span><span class="line"><span class="cl"><span class="c1">//   plugins: {
+</span></span></span><span class="line"><span class="cl"><span class="c1">//     tailwindcss: {},
+</span></span></span><span class="line"><span class="cl"><span class="c1">//     autoprefixer: {},
+</span></span></span><span class="line"><span class="cl"><span class="c1">//   },
+</span></span></span><span class="line"><span class="cl"><span class="c1">// }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">plugins</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">tailwindcss</span><span class="o">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">autoprefixer</span><span class="o">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h2 id="参考">参考</h2>
-
-<p><a href="/raw/vite/vite.config.ts">vite.config.ts</a></p>
-
+</div><h2 id="参考">参考 <a href="#%e5%8f%82%e8%80%83" class="anchor">🔗</a></h2><p><a href="/raw/vite/vite.config.ts">vite.config.ts</a></p>
 <p>‍</p>
 
     </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">buf1024</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2024-01-08</span>
-  </p>
-  
-  
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/vite/">vite</a>
-          </div>
-      <nav class="post-nav">
-        
-        <a class="next" href="/post/2023-12-26-rust-proc-macro/">
-            <span class="next-text nav-default">rust 过程宏</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        <div id="gitalk-container"></div>
+    
+</section>
+
+
+                <hr>
+                
+
+<div id="gitalk-container"></div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2024-01-08 16:00:10 \x2b0800 CST',
+        id: '2024-01-08 16:00:10 \u002b0800 CST',
         title: '前端保姆级配置',
         clientID: '72786bf87c19beec6abe',
         clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
@@ -1266,57 +1068,489 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
-      </div>
+            </div>
+        </div>
+
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     </main>
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        id: '2024-01-08 16:00:10 \u002b0800 CST',
+        title: '前端保姆级配置',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+    });
+    gitalk.render('gitalk-container');
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by
+        gitalk.</a></noscript>
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
+    
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
-
-
-
-
-
-
-
-
+    
 </body>
+
 </html>

@@ -1,349 +1,283 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>软件构架  --  无技术简篇 - BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="软件构架 所谓的软件构架，是有关软件整体结构与各组件的抽象描述，用于指导大型软件系统各个方面的设计。一个好的软件构架，会随着业务的不断深入发展" /><meta name="keywords" content="blog, computer, luoguochun" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/post/2017-12-26-soft-architecture/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="软件构架  --  无技术简篇" />
-<meta property="og:description" content="软件构架 所谓的软件构架，是有关软件整体结构与各组件的抽象描述，用于指导大型软件系统各个方面的设计。一个好的软件构架，会随着业务的不断深入发展" />
+<title>软件构架  --  无技术简篇 | BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/post/2017-12-26-soft-architecture/">
+<meta name="description" content="软件构架 🔗所谓的软件构架，是有关软件整体结构与各组件的抽象描述，用于指导大型软件系统各个方面的设计。一个好的软件构架，会随着业务的不断深入发" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luoguochun.cn/post/2017-12-26-soft-architecture/" /><meta property="article:published_time" content="2017-12-06T11:08:13&#43;00:00"/>
-<meta property="article:modified_time" content="2017-12-06T11:08:13&#43;00:00"/>
-
-<meta itemprop="name" content="软件构架  --  无技术简篇">
-<meta itemprop="description" content="软件构架 所谓的软件构架，是有关软件整体结构与各组件的抽象描述，用于指导大型软件系统各个方面的设计。一个好的软件构架，会随着业务的不断深入发展">
-
-
-<meta itemprop="datePublished" content="2017-12-06T11:08:13&#43;00:00" />
-<meta itemprop="dateModified" content="2017-12-06T11:08:13&#43;00:00" />
-<meta itemprop="wordCount" content="3795">
+<meta property="og:title" content="软件构架  --  无技术简篇 | BUF1024!!!" />
+<meta property="og:url" content="https://luoguochun.cn/post/2017-12-26-soft-architecture/" />
+<meta property="og:description" content="软件构架 🔗所谓的软件构架，是有关软件整体结构与各组件的抽象描述，用于指导大型软件系统各个方面的设计。一个好的软件构架，会随着业务的不断深入发" />
 
 
 
-<meta itemprop="keywords" content="构架," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="软件构架  --  无技术简篇"/>
-<meta name="twitter:description" content="软件构架 所谓的软件构架，是有关软件整体结构与各组件的抽象描述，用于指导大型软件系统各个方面的设计。一个好的软件构架，会随着业务的不断深入发展"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">软件构架  --  无技术简篇</h1>
+    <main class="main-wrapper">
 
-      <div class="post-meta">
-        <span class="post-time"> 2017-12-06 </span>
-        <div class="post-category">
-            <a href="/categories/%E6%9E%84%E6%9E%B6/"> 构架 </a>
-            </div>
-          <span class="more-meta"> 约 3795 字 </span>
-          <span class="more-meta"> 预计阅读 8 分钟 </span>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
+
+<section class="single">
+    <h1 class="title">软件构架  --  无技术简篇</h1>
+
+    <div class="tip">
+        <time datetime="2017-12-06 11:08:13 &#43;0000 UTC">2017/12/06</time>
+        <span class="split">·</span>
+        <span> 3791 words </span>
+        <span class="split">·</span>
+        <span>
+            8 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
         
-      </div>
-    </header>
+        <div>
+            Categories:
+            
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架</a>
+            
+        </div>
+        
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-    <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#软件构架">软件构架</a></li>
-<li><a href="#软件构架发展">软件构架发展</a></li>
-<li><a href="#软件构架模式">软件构架模式</a></li>
-<li><a href="#构架要素">构架要素</a></li>
-<li><a href="#最后">最后</a></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/%E6%9E%84%E6%9E%B6">构架</a>
+                
+            </div>
+        
+    </div>
 
-<h2 id="软件构架">软件构架</h2>
+    <hr />
 
-<p>所谓的软件构架，是有关软件整体结构与各组件的抽象描述，用于指导大型软件系统各个方面的设计。一个好的软件构架，会随着业务的不断深入发展而不断的演化；但一个不好的软件构架，却会阻碍业务发展，甚至会成为业务发展的瓶颈。在一个大型的系统，构架始终围绕着“高可用
+    <div class="content">
+        <h2 id="软件构架">软件构架 <a href="#%e8%bd%af%e4%bb%b6%e6%9e%84%e6%9e%b6" class="anchor">🔗</a></h2><p>所谓的软件构架，是有关软件整体结构与各组件的抽象描述，用于指导大型软件系统各个方面的设计。一个好的软件构架，会随着业务的不断深入发展而不断的演化；但一个不好的软件构架，却会阻碍业务发展，甚至会成为业务发展的瓶颈。在一个大型的系统，构架始终围绕着“高可用
 高性能，易扩展，可伸缩，高安全”等等几方面展开。需要强调的一点是，<strong>构架是有业务驱动的</strong>，适合淘宝腾讯等大型的互联网成功的构架，并不一定适合自己的业务，所以<strong>不要为了构架而构架，为了技术而技术</strong>。</p>
-
-<p>对于大型互联网应用，具备非常显著的特点：
-- 高并发，大流量  &mdash; 并发的访问的用户数很大，流量很高         
-- 高可用 &mdash; 7 * 24小时不间断运行
-- 海量数据 &mdash; 存储和管理的都是海量级别数据
-- 用户分布广，网络情况复杂 &mdash; 用户全球分布，网络环境复杂和使用设备类比很多
-- 安全环境恶劣 &mdash; 互联网开发环境天生开放性，易受攻击
-- <strong>需求变更频繁，发布布频繁</strong> &ndash; 为了快速适应市场占有市场，需求变更很产品发布频率极高
-- <strong>渐进式发展</strong> &ndash; 没有从一开始就规划好功能需求和非功能需求，都是适应市场发展</p>
-
+<p>对于大型互联网应用，具备非常显著的特点：</p>
+<ul>
+<li>高并发，大流量  &mdash; 并发的访问的用户数很大，流量很高         </li>
+<li>高可用 &mdash; 7 * 24小时不间断运行</li>
+<li>海量数据 &mdash; 存储和管理的都是海量级别数据</li>
+<li>用户分布广，网络情况复杂 &mdash; 用户全球分布，网络环境复杂和使用设备类比很多</li>
+<li>安全环境恶劣 &mdash; 互联网开发环境天生开放性，易受攻击</li>
+<li><strong>需求变更频繁，发布布频繁</strong> &ndash; 为了快速适应市场占有市场，需求变更很产品发布频率极高</li>
+<li><strong>渐进式发展</strong> &ndash; 没有从一开始就规划好功能需求和非功能需求，都是适应市场发展</li>
+</ul>
 <p>在传统软件行业，往往听到很多需求不确定的抱怨，相对于互联网企业，需求本身可能就不确定，就算是确定需求而又可能变更频繁，所以大多都是渐进式发展，SO，少点抱怨，多点务实。大型互联网技术挑战来源： 庞大的用户，高并发，和海量数据处理。</p>
-
-<h2 id="软件构架发展">软件构架发展</h2>
-
-<p>构架的发展和演化都是有业务推动的，面向服务的体系结构(SOA)，已经被演化为大型企业的成熟构架。
-1. 发展最最初级阶段构架
-<img src="/img/arch/soft-arch-1-1.png" alt="发展最最初级阶段构架" />
+<h2 id="软件构架发展">软件构架发展 <a href="#%e8%bd%af%e4%bb%b6%e6%9e%84%e6%9e%b6%e5%8f%91%e5%b1%95" class="anchor">🔗</a></h2><p>构架的发展和演化都是有业务推动的，面向服务的体系结构(SOA)，已经被演化为大型企业的成熟构架。</p>
+<ol>
+<li>
+<p>发展最最初级阶段构架
+<img src="/img/arch/soft-arch-1-1.png" alt="发展最最初级阶段构架">
 这个阶段的特点是：应用服务器，文件，数据库都部署在同一台物理机器上面。用户少，访问量低。使用各类开源软件和廉价服务器即可开启发展之路。</p>
-
-<ol>
-<li><p>应用服务和数据服务分离
-<img src="/img/arch/soft-arch-1-2.png" alt="应用服务和数据服务分离" />
-一般而言，对于应用服务器，瓶颈是CPU，数据库服务器，瓶颈是IO，文件服务器，瓶颈是硬盘。随着用户的增加，访问量的增加，单一服务器很快的遇到性能瓶颈。自然而然，数据服务和文件服务独立出来，使用独立的服务器，进行独立部署。</p></li>
-
-<li><p>使用缓存解决性能
-<img src="/img/arch/soft-arch-1-3.png" alt="使用缓存解决性能" />
-当数据库压力增大，限制业务发展，对<strong>关键业务</strong>使用缓存。使用缓存，分本地缓存和远程缓存。使用缓存后，应用服务器对于关键业务，首先考虑的是访问本地缓存，如果不命中，再访问远程缓存和数据库。热点数据需要考虑怎么和数据库同步。</p></li>
-
-<li><p>应用服务群集解决并发能力
-<img src="/img/arch/soft-arch-1-4.png" alt="应用服务群集解决并发能力" />
-当应用服务成为性能瓶颈单台机器无法支撑业务的时候，使用应用服务群集，再在前面增加负载均衡调度服务器。这样要求应用服务做到会话无关，或者使用分布式缓存解决会话问题。这样应用服务器随时可伸缩，不在会成为瓶颈。</p></li>
-
-<li><p>数据库读写分离
-<img src="/img/arch/soft-arch-1-5.png" alt="数据库读写分离" />
-数据库压力增大，使用缓存之后，一般数据库访问会降低，但却存在部分读不命中，写操作访问数据库。数据库主从配置是数据安全和故障恢复的一个重要措施，也是提高数据性能的一种措施。数据库进行配置主从复制，主库负责写，备库负责读，实现读写分离。至此，可看到，应用服务器已经需要做很大的改动了。</p></li>
-
-<li><p>反向代理和CDN加速
-<img src="/img/arch/soft-arch-1-6.png" alt="反向代理和CDN加速" />
-这里主要是资源的加速，反向代理和CDN本质是缓存，解决复杂网络情况下的访问，负载均衡调度优先反向代理访问。</p></li>
-
-<li><p>使用分布式文件服务器和数据库服务器
-<img src="/img/arch/soft-arch-1-7.png" alt="使用分布式文件服务器和数据库服务器" />
-数据库主备读写分离不能满足业务增长需求，文件服务也一样，那么就需要进行拆分。分布式文件服务器和分布式数据库，带来更难的运维，只要非不得已，才使用。</p></li>
-
-<li><p>使用nosql数据库和搜索引擎服务器
-<img src="/img/arch/soft-arch-1-8.png" alt="使用nosql数据库和搜索引擎服务器" />
-业务复杂性增加，考虑使用nosql数据库解决复杂的数据存储和使用搜索引擎服务器解决检索需求。</p></li>
-
-<li><p>业务拆分
-<img src="/img/arch/soft-arch-1-9.png" alt="业务拆分" />
-业务拆分应对各种复杂的业务需求，形成不同的产品线。可能会涉及分库，分表等。</p></li>
-
-<li><p>分布式服务
-<img src="/img/arch/soft-arch-1-10.png" alt="分布式服务" />
-每个产品线都要有共同发数据访问需求，将这些需求独立起来分布式部署。</p></li>
+</li>
+<li>
+<p>应用服务和数据服务分离
+<img src="/img/arch/soft-arch-1-2.png" alt="应用服务和数据服务分离">
+一般而言，对于应用服务器，瓶颈是CPU，数据库服务器，瓶颈是IO，文件服务器，瓶颈是硬盘。随着用户的增加，访问量的增加，单一服务器很快的遇到性能瓶颈。自然而然，数据服务和文件服务独立出来，使用独立的服务器，进行独立部署。</p>
+</li>
+<li>
+<p>使用缓存解决性能
+<img src="/img/arch/soft-arch-1-3.png" alt="使用缓存解决性能">
+当数据库压力增大，限制业务发展，对<strong>关键业务</strong>使用缓存。使用缓存，分本地缓存和远程缓存。使用缓存后，应用服务器对于关键业务，首先考虑的是访问本地缓存，如果不命中，再访问远程缓存和数据库。热点数据需要考虑怎么和数据库同步。</p>
+</li>
+<li>
+<p>应用服务群集解决并发能力
+<img src="/img/arch/soft-arch-1-4.png" alt="应用服务群集解决并发能力">
+当应用服务成为性能瓶颈单台机器无法支撑业务的时候，使用应用服务群集，再在前面增加负载均衡调度服务器。这样要求应用服务做到会话无关，或者使用分布式缓存解决会话问题。这样应用服务器随时可伸缩，不在会成为瓶颈。</p>
+</li>
+<li>
+<p>数据库读写分离
+<img src="/img/arch/soft-arch-1-5.png" alt="数据库读写分离">
+数据库压力增大，使用缓存之后，一般数据库访问会降低，但却存在部分读不命中，写操作访问数据库。数据库主从配置是数据安全和故障恢复的一个重要措施，也是提高数据性能的一种措施。数据库进行配置主从复制，主库负责写，备库负责读，实现读写分离。至此，可看到，应用服务器已经需要做很大的改动了。</p>
+</li>
+<li>
+<p>反向代理和CDN加速
+<img src="/img/arch/soft-arch-1-6.png" alt="反向代理和CDN加速">
+这里主要是资源的加速，反向代理和CDN本质是缓存，解决复杂网络情况下的访问，负载均衡调度优先反向代理访问。</p>
+</li>
+<li>
+<p>使用分布式文件服务器和数据库服务器
+<img src="/img/arch/soft-arch-1-7.png" alt="使用分布式文件服务器和数据库服务器">
+数据库主备读写分离不能满足业务增长需求，文件服务也一样，那么就需要进行拆分。分布式文件服务器和分布式数据库，带来更难的运维，只要非不得已，才使用。</p>
+</li>
+<li>
+<p>使用nosql数据库和搜索引擎服务器
+<img src="/img/arch/soft-arch-1-8.png" alt="使用nosql数据库和搜索引擎服务器">
+业务复杂性增加，考虑使用nosql数据库解决复杂的数据存储和使用搜索引擎服务器解决检索需求。</p>
+</li>
+<li>
+<p>业务拆分
+<img src="/img/arch/soft-arch-1-9.png" alt="业务拆分">
+业务拆分应对各种复杂的业务需求，形成不同的产品线。可能会涉及分库，分表等。</p>
+</li>
+<li>
+<p>分布式服务
+<img src="/img/arch/soft-arch-1-10.png" alt="分布式服务">
+每个产品线都要有共同发数据访问需求，将这些需求独立起来分布式部署。</p>
+</li>
 </ol>
-
 <p>由以上可看到，随着业务的不断发展和深入，应用服务都随着构架的不断改变和不断进行演化，最终形成面向服务的体系结构。也可看到，构架的变化会给应用服务的时候越来越复杂，运维也是越来越复杂。对于一个少量用户而言，追求者复杂的构架可能适得其反。所以再次强调的是，不要一味追求大型构架技术，业务驱动构架，不是构架驱动业务。不要一味追随大公司的解决方案，不要为了技术而技术，不要企图解决所有问题（这是有血的教训的）。</p>
-
 <p>可幸的是，对于靠谱的云计算平台，已经产品化各种需求，中小企业可能不在需要关心构架问题，按需付费即可使用。使用云计算，不再需要自己拼凑资源，使用现有的一切技术方案，即可完善自己的构架，开展自己的业务（当然，钱和出问题是业务的响应速度是一大问题）。</p>
-
-<h2 id="软件构架模式">软件构架模式</h2>
-
-<p>所谓的模式是指，在我们周围不断的重复发生的问题和已有的解决方案，如此，就可以使用该方案来解决问题，而非做重复的工作（GoF的设计模式，指的是开发层面的，这里是构架层面）。</p>
-
-<p>常见的软件构架模式：
-1. 分层
-这是最常见的构架模式。将系统横向分为几个部分，每部分负责单一的功能，通过上层对下层的调用，形成一个完整的系统。如，TCP/IP协议栈，这就是典型的分层系统。通常系统的划分，分为，应用层&ndash;负责展示，服务层&ndash;负责服务支持，数据层&ndash;负责数据服务。通过系统的分层，可将一个庞大的系统整体上切分为不同的部分，便于不同部门的开发和维护，同时也便于独立演化和发展。系统分层，概念上看很容易理解，然而在实践上，却又很容易违背其基本原则。系统分层挑战：合理划分层次和边界接口，严格遵循分层构架的约束，禁止跨层调用。分层构架对支持高并发发展和分布式发展非常重要，需在最开始的时候考虑。进行部署的时候，可以分别部署到不同的物理机器。</p>
-
+<h2 id="软件构架模式">软件构架模式 <a href="#%e8%bd%af%e4%bb%b6%e6%9e%84%e6%9e%b6%e6%a8%a1%e5%bc%8f" class="anchor">🔗</a></h2><p>所谓的模式是指，在我们周围不断的重复发生的问题和已有的解决方案，如此，就可以使用该方案来解决问题，而非做重复的工作（GoF的设计模式，指的是开发层面的，这里是构架层面）。</p>
+<p>常见的软件构架模式：</p>
 <ol>
-<li><p>分割
-系统分割属于纵向分割，指业务分割，根据业务和需求将服务分割为不同的独立单元。业务划分为不同的独立单元，一方面方便开发和维护，同时也是方便分布式部署。</p></li>
-
-<li><p>分布式
-系统的分层和系统分割都是为了方便分布式部署。分布式有较强的伸缩性，可以利用多台廉价机器提高性能。分布式带来的问题：网络调用导致性能降低，宕机概率增加，分布式事务难保证，开发管理维护困难。常见分布式方案：分布式应用和服务，分布式静态资源，分布式数据和存储，分布式计算等。</p></li>
-
-<li><p>集群
-对于集中访问的资源，通过多台服务器构成一个集群，通过负载均衡设备共同对外提供服务，这样更多用户时，增加机器，用户少时，减少机器，具备较强的伸缩性和性能。</p></li>
-
-<li><p>缓存
-使用缓存是解决性能问题的第一手段。缓存方式：CDN，反向代理，本地缓存，分布式缓存。缓存使用条件：热点数据访问不均衡，某些数据被频繁的访问，数据在一断时间内有效，不会很快过期。</p></li>
-
-<li><p>异步
-本质上是将业务分成多个阶段，每个阶段之间通过共享数据的方式进行协作。单一服务可通过共享队列的方式时间，分布式中多个服务器可使用分布式消息队列实现，分布式队列可视为内存队列的分布式部署。异步消息队列的特性：提高系统的可用性，加快网站响应速度，消除并发访问高峰。</p></li>
-
-<li><p>冗余
-为了避免服务宕机导致服务不可用等问题，需要进行冗余部署和数据冗余备份。定期保存，冷备，数据进行主备分离，实时同步实现热备。</p></li>
-
-<li><p>自动化
-发布过程自动换，自动化代码管理，自动化测试，自动运维等。</p></li>
-
-<li><p>安全
-密码，验证码，通讯，XSS攻击，SQL注入等。</p></li>
+<li>
+<p>分层
+这是最常见的构架模式。将系统横向分为几个部分，每部分负责单一的功能，通过上层对下层的调用，形成一个完整的系统。如，TCP/IP协议栈，这就是典型的分层系统。通常系统的划分，分为，应用层&ndash;负责展示，服务层&ndash;负责服务支持，数据层&ndash;负责数据服务。通过系统的分层，可将一个庞大的系统整体上切分为不同的部分，便于不同部门的开发和维护，同时也便于独立演化和发展。系统分层，概念上看很容易理解，然而在实践上，却又很容易违背其基本原则。系统分层挑战：合理划分层次和边界接口，严格遵循分层构架的约束，禁止跨层调用。分层构架对支持高并发发展和分布式发展非常重要，需在最开始的时候考虑。进行部署的时候，可以分别部署到不同的物理机器。</p>
+</li>
+<li>
+<p>分割
+系统分割属于纵向分割，指业务分割，根据业务和需求将服务分割为不同的独立单元。业务划分为不同的独立单元，一方面方便开发和维护，同时也是方便分布式部署。</p>
+</li>
+<li>
+<p>分布式
+系统的分层和系统分割都是为了方便分布式部署。分布式有较强的伸缩性，可以利用多台廉价机器提高性能。分布式带来的问题：网络调用导致性能降低，宕机概率增加，分布式事务难保证，开发管理维护困难。常见分布式方案：分布式应用和服务，分布式静态资源，分布式数据和存储，分布式计算等。</p>
+</li>
+<li>
+<p>集群
+对于集中访问的资源，通过多台服务器构成一个集群，通过负载均衡设备共同对外提供服务，这样更多用户时，增加机器，用户少时，减少机器，具备较强的伸缩性和性能。</p>
+</li>
+<li>
+<p>缓存
+使用缓存是解决性能问题的第一手段。缓存方式：CDN，反向代理，本地缓存，分布式缓存。缓存使用条件：热点数据访问不均衡，某些数据被频繁的访问，数据在一断时间内有效，不会很快过期。</p>
+</li>
+<li>
+<p>异步
+本质上是将业务分成多个阶段，每个阶段之间通过共享数据的方式进行协作。单一服务可通过共享队列的方式时间，分布式中多个服务器可使用分布式消息队列实现，分布式队列可视为内存队列的分布式部署。异步消息队列的特性：提高系统的可用性，加快网站响应速度，消除并发访问高峰。</p>
+</li>
+<li>
+<p>冗余
+为了避免服务宕机导致服务不可用等问题，需要进行冗余部署和数据冗余备份。定期保存，冷备，数据进行主备分离，实时同步实现热备。</p>
+</li>
+<li>
+<p>自动化
+发布过程自动换，自动化代码管理，自动化测试，自动运维等。</p>
+</li>
+<li>
+<p>安全
+密码，验证码，通讯，XSS攻击，SQL注入等。</p>
+</li>
 </ol>
-
 <p>好的模式不是模仿，而是对问题深刻理解之上的创造与创新。由上构架的模式要素，系统分层和分割是基础。</p>
-
-<h2 id="构架要素">构架要素</h2>
-
-<p>构架始终围绕着“高性能，高可用，易扩展，可伸缩，高安全”这几个要素来的。</p>
-
+<h2 id="构架要素">构架要素 <a href="#%e6%9e%84%e6%9e%b6%e8%a6%81%e7%b4%a0" class="anchor">🔗</a></h2><p>构架始终围绕着“高性能，高可用，易扩展，可伸缩，高安全”这几个要素来的。</p>
 <ol>
 <li>高性能
 性能指标：响应时间，并发数，吞吐量(TPS&ndash;每秒事务, HPS&ndash;每秒http请求, QPS每秒查询)，性能计数器(内存，CPU,磁盘，网络IO等，使用nmon等工具计算)
 测试方法：性能测试，压力测试，稳定性测试
 测试报告如：
-<img src="/img/arch/soft-arch-4-2.png" alt="测试报告" /></li>
+<img src="/img/arch/soft-arch-4-2.png" alt="测试报告"></li>
 </ol>
-
 <p>前端性能优化：
- 减少http请求（多个JS，css合成一个），使用浏览器缓存（Cache-control，expired等头部属性,启用压缩，CSS在head里面，js在body里面（减少加载时显示空白页面），减少cookie传输。使用CDN加速，使用反向代理缓存（nginx，apache等都可以缓存）</p>
-
+减少http请求（多个JS，css合成一个），使用浏览器缓存（Cache-control，expired等头部属性,启用压缩，CSS在head里面，js在body里面（减少加载时显示空白页面），减少cookie传输。使用CDN加速，使用反向代理缓存（nginx，apache等都可以缓存）</p>
 <p>应用服务器的优化：
- 使用分布式缓存，恰当使用缓存，频繁修改的数据，没热点访问的数据，数据不一致与脏读，缓存可用性超时等, 异步操作, 使用集群</p>
-
+使用分布式缓存，恰当使用缓存，频繁修改的数据，没热点访问的数据，数据不一致与脏读，缓存可用性超时等, 异步操作, 使用集群</p>
 <p>存储性能优化：
- 固态硬盘，RAID, HDFS</p>
-
-<ol>
-<li><p>高可用性
+固态硬盘，RAID, HDFS</p>
+<ol start="2">
+<li>
+<p>高可用性
 高可用性, 一个显著的特点是应用的无状态性。
 高可用服务：分级管理（核心服务使用更好的硬件），超时设置，异步调用，服务降级（关掉不重要服务等, 等幂设计（服务失败后，将请求负载到其他可用服务）。
-失效转移：失效确认（通过心跳，失败报告），访问迁移，数据恢复。</p></li>
-
-<li><p>伸缩性
+失效转移：失效确认（通过心跳，失败报告），访问迁移，数据恢复。</p>
+</li>
+<li>
+<p>伸缩性
 不同功能进行物理分离，单一功能通过群集实现。
 应用服务群集：http重定向负载均衡（302重定向），DNS域名解析负载均衡（域名解析配置多个A记录），反向代理负载均衡，IP负载均衡，数据链路层负载均衡（通过修改目的MAC地址实现，LVS，使用广泛）。
 负载均衡算法：轮询，加权轮询，随机，最少链接，源地址散列
-关系数据库的伸缩性，非关系数据库的伸缩性</p></li>
-
-<li><p>可扩展性
-使用消息队列降低耦合性，使用分布是服务打造可复用平台</p></li>
-
-<li><p>安全性
-XSS攻击（站点脚本攻击），注入攻击 ，CSRF（跨域脚本攻击）等</p></li>
+关系数据库的伸缩性，非关系数据库的伸缩性</p>
+</li>
+<li>
+<p>可扩展性
+使用消息队列降低耦合性，使用分布是服务打造可复用平台</p>
+</li>
+<li>
+<p>安全性
+XSS攻击（站点脚本攻击），注入攻击 ，CSRF（跨域脚本攻击）等</p>
+</li>
 </ol>
-
-<h2 id="最后">最后</h2>
-
-<p>所谓的构架师不应该是当一个人，所有的参与的人都是构架师，一群优秀的人做一件他们热爱的事情，一定能成功。事情成就了人。</p>
-
+<h2 id="最后">最后 <a href="#%e6%9c%80%e5%90%8e" class="anchor">🔗</a></h2><p>所谓的构架师不应该是当一个人，所有的参与的人都是构架师，一群优秀的人做一件他们热爱的事情，一定能成功。事情成就了人。</p>
 <p>最后的最后，还是啰嗦下，不要企图去设计一个大型的网站（系统），大型系统不是设计出来的，而是演化发展而来。</p>
-
 <p>完。</p>
 
     </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">buf1024</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2017-12-06</span>
-  </p>
-  
-  
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/%E6%9E%84%E6%9E%B6/">构架</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/2018-01-25-reactjs-try/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">ReactJS  --  试水篇</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/2017-07-15-git-merge-commit/">
-            <span class="next-text nav-default">git 合并commit</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        <div id="gitalk-container"></div>
+    
+</section>
+
+
+                <hr>
+                
+
+<div id="gitalk-container"></div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2017-12-06 11:08:13 \x2b0000 UTC',
+        id: '2017-12-06 11:08:13 \u002b0000 UTC',
         title: '软件构架  --  无技术简篇',
         clientID: '72786bf87c19beec6abe',
         clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
@@ -356,57 +290,489 @@ XSS攻击（站点脚本攻击），注入攻击 ，CSRF（跨域脚本攻击）
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
-      </div>
+            </div>
+        </div>
+
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     </main>
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        id: '2017-12-06 11:08:13 \u002b0000 UTC',
+        title: '软件构架  --  无技术简篇',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+    });
+    gitalk.render('gitalk-container');
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by
+        gitalk.</a></noscript>
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
+    
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
-
-
-
-
-
-
-
-
+    
 </body>
+
 </html>

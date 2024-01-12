@@ -1,176 +1,143 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>MyJson, JSON C&#43;&#43; 的另一种实现 - BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="JSON，JavaScript Object Notation, 是一种轻量级的数据交换格式。本质上来说，它和XML, YAML等格式化的数据格式没有什么区别。都是为了方便（" /><meta name="keywords" content="blog, computer, luoguochun" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/post/2012-02-10-myjson-intro/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="MyJson, JSON C&#43;&#43; 的另一种实现" />
-<meta property="og:description" content="JSON，JavaScript Object Notation, 是一种轻量级的数据交换格式。本质上来说，它和XML, YAML等格式化的数据格式没有什么区别。都是为了方便（" />
+<title>MyJson, JSON C&#43;&#43; 的另一种实现 | BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/post/2012-02-10-myjson-intro/">
+<meta name="description" content="JSON，JavaScript Object Notation, 是一种轻量级的数据交换格式。本质上来说，它和XML, YAML等格式化的数据格式没有什么区别。都是为了方便（" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luoguochun.cn/post/2012-02-10-myjson-intro/" /><meta property="article:published_time" content="2012-02-10T21:05:10&#43;00:00"/>
-<meta property="article:modified_time" content="2012-02-10T21:05:10&#43;00:00"/>
-
-<meta itemprop="name" content="MyJson, JSON C&#43;&#43; 的另一种实现">
-<meta itemprop="description" content="JSON，JavaScript Object Notation, 是一种轻量级的数据交换格式。本质上来说，它和XML, YAML等格式化的数据格式没有什么区别。都是为了方便（">
-
-
-<meta itemprop="datePublished" content="2012-02-10T21:05:10&#43;00:00" />
-<meta itemprop="dateModified" content="2012-02-10T21:05:10&#43;00:00" />
-<meta itemprop="wordCount" content="1628">
+<meta property="og:title" content="MyJson, JSON C&#43;&#43; 的另一种实现 | BUF1024!!!" />
+<meta property="og:url" content="https://luoguochun.cn/post/2012-02-10-myjson-intro/" />
+<meta property="og:description" content="JSON，JavaScript Object Notation, 是一种轻量级的数据交换格式。本质上来说，它和XML, YAML等格式化的数据格式没有什么区别。都是为了方便（" />
 
 
 
-<meta itemprop="keywords" content="C," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="MyJson, JSON C&#43;&#43; 的另一种实现"/>
-<meta name="twitter:description" content="JSON，JavaScript Object Notation, 是一种轻量级的数据交换格式。本质上来说，它和XML, YAML等格式化的数据格式没有什么区别。都是为了方便（"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">MyJson, JSON C&#43;&#43; 的另一种实现</h1>
+    <main class="main-wrapper">
 
-      <div class="post-meta">
-        <span class="post-time"> 2012-02-10 </span>
-        <div class="post-category">
-            <a href="/categories/misc/"> misc </a>
-            </div>
-          <span class="more-meta"> 约 1628 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
+
+<section class="single">
+    <h1 class="title">MyJson, JSON C&#43;&#43; 的另一种实现</h1>
+
+    <div class="tip">
+        <time datetime="2012-02-10 21:05:10 &#43;0000 UTC">2012/02/10</time>
+        <span class="split">·</span>
+        <span> 1617 words </span>
+        <span class="split">·</span>
+        <span>
+            4 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
         
-      </div>
-    </header>
+        <div>
+            Categories:
+            
+                <a href="/categories/misc">misc</a>
+            
+        </div>
+        
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#实现">实现</a></li>
-<li><a href="#示例">示例</a></li>
-<li><a href="#其它">其它</a></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/c">C</a>
+                
+            </div>
+        
+    </div>
 
-<p>JSON，JavaScript Object Notation, 是一种轻量级的数据交换格式。本质上来说，它和XML, YAML等格式化的数据格式没有什么区别。都是为了方便（人机）阅读和交换的数据格式。</p>
+    <hr />
 
+    <div class="content">
+        <p>JSON，JavaScript Object Notation, 是一种轻量级的数据交换格式。本质上来说，它和XML, YAML等格式化的数据格式没有什么区别。都是为了方便（人机）阅读和交换的数据格式。</p>
 <p>JSON，是键值的数据结构，键是主要是指字符串，键主要是指字符串，数值，JSON对象，JSON数组，true, false, null这几种类型。要详细了解这种简单而又实用的数据格式，请参阅，<a href="http://www.json.org/">英文官网</a>，<a href="http://www.json.org/json-zh.html">中文官网</a>。</p>
-
 <p>JSON的实现有很多，基本上世界上每种语言都有实现，用C++实现的也有不少，各有特色。因为年前很空闲，于是也随手实现了一个，且叫myjson，特点是：</p>
-
 <ul>
-<li>相对来说小，其实比较啰嗦</li>
-<li>使用非常方便和直观</li>
-<li>虽然不完全实现JSON，使用<a href="http://sourceforge.net/projects/jsoncpp/">jsoncpp</a>的测试数据完全测试过</li>
-<li>在实时交互的系统中，可能效率不高</li>
-<li>一时兴起写的，可能比较粗略</li>
-<li>……</li>
-</ul>
-
+<li>
+<p>相对来说小，其实比较啰嗦</p>
+</li>
+<li>
+<p>使用非常方便和直观</p>
+</li>
+<li>
+<p>虽然不完全实现JSON，使用<a href="http://sourceforge.net/projects/jsoncpp/">jsoncpp</a>的测试数据完全测试过</p>
+</li>
+<li>
+<p>在实时交互的系统中，可能效率不高</p>
+</li>
+<li>
+<p>一时兴起写的，可能比较粗略</p>
+</li>
+<li>
+<p>……</p>
 <p>下载：<a href="http://download.imlgc.com/code/c++/myjson/myjson.zip">myjson.zip</a></p>
-
 <p>myjson.zip 文件列表</p>
-
+</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -178,45 +145,33 @@
 <th>说明</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>json.h</td>
 <td>myjson 的头文件</td>
 </tr>
-
 <tr>
 <td>json.cpp</td>
 <td>myjson 的实现文件</td>
 </tr>
-
 <tr>
 <td>test.h</td>
 <td>简单的测试框架，在<a href="3/post/2012-02-09-simple-c++-test-framework/">/post/2012-02-09-simple-c++-test-framework/</a>文章中说的的框架</td>
 </tr>
-
 <tr>
 <td>test.cpp</td>
 <td>myjson的测试文件</td>
 </tr>
-
 <tr>
 <td>testdata</td>
 <td>测试数据目录，jsoncpp的测试数据</td>
 </tr>
 </tbody>
 </table>
-
-<h1 id="实现">实现</h1>
-
-<p>myjson的主要类的结构：</p>
-
-<p><img src="/img/myjson/myjson.png" alt="image" title="image" /></p>
-
+<h1 id="实现">实现 <a href="#%e5%ae%9e%e7%8e%b0" class="anchor">🔗</a></h1><p>myjson的主要类的结构：</p>
+<p><img src="/img/myjson/myjson.png" alt="image" title="image"></p>
 <p>其中JsonValueItem是一时手痒写的，仅充当桥梁作用，实际上我们使用时用到的是JsonArray, JsonValue，和Json这三个类。</p>
-
 <p>各个类的说明：</p>
-
 <table>
 <thead>
 <tr>
@@ -224,32 +179,26 @@
 <th>说明</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Json</td>
 <td>表示一个JSON对象。</td>
 </tr>
-
 <tr>
 <td>JsonValue</td>
 <td>表示JSON的值，值包含JSON对象，JSON数组，数值，字符串，false, true, null。</td>
 </tr>
-
 <tr>
 <td>JsonArray</td>
 <td>表示一个JSON数组，数组元素为JSON的值。</td>
 </tr>
-
 <tr>
 <td>JsonValueItem</td>
 <td>用于组织JSON数据结构的类，实际不会使用到，具体来说就是以键作为关键字，组成一有序的链表。</td>
 </tr>
 </tbody>
 </table>
-
 <p>主要类主要函数说明：</p>
-
 <table>
 <thead>
 <tr>
@@ -258,98 +207,82 @@
 <th>说明</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Json</td>
-<td>static int Parse(Json<em>&amp; pJson, const char</em> pBuf);</td>
-<td>解析JSON数据。<br />参数：pJson 返回的JSON对象<br />参数：pBuf  要解析的数据<br />返回：0成功，其它参考错误码</td>
+<td>static int Parse(Json*&amp; pJson, const char* pBuf);</td>
+<td>解析JSON数据。<!-- raw HTML omitted -->参数：pJson 返回的JSON对象<!-- raw HTML omitted -->参数：pBuf  要解析的数据<!-- raw HTML omitted -->返回：0成功，其它参考错误码</td>
 </tr>
-
 <tr>
 <td></td>
-<td>static int Load(Json<em>&amp; pJson, const char</em> pFilePath);</td>
-<td>从文件解析JSON数据。<br />参数：pJson 返回的JSON对象<br />参数：pFilePath文件路径<br />返回：0成功，其它参考错误码</td>
+<td>static int Load(Json*&amp; pJson, const char* pFilePath);</td>
+<td>从文件解析JSON数据。<!-- raw HTML omitted -->参数：pJson 返回的JSON对象<!-- raw HTML omitted -->参数：pFilePath文件路径<!-- raw HTML omitted -->返回：0成功，其它参考错误码</td>
 </tr>
-
 <tr>
 <td></td>
 <td>int Save(const char* pFilePath);</td>
-<td>将JSON对象保存到文件。<br />参数：pFilePath文件路径<br />返回：0成功，其它参考错误码</td>
+<td>将JSON对象保存到文件。<!-- raw HTML omitted -->参数：pFilePath文件路径<!-- raw HTML omitted -->返回：0成功，其它参考错误码</td>
 </tr>
-
 <tr>
 <td></td>
 <td>JsonValue* Set(const char* szKey, JsonValue&amp; sVal);</td>
-<td>设置JSON键值。<br />参数：szKey 健<br />参数：sVal 值<br />返回：JSON值，0则出错</td>
+<td>设置JSON键值。<!-- raw HTML omitted -->参数：szKey 健<!-- raw HTML omitted -->参数：sVal 值<!-- raw HTML omitted -->返回：JSON值，0则出错</td>
 </tr>
-
 <tr>
 <td></td>
 <td>JsonValue* Get(const char* szKey) const;</td>
-<td>获取JSON值。<br />参数：szKey 健<br />返回：JSON值，0则出错</td>
+<td>获取JSON值。<!-- raw HTML omitted -->参数：szKey 健<!-- raw HTML omitted -->返回：JSON值，0则出错</td>
 </tr>
-
 <tr>
 <td></td>
 <td>void Dump(std::string&amp; strDump) const;</td>
-<td>将JSON对象以最紧密的方式导出。<br />参数：strDump返回的数据<br />返回：无</td>
+<td>将JSON对象以最紧密的方式导出。<!-- raw HTML omitted -->参数：strDump返回的数据<!-- raw HTML omitted -->返回：无</td>
 </tr>
-
 <tr>
 <td></td>
 <td>void DumpFormat(std::string&amp; strDump, int nSpace = FORMAT_SPACE) const;</td>
-<td>将JSON对象以格式化的方式导出。<br />参数：strDump返回的数据<br />参数：Space 空格数<br />返回：无</td>
+<td>将JSON对象以格式化的方式导出。<!-- raw HTML omitted -->参数：strDump返回的数据<!-- raw HTML omitted -->参数：Space 空格数<!-- raw HTML omitted -->返回：无</td>
 </tr>
-
 <tr>
 <td></td>
 <td>JsonValue&amp; operator [] (const char* szKey);/const JsonValue&amp; operator [] (const char* szKey) const;</td>
-<td>JSON对象[]操作符，有点类似STL的MAP，当键不存在时，插入一个。<br />参数：szKey 健<br />返回：JSON值（可能无效）</td>
+<td>JSON对象[]操作符，有点类似STL的MAP，当键不存在时，插入一个。<!-- raw HTML omitted -->参数：szKey 健<!-- raw HTML omitted -->返回：JSON值（可能无效）</td>
 </tr>
-
 <tr>
 <td>JsonValue</td>
 <td>operator const char*();</td>
 <td></td>
 </tr>
-
 <tr>
-<td>operator char*();<br />operator int();<br />operator long long();<br />operator float();<br />operator double();<br />operator Json();<br />operator JsonArray();</td>
+<td>operator char*();<!-- raw HTML omitted -->operator int();<!-- raw HTML omitted -->operator long long();<!-- raw HTML omitted -->operator float();<!-- raw HTML omitted -->operator double();<!-- raw HTML omitted -->operator Json();<!-- raw HTML omitted -->operator JsonArray();</td>
 <td>各种转换操作符。</td>
 <td></td>
 </tr>
-
 <tr>
 <td></td>
-<td>JsonValue&amp; operator = (bool bVal);<br />JsonValue&amp; operator = (const char* szVal);<br />JsonValue&amp; operator = (int nVal);<br />JsonValue&amp; operator = (long long llVal);<br />JsonValue&amp; operator = (float fVal);<br />JsonValue&amp; operator = (double fVal);<br />JsonValue&amp; operator = (const Json&amp; sVal);<br />JsonValue&amp; operator = (const JsonArray&amp; sArr);</td>
+<td>JsonValue&amp; operator = (bool bVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (const char* szVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (int nVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (long long llVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (float fVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (double fVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (const Json&amp; sVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (const JsonArray&amp; sArr);</td>
 <td>各种转换赋值符。</td>
 </tr>
-
 <tr>
 <td></td>
-<td>JsonValue&amp; operator [] (const char* szKey);<br />const JsonValue&amp; operator [] (const char* szKey) const;</td>
+<td>JsonValue&amp; operator [] (const char* szKey);<!-- raw HTML omitted -->const JsonValue&amp; operator [] (const char* szKey) const;</td>
 <td>当值是JSON对象是，此操作符有效。</td>
 </tr>
-
 <tr>
 <td>JsonArray</td>
 <td>JsonValue&amp; Get(int nIndex) const;</td>
-<td>获取某下标的JSON值。<br />参数：下标<br />返回：JSON值</td>
+<td>获取某下标的JSON值。<!-- raw HTML omitted -->参数：下标<!-- raw HTML omitted -->返回：JSON值</td>
 </tr>
-
 <tr>
 <td></td>
 <td>JsonValue&amp; operator[](int nIndex);/const JsonValue&amp; operator[](int nIndex) const;</td>
 <td>同上</td>
 </tr>
-
 <tr>
 <td></td>
 <td>int Add(JsonValue&amp; sVal);</td>
-<td>增加一JSON值到数组里。<br />参数：sVal<br />返回：0</td>
+<td>增加一JSON值到数组里。<!-- raw HTML omitted -->参数：sVal<!-- raw HTML omitted -->返回：0</td>
 </tr>
-
 <tr>
 <td></td>
 <td>int GetSize() const;</td>
@@ -357,13 +290,10 @@
 </tr>
 </tbody>
 </table>
-
-<h1 id="示例">示例</h1>
-
-<p>简单的演示：</p>
+<h1 id="示例">示例 <a href="#%e7%a4%ba%e4%be%8b" class="anchor">🔗</a></h1><p>简单的演示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -390,45 +320,42 @@
 </span><span class="lnt">25
 </span><span class="lnt">26
 </span><span class="lnt">27
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">    Json json;
-    JsonValue jv = true;
-    json[&#34;a&#34;] = jv;
-    jv = json;
-    json.Set(&#34;c&#34;, jv);
-    jv = (char*)0;
-    json.Set(&#34;d&#34;, jv);
-    JsonArray sArr;
-    sArr[0] = 100;
-    sArr[1] = &#34;abcdefg&#34;;
-    sArr[2] = false;
-    jv = sArr;
-    json.Set(&#34;e&#34;, jv);
-  
- // 上述代码产生以下JSON数据
-{
-  &#34;a&#34;:true,
-  &#34;c&#34;:{
-     &#34;a&#34;:true
-   },
-   &#34;d&#34;:null,
-   &#34;e&#34;:[
-     100,
-     &#34;abcdefg&#34;,
-     false
-    ]
-}</pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">    Json json;
+</span></span><span class="line"><span class="cl">    JsonValue jv = true;
+</span></span><span class="line"><span class="cl">    json[&#34;a&#34;] = jv;
+</span></span><span class="line"><span class="cl">    jv = json;
+</span></span><span class="line"><span class="cl">    json.Set(&#34;c&#34;, jv);
+</span></span><span class="line"><span class="cl">    jv = (char*)0;
+</span></span><span class="line"><span class="cl">    json.Set(&#34;d&#34;, jv);
+</span></span><span class="line"><span class="cl">    JsonArray sArr;
+</span></span><span class="line"><span class="cl">    sArr[0] = 100;
+</span></span><span class="line"><span class="cl">    sArr[1] = &#34;abcdefg&#34;;
+</span></span><span class="line"><span class="cl">    sArr[2] = false;
+</span></span><span class="line"><span class="cl">    jv = sArr;
+</span></span><span class="line"><span class="cl">    json.Set(&#34;e&#34;, jv);
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"> // 上述代码产生以下JSON数据
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;a&#34;:true,
+</span></span><span class="line"><span class="cl">  &#34;c&#34;:{
+</span></span><span class="line"><span class="cl">     &#34;a&#34;:true
+</span></span><span class="line"><span class="cl">   },
+</span></span><span class="line"><span class="cl">   &#34;d&#34;:null,
+</span></span><span class="line"><span class="cl">   &#34;e&#34;:[
+</span></span><span class="line"><span class="cl">     100,
+</span></span><span class="line"><span class="cl">     &#34;abcdefg&#34;,
+</span></span><span class="line"><span class="cl">     false
+</span></span><span class="line"><span class="cl">    ]
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h1 id="其它">其它</h1>
-
-<p>一时兴趣的东西，没有经过大脑的设计，如果用于实时系统还要应该考虑一下其性能，NEW太多了。但是用于实时系统的初始化和清理保存信息还是不错的。注意，这里说的是实时系统。</p>
-
+</div><h1 id="其它">其它 <a href="#%e5%85%b6%e5%ae%83" class="anchor">🔗</a></h1><p>一时兴趣的东西，没有经过大脑的设计，如果用于实时系统还要应该考虑一下其性能，NEW太多了。但是用于实时系统的初始化和清理保存信息还是不错的。注意，这里说的是实时系统。</p>
 <p>不过还是很快的啦！两个测试用例在我非常烂的是电脑上还有下面的结果（实际上统计的时间不准确的，是相对大很多的）：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -438,59 +365,37 @@
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">[==========] Running 2 tests from 1 test cases
-[----------] 2 tests from Json
-[ RUN      ] Json.ConstructJson
-[       OK ] Json.ConstructJson (1 ms)
-[ RUN      ] Json.ParseJson
-[       OK ] Json.ParseJson (7 ms)
-[----------] 2 tests from Json (17 ms total)
-
-[==========] 2 tests from 1 test case ran (26 ms total)
-[  PASSED  ] 2 tests</pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[==========] Running 2 tests from 1 test cases
+</span></span><span class="line"><span class="cl">[----------] 2 tests from Json
+</span></span><span class="line"><span class="cl">[ RUN      ] Json.ConstructJson
+</span></span><span class="line"><span class="cl">[       OK ] Json.ConstructJson (1 ms)
+</span></span><span class="line"><span class="cl">[ RUN      ] Json.ParseJson
+</span></span><span class="line"><span class="cl">[       OK ] Json.ParseJson (7 ms)
+</span></span><span class="line"><span class="cl">[----------] 2 tests from Json (17 ms total)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[==========] 2 tests from 1 test case ran (26 ms total)
+</span></span><span class="line"><span class="cl">[  PASSED  ] 2 tests
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">buf1024</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2012-02-10</span>
-  </p>
-  
-  
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/c/">C</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/2012-02-18-minlog/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">迷你日志类Minilog</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/2012-02-09-simple-c&#43;&#43;-test-framework/">
-            <span class="next-text nav-default">Very Very Simple C&#43;&#43; Testing Framework</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        <div id="gitalk-container"></div>
+    
+</section>
+
+
+                <hr>
+                
+
+<div id="gitalk-container"></div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2012-02-10 21:05:10 \x2b0000 UTC',
-        title: 'MyJson, JSON C\x2b\x2b 的另一种实现',
+        id: '2012-02-10 21:05:10 \u002b0000 UTC',
+        title: 'MyJson, JSON C\u002b\u002b 的另一种实现',
         clientID: '72786bf87c19beec6abe',
         clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
         repo: 'buf1024.github.io',
@@ -502,57 +407,489 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
-      </div>
+            </div>
+        </div>
+
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     </main>
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        id: '2012-02-10 21:05:10 \u002b0000 UTC',
+        title: 'MyJson, JSON C\u002b\u002b 的另一种实现',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+    });
+    gitalk.render('gitalk-container');
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by
+        gitalk.</a></noscript>
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
+    
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
-
-
-
-
-
-
-
-
+    
 </body>
+
 </html>

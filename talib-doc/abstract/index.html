@@ -1,137 +1,109 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>05 高级应用(Using the Abstract API) - BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="抽象API快速开始 如果您已经熟悉使用函数API，那么您就应该在精通使用抽象API。 每个函数有相同的输入，作为一个字典通过NumPy数组： 1 2" /><meta name="keywords" content="blog, computer, luoguochun" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/talib-doc/abstract/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="05 高级应用(Using the Abstract API)" />
-<meta property="og:description" content="抽象API快速开始 如果您已经熟悉使用函数API，那么您就应该在精通使用抽象API。 每个函数有相同的输入，作为一个字典通过NumPy数组： 1 2" />
+<title>05 高级应用(Using the Abstract API) | BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/talib-doc/abstract/">
+<meta name="description" content="抽象API快速开始 🔗如果您已经熟悉使用函数API，那么您就应该在精通使用抽象API。 每个函数有相同的输入，作为一个字典通过NumPy数组： 1" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luoguochun.cn/talib-doc/abstract/" /><meta property="article:published_time" content="2019-10-10T00:00:05&#43;08:00"/>
-<meta property="article:modified_time" content="2019-10-10T00:00:05&#43;08:00"/>
-
-<meta itemprop="name" content="05 高级应用(Using the Abstract API)">
-<meta itemprop="description" content="抽象API快速开始 如果您已经熟悉使用函数API，那么您就应该在精通使用抽象API。 每个函数有相同的输入，作为一个字典通过NumPy数组： 1 2">
-
-
-<meta itemprop="datePublished" content="2019-10-10T00:00:05&#43;08:00" />
-<meta itemprop="dateModified" content="2019-10-10T00:00:05&#43;08:00" />
-<meta itemprop="wordCount" content="617">
+<meta property="og:title" content="05 高级应用(Using the Abstract API) | BUF1024!!!" />
+<meta property="og:url" content="https://luoguochun.cn/talib-doc/abstract/" />
+<meta property="og:description" content="抽象API快速开始 🔗如果您已经熟悉使用函数API，那么您就应该在精通使用抽象API。 每个函数有相同的输入，作为一个字典通过NumPy数组： 1" />
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="05 高级应用(Using the Abstract API)"/>
-<meta name="twitter:description" content="抽象API快速开始 如果您已经熟悉使用函数API，那么您就应该在精通使用抽象API。 每个函数有相同的输入，作为一个字典通过NumPy数组： 1 2"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-  <div class="post-content">
-    
+    <main class="main-wrapper">
 
-<h1 id="抽象api快速开始">抽象API快速开始</h1>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
 
-<p>如果您已经熟悉使用函数API，那么您就应该在精通使用抽象API。
+<section class="single">
+    <h1 class="title">05 高级应用(Using the Abstract API)</h1>
+
+    <div class="tip">
+        <time datetime="2019-10-10 00:00:05 &#43;0800 CST">2019/10/10</time>
+        <span class="split">·</span>
+        <span> 621 words </span>
+        <span class="split">·</span>
+        <span>
+            2 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <h1 id="抽象api快速开始">抽象API快速开始 <a href="#%e6%8a%bd%e8%b1%a1api%e5%bf%ab%e9%80%9f%e5%bc%80%e5%a7%8b" class="anchor">🔗</a></h1><p>如果您已经熟悉使用函数API，那么您就应该在精通使用抽象API。
 每个函数有相同的输入，作为一个字典通过NumPy数组：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -142,34 +114,34 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="c1">#请注意，所有的ndarrays必须是相同的长度！</span>
-<span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;open&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
-    <span class="s1">&#39;high&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
-    <span class="s1">&#39;low&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
-    <span class="s1">&#39;close&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
-    <span class="s1">&#39;volume&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="p">}</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#请注意，所有的ndarrays必须是相同的长度！</span>
+</span></span><span class="line"><span class="cl"><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;open&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;high&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;low&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;close&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;volume&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>函数可以直接导入，也可以用名称实例化：</p>
+</div><p>函数可以直接导入，也可以用名称实例化：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">talib</span> <span class="kn">import</span> <span class="n">abstract</span>
-<span class="n">sma</span> <span class="o">=</span> <span class="n">abstract</span><span class="o">.</span><span class="n">SMA</span>
-<span class="n">sma</span> <span class="o">=</span> <span class="n">abstract</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;sma&#39;</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">talib</span> <span class="kn">import</span> <span class="n">abstract</span>
+</span></span><span class="line"><span class="cl"><span class="n">sma</span> <span class="o">=</span> <span class="n">abstract</span><span class="o">.</span><span class="n">SMA</span>
+</span></span><span class="line"><span class="cl"><span class="n">sma</span> <span class="o">=</span> <span class="n">abstract</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;sma&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>调用函数基本上与函数API相同：</p>
+</div><p>调用函数基本上与函数API相同：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -177,29 +149,26 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">talib.abstract</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">SMA</span><span class="p">(</span><span class="n">input_arrays</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span> <span class="c1"># calculate on close prices by default</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">SMA</span><span class="p">(</span><span class="n">input_arrays</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="s1">&#39;open&#39;</span><span class="p">)</span> <span class="c1"># calculate on opens</span>
-<span class="n">upper</span><span class="p">,</span> <span class="n">middle</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="n">BBANDS</span><span class="p">(</span><span class="n">input_arrays</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">slowk</span><span class="p">,</span> <span class="n">slowd</span> <span class="o">=</span> <span class="n">STOCH</span><span class="p">(</span><span class="n">input_arrays</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># uses high, low, close by default</span>
-<span class="n">slowk</span><span class="p">,</span> <span class="n">slowd</span> <span class="o">=</span> <span class="n">STOCH</span><span class="p">(</span><span class="n">input_arrays</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">prices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">])</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">talib.abstract</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="n">output</span> <span class="o">=</span> <span class="n">SMA</span><span class="p">(</span><span class="n">input_arrays</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span> <span class="c1"># calculate on close prices by default</span>
+</span></span><span class="line"><span class="cl"><span class="n">output</span> <span class="o">=</span> <span class="n">SMA</span><span class="p">(</span><span class="n">input_arrays</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="s1">&#39;open&#39;</span><span class="p">)</span> <span class="c1"># calculate on opens</span>
+</span></span><span class="line"><span class="cl"><span class="n">upper</span><span class="p">,</span> <span class="n">middle</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="n">BBANDS</span><span class="p">(</span><span class="n">input_arrays</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">slowk</span><span class="p">,</span> <span class="n">slowd</span> <span class="o">=</span> <span class="n">STOCH</span><span class="p">(</span><span class="n">input_arrays</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># uses high, low, close by default</span>
+</span></span><span class="line"><span class="cl"><span class="n">slowk</span><span class="p">,</span> <span class="n">slowd</span> <span class="o">=</span> <span class="n">STOCH</span><span class="p">(</span><span class="n">input_arrays</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">prices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h2 id="高级用法">高级用法</h2>
-
-<p>For more advanced use cases of TA-Lib, the Abstract API also offers much more
+</div><h2 id="高级用法">高级用法 <a href="#%e9%ab%98%e7%ba%a7%e7%94%a8%e6%b3%95" class="anchor">🔗</a></h2><p>For more advanced use cases of TA-Lib, the Abstract API also offers much more
 flexibility. You can even subclass <code>abstract.Function</code> and override
 <code>set_input_arrays</code> to customize the type of input data Function accepts
-(e.g. a pandas DataFrame).<br />
+(e.g. a pandas DataFrame).<br>
 对于更高级的TA库用例，抽象API也提供了更大的灵活性。
-你甚至可以子类<code>abstract.Function</code>和覆盖<code>set_input_arrays</code>自定义类型的输入数据的函数接受
+你甚至可以子类<code>abstract.Function</code>和覆盖<code> set_input_arrays</code>自定义类型的输入数据的函数接受
 (e.g. a pandas DataFrame).</p>
-
-<p>Details about every function can be accessed via the info property:<br />
+<p>Details about every function can be accessed via the info property:<br>
 有关每个功能的详细信息可以通过信息属性访问：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -218,40 +187,40 @@ flexibility. You can even subclass <code>abstract.Function</code> and override
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">print</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;stoch&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">info</span>
-<span class="p">{</span>
-  <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;STOCH&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;display_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Stochastic&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="s1">&#39;Momentum Indicators&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;input_names&#39;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;prices&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">]),</span>
-  <span class="p">]),</span>
-  <span class="s1">&#39;parameters&#39;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;fastk_period&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;slowk_period&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;slowk_matype&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;slowd_period&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;slowd_matype&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-  <span class="p">]),</span>
-  <span class="s1">&#39;output_names&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;slowk&#39;</span><span class="p">,</span> <span class="s1">&#39;slowd&#39;</span><span class="p">],</span>
-<span class="p">}</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;stoch&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">info</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;STOCH&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;display_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Stochastic&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="s1">&#39;Momentum Indicators&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;input_names&#39;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="s1">&#39;prices&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">]),</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]),</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;parameters&#39;</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="s1">&#39;fastk_period&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="s1">&#39;slowk_period&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="s1">&#39;slowk_matype&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="s1">&#39;slowd_period&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="s1">&#39;slowd_matype&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]),</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;output_names&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;slowk&#39;</span><span class="p">,</span> <span class="s1">&#39;slowd&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>或者是可读的格式：</p>
+</div><p>或者是可读的格式：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">help</span><span class="p">(</span><span class="n">STOCH</span><span class="p">)</span>
-<span class="nb">str</span><span class="p">(</span><span class="n">STOCH</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">help</span><span class="p">(</span><span class="n">STOCH</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">str</span><span class="p">(</span><span class="n">STOCH</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>其他有用属性 <code>Function</code>:</p>
+</div><p>其他有用属性 <code>Function</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -261,24 +230,24 @@ flexibility. You can even subclass <code>abstract.Function</code> and override
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">function_flags</span>
-<span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">input_names</span>
-<span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">input_arrays</span>
-<span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span>
-<span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lookback</span>
-<span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">output_names</span>
-<span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">output_flags</span>
-<span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">outputs</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">function_flags</span>
+</span></span><span class="line"><span class="cl"><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">input_names</span>
+</span></span><span class="line"><span class="cl"><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">input_arrays</span>
+</span></span><span class="line"><span class="cl"><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span>
+</span></span><span class="line"><span class="cl"><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lookback</span>
+</span></span><span class="line"><span class="cl"><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">output_names</span>
+</span></span><span class="line"><span class="cl"><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">output_flags</span>
+</span></span><span class="line"><span class="cl"><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">outputs</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Aside from calling the function directly, Functions maintain state and will
+</div><p>Aside from calling the function directly, Functions maintain state and will
 remember their parameters/input_arrays after they&rsquo;ve been set. You can set
-parameters and recalculate with new input data using run():<br />
+parameters and recalculate with new input data using run():<br>
 除了直接调用函数，函数还可以保持状态，已经记住他们的 参数/数组
 你可以设置参数，重新计算使用run()新输入数据</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -288,29 +257,34 @@ parameters and recalculate with new input data using run():<br />
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">SMA</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;timeperiod&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">}</span>
-<span class="n">result1</span> <span class="o">=</span> <span class="n">SMA</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">input_arrays1</span><span class="p">)</span>
-<span class="n">result2</span> <span class="o">=</span> <span class="n">SMA</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">input_arrays2</span><span class="p">)</span>
-
-<span class="c1"># Or set input_arrays and change the parameters:</span>
-<span class="n">SMA</span><span class="o">.</span><span class="n">input_arrays</span> <span class="o">=</span> <span class="n">input_arrays1</span>
-<span class="n">ma10</span> <span class="o">=</span> <span class="n">SMA</span><span class="p">(</span><span class="n">timeperiod</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">ma20</span> <span class="o">=</span> <span class="n">SMA</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">SMA</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;timeperiod&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">result1</span> <span class="o">=</span> <span class="n">SMA</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">input_arrays1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">result2</span> <span class="o">=</span> <span class="n">SMA</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">input_arrays2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Or set input_arrays and change the parameters:</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMA</span><span class="o">.</span><span class="n">input_arrays</span> <span class="o">=</span> <span class="n">input_arrays1</span>
+</span></span><span class="line"><span class="cl"><span class="n">ma10</span> <span class="o">=</span> <span class="n">SMA</span><span class="p">(</span><span class="n">timeperiod</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ma20</span> <span class="o">=</span> <span class="n">SMA</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>欲了解更多详情，请看 <a href="https://github.com/mrjbq7/ta-lib/blob/master/talib/abstract.pyx#L46">code</a>.</p>
-
+</div><p>欲了解更多详情，请看 <a href="https://github.com/mrjbq7/ta-lib/blob/master/talib/abstract.pyx#L46">code</a>.</p>
 <p><a href="/talib-doc/doc_index">文档 </a></p>
 
-  </div>
-</article>
-        </div>
-        <div id="gitalk-container"></div>
+    </div>
+
+    
+</section>
+
+
+                <hr>
+                
+
+<div id="gitalk-container"></div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2019-10-10 00:00:05 \x2b0800 CST',
+        id: '2019-10-10 00:00:05 \u002b0800 CST',
         title: '05 高级应用(Using the Abstract API)',
         clientID: '72786bf87c19beec6abe',
         clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
@@ -323,57 +297,489 @@ parameters and recalculate with new input data using run():<br />
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
-      </div>
+            </div>
+        </div>
+
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     </main>
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        id: '2019-10-10 00:00:05 \u002b0800 CST',
+        title: '05 高级应用(Using the Abstract API)',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+    });
+    gitalk.render('gitalk-container');
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by
+        gitalk.</a></noscript>
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
+    
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
-
-
-
-
-
-
-
-
+    
 </body>
+
 </html>

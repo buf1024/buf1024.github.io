@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gcc on BUF1024!!!</title>
@@ -6,18 +6,230 @@
     <description>Recent content in gcc on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 01 May 2017 22:10:31 +0000</lastBuildDate>
-    
-	<atom:link href="https://luoguochun.cn/categories/gcc/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 01 May 2017 22:10:31 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/categories/gcc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GCC不常见，但有用特别选项</title>
       <link>https://luoguochun.cn/post/2017-05-01-gcc-missing/</link>
       <pubDate>Mon, 01 May 2017 22:10:31 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2017-05-01-gcc-missing/</guid>
-      <description>-isystem dir 1 2 3 4 5 6 7 8 9 Search dir for header files, after all directories specified by -I but before the standard system directories. Mark it as a system directory, so that it gets the same special treatment as is applied to the standard system directories. If dir begins with &amp;#34;=&amp;#34;, then the &amp;#34;=&amp;#34; will be replaced by the sysroot prefix; see --sysroot and -isysroot. 标</description>
+      <description>&lt;p&gt;-isystem dir&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       Search dir for header files, after all directories specified by -I but before the
+
+       standard system directories.  Mark it as a system directory, so that it gets the same
+
+       special treatment as is applied to the standard system directories.  If dir begins
+
+       with &amp;quot;=&amp;quot;, then the &amp;quot;=&amp;quot; will be replaced by the sysroot prefix; see --sysroot and
+
+       -isysroot.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;标记 DIR 为系统DIR，搜索头文件顺序： 1. -I路径 2. -isystem DIR 3. 系统路径&lt;/p&gt;
+&lt;p&gt;&amp;ndash;sysroot=dir&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       Use dir as the logical root directory for headers and libraries.  For example, if the
+
+       compiler normally searches for headers in /usr/include and libraries in /usr/lib, it
+
+       instead searches dir/usr/include and dir/usr/lib.
+
+       If you use both this option and the -isysroot option, then the --sysroot option
+
+       applies to libraries, but the -isysroot option applies to header files.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;标记DIR为头文件的根目录&lt;/p&gt;
+&lt;p&gt;-static&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       On systems that support dynamic linking, this prevents linking with the shared libraries.
+
+       On other systems, this option has no effect.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;链接静态库&lt;/p&gt;
+&lt;p&gt;-M&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;      Instead of outputting the result of preprocessing, output a rule suitable for make describing the dependencies of the main source file.
+
+      The preprocessor outputs one make rule containing the object file name for that source file, a colon, and the names of all the included files,
+
+      including those coming from -include or -imacros command line options.
+
+      Unless specified explicitly (with -MT or -MQ), the object file name consists of the name of the source file with any suffix replaced with object
+
+      file suffix and with any leading directory parts  removed.  If there are many included files then the rule is split into several lines using \-newline.
+
+      The rule has no commands.
+
+      This option does not suppress the preprocessor&#39;s debug output, such as -dM.  To avoid mixing such debug output with the dependency
+
+      rules you should explicitly specify the dependency output file
+
+       with -MF, or use an environment variable like DEPENDENCIES_OUTPUT.  Debug output will still be sent to the regular output stream as normal.
+
+       Passing -M to the driver implies -E, and suppresses warnings with an implicit -w.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;生依赖文件，-E 为预编译，和-MF “文件”，生产依赖到文件，-MD生产依赖到，XXX.d文件，以上所描述几个，均为加快编译。&lt;/p&gt;
+&lt;p&gt;-O&lt;/p&gt;
+&lt;p&gt;-O1 Optimize.  Optimizing compilation takes somewhat more time, and a lot more memory for&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       a large function.
+
+       With -O, the compiler tries to reduce code size and execution time, without performing
+
+       any optimizations that take a great deal of compilation time.
+
+       -O turns on the following optimization flags:
+
+       -fauto-inc-dec -fcompare-elim -fcprop-registers -fdce -fdefer-pop -fdelayed-branch
+
+       -fdse -fguess-branch-probability -fif-conversion2 -fif-conversion -fipa-pure-const
+
+       -fipa-profile -fipa-reference -fmerge-constants -fsplit-wide-types -ftree-bit-ccp
+
+       -ftree-builtin-call-dce -ftree-ccp -ftree-ch -ftree-copyrename -ftree-dce
+
+       -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre -ftree-phiprop -ftree-slsr
+
+       -ftree-sra -ftree-pta -ftree-ter -funit-at-a-time
+
+       -O also turns on -fomit-frame-pointer on machines where doing so does not interfere
+
+       with debugging.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-O2 Optimize even more.  GCC performs nearly all supported optimizations that do not&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       involve a space-speed tradeoff.  As compared to -O, this option increases both
+
+       compilation time and the performance of the generated code.
+
+       -O2 turns on all optimization flags specified by -O.  It also turns on the following
+
+       optimization flags: -fthread-jumps -falign-functions  -falign-jumps -falign-loops
+
+       -falign-labels -fcaller-saves -fcrossjumping -fcse-follow-jumps  -fcse-skip-blocks
+
+       -fdelete-null-pointer-checks -fdevirtualize -fexpensive-optimizations -fgcse
+
+       -fgcse-lm -fhoist-adjacent-loads -finline-small-functions -findirect-inlining
+
+       -fipa-sra -foptimize-sibling-calls -fpartial-inlining -fpeephole2 -fregmove
+
+       -freorder-blocks  -freorder-functions -frerun-cse-after-loop -fsched-interblock
+
+       -fsched-spec -fschedule-insns  -fschedule-insns2 -fstrict-aliasing -fstrict-overflow
+
+       -ftree-switch-conversion -ftree-tail-merge -ftree-pre -ftree-vrp
+
+       Please note the warning under -fgcse about invoking -O2 on programs that use computed
+
+       gotos.
+
+       NOTE: In Ubuntu 8.10 and later versions, -D_FORTIFY_SOURCE=2 is set by default, and is
+
+       activated when -O is set to 2 or higher.  This enables additional compile-time and
+
+       run-time checks for several libc functions.  To disable, specify either
+
+       -U_FORTIFY_SOURCE or -D_FORTIFY_SOURCE=0.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-O3 Optimize yet more.  -O3 turns on all optimizations specified by -O2 and also turns on&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       the -finline-functions, -funswitch-loops, -fpredictive-commoning, -fgcse-after-reload,
+
+       -ftree-vectorize, -fvect-cost-model, -ftree-partial-pre and -fipa-cp-clone options.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-O0 Reduce compilation time and make debugging produce the expected results.  This is the&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       default.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-Os Optimize for size.  -Os enables all -O2 optimizations that do not typically increase&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       code size.  It also performs further optimizations designed to reduce code size.
+
+       -Os disables the following optimization flags: -falign-functions  -falign-jumps
+
+       -falign-loops -falign-labels  -freorder-blocks  -freorder-blocks-and-partition
+
+       -fprefetch-loop-arrays  -ftree-vect-loop-version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-Ofast&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       Disregard strict standards compliance.  -Ofast enables all -O3 optimizations.  It also
+
+       enables optimizations that are not valid for all standard-compliant programs.  It
+
+       turns on -ffast-math and the Fortran-specific -fno-protect-parens and -fstack-arrays.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-Og Optimize debugging experience.  -Og enables optimizations that do not interfere with&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       debugging. It should be the optimization level of choice for the standard edit-
+
+       compile-debug cycle, offering a reasonable level of optimization while maintaining
+
+       fast compilation and a good debugging experience.
+
+       If you use multiple -O options, with or without level numbers, the last such option is
+
+       the one that is effective.
+
+      优化等级
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-fstack-protector&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       Emit extra code to check for buffer overflows, such as stack smashing attacks.  This
+
+       is done by adding a guard variable to functions with vulnerable objects.  This
+
+       includes functions that call &amp;quot;alloca&amp;quot;, and functions with buffers larger than 8 bytes.
+
+       The guards are initialized when a function is entered and then checked when the
+
+       function exits.  If a guard check fails, an error message is printed and the program
+
+       exits
+
+       检查栈溢出，相反的      -fno-stack-protector
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-nostdinc&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       Do not search the standard system directories for header files.  Only the directories
+
+       you have specified with -I options (and the directory of the current file, if
+
+       appropriate) are searched.
+
+       不使用标准C头文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-nostdinc++&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       Do not search for header files in the C++-specific standard directories, but do still
+
+       search the other standard directories.  (This option is used when building the C++
+
+       library.)
+
+      不使用标准C++头文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-Wall&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       This enables all the warnings about constructions that some users consider
+
+       questionable, and that are easy to avoid (or modify to prevent the warning), even in
+
+       conjunction with macros.  This also enables some language-specific warnings described
+
+       in C++ Dialect Options and Objective-C and Objective-C++ Dialect Options.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;打开警告（并非所有），打开绝大部分，还要加-Wextral&lt;/p&gt;
+&lt;p&gt;-Wextra&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       This enables some extra warning flags that are not enabled by -Wall. (This option used
+
+       to be called -W.  The older name is still supported, but the newer name is more
+
+       descriptive.)
+
+       打开额外的警告，同-W（旧名）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-Werror&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       Make all warnings into hard errors.  Source code which triggers warnings will be
+
+       rejected.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;警告即报错。&lt;/p&gt;
+&lt;p&gt;-w  Suppress all warnings, including those which GNU CPP issues by default.&lt;/p&gt;
+&lt;p&gt;关闭所有的错误警告&lt;/p&gt;
+&lt;p&gt;-Wa,option&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       Pass option as an option to the assembler.  If option contains commas, it is split
+
+       into multiple options at the commas
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;传选项给汇编器&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -26,7 +238,190 @@
       <pubDate>Fri, 31 May 2013 17:08:14 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2013-05-31-linux-gcov/</guid>
-      <description>代码覆盖率是单元测试的一个指标，通常覆盖率越高，单元测试就做得更完备。（然而，覆盖率是不是和软件质量成正比关系呢？）gcov是GNU工具链中</description>
+      <description>&lt;p&gt;代码覆盖率是单元测试的一个指标，通常覆盖率越高，单元测试就做得更完备。（然而，覆盖率是不是和软件质量成正比关系呢？）gcov是GNU工具链中的一个重要的工具，虽然gcov是覆盖率很好的工具，但是gcov的更重要的应用是性能的调优。gcov通过监视程序的执行，从而确定某行代码有没有执行，执行了多少次。gcov的报告是基于文本的格式的，看起来是比较难看点。但是，有个叫lcov的工具，将gcov的报告格式转换为html的直观形式，后面介绍。&lt;/p&gt;
+&lt;p&gt;gcov使用：&lt;/p&gt;
+&lt;p&gt;如有以下代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;     1:  #include &amp;lt;stdio.h&amp;gt;
+     2:   
+     3:  void bubbleSort( int list[], int size )
+     4:  {
+     5:      int i, j, temp, swap = 1;
+     6:   
+     7:      while (swap) {
+     8:   
+     9:          swap = 0;
+    10:   
+    11:          for ( i = (size-1) ; i &amp;gt;= 0 ; i-- ) {
+    12:   
+    13:              for ( j = 1 ; j &amp;lt;= i ; j++ ) {
+    14:   
+    15:                  if ( list[j-1] &amp;gt; list[j] ) {
+    16:   
+    17:                      temp = list[j-1];
+    18:                      list[j-1] = list[j];
+    19:                      list[j] = temp;
+    20:                      swap = 1;
+    21:   
+    22:                  }
+    23:   
+    24:              }
+    25:   
+    26:          }
+    27:   
+    28:      }
+    29:   
+    30:   
+    31:  }
+    32:   
+    33:  int main()
+    34:  {
+    35:      int theList[10]={10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    36:      int i;
+    37:   
+    38:      /* Invoke the bubble sort algorithm */
+    39:      bubbleSort( theList, 10 );
+    40:   
+    41:      /* Print out the final list */
+    42:      for (i = 0 ; i &amp;lt; 10 ; i++) { 
+    43:          printf(&amp;quot;%d\n&amp;quot;, theList[i]);
+    44:      }
+    45:      if(i == 0){
+    46:          printf(&amp;quot;i = 0\n&amp;quot;);
+    47:      }else{
+    48:          printf(&amp;quot;i != 0\n&amp;quot;);
+    49:      }
+    50:   
+    51:  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;编译程序是增加 -ftest-coverage -fprofile-arcs 选项。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; [heidong@HEIDONGVM gcov]$ gcc -o bbsort bbsort.c -ftest-coverage -fprofile-arcs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;生成.gcno文件。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;执行程序，将生成.gcda文件，用gcov程序检查相应的源代码文件，将生成结果文件。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; [heidong@HEIDONGVM gcov]$ ./bbsort 
+ 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ i != 0 
+ [heidong@HEIDONGVM gcov]$ gcov bbsort.c 
+ File‘bbsort.c’ 
+ 已执行的行数：95.24% (共 21 行) 
+ bbsort.c：正在创建‘bbsort.c.gcov
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检查相应的结果文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; [heidong@HEIDONGVM gcov]$ cat bbsort.c.gcov 
+         -:    0:Source:bbsort.c
+         -:    0:Graph:bbsort.gcno
+         -:    0:Data:bbsort.gcda
+         -:    0:Runs:1
+         -:    0:Programs:1
+         -:    1:#include &amp;lt;stdio.h&amp;gt;
+         -:    2:
+         1:    3:void bubbleSort( int list[], int size )
+         -:    4:{
+         1:    5:    int i, j, temp, swap = 1;
+         -:    6:
+         4:    7:    while (swap) {
+         -:    8:
+         2:    9:        swap = 0;
+         -:   10:
+        22:   11:        for ( i = (size-1) ; i &amp;gt;= 0 ; i-- ) {
+         -:   12:
+       110:   13:            for ( j = 1 ; j &amp;lt;= i ; j++ ) {
+         -:   14:
+        90:   15:                if ( list[j-1] &amp;gt; list[j] ) {
+         -:   16:
+        45:   17:                    temp = list[j-1];
+        45:   18:                    list[j-1] = list[j];
+        45:   19:                    list[j] = temp;
+        45:   20:                    swap = 1;
+         -:   21:
+         -:   22:                }
+         -:   23:
+         -:   24:            }
+         -:   25:
+         -:   26:        }
+         -:   27:
+         -:   28:    }
+         -:   29:
+         -:   30:
+         1:   31:}
+         -:   32:
+         1:   33:int main()
+         -:   34:{
+         1:   35:    int theList[10]={10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+         -:   36:    int i;
+         -:   37:
+         -:   38:    /* Invoke the bubble sort algorithm */
+         1:   39:    bubbleSort( theList, 10 );
+         -:   40:
+         -:   41:    /* Print out the final list */
+        11:   42:    for (i = 0 ; i &amp;lt; 10 ; i++) { 
+        10:   43:        printf(&amp;quot;%d\n&amp;quot;, theList[i]);
+         -:   44:    }
+         1:   45:    if(i == 0){
+     #####:   46:        printf(&amp;quot;i = 0\n&amp;quot;);
+         -:   47:    }else{
+         1:   48:        printf(&amp;quot;i != 0\n&amp;quot;);
+         -:   49:    }
+         -:   50:
+         1:   51:}
+         -:   52:
+ [heidong@HEIDONGVM gcov]$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;可以看到某行执行了多少次，哪些行没有执行过（####标示）。gcov 还可以检查其他很多的信息，如分支，函数等，详细参考gcov的帮助文档，并测试之。&lt;/p&gt;
+&lt;p&gt;对于文本格式，相信很多人的觉得不是很直观，于是便有了lcov这个工具，它可以算是gcov的前端工具，这样生成html文件，可以很直观的看到代码覆盖情况。&lt;/p&gt;
+&lt;p&gt;lcov不是标准的unix/linux工具，需要下载，地址是：ltp.sourceforge.net/coverage/lcov.php 注意要FQ才可以访问。&lt;/p&gt;
+&lt;p&gt;使用方式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;执行完gcov的步骤后，执行下列命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; [heidong@HEIDONGVM gcov]$ lcov --capture --directory ./  --output-file bbsort.info 
+ Capturing coverage data from ./ 
+ Found gcov version: 4.4.6 
+ Scanning ./ for .gcda files ... 
+ Found 1 data files in ./ 
+ Processing bbsort.gcda 
+ Finished .info-file creation
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生成html文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; [heidong@HEIDONGVM gcov]$ genhtml bbsort.info --output-directory ./lcov/ 
+ Reading data file bbsort.info 
+ Found 1 entries. 
+ Found common filename prefix &amp;quot;/home/heidong/tmp&amp;quot; 
+ Writing .css and .png files. 
+ Generating output. 
+ Processing file gcov/bbsort.c 
+ Writing directory view page. 
+ Overall coverage rate: 
+   lines......: 95.2% (20 of 21 lines) 
+   functions..: 100.0% (2 of 2 functions
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;看下生成的html文件：
+&lt;img src=&#34;https://luoguochun.cn/img/gcov/gcov.jpg&#34; alt=&#34;html report&#34;&gt;&lt;br&gt;
+完毕。&lt;/p&gt;
+</description>
     </item>
     
   </channel>

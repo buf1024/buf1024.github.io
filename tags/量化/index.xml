@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>量化 on BUF1024!!!</title>
@@ -6,18 +6,151 @@
     <description>Recent content in 量化 on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 21 Mar 2023 08:10:12 +0800</lastBuildDate>
-    
-	<atom:link href="https://luoguochun.cn/tags/%E9%87%8F%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 21 Mar 2023 08:10:12 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/tags/%E9%87%8F%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>android https 抓包</title>
       <link>https://luoguochun.cn/post/2023-03-21-android-https/</link>
       <pubDate>Tue, 21 Mar 2023 08:10:12 +0800</pubDate>
       
       <guid>https://luoguochun.cn/post/2023-03-21-android-https/</guid>
-      <description>前几天有个需求，要破解一下某个app的部分通讯协议，需要了解一下某部分功能如何实现，甚至通过其协议抓取一些数据。而这个app只有androi</description>
+      <description>&lt;p&gt;前几天有个需求，要破解一下某个app的部分通讯协议，需要了解一下某部分功能如何实现，甚至通过其协议抓取一些数据。而这个app只有android版本和ios版本。从初步看，这个app是同React Native写的。&lt;/p&gt;
+&lt;p&gt;虽然https是加密的，不过查看https本来感觉这并不是什么太复杂的事情，引入一个中间人就可以了。虽然在浏览器会弹出CA不可信任的警告，不过对于app来说，如果不作特殊处理（一般人也不会特殊处理），一般没什么影响。而这事在很久之前也是做过的了。没想到现在的android却提高了难度。记录一下步骤，以备后续可能需要查看。&lt;/p&gt;
+&lt;h3 id=&#34;普通-https-抓包&#34;&gt;普通 https 抓包 &lt;a href=&#34;#%e6%99%ae%e9%80%9a-https-%e6%8a%93%e5%8c%85&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在mac下面最常用的是charles，其他平台有类似的软件。 步骤如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;charles打开代理&lt;/p&gt;
+&lt;p&gt;如图示，如此经过操作后，经过此代理的http/https报文即可被捕获（中间人）。&lt;/p&gt;
+&lt;p&gt;代理设置:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/charles/step0-1.png&#34; alt=&#34;代理设置&#34;&gt;&lt;/p&gt;
+&lt;p&gt;SSL设置:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/charles/step0-0.png&#34; alt=&#34;SSL设置&#34;&gt;&lt;/p&gt;
+&lt;p&gt;打开代理:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/charles/step0-2.png&#34; alt=&#34;打开代理&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置服务端客户端证书&lt;/p&gt;
+&lt;p&gt;经过上述配置，虽然可以实现了中间人捕获报文，可是https的内容是无法查看的，所以需要配置证书后才可以解密。步骤如图示：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;电脑端：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;添加证书：
+
+![添加信任证书](/img/charles/step1-1.png)
+
+设置信任证书：
+
+![设置信任](/img/charles/step1-2.png)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;手机端：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;设置代理：
+
+![设置代理](/img/charles/step2-1.png)
+
+添加信任的证书：
+
+![添加信任的证书](/img/charles/step2-2.png)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上便是网上能搜索到的方式，也是以前自己抓取https报文的步骤，如果一切那么顺利便不会有这篇记录。因为在从android7.0开始后，android手机即使你添加信任的证书后，系统依然是不信任你的证书的，只信任系统的证书。所以，任何请求都不会使用到这个用户证书，也因此，https的报文依然是无法解密的。&lt;/p&gt;
+&lt;h3 id=&#34;android7以上https抓包&#34;&gt;android7以上https抓包 &lt;a href=&#34;#android7%e4%bb%a5%e4%b8%8ahttps%e6%8a%93%e5%8c%85&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;针对android7.0以上系统，这个办法的解决方式也是挺粗暴的，既然只信任系统证书，那么就移动真是到系统目录不就可以了？而此方式必须要系统root方可以。这是不愿意做的，除非可以使用一个已经root的模拟器，不过这个好像比较难找。&lt;/p&gt;
+&lt;p&gt;除此之外，网上还有一种方式，那就是自己编码让其信任用户证书。具体的步骤也挺简单的，如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;新建network_security_conf.xml文件&lt;/p&gt;
+&lt;p&gt;放在res/xml下面，此文件意思就告诉系统，让系统信任用户证书，内容大体如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;AndroidManifest.xml修改&lt;/p&gt;
+&lt;p&gt;与此同时在AndroidManifest.xml文件的application字段后增加&lt;code&gt;android:usesCleartextTraffic=&amp;quot;true&amp;quot; android:networkSecurityConfig=&amp;quot;@xml/network_security_config&amp;quot;&lt;/code&gt;内容。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然而，这个app并非自己所写的，本来就没有源码，所以必须反编译后修改，再重新签名。这个方式网上也有比较详细的方式，大体涉及三个工具：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;apktool，编译和反编译apk，从apk中提取图片和布局资源&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dex2jar，将可运行文件classes.dex反编译为jar源码文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;jd-gui，查看jar源码文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;网上已经有比较详细的方式，这里不再累赘。而现实修改的只涉及资源文件，所以，只用到apktool即可，而且只需要两个命令。&lt;/p&gt;
+&lt;p&gt;解包：&lt;code&gt;apktool d -o dec xx.apk&lt;/code&gt;  重新打包：&lt;code&gt;apktool b -o yy.apk dec/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;重新打包后的apk需要经过重新签名之后，方可安装，步骤：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#1 使用keytool生成密钥，如&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;keytool -genkeypair -v -keystore hello.keystore -alias hello -keyalg RSA &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          -keysize &lt;span class=&#34;m&#34;&gt;2048&lt;/span&gt; -validity &lt;span class=&#34;m&#34;&gt;10000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#2 重新打包&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apktool b -o yy.apk dec/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#3 重新签名，使用android sdk tool自带的工具&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$ANDROID_HOME&lt;/span&gt;/build-tools/30.0.3/apksigner sign --ks hello.keystore --ks-key-alias hello yy.apk
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;apktool重新打包时，有一个坑。在AndroidManifest.xml文件里，如果&lt;code&gt;android:extractNativeLibs=&amp;quot;false&amp;quot;&lt;/code&gt;，则需要修改为&lt;code&gt;android:extractNativeLibs=&amp;quot;true&amp;quot;&lt;/code&gt;，否则按装时会报错。&lt;/p&gt;
+&lt;p&gt;按照上述修改后，本以为就可以了，可事实上，压根就没有解决https无法查看的问题。这就如同说TCP挥手必须要四次才行的那些背八股文的人一样，根本就没有经过实践，把不完整的知识当是真理。当然，因为这是修改别的软件，不知道自己编写的软件这么修改后，有没有效果。&lt;/p&gt;
+&lt;p&gt;经过一番瞎折腾和摸索，才找到网上基本没有说过的修改方式（重点）：&lt;/p&gt;
+&lt;p&gt;既然你是android 7.0以下才可以用，那么我就把你运行目标修改为这个目标，是不是可以？修改点：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#1 AndroidManifest.xml 修改为&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;platformBuildVersionCode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;23&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#2 apktool.yml修改为&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;sdkInfo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;minSdkVersion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;23&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;targetSdkVersion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;23&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后，然后，结果居然行了！！！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/charles/https_crack.png&#34; alt=&#34;https-crack&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;小小结&#34;&gt;小小结 &lt;a href=&#34;#%e5%b0%8f%e5%b0%8f%e7%bb%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;原来apk反编译重新打包如此简单（修改源码例外，特别是混淆之后的）&lt;/li&gt;
+&lt;li&gt;android 7后http是抓包变得繁杂&lt;/li&gt;
+&lt;li&gt;网上的答案很多的复制黏贴，不一定正确，自己实践过的才是可靠的，然而并不是所有人实践过，万一他们一直认为他们没实践过的是真理……&lt;/li&gt;
+&lt;/ol&gt;
+</description>
     </item>
     
     <item>
@@ -26,7 +159,22 @@
       <pubDate>Thu, 16 Mar 2023 08:10:12 +0800</pubDate>
       
       <guid>https://luoguochun.cn/post/2023-03-16-love-for-insterest/</guid>
-      <description>最初个人量化就是为了防止自己手贱，用计算机了执行自己的策略。这个所谓的个人量化并没有非常清晰的目标，大概只有两点非常粗略的要求：第一个，就是</description>
+      <description>&lt;p&gt;最初个人量化就是为了防止自己手贱，用计算机了执行自己的策略。这个所谓的个人量化并没有非常清晰的目标，大概只有两点非常粗略的要求：第一个，就是策略的编写必须足够简单和迅速，第二个便是策略的执行足够稳定和正确。并没有性能要求，因为只是个人的资金量是非常少的，追求过高的性能和交易频率并没有实际上的意义。&lt;/p&gt;
+&lt;p&gt;所以自然而然便选择的&lt;code&gt;python&lt;/code&gt;(&lt;code&gt;python&lt;/code&gt;是一个无论你丢弃了多久，都可以迅速拿回来的语言)。当然的，市面上有各种量化的平台，不过免费使用的又能满足自己要求的，其实并没有太多。于是，只能重复发明轮子。&lt;/p&gt;
+&lt;p&gt;在最初的设想之中，大概分为五个模块：数据，投研，策略，回测，交易。数据就是从各种渠道快速获取所需要的数据，而投研就是利用所获得的数据就是一番的折腾和探索，策略就是根据折腾的结果编写成的策略，而这些策略被自己分为选择，交易，风控三类型的策略，回测就是对策略进行回归测试，探索这类策略的胜率和盈利，交易思议便是用策略进行实盘的交易了。&lt;/p&gt;
+&lt;p&gt;最后&lt;code&gt;python&lt;/code&gt;版本的被搞了出来，还真能把整工作流程跑通了。不过，最初不注重性能，最终在自己低端的机器上有点吃力。主要的表现上就是策略的回测多个实例跑起来后，就其卡无比。而在交易上面，则表现为行情的积压，不能及时处理最新的行情，这样导致的问题是不能及时风控。当然本来通过非正式手段来获取的行情，本来就有延迟，不过因为不是高频，这倒没什么大问题。所以后面&lt;code&gt;polar-rs&lt;/code&gt;代替&lt;code&gt;pandas&lt;/code&gt;，有些不少模块用&lt;code&gt;pyo3&lt;/code&gt;进行加速。不过这些提升并不明显。&lt;/p&gt;
+&lt;p&gt;后面干脆就推到重来，先拿交易部分开刀，全部改成&lt;code&gt;rust&lt;/code&gt;，效率的确有点提升。再后来，全部都改了&lt;code&gt;rust&lt;/code&gt;，不过为了策略编写的简单，通过&lt;code&gt;pyo3&lt;/code&gt;，支持两种语言的混合编写。差不多后，发现少了一样东西：自己一直后台操作，居然少了一个操作界面！所以，增加一个操作界面，也提上了日程。&lt;/p&gt;
+&lt;p&gt;自己本身也是搞过windows开发，也搞过qt(QML除外)，不过一上来马上就否决了，因为有一开始的痛苦的调试经历以及非常慢的开发效率。所以选择的就只有两个了：第一个就是用&lt;code&gt;electron&lt;/code&gt;或&lt;code&gt;tauri&lt;/code&gt;这种web的方案，国内如果不是专用软件的，绝大部分都转向了这类，因为开发效率高，web的人多。不过网易的那个云笔记，卡到我怀疑人生，就要有点失落了。不过真正的原因还是自己对css不熟悉，估计自己搞要耗费时间不会比c++少。&lt;code&gt;Flutter&lt;/code&gt;也就自然而然的是选择了，&lt;code&gt;rust-desk&lt;/code&gt;踩的坑也差不多了，也就轮到自己可以开始踩坑了。&lt;/p&gt;
+&lt;p&gt;事实上，&lt;code&gt;Flutter&lt;/code&gt;并没有让人太失望，搞普通应用也没是问题，可以比较快速的挫出界面，如图的一点demo。&lt;/p&gt;
+&lt;p&gt;图示1：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;图示2：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;只是，这样瞎折腾，为爱发电下去好像不能支持长久呀……&lt;/p&gt;
+&lt;p&gt;以前的旧同事有时问，这数据怎么获取，行情，交易接口怎么搞？&lt;/p&gt;
+&lt;p&gt;其实数据和行情部分很简单，网上有开源的，再不行自己网上爬数据。自己开始之前是用&lt;code&gt;tushare pro&lt;/code&gt;免费使用加上自己爬的一些，后面发现&lt;code&gt;tushare pro&lt;/code&gt;居然只要一年的使用权，要使用必须同过积分的形式变相收费。所以之后切换至&lt;code&gt;akshare&lt;/code&gt;和&lt;code&gt;opentools&lt;/code&gt;，不过&lt;code&gt;akshare&lt;/code&gt;这个接口变更的有的频繁，突然间接口有改名，或者删除，又或者改变返回结果的形式，更为重要的是因为我是重复调用的，他的接口很多冗余，很多时候都必须改他的接口。最后，自己用&lt;code&gt;rust&lt;/code&gt;重写了获取数据接口，简单封装给&lt;code&gt;python&lt;/code&gt;使用，算是比较稳定了。&lt;/p&gt;
+&lt;p&gt;而对于交易部分，这个其实很简单，没有想象中的复杂。虽然没有正式交易接口，不过我们有交易客户端即可。实现方式就类似按键精灵，自己定义好交易接口，然后提交给交易客户端。交易客户端主要使用&lt;code&gt;pywinauto&lt;/code&gt;做为按键和鼠标，它主要靠截屏和图形对比的方式定位坐标。通过python ocr识别文字。如此便可以实现交易的功能。&lt;/p&gt;
+</description>
     </item>
     
   </channel>

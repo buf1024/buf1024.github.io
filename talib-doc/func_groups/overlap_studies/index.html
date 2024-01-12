@@ -1,435 +1,361 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>07 重叠研究指标(Overlap Studies Functions) - BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="Overlap Studies Functions 重叠研究指标函数 BBANDS - Bollinger Bands 函数名：BBANDS 名称： 布林线指标 简介：其利用统计原理，求出股价的标准差及其信赖区间，从而确定股价的波动范围" /><meta name="keywords" content="blog, computer, luoguochun" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/talib-doc/func_groups/overlap_studies/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="07 重叠研究指标(Overlap Studies Functions)" />
-<meta property="og:description" content="Overlap Studies Functions 重叠研究指标函数 BBANDS - Bollinger Bands 函数名：BBANDS 名称： 布林线指标 简介：其利用统计原理，求出股价的标准差及其信赖区间，从而确定股价的波动范围" />
+<title>07 重叠研究指标(Overlap Studies Functions) | BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/talib-doc/func_groups/overlap_studies/">
+<meta name="description" content="Overlap Studies Functions 重叠研究指标函数 🔗BBANDS - Bollinger Bands 🔗 函数名：BBANDS 名称： 布林线指标 简介：其利用统计原理，求出股价的标准差及其信赖区间，从而确定" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luoguochun.cn/talib-doc/func_groups/overlap_studies/" /><meta property="article:published_time" content="2019-10-10T00:00:07&#43;08:00"/>
-<meta property="article:modified_time" content="2019-10-10T00:00:07&#43;08:00"/>
-
-<meta itemprop="name" content="07 重叠研究指标(Overlap Studies Functions)">
-<meta itemprop="description" content="Overlap Studies Functions 重叠研究指标函数 BBANDS - Bollinger Bands 函数名：BBANDS 名称： 布林线指标 简介：其利用统计原理，求出股价的标准差及其信赖区间，从而确定股价的波动范围">
-
-
-<meta itemprop="datePublished" content="2019-10-10T00:00:07&#43;08:00" />
-<meta itemprop="dateModified" content="2019-10-10T00:00:07&#43;08:00" />
-<meta itemprop="wordCount" content="1670">
+<meta property="og:title" content="07 重叠研究指标(Overlap Studies Functions) | BUF1024!!!" />
+<meta property="og:url" content="https://luoguochun.cn/talib-doc/func_groups/overlap_studies/" />
+<meta property="og:description" content="Overlap Studies Functions 重叠研究指标函数 🔗BBANDS - Bollinger Bands 🔗 函数名：BBANDS 名称： 布林线指标 简介：其利用统计原理，求出股价的标准差及其信赖区间，从而确定" />
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="07 重叠研究指标(Overlap Studies Functions)"/>
-<meta name="twitter:description" content="Overlap Studies Functions 重叠研究指标函数 BBANDS - Bollinger Bands 函数名：BBANDS 名称： 布林线指标 简介：其利用统计原理，求出股价的标准差及其信赖区间，从而确定股价的波动范围"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-  <div class="post-content">
-    
+    <main class="main-wrapper">
 
-<h1 id="overlap-studies-functions-重叠研究指标函数">Overlap Studies Functions 重叠研究指标函数</h1>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
 
-<h3 id="bbands-bollinger-bands">BBANDS - Bollinger Bands</h3>
+<section class="single">
+    <h1 class="title">07 重叠研究指标(Overlap Studies Functions)</h1>
 
-<blockquote>
-<p>函数名：BBANDS<br />
-名称： 布林线指标<br />
-简介：其利用统计原理，求出股价的标准差及其信赖区间，从而确定股价的波动范围及未来走势，利用波带显示股价的安全高低价位，因而也被称为布林带。<br />
+    <div class="tip">
+        <time datetime="2019-10-10 00:00:07 &#43;0800 CST">2019/10/10</time>
+        <span class="split">·</span>
+        <span> 1697 words </span>
+        <span class="split">·</span>
+        <span>
+            4 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <h1 id="overlap-studies-functions-重叠研究指标函数">Overlap Studies Functions 重叠研究指标函数 <a href="#overlap-studies-functions-%e9%87%8d%e5%8f%a0%e7%a0%94%e7%a9%b6%e6%8c%87%e6%a0%87%e5%87%bd%e6%95%b0" class="anchor">🔗</a></h1><h3 id="bbands---bollinger-bands">BBANDS - Bollinger Bands <a href="#bbands---bollinger-bands" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：BBANDS<br>
+名称： 布林线指标<br>
+简介：其利用统计原理，求出股价的标准差及其信赖区间，从而确定股价的波动范围及未来走势，利用波带显示股价的安全高低价位，因而也被称为布林带。 <br>
 分析和应用：
 <a href="https://baike.baidu.com/item/bollinger%20bands/1612394?fr=aladdin">百度百科</a>
 <a href="http://www.iwencai.com/yike/detail/auid/56d0d9be66b4f7a0?rid=53">同花顺学院</a></p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">upperband</span><span class="p">,</span> <span class="n">middleband</span><span class="p">,</span> <span class="n">lowerband</span> <span class="o">=</span> <span class="n">BBANDS</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">nbdevup</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nbdevdn</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">matype</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">upperband</span><span class="p">,</span> <span class="n">middleband</span><span class="p">,</span> <span class="n">lowerband</span> <span class="o">=</span> <span class="n">BBANDS</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">nbdevup</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nbdevdn</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">matype</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Bollinger Bands at <a href="http://www.tadoc.org/indicator/BBANDS.htm">tadoc.org</a>.</p>
-
-<h3 id="sma-simple-moving-average-简单移动平均线">SMA - Simple Moving Average 简单移动平均线</h3>
-
-<blockquote>
-<p>函数名：SMA<br />
-名称： 简单移动平均线<br />
+</div><p>Learn more about the Bollinger Bands at <a href="http://www.tadoc.org/indicator/BBANDS.htm">tadoc.org</a>.</p>
+<h3 id="sma---simple-moving-average-简单移动平均线">SMA - Simple Moving Average 简单移动平均线 <a href="#sma---simple-moving-average-%e7%ae%80%e5%8d%95%e7%a7%bb%e5%8a%a8%e5%b9%b3%e5%9d%87%e7%ba%bf" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：SMA<br>
+名称： 简单移动平均线<br>
 简介：移动平均线，Moving Average，简称MA，原本的意思是移动平均，由于我们将其制作成线形，所以一般称之为移动平均线，简称均线。它是将某一段时间的收盘价之和除以该周期。 比如日线MA5指5天内的收盘价除以5 。</p>
-
 <p>TA-LIB的SMA和MA是一样的。</p>
-
 <p><a href="https://baike.baidu.com/item/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87%E7%BA%BF/217887?fromtitle=MA&amp;fromid=1511750#viewPageContent">百度百科</a>
 <a href="http://www.iwencai.com/yike/detail/auid/a04d723659318237?rid=96">同花顺学院</a></p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">SMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">SMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Simple Moving Average at <a href="http://www.tadoc.org/indicator/SMA.htm">tadoc.org</a>.</p>
-
-<h3 id="ma-moving-average-移动平均线">MA - Moving average  移动平均线</h3>
-
-<blockquote>
-<p>函数名：MA<br />
-名称： 移动平均线<br />
-简介：移动平均线，Moving Average，简称MA，原本的意思是移动平均，由于我们将其制作成线形，所以一般称之为移动平均线，简称均线。它是将某一段时间的收盘价之和除以该周期。 比如日线MA5指5天内的收盘价除以5 。<br />
+</div><p>Learn more about the Simple Moving Average at <a href="http://www.tadoc.org/indicator/SMA.htm">tadoc.org</a>.</p>
+<h3 id="ma---moving-average--移动平均线">MA - Moving average  移动平均线 <a href="#ma---moving-average--%e7%a7%bb%e5%8a%a8%e5%b9%b3%e5%9d%87%e7%ba%bf" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：MA<br>
+名称： 移动平均线<br>
+简介：移动平均线，Moving Average，简称MA，原本的意思是移动平均，由于我们将其制作成线形，所以一般称之为移动平均线，简称均线。它是将某一段时间的收盘价之和除以该周期。 比如日线MA5指5天内的收盘价除以5 。<br>
 <a href="https://baike.baidu.com/item/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87%E7%BA%BF/217887?fromtitle=MA&amp;fromid=1511750#viewPageContent">百度百科</a>
 <a href="http://www.iwencai.com/yike/detail/auid/a04d723659318237?rid=96">同花顺学院</a></p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">MA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">matype</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">MA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">matype</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="ema-exponential-moving-average">EMA - Exponential Moving Average</h3>
-
-<blockquote>
-<p>函数名：EMA<br />
-名称： 指数平均数<br />
+</div><h3 id="ema---exponential-moving-average">EMA - Exponential Moving Average <a href="#ema---exponential-moving-average" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：EMA<br>
+名称： 指数平均数<br>
 简介：是一种趋向类指标，其构造原理是仍然对价格收盘价进行算术平均，并根据计算结果来进行分析，用于判断价格未来走势的变动趋势。</p>
-
 <p>与MA的区别是增加了权重，越是最近的，权重越重</p>
-
 <p><a href="https://baike.baidu.com/item/EMA/12646151">百度百科</a>
 <a href="http://www.iwencai.com/yike/detail/auid/b7a39d74783ad689?rid=589">同花顺学院</a></p>
 </blockquote>
-
 <p>NOTE: The <code>EMA</code> function has an unstable period.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">EMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">EMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Exponential Moving Average at <a href="http://www.tadoc.org/indicator/EMA.htm">tadoc.org</a>.</p>
-
-<h3 id="dema-double-exponential-moving-average-双移动平均线">DEMA - Double Exponential Moving Average  双移动平均线</h3>
-
-<blockquote>
-<p>函数名：DEMA<br />
-名称： 双移动平均线<br />
-简介：两条移动平均线来产生趋势信号，较长期者用来识别趋势，较短期者用来选择时机。正是两条平均线及价格三者的相互作用，才共同产生了趋势信号。<br />
+</div><p>Learn more about the Exponential Moving Average at <a href="http://www.tadoc.org/indicator/EMA.htm">tadoc.org</a>.</p>
+<h3 id="dema---double-exponential-moving-average--双移动平均线">DEMA - Double Exponential Moving Average  双移动平均线 <a href="#dema---double-exponential-moving-average--%e5%8f%8c%e7%a7%bb%e5%8a%a8%e5%b9%b3%e5%9d%87%e7%ba%bf" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：DEMA<br>
+名称： 双移动平均线<br>
+简介：两条移动平均线来产生趋势信号，较长期者用来识别趋势，较短期者用来选择时机。正是两条平均线及价格三者的相互作用，才共同产生了趋势信号。 <br>
 分析和应用：
 <a href="https://baike.baidu.com/item/%E5%8F%8C%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87%E7%BA%BF/1831921?fr=aladdin">百度百科</a>
 <a href="http://www.iwencai.com/yike/detail/auid/a04d723659318237">同花顺学院</a></p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">DEMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">DEMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Double Exponential Moving Average at <a href="http://www.tadoc.org/indicator/DEMA.htm">tadoc.org</a>.</p>
-
-<h3 id="tema-triple-exponential-moving-average">TEMA - Triple Exponential Moving Average</h3>
-
-<blockquote>
+</div><p>Learn more about the Double Exponential Moving Average at <a href="http://www.tadoc.org/indicator/DEMA.htm">tadoc.org</a>.</p>
+<h3 id="tema---triple-exponential-moving-average">TEMA - Triple Exponential Moving Average <a href="#tema---triple-exponential-moving-average" class="anchor">🔗</a></h3><blockquote>
 <p>函数名：TEMA（T3 区别, T3为TRIX）
 名称：三重指数移动平均线</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">TEMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">TEMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Triple Exponential Moving Average at <a href="http://www.tadoc.org/indicator/TEMA.htm">tadoc.org</a>.</p>
-
-<h3 id="t3-triple-exponential-moving-average-t3-三重指数移动平均线">T3 - Triple Exponential Moving Average (T3) 三重指数移动平均线</h3>
-
-<blockquote>
-<p>函数名：T3<br />
-名称：三重指数移动平均线<br />
-简介：TRIX长线操作时采用本指标的讯号，长时间按照本指标讯号交易，获利百分比大于损失百分比，利润相当可观。 比如日线MA5指5天内的收盘价除以5 。<br />
+</div><p>Learn more about the Triple Exponential Moving Average at <a href="http://www.tadoc.org/indicator/TEMA.htm">tadoc.org</a>.</p>
+<h3 id="t3---triple-exponential-moving-average-t3-三重指数移动平均线">T3 - Triple Exponential Moving Average (T3) 三重指数移动平均线 <a href="#t3---triple-exponential-moving-average-t3-%e4%b8%89%e9%87%8d%e6%8c%87%e6%95%b0%e7%a7%bb%e5%8a%a8%e5%b9%b3%e5%9d%87%e7%ba%bf" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：T3<br>
+名称：三重指数移动平均线<br>
+简介：TRIX长线操作时采用本指标的讯号，长时间按照本指标讯号交易，获利百分比大于损失百分比，利润相当可观。 比如日线MA5指5天内的收盘价除以5 。<br>
 <a href="https://baike.baidu.com/item/%E4%B8%89%E9%87%8D%E6%8C%87%E6%95%B0%E5%B9%B3%E6%BB%91%E5%B9%B3%E5%9D%87%E7%BA%BF/15749345?fr=aladdin">百度百科</a>
 <a href="http://www.iwencai.com/yike/detail/auid/6c22c15ccbf24e64?rid=80">同花顺学院</a></p>
 </blockquote>
-
 <p>NOTE: The <code>T3</code> function has an unstable period.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">T3</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">vfactor</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">T3</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">vfactor</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Triple Exponential Moving Average (T3) at <a href="http://www.tadoc.org/indicator/T3.htm">tadoc.org</a>.</p>
-
-<h3 id="trima-triangular-moving-average">TRIMA - Triangular Moving Average</h3>
-<div class="highlight"><div class="chroma">
+</div><p>Learn more about the Triple Exponential Moving Average (T3) at <a href="http://www.tadoc.org/indicator/T3.htm">tadoc.org</a>.</p>
+<h3 id="trima---triangular-moving-average">TRIMA - Triangular Moving Average <a href="#trima---triangular-moving-average" class="anchor">🔗</a></h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">TRIMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">TRIMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Triangular Moving Average at <a href="http://www.tadoc.org/indicator/TRIMA.htm">tadoc.org</a>.</p>
-
-<h3 id="wma-weighted-moving-average-移动加权平均法">WMA - Weighted Moving Average 移动加权平均法</h3>
-
-<blockquote>
-<p>函数名：WMA<br />
-名称：加权移动平均线<br />
-简介：移动加权平均法是指以每次进货的成本加上原有库存存货的成本，除以每次进货数量与原有库存存货的数量之和，据以计算加权平均单位成本，以此为基础计算当月发出存货的成本和期末存货的成本的一种方法。<br />
+</div><p>Learn more about the Triangular Moving Average at <a href="http://www.tadoc.org/indicator/TRIMA.htm">tadoc.org</a>.</p>
+<h3 id="wma---weighted-moving-average-移动加权平均法">WMA - Weighted Moving Average 移动加权平均法 <a href="#wma---weighted-moving-average-%e7%a7%bb%e5%8a%a8%e5%8a%a0%e6%9d%83%e5%b9%b3%e5%9d%87%e6%b3%95" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：WMA<br>
+名称：加权移动平均线<br>
+简介：移动加权平均法是指以每次进货的成本加上原有库存存货的成本，除以每次进货数量与原有库存存货的数量之和，据以计算加权平均单位成本，以此为基础计算当月发出存货的成本和期末存货的成本的一种方法。<br>
 <a href="https://baike.baidu.com/item/%E7%A7%BB%E5%8A%A8%E5%8A%A0%E6%9D%83%E5%B9%B3%E5%9D%87%E6%B3%95/10056490?fr=aladdin&amp;fromid=16799870&amp;fromtitle=%E5%8A%A0%E6%9D%83%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87">百度百科</a>
 <a href="http://www.iwencai.com/yike/detail/auid/262b1dfd1c68ee30">同花顺学院</a></p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">WMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">WMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Weighted Moving Average at <a href="http://www.tadoc.org/indicator/WMA.htm">tadoc.org</a>.</p>
-
-<h3 id="kama-kaufman-adaptive-moving-average-考夫曼的自适应移动平均线">KAMA - Kaufman Adaptive Moving Average 考夫曼的自适应移动平均线</h3>
-
-<blockquote>
-<p>函数名：KAMA<br />
-名称： 考夫曼的自适应移动平均线<br />
+</div><p>Learn more about the Weighted Moving Average at <a href="http://www.tadoc.org/indicator/WMA.htm">tadoc.org</a>.</p>
+<h3 id="kama---kaufman-adaptive-moving-average-考夫曼的自适应移动平均线">KAMA - Kaufman Adaptive Moving Average 考夫曼的自适应移动平均线 <a href="#kama---kaufman-adaptive-moving-average-%e8%80%83%e5%a4%ab%e6%9b%bc%e7%9a%84%e8%87%aa%e9%80%82%e5%ba%94%e7%a7%bb%e5%8a%a8%e5%b9%b3%e5%9d%87%e7%ba%bf" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：KAMA<br>
+名称： 考夫曼的自适应移动平均线<br>
 简介：短期均线贴近价格走势，灵敏度高，但会有很多噪声，产生虚假信号；长期均线在判断趋势上一般比较准确
 ，但是长期均线有着严重滞后的问题。我们想得到这样的均线，当价格沿一个方向快速移动时，短期的移动
-平均线是最合适的；当价格在横盘的过程中，长期移动平均线是合适的。<br />
+平均线是最合适的；当价格在横盘的过程中，长期移动平均线是合适的。<br>
 <a href="http://blog.sina.com.cn/s/blog_62d0bbc701010p7d.html">参考1</a>
 <a href="https://wenku.baidu.com/view/bc4bc9c59ec3d5bbfd0a7454.html?from=search">参考2</a></p>
 </blockquote>
-
 <p>NOTE: The <code>KAMA</code> function has an unstable period.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">KAMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">KAMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Kaufman Adaptive Moving Average at <a href="http://www.tadoc.org/indicator/KAMA.htm">tadoc.org</a>.</p>
-
-<h3 id="mama-mesa-adaptive-moving-average">MAMA - MESA Adaptive Moving Average</h3>
-
-<blockquote>
-<p>函数名：MAMA<br />
-名称： 梅萨自适应移动平均线<br />
+</div><p>Learn more about the Kaufman Adaptive Moving Average at <a href="http://www.tadoc.org/indicator/KAMA.htm">tadoc.org</a>.</p>
+<h3 id="mama---mesa-adaptive-moving-average">MAMA - MESA Adaptive Moving Average <a href="#mama---mesa-adaptive-moving-average" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：MAMA<br>
+名称： 梅萨自适应移动平均线<br>
 简介：</p>
 </blockquote>
-
 <p>NOTE: The <code>MAMA</code> function has an unstable period.  ？</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">mama</span><span class="p">,</span> <span class="n">fama</span> <span class="o">=</span> <span class="n">MAMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">fastlimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">slowlimit</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">mama</span><span class="p">,</span> <span class="n">fama</span> <span class="o">=</span> <span class="n">MAMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">fastlimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">slowlimit</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the MESA Adaptive Moving Average at <a href="http://www.tadoc.org/indicator/MAMA.htm">tadoc.org</a>.</p>
-
-<h3 id="ht-trendline-hilbert-transform-instantaneous-trendline">HT_TRENDLINE - Hilbert Transform - Instantaneous Trendline</h3>
-
-<p>NOTE: The <code>HT_TRENDLINE</code> function has an unstable period.</p>
-
+</div><p>Learn more about the MESA Adaptive Moving Average at <a href="http://www.tadoc.org/indicator/MAMA.htm">tadoc.org</a>.</p>
+<h3 id="ht_trendline---hilbert-transform---instantaneous-trendline">HT_TRENDLINE - Hilbert Transform - Instantaneous Trendline <a href="#ht_trendline---hilbert-transform---instantaneous-trendline" class="anchor">🔗</a></h3><p>NOTE: The <code>HT_TRENDLINE</code> function has an unstable period.</p>
 <blockquote>
-<p>函数名：HT_TRENDLINE<br />
-名称： 希尔伯特瞬时变换<br />
-简介：是一种趋向类指标，其构造原理是仍然对价格收盘价进行算术平均，并根据计算结果来进行分析，用于判断价格未来走势的变动趋势。<br />
+<p>函数名：HT_TRENDLINE<br>
+名称： 希尔伯特瞬时变换<br>
+简介：是一种趋向类指标，其构造原理是仍然对价格收盘价进行算术平均，并根据计算结果来进行分析，用于判断价格未来走势的变动趋势。<br>
 <a href="https://wenku.baidu.com/view/0e35f6eead51f01dc281f18e.html">百度文库</a></p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">HT_TRENDLINE</span><span class="p">(</span><span class="n">close</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">HT_TRENDLINE</span><span class="p">(</span><span class="n">close</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Hilbert Transform - Instantaneous Trendline at <a href="http://www.tadoc.org/indicator/HT_TRENDLINE.htm">tadoc.org</a>.</p>
-
-<h3 id="mavp-moving-average-with-variable-period">MAVP - Moving average with variable period</h3>
-<div class="highlight"><div class="chroma">
+</div><p>Learn more about the Hilbert Transform - Instantaneous Trendline at <a href="http://www.tadoc.org/indicator/HT_TRENDLINE.htm">tadoc.org</a>.</p>
+<h3 id="mavp---moving-average-with-variable-period">MAVP - Moving average with variable period <a href="#mavp---moving-average-with-variable-period" class="anchor">🔗</a></h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">MAVP</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">periods</span><span class="p">,</span> <span class="n">minperiod</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">maxperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">matype</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">MAVP</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">periods</span><span class="p">,</span> <span class="n">minperiod</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">maxperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">matype</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="midpoint-midpoint-over-period">MIDPOINT - MidPoint over period</h3>
-<div class="highlight"><div class="chroma">
+</div><h3 id="midpoint---midpoint-over-period">MIDPOINT - MidPoint over period <a href="#midpoint---midpoint-over-period" class="anchor">🔗</a></h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">MIDPOINT</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">MIDPOINT</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the MidPoint over period at <a href="http://www.tadoc.org/indicator/MIDPOINT.htm">tadoc.org</a>.</p>
-
-<h3 id="midprice-midpoint-price-over-period">MIDPRICE - Midpoint Price over period</h3>
-<div class="highlight"><div class="chroma">
+</div><p>Learn more about the MidPoint over period at <a href="http://www.tadoc.org/indicator/MIDPOINT.htm">tadoc.org</a>.</p>
+<h3 id="midprice---midpoint-price-over-period">MIDPRICE - Midpoint Price over period <a href="#midprice---midpoint-price-over-period" class="anchor">🔗</a></h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">MIDPRICE</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">MIDPRICE</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Midpoint Price over period at <a href="http://www.tadoc.org/indicator/MIDPRICE.htm">tadoc.org</a>.</p>
-
-<h3 id="sar-parabolic-sar-抛物线指标">SAR - Parabolic SAR  抛物线指标</h3>
-
-<blockquote>
-<p>函数名：SAR<br />
-名称： 抛物线指标<br />
-简介：抛物线转向也称停损点转向，是利用抛物线方式，随时调整停损点位置以观察买卖点。由于停损点（又称转向点SAR）以弧形的方式移动，故称之为抛物线转向指标    。<br />
+</div><p>Learn more about the Midpoint Price over period at <a href="http://www.tadoc.org/indicator/MIDPRICE.htm">tadoc.org</a>.</p>
+<h3 id="sar---parabolic-sar--抛物线指标">SAR - Parabolic SAR  抛物线指标 <a href="#sar---parabolic-sar--%e6%8a%9b%e7%89%a9%e7%ba%bf%e6%8c%87%e6%a0%87" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：SAR<br>
+名称： 抛物线指标<br>
+简介：抛物线转向也称停损点转向，是利用抛物线方式，随时调整停损点位置以观察买卖点。由于停损点（又称转向点SAR）以弧形的方式移动，故称之为抛物线转向指标    。<br>
 <a href="https://baike.baidu.com/item/SAR/2771135#viewPageContent">百度百科</a>
 <a href="http://www.iwencai.com/yike/detail/auid/d9d94e65be7f6b5e">同花顺学院</a></p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">SAR</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">acceleration</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">SAR</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">acceleration</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Parabolic SAR at <a href="http://www.tadoc.org/indicator/SAR.htm">tadoc.org</a>.</p>
-
-<h3 id="sarext-parabolic-sar-extended">SAREXT - Parabolic SAR - Extended</h3>
-<div class="highlight"><div class="chroma">
+</div><p>Learn more about the Parabolic SAR at <a href="http://www.tadoc.org/indicator/SAR.htm">tadoc.org</a>.</p>
+<h3 id="sarext---parabolic-sar---extended">SAREXT - Parabolic SAR - Extended <a href="#sarext---parabolic-sar---extended" class="anchor">🔗</a></h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">SAREXT</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">startvalue</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">offsetonreverse</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">accelerationinitlong</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">accelerationlong</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">accelerationmaxlong</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">accelerationinitshort</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">accelerationshort</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">accelerationmaxshort</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">SAREXT</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">startvalue</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">offsetonreverse</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">accelerationinitlong</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">accelerationlong</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">accelerationmaxlong</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">accelerationinitshort</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">accelerationshort</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">accelerationmaxshort</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p><a href="/talib-doc/doc_index">文档 </a>
+</div><p><a href="/talib-doc/doc_index">文档 </a>
 <a href="/talib-doc/funcs">函数分组</a></p>
 
-  </div>
-</article>
-        </div>
-        <div id="gitalk-container"></div>
+    </div>
+
+    
+</section>
+
+
+                <hr>
+                
+
+<div id="gitalk-container"></div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2019-10-10 00:00:07 \x2b0800 CST',
+        id: '2019-10-10 00:00:07 \u002b0800 CST',
         title: '07 重叠研究指标(Overlap Studies Functions)',
         clientID: '72786bf87c19beec6abe',
         clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
@@ -442,57 +368,489 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
-      </div>
+            </div>
+        </div>
+
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     </main>
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        id: '2019-10-10 00:00:07 \u002b0800 CST',
+        title: '07 重叠研究指标(Overlap Studies Functions)',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+    });
+    gitalk.render('gitalk-container');
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by
+        gitalk.</a></noscript>
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
+    
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
-
-
-
-
-
-
-
-
+    
 </body>
+
 </html>

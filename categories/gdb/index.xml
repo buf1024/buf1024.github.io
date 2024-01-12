@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gdb on BUF1024!!!</title>
@@ -6,18 +6,86 @@
     <description>Recent content in gdb on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Apr 2015 17:12:10 +0000</lastBuildDate>
-    
-	<atom:link href="https://luoguochun.cn/categories/gdb/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 01 Apr 2015 17:12:10 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/categories/gdb/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>gdb一丢丢常见问题</title>
       <link>https://luoguochun.cn/post/2015-04-01-gdb-common-issue/</link>
       <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2015-04-01-gdb-common-issue/</guid>
-      <description>一、gdb 无法自动加载当前文件 .gdbinit文件 提示： warning: File &amp;ldquo;/home/heidong/privt/proj/osv6/.gdbinit&amp;rdquo; auto-loading has been declined by your `auto-load safe-path&amp;rsquo; set to &amp;ldquo;$debugdir:$datadir/auto-load&amp;rdquo;. To enable execution of this file add 1 add-auto-load-safe-path /home/heidong/privt/proj/osv6/.gdbinit line to your configuration file &amp;ldquo;/home/heidong/.gdbinit&amp;rdquo;. To completely disable this security protection add 1 set auto-load safe-path /</description>
+      <description>&lt;p&gt;一、gdb 无法自动加载当前文件 .gdbinit文件&lt;/p&gt;
+&lt;p&gt;提示：&lt;/p&gt;
+&lt;p&gt;warning: File &amp;ldquo;/home/heidong/privt/proj/osv6/.gdbinit&amp;rdquo; auto-loading has been declined by your `auto-load safe-path&amp;rsquo; set to &amp;ldquo;$debugdir:$datadir/auto-load&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;To enable execution of this file add&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;add-auto-load-safe-path /home/heidong/privt/proj/osv6/.gdbinit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;line to your configuration file &amp;ldquo;/home/heidong/.gdbinit&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;To completely disable this security protection add&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;set auto-load safe-path /
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;line to your configuration file &amp;ldquo;/home/heidong/.gdbinit&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;For more information about this security protection see the&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Auto-loading safe path&amp;rdquo; section in the GDB manual.  E.g., run from the shell:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;info &amp;quot;(gdb)Auto-loading safe path&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;解决：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;You can add the line:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;set auto-load safe-path /&lt;/p&gt;
+&lt;p&gt;To your home directory’s .gdbinit file. This will override ALL security and GDB will ALWAYS open a .gdbinit file if it finds one. If you are developing on your own machine, or a secure machine (however you would like to define that), then this is probably the quickest and easiest solution.&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;If you want to be a little more careful, you can add the directories individually to your home directory’s .gdbinit file:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;set auto-load safe-path /home/faye/workspace/todo/Debug&lt;/p&gt;
+&lt;p&gt;Or you can say that ALL sub-paths under your home directory are OK:&lt;/p&gt;
+&lt;p&gt;set auto-load safe-path /home/faye&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Finally, you can pass a path in on start-up:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;gdb -iex &amp;ldquo;set auto-load safe-path /path/to/.gdbinit/file&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;If you want to see all the trusted paths, just type:&lt;/p&gt;
+&lt;p&gt;show auto-load safe-path&lt;/p&gt;
+&lt;p&gt;二、printf打印不全&lt;/p&gt;
+&lt;p&gt;set print element 0&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;默认设置下，在调试多进程程序时GDB只会调试主进程。但是GDB（&amp;gt;V7.0）支持多进程的分别以及同时调试，换句话说，GDB可以同时调试多个程序。只需要设置follow-fork-mode(默认值：parent)和detach-on-fork（默认值：on）即可。&lt;/p&gt;
+&lt;p&gt;follow-fork-mode  detach-on-fork   说明&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;parent                   on               只调试主进程（GDB默认）&lt;/p&gt;
+&lt;p&gt;child                     on               只调试子进程&lt;/p&gt;
+&lt;p&gt;parent                   off              同时调试两个进程，gdb跟主进程，子进程block在fork位置&lt;/p&gt;
+&lt;p&gt;child                     off              同时调试两个进程，gdb跟子进程，主进程block在fork位置&lt;/p&gt;
+&lt;p&gt;设置方法：set follow-fork-mode [parent|child]   set detach-on-fork [on|off]&lt;/p&gt;
+&lt;p&gt;查询正在调试的进程：info inferiors&lt;/p&gt;
+&lt;p&gt;切换调试的进程： inferior&lt;/p&gt;
+&lt;p&gt;添加新的调试进程： add-inferior [-copies n] [-exec executable] ,可以用file executable来分配给inferior可执行文件。&lt;/p&gt;
+&lt;p&gt;其他：remove-inferiors infno， detach inferior&lt;/p&gt;
+&lt;p&gt;线程调试命令&lt;/p&gt;
+&lt;p&gt;(gdb)info threads&lt;/p&gt;
+&lt;p&gt;显示当前可调试的所有线程，每个线程会有一个GDB为其分配的ID，后面操作线程的时候会用到这个ID。&lt;/p&gt;
+&lt;p&gt;前面有*的是当前调试的线程。&lt;/p&gt;
+&lt;p&gt;(gdb)thread ID&lt;/p&gt;
+&lt;p&gt;切换当前调试的线程为指定ID的线程。&lt;/p&gt;
+&lt;p&gt;(gdb)thread apply ID1 ID2 command&lt;/p&gt;
+&lt;p&gt;让一个或者多个线程执行GDB命令command。&lt;/p&gt;
+&lt;p&gt;(gdb)thread apply all command&lt;/p&gt;
+&lt;p&gt;让所有被调试线程执行GDB命令command。&lt;/p&gt;
+&lt;p&gt;(gdb)set scheduler-locking off|on|step&lt;/p&gt;
+&lt;p&gt;估计是实际使用过多线程调试的人都可以发现，在使用step或者continue命令调试当前被调试线程的时候，其他线程也是同时执行的，怎么只让被调试程序执行呢？通过这个命令就可以实现这个需求。&lt;/p&gt;
+&lt;p&gt;off 不锁定任何线程，也就是所有线程都执行，这是默认值。&lt;/p&gt;
+&lt;p&gt;on 只有当前被调试程序会执行。&lt;/p&gt;
+&lt;p&gt;step 在单步的时候，除了next过一个函数的情况(熟悉情况的人可能知道，这其实是一个设置断点然后continue的行为)以外，只有当前线程会执行。&lt;/p&gt;
+&lt;p&gt;//显示线程堆栈信息&lt;/p&gt;
+&lt;p&gt;(gdb) bt&lt;/p&gt;
+&lt;p&gt;察看所有的调用栈&lt;/p&gt;
+&lt;p&gt;(gdb) f 3&lt;/p&gt;
+&lt;p&gt;调用框层次&lt;/p&gt;
+&lt;p&gt;(gdb) i locals&lt;/p&gt;
+&lt;p&gt;显示所有当前调用栈的所有变量。&lt;/p&gt;
+</description>
     </item>
     
   </channel>

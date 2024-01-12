@@ -1,193 +1,133 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>lwan http 服务器 - BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="简介 服务器端程序的设计模式一般比较固定，目前主要有两种主要的解决方式，一种多进程方式(进程池)，另外一种多线程的方式(线程池)(P.S:请忘" /><meta name="keywords" content="blog, computer, luoguochun" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/post/2017-04-28-lwan-http-server/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="lwan http 服务器" />
-<meta property="og:description" content="简介 服务器端程序的设计模式一般比较固定，目前主要有两种主要的解决方式，一种多进程方式(进程池)，另外一种多线程的方式(线程池)(P.S:请忘" />
+<title>lwan http 服务器 | BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/post/2017-04-28-lwan-http-server/">
+<meta name="description" content="简介 🔗服务器端程序的设计模式一般比较固定，目前主要有两种主要的解决方式，一种多进程方式(进程池)，另外一种多线程的方式(线程池)(P.S:请" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luoguochun.cn/post/2017-04-28-lwan-http-server/" /><meta property="article:published_time" content="2017-04-28T22:10:32&#43;00:00"/>
-<meta property="article:modified_time" content="2017-04-28T22:10:32&#43;00:00"/>
-
-<meta itemprop="name" content="lwan http 服务器">
-<meta itemprop="description" content="简介 服务器端程序的设计模式一般比较固定，目前主要有两种主要的解决方式，一种多进程方式(进程池)，另外一种多线程的方式(线程池)(P.S:请忘">
-
-
-<meta itemprop="datePublished" content="2017-04-28T22:10:32&#43;00:00" />
-<meta itemprop="dateModified" content="2017-04-28T22:10:32&#43;00:00" />
-<meta itemprop="wordCount" content="4399">
+<meta property="og:title" content="lwan http 服务器 | BUF1024!!!" />
+<meta property="og:url" content="https://luoguochun.cn/post/2017-04-28-lwan-http-server/" />
+<meta property="og:description" content="简介 🔗服务器端程序的设计模式一般比较固定，目前主要有两种主要的解决方式，一种多进程方式(进程池)，另外一种多线程的方式(线程池)(P.S:请" />
 
 
 
-<meta itemprop="keywords" content="http,c," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="lwan http 服务器"/>
-<meta name="twitter:description" content="简介 服务器端程序的设计模式一般比较固定，目前主要有两种主要的解决方式，一种多进程方式(进程池)，另外一种多线程的方式(线程池)(P.S:请忘"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">lwan http 服务器</h1>
+    <main class="main-wrapper">
 
-      <div class="post-meta">
-        <span class="post-time"> 2017-04-28 </span>
-        <div class="post-category">
-            <a href="/categories/http/"> http </a>
-            </div>
-          <span class="more-meta"> 约 4399 字 </span>
-          <span class="more-meta"> 预计阅读 9 分钟 </span>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
+
+<section class="single">
+    <h1 class="title">lwan http 服务器</h1>
+
+    <div class="tip">
+        <time datetime="2017-04-28 22:10:32 &#43;0000 UTC">2017/04/28</time>
+        <span class="split">·</span>
+        <span> 4406 words </span>
+        <span class="split">·</span>
+        <span>
+            9 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
         
-      </div>
-    </header>
+        <div>
+            Categories:
+            
+                <a href="/categories/http">http</a>
+            
+        </div>
+        
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-    <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#简介">简介</a></li>
-<li><a href="#大致工作流程">大致工作流程</a></li>
-<li><a href="#数据结构">数据结构</a></li>
-<li><a href="#协程coro">协程coro</a></li>
-<li><a href="#模块处理">模块处理</a></li>
-<li><a href="#配置文件">配置文件</a></li>
-<li><a href="#其他">其他</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/http">http</a>
+                
+                    <a href="/tags/c">c</a>
+                
+            </div>
+        
+    </div>
 
-<h3 id="简介">简介</h3>
+    <hr />
 
-<p>服务器端程序的设计模式一般比较固定，目前主要有两种主要的解决方式，一种多进程方式(进程池)，另外一种多线程的方式(线程池)(P.S:请忘掉一个连接或一个业务fork一个进程，或起一个线程的方式，系统开销太大)，两种方式都采用了非阻塞io，多路复用(P.S:linux平台为最高效的<code>epoll</code>，新型api，如<code>signalfd</code>, <code>timerfd</code>, <code>eventfd</code>等，也可以进行<code>epoll</code>)。</p>
-
+    <div class="content">
+        <h3 id="简介">简介 <a href="#%e7%ae%80%e4%bb%8b" class="anchor">🔗</a></h3><p>服务器端程序的设计模式一般比较固定，目前主要有两种主要的解决方式，一种多进程方式(进程池)，另外一种多线程的方式(线程池)(P.S:请忘掉一个连接或一个业务fork一个进程，或起一个线程的方式，系统开销太大)，两种方式都采用了非阻塞io，多路复用(P.S:linux平台为最高效的<code>epoll</code>，新型api，如<code>signalfd</code>, <code>timerfd</code>, <code>eventfd</code>等，也可以进行<code>epoll</code>)。</p>
 <p>对于多进程的模式，有些实现是，起一个主进程进行监听和管理，再起N个(N=cpu个数)业务进程，当主进程<code>accept</code>成功后，根据一定的业务逻辑，将fd发送到业务进程(P.S:发送方式用<code>socketpair</code>，参考：<a href="https://github.com/buf1024/reinvent-wheel/blob/master/common/sock.c">sock.c</a> <code>unix_domain_send_fd</code>和<code>unix_domain_recv_fd</code>)，业务进程对接收到到fd进行<code>epoll</code>。对于多进程，另外一些实现是，起N个(N=cpu个数)业务进程，同时N个进行地位同等，同时进行<code>epoll</code>，<code>listen</code>，<code>accept</code>等(P.S:多进行进行监听将引起群惊效应，但只有一个进程<code>accept</code>成功)。而多线程的模式，则和多进程模式类似，有一个主线程进行监听和管理，再起N个(N=cpu个数)业务线程，<strong>并将业务线程的调度级别设置为系统级别</strong>，这点非常重要，各个业务线程程进行进行<code>epoll</code>。</p>
-
 <p>多进程和多线程并无本质区别，多线程的优点个人看来，数据都在整个进程空间，线程内数据都可以共享，需要留意共享数据的互斥访问，缺点就是调试起来稍微麻烦，而多进程的优点在于个人看来，调试相对多线程方便，缺点就是不方便运维。(P.S:旧同事入职一家导航的公司，他们的网络框架就是多线程模式，而公司的，多数是多进程模式。旧同事提起，所以现在再回头看看<a href="https://github.com/lpereira/lwan">lwan</a>, 当时只是看，没记录下来，现在重新记录一下)</p>
-
 <p><a href="https://github.com/lpereira/lwan">lwan</a>是个非常轻量级的http服务器(P.S:检验你是否掌握了C语言的标准，是否能完整的实现一个http服务器)，代码量只有2W多行，比起成熟稳定的<a href="http://nginx.org/">nginx</a>代码量少太多了，当然功能也少很多。<a href="https://github.com/lpereira/lwan">lwan</a>在16年5月份左右一段时间在C语言项目排行榜star增加数排前列。个人觉得，<a href="https://github.com/lpereira/lwan">lwan</a>，它采用多线程模式，遵循了高并发服务设计的最基本模式，自己设计一个比较有特色的<a href="http://baike.baidu.com/link?url=3ojcT0gOp_oV_uDCAr0IYmAl6AziaFrQNodhpkS1DPpB7euef3LideO12NpZYhJWhuHYIw-2JqSlUUw_pvP9pa">trie</a>树的实现，可扩展的模块编写，同时创新的使用了协程（协程，自己在很久之前也关注过，参考: <a href="https://luoguochun.cn/2014/08/21/coroutine/">coroutine协程</a>），这是最大的特点。当然，到目前为止，它还不稳定，从自己关注提出的第一个issue, 还有很多BUG，代码有一些不好的风格（如相对比较多的<code>goto</code>语句，一言不合就<code>abort</code>）。尽管如此，它还是一个非常值得学习的web服务器。下面简单粗略回顾下<a href="https://github.com/lpereira/lwan">lwan</a>，详细了解的话，参考代码，自己也fork了一份，加了部分注释<a href="https://github.com/buf1024/lwan">lwan</a>。(P.S:自己叫别人去学习，没理由自己忘记了)</p>
-
-<h3 id="大致工作流程">大致工作流程</h3>
-
-<p><a href="https://github.com/bu24/lwan">lwan</a>的工作模式是非常典型的多线程模型，粗略画一下它的工作流程：
-<img src="/img/lwan/workflow.png" alt="lwan工作流程" />
+<h3 id="大致工作流程">大致工作流程 <a href="#%e5%a4%a7%e8%87%b4%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8b" class="anchor">🔗</a></h3><p><a href="https://github.com/bu24/lwan">lwan</a>的工作模式是非常典型的多线程模型，粗略画一下它的工作流程：
+<img src="/img/lwan/workflow.png" alt="lwan工作流程">
 <a href="https://github.com/bu24/lwan">lwan</a>总共包括，一个低级别的job线程，主要于资源清理，一个主线程，主要用于接收连接和分发连接，以及N(N可配置，一般等于CPU个数)个调度级别为进程级别的业务处理线程。<a href="https://github.com/bu24/lwan">lwan</a>进行线程初始化是，使用到了<code>pthread_barrier_*</code>这种数据结构，<code>pthread_barrier_*</code>其实只做且只能做一件事，就是充当栏杆（barrier意为栏杆)。形象的说就是把先后到达的多个线程挡在同一栏杆前，直到所有线程到齐，然后撤下栏杆同时放行。1）<code>init</code>函数负责指定要等待的线程个数；2） <code>wait</code>函数由每个线程主动调用，它告诉栏杆“我到起跑线前了”。<code>wait</code>执行末尾栏杆会检查是否所有人都到栏杆前了，如果是，栏杆就消失所有线程继续执行下一句代码；如果不是，则所有已到<code>wait</code>的线程停在该函数不动，剩下没执行到wait()的线程继续执行；3）<code>destroy</code>函数释放init申请的资源。</p>
-
 <p>job线程在每一次循环调用<code>sleep</code>类的函数，这类函数有个致命的缺点，那就是不能响应信号，这就是导致<a href="https://github.com/bu24/lwan">lwan</a>退出非常慢的原因。使用<code>pthread_cond_wait</code>可以避免该问题，已经修改，并进行了pull request：<a href="https://github.com/lpereira/lwan/pull/199">quick quit optimize</a>。业务处理线程里面全部使用协程进行处理。</p>
-
-<h3 id="数据结构">数据结构</h3>
-
-<p>一般程序，使用比较多的两个数据结构一个是<code>list</code>链表，另外一个是<code>hashtable</code>。<code>list</code>没有太多可讲的，而<code>hashtable</code>的实现，在这里可能也不是最优的。<code>hashtable</code>比较高效，而且经过大量检验的是redis的实现方式，推荐看这个，公司内部使用的库也是修改这个而来。网上对<a href="https://github.com/antirez/redis/blob/4.0/src/dict.c">dict.c</a>的分析很多，如：<a href="http://huangz.iteye.com/blog/1455808">Redis 源码分析（1）：字典和哈希表（dict.c 和 dict.h）</a>。这里不累赘了，大体来说：hash 的典型实现方法，定义一个假如长度为len的数组，每个数组里面为leaf的节点，leaf节点为一链表结构。插入和查询就是，先计算key的hash，hash值取模len，得出数据所在的位置，添加到leaf节点后（插入），或者在从leaf链表里面遍历（查询，由于hash冲突），得到最终的结果。redis的<code>dict</code>包括两个这个样的<code>hashtable</code>，首先插入数据从0号<code>hashtable</code>插入，插入时创建，当0号<code>hashtable</code>增长到一定的程度或比例，那么就会创建1号<code>hashtable</code>，并将0号<code>hashtable</code>迁移到这个<code>hashtable</code>，如果正在发生迁移，那么新插入的数据就会插入1号<code>hashtable</code>，0号到1号<code>hashtable</code>的迁移是分摊到<code>dict</code>的每个操作之中的，并非采用集中式的迁移。当0号<code>hashtable</code>全部迁移到1号<code>hashtable</code>时，那么将0号<code>hashtable</code>删除，并将1号<code>hashtable</code>变为0号<code>hashtable</code>，1号<code>hashtable</code>变为NULL。然后在重复这样一个过程。</p>
-
+<h3 id="数据结构">数据结构 <a href="#%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84" class="anchor">🔗</a></h3><p>一般程序，使用比较多的两个数据结构一个是<code>list</code>链表，另外一个是<code>hashtable</code>。<code>list</code>没有太多可讲的，而<code>hashtable</code>的实现，在这里可能也不是最优的。<code>hashtable</code>比较高效，而且经过大量检验的是redis的实现方式，推荐看这个，公司内部使用的库也是修改这个而来。网上对<a href="https://github.com/antirez/redis/blob/4.0/src/dict.c">dict.c</a>的分析很多，如：<a href="http://huangz.iteye.com/blog/1455808">Redis 源码分析（1）：字典和哈希表（dict.c 和 dict.h）</a>。这里不累赘了，大体来说：hash 的典型实现方法，定义一个假如长度为len的数组，每个数组里面为leaf的节点，leaf节点为一链表结构。插入和查询就是，先计算key的hash，hash值取模len，得出数据所在的位置，添加到leaf节点后（插入），或者在从leaf链表里面遍历（查询，由于hash冲突），得到最终的结果。redis的<code>dict</code>包括两个这个样的<code>hashtable</code>，首先插入数据从0号<code>hashtable</code>插入，插入时创建，当0号<code>hashtable</code>增长到一定的程度或比例，那么就会创建1号<code>hashtable</code>，并将0号<code>hashtable</code>迁移到这个<code>hashtable</code>，如果正在发生迁移，那么新插入的数据就会插入1号<code>hashtable</code>，0号到1号<code>hashtable</code>的迁移是分摊到<code>dict</code>的每个操作之中的，并非采用集中式的迁移。当0号<code>hashtable</code>全部迁移到1号<code>hashtable</code>时，那么将0号<code>hashtable</code>删除，并将1号<code>hashtable</code>变为0号<code>hashtable</code>，1号<code>hashtable</code>变为NULL。然后在重复这样一个过程。</p>
 <p><a href="http://baike.baidu.com/link?url=zKneAm7OsFA-2VblcQ21Grh7ZYBSnSkaycwjc9q1Z5IbMNU0tdaqi71hgVjx7ZrO81aKwVYdnOAqOGl3VbU3U_">trie</a>树是这里的另外一个重要的数据结构，很多web框架都严重依赖这种数据结构，个人觉得，这里实现的<code>trie</code>还是比较高效的：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C" data-lang="C"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -210,46 +150,38 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C" data-lang="C"><span class="c1">// trie数据结构定义
-</span><span class="c1"></span><span class="k">struct</span> <span class="n">lwan_trie_node</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">lwan_trie_node</span> <span class="o">*</span><span class="n">next</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
-    <span class="k">struct</span> <span class="n">lwan_trie_leaf</span> <span class="o">*</span><span class="n">leaf</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">ref_count</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span> <span class="n">lwan_trie_leaf</span> <span class="p">{</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">;</span>
-    <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">lwan_trie_leaf</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span> <span class="n">lwan_trie</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">lwan_trie_node</span> <span class="o">*</span><span class="n">root</span><span class="p">;</span>
-    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">free_node</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
-<span class="p">};</span>
-
-<span class="c1">//查找或插入时，就已经确认位置了    /* Traverse the trie, allocating nodes if necessary */
-</span><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="n">knode</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">trie</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span> <span class="o">*</span><span class="n">key</span><span class="p">;</span> <span class="n">knode</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[(</span><span class="kt">int</span><span class="p">)(</span><span class="o">*</span><span class="n">key</span><span class="o">++</span> <span class="o">&amp;</span> <span class="mi">7</span><span class="p">)])</span>
-        <span class="n">GET_NODE</span><span class="p">();</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="c1">// trie数据结构定义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="n">lwan_trie_node</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">lwan_trie_node</span> <span class="o">*</span><span class="n">next</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">lwan_trie_leaf</span> <span class="o">*</span><span class="n">leaf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ref_count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">lwan_trie_leaf</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">lwan_trie_leaf</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">lwan_trie</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">lwan_trie_node</span> <span class="o">*</span><span class="n">root</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">free_node</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//查找或插入时，就已经确认位置了    /* Traverse the trie, allocating nodes if necessary */
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="n">knode</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">trie</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span> <span class="o">*</span><span class="n">key</span><span class="p">;</span> <span class="n">knode</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[(</span><span class="kt">int</span><span class="p">)(</span><span class="o">*</span><span class="n">key</span><span class="o">++</span> <span class="o">&amp;</span> <span class="mi">7</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">GET_NODE</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>比如，5，58,12,123,1234,12345在内存的存储情况（简化，假设<code>struct lwan_trie_node *next[4]</code>）：
-<img src="/img/lwan/trie.png" alt="trie内存存储" /></p>
-
-<h3 id="协程coro">协程coro</h3>
-
-<p>业务处理线程里面全部使用协程进行处理的。协程应该属于<a href="https://github.com/bu24/lwan">lwan</a>的核心了。协程可以参考<a href="https://luoguochun.cn/2014/08/21/coroutine/">coroutine协程</a>，里面描述这里的有很大区别，但本质上都是都对<code>context</code>不同程度封装，或用汇编，或直接用系统函数。这里的coro定义了一个<code>struct coro_defer_array defer;</code>，用于<code>connection</code>超时或协程被清理时，内部资源的清理。具体协程不再详述。</p>
-
+</div><p>比如，5，58,12,123,1234,12345在内存的存储情况（简化，假设<code>struct lwan_trie_node *next[4]</code>）：
+<img src="/img/lwan/trie.png" alt="trie内存存储"></p>
+<h3 id="协程coro">协程coro <a href="#%e5%8d%8f%e7%a8%8bcoro" class="anchor">🔗</a></h3><p>业务处理线程里面全部使用协程进行处理的。协程应该属于<a href="https://github.com/bu24/lwan">lwan</a>的核心了。协程可以参考<a href="https://luoguochun.cn/2014/08/21/coroutine/">coroutine协程</a>，里面描述这里的有很大区别，但本质上都是都对<code>context</code>不同程度封装，或用汇编，或直接用系统函数。这里的coro定义了一个<code>struct coro_defer_array defer;</code>，用于<code>connection</code>超时或协程被清理时，内部资源的清理。具体协程不再详述。</p>
 <p>协程本身概念并不难复杂，如果熟悉这种编程模式，那么非阻塞编程模式将可以用顺序编程的方式来思考，对程序员的思考的角度和业务逻辑的理解将有很大的提升(非阻塞的方式时，当业务流程需要进行阻塞时，比如需要连接第三方系统请求数据，那么业务当前的状态可能需要保存下来，当第三方系统应答时，再恢复状态，进行下一步处理，这样，业务流程就变成一段一段的了)。但是协程并没有大规模的使用，<a href="http://blog.codingnow.com/">风云</a>也曾介绍过，在推广协成概念时，遇到了很多问题(具体出处已忘记)。</p>
-
-<p>使用协程必须适当评估程序<code>STACK</code>的大小，<a href="https://github.com/lpereira/lwan">lwan</a>里面是固定定义为<code>#define PTHREAD_STACK_MIN   16384</code>，协程分配的<code>STACK</code>为<code>((3 * (PTHREAD_STACK_MIN)) / 2)</code>或<code>#define CORO_STACK_MIN         (5 * (PTHREAD_STACK_MIN))</code>，这样那么如果在协程切换函数里面定义一个比较大的临时变量，如<code>char tmp[1024000]</code>那么程序必挂了，因为栈溢出了。所以使用协程需要考虑<code>STACK</code>或考虑动态分配内存，动态分配内存还需要考虑释放问题(参考 lwan-coro.c <code>coro_defer</code>)。另外一个问题是，程序coredump时，用gdb进行调试，发现用<code>bt</code>进行调用堆栈查看时，有部分是乱的，不方便问题定位。我想这些有可能是协程没有被大规模推广的原因之一吧？</p>
-
-<h3 id="模块处理">模块处理</h3>
-
-<p><a href="https://github.com/lpereira/lwan">lwan</a>通过模块进行自身的扩展，自己本身也实现了一些模块。<code>lwan-mod</code>开头的文件都是它的模块。个人编写模块，只有实现相关的函数，直接编译成动态库即可。</p>
+<p>使用协程必须适当评估程序<code>STACK</code>的大小，<a href="https://github.com/lpereira/lwan">lwan</a>里面是固定定义为<code>#define PTHREAD_STACK_MIN	16384</code>，协程分配的<code>STACK</code>为<code>((3 * (PTHREAD_STACK_MIN)) / 2)</code>或<code>#define CORO_STACK_MIN         (5 * (PTHREAD_STACK_MIN))</code>，这样那么如果在协程切换函数里面定义一个比较大的临时变量，如<code>char tmp[1024000]</code>那么程序必挂了，因为栈溢出了。所以使用协程需要考虑<code>STACK</code>或考虑动态分配内存，动态分配内存还需要考虑释放问题(参考 lwan-coro.c <code>coro_defer</code>)。另外一个问题是，程序coredump时，用gdb进行调试，发现用<code>bt</code>进行调用堆栈查看时，有部分是乱的，不方便问题定位。我想这些有可能是协程没有被大规模推广的原因之一吧？</p>
+<h3 id="模块处理">模块处理 <a href="#%e6%a8%a1%e5%9d%97%e5%a4%84%e7%90%86" class="anchor">🔗</a></h3><p><a href="https://github.com/lpereira/lwan">lwan</a>通过模块进行自身的扩展，自己本身也实现了一些模块。<code>lwan-mod</code>开头的文件都是它的模块。个人编写模块，只有实现相关的函数，直接编译成动态库即可。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C" data-lang="C"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -263,28 +195,25 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C" data-lang="C"><span class="c1">// 模块需实现函数，模块名可在配置文件进行配置，返回const struct lwan_module *结构体指针
-</span><span class="c1"></span><span class="k">const</span> <span class="k">struct</span> <span class="n">lwan_module</span> <span class="o">*</span><span class="nf">lwan_module_模块名</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
-<span class="cm">/*lwan 模块是函数名为 lwan_module_模块名的函数，内置模块使用-rdynamic编译进可执行程序内*/</span>
-<span class="k">struct</span> <span class="n">lwan_module</span> <span class="p">{</span>
-    <span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">prefix</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">args</span><span class="p">);</span>
-    <span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">init_from_hash</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">prefix</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">hash</span> <span class="o">*</span><span class="n">hash</span><span class="p">);</span>
-    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">shutdown</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span> 
-    <span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">parse_conf</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="k">struct</span> <span class="n">config</span> <span class="o">*</span><span class="n">config</span><span class="p">);</span>
-    <span class="c1">// http 请求处理函数
-</span><span class="c1"></span>    <span class="k">enum</span> <span class="nf">lwan_http_status</span> <span class="p">(</span><span class="o">*</span><span class="n">handle</span><span class="p">)(</span><span class="k">struct</span> <span class="n">lwan_request</span> <span class="o">*</span><span class="n">request</span><span class="p">,</span> <span class="k">struct</span> <span class="n">lwan_response</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
-    <span class="k">enum</span> <span class="n">lwan_handler_flags</span> <span class="n">flags</span><span class="p">;</span> <span class="c1">// 处理标志
-</span><span class="c1"></span><span class="p">};</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="c1">// 模块需实现函数，模块名可在配置文件进行配置，返回const struct lwan_module *结构体指针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="k">struct</span> <span class="n">lwan_module</span> <span class="o">*</span><span class="nf">lwan_module_模块名</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/*lwan 模块是函数名为 lwan_module_模块名的函数，内置模块使用-rdynamic编译进可执行程序内*/</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">lwan_module</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">prefix</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">args</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">init_from_hash</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">prefix</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">hash</span> <span class="o">*</span><span class="n">hash</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">shutdown</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">parse_conf</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="k">struct</span> <span class="n">config</span> <span class="o">*</span><span class="n">config</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// http 请求处理函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">enum</span> <span class="nf">lwan_http_status</span> <span class="p">(</span><span class="o">*</span><span class="n">handle</span><span class="p">)(</span><span class="k">struct</span> <span class="n">lwan_request</span> <span class="o">*</span><span class="n">request</span><span class="p">,</span> <span class="k">struct</span> <span class="n">lwan_response</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">enum</span> <span class="n">lwan_handler_flags</span> <span class="n">flags</span><span class="p">;</span> <span class="c1">// 处理标志
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>自己实现一个helloworld模块可参考：<a href="https://github.com/buf1024/lwan/blob/master/common/lwan-mod-helloworld.c">helloworld</a></p>
-
-<h3 id="配置文件">配置文件</h3>
-
-<p><a href="https://github.com/lpereira/lwan">lwan</a>提供的配置文件，并没有覆盖全部的配置，下面从代码中提取的配置文件，供参考下(见国不少开源项目采用这种配置格式，但貌似没有具体定义这是那种格式，所有自己叫这种格式为<code>tson</code>，并写了一个简单解析的代码，参考<a href="https://github.com/buf1024/reinvent-wheel/blob/master/common/tson.c">tson</a>)：</p>
+</div><p>自己实现一个helloworld模块可参考：<a href="https://github.com/buf1024/lwan/blob/master/common/lwan-mod-helloworld.c">helloworld</a></p>
+<h3 id="配置文件">配置文件 <a href="#%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="anchor">🔗</a></h3><p><a href="https://github.com/lpereira/lwan">lwan</a>提供的配置文件，并没有覆盖全部的配置，下面从代码中提取的配置文件，供参考下(见国不少开源项目采用这种配置格式，但貌似没有具体定义这是那种格式，所有自己叫这种格式为<code>tson</code>，并写了一个简单解析的代码，参考<a href="https://github.com/buf1024/reinvent-wheel/blob/master/common/tson.c">tson</a>)：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -355,124 +284,98 @@
 </span><span class="lnt">69
 </span><span class="lnt">70
 </span><span class="lnt">71
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">#true on yes    以及非0数值，被解析为true
-#false off no   以及非0数值，被解析为false
-
-# Timeout in seconds to keep a connection alive.
-keep_alive_timeout = 15
-
-# Set to true to not print any debugging messages. (Only effective in
-# release builds.)
-quiet = false
-
-# Set SO_REUSEPORT=1 in the master socket.
-reuse_port = true
-
-# Disable HAProxy&#39;s PROXY protocol by default. Only enable if needed.
-proxy_protocol = false
-
-allow_cors=false
-
-# Value of &#34;Expires&#34; header. Default is 1 month and 1 week.
-expires = 1M 1w
-
-#error_template = error.html
-
-# post 数据大小，最多为128m
-max_post_data_size=40960000
-
-allow_temp_files=true
-
-# Number of I/O threads. Default (0) is number of online CPUs.
-threads = 0
-
-#需要root用户，或者有root权限的用户执行， 该section必须在所以listener之前
-#straitjacket {
-#  # 切换运行改程序的用户
-#  user = heidong
-#  # 程序运行的根目录
-#  chroot = /home/heidong
-#}
-
-# section解析  ip:port
-listener *:8080 {
-    # 配置三种方式 1. prefix 路径 1. &amp;handler 路径 3. module 路径。 只有配置为module的，方有回调函数读里面配置项目
-    #prefix / {
-    #        #handler和module只能是一个, module 为函数名为 lwan_module_{module_name}的模块
-    #        module = module_name
-    #        #handler 函数原型 lwan_http_status_t (*handler)(lwan_request_t *request, lwan_response_t *response, void *data);
-    #        handler  = handler_symbol
-    #        authorization basic {     #目前只支持basic
-    #            realm=value #默认Lwan
-    #            passowrd_file=file #默认htpasswd
-    #        }
-    #}
-    # 配置handler
-    #&amp;handler / {
-    #}
-    serve_files / {
-            path = ./
-
-            # When requesting for file.ext, look for a smaller/newer file.ext.gz,
-            # and serve that instead if `Accept-Encoding: gzip` is in the
-            # request headers.
-            serve precompressed files = true
-            
-
-            # 配置该section后，必须授权才可访问该url
-            authorization basic {     #目前只支持basic
-                realm=测试测试 #默认Lwan
-                password_file=/home/heidong/privt/proj/lwan/htpasswd.conf #默认htpasswd，数据格式为：用户名=密码
-            }
-    }
-}</pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#true on yes    以及非0数值，被解析为true
+</span></span><span class="line"><span class="cl">#false off no   以及非0数值，被解析为false
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Timeout in seconds to keep a connection alive.
+</span></span><span class="line"><span class="cl">keep_alive_timeout = 15
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Set to true to not print any debugging messages. (Only effective in
+</span></span><span class="line"><span class="cl"># release builds.)
+</span></span><span class="line"><span class="cl">quiet = false
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Set SO_REUSEPORT=1 in the master socket.
+</span></span><span class="line"><span class="cl">reuse_port = true
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Disable HAProxy&#39;s PROXY protocol by default. Only enable if needed.
+</span></span><span class="line"><span class="cl">proxy_protocol = false
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">allow_cors=false
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Value of &#34;Expires&#34; header. Default is 1 month and 1 week.
+</span></span><span class="line"><span class="cl">expires = 1M 1w
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#error_template = error.html
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># post 数据大小，最多为128m
+</span></span><span class="line"><span class="cl">max_post_data_size=40960000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">allow_temp_files=true
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Number of I/O threads. Default (0) is number of online CPUs.
+</span></span><span class="line"><span class="cl">threads = 0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#需要root用户，或者有root权限的用户执行， 该section必须在所以listener之前
+</span></span><span class="line"><span class="cl">#straitjacket {
+</span></span><span class="line"><span class="cl">#  # 切换运行改程序的用户
+</span></span><span class="line"><span class="cl">#  user = heidong
+</span></span><span class="line"><span class="cl">#  # 程序运行的根目录
+</span></span><span class="line"><span class="cl">#  chroot = /home/heidong
+</span></span><span class="line"><span class="cl">#}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># section解析  ip:port
+</span></span><span class="line"><span class="cl">listener *:8080 {
+</span></span><span class="line"><span class="cl">    # 配置三种方式 1. prefix 路径 1. &amp;handler 路径 3. module 路径。 只有配置为module的，方有回调函数读里面配置项目
+</span></span><span class="line"><span class="cl">    #prefix / {
+</span></span><span class="line"><span class="cl">    #        #handler和module只能是一个, module 为函数名为 lwan_module_{module_name}的模块
+</span></span><span class="line"><span class="cl">    #        module = module_name
+</span></span><span class="line"><span class="cl">    #        #handler 函数原型 lwan_http_status_t (*handler)(lwan_request_t *request, lwan_response_t *response, void *data);
+</span></span><span class="line"><span class="cl">    #        handler  = handler_symbol
+</span></span><span class="line"><span class="cl">    #        authorization basic {     #目前只支持basic
+</span></span><span class="line"><span class="cl">    #            realm=value #默认Lwan
+</span></span><span class="line"><span class="cl">    #            passowrd_file=file #默认htpasswd
+</span></span><span class="line"><span class="cl">    #        }
+</span></span><span class="line"><span class="cl">    #}
+</span></span><span class="line"><span class="cl">    # 配置handler
+</span></span><span class="line"><span class="cl">    #&amp;handler / {
+</span></span><span class="line"><span class="cl">    #}
+</span></span><span class="line"><span class="cl">    serve_files / {
+</span></span><span class="line"><span class="cl">            path = ./
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            # When requesting for file.ext, look for a smaller/newer file.ext.gz,
+</span></span><span class="line"><span class="cl">            # and serve that instead if `Accept-Encoding: gzip` is in the
+</span></span><span class="line"><span class="cl">            # request headers.
+</span></span><span class="line"><span class="cl">            serve precompressed files = true
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            # 配置该section后，必须授权才可访问该url
+</span></span><span class="line"><span class="cl">            authorization basic {     #目前只支持basic
+</span></span><span class="line"><span class="cl">                realm=测试测试 #默认Lwan
+</span></span><span class="line"><span class="cl">                password_file=/home/heidong/privt/proj/lwan/htpasswd.conf #默认htpasswd，数据格式为：用户名=密码
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="其他">其他</h3>
-
-<p>这里只是简单过一些lwan最基本的东西，没有详细的过里面的其他方面，仔细分析的话还有很多东西可以学，这里不再罗列了，暂时先这样。</p>
+</div><h3 id="其他">其他 <a href="#%e5%85%b6%e4%bb%96" class="anchor">🔗</a></h3><p>这里只是简单过一些lwan最基本的东西，没有详细的过里面的其他方面，仔细分析的话还有很多东西可以学，这里不再罗列了，暂时先这样。</p>
 
     </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">buf1024</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2017-04-28</span>
-  </p>
-  
-  
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/http/">http</a>
-          <a href="/tags/c/">c</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/2017-05-01-gcc-missing/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">GCC不常见，但有用特别选项</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/2017-04-20-weixin-web-proto/">
-            <span class="next-text nav-default">微信web通信协议</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        <div id="gitalk-container"></div>
+    
+</section>
+
+
+                <hr>
+                
+
+<div id="gitalk-container"></div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2017-04-28 22:10:32 \x2b0000 UTC',
+        id: '2017-04-28 22:10:32 \u002b0000 UTC',
         title: 'lwan http 服务器',
         clientID: '72786bf87c19beec6abe',
         clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
@@ -485,57 +388,489 @@ listener *:8080 {
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
-      </div>
+            </div>
+        </div>
+
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     </main>
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        id: '2017-04-28 22:10:32 \u002b0000 UTC',
+        title: 'lwan http 服务器',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+    });
+    gitalk.render('gitalk-container');
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by
+        gitalk.</a></noscript>
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
+    
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
-
-
-
-
-
-
-
-
+    
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on BUF1024!!!</title>
@@ -6,10 +6,67 @@
     <description>Recent content in linux on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 28 Jul 2014 14:57:18 +0000</lastBuildDate>
-    
-	<atom:link href="https://luoguochun.cn/categories/linux/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Mon, 01 Oct 2018 10:54:00 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>防火墙放开端口</title>
+      <link>https://luoguochun.cn/post/2018-10-01-firewall-cmd/</link>
+      <pubDate>Mon, 01 Oct 2018 10:54:00 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2018-10-01-firewall-cmd/</guid>
+      <description>&lt;p&gt;firewall-cmd &amp;ndash;permanent &amp;ndash;zone=public &amp;ndash;add-port=8484/tcp&lt;/p&gt;
+&lt;p&gt;&amp;ndash;zone #作用域&lt;/p&gt;
+&lt;p&gt;&amp;ndash;add-port=8484/tcp #添加端口，格式为：端口/通讯协议&lt;/p&gt;
+&lt;p&gt;&amp;ndash;permanent #永久生效，没有此参数重启后失效&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;reload&lt;/p&gt;
+&lt;p&gt;1、firewalld的基本使用&lt;/p&gt;
+&lt;p&gt;启动： systemctl start firewalld&lt;/p&gt;
+&lt;p&gt;查看状态： systemctl status firewalld&lt;/p&gt;
+&lt;p&gt;停止： systemctl disable firewalld&lt;/p&gt;
+&lt;p&gt;禁用： systemctl stop firewalld&lt;/p&gt;
+&lt;p&gt;2.systemctl是CentOS7的服务管理工具中主要的工具，它融合之前service和chkconfig的功能于一体。&lt;/p&gt;
+&lt;p&gt;启动一个服务：systemctl start firewalld.service&lt;/p&gt;
+&lt;p&gt;关闭一个服务：systemctlstop firewalld.service&lt;/p&gt;
+&lt;p&gt;重启一个服务：systemctlrestart firewalld.service&lt;/p&gt;
+&lt;p&gt;显示一个服务的状态：systemctlstatus firewalld.service&lt;/p&gt;
+&lt;p&gt;在开机时启用一个服务：systemctlenable firewalld.service&lt;/p&gt;
+&lt;p&gt;在开机时禁用一个服务：systemctldisable firewalld.service&lt;/p&gt;
+&lt;p&gt;查看服务是否开机启动：systemctlis-enabled firewalld.service&lt;/p&gt;
+&lt;p&gt;查看已启动的服务列表：systemctllist-unit-files|grep enabled&lt;/p&gt;
+&lt;p&gt;查看启动失败的服务列表：systemctl&amp;ndash;failed&lt;/p&gt;
+&lt;p&gt;3.配置firewalld-cmd&lt;/p&gt;
+&lt;p&gt;查看版本： firewall-cmd &amp;ndash;version&lt;/p&gt;
+&lt;p&gt;查看帮助： firewall-cmd &amp;ndash;help&lt;/p&gt;
+&lt;p&gt;显示状态： firewall-cmd &amp;ndash;state&lt;/p&gt;
+&lt;p&gt;查看所有打开的端口： firewall-cmd&amp;ndash;zone=public &amp;ndash;list-ports&lt;/p&gt;
+&lt;p&gt;更新防火墙规则： firewall-cmd &amp;ndash;reload&lt;/p&gt;
+&lt;p&gt;查看区域信息:  firewall-cmd&amp;ndash;get-active-zones&lt;/p&gt;
+&lt;p&gt;查看指定接口所属区域： firewall-cmd&amp;ndash;get-zone-of-interface=eth0&lt;/p&gt;
+&lt;p&gt;拒绝所有包：firewall-cmd &amp;ndash;panic-on&lt;/p&gt;
+&lt;p&gt;取消拒绝状态： firewall-cmd &amp;ndash;panic-off&lt;/p&gt;
+&lt;p&gt;查看是否拒绝： firewall-cmd &amp;ndash;query-panic&lt;/p&gt;
+&lt;p&gt;那怎么开启一个端口呢&lt;/p&gt;
+&lt;p&gt;添加&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;zone=public &amp;ndash;add-port=80/tcp &amp;ndash;permanent   （&amp;ndash;permanent永久生效，没有此参数重启后失效）&lt;/p&gt;
+&lt;p&gt;重新载入&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;reload&lt;/p&gt;
+&lt;p&gt;查看&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;zone=public &amp;ndash;query-port=80/tcp&lt;/p&gt;
+&lt;p&gt;删除&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;zone=public &amp;ndash;remove-port=80/tcp &amp;ndash;permanent&lt;/p&gt;
+&lt;p&gt;查看firewall是否运行,下面两个命令都可以&lt;/p&gt;
+&lt;p&gt;systemctl status firewalld.service&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;state&lt;/p&gt;
+&lt;p&gt;查看当前开了哪些端口&lt;/p&gt;
+&lt;p&gt;其实一个服务对应一个端口，每个服务对应/usr/lib/firewalld/services下面一个xml文件。&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;list-services&lt;/p&gt;
+&lt;p&gt;查看还有哪些服务可以打开&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;get-services&lt;/p&gt;
+&lt;p&gt;查看所有打开的端口：&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;zone=public &amp;ndash;list-ports&lt;/p&gt;
+&lt;p&gt;更新防火墙规则：&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;reload&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>linux /proc 伪文件系统</title>
@@ -17,7 +74,264 @@
       <pubDate>Mon, 28 Jul 2014 14:57:18 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/</guid>
-      <description>linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一</description>
+      <description>&lt;p&gt;linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(&lt;strong&gt;未完待续&lt;/strong&gt;)。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;/proc/[pid]&lt;/em&gt;&lt;br&gt;
+每一个正在运行的进程都对应有这样一个伪目录，目录名为该进程的pid。每个伪目录下面都有以下伪文件或伪目录:&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/auxv&lt;br&gt;
+包含ELF解析信息（ELF就是linux系统二进制可执行文件的文件格式），&lt;code&gt;auxv&lt;/code&gt; 是 AUXiliary Vector简写。每个条目的格式就是:一个&lt;code&gt;unsigned long&lt;/code&gt;ID加上一个&lt;code&gt;unsigned long&lt;/code&gt;数值。这个AUXV是什么意思呢？ 我们可以通过加上&lt;code&gt;LD_SHOW_AUXV=1 程序名&lt;/code&gt;可以获取具体的数值:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM 2218]$ LD_SHOW_AUXV=1 /bin/sh         
+    AT_SYSINFO_EHDR: 0x7fff173d8000        
+    AT_HWCAP:        178bf3ff         
+    AT_PAGESZ:       4096         
+    AT_CLKTCK:       100         
+    AT_PHDR:         0x400040         
+    AT_PHENT:        56         
+    AT_PHNUM:        9         
+    AT_BASE:         0x7fd32ed59000         
+    AT_FLAGS:        0x0         
+    AT_ENTRY:        0x41aef0         
+    AT_UID:          500         
+    AT_EUID:         500         
+    AT_GID:          500         
+    AT_EGID:         500         
+    AT_SECURE:       0         
+    AT_RANDOM:       0x7fff17230579         
+    AT_EXECFN:       /bin/sh         
+    AT_PLATFORM:     x86_64         
+    sh-4.1$          
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对应的&lt;code&gt;AT_*&lt;/code&gt;的含义可在&lt;code&gt;/usr/include/elf.h&lt;/code&gt;找到。&lt;br&gt;
+相关参考: &lt;a href=&#34;http://www.linuxquestions.org/questions/linux-kernel-70/what-does-proc-pid-auxv-mean-exactly-4175421876/&#34;&gt;What does /proc/PID/auxv mean exactly?&lt;/a&gt; 和 &lt;a href=&#34;http://lenky.info/archives/2013/02/2203&#34;&gt;关于ELF的辅助向量&lt;/a&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;/proc/[pid]/cmdline&lt;/em&gt;&lt;br&gt;
+包含非僵死进程的命令行启动参数，该文件包含&lt;code&gt;&amp;quot;\0&amp;quot;&lt;/code&gt;。如:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM 2238]$ cat cmdline         
+    bash[heidong@HEIDONGVM 2238]$          
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;/proc/[pid]/coredump_filter&lt;/em&gt;&lt;br&gt;
+用于控制哪些内存段写入到core文件，16进制显示，是与&lt;code&gt;mmap&lt;/code&gt;映射类型的位掩码。默认0,1,4,5(如果内核编译时定义CONFIG_CORE_DUMP_DEFAULT_ELF_HEADERS)，所以默认值是33。掩码含义是：&lt;br&gt;
+bit 0 dump匿名私有映射.&lt;br&gt;
+bit 1 dump匿名共享映射.&lt;br&gt;
+bit 2 dump基于文件的私有映射.&lt;br&gt;
+bit 3 dump基于文件的共享映射.&lt;br&gt;
+bit 4(linux 2.6.24) dump elf 头.&lt;br&gt;
+bit 5(linux 2.6.28) dump私有页面(private huge pages).
+bit 6(linux 2.6.28) dump共享页面(shared huge pages).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/cpuset&lt;br&gt;
+// todo&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/cwd&lt;br&gt;
+进程当前工作目录的软连接。对于多线程的程序，如果主线程退出或挂掉了，子线程还存在，这个连接时无效的。去到当前工作目录：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    $ cd /proc/20/cwd; /bin/pwd          
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;/proc/[pid]/environ&lt;/em&gt;&lt;br&gt;
+进程环境变量，每个条目都是以&lt;code&gt;&amp;quot;\0&amp;quot;&lt;/code&gt;结束。可用这种方法显示:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM 2238]$ (cat /proc/2238/environ; echo) | tr &#39;\000&#39; &#39;\n&#39;        
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/exe&lt;br&gt;
+进程可执行文件在软连接。对于多线程的程序，如果主线程退出或挂掉了，子线程还存在，这个连接时无效的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;/proc/[pid]/fd/&lt;/em&gt;&lt;br&gt;
+打开文件文件描述符目录在连接。对于多线程的程序，如果主线程退出或挂掉了，子线程还存在，这个连接时无效的。&lt;code&gt;/proc/self/fd/N&lt;/code&gt;和&lt;code&gt;/dev/fd/N&lt;/code&gt;是一样在。补充说明，对于只知道fd怎么找对于的文件呢？答案是很简单的，直接用&lt;code&gt;readlink&lt;/code&gt;函数，查看对于该目录下文件的连接就可以了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/fdinfo/&lt;br&gt;
+这个目录是和/proc/[pid]/fd/对应的，就是对于没个文件的当前偏移和打开标示。如:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM fdinfo]$ cat 165        
+    pos:	0        
+    flags:	0100002        
+    [heidong@HEIDONGVM fdinfo]$        
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/limits&lt;br&gt;
+limits信息。和&lt;code&gt;getrlimit&lt;/code&gt;获取的信息是一样的。如:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM 3500]$ cat limits         
+    Limit                     Soft Limit           Hard Limit           Units     
+    Max cpu time              unlimited            unlimited            seconds   
+    Max file size             unlimited            unlimited            bytes     
+    Max data size             unlimited            unlimited            bytes     
+    Max stack size            10485760             unlimited            bytes     
+    Max core file size        unlimited            unlimited            bytes     
+    Max resident set          unlimited            unlimited            bytes     
+    Max processes             1024                 14864                processes 
+    Max open files            4096                 4096                 files     
+    Max locked memory         65536                65536                bytes     
+    Max address space         unlimited            unlimited            bytes     
+    Max file locks            unlimited            unlimited            locks     
+    Max pending signals       14864                14864                signals   
+    Max msgqueue size         819200               819200               bytes     
+    Max nice priority         0                    0                    
+    Max realtime priority     0                    0                    
+    Max realtime timeout      unlimited            unlimited            us        
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/maps&lt;br&gt;
+内存映射的地址和权限。如:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM 3890]$ cat maps 
+    00400000-00410000 r-xp 00000000 fd:00 1072484                            /usr/bin/groff
+    0060f000-00610000 rw-p 0000f000 fd:00 1072484                            /usr/bin/groff
+    00610000-00614000 rw-p 00000000 00:00 0 
+    0080f000-00811000 rw-p 0000f000 fd:00 1072484                            /usr/bin/groff
+    01c6f000-01c90000 rw-p 00000000 00:00 0                                  [heap]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/mem&lt;br&gt;
+进程对应的内存，可以通过&lt;code&gt;open&lt;/code&gt;, &lt;code&gt;read&lt;/code&gt;, &lt;code&gt;lseek&lt;/code&gt;访问。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/apm&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/bus&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/cmdline&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/config.gz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/cpuinfo&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/devices&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/diskstats&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/dma&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/driver&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/execdomains&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/fb&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/filesystems&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/fs&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/ide&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/interrupts&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/iomem&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/ioports&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/kallsyms&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/kcore&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/kmsg&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/ksyms&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/loadavg&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/locks&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/malloc&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/meminfo&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/modules&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/mounts&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/mtrr&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/net&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/partitions&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/pci&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/scsi&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/self&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/slabinfo&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/stat&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/swaps&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/sys&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/sysrq-trigger&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/sysvipc&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/tty&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/uptime&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/version&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/vmstat&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/zoneinfo&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -26,7 +340,190 @@
       <pubDate>Fri, 31 May 2013 17:08:14 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2013-05-31-linux-gcov/</guid>
-      <description>代码覆盖率是单元测试的一个指标，通常覆盖率越高，单元测试就做得更完备。（然而，覆盖率是不是和软件质量成正比关系呢？）gcov是GNU工具链中</description>
+      <description>&lt;p&gt;代码覆盖率是单元测试的一个指标，通常覆盖率越高，单元测试就做得更完备。（然而，覆盖率是不是和软件质量成正比关系呢？）gcov是GNU工具链中的一个重要的工具，虽然gcov是覆盖率很好的工具，但是gcov的更重要的应用是性能的调优。gcov通过监视程序的执行，从而确定某行代码有没有执行，执行了多少次。gcov的报告是基于文本的格式的，看起来是比较难看点。但是，有个叫lcov的工具，将gcov的报告格式转换为html的直观形式，后面介绍。&lt;/p&gt;
+&lt;p&gt;gcov使用：&lt;/p&gt;
+&lt;p&gt;如有以下代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;     1:  #include &amp;lt;stdio.h&amp;gt;
+     2:   
+     3:  void bubbleSort( int list[], int size )
+     4:  {
+     5:      int i, j, temp, swap = 1;
+     6:   
+     7:      while (swap) {
+     8:   
+     9:          swap = 0;
+    10:   
+    11:          for ( i = (size-1) ; i &amp;gt;= 0 ; i-- ) {
+    12:   
+    13:              for ( j = 1 ; j &amp;lt;= i ; j++ ) {
+    14:   
+    15:                  if ( list[j-1] &amp;gt; list[j] ) {
+    16:   
+    17:                      temp = list[j-1];
+    18:                      list[j-1] = list[j];
+    19:                      list[j] = temp;
+    20:                      swap = 1;
+    21:   
+    22:                  }
+    23:   
+    24:              }
+    25:   
+    26:          }
+    27:   
+    28:      }
+    29:   
+    30:   
+    31:  }
+    32:   
+    33:  int main()
+    34:  {
+    35:      int theList[10]={10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    36:      int i;
+    37:   
+    38:      /* Invoke the bubble sort algorithm */
+    39:      bubbleSort( theList, 10 );
+    40:   
+    41:      /* Print out the final list */
+    42:      for (i = 0 ; i &amp;lt; 10 ; i++) { 
+    43:          printf(&amp;quot;%d\n&amp;quot;, theList[i]);
+    44:      }
+    45:      if(i == 0){
+    46:          printf(&amp;quot;i = 0\n&amp;quot;);
+    47:      }else{
+    48:          printf(&amp;quot;i != 0\n&amp;quot;);
+    49:      }
+    50:   
+    51:  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;编译程序是增加 -ftest-coverage -fprofile-arcs 选项。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; [heidong@HEIDONGVM gcov]$ gcc -o bbsort bbsort.c -ftest-coverage -fprofile-arcs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;生成.gcno文件。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;执行程序，将生成.gcda文件，用gcov程序检查相应的源代码文件，将生成结果文件。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; [heidong@HEIDONGVM gcov]$ ./bbsort 
+ 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ i != 0 
+ [heidong@HEIDONGVM gcov]$ gcov bbsort.c 
+ File‘bbsort.c’ 
+ 已执行的行数：95.24% (共 21 行) 
+ bbsort.c：正在创建‘bbsort.c.gcov
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检查相应的结果文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; [heidong@HEIDONGVM gcov]$ cat bbsort.c.gcov 
+         -:    0:Source:bbsort.c
+         -:    0:Graph:bbsort.gcno
+         -:    0:Data:bbsort.gcda
+         -:    0:Runs:1
+         -:    0:Programs:1
+         -:    1:#include &amp;lt;stdio.h&amp;gt;
+         -:    2:
+         1:    3:void bubbleSort( int list[], int size )
+         -:    4:{
+         1:    5:    int i, j, temp, swap = 1;
+         -:    6:
+         4:    7:    while (swap) {
+         -:    8:
+         2:    9:        swap = 0;
+         -:   10:
+        22:   11:        for ( i = (size-1) ; i &amp;gt;= 0 ; i-- ) {
+         -:   12:
+       110:   13:            for ( j = 1 ; j &amp;lt;= i ; j++ ) {
+         -:   14:
+        90:   15:                if ( list[j-1] &amp;gt; list[j] ) {
+         -:   16:
+        45:   17:                    temp = list[j-1];
+        45:   18:                    list[j-1] = list[j];
+        45:   19:                    list[j] = temp;
+        45:   20:                    swap = 1;
+         -:   21:
+         -:   22:                }
+         -:   23:
+         -:   24:            }
+         -:   25:
+         -:   26:        }
+         -:   27:
+         -:   28:    }
+         -:   29:
+         -:   30:
+         1:   31:}
+         -:   32:
+         1:   33:int main()
+         -:   34:{
+         1:   35:    int theList[10]={10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+         -:   36:    int i;
+         -:   37:
+         -:   38:    /* Invoke the bubble sort algorithm */
+         1:   39:    bubbleSort( theList, 10 );
+         -:   40:
+         -:   41:    /* Print out the final list */
+        11:   42:    for (i = 0 ; i &amp;lt; 10 ; i++) { 
+        10:   43:        printf(&amp;quot;%d\n&amp;quot;, theList[i]);
+         -:   44:    }
+         1:   45:    if(i == 0){
+     #####:   46:        printf(&amp;quot;i = 0\n&amp;quot;);
+         -:   47:    }else{
+         1:   48:        printf(&amp;quot;i != 0\n&amp;quot;);
+         -:   49:    }
+         -:   50:
+         1:   51:}
+         -:   52:
+ [heidong@HEIDONGVM gcov]$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;可以看到某行执行了多少次，哪些行没有执行过（####标示）。gcov 还可以检查其他很多的信息，如分支，函数等，详细参考gcov的帮助文档，并测试之。&lt;/p&gt;
+&lt;p&gt;对于文本格式，相信很多人的觉得不是很直观，于是便有了lcov这个工具，它可以算是gcov的前端工具，这样生成html文件，可以很直观的看到代码覆盖情况。&lt;/p&gt;
+&lt;p&gt;lcov不是标准的unix/linux工具，需要下载，地址是：ltp.sourceforge.net/coverage/lcov.php 注意要FQ才可以访问。&lt;/p&gt;
+&lt;p&gt;使用方式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;执行完gcov的步骤后，执行下列命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; [heidong@HEIDONGVM gcov]$ lcov --capture --directory ./  --output-file bbsort.info 
+ Capturing coverage data from ./ 
+ Found gcov version: 4.4.6 
+ Scanning ./ for .gcda files ... 
+ Found 1 data files in ./ 
+ Processing bbsort.gcda 
+ Finished .info-file creation
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生成html文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; [heidong@HEIDONGVM gcov]$ genhtml bbsort.info --output-directory ./lcov/ 
+ Reading data file bbsort.info 
+ Found 1 entries. 
+ Found common filename prefix &amp;quot;/home/heidong/tmp&amp;quot; 
+ Writing .css and .png files. 
+ Generating output. 
+ Processing file gcov/bbsort.c 
+ Writing directory view page. 
+ Overall coverage rate: 
+   lines......: 95.2% (20 of 21 lines) 
+   functions..: 100.0% (2 of 2 functions
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;看下生成的html文件：
+&lt;img src=&#34;https://luoguochun.cn/img/gcov/gcov.jpg&#34; alt=&#34;html report&#34;&gt;&lt;br&gt;
+完毕。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -35,7 +532,43 @@
       <pubDate>Wed, 29 May 2013 22:37:14 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2013-05-29-linux-pkg-config/</guid>
-      <description>pkg-config主要的作用是提供编译和连接到软件库的信息的。 如，典型的用法： 1 2 [heidong@HEIDONGVM bin]$ pkg-config --cflags --libs libevent -I/usr/local/include -L/usr/local/lib -levent 将显示包含头文件和连接的信息。 那么pk</description>
+      <description>&lt;p&gt;pkg-config主要的作用是提供编译和连接到软件库的信息的。&lt;/p&gt;
+&lt;p&gt;如，典型的用法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM bin]$ pkg-config --cflags --libs libevent 
+    -I/usr/local/include  -L/usr/local/lib -levent
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将显示包含头文件和连接的信息。&lt;/p&gt;
+&lt;p&gt;那么pkg-config是如何获取得这些信息的呢？&lt;/p&gt;
+&lt;p&gt;pkg-config 是从xxx.pc的文件里面取的软件包的信息，如上面的例子，libevent.pc&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM bin]$ cat /usr/local/lib/pkgconfig/libevent.pc 
+    #libevent pkg-config source file
+    
+    prefix=/usr/local 
+    exec_prefix=${prefix} 
+    libdir=${exec_prefix}/lib 
+    includedir=${prefix}/include
+    
+    Name: libevent 
+    Description: libevent is an asynchronous notification event loop library 
+    Version: 2.0.17-stable 
+    Requires: 
+    Conflicts: 
+    Libs: -L${libdir} -levent 
+    Libs.private: -lrt 
+    Cflags: -I${includedir}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可见，pkg-config里面主要包含了包含头文件，连接库的信息。在本例子中，Requires就空的，如果非空，cfalgs, libs将添加相应的依赖项。&lt;/p&gt;
+&lt;p&gt;那么pkg-config是从哪里搜索这些文件的呢？&lt;/p&gt;
+&lt;p&gt;首先pkg-config会从自己标准的搜索目录（如/usr/lib/pkgconfig/）和PKG_CONFIG_PATH环境变量目录寻找。&lt;br&gt;
+如果寻找不到，会输出这样的信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM bin]$ pkg-config --libs qt 
+    Package qt was not found in the pkg-config search path. 
+    Perhaps you should add the directory containing `qt.pc&#39; 
+    to the PKG_CONFIG_PATH environment variable 
+    No package &#39;qt&#39; found
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可见pkg-config对减轻编程人员的工作负荷有一定的帮助。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -44,7 +577,276 @@
       <pubDate>Tue, 18 Sep 2012 23:48:14 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2012-09-18-linux-rpm/</guid>
-      <description>rpm是redhat（系列）系统软件安装，管理的工具。相对于针对仓库而言的yum，rpm是针对单个软件包的。通常情况下Linux发布软件是通</description>
+      <description>&lt;p&gt;rpm是redhat（系列）系统软件安装，管理的工具。相对于针对仓库而言的yum，rpm是针对单个软件包的。通常情况下Linux发布软件是通过源代码方式，一般情况下就是对源码./configure, make,make install。除了这种方式外，比较常用的就是rpm包，它则可提供完整的已经编译好的二进制程序或者其它东西（帮助文件，源码等）。这里不说.deb。&lt;/p&gt;
+&lt;p&gt;rpm的使用不说，直接看帮助，常用的就是-qa, -e，-ivh等几个选项。&lt;/p&gt;
+&lt;p&gt;下面说说rpm包的制作（在制作过程中发现并不是那么顺利，还不如用源代码方式发布），制作是用rmpbuild这个命令完成的。这里仅说下简单的制作以供以后参考。&lt;/p&gt;
+&lt;p&gt;rpm包的结构一般为: name-version-release.architecture.rpm&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;name-version-release&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;命名版本号之类的，如MySQL-server-5.0.i386.rpm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;architecture&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;适用的结构，如i386, i686, x86_64, noarch&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;RPM系统要求有以下几个文件夹（如果是安装系统的时候安装了rmpbuild, 则在redhat系列是在/usr/src/redhat, 如果自行安装的话，可能在你的主目录的rpbbuild的目录下面）。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;BUILD&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;rpmbuild在此目录构建软件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RPMS&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;rmpbuild存储生成的二进制rpm文件目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SOURCES&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;所要构建软件的源码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SPECS&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SPECS文件所在的目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SRPMS&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;rmpbuild存储生成的src rpm包的目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;rpmbuild最重要的是书写SPECS文件，写好的specs文件丢到SPECS目录(也可以不用)。SPECS比较烦琐，下面列出一些常用的，但不完全（#开头表示注释）。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Summary&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包简要的描述&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Name&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Version&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包定义的版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Release&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包发布版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;License&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包许可&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Group&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包分类（在GNOME应用程序可看到）如Applications/Media&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Source&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包源码下载地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;源码相关网站&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Distribution&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;发行版系列&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Packager&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;打包人的信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Requires&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如 mysql &amp;gt;= 3.30 或者 mysql&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;sources&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;源码tar包，可以这样设置为通用的:%{name}-%{version}.tar.gz&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Buildroot&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;rmpbuild的暂存区，可以设置为通用的:%{_tmppath}/%{name}-%{version}-root&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%description&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件详细描述，可多行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%prep&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件编译之前的处理，如解压&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%setup&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;不知道什么用，不过通常在%prep下面%setup -q&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%build&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;开始编译软件，如make&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%install&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;开始安装软件，如make install&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%makeinstall&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;调用Makefiel的make install&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%clean&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;rmpbuild的clean命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%post&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;rmpbuild构建完成的命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%files&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;要打包的文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果用VIM新建.spec文件，在新建的时候会弹出相应的模板给你填，这个不错。&lt;/p&gt;
+&lt;p&gt;rmpbuild的编译选项大致有下面几种类型：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-ba&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;构建所有的东西，包含二进制和源码的RPM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-bb&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;构建二进制的RPM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-bc&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;构建（编译）程序，但不生成RPM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-bp&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;准备构建RPM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-bi&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;构建二进制的RPM并安装之&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-bl&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;检查RPM文件列表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-bs&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;构建源码的RPM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;一人简单的例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    Name:           jmm
+    Version:        1.0
+    Release:        1
+    Summary:        Process pool server
+    
+    Group:          Applications/Internet
+    License:        LGPL 2.0
+    URL:            www.google.com
+    Source0:        jmm-1.0.tar.gz
+    BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+    
+    #BuildRequires:
+    #Requires:       libevent &amp;gt;= 2.0
+    
+    %description
+    Process pool server base on libevent
+    
+    
+    %prep
+    %setup -q
+    
+    %build
+    make
+    
+    %install
+    mkdir -p %{buildroot}/usr/local/bin
+    #make install DESTDIR=%{buildroot}
+    install -m755 jmm %{buildroot}/usr/local/bin/jmm
+    
+    %clean
+    rm -rf %{buildroot}
+    
+    
+    %files
+    /usr/local/bin/jmm
+    #%defattr(-,root,root,-)
+    #%doc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我的机子是x86_64的，在我机子上运行rmpbuil –ba jmm.spec将在RPMS目录生成x86_64/jmm-1.0-1.x86_68.rpm，在SRPMS目录生成jmm-1.0-1.src.rpm。&lt;br&gt;
+要注意一点的就是%files下面的文件是要写buildroot下面的文件。&lt;br&gt;
+查看刚才编译的文件信息（PS这个东西是要libevent2的所以，如果安装的话，是会失败的）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@CLOUD x86_64]$ rpm -qpi jmm-1.0-1.x86_64.rpm    
+    Name        : jmm                          Relocations: (not relocatable)
+    Version     : 1.0                               Vendor: (none)
+    Release     : 1                             Build Date: Thu Sep 13 07:07:07 2012
+    Install Date: (not installed)               Build Host: CLOUD.NODE.0
+    Group       : Applications/Internet         Source RPM: jmm-1.0-1.src.rpm
+    Size        : 45357                            License: LGPL 2.0
+    Signature   : (none)
+    URL         : www.google.com
+    Summary     : Process pool server
+    Description :
+    Process pool server base on libevent
+    [heidong@CLOUD x86_64]$ rpm -qpl jmm-1.0-1.x86_64.rpm   
+    /usr/local/bin/jmm
+    [heidong@CLOUD x86_64]$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看源RPM的信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@CLOUD SRPMS]$ rpm -qpi jmm-1.0-1.src.rpm           
+    Name        : jmm                          Relocations: (not relocatable)
+    Version     : 1.0                               Vendor: (none)
+    Release     : 1                             Build Date: Thu Sep 13 07:07:07 2012
+    Install Date: (not installed)               Build Host: CLOUD.NODE.0
+    Group       : Applications/Internet         Source RPM: (none)
+    Size        : 17198                            License: LGPL 2.0
+    Signature   : (none)
+    URL         : www.google.com
+    Summary     : Process pool server
+    Description :
+    Process pool server base on libevent
+    [heidong@CLOUD SRPMS]$ rpm -qpl jmm-1.0-1.src.rpm   
+    jmm-1.0.tar.gz
+    jmm.spec
+    [heidong@CLOUD SRPMS]$ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;关于源RPM的安装，与编译好的二进制文件不一样，源RPM是要编译的。一般是包含压缩包和SPEC文件。安装后，源码文件是在SOURCE目录，SPEC文件是在SPEC目录。要进得编译方可得到二进制RPM包。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -53,7 +855,78 @@
       <pubDate>Sat, 23 Jun 2012 11:08:14 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2012-06-23-proccess-pool-server/</guid>
-      <description>本程序仅是为了学习libevent而写的，但可以当作是简单的程序框架扩展为实际的应用。程序本身没有经过广泛的功能测试和压力测试，仅作简单的功</description>
+      <description>&lt;p&gt;本程序仅是为了学习libevent而写的，但可以当作是简单的程序框架扩展为实际的应用。程序本身没有经过广泛的功能测试和压力测试，仅作简单的功能测试，如果在实际应用中产生任何问题与作者无关，也不提供任何技术支持。但欢迎讨论相关技术问题。&lt;/p&gt;
+&lt;p&gt;本程序设计思路很简单，一个控制进程，M个业务进程（M可以配置），其中一个业务进程又负责N个TCP连接（N可以配置，因为是在同一个进程内，又没有用于线程，所以从本质来说，还是属于同步传输数据的）。控制进程负责监听连接，当接收到一个TCP连接的时候，按照一定的规则分发到空闲的业务进程中。每个业务进程就负责处理各个分配到的连接，接收到数据后又分发到业务模块，业务模块是可以根据实际的需要扩展的（本程序中则是一个回射服务器的）。&lt;/p&gt;
+&lt;p&gt;这个程序且叫一个名字：jmm。下载：&lt;a href=&#34;https://github.com/buf1024/jmm/archive/jmm-1.0.0.zip&#34;&gt;jmm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;压缩包里一些特别的文件介绍。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;文件名&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Makefile&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Makefile 文件。如果是扩展应用，则修改第6行 &amp;lt;&amp;gt;JMM_MY_OBJ=myserver.o 改为自己的要编译的文件即可。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;jmm.conf&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;一个简单的配置。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;myserver.c&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;业务实现模块。这个就是简单的回射而已。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;jmm_cmmhdr.h&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;对外提供的扩展程序的头文件，包含一些常量的定义。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;jmm.h&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;对外提供的扩展程序的头文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;clog.h &lt;!-- raw HTML omitted --&gt;clog.c&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;简单的日志处理模块。可独立应用于任何应用程序。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ciniconfig.h &lt;!-- raw HTML omitted --&gt;ciniconfig.c&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;简单的读取INI配置文件的模块。可独立应用于任何应用程序。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;编译说明：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装libevent. 下载地址：&lt;a href=&#34;www.libevent.org&#34;&gt;libevent.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;建立文件夹mkdir conf log bin&lt;/li&gt;
+&lt;li&gt;最后make可以了。&lt;/li&gt;
+&lt;li&gt;如果会Makefile直接看Makefile&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;扩展说明：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    typedef struct jmm_hook 
+    { 
+    const char* (*prog_name)(); 
+    const char* (*prog_version)(); 
+    const char* (*prog_desc)();
+    
+    int (*prog_init)(char*); 
+    int (*prog_service)(jmm_prog_in*, jmm_prog_out*); 
+    int (*prog_uninit)();
+    
+    void* (*prog_malloc)(size_t); // sys/types.h 
+    void (*prog_free)(void*);
+    
+    }jmm_hook;
+    
+    typedef void (*prog_init_hook)(jmm_hook* hook);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;除了分配内存的那个外，提供其它所有函数的实现。&lt;/p&gt;
+&lt;p&gt;用REG_INIT_HOOK_FUN(myserver_init_hook)注册回调函数。&lt;/p&gt;
+&lt;p&gt;参考myserver.c&lt;/p&gt;
+&lt;p&gt;烦躁，不写了。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -62,7 +935,671 @@
       <pubDate>Wed, 02 May 2012 21:08:14 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2012-05-02-sys-queue-h/</guid>
-      <description>概述 sys/queue.h是LINUX/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple</description>
+      <description>&lt;h3 id=&#34;概述&#34;&gt;概述 &lt;a href=&#34;#%e6%a6%82%e8%bf%b0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;sys/queue.h是LINUX/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple queue(Singly-linked Tail queue), tail queue, circle queue五种。&lt;/p&gt;
+&lt;p&gt;引用此头文件对这五种数据结构的描述：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A singly-linked list is headed by a single forward pointer. The
+elements are singly linked for minimum space and pointer manipulation
+overhead at the expense of O(n) removal for arbitrary elements. New
+elements can be added to the list after an existing element or at the
+head of the list.  Elements being removed from the head of the list
+should use the explicit macro for this purpose for optimum
+efficiency. A singly-linked list may only be traversed in the forward
+direction.  Singly-linked lists are ideal for applications with large
+datasets and few or no removals or for implementing a LIFO queue.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A list is headed by a single forward pointer (or an array of forward
+pointers for a hash table header). The elements are doubly linked
+so that an arbitrary element can be removed without a need to
+traverse the list. New elements can be added to the list before
+or after an existing element or at the head of the list. A list
+may only be traversed in the forward direction.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A simple queue is headed by a pair of pointers, one the head of the
+list and the other to the tail of the list. The elements are singly
+linked to save space, so elements can only be removed from the
+head of the list. New elements can be added to the list after
+an existing element, at the head of the list, or at the end of the
+list. A simple queue may only be traversed in the forward direction.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A tail queue is headed by a pair of pointers, one to the head of the
+list and the other to the tail of the list. The elements are doubly
+linked so that an arbitrary element can be removed without a need to
+traverse the list. New elements can be added to the list before or
+after an existing element, at the head of the list, or at the end of
+the list. A tail queue may be traversed in either direction.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A circle queue is headed by a pair of pointers, one to the head of the
+list and the other to the tail of the list. The elements are doubly
+linked so that an arbitrary element can be removed without a need to
+traverse the list. New elements can be added to the list before or after
+an existing element, at the head of the list, or at the end of the list.
+A circle queue may be traversed in either direction, but has a more
+complex end of list detection.&lt;/p&gt;
+&lt;p&gt;简单来说，即是单链表，双链表，单链队列，双向队列（尾队列）和双向循环队列。&lt;/p&gt;
+&lt;p&gt;虽然这是LINUX/UNIX里面的文件，但此文件本身没有用到LINUX/UNIX的系统特性，因而可以跨平台使用。&lt;/p&gt;
+&lt;p&gt;下面对各数据结构简单描述之。&lt;/p&gt;
+&lt;h3 id=&#34;单链表singly-linked-list&#34;&gt;单链表(singly-linked list) &lt;a href=&#34;#%e5%8d%95%e9%93%be%e8%a1%a8singly-linked-list&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;singly-linked list就是一单链表。&lt;/p&gt;
+&lt;p&gt;singly-linked list相关的定义：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_HEAD(name, type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;定义表头结点。 &lt;!-- raw HTML omitted --&gt;name: 表头结点名。&lt;!-- raw HTML omitted --&gt;type: 结点类型。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_HEAD_INITIALIZER(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;初始化头结点。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_ENTRY(type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;定义链表的链域。&lt;!-- raw HTML omitted --&gt;type: 结点类型。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;singly-linked list函数：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_INIT(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;初始化头结点。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_INSERT_AFTER(slistelm, elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将结点elm插入到结点slistelm后面。 &lt;!-- raw HTML omitted --&gt;slistelm：链表中某结点。 &lt;!-- raw HTML omitted --&gt;elm:要插入的结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_INSERT_HEAD(head, elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将结点elm插入到头结点head后面。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;!-- raw HTML omitted --&gt;elm:要插入的结点。&lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_REMOVE_HEAD(head, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;移除将表头结点下面一个结点。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_REMOVE(head, elm, type, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;移除将elm结点，elm结点一定要是链表中一结点。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。 &lt;!-- raw HTML omitted --&gt;elm:某结点。 &lt;!-- raw HTML omitted --&gt;type: 结点类型。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_FOREACH(var, head, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遍历链表，相当于for循环。 &lt;!-- raw HTML omitted --&gt;var: 结点类型的变量名称。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;singly-linked list 访问方法：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_EMPTY(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;判断链表是否为空。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_FIRST(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;访问链表里的第一个元素。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_NEXT(elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;访问elm结点后一个元素。 &lt;!-- raw HTML omitted --&gt;elm:某结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;简单例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    struct SListItem
+    {
+        int data;
+        SLIST_ENTRY(SListItem) entry;
+    };
+    /*
+     struct SListItem
+     {
+        int data;
+        struct {
+            struct SListItem* sle_next;
+        } entry;
+     }
+     */
+    void slist_demo()
+    {
+        struct SListItem* item = NULL;
+        SLIST_HEAD(SListHead, SListItem) shead;
+        /*
+         struct SListHead {
+             struct SListItem* slh_first;
+         } shead;
+         */
+        SLIST_INIT(&amp;amp;shead);
+    
+        item = (struct SListItem*)malloc(sizeof(struct SListItem));
+        item-&amp;gt;data = 1;
+    
+        SLIST_INSERT_HEAD(&amp;amp;shead, item, entry);
+        /*
+         item-&amp;gt;entry.sle_next = (&amp;amp;shead)-&amp;gt;slh_first;
+         (&amp;amp;shead)-&amp;gt;slh_first = item;
+         */
+    
+        item = (struct SListItem*)malloc(sizeof(struct SListItem));
+        item-&amp;gt;data = 2;
+    
+        SLIST_INSERT_HEAD(&amp;amp;shead, item, entry);
+        /*
+         item-&amp;gt;entry.sle_next = (&amp;amp;shead)-&amp;gt;slh_first;
+         (&amp;amp;shead)-&amp;gt;slh_first = item;
+         */
+    
+        SLIST_FOREACH(item, &amp;amp;shead, entry){
+            printf(&amp;quot;%d &amp;quot;, item-&amp;gt;data);
+        }
+        /*
+         for(item = (&amp;amp;shead)-&amp;gt;slh_first; item; item = item-&amp;gt;entry.sle_next){
+            ...
+         }
+         */
+        printf(&amp;quot;\n&amp;quot;);
+    
+        while(!SLIST_EMPTY(&amp;amp;shead)){
+            item = SLIST_FIRST(&amp;amp;shead);
+            printf(&amp;quot;remove %d\n&amp;quot;, item-&amp;gt;data);
+            SLIST_REMOVE(&amp;amp;shead, item, SListItem, entry);
+            free(item);
+        }
+        /*
+         while(!((&amp;amp;shead)-&amp;gt;slh_first == NULL)){
+             item = (&amp;amp;shead)-&amp;gt;slh_first;
+             ...
+             (&amp;amp;shead)-&amp;gt;slh_first = (&amp;amp;shead)-&amp;gt;slh_first-&amp;gt;entry.sle_next;
+             ...
+         }
+         */
+    }
+    /*结果
+    2 1
+    remove 2
+    remove 1
+    */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;双向链表list&#34;&gt;双向链表(list) &lt;a href=&#34;#%e5%8f%8c%e5%90%91%e9%93%be%e8%a1%a8list&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;list就是双向链表，不过链域有点古怪，指向前一个结点是指针的指针。&lt;br&gt;
+list 相关定义&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_HEAD(name, type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;定义表头结点。 &lt;!-- raw HTML omitted --&gt;name: 表头结点名。 &lt;!-- raw HTML omitted --&gt;type: 结点类型。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_HEAD_INITIALIZER(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;初始化头结点。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_ENTRY(type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;定义链表的链域。 &lt;!-- raw HTML omitted --&gt;type: 结点类型。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;list函数&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_INIT(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;初始化头结点。 &lt;!-- raw HTML omitted --&gt;head: 表头结点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_INSERT_AFTER(listelm, elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将结点elm插入到结点listelm后面。 &lt;!-- raw HTML omitted --&gt;listelm：链表中某结点。 &lt;!-- raw HTML omitted --&gt;elm:要插入的结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_INSERT_BEFORE(listelm, elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将结点elm插入到结点listelm前面。 &lt;!-- raw HTML omitted --&gt;listelm：链表中某结点。 &lt;!-- raw HTML omitted --&gt;elm:要插入的结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_INSERT_HEAD(head, elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将结点elm插入到头结点head后面。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。 &lt;!-- raw HTML omitted --&gt;elm:要插入的结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_REMOVE(elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;移除将elm结点。 &lt;!-- raw HTML omitted --&gt;elm:某结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_FOREACH(var, head, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遍历链表，相当于for循环。 &lt;!-- raw HTML omitted --&gt;var: 结点类型的变量名称。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;list访问方法&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_EMPTY(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;判断链表是否为空。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_FIRST(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;访问链表里的第一个元素。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_NEXT(elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;访问elm结点后一个元素。 &lt;!-- raw HTML omitted --&gt;elm:某结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;注意&lt;/strong&gt;&lt;/em&gt;，因为list是双向链表，但在访问方法里没有写出访问前一个元素的宏。因而可以这样写一个，参数含义和LIST_NEXT一样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   #define LIST_PRE(elm, field) \
+   (((elm)-&amp;gt;field.le_pre) != &amp;amp;elm ? *((elm)-&amp;gt;field.le_pre) : NULL)  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;简单例子:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   struct ListItem
+   {
+       int data;
+       LIST_ENTRY(ListItem) entry;
+   };
+   /*
+   struct ListItem
+   {
+       int data;
+       struct{
+           struct ListItem* le_next;
+           struct ListItem** le_prev;
+       } entry;
+   };
+   */
+   void list_demo()
+   {
+       struct ListItem* item = NULL;
+       
+       LIST_HEAD(ListHead, ListItem) lhead;
+       /*
+       struct ListHead {
+           struct ListItem* lh_first;
+       } lhead;
+       */
+       LIST_INIT(&amp;amp;lhead);
+       /*
+       do{
+            (&amp;amp;lhead)-&amp;gt;lh_first = NULL;
+       }while(0);
+       */
+   
+       item = (struct ListItem*)malloc(sizeof(struct ListItem));
+       item-&amp;gt;data = 1;
+   
+       LIST_INSERT_HEAD(&amp;amp;lhead, item, entry);
+       
+       item = (struct ListItem*)malloc(sizeof(struct ListItem));
+       item-&amp;gt;data = 2;
+       
+       LIST_INSERT_HEAD(&amp;amp;lhead, item, entry);
+       /*
+       do{
+           if(((item)-&amp;gt;entry.le_next = (&amp;amp;lhead)-&amp;gt;lh_first) != NULL)
+               (&amp;amp;lhead)-&amp;gt;lh_first-&amp;gt;entry.le_pre = &amp;amp;(elm)-&amp;gt;entry.le_next;
+           (&amp;amp;lhead)-&amp;gt;lh_first = (item);
+           (item)-&amp;gt;entry.le_prev = &amp;amp;(&amp;amp;lhead)-&amp;gt;lh_first;
+       }while(0);
+       */
+       LIST_FOREACH(item, &amp;amp;lhead, entry){
+           printf(&amp;quot;%d &amp;quot;, item-&amp;gt;data);
+       }
+       /*
+       for ((item) = ((&amp;amp;lhead)-&amp;gt;lh_first);
+           (item);
+           (item) = ((item)-&amp;gt;entry.le_next)){
+           ...
+       }    
+       */
+       printf(&amp;quot;\n&amp;quot;);
+   
+       while(!LIST_EMPTY(&amp;amp;lhead)){
+           item = LIST_FIRST(&amp;amp;lhead);
+           printf(&amp;quot;remove %d\n&amp;quot;, item-&amp;gt;data);
+           LIST_REMOVE(item, entry);
+           free(item);
+       }
+       /*
+       while(!((&amp;amp;lhead)-&amp;gt;lh_first == NULL)){
+           item = ((&amp;amp;lhead)-&amp;gt;lh_first);
+           ...
+           do{
+             if ((item)-&amp;gt;entry.le_next != NULL)                \
+               (item)-&amp;gt;entry.le_next-&amp;gt;entry.le_prev =             \
+                   (item)-&amp;gt;entry.le_prev;                \
+             *(item)-&amp;gt;entry.le_prev = (item)-&amp;gt;entry.le_next;            \
+           } while (0);
+           ...
+       }
+       */
+   }
+   /*
+   结果
+   2 1
+   remove 2
+   remove 1
+   */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;简单队列simple-queue&#34;&gt;简单队列(simple queue) &lt;a href=&#34;#%e7%ae%80%e5%8d%95%e9%98%9f%e5%88%97simple-queue&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;简单来说，就是表对有两个链域，分别指向头和尾。&lt;br&gt;
+simple queue 定义（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_HEAD(name, type)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_HEAD_INITIALIZER(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_ENTRY(type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;simple queue函数（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_INIT(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_INSERT_HEAD(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_INSERT_TAIL(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_INSERT_AFTER(head, listelm, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_REMOVE_HEAD(head, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_REMOVE(head, elm, type, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_FOREACH(var, head, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;simple queue方法（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_EMPTY(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_FIRST(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_NEXT(elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;简单例子：&lt;br&gt;
+用法与list用法类似，不再重复。&lt;/p&gt;
+&lt;h3 id=&#34;单链尾队列singled-linked-tail-queue&#34;&gt;单链尾队列(singled-linked tail queue) &lt;a href=&#34;#%e5%8d%95%e9%93%be%e5%b0%be%e9%98%9f%e5%88%97singled-linked-tail-queue&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;这个和Simple queue是一样的，参考simple queue&lt;br&gt;
+singled-linked tail queue定义(具体说明不再写，可以参考list的，或者就直接展开宏)&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_HEAD(name, type)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_HEAD_INITIALIZER(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_ENTRY(type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;tail queue 函数（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_INIT(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_INSERT_HEAD(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_INSERT_TAIL(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_INSERT_AFTER(head, listelm, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_REMOVE_HEAD(head, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_REMOVE(head, elm, type, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_FOREACH(var, head, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;tail queue方法（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_EMPTY(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_FIRST(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_NEXT(elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;简单例子：&lt;br&gt;
+用法与list用法类似，不再重复。&lt;/p&gt;
+&lt;h3 id=&#34;循环队列circle-queue&#34;&gt;循环队列(circle queue) &lt;a href=&#34;#%e5%be%aa%e7%8e%af%e9%98%9f%e5%88%97circle-queue&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;循环队列。&lt;br&gt;
+circle queue定义（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_HEAD(name, type)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_HEAD_INITIALIZER(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_ENTRY(type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;circle queue函数（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_INIT(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_INSERT_AFTER(head, listelm, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_INSERT_BEFORE(head, listelm, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_INSERT_HEAD(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_INSERT_TAIL(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_REMOVE(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_REPLACE(head, elm, elm2, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;circle queue访问方法（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_FIRST(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_LAST(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_END(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_NEXT(elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_PREV(elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_EMPTY(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_FOREACH(var, head, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_FOREACH_REVERSE(var, head, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;简单例子：&lt;br&gt;
+用法与list用法类似，不再重复。&lt;/p&gt;
+&lt;h2 id=&#34;小结&#34;&gt;小结 &lt;a href=&#34;#%e5%b0%8f%e7%bb%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&amp;amp;emsp虽然这是linux/unix实现的经过长时间考验的成熟的数据结构，但是如果不是很熟悉的话，第一次用起来还是感觉挺不习惯的。但是好在各个数据结构的定义和方法都非常类似，接口比较统一，如果用多的了，熟悉了，感觉就不错了。&lt;/p&gt;
+</description>
     </item>
     
   </channel>

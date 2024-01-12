@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on BUF1024!!!</title>
@@ -6,16 +6,85 @@
     <description>Recent content in Categories on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    
-	<atom:link href="https://luoguochun.cn/categories/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Mon, 08 Jan 2024 16:00:10 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>frontend</title>
+      <link>https://luoguochun.cn/categories/frontend/</link>
+      <pubDate>Mon, 08 Jan 2024 16:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/frontend/</guid>
+      <description></description>
+    </item>
     
     <item>
-      <title>Linux</title>
-      <link>https://luoguochun.cn/categories/linux/</link>
-      <pubDate>Mon, 01 Oct 2018 10:54:00 +0000</pubDate>
+      <title>rust</title>
+      <link>https://luoguochun.cn/categories/rust/</link>
+      <pubDate>Tue, 26 Dec 2023 16:00:10 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/categories/linux/</guid>
+      <guid>https://luoguochun.cn/categories/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>flutter</title>
+      <link>https://luoguochun.cn/categories/flutter/</link>
+      <pubDate>Wed, 19 Jul 2023 18:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/flutter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>multi_window</title>
+      <link>https://luoguochun.cn/categories/multi_window/</link>
+      <pubDate>Wed, 19 Jul 2023 18:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/multi_window/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>收音机</title>
+      <link>https://luoguochun.cn/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA/</link>
+      <pubDate>Tue, 04 Jul 2023 18:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>量化</title>
+      <link>https://luoguochun.cn/categories/%E9%87%8F%E5%8C%96/</link>
+      <pubDate>Tue, 21 Mar 2023 08:10:12 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/%E9%87%8F%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tcp</title>
+      <link>https://luoguochun.cn/categories/tcp/</link>
+      <pubDate>Thu, 02 Mar 2023 14:10:12 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/tcp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://luoguochun.cn/categories/python/</link>
+      <pubDate>Wed, 03 Feb 2021 19:10:00 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>构架</title>
+      <link>https://luoguochun.cn/categories/%E6%9E%84%E6%9E%B6/</link>
+      <pubDate>Mon, 29 Jul 2019 20:17:52 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/%E6%9E%84%E6%9E%B6/</guid>
       <description></description>
     </item>
     
@@ -38,65 +107,47 @@
     </item>
     
     <item>
-      <title>asm</title>
-      <link>https://luoguochun.cn/categories/asm/</link>
-      <pubDate>Tue, 01 Mar 2016 14:13:05 +0000</pubDate>
+      <title>misc</title>
+      <link>https://luoguochun.cn/categories/misc/</link>
+      <pubDate>Sun, 05 May 2019 11:12:02 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/categories/asm/</guid>
+      <guid>https://luoguochun.cn/categories/misc/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>c</title>
-      <link>https://luoguochun.cn/categories/c/</link>
-      <pubDate>Sat, 03 Jun 2017 11:19:25 +0800</pubDate>
+      <title>vim</title>
+      <link>https://luoguochun.cn/categories/vim/</link>
+      <pubDate>Fri, 01 Mar 2019 18:02:12 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/categories/c/</guid>
+      <guid>https://luoguochun.cn/categories/vim/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>django</title>
-      <link>https://luoguochun.cn/categories/django/</link>
-      <pubDate>Mon, 12 May 2014 22:12:47 +0000</pubDate>
+      <title>linux</title>
+      <link>https://luoguochun.cn/categories/linux/</link>
+      <pubDate>Mon, 01 Oct 2018 10:54:00 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/categories/django/</guid>
+      <guid>https://luoguochun.cn/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>flutter</title>
-      <link>https://luoguochun.cn/categories/flutter/</link>
-      <pubDate>Wed, 19 Jul 2023 18:00:10 +0800</pubDate>
+      <title>mac</title>
+      <link>https://luoguochun.cn/categories/mac/</link>
+      <pubDate>Fri, 06 Jul 2018 11:02:16 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/categories/flutter/</guid>
+      <guid>https://luoguochun.cn/categories/mac/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>frontend</title>
-      <link>https://luoguochun.cn/categories/frontend/</link>
-      <pubDate>Mon, 08 Jan 2024 16:00:10 +0800</pubDate>
+      <title>reactjs</title>
+      <link>https://luoguochun.cn/categories/reactjs/</link>
+      <pubDate>Fri, 25 May 2018 17:04:10 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/categories/frontend/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>gcc</title>
-      <link>https://luoguochun.cn/categories/gcc/</link>
-      <pubDate>Mon, 01 May 2017 22:10:31 +0000</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/gcc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>gdb</title>
-      <link>https://luoguochun.cn/categories/gdb/</link>
-      <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/gdb/</guid>
+      <guid>https://luoguochun.cn/categories/reactjs/</guid>
       <description></description>
     </item>
     
@@ -119,155 +170,29 @@
     </item>
     
     <item>
+      <title>c</title>
+      <link>https://luoguochun.cn/categories/c/</link>
+      <pubDate>Sat, 03 Jun 2017 11:19:25 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gcc</title>
+      <link>https://luoguochun.cn/categories/gcc/</link>
+      <pubDate>Mon, 01 May 2017 22:10:31 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/gcc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>http</title>
       <link>https://luoguochun.cn/categories/http/</link>
       <pubDate>Fri, 28 Apr 2017 22:10:32 +0000</pubDate>
       
       <guid>https://luoguochun.cn/categories/http/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>https</title>
-      <link>https://luoguochun.cn/categories/https/</link>
-      <pubDate>Wed, 16 Nov 2016 11:17:11 +0000</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/https/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://luoguochun.cn/categories/linux/</link>
-      <pubDate>Mon, 28 Jul 2014 14:57:18 +0000</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mac</title>
-      <link>https://luoguochun.cn/categories/mac/</link>
-      <pubDate>Fri, 06 Jul 2018 11:02:16 +0800</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/mac/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>misc</title>
-      <link>https://luoguochun.cn/categories/misc/</link>
-      <pubDate>Sun, 05 May 2019 11:12:02 +0800</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/misc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>multi_window</title>
-      <link>https://luoguochun.cn/categories/multi_window/</link>
-      <pubDate>Wed, 19 Jul 2023 18:00:10 +0800</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/multi_window/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>orm</title>
-      <link>https://luoguochun.cn/categories/orm/</link>
-      <pubDate>Sun, 28 Dec 2014 21:08:34 +0000</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/orm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>os</title>
-      <link>https://luoguochun.cn/categories/os/</link>
-      <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/os/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://luoguochun.cn/categories/python/</link>
-      <pubDate>Wed, 03 Feb 2021 19:10:00 +0800</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>reactjs</title>
-      <link>https://luoguochun.cn/categories/reactjs/</link>
-      <pubDate>Fri, 25 May 2018 17:04:10 +0000</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/reactjs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>rust</title>
-      <link>https://luoguochun.cn/categories/rust/</link>
-      <pubDate>Tue, 26 Dec 2023 16:00:10 +0800</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/rust/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ssh</title>
-      <link>https://luoguochun.cn/categories/ssh/</link>
-      <pubDate>Sun, 01 Mar 2015 18:12:15 +0000</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/ssh/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tcp</title>
-      <link>https://luoguochun.cn/categories/tcp/</link>
-      <pubDate>Thu, 02 Mar 2023 14:10:12 +0800</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/tcp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tdd</title>
-      <link>https://luoguochun.cn/categories/tdd/</link>
-      <pubDate>Sat, 11 Jan 2014 23:48:14 +0000</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/tdd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>unittest</title>
-      <link>https://luoguochun.cn/categories/unittest/</link>
-      <pubDate>Thu, 09 Feb 2012 20:50:00 +0000</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/unittest/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>vcs</title>
-      <link>https://luoguochun.cn/categories/vcs/</link>
-      <pubDate>Mon, 10 Oct 2016 14:46:23 +0000</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/vcs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>vim</title>
-      <link>https://luoguochun.cn/categories/vim/</link>
-      <pubDate>Fri, 01 Mar 2019 18:02:12 +0800</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/vim/</guid>
       <description></description>
     </item>
     
@@ -281,11 +206,92 @@
     </item>
     
     <item>
+      <title>https</title>
+      <link>https://luoguochun.cn/categories/https/</link>
+      <pubDate>Wed, 16 Nov 2016 11:17:11 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/https/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vcs</title>
+      <link>https://luoguochun.cn/categories/vcs/</link>
+      <pubDate>Mon, 10 Oct 2016 14:46:23 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/vcs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>asm</title>
+      <link>https://luoguochun.cn/categories/asm/</link>
+      <pubDate>Tue, 01 Mar 2016 14:13:05 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/asm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>os</title>
+      <link>https://luoguochun.cn/categories/os/</link>
+      <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/os/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gdb</title>
+      <link>https://luoguochun.cn/categories/gdb/</link>
+      <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/gdb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>https://luoguochun.cn/categories/ssh/</link>
+      <pubDate>Sun, 01 Mar 2015 18:12:15 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>orm</title>
+      <link>https://luoguochun.cn/categories/orm/</link>
+      <pubDate>Sun, 28 Dec 2014 21:08:34 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/orm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>webui</title>
       <link>https://luoguochun.cn/categories/webui/</link>
       <pubDate>Tue, 07 Oct 2014 21:36:56 +0000</pubDate>
       
       <guid>https://luoguochun.cn/categories/webui/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>django</title>
+      <link>https://luoguochun.cn/categories/django/</link>
+      <pubDate>Mon, 12 May 2014 22:12:47 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/django/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tdd</title>
+      <link>https://luoguochun.cn/categories/tdd/</link>
+      <pubDate>Sat, 11 Jan 2014 23:48:14 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/categories/tdd/</guid>
       <description></description>
     </item>
     
@@ -299,29 +305,11 @@
     </item>
     
     <item>
-      <title>收音机</title>
-      <link>https://luoguochun.cn/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA/</link>
-      <pubDate>Tue, 04 Jul 2023 18:00:10 +0800</pubDate>
+      <title>unittest</title>
+      <link>https://luoguochun.cn/categories/unittest/</link>
+      <pubDate>Thu, 09 Feb 2012 20:50:00 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>构架</title>
-      <link>https://luoguochun.cn/categories/%E6%9E%84%E6%9E%B6/</link>
-      <pubDate>Mon, 29 Jul 2019 20:17:52 +0800</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/%E6%9E%84%E6%9E%B6/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>量化</title>
-      <link>https://luoguochun.cn/categories/%E9%87%8F%E5%8C%96/</link>
-      <pubDate>Tue, 21 Mar 2023 08:10:12 +0800</pubDate>
-      
-      <guid>https://luoguochun.cn/categories/%E9%87%8F%E5%8C%96/</guid>
+      <guid>https://luoguochun.cn/categories/unittest/</guid>
       <description></description>
     </item>
     

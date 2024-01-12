@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>unittest on BUF1024!!!</title>
@@ -6,18 +6,168 @@
     <description>Recent content in unittest on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 09 Feb 2012 20:50:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://luoguochun.cn/categories/unittest/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 09 Feb 2012 20:50:00 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/categories/unittest/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Very Very Simple C&#43;&#43; Testing Framework</title>
       <link>https://luoguochun.cn/post/2012-02-09-simple-c&#43;&#43;-test-framework/</link>
       <pubDate>Thu, 09 Feb 2012 20:50:00 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2012-02-09-simple-c&#43;&#43;-test-framework/</guid>
-      <description>简介 测试驱动开发(TDD)是敏捷开发的一种方法，TDD的一个重要的工具就是单元测试(Unit Test)。如果想详细了解什么是TDD和单元测试</description>
+      <description>&lt;h3 id=&#34;简介&#34;&gt;简介 &lt;a href=&#34;#%e7%ae%80%e4%bb%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;测试驱动开发(TDD)是敏捷开发的一种方法，TDD的一个重要的工具就是单元测试(Unit Test)。如果想详细了解什么是TDD和单元测试请GOOGLE之。简单来和简略地说TDD是在测试驱动下的开发，先写完成测试然后努力使测试通过。单元测试大体包括下面所说的断言，测试固件（非常不喜欢国人这样翻译）和测试环境。&lt;/p&gt;
+&lt;p&gt;C++单元测试框架google 的&lt;a href=&#34;http://code.google.com/p/googletest/&#34;&gt;gtest&lt;/a&gt;是其中的不错一款，本测试框架是模仿它的。为什么不直接用它而要模仿它？因为公司不允许（允许但过程很麻烦）使用第三方的库，而公司又要求作单元测试，于是这个东西就写了出来。&lt;/p&gt;
+&lt;p&gt;特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;小，只有一个头文件，其实你会觉得很啰嗦。&lt;/li&gt;
+&lt;li&gt;使用方法和GTEST一样，当然也没那么全。&lt;/li&gt;
+&lt;li&gt;跨平台&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下载：&lt;a href=&#34;https://github.com/buf1024/mydoc/blob/master/tmpcode/test.h&#34;&gt;test.h&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;断言test-assertion&#34;&gt;断言(Test Assertion) &lt;a href=&#34;#%e6%96%ad%e8%a8%80test-assertion&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;断言包括两种，一种是以EXPECT_XXX，一种是ASSERT_XX，前者即使断言不通过，继续执行此测试用例下面的测试，后都则立即停止执行当前的测试用例。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;断言宏&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;EXPECT_EQ/ASSERT_EQ&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;期待数值相等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EXPECT_NEQ/ASSERT_NEQ&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;期待数值不相等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EXPECT_STREQ/ASSERT_STREQ&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;期待字符串相等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EXPECT_STRNEQ/ASSERT_STRNEQ&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;期待字符串不相等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EXPECT_BINEQ/ASSERT_BINEQ&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;期待二进制相等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EXPECT_BINNEQ/ASSERT_BINNEQ&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;期待二进制不相等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EXPECT_TRUE/ASSERT_TRUE&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;期待值为真&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EXPECT_FALSE/ASSERT_FALSE&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;期待值为假&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;固件test-fixture&#34;&gt;固件(Test Fixture) &lt;a href=&#34;#%e5%9b%ba%e4%bb%b6test-fixture&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;测试固件可看作是一组测试用例的集合，在执行这组测试用例之前或之后，可以先执行一些操作，同时也可以在执行单个测试用例之前或之后，也可以执行一些操作。对于单个测试用用例，这里，当作是包含一个测试用例的测试固件来处理。&lt;/p&gt;
+&lt;p&gt;使用Test Fixture，你要继承Test这个类。类声明：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    class Test
+    {
+        ....
+    public:
+        static void SetUpTestCase()
+        {
+        }
+        static void TearDownTestCase()
+        {
+        }
+        virtual void SetUp()
+        {
+        }
+        virtual void TearDown()
+        {
+        }
+        ...
+    };
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后重写上述方法，带static的是执行所有用例之前或后执行的，不带的是每个测试用例执行之前或之后执行的。&lt;/p&gt;
+&lt;p&gt;提供两个宏进行操作：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;含义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;实例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;TEST_F&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;测试固件&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;TEST_F(MyTestFixture, MyCase) &lt;!-- raw HTML omitted --&gt;{ &lt;!-- raw HTML omitted --&gt;} &lt;!-- raw HTML omitted --&gt;MyTestFixture是你继续Test的固件。&lt;!-- raw HTML omitted --&gt;MyCase是这个用例的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TEST&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;测试用用例&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;TEST(MyDummyFixture, MyCase) &lt;!-- raw HTML omitted --&gt;{ &lt;!-- raw HTML omitted --&gt;} &lt;!-- raw HTML omitted --&gt;MyTestFixture是固件名称，事实上它什么也不做。&lt;!-- raw HTML omitted --&gt;MyCase是这个用例的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;环境test-environment&#34;&gt;环境(Test Environment) &lt;a href=&#34;#%e7%8e%af%e5%a2%83test-environment&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;测试环境是所有Test Fixture执行之前或之后进行的准备和清理。继续类Environment，其声明为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    class Environment
+    {
+    public:
+        Environment(){}
+        virtual ~Environment(){}
+    public:
+        virtual void SetUp(){}
+        virtual void TearDown(){}
+    };
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;看的人应该明白。不解释。&lt;br&gt;
+在初始化之前，如果使用测试环境，则要用宏SET_ENVIRONMENT将环境添加进去。&lt;/p&gt;
+&lt;h3 id=&#34;其它&#34;&gt;其它 &lt;a href=&#34;#%e5%85%b6%e5%ae%83&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;还有一些与测试无关，但是与本框架相关的一些宏。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;INIT_TEST&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;初始化框架，在使用调用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RUN_ALL_TEST&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;运行测试&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;编译好测试程序后，可执行程序接受一些选项，和GTEST的一样。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;选项&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;help&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;输出帮助信息，仅显示英文，因为哥的工作的UNIX不支持中文。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;list_tests&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;列出测试用例&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;filter=POSTIVE_PATTERNS[-NEGATIVE_PATTERNS]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;过虑，仅支持通佩符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;居然这个介绍花的时间比写这个测试框架的时间还长。&lt;/p&gt;
+&lt;h3 id=&#34;示例&#34;&gt;示例 &lt;a href=&#34;#%e7%a4%ba%e4%be%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;更多示例参考GTEST。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -26,7 +176,94 @@
       <pubDate>Mon, 05 Dec 2011 12:00:00 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2011-12-05-gtest-summary/</guid>
-      <description>GTEST 是简单而且又非常实用的测试框架。下面关于GTEST的一些简单总结。 编译 在GNU系统下： 1 2 3 g++ -I${GTEST_DIR}/include -I${GTEST_DIR} -c ${GTEST_DIR}/src/gtest-all.cc ar -rv libgtest.a gtest-all.o 在WINDOWS下： GTES</description>
+      <description>&lt;p&gt;GTEST 是简单而且又非常实用的测试框架。下面关于GTEST的一些简单总结。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;编译&lt;br&gt;
+在GNU系统下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; g++ -I${GTEST_DIR}/include -I${GTEST_DIR} -c ${GTEST_DIR}/src/gtest-all.cc        
+
+ ar -rv libgtest.a gtest-all.o    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在WINDOWS下：&lt;br&gt;
+GTEST在MSVC下面提供了相应的工程文件，直接用VS编译即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;简单用法&lt;br&gt;
+在GNU系统下，直接包含GTEST的头文件，连接到GTEST库。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; g++ -I${GTEST_DIR}/include path/to/your_test.cc libgtest.a –lpthread -o your_test        
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在WINDOWS下直接连接到静态库。&lt;br&gt;
+3. SetUp &amp;amp; TearDown
+GTEST提供了以下级别的SETUP和TEARDOW。&lt;br&gt;
+3.1 程序级别&lt;br&gt;
+程序级别的是指程序在启动的时候和结束的时候分别SETUP和TEARDOWN一次。其作用与全局变量类似。&lt;br&gt;
+第一步，继承类：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    class Environment {
+
+    public:
+
+    // The d&#39;tor is virtual as we need to subclass Environment.
+
+    virtual ~Environment() {}
+
+    // Override this to define how to set up the environment.
+
+    virtual void SetUp() {}
+
+    // Override this to define how to tear down the environment.
+
+    virtual void TearDown() {}
+
+    private:
+
+    // If you see an error about overriding the following function or
+
+    // about it being private, you have mis-spelled SetUp() as Setup().
+
+    struct Setup_should_be_spelled_SetUp {};
+
+    virtual Setup_should_be_spelled_SetUp* Setup() { return NULL; }
+
+    };
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重写里面的SETUP和TEARDOWN方法。&lt;br&gt;
+第二步，调用Environment* AddGlobalTestEnvironment(Environment* env)，注意这个要在RUN_ALL_TESTS前调用。如&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    int main(int argc, char* argv[])
+    {
+        testing::AddGlobalTestEnvironment(new XXX Environment);
+        testing::InitGoogleTest(&amp;amp;argc, argv);
+        return RUN_ALL_TESTS();
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3.2 Fixture 级别&lt;br&gt;
+Fixture 级别是指，对于在这FIXTURE里的所有TESTCASE，只调用一次SETUP和TEARDOWN。&lt;br&gt;
+在你的FIXTURE里，添加两个静态的函数SetUpTestCase和TearDownTestCase&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    class XXXTest : public ::testing::Test {
+     protected:
+      static void SetUpTestCase() {
+      }
+      static void TearDownTestCase() {
+      }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3.3 TestCase 级别&lt;br&gt;
+TestCase 级别是指TESTCASE调用之前和调用后分别调用的。&lt;br&gt;
+在你的TESTCASE里，重写虚函数SetUp和TearDown即可。如。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    class XXXTest : public ::testing::Test {
+     protected:
+      virtual void SetUp() { ... }
+      virtual void TearDown() { ... }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Assertion&lt;br&gt;
+GTEST提供两种，一种是ASSERT_XXX和EXPECT_XXX。前者表示不继续执行TESTCASE，后者表示继续执行。&lt;br&gt;
+比如ASSERT_EQ, ASSERT_STREQ,EXPECT_EQ,EXPECT_TRUE等。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
     </item>
     
   </channel>

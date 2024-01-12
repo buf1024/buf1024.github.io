@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>makefile on BUF1024!!!</title>
@@ -6,18 +6,33 @@
     <description>Recent content in makefile on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 04 Jul 2014 16:45:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://luoguochun.cn/tags/makefile/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 04 Jul 2014 16:45:00 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/makefile/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>隐藏make编译的编译输出</title>
       <link>https://luoguochun.cn/post/2014-07-04-hide-compile-output/</link>
       <pubDate>Fri, 04 Jul 2014 16:45:00 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-07-04-hide-compile-output/</guid>
-      <description>编译程序make时，会看到很多编译输出。对于开发来说，这是非常直观的，但是如果分发到客户（需要编译）或者只需要关注错误时，这种输出就感觉烦人</description>
+      <description>&lt;p&gt;编译程序make时，会看到很多编译输出。对于开发来说，这是非常直观的，但是如果分发到客户（需要编译）或者只需要关注错误时，这种输出就感觉烦人。Redis是这么做的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;REDIS_CC=$(QUIET_CC)$(CC) $(FINAL_CFLAGS)
+REDIS_LD=$(QUIET_LINK)$(CC) $(FINAL_LDFLAGS)
+REDIS_INSTALL=$(QUIET_INSTALL)$(INSTALL)
+
+CCCOLOR=&amp;quot;\033[34m&amp;quot;
+LINKCOLOR=&amp;quot;\033[34;1m&amp;quot;
+SRCCOLOR=&amp;quot;\033[33m&amp;quot;
+BINCOLOR=&amp;quot;\033[37;1m&amp;quot;
+MAKECOLOR=&amp;quot;\033[32;1m&amp;quot;
+ENDCOLOR=&amp;quot;\033[0m&amp;quot;
+
+ifndef V
+QUIET_CC = @printf &#39;    %b %b\n&#39; $(CCCOLOR)CC$(ENDCOLOR) $(SRCCOLOR)$@$(ENDCOLOR) 1&amp;gt;&amp;amp;2;
+QUIET_LINK = @printf &#39;    %b %b\n&#39; $(LINKCOLOR)LINK$(ENDCOLOR) $(BINCOLOR)$@$(ENDCOLOR) 1&amp;gt;&amp;amp;2;
+QUIET_INSTALL = @printf &#39;    %b %b\n&#39; $(LINKCOLOR)INSTALL$(ENDCOLOR) $(BINCOLOR)$@$(ENDCOLOR) 1&amp;gt;&amp;amp;2;
+endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在编译前加&lt;code&gt;QUIET&lt;/code&gt;选项，正常的编译会忽略掉，出错或警告的信息会完整的输出来。学到东西了！！&lt;/p&gt;
+</description>
     </item>
     
   </channel>

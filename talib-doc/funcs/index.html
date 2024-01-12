@@ -1,133 +1,105 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>06 方法分类(All Functions) - BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="All Supported Indicators and Functions 所有支持的指标和函数 Overlap Studies 重叠的指标 Momentum Indicators 动量指标 Volume Indicators 量指标 Volatility Indicators 波动性指标 Price Transform 价格指标 Cycle Indicators 周期指标 Pattern Recognition 形态识别 Statistic Functions 统计功能 Math Transform 数学变换" /><meta name="keywords" content="blog, computer, luoguochun" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/talib-doc/funcs/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="06 方法分类(All Functions)" />
-<meta property="og:description" content="All Supported Indicators and Functions 所有支持的指标和函数 Overlap Studies 重叠的指标 Momentum Indicators 动量指标 Volume Indicators 量指标 Volatility Indicators 波动性指标 Price Transform 价格指标 Cycle Indicators 周期指标 Pattern Recognition 形态识别 Statistic Functions 统计功能 Math Transform 数学变换" />
+<title>06 方法分类(All Functions) | BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/talib-doc/funcs/">
+<meta name="description" content="All Supported Indicators and Functions 所有支持的指标和函数 🔗 Overlap Studies 重叠的指标 Momentum Indicators 动量指标 Volume Indicators 量指标 Volatility Indicators 波动性指标 Price Transform 价格指标 Cycle Indicators 周期指标 Pattern Recognition 形态识别 Statistic Functions 统计功能 Math Transform 数学变" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luoguochun.cn/talib-doc/funcs/" /><meta property="article:published_time" content="2019-10-10T00:00:06&#43;08:00"/>
-<meta property="article:modified_time" content="2019-10-10T00:00:06&#43;08:00"/>
-
-<meta itemprop="name" content="06 方法分类(All Functions)">
-<meta itemprop="description" content="All Supported Indicators and Functions 所有支持的指标和函数 Overlap Studies 重叠的指标 Momentum Indicators 动量指标 Volume Indicators 量指标 Volatility Indicators 波动性指标 Price Transform 价格指标 Cycle Indicators 周期指标 Pattern Recognition 形态识别 Statistic Functions 统计功能 Math Transform 数学变换">
-
-
-<meta itemprop="datePublished" content="2019-10-10T00:00:06&#43;08:00" />
-<meta itemprop="dateModified" content="2019-10-10T00:00:06&#43;08:00" />
-<meta itemprop="wordCount" content="1726">
+<meta property="og:title" content="06 方法分类(All Functions) | BUF1024!!!" />
+<meta property="og:url" content="https://luoguochun.cn/talib-doc/funcs/" />
+<meta property="og:description" content="All Supported Indicators and Functions 所有支持的指标和函数 🔗 Overlap Studies 重叠的指标 Momentum Indicators 动量指标 Volume Indicators 量指标 Volatility Indicators 波动性指标 Price Transform 价格指标 Cycle Indicators 周期指标 Pattern Recognition 形态识别 Statistic Functions 统计功能 Math Transform 数学变" />
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="06 方法分类(All Functions)"/>
-<meta name="twitter:description" content="All Supported Indicators and Functions 所有支持的指标和函数 Overlap Studies 重叠的指标 Momentum Indicators 动量指标 Volume Indicators 量指标 Volatility Indicators 波动性指标 Price Transform 价格指标 Cycle Indicators 周期指标 Pattern Recognition 形态识别 Statistic Functions 统计功能 Math Transform 数学变换"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-  <div class="post-content">
-    
+    <main class="main-wrapper">
 
-<h1 id="all-supported-indicators-and-functions-所有支持的指标和函数">All Supported Indicators and Functions 所有支持的指标和函数</h1>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
 
-<ul>
+<section class="single">
+    <h1 class="title">06 方法分类(All Functions)</h1>
+
+    <div class="tip">
+        <time datetime="2019-10-10 00:00:06 &#43;0800 CST">2019/10/10</time>
+        <span class="split">·</span>
+        <span> 1737 words </span>
+        <span class="split">·</span>
+        <span>
+            4 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <h1 id="all-supported-indicators-and-functions-所有支持的指标和函数">All Supported Indicators and Functions 所有支持的指标和函数 <a href="#all-supported-indicators-and-functions-%e6%89%80%e6%9c%89%e6%94%af%e6%8c%81%e7%9a%84%e6%8c%87%e6%a0%87%e5%92%8c%e5%87%bd%e6%95%b0" class="anchor">🔗</a></h1><ul>
 <li><a href="/talib-doc/func_groups/overlap_studies">Overlap Studies 重叠的指标</a></li>
 <li><a href="/talib-doc/func_groups/momentum_indicators">Momentum Indicators 动量指标</a></li>
 <li><a href="/talib-doc/func_groups/volume_indicators">Volume Indicators 量指标</a></li>
@@ -139,11 +111,9 @@
 <li><a href="/talib-doc/func_groups/math_transform">Math Transform 数学变换</a></li>
 <li><a href="/talib-doc/func_groups/math_operators">Math Operators 数学运算符</a></li>
 </ul>
-
-<h4 id="overlap-studies-talib-doc-func-groups-overlap-studies"><a href="/talib-doc/func_groups/overlap_studies">Overlap Studies</a></h4>
-<div class="highlight"><div class="chroma">
+<h4 id="overlap-studiestalib-docfunc_groupsoverlap_studies"><a href="/talib-doc/func_groups/overlap_studies">Overlap Studies</a> <a href="#overlap-studiestalib-docfunc_groupsoverlap_studies" class="anchor">🔗</a></h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -160,31 +130,30 @@
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">BBANDS               Bollinger Bands #布林带
-DEMA                 Double Exponential Moving Average #双指数移动平均线
-EMA                  Exponential Moving Average #指数移动平均线
-HT_TRENDLINE         Hilbert Transform - Instantaneous Trendline #希尔伯特变换瞬时趋势
-KAMA                 Kaufman Adaptive Moving Average #卡玛考夫曼自适应移动平均线
-MA                   Moving average #移动平均线
-MAMA                 MESA Adaptive Moving Average #MESA自适应移动平均 
-MAVP                 Moving average with variable period #变周期移动平均线
-MIDPOINT             MidPoint over period #周期中点
-MIDPRICE             Midpoint Price over period #周期中点价格
-SAR                  Parabolic SAR #抛物线转向指标
-SAREXT               Parabolic SAR - Extended #抛物线转向指标 - 扩展
-SMA                  Simple Moving Average #简单移动平均线
-T3                   Triple Exponential Moving Average (T3) #双指数移动均线改进指标
-TEMA                 Triple Exponential Moving Average #三重指数移动均线指标
-TRIMA                Triangular Moving Average #三指数移动平均
-WMA                  Weighted Moving Average #加权移动平均线</pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">BBANDS</span>               <span class="n">Bollinger</span> <span class="n">Bands</span> <span class="c1">#布林带</span>
+</span></span><span class="line"><span class="cl"><span class="n">DEMA</span>                 <span class="n">Double</span> <span class="n">Exponential</span> <span class="n">Moving</span> <span class="n">Average</span> <span class="c1">#双指数移动平均线</span>
+</span></span><span class="line"><span class="cl"><span class="n">EMA</span>                  <span class="n">Exponential</span> <span class="n">Moving</span> <span class="n">Average</span> <span class="c1">#指数移动平均线</span>
+</span></span><span class="line"><span class="cl"><span class="n">HT_TRENDLINE</span>         <span class="n">Hilbert</span> <span class="ne">Transform</span> <span class="o">-</span> <span class="n">Instantaneous</span> <span class="n">Trendline</span> <span class="c1">#希尔伯特变换瞬时趋势</span>
+</span></span><span class="line"><span class="cl"><span class="n">KAMA</span>                 <span class="n">Kaufman</span> <span class="n">Adaptive</span> <span class="n">Moving</span> <span class="n">Average</span> <span class="c1">#卡玛考夫曼自适应移动平均线</span>
+</span></span><span class="line"><span class="cl"><span class="n">MA</span>                   <span class="n">Moving</span> <span class="n">average</span> <span class="c1">#移动平均线</span>
+</span></span><span class="line"><span class="cl"><span class="n">MAMA</span>                 <span class="n">MESA</span> <span class="n">Adaptive</span> <span class="n">Moving</span> <span class="n">Average</span> <span class="c1">#MESA自适应移动平均 </span>
+</span></span><span class="line"><span class="cl"><span class="n">MAVP</span>                 <span class="n">Moving</span> <span class="n">average</span> <span class="n">with</span> <span class="n">variable</span> <span class="n">period</span> <span class="c1">#变周期移动平均线</span>
+</span></span><span class="line"><span class="cl"><span class="n">MIDPOINT</span>             <span class="n">MidPoint</span> <span class="n">over</span> <span class="n">period</span> <span class="c1">#周期中点</span>
+</span></span><span class="line"><span class="cl"><span class="n">MIDPRICE</span>             <span class="n">Midpoint</span> <span class="n">Price</span> <span class="n">over</span> <span class="n">period</span> <span class="c1">#周期中点价格</span>
+</span></span><span class="line"><span class="cl"><span class="n">SAR</span>                  <span class="n">Parabolic</span> <span class="n">SAR</span> <span class="c1">#抛物线转向指标</span>
+</span></span><span class="line"><span class="cl"><span class="n">SAREXT</span>               <span class="n">Parabolic</span> <span class="n">SAR</span> <span class="o">-</span> <span class="n">Extended</span> <span class="c1">#抛物线转向指标 - 扩展</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMA</span>                  <span class="n">Simple</span> <span class="n">Moving</span> <span class="n">Average</span> <span class="c1">#简单移动平均线</span>
+</span></span><span class="line"><span class="cl"><span class="n">T3</span>                   <span class="n">Triple</span> <span class="n">Exponential</span> <span class="n">Moving</span> <span class="n">Average</span> <span class="p">(</span><span class="n">T3</span><span class="p">)</span> <span class="c1">#双指数移动均线改进指标</span>
+</span></span><span class="line"><span class="cl"><span class="n">TEMA</span>                 <span class="n">Triple</span> <span class="n">Exponential</span> <span class="n">Moving</span> <span class="n">Average</span> <span class="c1">#三重指数移动均线指标</span>
+</span></span><span class="line"><span class="cl"><span class="n">TRIMA</span>                <span class="n">Triangular</span> <span class="n">Moving</span> <span class="n">Average</span> <span class="c1">#三指数移动平均</span>
+</span></span><span class="line"><span class="cl"><span class="n">WMA</span>                  <span class="n">Weighted</span> <span class="n">Moving</span> <span class="n">Average</span> <span class="c1">#加权移动平均线</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h4 id="momentum-indicators-talib-doc-func-groups-momentum-indicators"><a href="/talib-doc/func_groups/momentum_indicators">Momentum Indicators</a></h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="momentum-indicatorstalib-docfunc_groupsmomentum_indicators"><a href="/talib-doc/func_groups/momentum_indicators">Momentum Indicators</a> <a href="#momentum-indicatorstalib-docfunc_groupsmomentum_indicators" class="anchor">🔗</a></h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -214,102 +183,97 @@ WMA                  Weighted Moving Average #加权移动平均线</pre></td></
 </span><span class="lnt">28
 </span><span class="lnt">29
 </span><span class="lnt">30
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">ADX                  Average Directional Movement Index #平均趋向指数
-ADXR                 Average Directional Movement Index Rating #平均趋向指数评估指标
-APO                  Absolute Price Oscillator 绝对价格震荡指标
-AROON                Aroon #阿隆指标
-AROONOSC             Aroon Oscillator #阿隆震荡指标
-BOP                  Balance Of Power #力量均衡指标
-CCI                  Commodity Channel Index #顺势指标
-CMO                  Chande Momentum Oscillator #钱德动量摆动指标
-DX                   Directional Movement Index #动向指数
-MACD                 Moving Average Convergence/Divergence #平滑异同移动平均线
-MACDEXT              MACD with controllable MA type
-MACDFIX              Moving Average Convergence/Divergence Fix 12/26
-MFI                  Money Flow Index #资金流量指标
-MINUS_DI             Minus Directional Indicator #负向指标
-MINUS_DM             Minus Directional Movement #负向运动指标
-MOM                  Momentum #动量指标
-PLUS_DI              Plus Directional Indicator #正向指标
-PLUS_DM              Plus Directional Movement #正向运动指标
-PPO                  Percentage Price Oscillator #价格震荡百分比指标
-ROC                  Rate of change : ((price/prevPrice)-1)*100 #变动速率指标
-ROCP                 Rate of change Percentage: (price-prevPrice)/prevPrice #变动率百分比指标
-ROCR                 Rate of change ratio: (price/prevPrice) #变动比率指标
-ROCR100              Rate of change ratio 100 scale: (price/prevPrice)*100 #百倍变动比率指标
-RSI                  Relative Strength Index #百倍变动比率指标
-STOCH                Stochastic #KDJ指标中的KD指标
-STOCHF               Stochastic Fast #快速STOCH指标
-STOCHRSI             Stochastic Relative Strength Index #随机强弱指数
-TRIX                 1-day Rate-Of-Change (ROC) of a Triple Smooth EMA #三重指数平滑移动均线
-ULTOSC               Ultimate Oscillator #终极震荡指标
-WILLR                Williams&#39; %R #%R 威廉指标</pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ADX                  Average Directional Movement Index #平均趋向指数
+</span></span><span class="line"><span class="cl">ADXR                 Average Directional Movement Index Rating #平均趋向指数评估指标
+</span></span><span class="line"><span class="cl">APO                  Absolute Price Oscillator 绝对价格震荡指标
+</span></span><span class="line"><span class="cl">AROON                Aroon #阿隆指标
+</span></span><span class="line"><span class="cl">AROONOSC             Aroon Oscillator #阿隆震荡指标
+</span></span><span class="line"><span class="cl">BOP                  Balance Of Power #力量均衡指标
+</span></span><span class="line"><span class="cl">CCI                  Commodity Channel Index #顺势指标
+</span></span><span class="line"><span class="cl">CMO                  Chande Momentum Oscillator #钱德动量摆动指标
+</span></span><span class="line"><span class="cl">DX                   Directional Movement Index #动向指数
+</span></span><span class="line"><span class="cl">MACD                 Moving Average Convergence/Divergence #平滑异同移动平均线
+</span></span><span class="line"><span class="cl">MACDEXT              MACD with controllable MA type
+</span></span><span class="line"><span class="cl">MACDFIX              Moving Average Convergence/Divergence Fix 12/26
+</span></span><span class="line"><span class="cl">MFI                  Money Flow Index #资金流量指标
+</span></span><span class="line"><span class="cl">MINUS_DI             Minus Directional Indicator #负向指标
+</span></span><span class="line"><span class="cl">MINUS_DM             Minus Directional Movement #负向运动指标
+</span></span><span class="line"><span class="cl">MOM                  Momentum #动量指标
+</span></span><span class="line"><span class="cl">PLUS_DI              Plus Directional Indicator #正向指标
+</span></span><span class="line"><span class="cl">PLUS_DM              Plus Directional Movement #正向运动指标
+</span></span><span class="line"><span class="cl">PPO                  Percentage Price Oscillator #价格震荡百分比指标
+</span></span><span class="line"><span class="cl">ROC                  Rate of change : ((price/prevPrice)-1)*100 #变动速率指标
+</span></span><span class="line"><span class="cl">ROCP                 Rate of change Percentage: (price-prevPrice)/prevPrice #变动率百分比指标
+</span></span><span class="line"><span class="cl">ROCR                 Rate of change ratio: (price/prevPrice) #变动比率指标
+</span></span><span class="line"><span class="cl">ROCR100              Rate of change ratio 100 scale: (price/prevPrice)*100 #百倍变动比率指标
+</span></span><span class="line"><span class="cl">RSI                  Relative Strength Index #百倍变动比率指标
+</span></span><span class="line"><span class="cl">STOCH                Stochastic #KDJ指标中的KD指标
+</span></span><span class="line"><span class="cl">STOCHF               Stochastic Fast #快速STOCH指标
+</span></span><span class="line"><span class="cl">STOCHRSI             Stochastic Relative Strength Index #随机强弱指数
+</span></span><span class="line"><span class="cl">TRIX                 1-day Rate-Of-Change (ROC) of a Triple Smooth EMA #三重指数平滑移动均线
+</span></span><span class="line"><span class="cl">ULTOSC               Ultimate Oscillator #终极震荡指标
+</span></span><span class="line"><span class="cl">WILLR                Williams&#39; %R #%R 威廉指标
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h4 id="volume-indicators-talib-doc-func-groups-volume-indicators"><a href="/talib-doc/func_groups/volume_indicators">Volume Indicators</a></h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="volume-indicatorstalib-docfunc_groupsvolume_indicators"><a href="/talib-doc/func_groups/volume_indicators">Volume Indicators</a> <a href="#volume-indicatorstalib-docfunc_groupsvolume_indicators" class="anchor">🔗</a></h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">AD                   Chaikin A/D Line #线随机指标
-ADOSC                Chaikin A/D Oscillator #佳庆指数
-OBV                  On Balance Volume #能量潮指标</pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">AD                   Chaikin A/D Line #线随机指标
+</span></span><span class="line"><span class="cl">ADOSC                Chaikin A/D Oscillator #佳庆指数
+</span></span><span class="line"><span class="cl">OBV                  On Balance Volume #能量潮指标
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h4 id="cycle-indicators-talib-doc-func-groups-cycle-indicators"><a href="/talib-doc/func_groups/cycle_indicators">Cycle Indicators</a></h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="cycle-indicatorstalib-docfunc_groupscycle_indicators"><a href="/talib-doc/func_groups/cycle_indicators">Cycle Indicators</a> <a href="#cycle-indicatorstalib-docfunc_groupscycle_indicators" class="anchor">🔗</a></h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">HT_DCPERIOD          Hilbert Transform - Dominant Cycle Period #希尔伯特变换 - 主周期
-HT_DCPHASE           Hilbert Transform - Dominant Cycle Phase #希尔伯特变换 - 主阶段
-HT_PHASOR            Hilbert Transform - Phasor Components #希尔伯特变换 - 相成分
-HT_SINE              Hilbert Transform - SineWave #希尔伯特变换 - 正弦波
-HT_TRENDMODE         Hilbert Transform - Trend vs Cycle Mode #希尔伯特变换 - 趋势与周期</pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HT_DCPERIOD          Hilbert Transform - Dominant Cycle Period #希尔伯特变换 - 主周期
+</span></span><span class="line"><span class="cl">HT_DCPHASE           Hilbert Transform - Dominant Cycle Phase #希尔伯特变换 - 主阶段
+</span></span><span class="line"><span class="cl">HT_PHASOR            Hilbert Transform - Phasor Components #希尔伯特变换 - 相成分
+</span></span><span class="line"><span class="cl">HT_SINE              Hilbert Transform - SineWave #希尔伯特变换 - 正弦波
+</span></span><span class="line"><span class="cl">HT_TRENDMODE         Hilbert Transform - Trend vs Cycle Mode #希尔伯特变换 - 趋势与周期
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h4 id="price-transform-talib-doc-func-groups-price-transform"><a href="/talib-doc/func_groups/price_transform">Price Transform</a></h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="price-transformtalib-docfunc_groupsprice_transform"><a href="/talib-doc/func_groups/price_transform">Price Transform</a> <a href="#price-transformtalib-docfunc_groupsprice_transform" class="anchor">🔗</a></h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">AVGPRICE             Average Price #平均价格指标
-MEDPRICE             Median Price #价格中间值指标
-TYPPRICE             Typical Price #典型价格指标
-WCLPRICE             Weighted Close Price #加权收盘价指标</pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">AVGPRICE             Average Price #平均价格指标
+</span></span><span class="line"><span class="cl">MEDPRICE             Median Price #价格中间值指标
+</span></span><span class="line"><span class="cl">TYPPRICE             Typical Price #典型价格指标
+</span></span><span class="line"><span class="cl">WCLPRICE             Weighted Close Price #加权收盘价指标
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h4 id="volatility-indicators-talib-doc-func-groups-volatility-indicators"><a href="/talib-doc/func_groups/volatility_indicators">Volatility Indicators</a></h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="volatility-indicatorstalib-docfunc_groupsvolatility_indicators"><a href="/talib-doc/func_groups/volatility_indicators">Volatility Indicators</a> <a href="#volatility-indicatorstalib-docfunc_groupsvolatility_indicators" class="anchor">🔗</a></h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">ATR                  Average True Range #平均真实波幅指标
-NATR                 Normalized Average True Range #归一化平均真实波幅
-TRANGE               True Range #真实范围指标</pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ATR                  Average True Range #平均真实波幅指标
+</span></span><span class="line"><span class="cl">NATR                 Normalized Average True Range #归一化平均真实波幅
+</span></span><span class="line"><span class="cl">TRANGE               True Range #真实范围指标
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h4 id="pattern-recognition-talib-doc-func-groups-pattern-recognition"><a href="/talib-doc/func_groups/pattern_recognition">Pattern Recognition</a></h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="pattern-recognitiontalib-docfunc_groupspattern_recognition"><a href="/talib-doc/func_groups/pattern_recognition">Pattern Recognition</a> <a href="#pattern-recognitiontalib-docfunc_groupspattern_recognition" class="anchor">🔗</a></h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -370,75 +334,74 @@ TRANGE               True Range #真实范围指标</pre></td></tr></table>
 </span><span class="lnt">59
 </span><span class="lnt">60
 </span><span class="lnt">61
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">CDL2CROWS            Two Crows  #两只乌鸦
-CDL3BLACKCROWS       Three Black Crows  #三只乌鸦
-CDL3INSIDE           Three Inside Up/Down  #三内部上涨和下跌
-CDL3LINESTRIKE       Three-Line Strike  #三线打击
-CDL3OUTSIDE          Three Outside Up/Down  #三外部上涨和下跌
-CDL3STARSINSOUTH     Three Stars In The South  #南方三星
-CDL3WHITESOLDIERS    Three Advancing White Soldiers  #三个白兵
-CDLABANDONEDBABY     Abandoned Baby  #舍子线
-CDLADVANCEBLOCK      Advance Block  #大敌当前
-CDLBELTHOLD          Belt-hold  #捉腰带线
-CDLBREAKAWAY         Breakaway  #脱离
-CDLCLOSINGMARUBOZU   Closing Marubozu  #收盘缺影线
-CDLCONCEALBABYSWALL  Concealing Baby Swallow  #藏婴吞没
-CDLCOUNTERATTACK     Counterattack  #反击线
-CDLDARKCLOUDCOVER    Dark Cloud Cover  #乌云压顶
-CDLDOJI              Doji  #十字
-CDLDOJISTAR          Doji Star  #十字星
-CDLDRAGONFLYDOJI     Dragonfly Doji  #蜻蜓十字/T形十字
-CDLENGULFING         Engulfing Pattern  #吞噬模式
-CDLEVENINGDOJISTAR   Evening Doji Star  #十字暮星
-CDLEVENINGSTAR       Evening Star  #暮星
-CDLGAPSIDESIDEWHITE  Up/Down-gap side-by-side white lines  #向上/下跳空并列阳线
-CDLGRAVESTONEDOJI    Gravestone Doji  #墓碑十字/倒T十字
-CDLHAMMER            Hammer  #锤头
-CDLHANGINGMAN        Hanging Man  #上吊线
-CDLHARAMI            Harami Pattern  #母子线
-CDLHARAMICROSS       Harami Cross Pattern  #十字孕线
-CDLHIGHWAVE          High-Wave Candle  #风高浪大线
-CDLHIKKAKE           Hikkake Pattern  #陷阱
-CDLHIKKAKEMOD        Modified Hikkake Pattern  #修正陷阱
-CDLHOMINGPIGEON      Homing Pigeon  #家鸽
-CDLIDENTICAL3CROWS   Identical Three Crows  #三胞胎乌鸦
-CDLINNECK            In-Neck Pattern  #颈内线
-CDLINVERTEDHAMMER    Inverted Hammer  #倒锤头
-CDLKICKING           Kicking  #反冲形态
-CDLKICKINGBYLENGTH   Kicking - bull/bear determined by the longer marubozu  #较长缺影线反冲形态
-CDLLADDERBOTTOM      Ladder Bottom  #梯底
-CDLLONGLEGGEDDOJI    Long Legged Doji  #长脚十字
-CDLLONGLINE          Long Line Candle  #长蜡烛
-CDLMARUBOZU          Marubozu  #光头光脚/缺影线
-CDLMATCHINGLOW       Matching Low  #相同低价
-CDLMATHOLD           Mat Hold  #铺垫
-CDLMORNINGDOJISTAR   Morning Doji Star  #十字晨星
-CDLMORNINGSTAR       Morning Star  #晨星
-CDLONNECK            On-Neck Pattern  #颈上线
-CDLPIERCING          Piercing Pattern  #刺透形态
-CDLRICKSHAWMAN       Rickshaw Man  #黄包车夫
-CDLRISEFALL3METHODS  Rising/Falling Three Methods  #上升/下降三法
-CDLSEPARATINGLINES   Separating Lines  #分离线
-CDLSHOOTINGSTAR      Shooting Star  #射击之星
-CDLSHORTLINE         Short Line Candle  #短蜡烛
-CDLSPINNINGTOP       Spinning Top  #纺锤
-CDLSTALLEDPATTERN    Stalled Pattern  #停顿形态
-CDLSTICKSANDWICH     Stick Sandwich  #条形三明治
-CDLTAKURI            Takuri (Dragonfly Doji with very long lower shadow)  #探水竿
-CDLTASUKIGAP         Tasuki Gap  #跳空并列阴阳线
-CDLTHRUSTING         Thrusting Pattern  #插入
-CDLTRISTAR           Tristar Pattern  #三星
-CDLUNIQUE3RIVER      Unique 3 River  #奇特三河床
-CDLUPSIDEGAP2CROWS   Upside Gap Two Crows  #向上跳空的两只乌鸦
-CDLXSIDEGAP3METHODS  Upside/Downside Gap Three Methods  #上升/下降跳空三法</pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">CDL2CROWS            Two Crows  #两只乌鸦
+</span></span><span class="line"><span class="cl">CDL3BLACKCROWS       Three Black Crows  #三只乌鸦
+</span></span><span class="line"><span class="cl">CDL3INSIDE           Three Inside Up/Down  #三内部上涨和下跌
+</span></span><span class="line"><span class="cl">CDL3LINESTRIKE       Three-Line Strike  #三线打击
+</span></span><span class="line"><span class="cl">CDL3OUTSIDE          Three Outside Up/Down  #三外部上涨和下跌
+</span></span><span class="line"><span class="cl">CDL3STARSINSOUTH     Three Stars In The South  #南方三星
+</span></span><span class="line"><span class="cl">CDL3WHITESOLDIERS    Three Advancing White Soldiers  #三个白兵
+</span></span><span class="line"><span class="cl">CDLABANDONEDBABY     Abandoned Baby  #舍子线
+</span></span><span class="line"><span class="cl">CDLADVANCEBLOCK      Advance Block  #大敌当前
+</span></span><span class="line"><span class="cl">CDLBELTHOLD          Belt-hold  #捉腰带线
+</span></span><span class="line"><span class="cl">CDLBREAKAWAY         Breakaway  #脱离
+</span></span><span class="line"><span class="cl">CDLCLOSINGMARUBOZU   Closing Marubozu  #收盘缺影线
+</span></span><span class="line"><span class="cl">CDLCONCEALBABYSWALL  Concealing Baby Swallow  #藏婴吞没
+</span></span><span class="line"><span class="cl">CDLCOUNTERATTACK     Counterattack  #反击线
+</span></span><span class="line"><span class="cl">CDLDARKCLOUDCOVER    Dark Cloud Cover  #乌云压顶
+</span></span><span class="line"><span class="cl">CDLDOJI              Doji  #十字
+</span></span><span class="line"><span class="cl">CDLDOJISTAR          Doji Star  #十字星
+</span></span><span class="line"><span class="cl">CDLDRAGONFLYDOJI     Dragonfly Doji  #蜻蜓十字/T形十字
+</span></span><span class="line"><span class="cl">CDLENGULFING         Engulfing Pattern  #吞噬模式
+</span></span><span class="line"><span class="cl">CDLEVENINGDOJISTAR   Evening Doji Star  #十字暮星
+</span></span><span class="line"><span class="cl">CDLEVENINGSTAR       Evening Star  #暮星
+</span></span><span class="line"><span class="cl">CDLGAPSIDESIDEWHITE  Up/Down-gap side-by-side white lines  #向上/下跳空并列阳线
+</span></span><span class="line"><span class="cl">CDLGRAVESTONEDOJI    Gravestone Doji  #墓碑十字/倒T十字
+</span></span><span class="line"><span class="cl">CDLHAMMER            Hammer  #锤头
+</span></span><span class="line"><span class="cl">CDLHANGINGMAN        Hanging Man  #上吊线
+</span></span><span class="line"><span class="cl">CDLHARAMI            Harami Pattern  #母子线
+</span></span><span class="line"><span class="cl">CDLHARAMICROSS       Harami Cross Pattern  #十字孕线
+</span></span><span class="line"><span class="cl">CDLHIGHWAVE          High-Wave Candle  #风高浪大线
+</span></span><span class="line"><span class="cl">CDLHIKKAKE           Hikkake Pattern  #陷阱
+</span></span><span class="line"><span class="cl">CDLHIKKAKEMOD        Modified Hikkake Pattern  #修正陷阱
+</span></span><span class="line"><span class="cl">CDLHOMINGPIGEON      Homing Pigeon  #家鸽
+</span></span><span class="line"><span class="cl">CDLIDENTICAL3CROWS   Identical Three Crows  #三胞胎乌鸦
+</span></span><span class="line"><span class="cl">CDLINNECK            In-Neck Pattern  #颈内线
+</span></span><span class="line"><span class="cl">CDLINVERTEDHAMMER    Inverted Hammer  #倒锤头
+</span></span><span class="line"><span class="cl">CDLKICKING           Kicking  #反冲形态
+</span></span><span class="line"><span class="cl">CDLKICKINGBYLENGTH   Kicking - bull/bear determined by the longer marubozu  #较长缺影线反冲形态
+</span></span><span class="line"><span class="cl">CDLLADDERBOTTOM      Ladder Bottom  #梯底
+</span></span><span class="line"><span class="cl">CDLLONGLEGGEDDOJI    Long Legged Doji  #长脚十字
+</span></span><span class="line"><span class="cl">CDLLONGLINE          Long Line Candle  #长蜡烛
+</span></span><span class="line"><span class="cl">CDLMARUBOZU          Marubozu  #光头光脚/缺影线
+</span></span><span class="line"><span class="cl">CDLMATCHINGLOW       Matching Low  #相同低价
+</span></span><span class="line"><span class="cl">CDLMATHOLD           Mat Hold  #铺垫
+</span></span><span class="line"><span class="cl">CDLMORNINGDOJISTAR   Morning Doji Star  #十字晨星
+</span></span><span class="line"><span class="cl">CDLMORNINGSTAR       Morning Star  #晨星
+</span></span><span class="line"><span class="cl">CDLONNECK            On-Neck Pattern  #颈上线
+</span></span><span class="line"><span class="cl">CDLPIERCING          Piercing Pattern  #刺透形态
+</span></span><span class="line"><span class="cl">CDLRICKSHAWMAN       Rickshaw Man  #黄包车夫
+</span></span><span class="line"><span class="cl">CDLRISEFALL3METHODS  Rising/Falling Three Methods  #上升/下降三法
+</span></span><span class="line"><span class="cl">CDLSEPARATINGLINES   Separating Lines  #分离线
+</span></span><span class="line"><span class="cl">CDLSHOOTINGSTAR      Shooting Star  #射击之星
+</span></span><span class="line"><span class="cl">CDLSHORTLINE         Short Line Candle  #短蜡烛
+</span></span><span class="line"><span class="cl">CDLSPINNINGTOP       Spinning Top  #纺锤
+</span></span><span class="line"><span class="cl">CDLSTALLEDPATTERN    Stalled Pattern  #停顿形态
+</span></span><span class="line"><span class="cl">CDLSTICKSANDWICH     Stick Sandwich  #条形三明治
+</span></span><span class="line"><span class="cl">CDLTAKURI            Takuri (Dragonfly Doji with very long lower shadow)  #探水竿
+</span></span><span class="line"><span class="cl">CDLTASUKIGAP         Tasuki Gap  #跳空并列阴阳线
+</span></span><span class="line"><span class="cl">CDLTHRUSTING         Thrusting Pattern  #插入
+</span></span><span class="line"><span class="cl">CDLTRISTAR           Tristar Pattern  #三星
+</span></span><span class="line"><span class="cl">CDLUNIQUE3RIVER      Unique 3 River  #奇特三河床
+</span></span><span class="line"><span class="cl">CDLUPSIDEGAP2CROWS   Upside Gap Two Crows  #向上跳空的两只乌鸦
+</span></span><span class="line"><span class="cl">CDLXSIDEGAP3METHODS  Upside/Downside Gap Three Methods  #上升/下降跳空三法
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h4 id="statistic-functions-talib-doc-func-groups-statistic-functions"><a href="/talib-doc/func_groups/statistic_functions">Statistic Functions</a></h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="statistic-functionstalib-docfunc_groupsstatistic_functions"><a href="/talib-doc/func_groups/statistic_functions">Statistic Functions</a> <a href="#statistic-functionstalib-docfunc_groupsstatistic_functions" class="anchor">🔗</a></h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -447,23 +410,22 @@ CDLXSIDEGAP3METHODS  Upside/Downside Gap Three Methods  #上升/下降跳空三�
 </span><span class="lnt">7
 </span><span class="lnt">8
 </span><span class="lnt">9
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">BETA                 Beta
-CORREL               Pearson&#39;s Correlation Coefficient (r)
-LINEARREG            Linear Regression
-LINEARREG_ANGLE      Linear Regression Angle
-LINEARREG_INTERCEPT  Linear Regression Intercept
-LINEARREG_SLOPE      Linear Regression Slope
-STDDEV               Standard Deviation
-TSF                  Time Series Forecast
-VAR                  Variance</pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-zed" data-lang="zed"><span class="line"><span class="cl"><span class="n">BETA</span><span class="w">                 </span><span class="n">Beta</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">CORREL</span><span class="w">               </span><span class="n">Pearson</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">Correlation</span><span class="w"> </span><span class="n">Coefficient</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">LINEARREG</span><span class="w">            </span><span class="n">Linear</span><span class="w"> </span><span class="n">Regression</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">LINEARREG_ANGLE</span><span class="w">      </span><span class="n">Linear</span><span class="w"> </span><span class="n">Regression</span><span class="w"> </span><span class="n">Angle</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">LINEARREG_INTERCEPT</span><span class="w">  </span><span class="n">Linear</span><span class="w"> </span><span class="n">Regression</span><span class="w"> </span><span class="n">Intercept</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">LINEARREG_SLOPE</span><span class="w">      </span><span class="n">Linear</span><span class="w"> </span><span class="n">Regression</span><span class="w"> </span><span class="n">Slope</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">STDDEV</span><span class="w">               </span><span class="n">Standard</span><span class="w"> </span><span class="n">Deviation</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">TSF</span><span class="w">                  </span><span class="n">Time</span><span class="w"> </span><span class="n">Series</span><span class="w"> </span><span class="n">Forecast</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">VAR</span><span class="w">                  </span><span class="n">Variance</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h4 id="math-transform-talib-doc-func-groups-math-transform"><a href="/talib-doc/func_groups/math_transform">Math Transform</a></h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="math-transformtalib-docfunc_groupsmath_transform"><a href="/talib-doc/func_groups/math_transform">Math Transform</a> <a href="#math-transformtalib-docfunc_groupsmath_transform" class="anchor">🔗</a></h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -478,29 +440,28 @@ VAR                  Variance</pre></td></tr></table>
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">ACOS                 Vector Trigonometric ACos
-ASIN                 Vector Trigonometric ASin
-ATAN                 Vector Trigonometric ATan
-CEIL                 Vector Ceil
-COS                  Vector Trigonometric Cos
-COSH                 Vector Trigonometric Cosh
-EXP                  Vector Arithmetic Exp
-FLOOR                Vector Floor
-LN                   Vector Log Natural
-LOG10                Vector Log10
-SIN                  Vector Trigonometric Sin
-SINH                 Vector Trigonometric Sinh
-SQRT                 Vector Square Root
-TAN                  Vector Trigonometric Tan
-TANH                 Vector Trigonometric Tanh</pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ACOS                 Vector Trigonometric ACos
+</span></span><span class="line"><span class="cl">ASIN                 Vector Trigonometric ASin
+</span></span><span class="line"><span class="cl">ATAN                 Vector Trigonometric ATan
+</span></span><span class="line"><span class="cl">CEIL                 Vector Ceil
+</span></span><span class="line"><span class="cl">COS                  Vector Trigonometric Cos
+</span></span><span class="line"><span class="cl">COSH                 Vector Trigonometric Cosh
+</span></span><span class="line"><span class="cl">EXP                  Vector Arithmetic Exp
+</span></span><span class="line"><span class="cl">FLOOR                Vector Floor
+</span></span><span class="line"><span class="cl">LN                   Vector Log Natural
+</span></span><span class="line"><span class="cl">LOG10                Vector Log10
+</span></span><span class="line"><span class="cl">SIN                  Vector Trigonometric Sin
+</span></span><span class="line"><span class="cl">SINH                 Vector Trigonometric Sinh
+</span></span><span class="line"><span class="cl">SQRT                 Vector Square Root
+</span></span><span class="line"><span class="cl">TAN                  Vector Trigonometric Tan
+</span></span><span class="line"><span class="cl">TANH                 Vector Trigonometric Tanh
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<h4 id="math-operators-talib-doc-func-groups-math-operators"><a href="/talib-doc/func_groups/math_operators">Math Operators</a></h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="math-operatorstalib-docfunc_groupsmath_operators"><a href="/talib-doc/func_groups/math_operators">Math Operators</a> <a href="#math-operatorstalib-docfunc_groupsmath_operators" class="anchor">🔗</a></h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -511,32 +472,38 @@ TANH                 Vector Trigonometric Tanh</pre></td></tr></table>
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">ADD                  Vector Arithmetic Add
-DIV                  Vector Arithmetic Div
-MAX                  Highest value over a specified period
-MAXINDEX             Index of highest value over a specified period
-MIN                  Lowest value over a specified period
-MININDEX             Index of lowest value over a specified period
-MINMAX               Lowest and highest values over a specified period
-MINMAXINDEX          Indexes of lowest and highest values over a specified period
-MULT                 Vector Arithmetic Mult
-SUB                  Vector Arithmetic Substraction
-SUM                  Summation</pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ADD                  Vector Arithmetic Add
+</span></span><span class="line"><span class="cl">DIV                  Vector Arithmetic Div
+</span></span><span class="line"><span class="cl">MAX                  Highest value over a specified period
+</span></span><span class="line"><span class="cl">MAXINDEX             Index of highest value over a specified period
+</span></span><span class="line"><span class="cl">MIN                  Lowest value over a specified period
+</span></span><span class="line"><span class="cl">MININDEX             Index of lowest value over a specified period
+</span></span><span class="line"><span class="cl">MINMAX               Lowest and highest values over a specified period
+</span></span><span class="line"><span class="cl">MINMAXINDEX          Indexes of lowest and highest values over a specified period
+</span></span><span class="line"><span class="cl">MULT                 Vector Arithmetic Mult
+</span></span><span class="line"><span class="cl">SUB                  Vector Arithmetic Substraction
+</span></span><span class="line"><span class="cl">SUM                  Summation
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p><a href="/talib-doc/doc_index">文档 </a></p>
+</div><p><a href="/talib-doc/doc_index">文档 </a></p>
 
-  </div>
-</article>
-        </div>
-        <div id="gitalk-container"></div>
+    </div>
+
+    
+</section>
+
+
+                <hr>
+                
+
+<div id="gitalk-container"></div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2019-10-10 00:00:06 \x2b0800 CST',
+        id: '2019-10-10 00:00:06 \u002b0800 CST',
         title: '06 方法分类(All Functions)',
         clientID: '72786bf87c19beec6abe',
         clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
@@ -549,57 +516,489 @@ SUM                  Summation</pre></td></tr></table>
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
-      </div>
+            </div>
+        </div>
+
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     </main>
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        id: '2019-10-10 00:00:06 \u002b0800 CST',
+        title: '06 方法分类(All Functions)',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+    });
+    gitalk.render('gitalk-container');
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by
+        gitalk.</a></noscript>
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
+    
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
-
-
-
-
-
-
-
-
+    
 </body>
+
 </html>

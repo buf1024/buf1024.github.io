@@ -1,312 +1,264 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>14 统计功能(Statistic Functions) - BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="Statistic Functions 统计功能函数 BETA - Beta 函数名：BETA 名称：β系数也称为贝塔系数 简介：一种风险指数，用来衡量个别股票或 股票基金相对于整个股市的价格波动情况 贝" /><meta name="keywords" content="blog, computer, luoguochun" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/talib-doc/func_groups/statistic_functions/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="14 统计功能(Statistic Functions)" />
-<meta property="og:description" content="Statistic Functions 统计功能函数 BETA - Beta 函数名：BETA 名称：β系数也称为贝塔系数 简介：一种风险指数，用来衡量个别股票或 股票基金相对于整个股市的价格波动情况 贝" />
+<title>14 统计功能(Statistic Functions) | BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/talib-doc/func_groups/statistic_functions/">
+<meta name="description" content="Statistic Functions 统计功能函数 🔗BETA - Beta 🔗 函数名：BETA 名称：β系数也称为贝塔系数 简介：一种风险指数，用来衡量个别股票或 股票基金相对于整个股市的价格" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luoguochun.cn/talib-doc/func_groups/statistic_functions/" /><meta property="article:published_time" content="2019-10-10T00:00:14&#43;08:00"/>
-<meta property="article:modified_time" content="2019-10-10T00:00:14&#43;08:00"/>
-
-<meta itemprop="name" content="14 统计功能(Statistic Functions)">
-<meta itemprop="description" content="Statistic Functions 统计功能函数 BETA - Beta 函数名：BETA 名称：β系数也称为贝塔系数 简介：一种风险指数，用来衡量个别股票或 股票基金相对于整个股市的价格波动情况 贝">
-
-
-<meta itemprop="datePublished" content="2019-10-10T00:00:14&#43;08:00" />
-<meta itemprop="dateModified" content="2019-10-10T00:00:14&#43;08:00" />
-<meta itemprop="wordCount" content="1261">
+<meta property="og:title" content="14 统计功能(Statistic Functions) | BUF1024!!!" />
+<meta property="og:url" content="https://luoguochun.cn/talib-doc/func_groups/statistic_functions/" />
+<meta property="og:description" content="Statistic Functions 统计功能函数 🔗BETA - Beta 🔗 函数名：BETA 名称：β系数也称为贝塔系数 简介：一种风险指数，用来衡量个别股票或 股票基金相对于整个股市的价格" />
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="14 统计功能(Statistic Functions)"/>
-<meta name="twitter:description" content="Statistic Functions 统计功能函数 BETA - Beta 函数名：BETA 名称：β系数也称为贝塔系数 简介：一种风险指数，用来衡量个别股票或 股票基金相对于整个股市的价格波动情况 贝"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-  <div class="post-content">
-    
+    <main class="main-wrapper">
 
-<h1 id="statistic-functions-统计功能函数">Statistic Functions 统计功能函数</h1>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
 
-<h3 id="beta-beta">BETA - Beta</h3>
+<section class="single">
+    <h1 class="title">14 统计功能(Statistic Functions)</h1>
 
-<blockquote>
-<p>函数名：BETA<br />
-名称：β系数也称为贝塔系数<br />
+    <div class="tip">
+        <time datetime="2019-10-10 00:00:14 &#43;0800 CST">2019/10/10</time>
+        <span class="split">·</span>
+        <span> 1274 words </span>
+        <span class="split">·</span>
+        <span>
+            3 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <h1 id="statistic-functions-统计功能函数">Statistic Functions 统计功能函数 <a href="#statistic-functions-%e7%bb%9f%e8%ae%a1%e5%8a%9f%e8%83%bd%e5%87%bd%e6%95%b0" class="anchor">🔗</a></h1><h3 id="beta---beta">BETA - Beta <a href="#beta---beta" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：BETA<br>
+名称：β系数也称为贝塔系数<br>
 简介：一种风险指数，用来衡量个别股票或
 股票基金相对于整个股市的价格波动情况
 贝塔系数衡量股票收益相对于业绩评价基准收益的总体波动性，是一个相对指标。 β 越高，意味着股票相对于业绩评价基准的波动性越大。 β 大于 1 ，
 则股票的波动性大于业绩评价基准的波动性。反之亦然。
-用途：<br />
-1）计算资本成本，做出投资决策（只有回报率高于资本成本的项目才应投资）；<br />
-2）计算资本成本，制定业绩考核及激励标准；<br />
-3）计算资本成本，进行资产估值（Beta是现金流贴现模型的基础）；<br />
+用途：<br>
+1）计算资本成本，做出投资决策（只有回报率高于资本成本的项目才应投资）；<br>
+2）计算资本成本，制定业绩考核及激励标准；<br>
+3）计算资本成本，进行资产估值（Beta是现金流贴现模型的基础）；<br>
 4）确定单个资产或组合的系统风险，用于资产组合的投资管理，特别是股指期货或其他金融衍生品的避险（或投机）</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">BETA</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">BETA</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Beta at <a href="http://www.tadoc.org/indicator/BETA.htm">tadoc.org</a>.</p>
-
-<h3 id="correl-pearson-s-correlation-coefficient-r">CORREL - Pearson&rsquo;s Correlation Coefficient &reg;</h3>
-
-<blockquote>
-<p>函数名：CORREL<br />
-名称：皮尔逊相关系数<br />
-简介：用于度量两个变量X和Y之间的相关（线性相关），其值介于-1与1之间<br />
+</div><p>Learn more about the Beta at <a href="http://www.tadoc.org/indicator/BETA.htm">tadoc.org</a>.</p>
+<h3 id="correl---pearsons-correlation-coefficient-r">CORREL - Pearson&rsquo;s Correlation Coefficient (r) <a href="#correl---pearsons-correlation-coefficient-r" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：CORREL<br>
+名称：皮尔逊相关系数<br>
+简介：用于度量两个变量X和Y之间的相关（线性相关），其值介于-1与1之间<br>
 皮尔逊相关系数是一种度量两个变量间相关程度的方法。它是一个介于 1 和 -1 之间的值，
 其中，1 表示变量完全正相关， 0 表示无关，-1 表示完全负相关。</p>
+</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">CORREL</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">CORREL</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div></blockquote>
-
-<p>Learn more about the Pearson&rsquo;s Correlation Coefficient &reg; at <a href="http://www.tadoc.org/indicator/CORREL.htm">tadoc.org</a>.</p>
-
-<h3 id="linearreg-linear-regression">LINEARREG - Linear Regression</h3>
-
-<blockquote>
+</div><p>Learn more about the Pearson&rsquo;s Correlation Coefficient (r) at <a href="http://www.tadoc.org/indicator/CORREL.htm">tadoc.org</a>.</p>
+<h3 id="linearreg---linear-regression">LINEARREG - Linear Regression <a href="#linearreg---linear-regression" class="anchor">🔗</a></h3><blockquote>
 <p>直线回归方程：当两个变量x与y之间达到显著地线性相关关系时,应用最小二乘法原理确定一条最优直线的直线方程y=a+bx,这条回归直线与个相关点的距离比任何其他直线与相关点的距离都小,是最佳的理想直线.
-回归截距a：表示直线在y轴上的截距,代表直线的起点.<br />
+回归截距a：表示直线在y轴上的截距,代表直线的起点.<br>
 回归系数b：表示直线的斜率,他的实际意义是说明x每变化一个单位时,影响y平均变动的数量.
 即x每增加1单位,y变化b个单位.</p>
-
-<p>函数名：LINEARREG<br />
-名称：线性回归<br />
-简介：来确定两种或两种以上变量间相互依赖的定量关系的一种统计分析方法<br />
+</blockquote>
+<blockquote>
+<p>函数名：LINEARREG<br>
+名称：线性回归<br>
+简介：来确定两种或两种以上变量间相互依赖的定量关系的一种统计分析方法<br>
 其表达形式为y = w&rsquo;x+e，e为误差服从均值为0的正态分布。</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">LINEARREG</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">LINEARREG</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Linear Regression at <a href="http://www.tadoc.org/indicator/LINEARREG.htm">tadoc.org</a>.</p>
-
-<h3 id="linearreg-angle-linear-regression-angle">LINEARREG_ANGLE - Linear Regression Angle</h3>
-
-<blockquote>
-<p>函数名：LINEARREG_ANGLE<br />
-名称：线性回归的角度<br />
+</div><p>Learn more about the Linear Regression at <a href="http://www.tadoc.org/indicator/LINEARREG.htm">tadoc.org</a>.</p>
+<h3 id="linearreg_angle---linear-regression-angle">LINEARREG_ANGLE - Linear Regression Angle <a href="#linearreg_angle---linear-regression-angle" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：LINEARREG_ANGLE<br>
+名称：线性回归的角度<br>
 简介：来确定价格的角度变化.
 <a href="http://blog.sina.com.cn/s/blog_14c9f45b20102vv8p.md">参考</a></p>
+</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">LINEARREG_ANGLE</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">LINEARREG_ANGLE</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div></blockquote>
-
-<p>Learn more about the Linear Regression Angle at <a href="http://www.tadoc.org/indicator/LINEARREG_ANGLE.htm">tadoc.org</a>.</p>
-
-<h3 id="linearreg-intercept-linear-regression-intercept">LINEARREG_INTERCEPT - Linear Regression Intercept</h3>
-
-<blockquote>
-<p>函数名：LINEARREG_INTERCEPT<br />
+</div><p>Learn more about the Linear Regression Angle at <a href="http://www.tadoc.org/indicator/LINEARREG_ANGLE.htm">tadoc.org</a>.</p>
+<h3 id="linearreg_intercept---linear-regression-intercept">LINEARREG_INTERCEPT - Linear Regression Intercept <a href="#linearreg_intercept---linear-regression-intercept" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：LINEARREG_INTERCEPT<br>
 名称：线性回归截距</p>
+</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">LINEARREG_INTERCEPT</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">LINEARREG_INTERCEPT</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div></blockquote>
-
-<p>Learn more about the Linear Regression Intercept at <a href="http://www.tadoc.org/indicator/LINEARREG_INTERCEPT.htm">tadoc.org</a>.</p>
-
-<h3 id="linearreg-slope-linear-regression-slope">LINEARREG_SLOPE - Linear Regression Slope</h3>
-
-<blockquote>
-<p>函数名：LINEARREG_SLOPE<br />
+</div><p>Learn more about the Linear Regression Intercept at <a href="http://www.tadoc.org/indicator/LINEARREG_INTERCEPT.htm">tadoc.org</a>.</p>
+<h3 id="linearreg_slope---linear-regression-slope">LINEARREG_SLOPE - Linear Regression Slope <a href="#linearreg_slope---linear-regression-slope" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：LINEARREG_SLOPE<br>
 名称：线性回归斜率指标</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">LINEARREG_SLOPE</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">LINEARREG_SLOPE</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Linear Regression Slope at <a href="http://www.tadoc.org/indicator/LINEARREG_SLOPE.htm">tadoc.org</a>.</p>
-
-<h3 id="stddev-standard-deviation">STDDEV - Standard Deviation</h3>
-
-<blockquote>
-<p>函数名：STDDEV<br />
-名称：标准偏差<br />
+</div><p>Learn more about the Linear Regression Slope at <a href="http://www.tadoc.org/indicator/LINEARREG_SLOPE.htm">tadoc.org</a>.</p>
+<h3 id="stddev---standard-deviation">STDDEV - Standard Deviation <a href="#stddev---standard-deviation" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：STDDEV<br>
+名称：标准偏差<br>
 简介：种量度数据分布的分散程度之标准，用以衡量数据值偏离算术平均值的程度。标准偏差越小，这些值偏离平均值就越少，反之亦然。标准偏差的大小可通过标准偏差与平均值的倍率关系来衡量。</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">STDDEV</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">nbdev</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">STDDEV</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">nbdev</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Standard Deviation at <a href="http://www.tadoc.org/indicator/STDDEV.htm">tadoc.org</a>.</p>
-
-<h3 id="tsf-time-series-forecast">TSF - Time Series Forecast</h3>
-
-<blockquote>
-<p>函数名：TSF<br />
-名称：时间序列预测<br />
+</div><p>Learn more about the Standard Deviation at <a href="http://www.tadoc.org/indicator/STDDEV.htm">tadoc.org</a>.</p>
+<h3 id="tsf---time-series-forecast">TSF - Time Series Forecast <a href="#tsf---time-series-forecast" class="anchor">🔗</a></h3><blockquote>
+<p>函数名：TSF<br>
+名称：时间序列预测<br>
 简介：一种历史资料延伸预测，也称历史引伸预测法。是以时间数列所能反映的社会经济现象的发展过程和规律性，进行引伸外推，预测其发展趋势的方法</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">TSF</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">TSF</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Time Series Forecast at <a href="http://www.tadoc.org/indicator/TSF.htm">tadoc.org</a>.</p>
-
-<h3 id="var-var">VAR - VAR</h3>
-
-<blockquote>
+</div><p>Learn more about the Time Series Forecast at <a href="http://www.tadoc.org/indicator/TSF.htm">tadoc.org</a>.</p>
+<h3 id="var---var">VAR - VAR <a href="#var---var" class="anchor">🔗</a></h3><blockquote>
 <p>函数名：  VAR
-名称：方差<br />
+名称：方差<br>
 简介：方差用来计算每一个变量（观察值）与总体均数之间的差异。为避免出现离均差总和为零，离均差平方和受样本含量的影响，统计学采用平均离均差平方和来描述变量的变异程度</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">real</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">nbdev</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">real</span> <span class="o">=</span> <span class="n">VAR</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">nbdev</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div>
-<p>Learn more about the Variance at <a href="http://www.tadoc.org/indicator/VAR.htm">tadoc.org</a>.</p>
-
+</div><p>Learn more about the Variance at <a href="http://www.tadoc.org/indicator/VAR.htm">tadoc.org</a>.</p>
 <p><a href="/talib-doc/doc_index">文档 </a>
 <a href="/talib-doc/funcs">函数分组</a></p>
 
-  </div>
-</article>
-        </div>
-        <div id="gitalk-container"></div>
+    </div>
+
+    
+</section>
+
+
+                <hr>
+                
+
+<div id="gitalk-container"></div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2019-10-10 00:00:14 \x2b0800 CST',
+        id: '2019-10-10 00:00:14 \u002b0800 CST',
         title: '14 统计功能(Statistic Functions)',
         clientID: '72786bf87c19beec6abe',
         clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
@@ -319,57 +271,489 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
-      </div>
+            </div>
+        </div>
+
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     </main>
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        id: '2019-10-10 00:00:14 \u002b0800 CST',
+        title: '14 统计功能(Statistic Functions)',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+    });
+    gitalk.render('gitalk-container');
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by
+        gitalk.</a></noscript>
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
+    
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
-
-
-
-
-
-
-
-
+    
 </body>
+
 </html>

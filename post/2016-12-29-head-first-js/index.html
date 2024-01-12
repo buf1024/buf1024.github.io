@@ -1,488 +1,271 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>js快速参考 - BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… js 运行于宿主环境，常见宿主环境有web浏览器和" /><meta name="keywords" content="blog, computer, luoguochun" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/post/2016-12-29-head-first-js/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="js快速参考" />
-<meta property="og:description" content="P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… js 运行于宿主环境，常见宿主环境有web浏览器和" />
+<title>js快速参考 | BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/post/2016-12-29-head-first-js/">
+<meta name="description" content="P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… js 运行于宿主环境，常见宿主环境有web浏览器和" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luoguochun.cn/post/2016-12-29-head-first-js/" /><meta property="article:published_time" content="2016-12-29T17:08:46&#43;00:00"/>
-<meta property="article:modified_time" content="2016-12-29T17:08:46&#43;00:00"/>
-
-<meta itemprop="name" content="js快速参考">
-<meta itemprop="description" content="P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… js 运行于宿主环境，常见宿主环境有web浏览器和">
-
-
-<meta itemprop="datePublished" content="2016-12-29T17:08:46&#43;00:00" />
-<meta itemprop="dateModified" content="2016-12-29T17:08:46&#43;00:00" />
-<meta itemprop="wordCount" content="4324">
+<meta property="og:title" content="js快速参考 | BUF1024!!!" />
+<meta property="og:url" content="https://luoguochun.cn/post/2016-12-29-head-first-js/" />
+<meta property="og:description" content="P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… js 运行于宿主环境，常见宿主环境有web浏览器和" />
 
 
 
-<meta itemprop="keywords" content="html,css,js," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="js快速参考"/>
-<meta name="twitter:description" content="P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… js 运行于宿主环境，常见宿主环境有web浏览器和"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">js快速参考</h1>
+    <main class="main-wrapper">
 
-      <div class="post-meta">
-        <span class="post-time"> 2016-12-29 </span>
-        <div class="post-category">
-            <a href="/categories/web/"> web </a>
-            </div>
-          <span class="more-meta"> 约 4324 字 </span>
-          <span class="more-meta"> 预计阅读 9 分钟 </span>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
+
+<section class="single">
+    <h1 class="title">js快速参考</h1>
+
+    <div class="tip">
+        <time datetime="2016-12-29 17:08:46 &#43;0000 UTC">2016/12/29</time>
+        <span class="split">·</span>
+        <span> 4183 words </span>
+        <span class="split">·</span>
+        <span>
+            9 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
         
-      </div>
-    </header>
+        <div>
+            Categories:
+            
+                <a href="/categories/web">web</a>
+            
+        </div>
+        
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-    <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#js-核心">js 核心</a>
-<ul>
-<li>
-<ul>
-<li><a href="#基本语法">基本语法</a></li>
-<li><a href="#基本引用类型">基本引用类型</a></li>
-<li><a href="#面向对象">面向对象</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#浏览器js">浏览器js</a>
-<ul>
-<li>
-<ul>
-<li><a href="#bom对象-dom">bom对象&amp;dom</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#es6">ES6</a></li>
-<li><a href="#终">终</a></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/html">html</a>
+                
+                    <a href="/tags/css">css</a>
+                
+                    <a href="/tags/js">js</a>
+                
+            </div>
+        
+    </div>
 
-<p>P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考……</p>
+    <hr />
 
+    <div class="content">
+        <p>P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考……</p>
 <p>js 运行于宿主环境，常见宿主环境有web浏览器和node。在web浏览器里，主要是放到html页面，通过<code>&lt;script&gt;</code>标签实现。<code>&lt;script&gt;</code>包括6个属性:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    async            -&gt; 可选。异步加载，不影响界面其他元素加载
+<pre><code>    async            -&gt; 可选。异步加载，不影响界面其他元素加载
     charset          -&gt; 可选。制定字符集，浏览器会忽略该值
     languange        -&gt; 可选。已经废弃，指明脚本的语言
     src              -&gt; 可选。外部脚本的地址
-    type             -&gt; 可选。可看成是language的替代，已经不推荐使用，目前一般是&#34;text/javascript&#34;
-    defer            -&gt; 可选。脚本延迟到页面被加载完成后才执行</pre></td></tr></table>
-</div>
-</div>
+    type             -&gt; 可选。可看成是language的替代，已经不推荐使用，目前一般是&quot;text/javascript&quot;
+    defer            -&gt; 可选。脚本延迟到页面被加载完成后才执行
+</code></pre>
 <p>如果不包括<code>defer</code>和<code>async</code>，那么脚本的执行顺序为出现的顺序。<code>&lt;script&gt;</code>放的位置可放到<code>&lt;head&gt;</code>或<code>&lt;body&gt;</code>中，前者需等到脚本加载完毕后，才呈现页面，这样给人的感觉是慢和假死，后者是脚本加载之前，页面可以呈现。<code>&lt;noscript&gt;</code>可以检测脚本是否被禁用或步支持。</p>
-
-<h2 id="js-核心">js 核心</h2>
-
-<h4 id="基本语法">基本语法</h4>
-
-<p>js区分大小写，注释风格和c语言一致。js有严格模式的编译指令:<code>&quot;use strict;&quot;</code>，严格模式下不安全的代码将抛出异常。<code>var</code>定义变量，在非严格模式下，在作用域内，如果忽略则变成全局变量，不忽略则为局部变量，如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    function test() {
+<h2 id="js-核心">js 核心 <a href="#js-%e6%a0%b8%e5%bf%83" class="anchor">🔗</a></h2><h4 id="基本语法">基本语法 <a href="#%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95" class="anchor">🔗</a></h4><p>js区分大小写，注释风格和c语言一致。js有严格模式的编译指令:<code>&quot;use strict;&quot;</code>，严格模式下不安全的代码将抛出异常。<code>var</code>定义变量，在非严格模式下，在作用域内，如果忽略则变成全局变量，不忽略则为局部变量，如：</p>
+<pre><code>    function test() {
         var localVar; // 定义局部变量
         globalVar;    // 定义全局变量
-    }</pre></td></tr></table>
-</div>
-</div>
+    }
+</code></pre>
 <p>js数据类型有，5中基本操作类型: <code>Undefinded Null Boolean Number String</code>，一种复杂数据类型: <code>Object</code>，以及用户定义函数类型：<code>function</code>。<code>typeof</code>操作符(注意，是操作符不是函数，类似c语言的<code>sizeof</code>)可返回数据类型，字符串表示分别为: <code>undefined object boolean number string object function (Null类型会返回object)</code>。</p>
-
 <p><code>Boolean()</code>函数，可将非<code>Boolean</code>类型的数据转换为<code>Boolean</code>类型数据，转换规则： 任何非空的字符串，任何非零数据，任何非空对象都转换非<code>true</code>，其他则为<code>false</code>。</p>
-
 <p><code>Number.MIN_VALUE Number.MAX_VALUE</code>分别表示数值的最小和最大值，超出这个范围，则为<code>-Infinity或Infinity</code>, <code>isInfinity()</code>函数判断数值是否超出范围。<code>NaN</code>该返回数值的操作无法返回数值，如除以0则会返回<code>NaN</code>，函数<code>isNaN()</code>可以判断，另外<code>isNaN()</code>也可以应用于对象，首先会调用对象的<code>valueOf()</code>方法，确认是否可以转换为数值，如果不可以，再调用<code>toString()</code>进行测试。数值转换函数：<code>Number() parseInt() parseFloat()</code>。<code>Number()</code>转换规则:如果是<code>Boolean true false</code>，分别转换为1或0；如果是<code>null</code>，转换为0；如果是<code>undefined</code>，转换为<code>NaN</code>；如果是字符串，字符串前面数值转换为对应数值，空转换为0，有效的16进制，转换为对应的数值，其余的转换为<code>NaN</code>；如果是对象，首先会调用对象的<code>valueOf()</code>方法，确认是否可以转换为数值，如果不可以，再调用<code>toString()</code>。由于函数<code>Number()</code>使用不是很方便，所以衍生了<code>parseInt() parseFloat()</code>，转换为对应的整型和浮点型。</p>
-
 <p>字符串类型用<code>“”或者‘’</code>括起来，两者没区别，匹配即可，可以使用<code>+</code>将多个字符传连接起来。除了<code>null</code>和<code>undefined</code>外，转换为字符串，直接调用<code>toString</code>方法即可。</p>
-
 <p>对象类型<code>Object</code>是其他所以对象的基础，包括以下方法:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    Constructor                         -&gt; 构造函数
+<pre><code>    Constructor                         -&gt; 构造函数
     hasOwnProperty(propertyName)        -&gt; 属性是否存在实例中
     isPrototypeOf(object)               -&gt; 是否另外一个对象的原型
     propertyIsEnumerable(propertyName)  -&gt; 属性是否可以枚举
     toLocalString()                     -&gt; 本地字符串表示
     toString()                          -&gt; 转换为字符串表示
-    valueOf()                           -&gt; 返回对象的字符串，数值或布尔值表示，一般和toString一样</pre></td></tr></table>
-</div>
-</div>
+    valueOf()                           -&gt; 返回对象的字符串，数值或布尔值表示，一般和toString一样
+</code></pre>
 <p>js函数与其他函数不同，js函数不关心传递参数的个数和数据类型，函数体内，<code>arguments</code>数组保存传递过来的参数。函数没有重载，如果定义两个一样的函数，后面的会覆盖前面的参数。</p>
-
 <p>执行环境是js的一个比较<strong>重要</strong>的概念。每个执行环境都有与只关联的<strong>变量对象</strong>，定义的变量或函数都在这个<strong>变量对象</strong>中(虽然我们代码无法访问该<strong>变量对象</strong>)。对于web宿主环境，全局执行环境为<code>window</code>对象，所有定义的函数或变量都在这个对象中。每个函数都有自己的执行环境，执行函数时，就会将函数的执行环境压入<code>环境栈</code>，执行完毕，则弹出。在执行环境里面，会创建<strong>变量对象</strong>的<strong>作用链域</strong>，用以控制变量或函数的访问，<strong>作用链域</strong>一直延申到全局执行环境，标识符的解析是从当前执行环境一直搜索到全局执行环境。执行环境虽然只包括全局执行环境和函数执行环境，但是可以延长: <code>try-catch</code>中的<code>catch</code>语句块，会创建<strong>变量对象</strong>，包括抛出错误对象的声明和<code>with</code>语句，将指定对象添加到<strong>作用链域</strong>中。记住的是，<strong>js没有像c语言那种块级的作用域</strong>。</p>
-
-<h4 id="基本引用类型">基本引用类型</h4>
-
-<p><code>Object</code>类型，有点像键值数据结构，常用写法如，<code>var values = {name:&quot;who&quot;, age:16}</code></p>
-
+<h4 id="基本引用类型">基本引用类型 <a href="#%e5%9f%ba%e6%9c%ac%e5%bc%95%e7%94%a8%e7%b1%bb%e5%9e%8b" class="anchor">🔗</a></h4><p><code>Object</code>类型，有点像键值数据结构，常用写法如，<code>var values = {name:&quot;who&quot;, age:16}</code></p>
 <p><code>Array</code>类型，数组类型 。确认一个变量是否是该类型，使用方法<code>Array.isArray()</code>。数组定义了5个函数用于迭代：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    every       -&gt; 对数组中的每一个值调用回调函数，如果所有的回调都返回true，则返回true
+<pre><code>    every       -&gt; 对数组中的每一个值调用回调函数，如果所有的回调都返回true，则返回true
     filter      -&gt; 对数组中的每一个值调用回调函数，返回所有返回true的数组
     forEach     -&gt; 对数组中的每一个值调用回调函数，没有返回值
     map         -&gt; 对数组中的每一个值调用回调函数，每次调用的返回值组成数组返回
-    some        -&gt; 对数组中的每一个值调用回调函数，如果某一回调都返回true，则返回true</pre></td></tr></table>
-</div>
-</div>
+    some        -&gt; 对数组中的每一个值调用回调函数，如果某一回调都返回true，则返回true
+</code></pre>
 <p><code>Date</code>类型，表示时间类型。</p>
-
 <p><code>RegExp</code>类型，正则表达式类型，写法为，<code>var patten = /regexp/flags;</code>。支持3个标志，<code>gim</code>，分别表示，全局模式，不区分大小写，多行模式。对于任何一个正则表达式的实例，都包括以下属性：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    global          -&gt; 是否设置g标记
+<pre><code>    global          -&gt; 是否设置g标记
     ignoreCase      -&gt; 是否设置i标记
     lastIndex       -&gt; 下一个开始搜索的下标
     multiline       -&gt; 是否设置m标记
-    source          -&gt; 表达式的字符串表示</pre></td></tr></table>
-</div>
-</div>
+    source          -&gt; 表达式的字符串表示
+</code></pre>
 <p>正则表达式类型，重要的方法是<code>exec</code>，返回匹配组。</p>
-
 <p><code>Function</code>类型，函数类型。函数类型除了包括<code>arguments this</code>属性外，还包括<code>callee caller</code>，分别代表函数本身和调用者。由于函数也是对象，所有，也有自己的属性。如，<code>length prototype</code>， <code>length</code>表示接收的命名参数的个数。每个函数都包含两个方法：<code>apply() call()</code>，最只要的作用的扩大函数运行的作用域， 除此之外，还包括了<code>bind</code>方法。</p>
-
-<h4 id="面向对象">面向对象</h4>
-
-<p>创建对象常用的模式：</p>
-
+<h4 id="面向对象">面向对象 <a href="#%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1" class="anchor">🔗</a></h4><p>创建对象常用的模式：</p>
 <ul>
-<li><p>使用<code>Object</code>构造函数或对象常量，如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"> var person = {
-         name: &#34;hello&#34;,
-         sayName: function() {
-                 console.log(this.name);
-         }
- }</pre></td></tr></table>
-</div>
-</div></li>
+<li>
+<p>使用<code>Object</code>构造函数或对象常量，如：</p>
+<pre><code>   var person = {
+           name: &quot;hello&quot;,
+           sayName: function() {
+                   console.log(this.name);
+           }
+   }
+</code></pre>
+</li>
 </ul>
-
 <p>缺点明显，单个对象，大量重复代码。</p>
-
 <ul>
-<li><p>工厂模式，如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"> function create() {
-         var o = new Object();
-         o.name = &#34;hello&#34;;
-         o.sayName = function() {
-                 console.log(this.name);
-         }
- }
- var o = create();</pre></td></tr></table>
-</div>
-</div></li>
+<li>
+<p>工厂模式，如：</p>
+<pre><code>   function create() {
+           var o = new Object();
+           o.name = &quot;hello&quot;;
+           o.sayName = function() {
+                   console.log(this.name);
+           }
+   }
+   var o = create();
+</code></pre>
+</li>
 </ul>
-
 <p>解决了问题，创建多个类似对象，没有解决，对象识别。</p>
-
 <ul>
-<li><p>构造函数模式，如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"> function Person(name) {
-         this.name = name;
-         this.sayName = function() {
-                 console.log(this.name);
-         }
- }
+<li>
+<p>构造函数模式，如：</p>
+<pre><code>   function Person(name) {
+           this.name = name;
+           this.sayName = function() {
+                   console.log(this.name);
+           }
+   }
 
- var p = new Person(&#34;hello&#34;);</pre></td></tr></table>
-</div>
-</div></li>
+   var p = new Person(&quot;hello&quot;);
+</code></pre>
+</li>
 </ul>
-
 <p>写法类似于类，函数对象每实例化一次，就多一个对象。如果将函数放到构造函数外，就有多个全局函数，无封装性。</p>
-
 <ul>
-<li><p>原型+构造函数模式，最常用模式，如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"> function Person(name) {
-         this.name = name;
- }
- Person.prototype = {
-         constructor: Person,
-         sayName: function() {
-                console.log(this.name);
-         }
- }</pre></td></tr></table>
-</div>
-</div></li>
+<li>
+<p>原型+构造函数模式，最常用模式，如：</p>
+<pre><code>   function Person(name) {
+           this.name = name;
+   }
+   Person.prototype = {
+           constructor: Person,
+           sayName: function() {
+                  console.log(this.name);
+           }
+   }
+</code></pre>
+</li>
 </ul>
-
 <p>原型+构造函数模式，使用最广泛，认可度最高，默认的创建自定义对象模式。</p>
-
 <p>继承对象，js主要通过实现继承来实现，而且使用原型链。主要的原理是，用一个引用类型继承另外一个引用类型的属性和方法。</p>
-
 <ul>
-<li><p>原型链继承，如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"> function SuperType(name) {
-         this.name = name;
- }
- SuperType.prototype.sayName = function() {
-         console.log(this.name);
- }
+<li>
+<p>原型链继承，如：</p>
+<pre><code>   function SuperType(name) {
+           this.name = name;
+   }
+   SuperType.prototype.sayName = function() {
+           console.log(this.name);
+   }
 
- function SubType(prop) {
-         this.prop = prop;
- }
- SubType.prototype = new SuperType();</pre></td></tr></table>
-</div>
-</div></li>
+   function SubType(prop) {
+           this.prop = prop;
+   }
+   SubType.prototype = new SuperType();
+</code></pre>
+</li>
 </ul>
-
 <p>上述继承的问题是，SuperType的属性被SubType共享，若包括引用类型，则SubType实例互相影响。稍微改进一下，借用构造函数组合继承。</p>
-
 <ul>
-<li><p>组合继承，如:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"> function SuperType(name) {
-         this.name = name;
- }
- SuperType.prototype.sayName = function() {
-         console.log(this.name);
- }
+<li>
+<p>组合继承，如:</p>
+<pre><code>  function SuperType(name) {
+          this.name = name;
+  }
+  SuperType.prototype.sayName = function() {
+          console.log(this.name);
+  }
 
- function SubType(prop) {
-         SuperType.call(this, &#34;hello&#34;); // 注意
-         this.prop = prop;
- }
- SubType.prototype = new SuperType();</pre></td></tr></table>
-</div>
-</div></li>
+  function SubType(prop) {
+          SuperType.call(this, &quot;hello&quot;); // 注意
+          this.prop = prop;
+  }
+  SubType.prototype = new SuperType();
+</code></pre>
+</li>
 </ul>
-
 <p>组合继承为js最常用的继承方式。</p>
-
-<h2 id="浏览器js">浏览器js</h2>
-
-<h4 id="bom对象-dom">bom对象&amp;dom</h4>
-
-<p><code>window对象</code>是bom对象的核心对象，代表一个浏览器的实例，同时又是js的全局对象。访问未声明的对象是会抛出异常的，但是，通过window对象查询，不会，会返回<code>undefined</code>。<code>location对象</code>是bom最有用的对象之一，它提供当前窗口加载的文档信息。还包括，<code>navigation对象</code>， <code>screen对象</code>，<code>history对象</code>等。js通过<code>Document</code>类型表示文档，在浏览器中，表示整个页面，<code>document对象</code>是<code>window对象</code>的一个属性。</p>
-
+<h2 id="浏览器js">浏览器js <a href="#%e6%b5%8f%e8%a7%88%e5%99%a8js" class="anchor">🔗</a></h2><h4 id="bom对象dom">bom对象&amp;dom <a href="#bom%e5%af%b9%e8%b1%a1dom" class="anchor">🔗</a></h4><p><code>window对象</code>是bom对象的核心对象，代表一个浏览器的实例，同时又是js的全局对象。访问未声明的对象是会抛出异常的，但是，通过window对象查询，不会，会返回<code>undefined</code>。<code>location对象</code>是bom最有用的对象之一，它提供当前窗口加载的文档信息。还包括，<code>navigation对象</code>， <code>screen对象</code>，<code>history对象</code>等。js通过<code>Document</code>类型表示文档，在浏览器中，表示整个页面，<code>document对象</code>是<code>window对象</code>的一个属性。</p>
 <p>事件冒泡是指，从事件发生的节点，一直往上传播到根节点。事件的捕获是指，从根节点，一直往下传播到发生事件的节点。dom事件流包括三个阶段：事件捕获阶段，处于目标阶段和事件冒泡阶段。事件类型有：</p>
-
 <ul>
 <li>UI事件(<code>load unload abort error select resize scroll</code>等。</li>
 <li>焦点事件(<code>blur focus focusin focusout</code>)</li>
@@ -493,253 +276,127 @@
 <li>设备事件(<code>orientationchange MozOrientation deviceorientation devicemotion</code>)</li>
 <li>触摸和手势事件(<code>touchstart touchmove touchend touchcancel gesturestart gesturechange gestureend</code>)</li>
 </ul>
-
-<h2 id="es6">ES6</h2>
-
-<p>es6为2015发布的的js标准，es6用起来更新现代的编程语言。目前并不是所有的浏览器都支持，<a href="https://babeljs.io/">babel</a>。es6新特性：</p>
-
+<h2 id="es6">ES6 <a href="#es6" class="anchor">🔗</a></h2><p>es6为2015发布的的js标准，es6用起来更新现代的编程语言。目前并不是所有的浏览器都支持，<a href="https://babeljs.io/">babel</a>。es6新特性：</p>
 <ul>
-<li><p>let, const
+<li>
+<p>let, const
 这两个特性是解决块级作用域和，常量定义问题。es6之前，js没有块级变量作用域，<code>let</code>就是做这个事情。<code>const</code>是用来声明常量的，任何改变<code>const</code>值的行为都导致报错。如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"> var a = [];
- for (var i = 0; i &lt; 10; i++) {
-   a[i] = function () {
-     console.log(i);
-   };
- }
- a[6](); // 10
+<pre><code>   var a = [];
+   for (var i = 0; i &lt; 10; i++) {
+     a[i] = function () {
+       console.log(i);
+     };
+   }
+   a[6](); // 10
 
- var a = [];
- for (let i = 0; i &lt; 10; i++) {
-   a[i] = function () {
-     console.log(i);
-   };
- }
- a[6](); // 6</pre></td></tr></table>
-</div>
-</div></li>
-
-<li><p>class, extends, super
+   var a = [];
+   for (let i = 0; i &lt; 10; i++) {
+     a[i] = function () {
+       console.log(i);
+     };
+   }
+   a[6](); // 6
+</code></pre>
+</li>
+<li>
+<p>class, extends, super
 这几个特性，是为了解决js不明显的面向对象特征。如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"> class Animal {
-     constructor(){
-         this.type = &#39;animal&#39;
-     }
-     says(say){
-         console.log(this.type + &#39; says &#39; + say)
-     }
- }
+<pre><code>   class Animal {
+       constructor(){
+           this.type = 'animal'
+       }
+       says(say){
+           console.log(this.type + ' says ' + say)
+       }
+   }
 
- let animal = new Animal()
- animal.says(&#39;hello&#39;) //animal says hello
+   let animal = new Animal()
+   animal.says('hello') //animal says hello
 
- class Cat extends Animal {
-     constructor(){
-         super()
-         this.type = &#39;cat&#39;
-     }
- }
+   class Cat extends Animal {
+       constructor(){
+           super()
+           this.type = 'cat'
+       }
+   }
 
- let cat = new Cat()
- cat.says(&#39;hello&#39;) //cat says hello</pre></td></tr></table>
-</div>
-</div></li>
-
-<li><p>箭头函数
+   let cat = new Cat()
+   cat.says('hello') //cat says hello
+</code></pre>
+</li>
+<li>
+<p>箭头函数
 箭头函数比普通的函数简洁，同时函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"> class Animal {
-    constructor(){
-        this.type = &#39;animal&#39;
-    }
-    says(say){
-        setTimeout( () =&gt; {
-            console.log(this.type + &#39; says &#39; + say)
-        }, 1000)
-    }
- }
- var animal = new Animal()
- animal.says(&#39;hi&#39;)  //animal says hi</pre></td></tr></table>
-</div>
-</div></li>
-
-<li><p>template string
+<pre><code>   class Animal {
+      constructor(){
+          this.type = 'animal'
+      }
+      says(say){
+          setTimeout( () =&gt; {
+              console.log(this.type + ' says ' + say)
+          }, 1000)
+      }
+   }
+   var animal = new Animal()
+   animal.says('hi')  //animal says hi
+</code></pre>
+</li>
+<li>
+<p>template string
 用反引号（`）来标识起始，用${}来引用变量，而且所有的空格和缩进都会被保留在输出之中。如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"> $(&#34;#result&#34;).append(`
-  There are &lt;b&gt;${basket.count}&lt;/b&gt; items
-   in your basket, &lt;em&gt;${basket.onSale}&lt;/em&gt;
-  are on sale!
-`);</pre></td></tr></table>
-</div>
-</div></li>
-
-<li><p>destructuring
+<pre><code>   $(&quot;#result&quot;).append(`
+    There are &lt;b&gt;${basket.count}&lt;/b&gt; items
+     in your basket, &lt;em&gt;${basket.onSale}&lt;/em&gt;
+    are on sale!
+  `);
+</code></pre>
+</li>
+<li>
+<p>destructuring
 ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"> let cat = &#39;ken&#39;
- let dog = &#39;lili&#39;
- let zoo = {cat, dog}
- console.log(zoo)  //Object {cat: &#34;ken&#34;, dog: &#34;lili&#34;}
+<pre><code>   let cat = 'ken'
+   let dog = 'lili'
+   let zoo = {cat, dog}
+   console.log(zoo)  //Object {cat: &quot;ken&quot;, dog: &quot;lili&quot;}
 
- let dog = {type: &#39;animal&#39;, many: 2}
- let { type, many} = dog
- console.log(type, many)   //animal 2</pre></td></tr></table>
-</div>
-</div></li>
-
-<li><p>default, rest
+   let dog = {type: 'animal', many: 2}
+   let { type, many} = dog
+   console.log(type, many)   //animal 2
+</code></pre>
+</li>
+<li>
+<p>default, rest
 默认值和剩余参数。如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"> function animal(type = &#39;cat&#39;){
-     console.log(type)
- }
- animal()
+<pre><code>   function animal(type = 'cat'){
+       console.log(type)
+   }
+   animal()
 
- function animals(...types){
-     console.log(types)
- }
- animals(&#39;cat&#39;, &#39;dog&#39;, &#39;fish&#39;) //[&#34;cat&#34;, &#34;dog&#34;, &#34;fish&#34;]</pre></td></tr></table>
-</div>
-</div></li>
+   function animals(...types){
+       console.log(types)
+   }
+   animals('cat', 'dog', 'fish') //[&quot;cat&quot;, &quot;dog&quot;, &quot;fish&quot;]
+</code></pre>
+</li>
 </ul>
-
-<h2 id="终">终</h2>
-
-<p>对于一个常年工作于古老语言的码农，这里的记录必定是错漏百出的。</p>
-
+<h2 id="终">终 <a href="#%e7%bb%88" class="anchor">🔗</a></h2><p>对于一个常年工作于古老语言的码农，这里的记录必定是错漏百出的。</p>
 <p>最后，多写才是硬道路。<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/">javascript参考</a></p>
 
     </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">buf1024</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2016-12-29</span>
-  </p>
-  
-  
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/html/">html</a>
-          <a href="/tags/css/">css</a>
-          <a href="/tags/js/">js</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/2017-04-20-weixin-web-proto/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">微信web通信协议</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/2016-11-16-https-handshake/">
-            <span class="next-text nav-default">ssl/tls 握手</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        <div id="gitalk-container"></div>
+    
+</section>
+
+
+                <hr>
+                
+
+<div id="gitalk-container"></div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2016-12-29 17:08:46 \x2b0000 UTC',
+        id: '2016-12-29 17:08:46 \u002b0000 UTC',
         title: 'js快速参考',
         clientID: '72786bf87c19beec6abe',
         clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
@@ -752,57 +409,489 @@ ES6允许按照一定模式，从数组和对象中提取值，对变量进行�
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
-      </div>
+            </div>
+        </div>
+
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     </main>
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        id: '2016-12-29 17:08:46 \u002b0000 UTC',
+        title: 'js快速参考',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+    });
+    gitalk.render('gitalk-container');
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by
+        gitalk.</a></noscript>
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
+    
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
-
-
-
-
-
-
-
-
+    
 </body>
+
 </html>

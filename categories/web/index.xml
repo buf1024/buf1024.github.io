@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>web on BUF1024!!!</title>
@@ -6,18 +6,29 @@
     <description>Recent content in web on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 20 Apr 2017 21:12:03 +0000</lastBuildDate>
-    
-	<atom:link href="https://luoguochun.cn/categories/web/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 20 Apr 2017 21:12:03 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/categories/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微信web通信协议</title>
       <link>https://luoguochun.cn/post/2017-04-20-weixin-web-proto/</link>
       <pubDate>Thu, 20 Apr 2017 21:12:03 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2017-04-20-weixin-web-proto/</guid>
-      <description>微信有网页版，网页版的微信具备手机微信大部分功能。理论上，放在web页面上的所有东西，都是可以被破解的。对于web微信协议的破解，一些没有接</description>
+      <description>&lt;p&gt;微信有网页版，&lt;a href=&#34;https://wx.qq.com/&#34;&gt;网页版的微信&lt;/a&gt;具备手机微信大部分功能。理论上，放在web页面上的所有东西，都是可以被破解的。对于web微信协议的破解，一些没有接触过前端的后端程序员，可能会想到两个方法：1. 研究网页js代码; 2. 大鲨鱼(wireshark)抓包分析（ps：参考之前写过&lt;a href=&#34;https://luoguochun.cn/2015/07/25/tcpdump-usage/&#34;&gt;tcpdump usage&lt;/a&gt;，&lt;a href=&#34;https://luoguochun.cn/2016/09/23/tcp-fuck/&#34;&gt;tcp 协议小结&lt;/a&gt;, &lt;a href=&#34;https://luoguochun.cn/2016/11/16/https-handshake/&#34;&gt;ssl/tls 握手&lt;/a&gt;）。对于方法1，现在js的编写方法和以前有很大的不同，web前端通常用模块化方法进行js编写，在发布时，用webpack等工具进行压缩混淆，所以该方法不太可行。对于方法2. 因为现在大多web都采用https进行传输，传输过程中的数据全是加密的，所以这种办法更不可行。对于web前端和与web前端有交互的后端开发人员，都清楚还有这么一个非常常用的方式： 使用浏览器自带的开发者工具即可。理论上我们只要认真分析web微信和服务端的交互过程，分析请求参数和应答结果，即可得出相关的协议。下图为chrome开发者工具的截图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/weixin/weixinchrome.png&#34; alt=&#34;chrome微信&#34;&gt;&lt;/p&gt;
+&lt;p&gt;微信的web协议网上已经有很多人进行分析过，网上进行搜索即可找到，虽然有些字段与现有web版微信有些差别，但大部分协议都是可用的。如，发现不一致导致无法使用，用浏览器开发者工具进行分析一下即可发现差别。结合前人的分析和自己的摸索，web版微信大致的工作流程如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/weixin/weixinweb.png&#34; alt=&#34;chrome微信&#34;&gt;&lt;/p&gt;
+&lt;p&gt;因为http是无状态的协议，web版微信又不是采用websocke协议，所以在获取到二维码后，需要查询登陆状态，在登陆后，需要定时进行Sync Check获取微信状态，并进行Sync实现获取消息和秘钥同步。&lt;/p&gt;
+&lt;p&gt;在获取web微信协议后，采用微信web协议进行开发的本质就是模拟桌面版的web浏览器。所以在开发需要注意：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;设置http头User-Agent为桌面        -&amp;gt; 服务端会根据此字段判断是否为桌面&lt;/li&gt;
+&lt;li&gt;设置http头Referer为微信的url      -&amp;gt; 可能会判断来源&lt;/li&gt;
+&lt;li&gt;设置cookie                       -&amp;gt; 保存服务端的cookie，并上传服务端&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;用&lt;code&gt;golang&lt;/code&gt;进行了一些登陆的模拟，代码：&lt;a href=&#34;https://github.com/buf1024/weixinweb&#34;&gt;weixinweb&lt;/a&gt;，结果如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://luoguochun.cn/img/weixin/weixinsim.png&#34; alt=&#34;微信登陆模拟&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这里没有对微信web协议的进行详细分析，详细分析还需要分析各个交互请求参数以及返回结果的含义，只是一时兴趣记录一下web应用的分析过程和分析方法。对于web微信协议，可自行搜索之。&lt;/p&gt;
+&lt;p&gt;完。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -26,7 +37,271 @@
       <pubDate>Thu, 29 Dec 2016 17:08:46 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2016-12-29-head-first-js/</guid>
-      <description>P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… js 运行于宿主环境，常见宿主环境有web浏览器和</description>
+      <description>&lt;p&gt;P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考……&lt;/p&gt;
+&lt;p&gt;js 运行于宿主环境，常见宿主环境有web浏览器和node。在web浏览器里，主要是放到html页面，通过&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;标签实现。&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;包括6个属性:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    async            -&amp;gt; 可选。异步加载，不影响界面其他元素加载
+    charset          -&amp;gt; 可选。制定字符集，浏览器会忽略该值
+    languange        -&amp;gt; 可选。已经废弃，指明脚本的语言
+    src              -&amp;gt; 可选。外部脚本的地址
+    type             -&amp;gt; 可选。可看成是language的替代，已经不推荐使用，目前一般是&amp;quot;text/javascript&amp;quot;
+    defer            -&amp;gt; 可选。脚本延迟到页面被加载完成后才执行
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果不包括&lt;code&gt;defer&lt;/code&gt;和&lt;code&gt;async&lt;/code&gt;，那么脚本的执行顺序为出现的顺序。&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;放的位置可放到&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;或&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;中，前者需等到脚本加载完毕后，才呈现页面，这样给人的感觉是慢和假死，后者是脚本加载之前，页面可以呈现。&lt;code&gt;&amp;lt;noscript&amp;gt;&lt;/code&gt;可以检测脚本是否被禁用或步支持。&lt;/p&gt;
+&lt;h2 id=&#34;js-核心&#34;&gt;js 核心 &lt;a href=&#34;#js-%e6%a0%b8%e5%bf%83&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h4 id=&#34;基本语法&#34;&gt;基本语法 &lt;a href=&#34;#%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;js区分大小写，注释风格和c语言一致。js有严格模式的编译指令:&lt;code&gt;&amp;quot;use strict;&amp;quot;&lt;/code&gt;，严格模式下不安全的代码将抛出异常。&lt;code&gt;var&lt;/code&gt;定义变量，在非严格模式下，在作用域内，如果忽略则变成全局变量，不忽略则为局部变量，如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    function test() {
+        var localVar; // 定义局部变量
+        globalVar;    // 定义全局变量
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;js数据类型有，5中基本操作类型: &lt;code&gt;Undefinded Null Boolean Number String&lt;/code&gt;，一种复杂数据类型: &lt;code&gt;Object&lt;/code&gt;，以及用户定义函数类型：&lt;code&gt;function&lt;/code&gt;。&lt;code&gt;typeof&lt;/code&gt;操作符(注意，是操作符不是函数，类似c语言的&lt;code&gt;sizeof&lt;/code&gt;)可返回数据类型，字符串表示分别为: &lt;code&gt;undefined object boolean number string object function (Null类型会返回object)&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Boolean()&lt;/code&gt;函数，可将非&lt;code&gt;Boolean&lt;/code&gt;类型的数据转换为&lt;code&gt;Boolean&lt;/code&gt;类型数据，转换规则： 任何非空的字符串，任何非零数据，任何非空对象都转换非&lt;code&gt;true&lt;/code&gt;，其他则为&lt;code&gt;false&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Number.MIN_VALUE Number.MAX_VALUE&lt;/code&gt;分别表示数值的最小和最大值，超出这个范围，则为&lt;code&gt;-Infinity或Infinity&lt;/code&gt;, &lt;code&gt;isInfinity()&lt;/code&gt;函数判断数值是否超出范围。&lt;code&gt;NaN&lt;/code&gt;该返回数值的操作无法返回数值，如除以0则会返回&lt;code&gt;NaN&lt;/code&gt;，函数&lt;code&gt;isNaN()&lt;/code&gt;可以判断，另外&lt;code&gt;isNaN()&lt;/code&gt;也可以应用于对象，首先会调用对象的&lt;code&gt;valueOf()&lt;/code&gt;方法，确认是否可以转换为数值，如果不可以，再调用&lt;code&gt;toString()&lt;/code&gt;进行测试。数值转换函数：&lt;code&gt;Number() parseInt() parseFloat()&lt;/code&gt;。&lt;code&gt;Number()&lt;/code&gt;转换规则:如果是&lt;code&gt;Boolean true false&lt;/code&gt;，分别转换为1或0；如果是&lt;code&gt;null&lt;/code&gt;，转换为0；如果是&lt;code&gt;undefined&lt;/code&gt;，转换为&lt;code&gt;NaN&lt;/code&gt;；如果是字符串，字符串前面数值转换为对应数值，空转换为0，有效的16进制，转换为对应的数值，其余的转换为&lt;code&gt;NaN&lt;/code&gt;；如果是对象，首先会调用对象的&lt;code&gt;valueOf()&lt;/code&gt;方法，确认是否可以转换为数值，如果不可以，再调用&lt;code&gt;toString()&lt;/code&gt;。由于函数&lt;code&gt;Number()&lt;/code&gt;使用不是很方便，所以衍生了&lt;code&gt;parseInt() parseFloat()&lt;/code&gt;，转换为对应的整型和浮点型。&lt;/p&gt;
+&lt;p&gt;字符串类型用&lt;code&gt;“”或者‘’&lt;/code&gt;括起来，两者没区别，匹配即可，可以使用&lt;code&gt;+&lt;/code&gt;将多个字符传连接起来。除了&lt;code&gt;null&lt;/code&gt;和&lt;code&gt;undefined&lt;/code&gt;外，转换为字符串，直接调用&lt;code&gt;toString&lt;/code&gt;方法即可。&lt;/p&gt;
+&lt;p&gt;对象类型&lt;code&gt;Object&lt;/code&gt;是其他所以对象的基础，包括以下方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    Constructor                         -&amp;gt; 构造函数
+    hasOwnProperty(propertyName)        -&amp;gt; 属性是否存在实例中
+    isPrototypeOf(object)               -&amp;gt; 是否另外一个对象的原型
+    propertyIsEnumerable(propertyName)  -&amp;gt; 属性是否可以枚举
+    toLocalString()                     -&amp;gt; 本地字符串表示
+    toString()                          -&amp;gt; 转换为字符串表示
+    valueOf()                           -&amp;gt; 返回对象的字符串，数值或布尔值表示，一般和toString一样
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;js函数与其他函数不同，js函数不关心传递参数的个数和数据类型，函数体内，&lt;code&gt;arguments&lt;/code&gt;数组保存传递过来的参数。函数没有重载，如果定义两个一样的函数，后面的会覆盖前面的参数。&lt;/p&gt;
+&lt;p&gt;执行环境是js的一个比较&lt;strong&gt;重要&lt;/strong&gt;的概念。每个执行环境都有与只关联的&lt;strong&gt;变量对象&lt;/strong&gt;，定义的变量或函数都在这个&lt;strong&gt;变量对象&lt;/strong&gt;中(虽然我们代码无法访问该&lt;strong&gt;变量对象&lt;/strong&gt;)。对于web宿主环境，全局执行环境为&lt;code&gt;window&lt;/code&gt;对象，所有定义的函数或变量都在这个对象中。每个函数都有自己的执行环境，执行函数时，就会将函数的执行环境压入&lt;code&gt;环境栈&lt;/code&gt;，执行完毕，则弹出。在执行环境里面，会创建&lt;strong&gt;变量对象&lt;/strong&gt;的&lt;strong&gt;作用链域&lt;/strong&gt;，用以控制变量或函数的访问，&lt;strong&gt;作用链域&lt;/strong&gt;一直延申到全局执行环境，标识符的解析是从当前执行环境一直搜索到全局执行环境。执行环境虽然只包括全局执行环境和函数执行环境，但是可以延长: &lt;code&gt;try-catch&lt;/code&gt;中的&lt;code&gt;catch&lt;/code&gt;语句块，会创建&lt;strong&gt;变量对象&lt;/strong&gt;，包括抛出错误对象的声明和&lt;code&gt;with&lt;/code&gt;语句，将指定对象添加到&lt;strong&gt;作用链域&lt;/strong&gt;中。记住的是，&lt;strong&gt;js没有像c语言那种块级的作用域&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;基本引用类型&#34;&gt;基本引用类型 &lt;a href=&#34;#%e5%9f%ba%e6%9c%ac%e5%bc%95%e7%94%a8%e7%b1%bb%e5%9e%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;code&gt;Object&lt;/code&gt;类型，有点像键值数据结构，常用写法如，&lt;code&gt;var values = {name:&amp;quot;who&amp;quot;, age:16}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Array&lt;/code&gt;类型，数组类型 。确认一个变量是否是该类型，使用方法&lt;code&gt;Array.isArray()&lt;/code&gt;。数组定义了5个函数用于迭代：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    every       -&amp;gt; 对数组中的每一个值调用回调函数，如果所有的回调都返回true，则返回true
+    filter      -&amp;gt; 对数组中的每一个值调用回调函数，返回所有返回true的数组
+    forEach     -&amp;gt; 对数组中的每一个值调用回调函数，没有返回值
+    map         -&amp;gt; 对数组中的每一个值调用回调函数，每次调用的返回值组成数组返回
+    some        -&amp;gt; 对数组中的每一个值调用回调函数，如果某一回调都返回true，则返回true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;Date&lt;/code&gt;类型，表示时间类型。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;RegExp&lt;/code&gt;类型，正则表达式类型，写法为，&lt;code&gt;var patten = /regexp/flags;&lt;/code&gt;。支持3个标志，&lt;code&gt;gim&lt;/code&gt;，分别表示，全局模式，不区分大小写，多行模式。对于任何一个正则表达式的实例，都包括以下属性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    global          -&amp;gt; 是否设置g标记
+    ignoreCase      -&amp;gt; 是否设置i标记
+    lastIndex       -&amp;gt; 下一个开始搜索的下标
+    multiline       -&amp;gt; 是否设置m标记
+    source          -&amp;gt; 表达式的字符串表示
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;正则表达式类型，重要的方法是&lt;code&gt;exec&lt;/code&gt;，返回匹配组。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Function&lt;/code&gt;类型，函数类型。函数类型除了包括&lt;code&gt;arguments this&lt;/code&gt;属性外，还包括&lt;code&gt;callee caller&lt;/code&gt;，分别代表函数本身和调用者。由于函数也是对象，所有，也有自己的属性。如，&lt;code&gt;length prototype&lt;/code&gt;， &lt;code&gt;length&lt;/code&gt;表示接收的命名参数的个数。每个函数都包含两个方法：&lt;code&gt;apply() call()&lt;/code&gt;，最只要的作用的扩大函数运行的作用域， 除此之外，还包括了&lt;code&gt;bind&lt;/code&gt;方法。&lt;/p&gt;
+&lt;h4 id=&#34;面向对象&#34;&gt;面向对象 &lt;a href=&#34;#%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;创建对象常用的模式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;使用&lt;code&gt;Object&lt;/code&gt;构造函数或对象常量，如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   var person = {
+           name: &amp;quot;hello&amp;quot;,
+           sayName: function() {
+                   console.log(this.name);
+           }
+   }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缺点明显，单个对象，大量重复代码。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;工厂模式，如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   function create() {
+           var o = new Object();
+           o.name = &amp;quot;hello&amp;quot;;
+           o.sayName = function() {
+                   console.log(this.name);
+           }
+   }
+   var o = create();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;解决了问题，创建多个类似对象，没有解决，对象识别。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;构造函数模式，如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   function Person(name) {
+           this.name = name;
+           this.sayName = function() {
+                   console.log(this.name);
+           }
+   }
+
+   var p = new Person(&amp;quot;hello&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;写法类似于类，函数对象每实例化一次，就多一个对象。如果将函数放到构造函数外，就有多个全局函数，无封装性。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;原型+构造函数模式，最常用模式，如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   function Person(name) {
+           this.name = name;
+   }
+   Person.prototype = {
+           constructor: Person,
+           sayName: function() {
+                  console.log(this.name);
+           }
+   }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;原型+构造函数模式，使用最广泛，认可度最高，默认的创建自定义对象模式。&lt;/p&gt;
+&lt;p&gt;继承对象，js主要通过实现继承来实现，而且使用原型链。主要的原理是，用一个引用类型继承另外一个引用类型的属性和方法。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;原型链继承，如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   function SuperType(name) {
+           this.name = name;
+   }
+   SuperType.prototype.sayName = function() {
+           console.log(this.name);
+   }
+
+   function SubType(prop) {
+           this.prop = prop;
+   }
+   SubType.prototype = new SuperType();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;上述继承的问题是，SuperType的属性被SubType共享，若包括引用类型，则SubType实例互相影响。稍微改进一下，借用构造函数组合继承。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;组合继承，如:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  function SuperType(name) {
+          this.name = name;
+  }
+  SuperType.prototype.sayName = function() {
+          console.log(this.name);
+  }
+
+  function SubType(prop) {
+          SuperType.call(this, &amp;quot;hello&amp;quot;); // 注意
+          this.prop = prop;
+  }
+  SubType.prototype = new SuperType();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;组合继承为js最常用的继承方式。&lt;/p&gt;
+&lt;h2 id=&#34;浏览器js&#34;&gt;浏览器js &lt;a href=&#34;#%e6%b5%8f%e8%a7%88%e5%99%a8js&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;h4 id=&#34;bom对象dom&#34;&gt;bom对象&amp;amp;dom &lt;a href=&#34;#bom%e5%af%b9%e8%b1%a1dom&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;code&gt;window对象&lt;/code&gt;是bom对象的核心对象，代表一个浏览器的实例，同时又是js的全局对象。访问未声明的对象是会抛出异常的，但是，通过window对象查询，不会，会返回&lt;code&gt;undefined&lt;/code&gt;。&lt;code&gt;location对象&lt;/code&gt;是bom最有用的对象之一，它提供当前窗口加载的文档信息。还包括，&lt;code&gt;navigation对象&lt;/code&gt;， &lt;code&gt;screen对象&lt;/code&gt;，&lt;code&gt;history对象&lt;/code&gt;等。js通过&lt;code&gt;Document&lt;/code&gt;类型表示文档，在浏览器中，表示整个页面，&lt;code&gt;document对象&lt;/code&gt;是&lt;code&gt;window对象&lt;/code&gt;的一个属性。&lt;/p&gt;
+&lt;p&gt;事件冒泡是指，从事件发生的节点，一直往上传播到根节点。事件的捕获是指，从根节点，一直往下传播到发生事件的节点。dom事件流包括三个阶段：事件捕获阶段，处于目标阶段和事件冒泡阶段。事件类型有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;UI事件(&lt;code&gt;load unload abort error select resize scroll&lt;/code&gt;等。&lt;/li&gt;
+&lt;li&gt;焦点事件(&lt;code&gt;blur focus focusin focusout&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;键盘事件(&lt;code&gt;keydown keypress keyup&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;复合事件(&lt;code&gt;compositionstart compositionend compositionupdate&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;变动事件(&lt;code&gt;DOMSubtreeModified DOMNodeInserted DOMNodeRemoved DOMNodeInsertedIntoDocument DOMNodeRemovedFromDocument DOMAttrModified DOMCharacterDataModified&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;H5事件(&lt;code&gt;contextmenu beforeunload DOMContentLoaded readystatechange pageshow pagehide hashchange&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;设备事件(&lt;code&gt;orientationchange MozOrientation deviceorientation devicemotion&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;触摸和手势事件(&lt;code&gt;touchstart touchmove touchend touchcancel gesturestart gesturechange gestureend&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;es6&#34;&gt;ES6 &lt;a href=&#34;#es6&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;es6为2015发布的的js标准，es6用起来更新现代的编程语言。目前并不是所有的浏览器都支持，&lt;a href=&#34;https://babeljs.io/&#34;&gt;babel&lt;/a&gt;。es6新特性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;let, const
+这两个特性是解决块级作用域和，常量定义问题。es6之前，js没有块级变量作用域，&lt;code&gt;let&lt;/code&gt;就是做这个事情。&lt;code&gt;const&lt;/code&gt;是用来声明常量的，任何改变&lt;code&gt;const&lt;/code&gt;值的行为都导致报错。如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   var a = [];
+   for (var i = 0; i &amp;lt; 10; i++) {
+     a[i] = function () {
+       console.log(i);
+     };
+   }
+   a[6](); // 10
+
+   var a = [];
+   for (let i = 0; i &amp;lt; 10; i++) {
+     a[i] = function () {
+       console.log(i);
+     };
+   }
+   a[6](); // 6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;class, extends, super
+这几个特性，是为了解决js不明显的面向对象特征。如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   class Animal {
+       constructor(){
+           this.type = &#39;animal&#39;
+       }
+       says(say){
+           console.log(this.type + &#39; says &#39; + say)
+       }
+   }
+
+   let animal = new Animal()
+   animal.says(&#39;hello&#39;) //animal says hello
+
+   class Cat extends Animal {
+       constructor(){
+           super()
+           this.type = &#39;cat&#39;
+       }
+   }
+
+   let cat = new Cat()
+   cat.says(&#39;hello&#39;) //cat says hello
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;箭头函数
+箭头函数比普通的函数简洁，同时函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   class Animal {
+      constructor(){
+          this.type = &#39;animal&#39;
+      }
+      says(say){
+          setTimeout( () =&amp;gt; {
+              console.log(this.type + &#39; says &#39; + say)
+          }, 1000)
+      }
+   }
+   var animal = new Animal()
+   animal.says(&#39;hi&#39;)  //animal says hi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;template string
+用反引号（`）来标识起始，用${}来引用变量，而且所有的空格和缩进都会被保留在输出之中。如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   $(&amp;quot;#result&amp;quot;).append(`
+    There are &amp;lt;b&amp;gt;${basket.count}&amp;lt;/b&amp;gt; items
+     in your basket, &amp;lt;em&amp;gt;${basket.onSale}&amp;lt;/em&amp;gt;
+    are on sale!
+  `);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;destructuring
+ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   let cat = &#39;ken&#39;
+   let dog = &#39;lili&#39;
+   let zoo = {cat, dog}
+   console.log(zoo)  //Object {cat: &amp;quot;ken&amp;quot;, dog: &amp;quot;lili&amp;quot;}
+
+   let dog = {type: &#39;animal&#39;, many: 2}
+   let { type, many} = dog
+   console.log(type, many)   //animal 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;default, rest
+默认值和剩余参数。如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   function animal(type = &#39;cat&#39;){
+       console.log(type)
+   }
+   animal()
+
+   function animals(...types){
+       console.log(types)
+   }
+   animals(&#39;cat&#39;, &#39;dog&#39;, &#39;fish&#39;) //[&amp;quot;cat&amp;quot;, &amp;quot;dog&amp;quot;, &amp;quot;fish&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;终&#34;&gt;终 &lt;a href=&#34;#%e7%bb%88&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;对于一个常年工作于古老语言的码农，这里的记录必定是错漏百出的。&lt;/p&gt;
+&lt;p&gt;最后，多写才是硬道路。&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/&#34;&gt;javascript参考&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

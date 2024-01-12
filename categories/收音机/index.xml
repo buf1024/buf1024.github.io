@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>收音机 on BUF1024!!!</title>
@@ -6,18 +6,27 @@
     <description>Recent content in 收音机 on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 04 Jul 2023 18:00:10 +0800</lastBuildDate>
-    
-	<atom:link href="https://luoguochun.cn/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 04 Jul 2023 18:00:10 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hiqradio 一个简单的收音机软件</title>
       <link>https://luoguochun.cn/post/2023-07-04-hiqradio/</link>
       <pubDate>Tue, 04 Jul 2023 18:00:10 +0800</pubDate>
       
       <guid>https://luoguochun.cn/post/2023-07-04-hiqradio/</guid>
-      <description>网页版体验: https://luoguochun.cn/hiqradio/ 有一段时间，在B站那里刷视频的时候，无意刷到一个德生的收音机视频。突然让我想起了我的中学时代，我的中学时代是在收音机的陪伴之下</description>
+      <description>&lt;p&gt;网页版体验: &lt;a href=&#34;https://luoguochun.cn/hiqradio/&#34;&gt;https://luoguochun.cn/hiqradio/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;有一段时间，在B站那里刷视频的时候，无意刷到一个德生的收音机视频。突然让我想起了我的中学时代，我的中学时代是在收音机的陪伴之下成长的。那个时候，主要的想法是为了收听短波的英文电台，美名日学习英语。不过那个时候，能清晰听到的英文广播电台并不多，更多的是外国播放的中文广播电台，而这些电台大多数是说国内的负面信息，那个时候，我们称这些广播为西方的“和平演变”。而国内的广播电台，虽然那个时候已经开始不停的广播广告了，不过还是有不少高质量的节目，比如，一些事一些情，陈杨珠三角生活态度，以及各种非卖药的夜话节目，更有那个时候让我着迷的广播剧，第一次的亲密接触，等。&lt;/p&gt;
+&lt;p&gt;当这些思绪在脑海里的时候，我有一种买一台收音机的冲动，即使是收不到电台，用来收藏也好，这就是情怀。可是，这个时候，我却发现，原来我却已经买不起收音机了，原来中学生时代的收音机型号，十几年了，居然还在卖，只是价格已经翻倍多了。而普通的款式也几百起步了，旗舰的收音机，居然还卖到了上千块。这价格实在让我惊讶，不得不感慨，在电子产品里面，或者唯一不贬值，甚至还升值的，就只有收音机了吧？！&lt;/p&gt;
+&lt;p&gt;当然，这个价格的收音机相对自己目前的经济状况来说，是绝对不会买的。而且，城市里面的信号肯定也是不好的，所以听国外电台是无望的，所以只能求于网络收音机。记得以前的大学时候还用过网络收音机的软件，好像叫龙卷风，还有什么蜻蜓FM之类的，而现在，能找到一个简洁的收音机，几乎没有了，在那么重的商业气氛之下，没有谁能安静下来。不过，也不必惊讶，因为收音机市场的没落，新生一代或者都不知道什么是收音机了吧？哪里还有谁开发网络收音机！！&lt;/p&gt;
+&lt;p&gt;所以，这个时候只能自己造一个自己来玩，这便是HiqRadio的由来。另外还有一个目的，就是想通过开发全端通吃完整的实例，形成快速开发通用的框架，要开发什么软件，直接套。&lt;/p&gt;
+&lt;p&gt;Flutter虽然说支持跨平台的开发，可是除了手机端，在桌面端的支持并不完整也不完善。比如Frameless window里面，你有一个&lt;code&gt;TextEdit&lt;/code&gt;在title bar上面，那么如果你不做特殊处理，那么你无法选择文本，程序是设置空格快捷键播放暂停的，在上面输入空格，又会冲突。又比如，你在title bar上面拖拽可以移动窗口，此时如果你弹出对话框，你必须将弹出层空出这个高度，否则你又拖拽不了，等等。桌面端有很多很多的小问题，都是特殊处理才能达到想要的效果，而这些，统称为坑。而所谓支持跨平台，界面方面很多是不能复用的，桌面上的坑，在手机上是没有的，要想达到跨平台，界面很多东西都是要重写的，唯一能够跨平台的就是业务逻辑，而现在很多应用的业务逻辑都在服务端处理了，所以这就是一个矛盾呀。虽然如此，不过Flutter还在快速发展之中，没有什么东西一出来都是完善的，能解决问题的，都可以考虑采用。&lt;/p&gt;
+&lt;p&gt;开发只要是测试macos的暗黑模式和android的暗黑模式，因为只有这两个设备(macos配置低，跑不起虚拟机，更加不可能跑个虚拟机编译其他版本)。简单界面图示。&lt;/p&gt;
+&lt;p&gt;macos 界面：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;android 播放界面：&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;感兴趣的可以试玩一下。&lt;/p&gt;
+&lt;p&gt;开源地址: &lt;a href=&#34;https://github.com/buf1024/hiqradio&#34;&gt;https://github.com/buf1024/hiqradio&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

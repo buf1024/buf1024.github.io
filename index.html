@@ -1,418 +1,981 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="luoguochun&#39;s personal page!" /><meta name="keywords" content="blog, computer, luoguochun" />
+	<meta name="generator" content="Hugo 0.121.2">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/" />
-  <link href="https://luoguochun.cn/index.xml" rel="alternate" type="application/rss+xml" title="BUF1024!!!" />
-  <link href="https://luoguochun.cn/index.xml" rel="feed" type="application/rss+xml" title="BUF1024!!!" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
+<title>BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/">
+<meta name="description" content="luoguochun&#39;s personal page!" />
+<meta property="og:type" content="article" />
 <meta property="og:title" content="BUF1024!!!" />
-<meta property="og:description" content="luoguochun&#39;s personal page!" />
-<meta property="og:type" content="website" />
 <meta property="og:url" content="https://luoguochun.cn/" />
-<meta property="og:updated_time" content="2024-01-08T16:00:10&#43;08:00"/>
+<meta property="og:description" content="luoguochun&#39;s personal page!" />
+<link rel="alternate" type="application/rss+xml" href="https://luoguochun.cn/index.xml" title="BUF1024!!!" />
 
-<meta itemprop="name" content="BUF1024!!!">
-<meta itemprop="description" content="luoguochun&#39;s personal page!">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="BUF1024!!!"/>
-<meta name="twitter:description" content="luoguochun&#39;s personal page!"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <section id="posts" class="posts">
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2024-01-08 </span>
-      <div class="post-category">
-          <a href="/categories/frontend/"> frontend </a>
-          </div>
-        <span class="more-meta"> 约 5419 字 </span>
-        <span class="more-meta"> 预计阅读 11 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      20240108 前端配置 感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。 目前一般使用vite​作为前端构建工具，下
-    </div>
-    <div class="read-more">
-      <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+    <main class="main-wrapper">
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2023-12-26 </span>
-      <div class="post-category">
-          <a href="/categories/rust/"> rust </a>
-          </div>
-        <span class="more-meta"> 约 5151 字 </span>
-        <span class="more-meta"> 预计阅读 11 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      简介 Rust 编程语言里面有两种宏系统，一种是声明宏（Declarative Macros），另一种为过程宏（Procedural Macros）。声明
-    </div>
-    <div class="read-more">
-      <a href="/post/2023-12-26-rust-proc-macro/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2023-09-21 </span>
-      <div class="post-category">
-          <a href="/categories/rust/"> rust </a>
-          </div>
-        <span class="more-meta"> 约 929 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 5 // 敏感信息去掉 format!(&#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;X_=xadf0&#34;,code=&amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22co
-    </div>
-    <div class="read-more">
-      <a href="/post/2023-09-21-rust-panic/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+<div class="max-wrapper">
+    <div id="list-page">
+        
+        
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a></h1>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2023-07-19 </span>
-      <div class="post-category">
-          <a href="/categories/flutter/"> flutter </a>
-          <a href="/categories/multi_window/"> multi_window </a>
-          </div>
-        <span class="more-meta"> 约 2533 字 </span>
-        <span class="more-meta"> 预计阅读 6 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      多窗口 Flutter的已经支持桌面端开发已经一段时间了，不过关注桌面端开发的应该也知道，flutter的桌面端并不支持多窗口。虽然官方表示以
-    </div>
-    <div class="read-more">
-      <a href="/post/2023-07-19-flutter-muti-window/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2024-01-08 16:00:10 &#43;0800 CST">2024/01/08</time>
+                    </div>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2023-07-04 </span>
-      <div class="post-category">
-          <a href="/categories/flutter/"> flutter </a>
-          <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA/"> 收音机 </a>
-          </div>
-        <span class="more-meta"> 约 1277 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      网页版体验: https://luoguochun.cn/hiqradio/ 有一段时间，在B站那里刷视频的时候，无意刷到一个德生的收音机视频。突然让我想起了我的中学时代，我的中学时代是在收音机的陪伴之下
-    </div>
-    <div class="read-more">
-      <a href="/post/2023-07-04-hiqradio/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/frontend">frontend</a>
+                            
+                        </div>
+                    
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2023-03-21-android-https/">android https 抓包</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2023-03-21 </span>
-      <div class="post-category">
-          <a href="/categories/flutter/"> flutter </a>
-          <a href="/categories/%E9%87%8F%E5%8C%96/"> 量化 </a>
-          </div>
-        <span class="more-meta"> 约 1993 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      前几天有个需求，要破解一下某个app的部分通讯协议，需要了解一下某部分功能如何实现，甚至通过其协议抓取一些数据。而这个app只有androi
-    </div>
-    <div class="read-more">
-      <a href="/post/2023-03-21-android-https/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/vite">vite</a>
+                            
+                        </div>
+                    
+                </div>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2023-03-16-love-for-insterest/">为爱发电终是不能长久的……</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2023-03-16 </span>
-      <div class="post-category">
-          <a href="/categories/flutter/"> flutter </a>
-          <a href="/categories/%E9%87%8F%E5%8C%96/"> 量化 </a>
-          </div>
-        <span class="more-meta"> 约 1561 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      最初个人量化就是为了防止自己手贱，用计算机了执行自己的策略。这个所谓的个人量化并没有非常清晰的目标，大概只有两点非常粗略的要求：第一个，就是
-    </div>
-    <div class="read-more">
-      <a href="/post/2023-03-16-love-for-insterest/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                <div class="summary">
+                    
+                        感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。 目前一般使用vite​作为前端构建工具，下面所记录的
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a></h1>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2023-03-02-tcp-setup/">TCP未建立之前，丢失的SYN报文会不会重传？</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2023-03-02 </span>
-      <div class="post-category">
-          <a href="/categories/tcp/"> tcp </a>
-          </div>
-        <span class="more-meta"> 约 290 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      记得以前，有人问TCP问题的时候，也出现过一次像这样的争论。争论的问题是，TCP四次挥手为什么要四次，三次为什么不可以。我的答案是可以的，只
-    </div>
-    <div class="read-more">
-      <a href="/post/2023-03-02-tcp-setup/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2023-12-26 16:00:10 &#43;0800 CST">2023/12/26</time>
+                    </div>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2023-02-14-tcp-renew/">TCP温故而知新</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2023-02-02 </span>
-      <div class="post-category">
-          <a href="/categories/tcp/"> tcp </a>
-          </div>
-        <span class="more-meta"> 约 9805 字 </span>
-        <span class="more-meta"> 预计阅读 20 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      TCP是什么 TCP是面向连接的，可靠的，基于字节流的传输协议。 面向连接，指的是一对一的，不是一对多。 可靠性，指的是不管网络环境多么的复杂多变
-    </div>
-    <div class="read-more">
-      <a href="/post/2023-02-14-tcp-renew/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/rust">rust</a>
+                            
+                        </div>
+                    
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2021-09-13-rust-lib-lazy-static-intro/">lazy_static -- 静态变量延迟初始化</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2021-09-13 </span>
-      <div class="post-category">
-          <a href="/categories/rust/"> rust </a>
-          </div>
-        <span class="more-meta"> 约 301 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      全局静态变量初化，在他编程语言里面，是一个很简单又自然的事，然而在rust里面并非容易。如果像下面定义全局静态变量，那么会报错： 1 2 staticrefVEC_VAL: Vec&lt;String&gt;=vec![&#34;1, 2, 3&#34;.into()];
-    </div>
-    <div class="read-more">
-      <a href="/post/2021-09-13-rust-lib-lazy-static-intro/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/rust">rust</a>
+                            
+                        </div>
+                    
+                </div>
 
-    </section>
-  
-  <nav class="pagination">
-    
-    <a class="next" href="/page/2/">
-        <span class="next-text">下一页</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-  </nav>
-        </div>
+                <div class="summary">
+                    
+                        简介 🔗Rust 编程语言里面有两种宏系统，一种是声明宏（Declarative Macros），另一种为过程宏（Procedural Macros
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2023-09-21 18:00:10 &#43;0800 CST">2023/09/21</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/rust">rust</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/rust">rust</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 // 敏感信息去掉 format!(&#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;X_=xadf0&#34;, code = &amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2023-07-19 18:00:10 &#43;0800 CST">2023/07/19</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/flutter">flutter</a>
+                            
+                                <a href="/categories/multi_window">multi_window</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/flutter">flutter</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        多窗口 🔗Flutter的已经支持桌面端开发已经一段时间了，不过关注桌面端开发的应该也知道，flutter的桌面端并不支持多窗口。虽然官方表示
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2023-07-04 18:00:10 &#43;0800 CST">2023/07/04</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/flutter">flutter</a>
+                            
+                                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/android">android</a>
+                            
+                                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        网页版体验: https://luoguochun.cn/hiqradio/ 有一段时间，在B站那里刷视频的时候，无意刷到一个德生的收音机视频。突然让我想起了我的中学时代，我的中学时代是在收音机的陪伴之下
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2023-03-21-android-https/">android https 抓包</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2023-03-21 08:10:12 &#43;0800 CST">2023/03/21</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/flutter">flutter</a>
+                            
+                                <a href="/categories/%E9%87%8F%E5%8C%96">量化</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/android">android</a>
+                            
+                                <a href="/tags/%E9%87%8F%E5%8C%96">量化</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        前几天有个需求，要破解一下某个app的部分通讯协议，需要了解一下某部分功能如何实现，甚至通过其协议抓取一些数据。而这个app只有androi
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2023-03-16-love-for-insterest/">为爱发电终是不能长久的……</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2023-03-16 08:10:12 &#43;0800 CST">2023/03/16</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/flutter">flutter</a>
+                            
+                                <a href="/categories/%E9%87%8F%E5%8C%96">量化</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/flutter">flutter</a>
+                            
+                                <a href="/tags/%E9%87%8F%E5%8C%96">量化</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        最初个人量化就是为了防止自己手贱，用计算机了执行自己的策略。这个所谓的个人量化并没有非常清晰的目标，大概只有两点非常粗略的要求：第一个，就是
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2023-03-02-tcp-setup/">TCP未建立之前，丢失的SYN报文会不会重传？</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2023-03-02 14:10:12 &#43;0800 CST">2023/03/02</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/tcp">tcp</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/tcp">tcp</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        记得以前，有人问TCP问题的时候，也出现过一次像这样的争论。争论的问题是，TCP四次挥手为什么要四次，三次为什么不可以。我的答案是可以的，只
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2023-02-14-tcp-renew/">TCP温故而知新</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2023-02-02 14:15:12 &#43;0800 CST">2023/02/02</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/tcp">tcp</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/tcp">tcp</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        TCP是什么 🔗TCP是面向连接的，可靠的，基于字节流的传输协议。 面向连接，指的是一对一的，不是一对多。 可靠性，指的是不管网络环境多么的复杂多
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2021-09-13-rust-lib-lazy-static-intro/">lazy_static -- 静态变量延迟初始化</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2021-09-13 01:12:02 &#43;0800 CST">2021/09/13</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/rust">rust</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/rust-lib">rust-lib</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        全局静态变量初化，在他编程语言里面，是一个很简单又自然的事，然而在rust里面并非容易。如果像下面定义全局静态变量，那么会报错： 1 static ref VEC_VAL: Vec&lt;String&gt; =
+                    
+                </div>
+            </section>
         
 
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+    
+
+<nav class="pagination">
+
+    
+    
+    
+    
+    
+        
+            
+            
+
+            
+                <a class="enabled current" href="/">1</a>
+            
+
+        
+    
+        
+            
+            
+
+            
+                <a class="enabled" href="/page/2/">2</a>
+            
+
+        
+    
+        
+            
+            
+
+            
+                <a class="enabled" href="/page/3/">3</a>
+            
+
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <span>··</span>
+            
+            
+
+            
+                <a class="enabled" href="/page/9/">9</a>
+            
+
+        
+    
+
+</nav>
+</div>
+
+                <hr>
+                
 
 
 
+            </div>
+        </div>
 
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
 
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
 
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
 
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
 
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    </main>
+    
+
+    
+
+    
 </body>
+
 </html>

@@ -5,7 +5,7 @@ title = "BUF1024!!!"
 preserveTaxonomyNames = true
 enableRobotsTXT = true
 enableEmoji = true
-theme = "hugo-theme-even"
+theme = "hugo-theme-flat"
 
 # Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
 pygmentsOptions = "linenos=table"

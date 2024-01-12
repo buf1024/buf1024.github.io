@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on BUF1024!!!</title>
@@ -6,10 +6,67 @@
     <description>Recent content in linux on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 03 Jun 2017 11:19:25 +0800</lastBuildDate>
-    
-	<atom:link href="https://luoguochun.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Mon, 01 Oct 2018 10:54:00 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>防火墙放开端口</title>
+      <link>https://luoguochun.cn/post/2018-10-01-firewall-cmd/</link>
+      <pubDate>Mon, 01 Oct 2018 10:54:00 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2018-10-01-firewall-cmd/</guid>
+      <description>&lt;p&gt;firewall-cmd &amp;ndash;permanent &amp;ndash;zone=public &amp;ndash;add-port=8484/tcp&lt;/p&gt;
+&lt;p&gt;&amp;ndash;zone #作用域&lt;/p&gt;
+&lt;p&gt;&amp;ndash;add-port=8484/tcp #添加端口，格式为：端口/通讯协议&lt;/p&gt;
+&lt;p&gt;&amp;ndash;permanent #永久生效，没有此参数重启后失效&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;reload&lt;/p&gt;
+&lt;p&gt;1、firewalld的基本使用&lt;/p&gt;
+&lt;p&gt;启动： systemctl start firewalld&lt;/p&gt;
+&lt;p&gt;查看状态： systemctl status firewalld&lt;/p&gt;
+&lt;p&gt;停止： systemctl disable firewalld&lt;/p&gt;
+&lt;p&gt;禁用： systemctl stop firewalld&lt;/p&gt;
+&lt;p&gt;2.systemctl是CentOS7的服务管理工具中主要的工具，它融合之前service和chkconfig的功能于一体。&lt;/p&gt;
+&lt;p&gt;启动一个服务：systemctl start firewalld.service&lt;/p&gt;
+&lt;p&gt;关闭一个服务：systemctlstop firewalld.service&lt;/p&gt;
+&lt;p&gt;重启一个服务：systemctlrestart firewalld.service&lt;/p&gt;
+&lt;p&gt;显示一个服务的状态：systemctlstatus firewalld.service&lt;/p&gt;
+&lt;p&gt;在开机时启用一个服务：systemctlenable firewalld.service&lt;/p&gt;
+&lt;p&gt;在开机时禁用一个服务：systemctldisable firewalld.service&lt;/p&gt;
+&lt;p&gt;查看服务是否开机启动：systemctlis-enabled firewalld.service&lt;/p&gt;
+&lt;p&gt;查看已启动的服务列表：systemctllist-unit-files|grep enabled&lt;/p&gt;
+&lt;p&gt;查看启动失败的服务列表：systemctl&amp;ndash;failed&lt;/p&gt;
+&lt;p&gt;3.配置firewalld-cmd&lt;/p&gt;
+&lt;p&gt;查看版本： firewall-cmd &amp;ndash;version&lt;/p&gt;
+&lt;p&gt;查看帮助： firewall-cmd &amp;ndash;help&lt;/p&gt;
+&lt;p&gt;显示状态： firewall-cmd &amp;ndash;state&lt;/p&gt;
+&lt;p&gt;查看所有打开的端口： firewall-cmd&amp;ndash;zone=public &amp;ndash;list-ports&lt;/p&gt;
+&lt;p&gt;更新防火墙规则： firewall-cmd &amp;ndash;reload&lt;/p&gt;
+&lt;p&gt;查看区域信息:  firewall-cmd&amp;ndash;get-active-zones&lt;/p&gt;
+&lt;p&gt;查看指定接口所属区域： firewall-cmd&amp;ndash;get-zone-of-interface=eth0&lt;/p&gt;
+&lt;p&gt;拒绝所有包：firewall-cmd &amp;ndash;panic-on&lt;/p&gt;
+&lt;p&gt;取消拒绝状态： firewall-cmd &amp;ndash;panic-off&lt;/p&gt;
+&lt;p&gt;查看是否拒绝： firewall-cmd &amp;ndash;query-panic&lt;/p&gt;
+&lt;p&gt;那怎么开启一个端口呢&lt;/p&gt;
+&lt;p&gt;添加&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;zone=public &amp;ndash;add-port=80/tcp &amp;ndash;permanent   （&amp;ndash;permanent永久生效，没有此参数重启后失效）&lt;/p&gt;
+&lt;p&gt;重新载入&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;reload&lt;/p&gt;
+&lt;p&gt;查看&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;zone=public &amp;ndash;query-port=80/tcp&lt;/p&gt;
+&lt;p&gt;删除&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;zone=public &amp;ndash;remove-port=80/tcp &amp;ndash;permanent&lt;/p&gt;
+&lt;p&gt;查看firewall是否运行,下面两个命令都可以&lt;/p&gt;
+&lt;p&gt;systemctl status firewalld.service&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;state&lt;/p&gt;
+&lt;p&gt;查看当前开了哪些端口&lt;/p&gt;
+&lt;p&gt;其实一个服务对应一个端口，每个服务对应/usr/lib/firewalld/services下面一个xml文件。&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;list-services&lt;/p&gt;
+&lt;p&gt;查看还有哪些服务可以打开&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;get-services&lt;/p&gt;
+&lt;p&gt;查看所有打开的端口：&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;zone=public &amp;ndash;list-ports&lt;/p&gt;
+&lt;p&gt;更新防火墙规则：&lt;/p&gt;
+&lt;p&gt;firewall-cmd &amp;ndash;reload&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>线程同步与原子变量</title>
@@ -17,7 +74,157 @@
       <pubDate>Sat, 03 Jun 2017 11:19:25 +0800</pubDate>
       
       <guid>https://luoguochun.cn/post/2017-06-03-synchronize-atomic-variable/</guid>
-      <description>无论是基于多线程还是多进程并发的程序，同步控制总是不可避免的。按照自己的思维和使用习惯，自然会想到的是互斥量(mutext)和自旋锁(spi</description>
+      <description>&lt;p&gt;无论是基于多线程还是多进程并发的程序，同步控制总是不可避免的。按照自己的思维和使用习惯，自然会想到的是互斥量(mutext)和自旋锁(spin lock)，当然同步的方式不只这两种。gcc提供了，&lt;code&gt;__sync_*&lt;/code&gt;系列的内置函数，用于对&lt;strong&gt;基本数据类型&lt;/strong&gt;的原子操作。&lt;code&gt;__sync_*&lt;/code&gt;针对的是c/c++的&lt;strong&gt;基本数据类型&lt;/strong&gt;，而互斥量和自旋锁可以用于代码块的同步，当然，也不是说&lt;code&gt;__sync_*&lt;/code&gt;不能用于代码块的同步控制，只需要一点点的技巧。&lt;/p&gt;
+&lt;p&gt;在撸&lt;code&gt;__sync_*&lt;/code&gt;系列函数之前，先看看一丢丢并发程序易忽略的技巧。为了提高效率，我们希望线程的调度级别和系统普通进程的调度级别一样的，为了充分利用cpu的cache特性，我们还希望每次系统调度时都绑定到同一个cpu中执行。前者，已经使用过了：&lt;code&gt;pthread_attr_setscope(&amp;amp;attr, PTHREAD_SCOPE_SYSTEM)&lt;/code&gt;，后者，叫cpu亲和性（也有叫亲缘性，英文：affinity），用到的api主要有：&lt;code&gt;sched_setaffinity&lt;/code&gt; 和 &lt;code&gt;sched_getaffinity&lt;/code&gt;，使用方式也是挺简单的，如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 线程/进程起来后
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nf&#34;&gt;CPU_ZERO&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;CPU_SET&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;proc_num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;sched_setaffinity&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;gettid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;sizeof&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;cpu_set_t&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;// ...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;我们再看看习惯思维的同步工具，互斥锁（mutext）和自旋锁(spin lock)的区别。互斥锁是sleep-waiting类型的锁，例如，在多核的环境中，A线程如果尝试对B线程进行加互斥锁，如果互斥锁已经被B线程占用，那么A线程就会进入等等状态，那么系统就会对A线程进行上下文切换(conext switch)，让出CPU使用权，上下文切换(conext switch)是比较耗时的操作的。而自旋锁的处理方式则不会进行上下文切换，而是让cpu不断的轮询的获取锁。自旋锁的CPU轮询和互斥锁的上下文切换同样是耗性能的，大多数情况下，有限时间内的CPU轮询比互斥锁的上下文切换轻量太多了。那么什么情况下使用互斥锁（mutext）和自旋锁(spin lock)呢，有人总结说，尽管互斥锁消耗的资源相对多（上下文切换），但互斥锁是适用情况还是比较广，大多数情况下还是选择互斥锁，在需要进行性能优化/或者知道锁代码块运行时间的情况下，才考虑自旋锁。&lt;/p&gt;
+&lt;p&gt;另外提及一下，线程局部变量。这个在其他语言是有这个概念的，C/C++也是有，但是经常容易忽略。线程局部变量，使用&lt;code&gt;__thread&lt;/code&gt;修饰，使用时有局限性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;__thread&lt;/code&gt;可以修饰全局变量、函数的静态变量，但是无法修饰函数的局部变量。&lt;/li&gt;
+&lt;li&gt;被&lt;code&gt;__thread&lt;/code&gt;修饰的变量只能在编译期初始化，且只能通过常量表达式来初始化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们正式看一下gcc提供的原子操作：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_fetch_and_add&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_fetch_and_sub&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_fetch_and_or&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_fetch_and_and&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_fetch_and_xor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_fetch_and_nand&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_add_and_fetch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_sub_and_fetch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_or_and_fetch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_and_and_fetch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_xor_and_fetch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_nand_and_fetch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_bool_compare_and_swap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oldval&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;newval&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_val_compare_and_swap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oldval&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;newval&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;__sync_synchronize&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_lock_test_and_set&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_lock_release&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;__sync_*&lt;/code&gt;系列函数操作的数据都是原始的数据类型，从名字看，很容易猜出它们的用途。最后三个使用的比较少，是内存壁垒的含义，现代CPU都是乱序执行的，有些情况下乱序执行会有问题，所以需要顺序执行，这就是这三个函数的用处。最开始说过，&lt;code&gt;__sync_*&lt;/code&gt;用于代码块的同步控制，需要一丢丢的技巧。比如用于代码块的封装:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define trylock(lock)  (*(lock) == 0 &amp;amp;&amp;amp; __sync_bool_compare_and_swap(lock, 0, 1))
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define unlock(lock)    *(lock) = 0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 使用
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;trylock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;unlock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;上面说自旋锁锁被占用时，空耗CPU，使用原子变量，可以进行一定程度的优化，和原来的自旋锁的优化是，自旋一定次数后，主动交出CPU的控制权：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;spinlock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;uint_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;uint_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;spin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kt&#34;&gt;ngx_uint_t&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_bool_compare_and_swap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ncpu&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// ncpu CPU个数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;spin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;c1&#34;&gt;// cpu_pause(); 空转
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_bool_compare_and_swap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;sched_yield&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 只旋一个周期，没有获取到锁，退出CPU控制权
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;正常的应用业务或许不会用到&lt;code&gt;__sync_*&lt;/code&gt;系列函数，但如果使用了无疑可以进一步提高单个应用的性能。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -26,7 +233,264 @@
       <pubDate>Mon, 28 Jul 2014 14:57:18 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/</guid>
-      <description>linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一</description>
+      <description>&lt;p&gt;linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(&lt;strong&gt;未完待续&lt;/strong&gt;)。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;/proc/[pid]&lt;/em&gt;&lt;br&gt;
+每一个正在运行的进程都对应有这样一个伪目录，目录名为该进程的pid。每个伪目录下面都有以下伪文件或伪目录:&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/auxv&lt;br&gt;
+包含ELF解析信息（ELF就是linux系统二进制可执行文件的文件格式），&lt;code&gt;auxv&lt;/code&gt; 是 AUXiliary Vector简写。每个条目的格式就是:一个&lt;code&gt;unsigned long&lt;/code&gt;ID加上一个&lt;code&gt;unsigned long&lt;/code&gt;数值。这个AUXV是什么意思呢？ 我们可以通过加上&lt;code&gt;LD_SHOW_AUXV=1 程序名&lt;/code&gt;可以获取具体的数值:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM 2218]$ LD_SHOW_AUXV=1 /bin/sh         
+    AT_SYSINFO_EHDR: 0x7fff173d8000        
+    AT_HWCAP:        178bf3ff         
+    AT_PAGESZ:       4096         
+    AT_CLKTCK:       100         
+    AT_PHDR:         0x400040         
+    AT_PHENT:        56         
+    AT_PHNUM:        9         
+    AT_BASE:         0x7fd32ed59000         
+    AT_FLAGS:        0x0         
+    AT_ENTRY:        0x41aef0         
+    AT_UID:          500         
+    AT_EUID:         500         
+    AT_GID:          500         
+    AT_EGID:         500         
+    AT_SECURE:       0         
+    AT_RANDOM:       0x7fff17230579         
+    AT_EXECFN:       /bin/sh         
+    AT_PLATFORM:     x86_64         
+    sh-4.1$          
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对应的&lt;code&gt;AT_*&lt;/code&gt;的含义可在&lt;code&gt;/usr/include/elf.h&lt;/code&gt;找到。&lt;br&gt;
+相关参考: &lt;a href=&#34;http://www.linuxquestions.org/questions/linux-kernel-70/what-does-proc-pid-auxv-mean-exactly-4175421876/&#34;&gt;What does /proc/PID/auxv mean exactly?&lt;/a&gt; 和 &lt;a href=&#34;http://lenky.info/archives/2013/02/2203&#34;&gt;关于ELF的辅助向量&lt;/a&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;/proc/[pid]/cmdline&lt;/em&gt;&lt;br&gt;
+包含非僵死进程的命令行启动参数，该文件包含&lt;code&gt;&amp;quot;\0&amp;quot;&lt;/code&gt;。如:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM 2238]$ cat cmdline         
+    bash[heidong@HEIDONGVM 2238]$          
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;/proc/[pid]/coredump_filter&lt;/em&gt;&lt;br&gt;
+用于控制哪些内存段写入到core文件，16进制显示，是与&lt;code&gt;mmap&lt;/code&gt;映射类型的位掩码。默认0,1,4,5(如果内核编译时定义CONFIG_CORE_DUMP_DEFAULT_ELF_HEADERS)，所以默认值是33。掩码含义是：&lt;br&gt;
+bit 0 dump匿名私有映射.&lt;br&gt;
+bit 1 dump匿名共享映射.&lt;br&gt;
+bit 2 dump基于文件的私有映射.&lt;br&gt;
+bit 3 dump基于文件的共享映射.&lt;br&gt;
+bit 4(linux 2.6.24) dump elf 头.&lt;br&gt;
+bit 5(linux 2.6.28) dump私有页面(private huge pages).
+bit 6(linux 2.6.28) dump共享页面(shared huge pages).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/cpuset&lt;br&gt;
+// todo&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/cwd&lt;br&gt;
+进程当前工作目录的软连接。对于多线程的程序，如果主线程退出或挂掉了，子线程还存在，这个连接时无效的。去到当前工作目录：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    $ cd /proc/20/cwd; /bin/pwd          
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;/proc/[pid]/environ&lt;/em&gt;&lt;br&gt;
+进程环境变量，每个条目都是以&lt;code&gt;&amp;quot;\0&amp;quot;&lt;/code&gt;结束。可用这种方法显示:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM 2238]$ (cat /proc/2238/environ; echo) | tr &#39;\000&#39; &#39;\n&#39;        
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/exe&lt;br&gt;
+进程可执行文件在软连接。对于多线程的程序，如果主线程退出或挂掉了，子线程还存在，这个连接时无效的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;/proc/[pid]/fd/&lt;/em&gt;&lt;br&gt;
+打开文件文件描述符目录在连接。对于多线程的程序，如果主线程退出或挂掉了，子线程还存在，这个连接时无效的。&lt;code&gt;/proc/self/fd/N&lt;/code&gt;和&lt;code&gt;/dev/fd/N&lt;/code&gt;是一样在。补充说明，对于只知道fd怎么找对于的文件呢？答案是很简单的，直接用&lt;code&gt;readlink&lt;/code&gt;函数，查看对于该目录下文件的连接就可以了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/fdinfo/&lt;br&gt;
+这个目录是和/proc/[pid]/fd/对应的，就是对于没个文件的当前偏移和打开标示。如:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM fdinfo]$ cat 165        
+    pos:	0        
+    flags:	0100002        
+    [heidong@HEIDONGVM fdinfo]$        
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/limits&lt;br&gt;
+limits信息。和&lt;code&gt;getrlimit&lt;/code&gt;获取的信息是一样的。如:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM 3500]$ cat limits         
+    Limit                     Soft Limit           Hard Limit           Units     
+    Max cpu time              unlimited            unlimited            seconds   
+    Max file size             unlimited            unlimited            bytes     
+    Max data size             unlimited            unlimited            bytes     
+    Max stack size            10485760             unlimited            bytes     
+    Max core file size        unlimited            unlimited            bytes     
+    Max resident set          unlimited            unlimited            bytes     
+    Max processes             1024                 14864                processes 
+    Max open files            4096                 4096                 files     
+    Max locked memory         65536                65536                bytes     
+    Max address space         unlimited            unlimited            bytes     
+    Max file locks            unlimited            unlimited            locks     
+    Max pending signals       14864                14864                signals   
+    Max msgqueue size         819200               819200               bytes     
+    Max nice priority         0                    0                    
+    Max realtime priority     0                    0                    
+    Max realtime timeout      unlimited            unlimited            us        
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/maps&lt;br&gt;
+内存映射的地址和权限。如:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM 3890]$ cat maps 
+    00400000-00410000 r-xp 00000000 fd:00 1072484                            /usr/bin/groff
+    0060f000-00610000 rw-p 0000f000 fd:00 1072484                            /usr/bin/groff
+    00610000-00614000 rw-p 00000000 00:00 0 
+    0080f000-00811000 rw-p 0000f000 fd:00 1072484                            /usr/bin/groff
+    01c6f000-01c90000 rw-p 00000000 00:00 0                                  [heap]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/[pid]/mem&lt;br&gt;
+进程对应的内存，可以通过&lt;code&gt;open&lt;/code&gt;, &lt;code&gt;read&lt;/code&gt;, &lt;code&gt;lseek&lt;/code&gt;访问。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/apm&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/bus&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/cmdline&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/config.gz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/cpuinfo&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/devices&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/diskstats&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/dma&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/driver&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/execdomains&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/fb&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/filesystems&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/fs&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/ide&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/interrupts&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/iomem&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/ioports&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/kallsyms&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/kcore&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/kmsg&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/ksyms&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/loadavg&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/locks&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/malloc&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/meminfo&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/modules&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/mounts&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/mtrr&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/net&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/partitions&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/pci&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/scsi&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/self&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/slabinfo&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/stat&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/swaps&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/sys&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/sysrq-trigger&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/sysvipc&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/tty&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/uptime&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/version&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/vmstat&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc/zoneinfo&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -35,7 +499,64 @@
       <pubDate>Tue, 15 Jul 2014 11:10:13 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-07-15-misc-memory/</guid>
-      <description>这里记录的是一些常见的错误或技巧或一些注意事项等，不定时更新: hexo 安装（含插件） hexo 是相对比较好的一个静态BLOG生成器，虽然我在树莓派上面编译</description>
+      <description>&lt;p&gt;这里记录的是一些常见的错误或技巧或一些注意事项等，不定时更新:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://hexo.io&#34;&gt;hexo&lt;/a&gt; 安装（含插件）&lt;br&gt;
+hexo 是相对比较好的一个静态BLOG生成器，虽然我在&lt;a href=&#34;http://www.raspberrypi.org&#34;&gt;树莓派&lt;/a&gt;上面编译一个nodejs耗时6个多小时，每次hexo -g耗时接近15分钟，但这不影响使用。安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  npm install -g hexo    
+  npm install hexo-generator-feed    
+  npm install hexo-generator-sitemap    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;python 后台操作git&lt;br&gt;
+程序切换的git目录后:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  git_cmd = [&amp;quot;git&amp;quot;, &amp;quot;add&amp;quot;, &amp;quot;./*&amp;quot;]
+  ret = subprocess.call(git_cmd)
+
+  git_cmd = [&amp;quot;git&amp;quot;, &amp;quot;commit&amp;quot;, &amp;quot;-m&amp;quot;, &amp;quot;&#39;auto commit&#39;&amp;quot;, &amp;quot;-a&amp;quot;]
+  ret = subprocess.call(git_cmd)
+
+  git_cmd = [&amp;quot;git&amp;quot;, &amp;quot;push&amp;quot;]
+  ret = subprocess.call(git_cmd)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注意，因为提交了后台，使用的不是git clone仓库的那个用户，需要在为具体的git目录添加git信息&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    git config user.email &amp;quot;xxx@xx.xx&amp;quot;
+    git config user.name  &amp;quot;xxx&amp;quot;
+    git config push.default simple
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同时需要在运行这个用户的主目录下添加.ssh信息。否则提交不成功&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;路由器登陆&lt;br&gt;
+TP-link路由器的登陆使用的是http basic auth。具体是每一次请求，都必须在http头输入http认证信息。http认证方式可参考：&lt;a href=&#34;http://blog.csdn.net/hotnet522/article/details/5824716&#34;&gt;HTTP认证方式&lt;/a&gt;。python 代码:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  req = urllib2.Request(url)
+  req.add_header(&amp;quot;Authorization&amp;quot;, &amp;quot;Basic aGVsbG86d29ybGQ=&amp;quot;)
+  rsp = urllib2.urlopen(req)
+  rsp.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/buf1024/mysch&#34;&gt;mysch&lt;/a&gt; 程序需全路径&lt;br&gt;
+mysch是调度监控程序，目前没有流量控制，只有时间控制，调用的程序名需要全路径。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://code.google.com/p/openerdns/&#34;&gt;openerdns&lt;/a&gt;和&lt;a href=&#34;http://www.opendns.com&#34;&gt;Opendns&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  OpenerDNS可实现最简单的翻墙，有时不可用。
+  地址: 42.120.21.30  
+  OpenDNS不能翻墙。
+  地址：  
+  208.67.222.222  
+  208.67.220.220  
+  208.67.222.220  
+  208.67.220.222  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -44,7 +565,26 @@
       <pubDate>Fri, 04 Jul 2014 16:45:00 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-07-04-hide-compile-output/</guid>
-      <description>编译程序make时，会看到很多编译输出。对于开发来说，这是非常直观的，但是如果分发到客户（需要编译）或者只需要关注错误时，这种输出就感觉烦人</description>
+      <description>&lt;p&gt;编译程序make时，会看到很多编译输出。对于开发来说，这是非常直观的，但是如果分发到客户（需要编译）或者只需要关注错误时，这种输出就感觉烦人。Redis是这么做的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;REDIS_CC=$(QUIET_CC)$(CC) $(FINAL_CFLAGS)
+REDIS_LD=$(QUIET_LINK)$(CC) $(FINAL_LDFLAGS)
+REDIS_INSTALL=$(QUIET_INSTALL)$(INSTALL)
+
+CCCOLOR=&amp;quot;\033[34m&amp;quot;
+LINKCOLOR=&amp;quot;\033[34;1m&amp;quot;
+SRCCOLOR=&amp;quot;\033[33m&amp;quot;
+BINCOLOR=&amp;quot;\033[37;1m&amp;quot;
+MAKECOLOR=&amp;quot;\033[32;1m&amp;quot;
+ENDCOLOR=&amp;quot;\033[0m&amp;quot;
+
+ifndef V
+QUIET_CC = @printf &#39;    %b %b\n&#39; $(CCCOLOR)CC$(ENDCOLOR) $(SRCCOLOR)$@$(ENDCOLOR) 1&amp;gt;&amp;amp;2;
+QUIET_LINK = @printf &#39;    %b %b\n&#39; $(LINKCOLOR)LINK$(ENDCOLOR) $(BINCOLOR)$@$(ENDCOLOR) 1&amp;gt;&amp;amp;2;
+QUIET_INSTALL = @printf &#39;    %b %b\n&#39; $(LINKCOLOR)INSTALL$(ENDCOLOR) $(BINCOLOR)$@$(ENDCOLOR) 1&amp;gt;&amp;amp;2;
+endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在编译前加&lt;code&gt;QUIET&lt;/code&gt;选项，正常的编译会忽略掉，出错或警告的信息会完整的输出来。学到东西了！！&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -53,7 +593,42 @@
       <pubDate>Fri, 04 Jul 2014 10:27:47 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-07-04-set-proccess-title/</guid>
-      <description>###如何开搞 我们平时ps进程时，显示的进程标题是我们输入的程序名以及一些参数。这种显示方式并非非常直观，我们需要一种方式可以设置程序的标题</description>
+      <description>&lt;p&gt;###如何开搞
+我们平时ps进程时，显示的进程标题是我们输入的程序名以及一些参数。这种显示方式并非非常直观，我们需要一种方式可以设置程序的标题，一眼就知道该进程时什么鸟。如redis或nginx:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root      8527     1  0 10:30 ?        00:00:00 nginx: master process nginx    
+nginx     8528  8527  0 10:30 ?        00:00:00 nginx: worker process    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;实现的原理非常简单，我们只需要修改argv[0],说指向的那段内存空间的内容即可。但是为了使程序的正常逻辑不受影响，事先要把原理的内容保存起来，并通过原来的方式可以访问。&lt;br&gt;
+argv[0]所指向的的空间是和·enviorn·所指向的内存空间是连续的，在程序启动的时候，系统已经设置好这些空间了。如图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://privt-share.qiniudn.com/@/redis/setproctitle.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;那么，1. 我们只需要重新分配空间（不一定是连续的）来存储这些内容，将地址分别复制给&lt;code&gt;argv&lt;/code&gt;或&lt;code&gt;environ&lt;/code&gt;数组，这样原来程序的流程不受影响。2. 我们可以在原&lt;code&gt;agv&lt;/code&gt;最开始的地方和&lt;code&gt;environ&lt;/code&gt;最结尾的地方，随便设置你显示的内容即可，也就是图中&lt;code&gt;./exe&lt;/code&gt;开始的地方和&lt;code&gt;Env5=val5&lt;/code&gt;最后一个0结尾复的地方。只需要注意到，设置的内容必须与0结尾，而且不能超过该内存空间。&lt;/p&gt;
+&lt;p&gt;###redis如何实现
+redis的实现在&lt;a href=&#34;https://github.com/antirez/redis/blob/2.8.12/src/setproctitle.c&#34;&gt;setproctitle&lt;/a&gt;里面。只是实现有点疑惑：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;argc个数少于argv数组数？&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; for (i = 0; i &amp;lt; argc || (i &amp;gt;= argc &amp;amp;&amp;amp; argv[i]); i++) {    
+     if (!argv[i] || argv[i] &amp;lt; end)
+ 	    continue;
+
+     end = argv[i] + strlen(argv[i]) + 1;
+ }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;按照我们一直以来的常识，是通过argc从argv里面取出数据来的，而他这里&lt;code&gt;i &amp;lt; argc || (i &amp;gt;= argc &amp;amp;&amp;amp; argv[i])&lt;/code&gt;这个条件明显就是argc可能会少于argv个数。什么情况下会出现这种情况呢？&lt;br&gt;
+2. SPT.nul貌似没有用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;	if (nul &amp;lt; SPT.nul) {
+	    *SPT.nul = &#39;.&#39;;
+    } else if (nul == SPT.nul &amp;amp;&amp;amp; &amp;amp;nul[1] &amp;lt; SPT.end) {
+	    *SPT.nul = &#39; &#39;;
+	    *++nul = &#39;\0&#39;;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这是&lt;code&gt;setproctitle&lt;/code&gt;里面的一个奇怪的逻辑，更本没想到他是干嘛用的。而且貌似SPT.nul在set proc title里面没有什么作用。&lt;/p&gt;
+&lt;p&gt;###简单吐槽
+虽然redis非常出名，但是redis的代码貌似不是很规范……或者是我们一直接触的就不规范，哈……&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -62,7 +637,150 @@
       <pubDate>Fri, 30 May 2014 23:28:16 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-05-30-myschd/</guid>
-      <description>树莓派是神奇的机器，CPU和内存都少的可怜，但体积小功耗低，在上面搞些动搞些西其实也挺有意思，挺好玩的。装的是pidara，基本服务没有精简</description>
+      <description>&lt;p&gt;树莓派是神奇的机器，CPU和内存都少的可怜，但体积小功耗低，在上面搞些动搞些西其实也挺有意思，挺好玩的。装的是pidara，基本服务没有精简多少，先cat一下CPU和RAM。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [able@raspi ~]$ cat /proc/cpuinfo 
+    Processor       : ARMv6-compatible processor rev 7 (v6l)
+    BogoMIPS        : 464.48
+    Features        : swp half thumb fastmult vfp edsp java tls 
+    CPU implementer : 0x41
+    CPU architecture: 7
+    CPU variant     : 0x0
+    CPU part        : 0xb76
+    CPU revision    : 7
+    
+    Hardware        : BCM2708
+    Revision        : 000e
+    Serial          : 000000003123ffdc
+    [able@raspi ~]$ cat /proc/meminfo 
+    MemTotal:         446672 kB
+    MemFree:          289976 kB
+    Buffers:           16872 kB
+    Cached:            65868 kB
+    SwapCached:            0 kB
+    Active:            88652 kB
+    Inactive:          50360 kB
+    Active(anon):      58692 kB
+    Inactive(anon):      844 kB
+    Active(file):      29960 kB
+    Inactive(file):    49516 kB
+    Unevictable:           0 kB
+    Mlocked:               0 kB
+    HighTotal:             0 kB
+    HighFree:              0 kB
+    LowTotal:         446672 kB
+    LowFree:          289976 kB
+    SwapTotal:        524284 kB
+    SwapFree:         524284 kB
+    Dirty:                16 kB
+    Writeback:             0 kB
+    AnonPages:         56284 kB
+    Mapped:            16088 kB
+    Shmem:              3268 kB
+    Slab:               9684 kB
+    SReclaimable:       5664 kB
+    SUnreclaim:         4020 kB
+    KernelStack:         656 kB
+    PageTables:         1292 kB
+    NFS_Unstable:          0 kB
+    Bounce:                0 kB
+    WritebackTmp:          0 kB
+    CommitLimit:      747620 kB
+    Committed_AS:     211148 kB
+    VmallocTotal:     565248 kB
+    VmallocUsed:        5024 kB
+    VmallocChunk:     347144 kB
+    [able@raspi ~]$ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;树莓派可能是为了节省成本，并没有安装时间模块，所以每次开机时间都会被重置。因为很久没有动过电烙铁了，所以没有想过给它装上个硬件模块。
+所以想到的方法是同步网络时间。开始的时候，搞个启动脚本，开机启动同步时间，可是每当机器重启时，半个小时都启动不了，而且就算启动了，也没有
+同步时间。于是想第二个方法，用根用户的crontab，结果不知道为何，没有同步，crontab执行其他任务是没有问题的，原因还不明。&lt;/p&gt;
+&lt;p&gt;另外一个问题，因为树莓派是通过网线连接TP-LINK路由的，同时有个小米盒子连着。小米盒子是个神奇的东西，只有你连接上TP-LINK的路由的，其他
+电脑或手机设备就很难连接进去，即使是断开了小米盒子，状况依然无法解决。所以，老妹一看连接不上，就拔电源重启。可以将一些应用程序做成自启动，
+可是并不是所有的程序都像nginx一样完善，会切换用户执行。&lt;/p&gt;
+&lt;p&gt;还有一个问题，就是有些程序coredump，让它自动重启，系统配置貌似还做不到（可能可以做到）。我还想在树莓派上面跑个DHT爬虫，但DHT爬虫太占
+网络了，如果一直开着的话，网络就基本废了。所以我是想在周一到五凌晨才开始运行，到17点就停了，可以配置之类的。&lt;/p&gt;
+&lt;p&gt;基于上面种种需求，自己搞了个非常简单管理调度程序，特点：&lt;br&gt;
+1. 可以管理三类程序，常驻进程（挂掉会自动重启），一次进程（负责启动，不管是否成  功），优先的一次进程（负责启动，不管是否成功，具有最高优先级，所以程序必须等到此类程序退出后，方启动其他程序）&lt;br&gt;
+2. 可以指定运行的用户，必须有相应的权限&lt;br&gt;
+3. 常驻进程可以配置运行时间。&lt;/p&gt;
+&lt;p&gt;缺点：&lt;br&gt;
+1. 没有为每个进程分配优先级&lt;br&gt;
+2. 没有设计没有进程的依赖关系&lt;/p&gt;
+&lt;p&gt;相关配置文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [nginx@raspi bin]$ cat mysch.conf 
+    #程序运行参数
+    #程序配置段PROG_LIST配置
+    #[NGINX]
+    #程序启动的命令
+    #RUN_COMMAND=/sbin/ntpdate 1.cn.pool.ntp.org
+    #运行该程序的用户组
+    #RUN_GROUP=nginx
+    #运行该程序的用户
+    #RUN_USER=nginx
+    #程序运行标志
+    # -1 程序启动后先等待其运行完毕方可运行其它程序
+    #  0 程序启动后不管其运行状态
+    #  1 程序按照RUN_TIME配置时间点运行，非该运行点自动停止通过kill信号
+    #RUN_FLAG=1
+    #RUN_FLAG=1时有效，程序运行时间段，星期(1-7)，时间格式(24小时)，各条件之间是或关系
+    #RUN_TIME=1-5,23:30-16:30|1-5,17:30-21:30|6-7,00:00-8:30
+    
+    [COMMON]
+    #日志路径
+    LOG_PATH=/home/nginx/bin/log
+    #日志头
+    LOG_HEADER=schedule
+    #文件日志级别all,debug,info,warn,error,fatal,off
+    LOG_LEVEL=debug
+    #文件日志缓存,byte
+    LOG_BUFFER=102400
+    #文件切换时间,秒数
+    LOG_SWITCH_TIME=86400
+    
+    #睡眠时间
+    SLEEP_TIME = 60
+    #推出时是否退出子程序
+    KILL_CHILD_FLAG = 1
+    #pid文件后,台执行时有效
+    PID_FILE=/home/nginx/bin/log/mysch.pid
+    #运行的用户
+    RUN_USER=root
+    PROG_LIST=NTP|NGINX|BIGFALSE
+    
+    [NTP]
+    RUN_COMMAND=/usr/sbin/ntpdate 1.cn.pool.ntp.org
+    RUN_USER=root
+    RUN_FLAG=-1
+    
+    [NGINX]
+    RUN_COMMAND=/home/nginx/www/sbin/nginx
+    RUN_USER=nginx
+    RUN_FLAG=1
+    RUN_TIME=1-7,00:00-24:00
+    RUN_PID_FILE=/home/nginx/www/logs/nginx.pid
+    
+    [BIGFALSE]
+    RUN_COMMAND=/usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+    RUN_USER=nginx
+    RUN_FLAG=1
+    RUN_TIME=1-7,00:00-24:00
+    RUN_PID_FILE=/home/nginx/tinytrue/log/django.pid
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;按照这个配置，运行的程序：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [nginx@raspi bin]$ p nginx
+    root       233     1  0 14:41 ?        00:00:00 /home/nginx/bin/mysch -c /home/nginx/bin/mysch.conf
+    nginx      304     1  0 14:42 ?        00:00:00 nginx: master process /home/nginx/www/sbin/nginx
+    nginx      305   304  0 14:42 ?        00:00:00 nginx: worker process     
+    nginx      307     1  0 14:42 ?        00:00:00 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+    nginx      308   307  0 14:42 ?        00:00:00 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+    nginx      309   307  0 14:42 ?        00:00:00 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+    nginx      310   307  0 14:42 ?        00:00:04 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+    nginx      311   307  0 14:42 ?        00:00:06 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+    nginx      312   307  0 14:42 ?        00:00:10 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;相关代码：&lt;br&gt;
+&lt;a href=&#34;https://github.com/buf1024/mysch&#34;&gt;https://github.com/buf1024/mysch&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -71,7 +789,43 @@
       <pubDate>Wed, 29 May 2013 22:37:14 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2013-05-29-linux-pkg-config/</guid>
-      <description>pkg-config主要的作用是提供编译和连接到软件库的信息的。 如，典型的用法： 1 2 [heidong@HEIDONGVM bin]$ pkg-config --cflags --libs libevent -I/usr/local/include -L/usr/local/lib -levent 将显示包含头文件和连接的信息。 那么pk</description>
+      <description>&lt;p&gt;pkg-config主要的作用是提供编译和连接到软件库的信息的。&lt;/p&gt;
+&lt;p&gt;如，典型的用法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM bin]$ pkg-config --cflags --libs libevent 
+    -I/usr/local/include  -L/usr/local/lib -levent
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将显示包含头文件和连接的信息。&lt;/p&gt;
+&lt;p&gt;那么pkg-config是如何获取得这些信息的呢？&lt;/p&gt;
+&lt;p&gt;pkg-config 是从xxx.pc的文件里面取的软件包的信息，如上面的例子，libevent.pc&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM bin]$ cat /usr/local/lib/pkgconfig/libevent.pc 
+    #libevent pkg-config source file
+    
+    prefix=/usr/local 
+    exec_prefix=${prefix} 
+    libdir=${exec_prefix}/lib 
+    includedir=${prefix}/include
+    
+    Name: libevent 
+    Description: libevent is an asynchronous notification event loop library 
+    Version: 2.0.17-stable 
+    Requires: 
+    Conflicts: 
+    Libs: -L${libdir} -levent 
+    Libs.private: -lrt 
+    Cflags: -I${includedir}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可见，pkg-config里面主要包含了包含头文件，连接库的信息。在本例子中，Requires就空的，如果非空，cfalgs, libs将添加相应的依赖项。&lt;/p&gt;
+&lt;p&gt;那么pkg-config是从哪里搜索这些文件的呢？&lt;/p&gt;
+&lt;p&gt;首先pkg-config会从自己标准的搜索目录（如/usr/lib/pkgconfig/）和PKG_CONFIG_PATH环境变量目录寻找。&lt;br&gt;
+如果寻找不到，会输出这样的信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@HEIDONGVM bin]$ pkg-config --libs qt 
+    Package qt was not found in the pkg-config search path. 
+    Perhaps you should add the directory containing `qt.pc&#39; 
+    to the PKG_CONFIG_PATH environment variable 
+    No package &#39;qt&#39; found
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可见pkg-config对减轻编程人员的工作负荷有一定的帮助。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -80,7 +834,276 @@
       <pubDate>Tue, 18 Sep 2012 23:48:14 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2012-09-18-linux-rpm/</guid>
-      <description>rpm是redhat（系列）系统软件安装，管理的工具。相对于针对仓库而言的yum，rpm是针对单个软件包的。通常情况下Linux发布软件是通</description>
+      <description>&lt;p&gt;rpm是redhat（系列）系统软件安装，管理的工具。相对于针对仓库而言的yum，rpm是针对单个软件包的。通常情况下Linux发布软件是通过源代码方式，一般情况下就是对源码./configure, make,make install。除了这种方式外，比较常用的就是rpm包，它则可提供完整的已经编译好的二进制程序或者其它东西（帮助文件，源码等）。这里不说.deb。&lt;/p&gt;
+&lt;p&gt;rpm的使用不说，直接看帮助，常用的就是-qa, -e，-ivh等几个选项。&lt;/p&gt;
+&lt;p&gt;下面说说rpm包的制作（在制作过程中发现并不是那么顺利，还不如用源代码方式发布），制作是用rmpbuild这个命令完成的。这里仅说下简单的制作以供以后参考。&lt;/p&gt;
+&lt;p&gt;rpm包的结构一般为: name-version-release.architecture.rpm&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;name-version-release&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;命名版本号之类的，如MySQL-server-5.0.i386.rpm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;architecture&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;适用的结构，如i386, i686, x86_64, noarch&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;RPM系统要求有以下几个文件夹（如果是安装系统的时候安装了rmpbuild, 则在redhat系列是在/usr/src/redhat, 如果自行安装的话，可能在你的主目录的rpbbuild的目录下面）。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;BUILD&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;rpmbuild在此目录构建软件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RPMS&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;rmpbuild存储生成的二进制rpm文件目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SOURCES&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;所要构建软件的源码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SPECS&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SPECS文件所在的目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SRPMS&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;rmpbuild存储生成的src rpm包的目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;rpmbuild最重要的是书写SPECS文件，写好的specs文件丢到SPECS目录(也可以不用)。SPECS比较烦琐，下面列出一些常用的，但不完全（#开头表示注释）。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Summary&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包简要的描述&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Name&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Version&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包定义的版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Release&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包发布版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;License&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包许可&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Group&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包分类（在GNOME应用程序可看到）如Applications/Media&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Source&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件包源码下载地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;源码相关网站&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Distribution&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;发行版系列&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Packager&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;打包人的信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Requires&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如 mysql &amp;gt;= 3.30 或者 mysql&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;sources&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;源码tar包，可以这样设置为通用的:%{name}-%{version}.tar.gz&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Buildroot&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;rmpbuild的暂存区，可以设置为通用的:%{_tmppath}/%{name}-%{version}-root&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%description&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件详细描述，可多行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%prep&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;软件编译之前的处理，如解压&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%setup&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;不知道什么用，不过通常在%prep下面%setup -q&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%build&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;开始编译软件，如make&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%install&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;开始安装软件，如make install&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%makeinstall&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;调用Makefiel的make install&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%clean&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;rmpbuild的clean命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%post&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;rmpbuild构建完成的命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;%files&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;要打包的文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果用VIM新建.spec文件，在新建的时候会弹出相应的模板给你填，这个不错。&lt;/p&gt;
+&lt;p&gt;rmpbuild的编译选项大致有下面几种类型：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-ba&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;构建所有的东西，包含二进制和源码的RPM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-bb&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;构建二进制的RPM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-bc&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;构建（编译）程序，但不生成RPM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-bp&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;准备构建RPM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-bi&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;构建二进制的RPM并安装之&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-bl&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;检查RPM文件列表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-bs&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;构建源码的RPM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;一人简单的例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    Name:           jmm
+    Version:        1.0
+    Release:        1
+    Summary:        Process pool server
+    
+    Group:          Applications/Internet
+    License:        LGPL 2.0
+    URL:            www.google.com
+    Source0:        jmm-1.0.tar.gz
+    BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+    
+    #BuildRequires:
+    #Requires:       libevent &amp;gt;= 2.0
+    
+    %description
+    Process pool server base on libevent
+    
+    
+    %prep
+    %setup -q
+    
+    %build
+    make
+    
+    %install
+    mkdir -p %{buildroot}/usr/local/bin
+    #make install DESTDIR=%{buildroot}
+    install -m755 jmm %{buildroot}/usr/local/bin/jmm
+    
+    %clean
+    rm -rf %{buildroot}
+    
+    
+    %files
+    /usr/local/bin/jmm
+    #%defattr(-,root,root,-)
+    #%doc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我的机子是x86_64的，在我机子上运行rmpbuil –ba jmm.spec将在RPMS目录生成x86_64/jmm-1.0-1.x86_68.rpm，在SRPMS目录生成jmm-1.0-1.src.rpm。&lt;br&gt;
+要注意一点的就是%files下面的文件是要写buildroot下面的文件。&lt;br&gt;
+查看刚才编译的文件信息（PS这个东西是要libevent2的所以，如果安装的话，是会失败的）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@CLOUD x86_64]$ rpm -qpi jmm-1.0-1.x86_64.rpm    
+    Name        : jmm                          Relocations: (not relocatable)
+    Version     : 1.0                               Vendor: (none)
+    Release     : 1                             Build Date: Thu Sep 13 07:07:07 2012
+    Install Date: (not installed)               Build Host: CLOUD.NODE.0
+    Group       : Applications/Internet         Source RPM: jmm-1.0-1.src.rpm
+    Size        : 45357                            License: LGPL 2.0
+    Signature   : (none)
+    URL         : www.google.com
+    Summary     : Process pool server
+    Description :
+    Process pool server base on libevent
+    [heidong@CLOUD x86_64]$ rpm -qpl jmm-1.0-1.x86_64.rpm   
+    /usr/local/bin/jmm
+    [heidong@CLOUD x86_64]$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看源RPM的信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [heidong@CLOUD SRPMS]$ rpm -qpi jmm-1.0-1.src.rpm           
+    Name        : jmm                          Relocations: (not relocatable)
+    Version     : 1.0                               Vendor: (none)
+    Release     : 1                             Build Date: Thu Sep 13 07:07:07 2012
+    Install Date: (not installed)               Build Host: CLOUD.NODE.0
+    Group       : Applications/Internet         Source RPM: (none)
+    Size        : 17198                            License: LGPL 2.0
+    Signature   : (none)
+    URL         : www.google.com
+    Summary     : Process pool server
+    Description :
+    Process pool server base on libevent
+    [heidong@CLOUD SRPMS]$ rpm -qpl jmm-1.0-1.src.rpm   
+    jmm-1.0.tar.gz
+    jmm.spec
+    [heidong@CLOUD SRPMS]$ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;关于源RPM的安装，与编译好的二进制文件不一样，源RPM是要编译的。一般是包含压缩包和SPEC文件。安装后，源码文件是在SOURCE目录，SPEC文件是在SPEC目录。要进得编译方可得到二进制RPM包。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -89,7 +1112,671 @@
       <pubDate>Wed, 02 May 2012 21:08:14 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2012-05-02-sys-queue-h/</guid>
-      <description>概述 sys/queue.h是LINUX/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple</description>
+      <description>&lt;h3 id=&#34;概述&#34;&gt;概述 &lt;a href=&#34;#%e6%a6%82%e8%bf%b0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;sys/queue.h是LINUX/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple queue(Singly-linked Tail queue), tail queue, circle queue五种。&lt;/p&gt;
+&lt;p&gt;引用此头文件对这五种数据结构的描述：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A singly-linked list is headed by a single forward pointer. The
+elements are singly linked for minimum space and pointer manipulation
+overhead at the expense of O(n) removal for arbitrary elements. New
+elements can be added to the list after an existing element or at the
+head of the list.  Elements being removed from the head of the list
+should use the explicit macro for this purpose for optimum
+efficiency. A singly-linked list may only be traversed in the forward
+direction.  Singly-linked lists are ideal for applications with large
+datasets and few or no removals or for implementing a LIFO queue.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A list is headed by a single forward pointer (or an array of forward
+pointers for a hash table header). The elements are doubly linked
+so that an arbitrary element can be removed without a need to
+traverse the list. New elements can be added to the list before
+or after an existing element or at the head of the list. A list
+may only be traversed in the forward direction.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A simple queue is headed by a pair of pointers, one the head of the
+list and the other to the tail of the list. The elements are singly
+linked to save space, so elements can only be removed from the
+head of the list. New elements can be added to the list after
+an existing element, at the head of the list, or at the end of the
+list. A simple queue may only be traversed in the forward direction.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A tail queue is headed by a pair of pointers, one to the head of the
+list and the other to the tail of the list. The elements are doubly
+linked so that an arbitrary element can be removed without a need to
+traverse the list. New elements can be added to the list before or
+after an existing element, at the head of the list, or at the end of
+the list. A tail queue may be traversed in either direction.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A circle queue is headed by a pair of pointers, one to the head of the
+list and the other to the tail of the list. The elements are doubly
+linked so that an arbitrary element can be removed without a need to
+traverse the list. New elements can be added to the list before or after
+an existing element, at the head of the list, or at the end of the list.
+A circle queue may be traversed in either direction, but has a more
+complex end of list detection.&lt;/p&gt;
+&lt;p&gt;简单来说，即是单链表，双链表，单链队列，双向队列（尾队列）和双向循环队列。&lt;/p&gt;
+&lt;p&gt;虽然这是LINUX/UNIX里面的文件，但此文件本身没有用到LINUX/UNIX的系统特性，因而可以跨平台使用。&lt;/p&gt;
+&lt;p&gt;下面对各数据结构简单描述之。&lt;/p&gt;
+&lt;h3 id=&#34;单链表singly-linked-list&#34;&gt;单链表(singly-linked list) &lt;a href=&#34;#%e5%8d%95%e9%93%be%e8%a1%a8singly-linked-list&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;singly-linked list就是一单链表。&lt;/p&gt;
+&lt;p&gt;singly-linked list相关的定义：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_HEAD(name, type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;定义表头结点。 &lt;!-- raw HTML omitted --&gt;name: 表头结点名。&lt;!-- raw HTML omitted --&gt;type: 结点类型。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_HEAD_INITIALIZER(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;初始化头结点。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_ENTRY(type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;定义链表的链域。&lt;!-- raw HTML omitted --&gt;type: 结点类型。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;singly-linked list函数：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_INIT(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;初始化头结点。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_INSERT_AFTER(slistelm, elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将结点elm插入到结点slistelm后面。 &lt;!-- raw HTML omitted --&gt;slistelm：链表中某结点。 &lt;!-- raw HTML omitted --&gt;elm:要插入的结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_INSERT_HEAD(head, elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将结点elm插入到头结点head后面。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;!-- raw HTML omitted --&gt;elm:要插入的结点。&lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_REMOVE_HEAD(head, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;移除将表头结点下面一个结点。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_REMOVE(head, elm, type, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;移除将elm结点，elm结点一定要是链表中一结点。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。 &lt;!-- raw HTML omitted --&gt;elm:某结点。 &lt;!-- raw HTML omitted --&gt;type: 结点类型。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_FOREACH(var, head, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遍历链表，相当于for循环。 &lt;!-- raw HTML omitted --&gt;var: 结点类型的变量名称。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;singly-linked list 访问方法：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_EMPTY(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;判断链表是否为空。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_FIRST(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;访问链表里的第一个元素。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SLIST_NEXT(elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;访问elm结点后一个元素。 &lt;!-- raw HTML omitted --&gt;elm:某结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;简单例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    struct SListItem
+    {
+        int data;
+        SLIST_ENTRY(SListItem) entry;
+    };
+    /*
+     struct SListItem
+     {
+        int data;
+        struct {
+            struct SListItem* sle_next;
+        } entry;
+     }
+     */
+    void slist_demo()
+    {
+        struct SListItem* item = NULL;
+        SLIST_HEAD(SListHead, SListItem) shead;
+        /*
+         struct SListHead {
+             struct SListItem* slh_first;
+         } shead;
+         */
+        SLIST_INIT(&amp;amp;shead);
+    
+        item = (struct SListItem*)malloc(sizeof(struct SListItem));
+        item-&amp;gt;data = 1;
+    
+        SLIST_INSERT_HEAD(&amp;amp;shead, item, entry);
+        /*
+         item-&amp;gt;entry.sle_next = (&amp;amp;shead)-&amp;gt;slh_first;
+         (&amp;amp;shead)-&amp;gt;slh_first = item;
+         */
+    
+        item = (struct SListItem*)malloc(sizeof(struct SListItem));
+        item-&amp;gt;data = 2;
+    
+        SLIST_INSERT_HEAD(&amp;amp;shead, item, entry);
+        /*
+         item-&amp;gt;entry.sle_next = (&amp;amp;shead)-&amp;gt;slh_first;
+         (&amp;amp;shead)-&amp;gt;slh_first = item;
+         */
+    
+        SLIST_FOREACH(item, &amp;amp;shead, entry){
+            printf(&amp;quot;%d &amp;quot;, item-&amp;gt;data);
+        }
+        /*
+         for(item = (&amp;amp;shead)-&amp;gt;slh_first; item; item = item-&amp;gt;entry.sle_next){
+            ...
+         }
+         */
+        printf(&amp;quot;\n&amp;quot;);
+    
+        while(!SLIST_EMPTY(&amp;amp;shead)){
+            item = SLIST_FIRST(&amp;amp;shead);
+            printf(&amp;quot;remove %d\n&amp;quot;, item-&amp;gt;data);
+            SLIST_REMOVE(&amp;amp;shead, item, SListItem, entry);
+            free(item);
+        }
+        /*
+         while(!((&amp;amp;shead)-&amp;gt;slh_first == NULL)){
+             item = (&amp;amp;shead)-&amp;gt;slh_first;
+             ...
+             (&amp;amp;shead)-&amp;gt;slh_first = (&amp;amp;shead)-&amp;gt;slh_first-&amp;gt;entry.sle_next;
+             ...
+         }
+         */
+    }
+    /*结果
+    2 1
+    remove 2
+    remove 1
+    */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;双向链表list&#34;&gt;双向链表(list) &lt;a href=&#34;#%e5%8f%8c%e5%90%91%e9%93%be%e8%a1%a8list&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;list就是双向链表，不过链域有点古怪，指向前一个结点是指针的指针。&lt;br&gt;
+list 相关定义&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_HEAD(name, type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;定义表头结点。 &lt;!-- raw HTML omitted --&gt;name: 表头结点名。 &lt;!-- raw HTML omitted --&gt;type: 结点类型。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_HEAD_INITIALIZER(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;初始化头结点。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_ENTRY(type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;定义链表的链域。 &lt;!-- raw HTML omitted --&gt;type: 结点类型。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;list函数&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_INIT(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;初始化头结点。 &lt;!-- raw HTML omitted --&gt;head: 表头结点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_INSERT_AFTER(listelm, elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将结点elm插入到结点listelm后面。 &lt;!-- raw HTML omitted --&gt;listelm：链表中某结点。 &lt;!-- raw HTML omitted --&gt;elm:要插入的结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_INSERT_BEFORE(listelm, elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将结点elm插入到结点listelm前面。 &lt;!-- raw HTML omitted --&gt;listelm：链表中某结点。 &lt;!-- raw HTML omitted --&gt;elm:要插入的结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_INSERT_HEAD(head, elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;将结点elm插入到头结点head后面。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。 &lt;!-- raw HTML omitted --&gt;elm:要插入的结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_REMOVE(elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;移除将elm结点。 &lt;!-- raw HTML omitted --&gt;elm:某结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_FOREACH(var, head, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遍历链表，相当于for循环。 &lt;!-- raw HTML omitted --&gt;var: 结点类型的变量名称。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;list访问方法&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_EMPTY(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;判断链表是否为空。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_FIRST(head)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;访问链表里的第一个元素。 &lt;!-- raw HTML omitted --&gt;head: 表头结点。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LIST_NEXT(elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;访问elm结点后一个元素。 &lt;!-- raw HTML omitted --&gt;elm:某结点。 &lt;!-- raw HTML omitted --&gt;field:链表中链域的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;注意&lt;/strong&gt;&lt;/em&gt;，因为list是双向链表，但在访问方法里没有写出访问前一个元素的宏。因而可以这样写一个，参数含义和LIST_NEXT一样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   #define LIST_PRE(elm, field) \
+   (((elm)-&amp;gt;field.le_pre) != &amp;amp;elm ? *((elm)-&amp;gt;field.le_pre) : NULL)  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;简单例子:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   struct ListItem
+   {
+       int data;
+       LIST_ENTRY(ListItem) entry;
+   };
+   /*
+   struct ListItem
+   {
+       int data;
+       struct{
+           struct ListItem* le_next;
+           struct ListItem** le_prev;
+       } entry;
+   };
+   */
+   void list_demo()
+   {
+       struct ListItem* item = NULL;
+       
+       LIST_HEAD(ListHead, ListItem) lhead;
+       /*
+       struct ListHead {
+           struct ListItem* lh_first;
+       } lhead;
+       */
+       LIST_INIT(&amp;amp;lhead);
+       /*
+       do{
+            (&amp;amp;lhead)-&amp;gt;lh_first = NULL;
+       }while(0);
+       */
+   
+       item = (struct ListItem*)malloc(sizeof(struct ListItem));
+       item-&amp;gt;data = 1;
+   
+       LIST_INSERT_HEAD(&amp;amp;lhead, item, entry);
+       
+       item = (struct ListItem*)malloc(sizeof(struct ListItem));
+       item-&amp;gt;data = 2;
+       
+       LIST_INSERT_HEAD(&amp;amp;lhead, item, entry);
+       /*
+       do{
+           if(((item)-&amp;gt;entry.le_next = (&amp;amp;lhead)-&amp;gt;lh_first) != NULL)
+               (&amp;amp;lhead)-&amp;gt;lh_first-&amp;gt;entry.le_pre = &amp;amp;(elm)-&amp;gt;entry.le_next;
+           (&amp;amp;lhead)-&amp;gt;lh_first = (item);
+           (item)-&amp;gt;entry.le_prev = &amp;amp;(&amp;amp;lhead)-&amp;gt;lh_first;
+       }while(0);
+       */
+       LIST_FOREACH(item, &amp;amp;lhead, entry){
+           printf(&amp;quot;%d &amp;quot;, item-&amp;gt;data);
+       }
+       /*
+       for ((item) = ((&amp;amp;lhead)-&amp;gt;lh_first);
+           (item);
+           (item) = ((item)-&amp;gt;entry.le_next)){
+           ...
+       }    
+       */
+       printf(&amp;quot;\n&amp;quot;);
+   
+       while(!LIST_EMPTY(&amp;amp;lhead)){
+           item = LIST_FIRST(&amp;amp;lhead);
+           printf(&amp;quot;remove %d\n&amp;quot;, item-&amp;gt;data);
+           LIST_REMOVE(item, entry);
+           free(item);
+       }
+       /*
+       while(!((&amp;amp;lhead)-&amp;gt;lh_first == NULL)){
+           item = ((&amp;amp;lhead)-&amp;gt;lh_first);
+           ...
+           do{
+             if ((item)-&amp;gt;entry.le_next != NULL)                \
+               (item)-&amp;gt;entry.le_next-&amp;gt;entry.le_prev =             \
+                   (item)-&amp;gt;entry.le_prev;                \
+             *(item)-&amp;gt;entry.le_prev = (item)-&amp;gt;entry.le_next;            \
+           } while (0);
+           ...
+       }
+       */
+   }
+   /*
+   结果
+   2 1
+   remove 2
+   remove 1
+   */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;简单队列simple-queue&#34;&gt;简单队列(simple queue) &lt;a href=&#34;#%e7%ae%80%e5%8d%95%e9%98%9f%e5%88%97simple-queue&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;简单来说，就是表对有两个链域，分别指向头和尾。&lt;br&gt;
+simple queue 定义（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_HEAD(name, type)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_HEAD_INITIALIZER(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_ENTRY(type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;simple queue函数（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_INIT(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_INSERT_HEAD(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_INSERT_TAIL(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_INSERT_AFTER(head, listelm, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_REMOVE_HEAD(head, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_REMOVE(head, elm, type, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_FOREACH(var, head, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;simple queue方法（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_EMPTY(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_FIRST(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SIMPLEQ_NEXT(elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;简单例子：&lt;br&gt;
+用法与list用法类似，不再重复。&lt;/p&gt;
+&lt;h3 id=&#34;单链尾队列singled-linked-tail-queue&#34;&gt;单链尾队列(singled-linked tail queue) &lt;a href=&#34;#%e5%8d%95%e9%93%be%e5%b0%be%e9%98%9f%e5%88%97singled-linked-tail-queue&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;这个和Simple queue是一样的，参考simple queue&lt;br&gt;
+singled-linked tail queue定义(具体说明不再写，可以参考list的，或者就直接展开宏)&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_HEAD(name, type)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_HEAD_INITIALIZER(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_ENTRY(type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;tail queue 函数（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_INIT(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_INSERT_HEAD(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_INSERT_TAIL(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_INSERT_AFTER(head, listelm, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_REMOVE_HEAD(head, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_REMOVE(head, elm, type, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_FOREACH(var, head, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;tail queue方法（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_EMPTY(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_FIRST(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;STAILQ_NEXT(elm, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;简单例子：&lt;br&gt;
+用法与list用法类似，不再重复。&lt;/p&gt;
+&lt;h3 id=&#34;循环队列circle-queue&#34;&gt;循环队列(circle queue) &lt;a href=&#34;#%e5%be%aa%e7%8e%af%e9%98%9f%e5%88%97circle-queue&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;循环队列。&lt;br&gt;
+circle queue定义（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_HEAD(name, type)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_HEAD_INITIALIZER(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_ENTRY(type)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;circle queue函数（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_INIT(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_INSERT_AFTER(head, listelm, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_INSERT_BEFORE(head, listelm, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_INSERT_HEAD(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_INSERT_TAIL(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_REMOVE(head, elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_REPLACE(head, elm, elm2, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;circle queue访问方法（具体说明不再写，可以参考list的，或者就直接展开宏）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;宏定义&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_FIRST(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_LAST(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_END(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_NEXT(elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_PREV(elm, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_EMPTY(head)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_FOREACH(var, head, field)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIRCLEQ_FOREACH_REVERSE(var, head, field)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;简单例子：&lt;br&gt;
+用法与list用法类似，不再重复。&lt;/p&gt;
+&lt;h2 id=&#34;小结&#34;&gt;小结 &lt;a href=&#34;#%e5%b0%8f%e7%bb%93&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&amp;amp;emsp虽然这是linux/unix实现的经过长时间考验的成熟的数据结构，但是如果不是很熟悉的话，第一次用起来还是感觉挺不习惯的。但是好在各个数据结构的定义和方法都非常类似，接口比较统一，如果用多的了，熟悉了，感觉就不错了。&lt;/p&gt;
+</description>
     </item>
     
   </channel>

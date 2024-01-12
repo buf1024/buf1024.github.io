@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>c on BUF1024!!!</title>
@@ -6,18 +6,164 @@
     <description>Recent content in c on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 03 Jun 2017 11:19:25 +0800</lastBuildDate>
-    
-	<atom:link href="https://luoguochun.cn/categories/c/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 03 Jun 2017 11:19:25 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/categories/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>线程同步与原子变量</title>
       <link>https://luoguochun.cn/post/2017-06-03-synchronize-atomic-variable/</link>
       <pubDate>Sat, 03 Jun 2017 11:19:25 +0800</pubDate>
       
       <guid>https://luoguochun.cn/post/2017-06-03-synchronize-atomic-variable/</guid>
-      <description>无论是基于多线程还是多进程并发的程序，同步控制总是不可避免的。按照自己的思维和使用习惯，自然会想到的是互斥量(mutext)和自旋锁(spi</description>
+      <description>&lt;p&gt;无论是基于多线程还是多进程并发的程序，同步控制总是不可避免的。按照自己的思维和使用习惯，自然会想到的是互斥量(mutext)和自旋锁(spin lock)，当然同步的方式不只这两种。gcc提供了，&lt;code&gt;__sync_*&lt;/code&gt;系列的内置函数，用于对&lt;strong&gt;基本数据类型&lt;/strong&gt;的原子操作。&lt;code&gt;__sync_*&lt;/code&gt;针对的是c/c++的&lt;strong&gt;基本数据类型&lt;/strong&gt;，而互斥量和自旋锁可以用于代码块的同步，当然，也不是说&lt;code&gt;__sync_*&lt;/code&gt;不能用于代码块的同步控制，只需要一点点的技巧。&lt;/p&gt;
+&lt;p&gt;在撸&lt;code&gt;__sync_*&lt;/code&gt;系列函数之前，先看看一丢丢并发程序易忽略的技巧。为了提高效率，我们希望线程的调度级别和系统普通进程的调度级别一样的，为了充分利用cpu的cache特性，我们还希望每次系统调度时都绑定到同一个cpu中执行。前者，已经使用过了：&lt;code&gt;pthread_attr_setscope(&amp;amp;attr, PTHREAD_SCOPE_SYSTEM)&lt;/code&gt;，后者，叫cpu亲和性（也有叫亲缘性，英文：affinity），用到的api主要有：&lt;code&gt;sched_setaffinity&lt;/code&gt; 和 &lt;code&gt;sched_getaffinity&lt;/code&gt;，使用方式也是挺简单的，如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 线程/进程起来后
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nf&#34;&gt;CPU_ZERO&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;CPU_SET&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;proc_num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;sched_setaffinity&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;gettid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;sizeof&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;cpu_set_t&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;// ...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;我们再看看习惯思维的同步工具，互斥锁（mutext）和自旋锁(spin lock)的区别。互斥锁是sleep-waiting类型的锁，例如，在多核的环境中，A线程如果尝试对B线程进行加互斥锁，如果互斥锁已经被B线程占用，那么A线程就会进入等等状态，那么系统就会对A线程进行上下文切换(conext switch)，让出CPU使用权，上下文切换(conext switch)是比较耗时的操作的。而自旋锁的处理方式则不会进行上下文切换，而是让cpu不断的轮询的获取锁。自旋锁的CPU轮询和互斥锁的上下文切换同样是耗性能的，大多数情况下，有限时间内的CPU轮询比互斥锁的上下文切换轻量太多了。那么什么情况下使用互斥锁（mutext）和自旋锁(spin lock)呢，有人总结说，尽管互斥锁消耗的资源相对多（上下文切换），但互斥锁是适用情况还是比较广，大多数情况下还是选择互斥锁，在需要进行性能优化/或者知道锁代码块运行时间的情况下，才考虑自旋锁。&lt;/p&gt;
+&lt;p&gt;另外提及一下，线程局部变量。这个在其他语言是有这个概念的，C/C++也是有，但是经常容易忽略。线程局部变量，使用&lt;code&gt;__thread&lt;/code&gt;修饰，使用时有局限性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;__thread&lt;/code&gt;可以修饰全局变量、函数的静态变量，但是无法修饰函数的局部变量。&lt;/li&gt;
+&lt;li&gt;被&lt;code&gt;__thread&lt;/code&gt;修饰的变量只能在编译期初始化，且只能通过常量表达式来初始化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们正式看一下gcc提供的原子操作：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_fetch_and_add&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_fetch_and_sub&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_fetch_and_or&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_fetch_and_and&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_fetch_and_xor&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_fetch_and_nand&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_add_and_fetch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_sub_and_fetch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_or_and_fetch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_and_and_fetch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_xor_and_fetch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_nand_and_fetch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_bool_compare_and_swap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oldval&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;newval&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_val_compare_and_swap&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;oldval&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;newval&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;__sync_synchronize&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_lock_test_and_set&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_lock_release&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;__sync_*&lt;/code&gt;系列函数操作的数据都是原始的数据类型，从名字看，很容易猜出它们的用途。最后三个使用的比较少，是内存壁垒的含义，现代CPU都是乱序执行的，有些情况下乱序执行会有问题，所以需要顺序执行，这就是这三个函数的用处。最开始说过，&lt;code&gt;__sync_*&lt;/code&gt;用于代码块的同步控制，需要一丢丢的技巧。比如用于代码块的封装:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define trylock(lock)  (*(lock) == 0 &amp;amp;&amp;amp; __sync_bool_compare_and_swap(lock, 0, 1))
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define unlock(lock)    *(lock) = 0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 使用
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;trylock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;unlock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;上面说自旋锁锁被占用时，空耗CPU，使用原子变量，可以进行一定程度的优化，和原来的自旋锁的优化是，自旋一定次数后，主动交出CPU的控制权：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C&#34; data-lang=&#34;C&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;spinlock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;uint_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;uint_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;spin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kt&#34;&gt;ngx_uint_t&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_bool_compare_and_swap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ncpu&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// ncpu CPU个数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;spin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;c1&#34;&gt;// cpu_pause(); 空转
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;__sync_bool_compare_and_swap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nf&#34;&gt;sched_yield&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 只旋一个周期，没有获取到锁，退出CPU控制权
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;正常的应用业务或许不会用到&lt;code&gt;__sync_*&lt;/code&gt;系列函数，但如果使用了无疑可以进一步提高单个应用的性能。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -26,7 +172,26 @@
       <pubDate>Fri, 04 Jul 2014 16:45:00 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-07-04-hide-compile-output/</guid>
-      <description>编译程序make时，会看到很多编译输出。对于开发来说，这是非常直观的，但是如果分发到客户（需要编译）或者只需要关注错误时，这种输出就感觉烦人</description>
+      <description>&lt;p&gt;编译程序make时，会看到很多编译输出。对于开发来说，这是非常直观的，但是如果分发到客户（需要编译）或者只需要关注错误时，这种输出就感觉烦人。Redis是这么做的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;REDIS_CC=$(QUIET_CC)$(CC) $(FINAL_CFLAGS)
+REDIS_LD=$(QUIET_LINK)$(CC) $(FINAL_LDFLAGS)
+REDIS_INSTALL=$(QUIET_INSTALL)$(INSTALL)
+
+CCCOLOR=&amp;quot;\033[34m&amp;quot;
+LINKCOLOR=&amp;quot;\033[34;1m&amp;quot;
+SRCCOLOR=&amp;quot;\033[33m&amp;quot;
+BINCOLOR=&amp;quot;\033[37;1m&amp;quot;
+MAKECOLOR=&amp;quot;\033[32;1m&amp;quot;
+ENDCOLOR=&amp;quot;\033[0m&amp;quot;
+
+ifndef V
+QUIET_CC = @printf &#39;    %b %b\n&#39; $(CCCOLOR)CC$(ENDCOLOR) $(SRCCOLOR)$@$(ENDCOLOR) 1&amp;gt;&amp;amp;2;
+QUIET_LINK = @printf &#39;    %b %b\n&#39; $(LINKCOLOR)LINK$(ENDCOLOR) $(BINCOLOR)$@$(ENDCOLOR) 1&amp;gt;&amp;amp;2;
+QUIET_INSTALL = @printf &#39;    %b %b\n&#39; $(LINKCOLOR)INSTALL$(ENDCOLOR) $(BINCOLOR)$@$(ENDCOLOR) 1&amp;gt;&amp;amp;2;
+endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在编译前加&lt;code&gt;QUIET&lt;/code&gt;选项，正常的编译会忽略掉，出错或警告的信息会完整的输出来。学到东西了！！&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -35,7 +200,42 @@
       <pubDate>Fri, 04 Jul 2014 10:27:47 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-07-04-set-proccess-title/</guid>
-      <description>###如何开搞 我们平时ps进程时，显示的进程标题是我们输入的程序名以及一些参数。这种显示方式并非非常直观，我们需要一种方式可以设置程序的标题</description>
+      <description>&lt;p&gt;###如何开搞
+我们平时ps进程时，显示的进程标题是我们输入的程序名以及一些参数。这种显示方式并非非常直观，我们需要一种方式可以设置程序的标题，一眼就知道该进程时什么鸟。如redis或nginx:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root      8527     1  0 10:30 ?        00:00:00 nginx: master process nginx    
+nginx     8528  8527  0 10:30 ?        00:00:00 nginx: worker process    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;实现的原理非常简单，我们只需要修改argv[0],说指向的那段内存空间的内容即可。但是为了使程序的正常逻辑不受影响，事先要把原理的内容保存起来，并通过原来的方式可以访问。&lt;br&gt;
+argv[0]所指向的的空间是和·enviorn·所指向的内存空间是连续的，在程序启动的时候，系统已经设置好这些空间了。如图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://privt-share.qiniudn.com/@/redis/setproctitle.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;那么，1. 我们只需要重新分配空间（不一定是连续的）来存储这些内容，将地址分别复制给&lt;code&gt;argv&lt;/code&gt;或&lt;code&gt;environ&lt;/code&gt;数组，这样原来程序的流程不受影响。2. 我们可以在原&lt;code&gt;agv&lt;/code&gt;最开始的地方和&lt;code&gt;environ&lt;/code&gt;最结尾的地方，随便设置你显示的内容即可，也就是图中&lt;code&gt;./exe&lt;/code&gt;开始的地方和&lt;code&gt;Env5=val5&lt;/code&gt;最后一个0结尾复的地方。只需要注意到，设置的内容必须与0结尾，而且不能超过该内存空间。&lt;/p&gt;
+&lt;p&gt;###redis如何实现
+redis的实现在&lt;a href=&#34;https://github.com/antirez/redis/blob/2.8.12/src/setproctitle.c&#34;&gt;setproctitle&lt;/a&gt;里面。只是实现有点疑惑：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;argc个数少于argv数组数？&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; for (i = 0; i &amp;lt; argc || (i &amp;gt;= argc &amp;amp;&amp;amp; argv[i]); i++) {    
+     if (!argv[i] || argv[i] &amp;lt; end)
+ 	    continue;
+
+     end = argv[i] + strlen(argv[i]) + 1;
+ }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;按照我们一直以来的常识，是通过argc从argv里面取出数据来的，而他这里&lt;code&gt;i &amp;lt; argc || (i &amp;gt;= argc &amp;amp;&amp;amp; argv[i])&lt;/code&gt;这个条件明显就是argc可能会少于argv个数。什么情况下会出现这种情况呢？&lt;br&gt;
+2. SPT.nul貌似没有用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;	if (nul &amp;lt; SPT.nul) {
+	    *SPT.nul = &#39;.&#39;;
+    } else if (nul == SPT.nul &amp;amp;&amp;amp; &amp;amp;nul[1] &amp;lt; SPT.end) {
+	    *SPT.nul = &#39; &#39;;
+	    *++nul = &#39;\0&#39;;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这是&lt;code&gt;setproctitle&lt;/code&gt;里面的一个奇怪的逻辑，更本没想到他是干嘛用的。而且貌似SPT.nul在set proc title里面没有什么作用。&lt;/p&gt;
+&lt;p&gt;###简单吐槽
+虽然redis非常出名，但是redis的代码貌似不是很规范……或者是我们一直接触的就不规范，哈……&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -44,7 +244,83 @@
       <pubDate>Sat, 28 Jun 2014 21:40:50 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-06-28-infinite/</guid>
-      <description>###无限大小 C语言如何表示无限大小，NAN？redis里面这么搞的： 1 2 3 4 5 6 static double R_Zero, R_PosInf, R_NegInf, R_Nan; /* Double constants initialization */ R_Zero = 0.0; R_PosInf = 1.0/R_Zero; R_NegInf = -1.0/R_Zero; R_Nan = R_Zero/R_Zero; 简单测试： 1</description>
+      <description>&lt;p&gt;###无限大小
+C语言如何表示无限大小，NAN？redis里面这么搞的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;static double R_Zero, R_PosInf, R_NegInf, R_Nan;    
+/* Double constants initialization */    
+R_Zero = 0.0;    
+R_PosInf = 1.0/R_Zero;    
+R_NegInf = -1.0/R_Zero;    
+R_Nan = R_Zero/R_Zero;    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;简单测试：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;    
+    
+int main()    
+{    
+    static double R_Zero, R_PosInf, R_NegInf, R_Nan;    
+    /* Double constants initialization */    
+    R_Zero = 0.0;    
+    R_PosInf = 1.0/R_Zero;    
+    R_NegInf = -1.0/R_Zero;    
+    R_Nan = R_Zero/R_Zero;   
+    
+    printf(&amp;quot;R_Zero  : %lf\n&amp;quot;
+           &amp;quot;R_PosInf: %lf\n&amp;quot;
+           &amp;quot;R_NegInf: %lf\n&amp;quot;
+           &amp;quot;R_Nan   : %lf\n&amp;quot;,
+           R_Zero, R_PosInf, R_NegInf, R_Nan);
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[heidong@HEIDONGVM tmp]$ ./z 
+R_Zero  : 0.000000
+R_PosInf: inf
+R_NegInf: -inf
+R_Nan   : -nan
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;果然神奇。&lt;/p&gt;
+&lt;h3 id=&#34;浮动数与0比较&#34;&gt;浮动数与0比较 &lt;a href=&#34;#%e6%b5%ae%e5%8a%a8%e6%95%b0%e4%b8%8e0%e6%af%94%e8%be%83&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;大学时候，老师教导我们，浮动数不要与0比较，因为浮点数在计算机里面表示的是近似值。所以如果浮动数要与0做比较就用·&amp;lt; 0.000001·这种龌蹉的方式，明明是0，却要搞个神马0.000001出来。现在我们可以这么来稿了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;    
+    
+int main()    
+{    
+    static double R_Zero, R_PosInf, R_NegInf, R_Nan;    
+    /* Double constants initialization */    
+    R_Zero = 0.0;    
+    R_PosInf = 1.0/R_Zero;    
+    R_NegInf = -1.0/R_Zero;    
+    R_Nan = R_Zero/R_Zero;   
+    
+    printf(&amp;quot;R_Zero  : %lf\n&amp;quot;
+           &amp;quot;R_PosInf: %lf\n&amp;quot;
+           &amp;quot;R_NegInf: %lf\n&amp;quot;
+           &amp;quot;R_Nan   : %lf\n&amp;quot;,
+           R_Zero, R_PosInf, R_NegInf, R_Nan);
+
+    double a = 1.0;
+    double b = 1.0;
+
+    if(a-b == R_NegInf) {
+            printf(&amp;quot;%lf - %lf != 0\n&amp;quot;, a, b);
+    }else{
+            printf(&amp;quot;%lf - %lf == 0\n&amp;quot;, a, b);
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[heidong@HEIDONGVM tmp]$ ./z 
+R_Zero  : 0.000000
+R_PosInf: inf
+R_NegInf: -inf
+R_Nan   : -nan
+1.000000 - 1.000000 == 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以后就可以用R_NegInf这种方式和0比较了。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -53,7 +329,44 @@
       <pubDate>Wed, 25 Jun 2014 13:00:43 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-06-25-c-constructor/</guid>
-      <description>构造函数 任何一们面向对象语言里都会涉及构造函数这一概念，只是实现的方式各有差异。需要这main函数之前执行一段代码是非常容易的事情，只需要声</description>
+      <description>&lt;h3 id=&#34;构造函数&#34;&gt;构造函数 &lt;a href=&#34;#%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;任何一们面向对象语言里都会涉及构造函数这一概念，只是实现的方式各有差异。需要这main函数之前执行一段代码是非常容易的事情，只需要声明一对象的全局变量，在构造函数可以为&lt;em&gt;所欲为&lt;/em&gt;干你想干的事情。然而，对于面向过程的语言比如C，需要实现全局的构造函数就比较奇葩。当然gcc会有很优雅的解决方式，VC则猥琐点。&lt;/p&gt;
+&lt;h3 id=&#34;为何需要这个&#34;&gt;为何需要这个 &lt;a href=&#34;#%e4%b8%ba%e4%bd%95%e9%9c%80%e8%a6%81%e8%bf%99%e4%b8%aa&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;其实在main函数里面调用一下就可以了，是的，这样是可以，但是对于框架的实现来说，这却是不太好的，客户使用起来不自由。当然也可以说，我是屌丝，我可以装逼点。&lt;/p&gt;
+&lt;h3 id=&#34;如何实现&#34;&gt;如何实现 &lt;a href=&#34;#%e5%a6%82%e4%bd%95%e5%ae%9e%e7%8e%b0&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;gcc实现&lt;br&gt;
+gcc 实现是非常简单的事情。在全局构造函数前叫以下编译器属性即可：&lt;br&gt;
+&lt;strong&gt;attribute&lt;/strong&gt;((constructor))&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;vc实现
+vc的实现比较奇葩，VC本身没有类似·&lt;strong&gt;attribute&lt;/strong&gt;·这样的属性，你需要将全局函数编译到某个特定的代码段里面。MSDN对于这部分有详细的说明：&lt;a href=&#34;http://msdn.microsoft.com/en-us/library/bb918180.aspx&#34;&gt;CRT Initialization&lt;/a&gt;&lt;br&gt;
+简单来说就是将你的全局构造函数的函数指针编译到·.CRT$XCU·段里面。如何编译到·.CRT$XCU·段？VC有VC的语法。&lt;/p&gt;
+&lt;p&gt;// 声明在段·.CRT$XCU·里面生成代码 &lt;br&gt;
+#pragma section(&amp;quot;.CRT$XCU&amp;quot;,read) &lt;br&gt;
+// 声明需要调用的函数 &lt;br&gt;
+__declspec(allocate(&amp;quot;.CRT$XCU&amp;quot;)) void (__cdecl *a)(void) = func; &lt;br&gt;
+// 调用的函数实现 &lt;br&gt;
+void func(void){}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上实现可以用下面实现：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#ifdef _MSC_VER    
+#define __CCALL __cdecl    
+#define __func__ __FUNCTION__    
+#define snprintf _snprintf    
+#pragma warning(disable:4996) // this is very violent    
+#pragma section(&amp;quot;.CRT$XCU&amp;quot;,read)
+#define __CONSTRCT(a, b)                                             \    
+  void __CCALL __##a##__##b##__ ## 520hjm(void);                   \    
+  __declspec(allocate(&amp;quot;.CRT$XCU&amp;quot;))                                 \    
+  void (__CCALL * __ctor__##a##__##b##__ ## 520hjm)(void) =        \    
+  __##a##__##b##__ ## 520hjm;    
+#else    
+#define __CCALL    
+#define __CONSTRCT(a, b) __attribute__((constructor))    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;额外参考&#34;&gt;额外参考 &lt;a href=&#34;#%e9%a2%9d%e5%a4%96%e5%8f%82%e8%80%83&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;仿照&lt;a href=&#34;https://code.google.com/p/googletest/&#34;&gt;gtest&lt;/a&gt;的简易单元测试&lt;a href=&#34;https://github.com/buf1024/ctest&#34;&gt;ctest&lt;/a&gt;就是用的这方面的知识。&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -62,7 +375,150 @@
       <pubDate>Fri, 30 May 2014 23:28:16 +0000</pubDate>
       
       <guid>https://luoguochun.cn/post/2014-05-30-myschd/</guid>
-      <description>树莓派是神奇的机器，CPU和内存都少的可怜，但体积小功耗低，在上面搞些动搞些西其实也挺有意思，挺好玩的。装的是pidara，基本服务没有精简</description>
+      <description>&lt;p&gt;树莓派是神奇的机器，CPU和内存都少的可怜，但体积小功耗低，在上面搞些动搞些西其实也挺有意思，挺好玩的。装的是pidara，基本服务没有精简多少，先cat一下CPU和RAM。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [able@raspi ~]$ cat /proc/cpuinfo 
+    Processor       : ARMv6-compatible processor rev 7 (v6l)
+    BogoMIPS        : 464.48
+    Features        : swp half thumb fastmult vfp edsp java tls 
+    CPU implementer : 0x41
+    CPU architecture: 7
+    CPU variant     : 0x0
+    CPU part        : 0xb76
+    CPU revision    : 7
+    
+    Hardware        : BCM2708
+    Revision        : 000e
+    Serial          : 000000003123ffdc
+    [able@raspi ~]$ cat /proc/meminfo 
+    MemTotal:         446672 kB
+    MemFree:          289976 kB
+    Buffers:           16872 kB
+    Cached:            65868 kB
+    SwapCached:            0 kB
+    Active:            88652 kB
+    Inactive:          50360 kB
+    Active(anon):      58692 kB
+    Inactive(anon):      844 kB
+    Active(file):      29960 kB
+    Inactive(file):    49516 kB
+    Unevictable:           0 kB
+    Mlocked:               0 kB
+    HighTotal:             0 kB
+    HighFree:              0 kB
+    LowTotal:         446672 kB
+    LowFree:          289976 kB
+    SwapTotal:        524284 kB
+    SwapFree:         524284 kB
+    Dirty:                16 kB
+    Writeback:             0 kB
+    AnonPages:         56284 kB
+    Mapped:            16088 kB
+    Shmem:              3268 kB
+    Slab:               9684 kB
+    SReclaimable:       5664 kB
+    SUnreclaim:         4020 kB
+    KernelStack:         656 kB
+    PageTables:         1292 kB
+    NFS_Unstable:          0 kB
+    Bounce:                0 kB
+    WritebackTmp:          0 kB
+    CommitLimit:      747620 kB
+    Committed_AS:     211148 kB
+    VmallocTotal:     565248 kB
+    VmallocUsed:        5024 kB
+    VmallocChunk:     347144 kB
+    [able@raspi ~]$ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;树莓派可能是为了节省成本，并没有安装时间模块，所以每次开机时间都会被重置。因为很久没有动过电烙铁了，所以没有想过给它装上个硬件模块。
+所以想到的方法是同步网络时间。开始的时候，搞个启动脚本，开机启动同步时间，可是每当机器重启时，半个小时都启动不了，而且就算启动了，也没有
+同步时间。于是想第二个方法，用根用户的crontab，结果不知道为何，没有同步，crontab执行其他任务是没有问题的，原因还不明。&lt;/p&gt;
+&lt;p&gt;另外一个问题，因为树莓派是通过网线连接TP-LINK路由的，同时有个小米盒子连着。小米盒子是个神奇的东西，只有你连接上TP-LINK的路由的，其他
+电脑或手机设备就很难连接进去，即使是断开了小米盒子，状况依然无法解决。所以，老妹一看连接不上，就拔电源重启。可以将一些应用程序做成自启动，
+可是并不是所有的程序都像nginx一样完善，会切换用户执行。&lt;/p&gt;
+&lt;p&gt;还有一个问题，就是有些程序coredump，让它自动重启，系统配置貌似还做不到（可能可以做到）。我还想在树莓派上面跑个DHT爬虫，但DHT爬虫太占
+网络了，如果一直开着的话，网络就基本废了。所以我是想在周一到五凌晨才开始运行，到17点就停了，可以配置之类的。&lt;/p&gt;
+&lt;p&gt;基于上面种种需求，自己搞了个非常简单管理调度程序，特点：&lt;br&gt;
+1. 可以管理三类程序，常驻进程（挂掉会自动重启），一次进程（负责启动，不管是否成  功），优先的一次进程（负责启动，不管是否成功，具有最高优先级，所以程序必须等到此类程序退出后，方启动其他程序）&lt;br&gt;
+2. 可以指定运行的用户，必须有相应的权限&lt;br&gt;
+3. 常驻进程可以配置运行时间。&lt;/p&gt;
+&lt;p&gt;缺点：&lt;br&gt;
+1. 没有为每个进程分配优先级&lt;br&gt;
+2. 没有设计没有进程的依赖关系&lt;/p&gt;
+&lt;p&gt;相关配置文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [nginx@raspi bin]$ cat mysch.conf 
+    #程序运行参数
+    #程序配置段PROG_LIST配置
+    #[NGINX]
+    #程序启动的命令
+    #RUN_COMMAND=/sbin/ntpdate 1.cn.pool.ntp.org
+    #运行该程序的用户组
+    #RUN_GROUP=nginx
+    #运行该程序的用户
+    #RUN_USER=nginx
+    #程序运行标志
+    # -1 程序启动后先等待其运行完毕方可运行其它程序
+    #  0 程序启动后不管其运行状态
+    #  1 程序按照RUN_TIME配置时间点运行，非该运行点自动停止通过kill信号
+    #RUN_FLAG=1
+    #RUN_FLAG=1时有效，程序运行时间段，星期(1-7)，时间格式(24小时)，各条件之间是或关系
+    #RUN_TIME=1-5,23:30-16:30|1-5,17:30-21:30|6-7,00:00-8:30
+    
+    [COMMON]
+    #日志路径
+    LOG_PATH=/home/nginx/bin/log
+    #日志头
+    LOG_HEADER=schedule
+    #文件日志级别all,debug,info,warn,error,fatal,off
+    LOG_LEVEL=debug
+    #文件日志缓存,byte
+    LOG_BUFFER=102400
+    #文件切换时间,秒数
+    LOG_SWITCH_TIME=86400
+    
+    #睡眠时间
+    SLEEP_TIME = 60
+    #推出时是否退出子程序
+    KILL_CHILD_FLAG = 1
+    #pid文件后,台执行时有效
+    PID_FILE=/home/nginx/bin/log/mysch.pid
+    #运行的用户
+    RUN_USER=root
+    PROG_LIST=NTP|NGINX|BIGFALSE
+    
+    [NTP]
+    RUN_COMMAND=/usr/sbin/ntpdate 1.cn.pool.ntp.org
+    RUN_USER=root
+    RUN_FLAG=-1
+    
+    [NGINX]
+    RUN_COMMAND=/home/nginx/www/sbin/nginx
+    RUN_USER=nginx
+    RUN_FLAG=1
+    RUN_TIME=1-7,00:00-24:00
+    RUN_PID_FILE=/home/nginx/www/logs/nginx.pid
+    
+    [BIGFALSE]
+    RUN_COMMAND=/usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+    RUN_USER=nginx
+    RUN_FLAG=1
+    RUN_TIME=1-7,00:00-24:00
+    RUN_PID_FILE=/home/nginx/tinytrue/log/django.pid
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;按照这个配置，运行的程序：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    [nginx@raspi bin]$ p nginx
+    root       233     1  0 14:41 ?        00:00:00 /home/nginx/bin/mysch -c /home/nginx/bin/mysch.conf
+    nginx      304     1  0 14:42 ?        00:00:00 nginx: master process /home/nginx/www/sbin/nginx
+    nginx      305   304  0 14:42 ?        00:00:00 nginx: worker process     
+    nginx      307     1  0 14:42 ?        00:00:00 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+    nginx      308   307  0 14:42 ?        00:00:00 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+    nginx      309   307  0 14:42 ?        00:00:00 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+    nginx      310   307  0 14:42 ?        00:00:04 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+    nginx      311   307  0 14:42 ?        00:00:06 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+    nginx      312   307  0 14:42 ?        00:00:10 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;相关代码：&lt;br&gt;
+&lt;a href=&#34;https://github.com/buf1024/mysch&#34;&gt;https://github.com/buf1024/mysch&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

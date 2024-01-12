@@ -1,417 +1,1011 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>BUF1024!!!</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="buf1024" /><meta name="description" content="luoguochun&#39;s personal page!" /><meta name="keywords" content="blog, computer, luoguochun" />
+	<meta name="generator" content="Hugo 0.121.2">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
 
 
 
 
-
-
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://luoguochun.cn/" />
-  <link href="https://luoguochun.cn/index.xml" rel="alternate" type="application/rss+xml" title="BUF1024!!!" />
-  <link href="https://luoguochun.cn/index.xml" rel="feed" type="application/rss+xml" title="BUF1024!!!" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.4158b3c9.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
+<title>BUF1024!!!</title>
+<link rel="canonical" href="https://luoguochun.cn/">
+<meta name="description" content="luoguochun&#39;s personal page!" />
+<meta property="og:type" content="article" />
 <meta property="og:title" content="BUF1024!!!" />
-<meta property="og:description" content="luoguochun&#39;s personal page!" />
-<meta property="og:type" content="website" />
 <meta property="og:url" content="https://luoguochun.cn/" />
-<meta property="og:updated_time" content="2017-12-06T11:08:13&#43;00:00"/>
+<meta property="og:description" content="luoguochun&#39;s personal page!" />
+<link rel="alternate" type="application/rss+xml" href="https://luoguochun.cn/index.xml" title="BUF1024!!!" />
 
-<meta itemprop="name" content="BUF1024!!!">
-<meta itemprop="description" content="luoguochun&#39;s personal page!">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="BUF1024!!!"/>
-<meta name="twitter:description" content="luoguochun&#39;s personal page!"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
 </head>
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">BUF1024!</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">文章</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">BUF1024!</a>
-</div>
+    <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="https://luoguochun.cn">BUF1024!!!</a>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/">主页</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/post/">文章</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/tags/">标签</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/categories/">分类</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">关于</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <section id="posts" class="posts">
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2017-12-26-soft-architecture/">软件构架  --  无技术简篇</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-12-06 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9E%84%E6%9E%B6/"> 构架 </a>
-          </div>
-        <span class="more-meta"> 约 3795 字 </span>
-        <span class="more-meta"> 预计阅读 8 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      软件构架 所谓的软件构架，是有关软件整体结构与各组件的抽象描述，用于指导大型软件系统各个方面的设计。一个好的软件构架，会随着业务的不断深入发展
-    </div>
-    <div class="read-more">
-      <a href="/post/2017-12-26-soft-architecture/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+    <main class="main-wrapper">
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2017-07-15-git-merge-commit/">git 合并commit</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-07-15 </span>
-      <div class="post-category">
-          <a href="/categories/git/"> git </a>
-          </div>
-        <span class="more-meta"> 约 994 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      git合并commit，主要是fork别人的仓库，想合并到别人的仓库的时候，合并commit。如此一来，cmmit的历史笔记清晰，没有乱七八
-    </div>
-    <div class="read-more">
-      <a href="/post/2017-07-15-git-merge-commit/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+        <div class="main">
+            <div style="display: flex; flex-direction: column;"></div>
+                
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2017-07-05-git-push_multi/">git推送多个远程分支</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-07-05 </span>
-      <div class="post-category">
-          <a href="/categories/git/"> git </a>
-          </div>
-        <span class="more-meta"> 约 357 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      查看.git/config 1 2 3 4 5 6 7 8 9 10 11 12 13 [core] repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true ignorecase = true precomposeunicode = true [remote &#34;origin&#34;] url = git@gitee.com:heidonglgc/k-map.git fetch = +refs/heads/*:refs/remotes/origin/* [branch &#34;master&#34;] remote = origin merge = refs/heads/master 增加一个名为mir
-    </div>
-    <div class="read-more">
-      <a href="/post/2017-07-05-git-push_multi/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+<div class="max-wrapper">
+    <div id="list-page">
+        
+        
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2017-12-26-soft-architecture/">软件构架  --  无技术简篇</a></h1>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2017-06-23-golang-private-public-crypt/">golang 私钥&#34;加密&#34;公钥&#34;解密&#34;</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-06-23 </span>
-      <div class="post-category">
-          <a href="/categories/go/"> go </a>
-          </div>
-        <span class="more-meta"> 约 1409 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      之前工作主要使用C/C++与银行/第三方支付对接，但C/C++无法满足客户”当天给协议明天实盘上载“的开发速度以及现公司一些特殊情况，所以决
-    </div>
-    <div class="read-more">
-      <a href="/post/2017-06-23-golang-private-public-crypt/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2017-12-06 11:08:13 &#43;0000 UTC">2017/12/06</time>
+                    </div>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2017-06-03-synchronize-atomic-variable/">线程同步与原子变量</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-06-03 </span>
-      <div class="post-category">
-          <a href="/categories/c/"> c </a>
-          </div>
-        <span class="more-meta"> 约 1657 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      无论是基于多线程还是多进程并发的程序，同步控制总是不可避免的。按照自己的思维和使用习惯，自然会想到的是互斥量(mutext)和自旋锁(spi
-    </div>
-    <div class="read-more">
-      <a href="/post/2017-06-03-synchronize-atomic-variable/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/%E6%9E%84%E6%9E%B6">构架</a>
+                            
+                        </div>
+                    
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2017-05-01-gcc-missing/">GCC不常见，但有用特别选项</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-05-01 </span>
-      <div class="post-category">
-          <a href="/categories/gcc/"> gcc </a>
-          </div>
-        <span class="more-meta"> 约 1373 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      -isystem dir 1 2 3 4 5 6 7 8 9 Search dir for header files, after all directories specified by -I but before the standard system directories. Mark it as a system directory, so that it gets the same special treatment as is applied to the standard system directories. If dir begins with &#34;=&#34;, then the &#34;=&#34; will be replaced by the sysroot prefix; see --sysroot and -isysroot. 标
-    </div>
-    <div class="read-more">
-      <a href="/post/2017-05-01-gcc-missing/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/%E6%9E%84%E6%9E%B6">构架</a>
+                            
+                        </div>
+                    
+                </div>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2017-04-28-lwan-http-server/">lwan http 服务器</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-04-28 </span>
-      <div class="post-category">
-          <a href="/categories/http/"> http </a>
-          </div>
-        <span class="more-meta"> 约 4399 字 </span>
-        <span class="more-meta"> 预计阅读 9 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      简介 服务器端程序的设计模式一般比较固定，目前主要有两种主要的解决方式，一种多进程方式(进程池)，另外一种多线程的方式(线程池)(P.S:请忘
-    </div>
-    <div class="read-more">
-      <a href="/post/2017-04-28-lwan-http-server/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                <div class="summary">
+                    
+                        软件构架 🔗所谓的软件构架，是有关软件整体结构与各组件的抽象描述，用于指导大型软件系统各个方面的设计。一个好的软件构架，会随着业务的不断深入发
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2017-07-15-git-merge-commit/">git 合并commit</a></h1>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2017-04-20-weixin-web-proto/">微信web通信协议</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-04-20 </span>
-      <div class="post-category">
-          <a href="/categories/web/"> web </a>
-          </div>
-        <span class="more-meta"> 约 920 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      微信有网页版，网页版的微信具备手机微信大部分功能。理论上，放在web页面上的所有东西，都是可以被破解的。对于web微信协议的破解，一些没有接
-    </div>
-    <div class="read-more">
-      <a href="/post/2017-04-20-weixin-web-proto/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2017-07-15 19:56:18 &#43;0000 UTC">2017/07/15</time>
+                    </div>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2016-12-29-head-first-js/">js快速参考</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-12-29 </span>
-      <div class="post-category">
-          <a href="/categories/web/"> web </a>
-          </div>
-        <span class="more-meta"> 约 4324 字 </span>
-        <span class="more-meta"> 预计阅读 9 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… js 运行于宿主环境，常见宿主环境有web浏览器和
-    </div>
-    <div class="read-more">
-      <a href="/post/2016-12-29-head-first-js/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/git">git</a>
+                            
+                        </div>
+                    
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2016-11-16-https-handshake/">ssl/tls 握手</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-11-16 </span>
-      <div class="post-category">
-          <a href="/categories/https/"> https </a>
-          </div>
-        <span class="more-meta"> 约 3476 字 </span>
-        <span class="more-meta"> 预计阅读 7 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      http协议是互联网的基石，然而http却是基于文本的协议，在网络传输中容易被窃听，冒充和篡改。如果对安全性要求相对高，那么一般使用http
-    </div>
-    <div class="read-more">
-      <a href="/post/2016-11-16-https-handshake/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/git">git</a>
+                            
+                                <a href="/tags/vcs">vcs</a>
+                            
+                        </div>
+                    
+                </div>
 
-    </section>
-  
-  <nav class="pagination">
-    <a class="prev" href="/page/3/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text">上一页</span>
-      </a>
-    <a class="next" href="/page/5/">
-        <span class="next-text">下一页</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-  </nav>
-        </div>
+                <div class="summary">
+                    
+                        git合并commit，主要是fork别人的仓库，想合并到别人的仓库的时候，合并commit。如此一来，cmmit的历史笔记清晰，没有乱七八
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2017-07-05-git-push_multi/">git推送多个远程分支</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2017-07-05 20:56:18 &#43;0000 UTC">2017/07/05</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/git">git</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/git">git</a>
+                            
+                                <a href="/tags/vcs">vcs</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        查看.git/config 1 2 3 4 5 6 7 8 9 10 11 12 13 [core] repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true ignorecase = true precomposeunicode = true [remote &#34;origin&#34;] url = git@gitee.com:heidonglgc/k-map.git fetch = +refs/heads/*:refs/remotes/origin/* [branch &#34;master&#34;] remote = origin merge = refs/heads/master 增加一个名为mir
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2017-06-23-golang-private-public-crypt/">golang 私钥&#34;加密&#34;公钥&#34;解密&#34;</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2017-06-23 20:57:11 &#43;0000 UTC">2017/06/23</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/go">go</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/rsa">rsa</a>
+                            
+                                <a href="/tags/go">go</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        之前工作主要使用C/C++与银行/第三方支付对接，但C/C++无法满足客户”当天给协议明天实盘上载“的开发速度以及现公司一些特殊情况，所以决
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2017-06-03-synchronize-atomic-variable/">线程同步与原子变量</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2017-06-03 11:19:25 &#43;0800 CST">2017/06/03</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/c">c</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/c">c</a>
+                            
+                                <a href="/tags/gcc">gcc</a>
+                            
+                                <a href="/tags/linux">linux</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        无论是基于多线程还是多进程并发的程序，同步控制总是不可避免的。按照自己的思维和使用习惯，自然会想到的是互斥量(mutext)和自旋锁(spi
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2017-05-01-gcc-missing/">GCC不常见，但有用特别选项</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2017-05-01 22:10:31 &#43;0000 UTC">2017/05/01</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/gcc">gcc</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/http">http</a>
+                            
+                                <a href="/tags/c">c</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        -isystem dir Search dir for header files, after all directories specified by -I but before the standard system directories. Mark it as a system directory, so that it gets the same special treatment as is applied to the standard system directories. If dir begins with &quot;=&quot;, then the &quot;=&quot; will be replaced by the sysroot prefix; see --sysroot and -isysroot. 标记 DIR 为系统DIR，
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2017-04-28-lwan-http-server/">lwan http 服务器</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2017-04-28 22:10:32 &#43;0000 UTC">2017/04/28</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/http">http</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/http">http</a>
+                            
+                                <a href="/tags/c">c</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        简介 🔗服务器端程序的设计模式一般比较固定，目前主要有两种主要的解决方式，一种多进程方式(进程池)，另外一种多线程的方式(线程池)(P.S:请
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2017-04-20-weixin-web-proto/">微信web通信协议</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2017-04-20 21:12:03 &#43;0000 UTC">2017/04/20</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/web">web</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        微信有网页版，网页版的微信具备手机微信大部分功能。理论上，放在web页面上的所有东西，都是可以被破解的。对于web微信协议的破解，一些没有接
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2016-12-29-head-first-js/">js快速参考</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2016-12-29 17:08:46 &#43;0000 UTC">2016/12/29</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/web">web</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/html">html</a>
+                            
+                                <a href="/tags/css">css</a>
+                            
+                                <a href="/tags/js">js</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… js 运行于宿主环境，常见宿主环境有web浏览器和
+                    
+                </div>
+            </section>
+        
+            <section class="list-item">
+                <h1 class="title"><a href="/post/2016-11-16-https-handshake/">ssl/tls 握手</a></h1>
+
+                <div class="tips">
+                    <div class="date">
+                        <time datetime="2016-11-16 11:17:11 &#43;0000 UTC">2016/11/16</time>
+                    </div>
+
+                    
+                        <div class="categories">
+                            <span>Categories:</span>
+                            
+                                <a href="/categories/https">https</a>
+                            
+                        </div>
+                    
+
+                    
+                        <div class="tags">
+                            <span>Tags:</span>
+                            
+                                <a href="/tags/https">https</a>
+                            
+                                <a href="/tags/ssl/tls">ssl/tls</a>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="summary">
+                    
+                        http协议是互联网的基石，然而http却是基于文本的协议，在网络传输中容易被窃听，冒充和篡改。如果对安全性要求相对高，那么一般使用http
+                    
+                </div>
+            </section>
         
 
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:buf1024@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/buf128" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://github.com/buf1024" class="iconfont icon-github" title="github"></a>
-  <a href="https://luoguochun.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2011 - 
-    2024
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">buf1024</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.ece58db6.min.js"></script>
+    
+
+<nav class="pagination">
+
+    
+    
+    
+    
+    
+        
+            
+            
+
+            
+                <a class="enabled" href="/">1</a>
+            
+
+        
+    
+        
+            
+            
+
+            
+                <a class="enabled" href="/page/2/">2</a>
+            
+
+        
+    
+        
+            
+            
+
+            
+                <a class="enabled" href="/page/3/">3</a>
+            
+
+        
+    
+        
+            
+            
+
+            
+                <a class="enabled current" href="/page/4/">4</a>
+            
+
+        
+    
+        
+            
+            
+
+            
+                <a class="enabled" href="/page/5/">5</a>
+            
+
+        
+    
+        
+            
+            
+
+            
+                <a class="enabled" href="/page/6/">6</a>
+            
+
+        
+    
+        
+    
+        
+    
+        
+            
+                <span>··</span>
+            
+            
+
+            
+                <a class="enabled" href="/page/9/">9</a>
+            
+
+        
+    
+
+</nav>
+</div>
+
+                <hr>
+                
 
 
 
+            </div>
+        </div>
 
+        <div class="side">
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/post/">Recent Post</a>
+    </h2>
+    <hr />
 
+    <ul>
+        
+            <li>
+                <a href="/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/">前端保姆级配置</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-12-26-rust-proc-macro/">rust 过程宏</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-09-21-rust-panic/">一行代码让 rustc panic</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-19-flutter-muti-window/">Flutter 桌面端多窗口支持</a>
+            </li>
+        
+            <li>
+                <a href="/post/2023-07-04-hiqradio/">hiqradio 一个简单的收音机软件</a>
+            </li>
+        
+    </ul>
+</div>
 
+            
+            <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/talib-doc/">Recent Talib doc</a>
+    </h2>
+    <hr />
 
+    <ul>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_operators/">16 数学运算符(Math Operator Functions )</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/math_transform/">15 数学变换(Math Transform Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/statistic_functions/">14 统计功能(Statistic Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/pattern_recognition/">13 形态识别(Pattern Recognition Functions)</a>
+            </li>
+        
+            <li>
+                <a href="/talib-doc/func_groups/cycle_indicators/">12 周期指标(Cycle Indicator Functions)</a>
+            </li>
+        
+    </ul>
+</div>
 
+            
+            <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/android">android(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/app">app(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/asm">asm(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/c">c(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/django">django(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/flutter">flutter(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/frontend">frontend(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gcc">gcc(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/gdb">gdb(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/git">git(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/go">go(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/http">http(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/https">https(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/linux">linux(7)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/mac">mac(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/misc">misc(9)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/multi_window">multi_window(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/orm">orm(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/os">os(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/python">python(4)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/reactjs">reactjs(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/rust">rust(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/ssh">ssh(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tcp">tcp(6)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/tdd">tdd(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/unittest">unittest(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vcs">vcs(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/vim">vim(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/web">web(2)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/webui">webui(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/windows">windows(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机(1)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E6%9E%84%E6%9E%B6">构架(3)</a>
+            </li>
+        
+            <li>
+                <a href="/categories/%E9%87%8F%E5%8C%96">量化(2)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/android">android (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/asm">asm (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/bt">bt (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c">c (20)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/c&#43;&#43;">c&#43;&#43; (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/coroutine">coroutine (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/css">css (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/django">django (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/flutter">flutter (6)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/frontend">frontend (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gas">gas (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gcc">gcc (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gdb">gdb (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/git">git (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/go">go (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/gtest">gtest (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/html">html (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/http">http (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/https">https (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/javascript">javascript (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/jquery">jquery (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/js">js (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/libevent">libevent (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/linux">linux (10)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/mac">mac (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/makefile">makefile (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/minix3">minix3 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/misc">misc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/orm">orm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/os">os (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/proc">proc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/python">python (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/react-native">react-native (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/redis">redis (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rpm">rpm (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rsa">rsa (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust">rust (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/rust-lib">rust-lib (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/server">server (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/sqlalchemy">sqlalchemy (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssh">ssh (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/ssl/tls">ssl/tls (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp">tcp (7)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcp-optition">tcp-optition (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tcpdump">tcpdump (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tdd">tdd (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/tidbit">tidbit (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vc">vc (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vcs">vcs (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vim">vim (3)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vite">vite (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/webui">webui (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/win32">win32 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/wireshark">wireshark (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%9E%84%E6%9E%B6">构架 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E9%87%8F%E5%8C%96">量化 (2)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA">收音机 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1">微服务 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%BE%AE%E4%BF%A1">微信 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    </main>
+    
+
+    
+
+    
 </body>
+
 </html>
