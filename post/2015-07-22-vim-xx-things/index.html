@@ -148,7 +148,7 @@
   </div>
 
     <div class="post_body"><h3 id="关于中文乱码">关于中文乱码</h3>
-<p>跟字符编码方式有关的选项:<br>
+<p>跟字符编码方式有关的选项:<br />
 <em>encoding</em>, <em>fileencoding</em>, <em>fileencodings</em>, <em>termencoding</em>。更详细的信息可看vim 帮助文档: <code>:help encoding-names</code>。简略含义如下：</p>
 <ol>
 <li>
@@ -161,7 +161,7 @@
 <p><em>fileencodings</em>： Vim 启动时会按照它所列出的字符编码方式逐一探测即将打开的文件的字符编码方式，并且将 fileencoding 设置为最终探测到的字符编码方式。</p>
 </li>
 <li>
-<p>termencoding: Vim 所工作的终端 (或者 Windows 的 Console 窗口) 的字符编码方式。<br>
+<p>termencoding: Vim 所工作的终端 (或者 Windows 的 Console 窗口) 的字符编码方式。<br />
 所以在一般情况下，<code>~/.vimrc</code>里面设置如下配置，则可解决大多数中文乱码问题:</p>
 <p>let &amp;termencoding=&amp;encoding
 set fileencodings=ucs-bom,utf-8,gbk,cp936,gb18030,big5,euc-jp,euc-kr,latin1</p>

@@ -151,11 +151,11 @@
     <div class="post_body"><p>linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(<strong>未完待续</strong>)。</p>
 <ul>
 <li>
-<p><em>/proc/[pid]</em><br>
+<p><em>/proc/[pid]</em><br />
 每一个正在运行的进程都对应有这样一个伪目录，目录名为该进程的pid。每个伪目录下面都有以下伪文件或伪目录:</p>
 </li>
 <li>
-<p>/proc/[pid]/auxv<br>
+<p>/proc/[pid]/auxv<br />
 包含ELF解析信息（ELF就是linux系统二进制可执行文件的文件格式），<code>auxv</code> 是 AUXiliary Vector简写。每个条目的格式就是:一个<code>unsigned long</code>ID加上一个<code>unsigned long</code>数值。这个AUXV是什么意思呢？ 我们可以通过加上<code>LD_SHOW_AUXV=1 程序名</code>可以获取具体的数值:</p>
 <pre><code>    [heidong@HEIDONGVM 2218]$ LD_SHOW_AUXV=1 /bin/sh         
     AT_SYSINFO_EHDR: 0x7fff173d8000        
@@ -180,53 +180,53 @@
 </code></pre>
 </li>
 </ul>
-<p>对应的<code>AT_*</code>的含义可在<code>/usr/include/elf.h</code>找到。<br>
+<p>对应的<code>AT_*</code>的含义可在<code>/usr/include/elf.h</code>找到。<br />
 相关参考: <a href="http://www.linuxquestions.org/questions/linux-kernel-70/what-does-proc-pid-auxv-mean-exactly-4175421876/">What does /proc/PID/auxv mean exactly?</a> 和 <a href="http://lenky.info/archives/2013/02/2203">关于ELF的辅助向量</a>。</p>
 <ul>
 <li>
-<p><em>/proc/[pid]/cmdline</em><br>
+<p><em>/proc/[pid]/cmdline</em><br />
 包含非僵死进程的命令行启动参数，该文件包含<code>&quot;\0&quot;</code>。如:</p>
 <pre><code>    [heidong@HEIDONGVM 2238]$ cat cmdline         
     bash[heidong@HEIDONGVM 2238]$          
 </code></pre>
 </li>
 <li>
-<p><em>/proc/[pid]/coredump_filter</em><br>
-用于控制哪些内存段写入到core文件，16进制显示，是与<code>mmap</code>映射类型的位掩码。默认0,1,4,5(如果内核编译时定义CONFIG_CORE_DUMP_DEFAULT_ELF_HEADERS)，所以默认值是33。掩码含义是：<br>
-bit 0 dump匿名私有映射.<br>
-bit 1 dump匿名共享映射.<br>
-bit 2 dump基于文件的私有映射.<br>
-bit 3 dump基于文件的共享映射.<br>
-bit 4(linux 2.6.24) dump elf 头.<br>
+<p><em>/proc/[pid]/coredump_filter</em><br />
+用于控制哪些内存段写入到core文件，16进制显示，是与<code>mmap</code>映射类型的位掩码。默认0,1,4,5(如果内核编译时定义CONFIG_CORE_DUMP_DEFAULT_ELF_HEADERS)，所以默认值是33。掩码含义是：<br />
+bit 0 dump匿名私有映射.<br />
+bit 1 dump匿名共享映射.<br />
+bit 2 dump基于文件的私有映射.<br />
+bit 3 dump基于文件的共享映射.<br />
+bit 4(linux 2.6.24) dump elf 头.<br />
 bit 5(linux 2.6.28) dump私有页面(private huge pages).
 bit 6(linux 2.6.28) dump共享页面(shared huge pages).</p>
 </li>
 <li>
-<p>/proc/[pid]/cpuset<br>
+<p>/proc/[pid]/cpuset<br />
 // todo</p>
 </li>
 <li>
-<p>/proc/[pid]/cwd<br>
+<p>/proc/[pid]/cwd<br />
 进程当前工作目录的软连接。对于多线程的程序，如果主线程退出或挂掉了，子线程还存在，这个连接时无效的。去到当前工作目录：</p>
 <pre><code>    $ cd /proc/20/cwd; /bin/pwd          
 </code></pre>
 </li>
 <li>
-<p><em>/proc/[pid]/environ</em><br>
+<p><em>/proc/[pid]/environ</em><br />
 进程环境变量，每个条目都是以<code>&quot;\0&quot;</code>结束。可用这种方法显示:</p>
 <pre><code>    [heidong@HEIDONGVM 2238]$ (cat /proc/2238/environ; echo) | tr '\000' '\n'        
 </code></pre>
 </li>
 <li>
-<p>/proc/[pid]/exe<br>
+<p>/proc/[pid]/exe<br />
 进程可执行文件在软连接。对于多线程的程序，如果主线程退出或挂掉了，子线程还存在，这个连接时无效的。</p>
 </li>
 <li>
-<p><em>/proc/[pid]/fd/</em><br>
+<p><em>/proc/[pid]/fd/</em><br />
 打开文件文件描述符目录在连接。对于多线程的程序，如果主线程退出或挂掉了，子线程还存在，这个连接时无效的。<code>/proc/self/fd/N</code>和<code>/dev/fd/N</code>是一样在。补充说明，对于只知道fd怎么找对于的文件呢？答案是很简单的，直接用<code>readlink</code>函数，查看对于该目录下文件的连接就可以了。</p>
 </li>
 <li>
-<p>/proc/[pid]/fdinfo/<br>
+<p>/proc/[pid]/fdinfo/<br />
 这个目录是和/proc/[pid]/fd/对应的，就是对于没个文件的当前偏移和打开标示。如:</p>
 <pre><code>    [heidong@HEIDONGVM fdinfo]$ cat 165        
     pos:	0        
@@ -235,7 +235,7 @@ bit 6(linux 2.6.28) dump共享页面(shared huge pages).</p>
 </code></pre>
 </li>
 <li>
-<p>/proc/[pid]/limits<br>
+<p>/proc/[pid]/limits<br />
 limits信息。和<code>getrlimit</code>获取的信息是一样的。如:</p>
 <pre><code>    [heidong@HEIDONGVM 3500]$ cat limits         
     Limit                     Soft Limit           Hard Limit           Units     
@@ -258,7 +258,7 @@ limits信息。和<code>getrlimit</code>获取的信息是一样的。如:</p>
 </code></pre>
 </li>
 <li>
-<p>/proc/[pid]/maps<br>
+<p>/proc/[pid]/maps<br />
 内存映射的地址和权限。如:</p>
 <pre><code>    [heidong@HEIDONGVM 3890]$ cat maps 
     00400000-00410000 r-xp 00000000 fd:00 1072484                            /usr/bin/groff
@@ -269,7 +269,7 @@ limits信息。和<code>getrlimit</code>获取的信息是一样的。如:</p>
 </code></pre>
 </li>
 <li>
-<p>/proc/[pid]/mem<br>
+<p>/proc/[pid]/mem<br />
 进程对应的内存，可以通过<code>open</code>, <code>read</code>, <code>lseek</code>访问。</p>
 </li>
 <li>

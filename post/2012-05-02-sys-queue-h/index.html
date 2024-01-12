@@ -203,21 +203,21 @@ complex end of list detection.</p>
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>SLIST_HEAD(name, type)</td>
-<td style="text-align:left">定义表头结点。 <!-- raw HTML omitted -->name: 表头结点名。<!-- raw HTML omitted -->type: 结点类型。</td>
+<td align="left">定义表头结点。 <br>name: 表头结点名。<br>type: 结点类型。</td>
 </tr>
 <tr>
 <td>SLIST_HEAD_INITIALIZER(head)</td>
-<td style="text-align:left">初始化头结点。 <!-- raw HTML omitted -->head: 表头结点。</td>
+<td align="left">初始化头结点。 <br>head: 表头结点。</td>
 </tr>
 <tr>
 <td>SLIST_ENTRY(type)</td>
-<td style="text-align:left">定义链表的链域。<!-- raw HTML omitted -->type: 结点类型。</td>
+<td align="left">定义链表的链域。<br>type: 结点类型。</td>
 </tr>
 </tbody>
 </table>
@@ -226,33 +226,33 @@ complex end of list detection.</p>
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>SLIST_INIT(head)</td>
-<td style="text-align:left">初始化头结点。 <!-- raw HTML omitted -->head: 表头结点。</td>
+<td align="left">初始化头结点。 <br>head: 表头结点。</td>
 </tr>
 <tr>
 <td>SLIST_INSERT_AFTER(slistelm, elm, field)</td>
-<td style="text-align:left">将结点elm插入到结点slistelm后面。 <!-- raw HTML omitted -->slistelm：链表中某结点。 <!-- raw HTML omitted -->elm:要插入的结点。 <!-- raw HTML omitted -->field:链表中链域的名称。</td>
+<td align="left">将结点elm插入到结点slistelm后面。 <br>slistelm：链表中某结点。 <br>elm:要插入的结点。 <br>field:链表中链域的名称。</td>
 </tr>
 <tr>
 <td>SLIST_INSERT_HEAD(head, elm, field)</td>
-<td style="text-align:left">将结点elm插入到头结点head后面。 <!-- raw HTML omitted -->head: 表头结点。<!-- raw HTML omitted -->elm:要插入的结点。<!-- raw HTML omitted -->field:链表中链域的名称。</td>
+<td align="left">将结点elm插入到头结点head后面。 <br>head: 表头结点。<br>elm:要插入的结点。<br>field:链表中链域的名称。</td>
 </tr>
 <tr>
 <td>SLIST_REMOVE_HEAD(head, field)</td>
-<td style="text-align:left">移除将表头结点下面一个结点。 <!-- raw HTML omitted -->head: 表头结点。 <!-- raw HTML omitted -->field:链表中链域的名称。</td>
+<td align="left">移除将表头结点下面一个结点。 <br>head: 表头结点。 <br>field:链表中链域的名称。</td>
 </tr>
 <tr>
 <td>SLIST_REMOVE(head, elm, type, field)</td>
-<td style="text-align:left">移除将elm结点，elm结点一定要是链表中一结点。 <!-- raw HTML omitted -->head: 表头结点。 <!-- raw HTML omitted -->elm:某结点。 <!-- raw HTML omitted -->type: 结点类型。 <!-- raw HTML omitted -->field:链表中链域的名称。</td>
+<td align="left">移除将elm结点，elm结点一定要是链表中一结点。 <br>head: 表头结点。 <br>elm:某结点。 <br>type: 结点类型。 <br>field:链表中链域的名称。</td>
 </tr>
 <tr>
 <td>SLIST_FOREACH(var, head, field)</td>
-<td style="text-align:left">遍历链表，相当于for循环。 <!-- raw HTML omitted -->var: 结点类型的变量名称。 <!-- raw HTML omitted -->head: 表头结点。 <!-- raw HTML omitted -->field:链表中链域的名称。</td>
+<td align="left">遍历链表，相当于for循环。 <br>var: 结点类型的变量名称。 <br>head: 表头结点。 <br>field:链表中链域的名称。</td>
 </tr>
 </tbody>
 </table>
@@ -261,21 +261,21 @@ complex end of list detection.</p>
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>SLIST_EMPTY(head)</td>
-<td style="text-align:left">判断链表是否为空。 <!-- raw HTML omitted -->head: 表头结点。</td>
+<td align="left">判断链表是否为空。 <br>head: 表头结点。</td>
 </tr>
 <tr>
 <td>SLIST_FIRST(head)</td>
-<td style="text-align:left">访问链表里的第一个元素。 <!-- raw HTML omitted -->head: 表头结点。</td>
+<td align="left">访问链表里的第一个元素。 <br>head: 表头结点。</td>
 </tr>
 <tr>
 <td>SLIST_NEXT(elm, field)</td>
-<td style="text-align:left">访问elm结点后一个元素。 <!-- raw HTML omitted -->elm:某结点。 <!-- raw HTML omitted -->field:链表中链域的名称。</td>
+<td align="left">访问elm结点后一个元素。 <br>elm:某结点。 <br>field:链表中链域的名称。</td>
 </tr>
 </tbody>
 </table>
@@ -355,27 +355,27 @@ complex end of list detection.</p>
     */
 </code></pre>
 <h3 id="双向链表list">双向链表(list)</h3>
-<p>list就是双向链表，不过链域有点古怪，指向前一个结点是指针的指针。<br>
+<p>list就是双向链表，不过链域有点古怪，指向前一个结点是指针的指针。<br />
 list 相关定义</p>
 <table>
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>LIST_HEAD(name, type)</td>
-<td style="text-align:left">定义表头结点。 <!-- raw HTML omitted -->name: 表头结点名。 <!-- raw HTML omitted -->type: 结点类型。</td>
+<td align="left">定义表头结点。 <br>name: 表头结点名。 <br>type: 结点类型。</td>
 </tr>
 <tr>
 <td>LIST_HEAD_INITIALIZER(head)</td>
-<td style="text-align:left">初始化头结点。 <!-- raw HTML omitted -->head: 表头结点。</td>
+<td align="left">初始化头结点。 <br>head: 表头结点。</td>
 </tr>
 <tr>
 <td>LIST_ENTRY(type)</td>
-<td style="text-align:left">定义链表的链域。 <!-- raw HTML omitted -->type: 结点类型。</td>
+<td align="left">定义链表的链域。 <br>type: 结点类型。</td>
 </tr>
 </tbody>
 </table>
@@ -384,33 +384,33 @@ list 相关定义</p>
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>LIST_INIT(head)</td>
-<td style="text-align:left">初始化头结点。 <!-- raw HTML omitted -->head: 表头结点</td>
+<td align="left">初始化头结点。 <br>head: 表头结点</td>
 </tr>
 <tr>
 <td>LIST_INSERT_AFTER(listelm, elm, field)</td>
-<td style="text-align:left">将结点elm插入到结点listelm后面。 <!-- raw HTML omitted -->listelm：链表中某结点。 <!-- raw HTML omitted -->elm:要插入的结点。 <!-- raw HTML omitted -->field:链表中链域的名称。</td>
+<td align="left">将结点elm插入到结点listelm后面。 <br>listelm：链表中某结点。 <br>elm:要插入的结点。 <br>field:链表中链域的名称。</td>
 </tr>
 <tr>
 <td>LIST_INSERT_BEFORE(listelm, elm, field)</td>
-<td style="text-align:left">将结点elm插入到结点listelm前面。 <!-- raw HTML omitted -->listelm：链表中某结点。 <!-- raw HTML omitted -->elm:要插入的结点。 <!-- raw HTML omitted -->field:链表中链域的名称。</td>
+<td align="left">将结点elm插入到结点listelm前面。 <br>listelm：链表中某结点。 <br>elm:要插入的结点。 <br>field:链表中链域的名称。</td>
 </tr>
 <tr>
 <td>LIST_INSERT_HEAD(head, elm, field)</td>
-<td style="text-align:left">将结点elm插入到头结点head后面。 <!-- raw HTML omitted -->head: 表头结点。 <!-- raw HTML omitted -->elm:要插入的结点。 <!-- raw HTML omitted -->field:链表中链域的名称。</td>
+<td align="left">将结点elm插入到头结点head后面。 <br>head: 表头结点。 <br>elm:要插入的结点。 <br>field:链表中链域的名称。</td>
 </tr>
 <tr>
 <td>LIST_REMOVE(elm, field)</td>
-<td style="text-align:left">移除将elm结点。 <!-- raw HTML omitted -->elm:某结点。 <!-- raw HTML omitted -->field:链表中链域的名称。</td>
+<td align="left">移除将elm结点。 <br>elm:某结点。 <br>field:链表中链域的名称。</td>
 </tr>
 <tr>
 <td>LIST_FOREACH(var, head, field)</td>
-<td style="text-align:left">遍历链表，相当于for循环。 <!-- raw HTML omitted -->var: 结点类型的变量名称。 <!-- raw HTML omitted -->head: 表头结点。 <!-- raw HTML omitted -->field:链表中链域的名称。</td>
+<td align="left">遍历链表，相当于for循环。 <br>var: 结点类型的变量名称。 <br>head: 表头结点。 <br>field:链表中链域的名称。</td>
 </tr>
 </tbody>
 </table>
@@ -419,21 +419,21 @@ list 相关定义</p>
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>LIST_EMPTY(head)</td>
-<td style="text-align:left">判断链表是否为空。 <!-- raw HTML omitted -->head: 表头结点。</td>
+<td align="left">判断链表是否为空。 <br>head: 表头结点。</td>
 </tr>
 <tr>
 <td>LIST_FIRST(head)</td>
-<td style="text-align:left">访问链表里的第一个元素。 <!-- raw HTML omitted -->head: 表头结点。</td>
+<td align="left">访问链表里的第一个元素。 <br>head: 表头结点。</td>
 </tr>
 <tr>
 <td>LIST_NEXT(elm, field)</td>
-<td style="text-align:left">访问elm结点后一个元素。 <!-- raw HTML omitted -->elm:某结点。 <!-- raw HTML omitted -->field:链表中链域的名称。</td>
+<td align="left">访问elm结点后一个元素。 <br>elm:某结点。 <br>field:链表中链域的名称。</td>
 </tr>
 </tbody>
 </table>
@@ -531,13 +531,13 @@ list 相关定义</p>
    */
 </code></pre>
 <h3 id="简单队列simple-queue">简单队列(simple queue)</h3>
-<p>简单来说，就是表对有两个链域，分别指向头和尾。<br>
+<p>简单来说，就是表对有两个链域，分别指向头和尾。<br />
 simple queue 定义（具体说明不再写，可以参考list的，或者就直接展开宏）</p>
 <table>
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
@@ -551,7 +551,7 @@ simple queue 定义（具体说明不再写，可以参考list的，或者就直
 </tr>
 <tr>
 <td>SIMPLEQ_ENTRY(type)</td>
-<td style="text-align:left"><!-- raw HTML omitted --></td>
+<td align="left"><br></td>
 </tr>
 </tbody>
 </table>
@@ -560,7 +560,7 @@ simple queue 定义（具体说明不再写，可以参考list的，或者就直
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
@@ -590,7 +590,7 @@ simple queue 定义（具体说明不再写，可以参考list的，或者就直
 </tr>
 <tr>
 <td>SIMPLEQ_FOREACH(var, head, field)</td>
-<td style="text-align:left"><!-- raw HTML omitted --></td>
+<td align="left"><br></td>
 </tr>
 </tbody>
 </table>
@@ -599,7 +599,7 @@ simple queue 定义（具体说明不再写，可以参考list的，或者就直
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
@@ -613,20 +613,20 @@ simple queue 定义（具体说明不再写，可以参考list的，或者就直
 </tr>
 <tr>
 <td>SIMPLEQ_NEXT(elm, field)</td>
-<td style="text-align:left"><!-- raw HTML omitted --></td>
+<td align="left"><br></td>
 </tr>
 </tbody>
 </table>
-<p>简单例子：<br>
+<p>简单例子：<br />
 用法与list用法类似，不再重复。</p>
 <h3 id="单链尾队列singled-linked-tail-queue">单链尾队列(singled-linked tail queue)</h3>
-<p>这个和Simple queue是一样的，参考simple queue<br>
+<p>这个和Simple queue是一样的，参考simple queue<br />
 singled-linked tail queue定义(具体说明不再写，可以参考list的，或者就直接展开宏)</p>
 <table>
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
@@ -640,7 +640,7 @@ singled-linked tail queue定义(具体说明不再写，可以参考list的，�
 </tr>
 <tr>
 <td>STAILQ_ENTRY(type)</td>
-<td style="text-align:left"><!-- raw HTML omitted --></td>
+<td align="left"><br></td>
 </tr>
 </tbody>
 </table>
@@ -649,7 +649,7 @@ singled-linked tail queue定义(具体说明不再写，可以参考list的，�
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
@@ -679,7 +679,7 @@ singled-linked tail queue定义(具体说明不再写，可以参考list的，�
 </tr>
 <tr>
 <td>STAILQ_FOREACH(var, head, field)</td>
-<td style="text-align:left"><!-- raw HTML omitted --></td>
+<td align="left"><br></td>
 </tr>
 </tbody>
 </table>
@@ -688,7 +688,7 @@ singled-linked tail queue定义(具体说明不再写，可以参考list的，�
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
@@ -702,20 +702,20 @@ singled-linked tail queue定义(具体说明不再写，可以参考list的，�
 </tr>
 <tr>
 <td>STAILQ_NEXT(elm, field)</td>
-<td style="text-align:left"><!-- raw HTML omitted --></td>
+<td align="left"><br></td>
 </tr>
 </tbody>
 </table>
-<p>简单例子：<br>
+<p>简单例子：<br />
 用法与list用法类似，不再重复。</p>
 <h3 id="循环队列circle-queue">循环队列(circle queue)</h3>
-<p>循环队列。<br>
+<p>循环队列。<br />
 circle queue定义（具体说明不再写，可以参考list的，或者就直接展开宏）</p>
 <table>
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
@@ -729,7 +729,7 @@ circle queue定义（具体说明不再写，可以参考list的，或者就直�
 </tr>
 <tr>
 <td>CIRCLEQ_ENTRY(type)</td>
-<td style="text-align:left"><!-- raw HTML omitted --></td>
+<td align="left"><br></td>
 </tr>
 </tbody>
 </table>
@@ -738,7 +738,7 @@ circle queue定义（具体说明不再写，可以参考list的，或者就直�
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
@@ -768,7 +768,7 @@ circle queue定义（具体说明不再写，可以参考list的，或者就直�
 </tr>
 <tr>
 <td>CIRCLEQ_REPLACE(head, elm, elm2, field)</td>
-<td style="text-align:left"><!-- raw HTML omitted --></td>
+<td align="left"><br></td>
 </tr>
 </tbody>
 </table>
@@ -777,7 +777,7 @@ circle queue定义（具体说明不再写，可以参考list的，或者就直�
 <thead>
 <tr>
 <th>宏定义</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
@@ -811,11 +811,11 @@ circle queue定义（具体说明不再写，可以参考list的，或者就直�
 </tr>
 <tr>
 <td>CIRCLEQ_FOREACH_REVERSE(var, head, field)</td>
-<td style="text-align:left"><!-- raw HTML omitted --></td>
+<td align="left"><br></td>
 </tr>
 </tbody>
 </table>
-<p>简单例子：<br>
+<p>简单例子：<br />
 用法与list用法类似，不再重复。</p>
 <h2 id="小结">小结</h2>
 <p>&amp;emsp虽然这是linux/unix实现的经过长时间考验的成熟的数据结构，但是如果不是很熟悉的话，第一次用起来还是感觉挺不习惯的。但是好在各个数据结构的定义和方法都非常类似，接口比较统一，如果用多的了，熟悉了，感觉就不错了。</p>

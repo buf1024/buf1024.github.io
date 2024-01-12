@@ -210,12 +210,12 @@
 可是并不是所有的程序都像nginx一样完善，会切换用户执行。</p>
 <p>还有一个问题，就是有些程序coredump，让它自动重启，系统配置貌似还做不到（可能可以做到）。我还想在树莓派上面跑个DHT爬虫，但DHT爬虫太占
 网络了，如果一直开着的话，网络就基本废了。所以我是想在周一到五凌晨才开始运行，到17点就停了，可以配置之类的。</p>
-<p>基于上面种种需求，自己搞了个非常简单管理调度程序，特点：<br>
-1. 可以管理三类程序，常驻进程（挂掉会自动重启），一次进程（负责启动，不管是否成  功），优先的一次进程（负责启动，不管是否成功，具有最高优先级，所以程序必须等到此类程序退出后，方启动其他程序）<br>
-2. 可以指定运行的用户，必须有相应的权限<br>
+<p>基于上面种种需求，自己搞了个非常简单管理调度程序，特点：<br />
+1. 可以管理三类程序，常驻进程（挂掉会自动重启），一次进程（负责启动，不管是否成  功），优先的一次进程（负责启动，不管是否成功，具有最高优先级，所以程序必须等到此类程序退出后，方启动其他程序）<br />
+2. 可以指定运行的用户，必须有相应的权限<br />
 3. 常驻进程可以配置运行时间。</p>
-<p>缺点：<br>
-1. 没有为每个进程分配优先级<br>
+<p>缺点：<br />
+1. 没有为每个进程分配优先级<br />
 2. 没有设计没有进程的依赖关系</p>
 <p>相关配置文件：</p>
 <pre><code>    [nginx@raspi bin]$ cat mysch.conf 
@@ -289,7 +289,7 @@
     nginx      311   307  0 14:42 ?        00:00:06 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
     nginx      312   307  0 14:42 ?        00:00:10 /usr/bin/python /home/nginx/tinytrue/manage.py runfcgi host=127.0.0.1 port=7856 daemonize=true pidfile=/home/nginx/tinytrue/log/django.pid outlog=/home/nginx/tinytrue/log/access.log errlog=/home/nginx/tinytrue/log/error.log
 </code></pre>
-<p>相关代码：<br>
+<p>相关代码：<br />
 <a href="https://github.com/buf1024/mysch">https://github.com/buf1024/mysch</a></p>
 
     </div>

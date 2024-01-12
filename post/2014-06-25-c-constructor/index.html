@@ -155,19 +155,19 @@
 <h3 id="如何实现">如何实现</h3>
 <ul>
 <li>
-<p>gcc实现<br>
-gcc 实现是非常简单的事情。在全局构造函数前叫以下编译器属性即可：<br>
+<p>gcc实现<br />
+gcc 实现是非常简单的事情。在全局构造函数前叫以下编译器属性即可：<br />
 <strong>attribute</strong>((constructor))</p>
 </li>
 <li>
 <p>vc实现
-vc的实现比较奇葩，VC本身没有类似·<strong>attribute</strong>·这样的属性，你需要将全局函数编译到某个特定的代码段里面。MSDN对于这部分有详细的说明：<a href="http://msdn.microsoft.com/en-us/library/bb918180.aspx">CRT Initialization</a><br>
+vc的实现比较奇葩，VC本身没有类似·<strong>attribute</strong>·这样的属性，你需要将全局函数编译到某个特定的代码段里面。MSDN对于这部分有详细的说明：<a href="http://msdn.microsoft.com/en-us/library/bb918180.aspx">CRT Initialization</a><br />
 简单来说就是将你的全局构造函数的函数指针编译到·.CRT$XCU·段里面。如何编译到·.CRT$XCU·段？VC有VC的语法。</p>
-<p>// 声明在段·.CRT$XCU·里面生成代码 <br>
-#pragma section(&quot;.CRT$XCU&quot;,read) <br>
-// 声明需要调用的函数 <br>
-__declspec(allocate(&quot;.CRT$XCU&quot;)) void (__cdecl *a)(void) = func; <br>
-// 调用的函数实现 <br>
+<p>// 声明在段·.CRT$XCU·里面生成代码 <br />
+#pragma section(&quot;.CRT$XCU&quot;,read) <br />
+// 声明需要调用的函数 <br />
+__declspec(allocate(&quot;.CRT$XCU&quot;)) void (__cdecl *a)(void) = func; <br />
+// 调用的函数实现 <br />
 void func(void){}</p>
 </li>
 </ul>

@@ -272,42 +272,42 @@
 <tr>
 <td>Json</td>
 <td>static int Parse(Json*&amp; pJson, const char* pBuf);</td>
-<td>解析JSON数据。<!-- raw HTML omitted -->参数：pJson 返回的JSON对象<!-- raw HTML omitted -->参数：pBuf  要解析的数据<!-- raw HTML omitted -->返回：0成功，其它参考错误码</td>
+<td>解析JSON数据。<br />参数：pJson 返回的JSON对象<br />参数：pBuf  要解析的数据<br />返回：0成功，其它参考错误码</td>
 </tr>
 <tr>
 <td></td>
 <td>static int Load(Json*&amp; pJson, const char* pFilePath);</td>
-<td>从文件解析JSON数据。<!-- raw HTML omitted -->参数：pJson 返回的JSON对象<!-- raw HTML omitted -->参数：pFilePath文件路径<!-- raw HTML omitted -->返回：0成功，其它参考错误码</td>
+<td>从文件解析JSON数据。<br />参数：pJson 返回的JSON对象<br />参数：pFilePath文件路径<br />返回：0成功，其它参考错误码</td>
 </tr>
 <tr>
 <td></td>
 <td>int Save(const char* pFilePath);</td>
-<td>将JSON对象保存到文件。<!-- raw HTML omitted -->参数：pFilePath文件路径<!-- raw HTML omitted -->返回：0成功，其它参考错误码</td>
+<td>将JSON对象保存到文件。<br />参数：pFilePath文件路径<br />返回：0成功，其它参考错误码</td>
 </tr>
 <tr>
 <td></td>
 <td>JsonValue* Set(const char* szKey, JsonValue&amp; sVal);</td>
-<td>设置JSON键值。<!-- raw HTML omitted -->参数：szKey 健<!-- raw HTML omitted -->参数：sVal 值<!-- raw HTML omitted -->返回：JSON值，0则出错</td>
+<td>设置JSON键值。<br />参数：szKey 健<br />参数：sVal 值<br />返回：JSON值，0则出错</td>
 </tr>
 <tr>
 <td></td>
 <td>JsonValue* Get(const char* szKey) const;</td>
-<td>获取JSON值。<!-- raw HTML omitted -->参数：szKey 健<!-- raw HTML omitted -->返回：JSON值，0则出错</td>
+<td>获取JSON值。<br />参数：szKey 健<br />返回：JSON值，0则出错</td>
 </tr>
 <tr>
 <td></td>
 <td>void Dump(std::string&amp; strDump) const;</td>
-<td>将JSON对象以最紧密的方式导出。<!-- raw HTML omitted -->参数：strDump返回的数据<!-- raw HTML omitted -->返回：无</td>
+<td>将JSON对象以最紧密的方式导出。<br />参数：strDump返回的数据<br />返回：无</td>
 </tr>
 <tr>
 <td></td>
 <td>void DumpFormat(std::string&amp; strDump, int nSpace = FORMAT_SPACE) const;</td>
-<td>将JSON对象以格式化的方式导出。<!-- raw HTML omitted -->参数：strDump返回的数据<!-- raw HTML omitted -->参数：Space 空格数<!-- raw HTML omitted -->返回：无</td>
+<td>将JSON对象以格式化的方式导出。<br />参数：strDump返回的数据<br />参数：Space 空格数<br />返回：无</td>
 </tr>
 <tr>
 <td></td>
 <td>JsonValue&amp; operator [] (const char* szKey);/const JsonValue&amp; operator [] (const char* szKey) const;</td>
-<td>JSON对象[]操作符，有点类似STL的MAP，当键不存在时，插入一个。<!-- raw HTML omitted -->参数：szKey 健<!-- raw HTML omitted -->返回：JSON值（可能无效）</td>
+<td>JSON对象[]操作符，有点类似STL的MAP，当键不存在时，插入一个。<br />参数：szKey 健<br />返回：JSON值（可能无效）</td>
 </tr>
 <tr>
 <td>JsonValue</td>
@@ -315,24 +315,24 @@
 <td></td>
 </tr>
 <tr>
-<td>operator char*();<!-- raw HTML omitted -->operator int();<!-- raw HTML omitted -->operator long long();<!-- raw HTML omitted -->operator float();<!-- raw HTML omitted -->operator double();<!-- raw HTML omitted -->operator Json();<!-- raw HTML omitted -->operator JsonArray();</td>
+<td>operator char*();<br />operator int();<br />operator long long();<br />operator float();<br />operator double();<br />operator Json();<br />operator JsonArray();</td>
 <td>各种转换操作符。</td>
 <td></td>
 </tr>
 <tr>
 <td></td>
-<td>JsonValue&amp; operator = (bool bVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (const char* szVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (int nVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (long long llVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (float fVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (double fVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (const Json&amp; sVal);<!-- raw HTML omitted -->JsonValue&amp; operator = (const JsonArray&amp; sArr);</td>
+<td>JsonValue&amp; operator = (bool bVal);<br />JsonValue&amp; operator = (const char* szVal);<br />JsonValue&amp; operator = (int nVal);<br />JsonValue&amp; operator = (long long llVal);<br />JsonValue&amp; operator = (float fVal);<br />JsonValue&amp; operator = (double fVal);<br />JsonValue&amp; operator = (const Json&amp; sVal);<br />JsonValue&amp; operator = (const JsonArray&amp; sArr);</td>
 <td>各种转换赋值符。</td>
 </tr>
 <tr>
 <td></td>
-<td>JsonValue&amp; operator [] (const char* szKey);<!-- raw HTML omitted -->const JsonValue&amp; operator [] (const char* szKey) const;</td>
+<td>JsonValue&amp; operator [] (const char* szKey);<br />const JsonValue&amp; operator [] (const char* szKey) const;</td>
 <td>当值是JSON对象是，此操作符有效。</td>
 </tr>
 <tr>
 <td>JsonArray</td>
 <td>JsonValue&amp; Get(int nIndex) const;</td>
-<td>获取某下标的JSON值。<!-- raw HTML omitted -->参数：下标<!-- raw HTML omitted -->返回：JSON值</td>
+<td>获取某下标的JSON值。<br />参数：下标<br />返回：JSON值</td>
 </tr>
 <tr>
 <td></td>
@@ -342,7 +342,7 @@
 <tr>
 <td></td>
 <td>int Add(JsonValue&amp; sVal);</td>
-<td>增加一JSON值到数组里。<!-- raw HTML omitted -->参数：sVal<!-- raw HTML omitted -->返回：0</td>
+<td>增加一JSON值到数组里。<br />参数：sVal<br />返回：0</td>
 </tr>
 <tr>
 <td></td>

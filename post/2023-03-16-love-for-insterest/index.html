@@ -156,9 +156,13 @@
 <p>自己本身也是搞过windows开发，也搞过qt(QML除外)，不过一上来马上就否决了，因为有一开始的痛苦的调试经历以及非常慢的开发效率。所以选择的就只有两个了：第一个就是用<code>electron</code>或<code>tauri</code>这种web的方案，国内如果不是专用软件的，绝大部分都转向了这类，因为开发效率高，web的人多。不过网易的那个云笔记，卡到我怀疑人生，就要有点失落了。不过真正的原因还是自己对css不熟悉，估计自己搞要耗费时间不会比c++少。<code>Flutter</code>也就自然而然的是选择了，<code>rust-desk</code>踩的坑也差不多了，也就轮到自己可以开始踩坑了。</p>
 <p>事实上，<code>Flutter</code>并没有让人太失望，搞普通应用也没是问题，可以比较快速的挫出界面，如图的一点demo。</p>
 <p>图示1：</p>
-<!-- raw HTML omitted -->
+<div align=center>
+<img src="/img/flutter/quant-flutter-1.png" width="50%" height="50%" />
+</div>
 <p>图示2：</p>
-<!-- raw HTML omitted -->
+<div align=center>
+<img src="/img/flutter/quant-flutter-2.png" width="50%" height="50%" />
+</div>
 <p>只是，这样瞎折腾，为爱发电下去好像不能支持长久呀……</p>
 <p>以前的旧同事有时问，这数据怎么获取，行情，交易接口怎么搞？</p>
 <p>其实数据和行情部分很简单，网上有开源的，再不行自己网上爬数据。自己开始之前是用<code>tushare pro</code>免费使用加上自己爬的一些，后面发现<code>tushare pro</code>居然只要一年的使用权，要使用必须同过积分的形式变相收费。所以之后切换至<code>akshare</code>和<code>opentools</code>，不过<code>akshare</code>这个接口变更的有的频繁，突然间接口有改名，或者删除，又或者改变返回结果的形式，更为重要的是因为我是重复调用的，他的接口很多冗余，很多时候都必须改他的接口。最后，自己用<code>rust</code>重写了获取数据接口，简单封装给<code>python</code>使用，算是比较稳定了。</p>

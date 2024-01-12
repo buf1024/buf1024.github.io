@@ -149,11 +149,11 @@
   </div>
 
     <div class="post_body"><h4 id="tcpdump使用方法">Tcpdump使用方法</h4>
-<p>（1）<strong>第一种是关于类型的关键字主要包括<code>host</code>，<code>net</code>，<code>port</code></strong><br>
+<p>（1）<strong>第一种是关于类型的关键字主要包括<code>host</code>，<code>net</code>，<code>port</code></strong><br />
 例如： <code>host 210.27.48.2</code>，指明 <code>210.27.48.2</code>是一台主机，<code>net 202.0.0.0</code> 指明<code>202.0.0.0</code>是一个网络地址，<code>port 23</code> 指明端口号是<code>23</code>。如果没有指定类型，缺省的类型是<code>host</code>.</p>
-<p>（2）第二种是确定传输方向的关键字主要包括<code>src</code> , <code>dst</code> ,<code>dst or src</code>, <code>dst and src</code><br>
+<p>（2）第二种是确定传输方向的关键字主要包括<code>src</code> , <code>dst</code> ,<code>dst or src</code>, <code>dst and src</code><br />
 这些关键字指明了传输的方向，例如：<code>src 210.27.48.2</code>，指明ip包中源地址是<code>210.27.48.2</code> , <code>dst net 202.0.0.0</code> 指明目的网络地址是<code>202.0.0.0</code>。如果没有指明方向关键字，则缺省是<code>src or dst</code>关键字。</p>
-<p>（3）第三种是协议的关键字，主要包括<code>fddi</code>，<code>ip</code>，<code>arp</code>，<code>rarp</code>，<code>tcp</code>，<code>udp</code>等类型<br>
+<p>（3）第三种是协议的关键字，主要包括<code>fddi</code>，<code>ip</code>，<code>arp</code>，<code>rarp</code>，<code>tcp</code>，<code>udp</code>等类型<br />
 Fddi指明是在FDDI(分布式光纤数据接口网络)上的特定的网络协议，实际上它是&quot;ether&quot;的别名，fddi和ether具有类似的源地址和目的地址，所以可以将fddi协议包当作ether的包进行处理和分析。其他的几个关键字就是指明了监听的包的协议内容。如果没有指定任何协议，则tcpdump将会监听所有协议的信息包。</p>
 <p>除了这三种类型的关键字之外，其他重要的关键字如下：<code>gateway</code>, <code>broadcast</code>,<code>less</code>,<code>greater</code>,还有三种逻辑运算，取非运算是<code>not</code> ，<code>!</code>，与运算是<code>and</code>，<code>&amp;&amp;</code>;或运算 是<code>or</code>，<code>││</code>；这些关键字可以组合起来构成强大的组合条件来满足人们的需要，下面举几个例子来说明。普通情况下，直接启动tcpdump将监视第一个网络界面上所有流过的数据包。</p>
 <pre><code>A. tcpdump –i eth0 –c 10  
@@ -195,9 +195,9 @@ K. 如果我们只需要列出送到80端口的数据包，用dst port 80；如�
 tcpdump –i eth0 host hostname and dst port 80  #目的端口是80 或者
 tcpdump –i eth0 host hostname and src port 80  #源端口是80, 80端口一般是提供http的服务的主机
 </code></pre>
-<p>tcpdump输出格式:<br>
+<p>tcpdump输出格式:<br />
 总的的输出格式为：系统时间 来源主机.端口 &gt; 目标主机.端口 数据包参数</p>
-<p>如果要用wireshark分析数据，须加上<code>-s –w</code>选项，否则wireshark不能识别文件格式：<br>
+<p>如果要用wireshark分析数据，须加上<code>-s –w</code>选项，否则wireshark不能识别文件格式：<br />
 <code>tcpdump -i eth0 -c 100 -s 0 -w /home/data.pcap</code></p>
 <p>实际上就是<code>BPF</code>语法，此语法同时适用于WIRESHARK获取报文的语法。</p>
 

@@ -152,7 +152,7 @@
     <div class="post_body"><p>这里记录的是一些常见的错误或技巧或一些注意事项等，不定时更新:</p>
 <ul>
 <li>
-<p><a href="http://hexo.io">hexo</a> 安装（含插件）<br>
+<p><a href="http://hexo.io">hexo</a> 安装（含插件）<br />
 hexo 是相对比较好的一个静态BLOG生成器，虽然我在<a href="http://www.raspberrypi.org">树莓派</a>上面编译一个nodejs耗时6个多小时，每次hexo -g耗时接近15分钟，但这不影响使用。安装：</p>
 <pre><code>  npm install -g hexo    
   npm install hexo-generator-feed    
@@ -160,7 +160,7 @@ hexo 是相对比较好的一个静态BLOG生成器，虽然我在<a href="http:
 </code></pre>
 </li>
 <li>
-<p>python 后台操作git<br>
+<p>python 后台操作git<br />
 程序切换的git目录后:</p>
 <pre><code>  git_cmd = [&quot;git&quot;, &quot;add&quot;, &quot;./*&quot;]
   ret = subprocess.call(git_cmd)
@@ -181,7 +181,7 @@ hexo 是相对比较好的一个静态BLOG生成器，虽然我在<a href="http:
 <p>同时需要在运行这个用户的主目录下添加.ssh信息。否则提交不成功</p>
 <ul>
 <li>
-<p>路由器登陆<br>
+<p>路由器登陆<br />
 TP-link路由器的登陆使用的是http basic auth。具体是每一次请求，都必须在http头输入http认证信息。http认证方式可参考：<a href="http://blog.csdn.net/hotnet522/article/details/5824716">HTTP认证方式</a>。python 代码:</p>
 <pre><code>  req = urllib2.Request(url)
   req.add_header(&quot;Authorization&quot;, &quot;Basic aGVsbG86d29ybGQ=&quot;)
@@ -190,7 +190,7 @@ TP-link路由器的登陆使用的是http basic auth。具体是每一次请求�
 </code></pre>
 </li>
 <li>
-<p><a href="https://github.com/buf1024/mysch">mysch</a> 程序需全路径<br>
+<p><a href="https://github.com/buf1024/mysch">mysch</a> 程序需全路径<br />
 mysch是调度监控程序，目前没有流量控制，只有时间控制，调用的程序名需要全路径。</p>
 </li>
 <li>

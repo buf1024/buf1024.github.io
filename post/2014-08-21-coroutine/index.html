@@ -208,11 +208,11 @@
 </code></pre>
 <p>传递的参数<code>top</code>指向的是栈顶，栈顶与新定义的变量相减<code>top - &amp;dummy</code>得到栈的大小。这里做了一个特定的假设，栈由高地址向低地址方向增长(这是非常典型的程序布局方式，虽然我不知道那种CPU不是用这种布局，但是觉得肯定有有低地址向高地址增长的)，这种程序布局的CPU一般是X86构架的，所以这个库时与CPU结构相关的。</p>
 <p>总的来说，这个协程库写的非常精简。<a href="http://dunkels.com/adam/pt/">protothread</a>这种高级货，暂时不看了。粗略的介绍完毕，如有错误，请批评指正。</p>
-<hr>
-<p>2016-04-28 补充：<br>
-&ldquo;&ldquo;&ldquo;根据linux手册页，<code>getcontext</code>返回的是当前执行进程的上下文信息，包括信号掩码，执行栈，寄存器等信息。比较值得注意的是<code>makecontext</code>，该函数除了传递<code>ucp</code>外，还传递一个通用的函数指针<code>func</code>和一个<code>argc</code>，传递给<code>func</code>的函数原型并不一定是<code>void(*)()</code>类型的，参数的个数由<code>argc</code>确定。当调用<code>makecontext</code>成功后，如果对这个上下文进行切换(<code>swapcontext</code>)或用这个上下文设置(<code>setcontext</code>)，内核就会调用该<code>func</code>函数。<code>协程</code>的实现就是用到这个重要的原理。linux手册页有个详细的例子介绍<code>makecontext</code>怎么用的，请参考之。&rdquo;&rdquo;&rdquo;<br>
-上面一段说明说的比较笼统，再简单补充不使用这个库的例子：<br>
-main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br>
+<hr />
+<p>2016-04-28 补充：<br />
+&ldquo;&ldquo;&ldquo;根据linux手册页，<code>getcontext</code>返回的是当前执行进程的上下文信息，包括信号掩码，执行栈，寄存器等信息。比较值得注意的是<code>makecontext</code>，该函数除了传递<code>ucp</code>外，还传递一个通用的函数指针<code>func</code>和一个<code>argc</code>，传递给<code>func</code>的函数原型并不一定是<code>void(*)()</code>类型的，参数的个数由<code>argc</code>确定。当调用<code>makecontext</code>成功后，如果对这个上下文进行切换(<code>swapcontext</code>)或用这个上下文设置(<code>setcontext</code>)，内核就会调用该<code>func</code>函数。<code>协程</code>的实现就是用到这个重要的原理。linux手册页有个详细的例子介绍<code>makecontext</code>怎么用的，请参考之。&rdquo;&rdquo;&rdquo;<br />
+上面一段说明说的比较笼统，再简单补充不使用这个库的例子：<br />
+main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
 调用co_resume 后，执行上下文切换，调用协程函数func，在协程函数func里面，调用co_yield, 执行上下文切换，返回main，下次co_resume时，func从co_yield后面继续执行(因为之前保存了上下文的切换信息)。</p>
 <p><a href="https://github.com/buf1024/coroutine">例子</a>输出：</p>
 <pre><code>    main        

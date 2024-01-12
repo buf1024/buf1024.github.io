@@ -179,19 +179,19 @@
 这张图片有点过期，保留位是6位，实际的情况是，保留位的后2位已经被使用了。保留位的第5位是Congestion Window Reduced(<em>CWR</em>)，第6位是ECN-Echo(<em>ECN</em>)。TCP协议的其他部分不说，先看看TCP协议的几个不是很了解标志是什么意思。</p>
 <ul>
 <li>
-<p><em>CWR</em>(Congestion Window Reduced)<br>
+<p><em>CWR</em>(Congestion Window Reduced)<br />
 简单来说就是网络不是很畅通了，通知对方减少阻塞窗口，发包速度发慢一点。</p>
 </li>
 <li>
-<p><em>ECN</em>（ECN-Echo）<br>
+<p><em>ECN</em>（ECN-Echo）<br />
 <em>ECN</em>两个作用，在TCP三次握手时表明TCP端是否支持ECN；在传输数据时，发送方是无法知道网络是否畅通的，但是经过重重的路由后，路由根据网络的情况可以知道是否阻塞，路由会设置在IP层会设置的相应的标志，即接收端发现了拥塞。<em>CWR</em>为发送端缩小拥塞窗口标志，用来通知发送端它已经收到了设置<em>ECN</em>标志，应该减慢发包速度。关于<em>ECN</em>的详细描述请参考：<a href="http://blog.csdn.net/zhangskd/article/details/7246503"><em>ECN</em></a></p>
 </li>
 <li>
-<p><em>URG</em>(Urgent)<br>
+<p><em>URG</em>(Urgent)<br />
 这就是传说中的带外数据。因为TCP是没有消息边界的，假如有一种情况，你已经发送了一些数据，但是此时，你要发送一些数据优先处理，就可以设置这些标志，同时如果设置了这个标志，紧急指针也会设置为相应的偏移。当接受方收到<em>URG</em>数据时，不缓存在接收窗口，直接往上传给上层。具体的使用可以参考<a href="http://wenku.baidu.com/view/f04a4dff9e31433239689341.html">TCP带外数据</a>。大体来说，就是，调用<code>send</code>和<code>recv</code>是要加上<code>MSG_OOB</code>参数。同时接收方要处理<code>SIGURG</code>信号。不过据说这个带外数据在实际上，用得很少。</p>
 </li>
 <li>
-<p><em>PSH</em>（Push）<br>
+<p><em>PSH</em>（Push）<br />
 简单来说，就是告诉对方，我发这么多数据了，你可以处理了，不用缓冲在接收窗口了，直接交数据给上层吧。如果设置了<code>SO_NODELAY</code>选项，可以强制设置这个标志，如果设置了这个标志，数据就不缓冲在发送窗口那里，直接发送。</p>
 </li>
 </ul>
@@ -230,20 +230,20 @@
 </li>
 </ol>
 <ul>
-<li>第1帧，发送SYN J:<br>
-A -&gt; B seq = 0, win = 8192, len = 0, MSS = 1440, WS = 4, SACK_PERM = 1<br>
+<li>第1帧，发送SYN J:<br />
+A -&gt; B seq = 0, win = 8192, len = 0, MSS = 1440, WS = 4, SACK_PERM = 1<br />
 WS(Window Scale), 4表示左移动4位，原来窗口大小是16为，现在是20为，现代扩大了2^4倍，关于WS，这里有比较详细的描述<a href="http://packetlife.net/blog/2010/aug/4/tcp-windows-and-window-scaling/">tcp-windows-and-window-scaling</a>。这里比较疑惑的就是SACK_PERM这个TCP选项。SACK（Select ACKnowledgement）的目的就是当出现大量的报文丢失时增加恢复时间来用的，类似于累计ACK，就是说N多个ACK合成一个SACK。关于SACK，有两个地方描述的比较详细<a href="http://kb.pert.geant.net/PERTKB/SelectiveAcknowledgements">SelectiveAcknowledgements</a>,<a href="http://msdn.microsoft.com/en-us/library/aa917455.aspx">TCP Selective Acknowledgment</a>。</li>
-<li>第2帧，发送SYN K， ACK J+1:<br>
-B -&gt; A seq = 0, ACK = 1, Win = 14600, Len = 0, MSS = 1448, SACK_PERM = 1 WS = 128<br>
+<li>第2帧，发送SYN K， ACK J+1:<br />
+B -&gt; A seq = 0, ACK = 1, Win = 14600, Len = 0, MSS = 1448, SACK_PERM = 1 WS = 128<br />
 这些含义看第1帧，win = 14600, WS = 128，可以看到这台服务器的窗口非常大，WS也很多，网络性能应该不错的（事实也如此）。</li>
 <li>第3帧，发送SYN J+1， ACK K+1:
-A -&gt; B seq = 1, ACK = 1, win = 66608, Len = 0<br>
+A -&gt; B seq = 1, ACK = 1, win = 66608, Len = 0<br />
 这是建立TCP连接的第3次握手，这时win = 66608了，转换为2进制有17位比16位长，因为再第1帧第2帧的交互中已经交互了各种的TCP选项，所以这次的确认不带有TCP选项。</li>
 </ul>
 <p>当这3次交互完成后，连接真正建立，只要服务端accept后，就可以接收和发送数据了。</p>
 <ol start="2">
 <li>
-<p>TCP数据传输<br>
+<p>TCP数据传输<br />
 <figure>
   <picture>
 
@@ -268,11 +268,11 @@ A -&gt; B seq = 1, ACK = 1, win = 66608, Len = 0<br>
 
     </picture>
 </figure>
-<br>
+<br />
 截图的是报文的第7帧，这个帧报文在这次抓的报文中相对有代表性点的。这个帧的报文设置了<code>PSH</code>标志，而且是TCP分片传输的报文，因为此帧的报文是第6帧报文分片传输的，从<code>ACK = 125</code>可以看出。传输数据的报文没有什么特别可以说的：~</p>
 </li>
 <li>
-<p>TCP终止连接的4次交换的部分是帧19到帧21（可以发现，这里的交互是有问题的）。<br>
+<p>TCP终止连接的4次交换的部分是帧19到帧21（可以发现，这里的交互是有问题的）。<br />
 <figure>
   <picture>
 
@@ -301,14 +301,14 @@ A -&gt; B seq = 1, ACK = 1, win = 66608, Len = 0<br>
 </li>
 </ol>
 <ul>
-<li>第19帧，发送FIN J, ACK K:<br>
-A -&gt; B seq = 2559, ack = 2361, win = 65812, len = 0<br>
+<li>第19帧，发送FIN J, ACK K:<br />
+A -&gt; B seq = 2559, ack = 2361, win = 65812, len = 0<br />
 客户端发起FIN主动关闭连接和上个报文的ACK（应该是接收完了数据，关闭SOCKET），客户端最后应该会变成TIME_WAIT状态。这是第一次交换。</li>
-<li>第20帧，发送FIN K， ACK J+1:<br>
-B -&gt; A seq = 2361, ack = 2560, Win = 26240, Len = 37<br>
+<li>第20帧，发送FIN K， ACK J+1:<br />
+B -&gt; A seq = 2361, ack = 2560, Win = 26240, Len = 37<br />
 这次交换中，除了对客户端的ACK外，同时发送FIN，但同时带有37字节的数据，这37个数据不是我们期待有的。可以猜测一下，可能是服务端里面有37个字节还没有发送，在收到FIN后，把缓存里面的数据全部发送过去。服务端如果忘记的关闭连接，会变成CLOSE_WAIT状态。这里两次的交换合并在一起了。</li>
 <li>第21帧，发送RST， ACK K+Len:
-A -&gt; B seq = 2560, ACK = 2398, win = 0, Len = 0<br>
+A -&gt; B seq = 2560, ACK = 2398, win = 0, Len = 0<br />
 主动关闭一方收到FIN，回应ACK。但是这里却有一个不是我们期待的<code>RST</code>标志。<code>RST</code>标志表明往已经关闭连接发送数据，这是个错误。这是第四次交换。</li>
 </ul>
 <p>这里的客户端与服务端的交换是有问题的，在第20帧，收到FIN时，不应该再发送数据，这样发送的数据很有可能收到的就是<code>RST</code>。但是这并不一定是发送数据一方的问题，很有可能是客户端还没有接受完数据就关闭连接了。但可以肯定的是，在客户端或服务端某个地方肯定存在BUG。</p>

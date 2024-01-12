@@ -157,17 +157,17 @@
 <thead>
 <tr>
 <th>名称</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>name-version-release</td>
-<td style="text-align:left">命名版本号之类的，如MySQL-server-5.0.i386.rpm</td>
+<td align="left">命名版本号之类的，如MySQL-server-5.0.i386.rpm</td>
 </tr>
 <tr>
 <td>architecture</td>
-<td style="text-align:left">适用的结构，如i386, i686, x86_64, noarch</td>
+<td align="left">适用的结构，如i386, i686, x86_64, noarch</td>
 </tr>
 </tbody>
 </table>
@@ -176,29 +176,29 @@
 <thead>
 <tr>
 <th>名称</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>BUILD</td>
-<td style="text-align:left">rpmbuild在此目录构建软件</td>
+<td align="left">rpmbuild在此目录构建软件</td>
 </tr>
 <tr>
 <td>RPMS</td>
-<td style="text-align:left">rmpbuild存储生成的二进制rpm文件目录</td>
+<td align="left">rmpbuild存储生成的二进制rpm文件目录</td>
 </tr>
 <tr>
 <td>SOURCES</td>
-<td style="text-align:left">所要构建软件的源码</td>
+<td align="left">所要构建软件的源码</td>
 </tr>
 <tr>
 <td>SPECS</td>
-<td style="text-align:left">SPECS文件所在的目录</td>
+<td align="left">SPECS文件所在的目录</td>
 </tr>
 <tr>
 <td>SRPMS</td>
-<td style="text-align:left">rmpbuild存储生成的src rpm包的目录</td>
+<td align="left">rmpbuild存储生成的src rpm包的目录</td>
 </tr>
 </tbody>
 </table>
@@ -207,97 +207,97 @@
 <thead>
 <tr>
 <th>名称</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Summary</td>
-<td style="text-align:left">软件包简要的描述</td>
+<td align="left">软件包简要的描述</td>
 </tr>
 <tr>
 <td>Name</td>
-<td style="text-align:left">软件包名称</td>
+<td align="left">软件包名称</td>
 </tr>
 <tr>
 <td>Version</td>
-<td style="text-align:left">软件包定义的版本</td>
+<td align="left">软件包定义的版本</td>
 </tr>
 <tr>
 <td>Release</td>
-<td style="text-align:left">软件包发布版本</td>
+<td align="left">软件包发布版本</td>
 </tr>
 <tr>
 <td>License</td>
-<td style="text-align:left">软件包许可</td>
+<td align="left">软件包许可</td>
 </tr>
 <tr>
 <td>Group</td>
-<td style="text-align:left">软件包分类（在GNOME应用程序可看到）如Applications/Media</td>
+<td align="left">软件包分类（在GNOME应用程序可看到）如Applications/Media</td>
 </tr>
 <tr>
 <td>Source</td>
-<td style="text-align:left">软件包源码下载地址</td>
+<td align="left">软件包源码下载地址</td>
 </tr>
 <tr>
 <td>URL</td>
-<td style="text-align:left">源码相关网站</td>
+<td align="left">源码相关网站</td>
 </tr>
 <tr>
 <td>Distribution</td>
-<td style="text-align:left">发行版系列</td>
+<td align="left">发行版系列</td>
 </tr>
 <tr>
 <td>Packager</td>
-<td style="text-align:left">打包人的信息</td>
+<td align="left">打包人的信息</td>
 </tr>
 <tr>
 <td>Requires</td>
-<td style="text-align:left">如 mysql &gt;= 3.30 或者 mysql</td>
+<td align="left">如 mysql &gt;= 3.30 或者 mysql</td>
 </tr>
 <tr>
 <td>sources</td>
-<td style="text-align:left">源码tar包，可以这样设置为通用的:%{name}-%{version}.tar.gz</td>
+<td align="left">源码tar包，可以这样设置为通用的:%{name}-%{version}.tar.gz</td>
 </tr>
 <tr>
 <td>Buildroot</td>
-<td style="text-align:left">rmpbuild的暂存区，可以设置为通用的:%{_tmppath}/%{name}-%{version}-root</td>
+<td align="left">rmpbuild的暂存区，可以设置为通用的:%{_tmppath}/%{name}-%{version}-root</td>
 </tr>
 <tr>
 <td>%description</td>
-<td style="text-align:left">软件详细描述，可多行</td>
+<td align="left">软件详细描述，可多行</td>
 </tr>
 <tr>
 <td>%prep</td>
-<td style="text-align:left">软件编译之前的处理，如解压</td>
+<td align="left">软件编译之前的处理，如解压</td>
 </tr>
 <tr>
 <td>%setup</td>
-<td style="text-align:left">不知道什么用，不过通常在%prep下面%setup -q</td>
+<td align="left">不知道什么用，不过通常在%prep下面%setup -q</td>
 </tr>
 <tr>
 <td>%build</td>
-<td style="text-align:left">开始编译软件，如make</td>
+<td align="left">开始编译软件，如make</td>
 </tr>
 <tr>
 <td>%install</td>
-<td style="text-align:left">开始安装软件，如make install</td>
+<td align="left">开始安装软件，如make install</td>
 </tr>
 <tr>
 <td>%makeinstall</td>
-<td style="text-align:left">调用Makefiel的make install</td>
+<td align="left">调用Makefiel的make install</td>
 </tr>
 <tr>
 <td>%clean</td>
-<td style="text-align:left">rmpbuild的clean命令</td>
+<td align="left">rmpbuild的clean命令</td>
 </tr>
 <tr>
 <td>%post</td>
-<td style="text-align:left">rmpbuild构建完成的命令</td>
+<td align="left">rmpbuild构建完成的命令</td>
 </tr>
 <tr>
 <td>%files</td>
-<td style="text-align:left">要打包的文件</td>
+<td align="left">要打包的文件</td>
 </tr>
 </tbody>
 </table>
@@ -307,37 +307,37 @@
 <thead>
 <tr>
 <th>名称</th>
-<th style="text-align:left">说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>-ba</td>
-<td style="text-align:left">构建所有的东西，包含二进制和源码的RPM</td>
+<td align="left">构建所有的东西，包含二进制和源码的RPM</td>
 </tr>
 <tr>
 <td>-bb</td>
-<td style="text-align:left">构建二进制的RPM</td>
+<td align="left">构建二进制的RPM</td>
 </tr>
 <tr>
 <td>-bc</td>
-<td style="text-align:left">构建（编译）程序，但不生成RPM</td>
+<td align="left">构建（编译）程序，但不生成RPM</td>
 </tr>
 <tr>
 <td>-bp</td>
-<td style="text-align:left">准备构建RPM</td>
+<td align="left">准备构建RPM</td>
 </tr>
 <tr>
 <td>-bi</td>
-<td style="text-align:left">构建二进制的RPM并安装之</td>
+<td align="left">构建二进制的RPM并安装之</td>
 </tr>
 <tr>
 <td>-bl</td>
-<td style="text-align:left">检查RPM文件列表</td>
+<td align="left">检查RPM文件列表</td>
 </tr>
 <tr>
 <td>-bs</td>
-<td style="text-align:left">构建源码的RPM</td>
+<td align="left">构建源码的RPM</td>
 </tr>
 </tbody>
 </table>
@@ -380,8 +380,8 @@
     #%defattr(-,root,root,-)
     #%doc
 </code></pre>
-<p>我的机子是x86_64的，在我机子上运行rmpbuil –ba jmm.spec将在RPMS目录生成x86_64/jmm-1.0-1.x86_68.rpm，在SRPMS目录生成jmm-1.0-1.src.rpm。<br>
-要注意一点的就是%files下面的文件是要写buildroot下面的文件。<br>
+<p>我的机子是x86_64的，在我机子上运行rmpbuil –ba jmm.spec将在RPMS目录生成x86_64/jmm-1.0-1.x86_68.rpm，在SRPMS目录生成jmm-1.0-1.src.rpm。<br />
+要注意一点的就是%files下面的文件是要写buildroot下面的文件。<br />
 查看刚才编译的文件信息（PS这个东西是要libevent2的所以，如果安装的话，是会失败的）：</p>
 <pre><code>    [heidong@CLOUD x86_64]$ rpm -qpi jmm-1.0-1.x86_64.rpm    
     Name        : jmm                          Relocations: (not relocatable)

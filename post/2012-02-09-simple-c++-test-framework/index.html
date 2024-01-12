@@ -166,41 +166,41 @@
 <thead>
 <tr>
 <th>断言宏</th>
-<th style="text-align:left">含义</th>
+<th align="left">含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>EXPECT_EQ/ASSERT_EQ</td>
-<td style="text-align:left">期待数值相等</td>
+<td align="left">期待数值相等</td>
 </tr>
 <tr>
 <td>EXPECT_NEQ/ASSERT_NEQ</td>
-<td style="text-align:left">期待数值不相等</td>
+<td align="left">期待数值不相等</td>
 </tr>
 <tr>
 <td>EXPECT_STREQ/ASSERT_STREQ</td>
-<td style="text-align:left">期待字符串相等</td>
+<td align="left">期待字符串相等</td>
 </tr>
 <tr>
 <td>EXPECT_STRNEQ/ASSERT_STRNEQ</td>
-<td style="text-align:left">期待字符串不相等</td>
+<td align="left">期待字符串不相等</td>
 </tr>
 <tr>
 <td>EXPECT_BINEQ/ASSERT_BINEQ</td>
-<td style="text-align:left">期待二进制相等</td>
+<td align="left">期待二进制相等</td>
 </tr>
 <tr>
 <td>EXPECT_BINNEQ/ASSERT_BINNEQ</td>
-<td style="text-align:left">期待二进制不相等</td>
+<td align="left">期待二进制不相等</td>
 </tr>
 <tr>
 <td>EXPECT_TRUE/ASSERT_TRUE</td>
-<td style="text-align:left">期待值为真</td>
+<td align="left">期待值为真</td>
 </tr>
 <tr>
 <td>EXPECT_FALSE/ASSERT_FALSE</td>
-<td style="text-align:left">期待值为假</td>
+<td align="left">期待值为假</td>
 </tr>
 </tbody>
 </table>
@@ -232,20 +232,20 @@
 <thead>
 <tr>
 <th>宏</th>
-<th style="text-align:left">含义</th>
-<th style="text-align:left">实例</th>
+<th align="left">含义</th>
+<th align="left">实例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>TEST_F</td>
-<td style="text-align:left">测试固件</td>
-<td style="text-align:left">TEST_F(MyTestFixture, MyCase) <!-- raw HTML omitted -->{ <!-- raw HTML omitted -->} <!-- raw HTML omitted -->MyTestFixture是你继续Test的固件。<!-- raw HTML omitted -->MyCase是这个用例的名称。</td>
+<td align="left">测试固件</td>
+<td align="left">TEST_F(MyTestFixture, MyCase) <br>{ <br>} <br>MyTestFixture是你继续Test的固件。<br>MyCase是这个用例的名称。</td>
 </tr>
 <tr>
 <td>TEST</td>
-<td style="text-align:left">测试用用例</td>
-<td style="text-align:left">TEST(MyDummyFixture, MyCase) <!-- raw HTML omitted -->{ <!-- raw HTML omitted -->} <!-- raw HTML omitted -->MyTestFixture是固件名称，事实上它什么也不做。<!-- raw HTML omitted -->MyCase是这个用例的名称。</td>
+<td align="left">测试用用例</td>
+<td align="left">TEST(MyDummyFixture, MyCase) <br>{ <br>} <br>MyTestFixture是固件名称，事实上它什么也不做。<br>MyCase是这个用例的名称。</td>
 </tr>
 </tbody>
 </table>
@@ -261,7 +261,7 @@
         virtual void TearDown(){}
     };
 </code></pre>
-<p>看的人应该明白。不解释。<br>
+<p>看的人应该明白。不解释。<br />
 在初始化之前，如果使用测试环境，则要用宏SET_ENVIRONMENT将环境添加进去。</p>
 <h3 id="其它">其它</h3>
 <p>还有一些与测试无关，但是与本框架相关的一些宏。</p>
@@ -269,17 +269,17 @@
 <thead>
 <tr>
 <th>宏</th>
-<th style="text-align:left">含义</th>
+<th align="left">含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>INIT_TEST</td>
-<td style="text-align:left">初始化框架，在使用调用</td>
+<td align="left">初始化框架，在使用调用</td>
 </tr>
 <tr>
 <td>RUN_ALL_TEST</td>
-<td style="text-align:left">运行测试</td>
+<td align="left">运行测试</td>
 </tr>
 </tbody>
 </table>
@@ -288,21 +288,21 @@
 <thead>
 <tr>
 <th>选项</th>
-<th style="text-align:left">含义</th>
+<th align="left">含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>&ndash;help</td>
-<td style="text-align:left">输出帮助信息，仅显示英文，因为哥的工作的UNIX不支持中文。</td>
+<td align="left">输出帮助信息，仅显示英文，因为哥的工作的UNIX不支持中文。</td>
 </tr>
 <tr>
 <td>&ndash;list_tests</td>
-<td style="text-align:left">列出测试用例</td>
+<td align="left">列出测试用例</td>
 </tr>
 <tr>
 <td>&ndash;filter=POSTIVE_PATTERNS[-NEGATIVE_PATTERNS]</td>
-<td style="text-align:left">过虑，仅支持通佩符</td>
+<td align="left">过虑，仅支持通佩符</td>
 </tr>
 </tbody>
 </table>

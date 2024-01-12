@@ -148,9 +148,9 @@
     <div class="post_body"><h1 id="volume-indicators-量指标">Volume Indicators 量指标</h1>
 <h3 id="ad---chaikin-ad-line-量价指标">AD - Chaikin A/D Line 量价指标</h3>
 <blockquote>
-<p>函数名：AD<br>
-名称：Chaikin A/D Line 累积/派发线（Accumulation/Distribution Line）<br>
-简介：Marc Chaikin提出的一种平衡交易量指标，以当日的收盘价位来估算成交流量，用于估定一段时间内该证券累积的资金流量。<br>
+<p>函数名：AD<br />
+名称：Chaikin A/D Line 累积/派发线（Accumulation/Distribution Line）<br />
+简介：Marc Chaikin提出的一种平衡交易量指标，以当日的收盘价位来估算成交流量，用于估定一段时间内该证券累积的资金流量。<br />
 计算公式：</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
@@ -161,11 +161,11 @@
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">多空对比 = [（收盘价- 最低价） - （最高价 - 收盘价）] / （最高价 - 最低价)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>若最高价等于最低价： 多空对比 = （收盘价 / 昨收盘） - 1<br>
-研判： <br>
-1、A/D测量资金流向，向上的A/D表明买方占优势，而向下的A/D表明卖方占优势<br>
-2、A/D与价格的背离可视为买卖信号，即底背离考虑买入，顶背离考虑卖出<br>
-3、应当注意A/D忽略了缺口的影响，事实上，跳空缺口的意义是不能轻易忽略的<br>
+</div><p>若最高价等于最低价： 多空对比 = （收盘价 / 昨收盘） - 1<br />
+研判： <br />
+1、A/D测量资金流向，向上的A/D表明买方占优势，而向下的A/D表明卖方占优势<br />
+2、A/D与价格的背离可视为买卖信号，即底背离考虑买入，顶背离考虑卖出<br />
+3、应当注意A/D忽略了缺口的影响，事实上，跳空缺口的意义是不能轻易忽略的<br />
 A/D指标无需设置参数，但在应用时，可结合指标的均线进行分析</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -177,13 +177,13 @@ A/D指标无需设置参数，但在应用时，可结合指标的均线进行�
 </div>
 </div><h3 id="adosc---chaikin-ad-oscillator">ADOSC - Chaikin A/D Oscillator</h3>
 <blockquote>
-<p>函数名：ADOSC<br>
-名称：Chaikin A/D Oscillator Chaikin震荡指标<br>
-简介：将资金流动情况与价格行为相对比，检测市场中资金流入和流出的情况<br>
-计算公式：fastperiod A/D - slowperiod A/D<br>
-研判：<br>
-1、交易信号是背离：看涨背离做多，看跌背离做空<br>
-2、股价与90天移动平均结合，与其他指标结合<br>
+<p>函数名：ADOSC<br />
+名称：Chaikin A/D Oscillator Chaikin震荡指标<br />
+简介：将资金流动情况与价格行为相对比，检测市场中资金流入和流出的情况<br />
+计算公式：fastperiod A/D - slowperiod A/D<br />
+研判：<br />
+1、交易信号是背离：看涨背离做多，看跌背离做空<br />
+2、股价与90天移动平均结合，与其他指标结合<br />
 3、由正变负卖出，由负变正买进</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
@@ -196,16 +196,16 @@ A/D指标无需设置参数，但在应用时，可结合指标的均线进行�
 </div>
 </div><h3 id="obv---on-balance-volume">OBV - On Balance Volume</h3>
 <blockquote>
-<p>函数名：OBV<br>
-名称：On Balance Volume 能量潮<br>
-简介：Joe Granville提出，通过统计成交量变动的趋势推测股价趋势<br>
+<p>函数名：OBV<br />
+名称：On Balance Volume 能量潮<br />
+简介：Joe Granville提出，通过统计成交量变动的趋势推测股价趋势<br />
 计算公式：以某日为基期，逐日累计每日上市股票总成交量，若隔日指数或股票上涨
 ，则基期OBV加上本日成交量为本日OBV。隔日指数或股票下跌，
-则基期OBV减去本日成交量为本日OBV<br>
-研判：<br>
-1、以“N”字型为波动单位，一浪高于一浪称“上升潮”，下跌称“跌潮”；上升潮买进，跌潮卖出<br>
-2、须配合K线图走势<br>
-3、用多空比率净额法进行修正，但不知TA-Lib采用哪种方法<br>
+则基期OBV减去本日成交量为本日OBV<br />
+研判：<br />
+1、以“N”字型为波动单位，一浪高于一浪称“上升潮”，下跌称“跌潮”；上升潮买进，跌潮卖出<br />
+2、须配合K线图走势<br />
+3、用多空比率净额法进行修正，但不知TA-Lib采用哪种方法<br />
 <code>计算公式： 多空比率净额= [（收盘价－最低价）－（最高价-收盘价）] ÷（ 最高价－最低价）×成交量</code></p>
 </blockquote>
 <div class="highlight"><div class="chroma">

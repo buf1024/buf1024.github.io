@@ -151,27 +151,27 @@
     <div class="post_body"><p>GTEST 是简单而且又非常实用的测试框架。下面关于GTEST的一些简单总结。</p>
 <ol>
 <li>
-<p>编译<br>
+<p>编译<br />
 在GNU系统下：</p>
 <pre><code> g++ -I${GTEST_DIR}/include -I${GTEST_DIR} -c ${GTEST_DIR}/src/gtest-all.cc        
 
  ar -rv libgtest.a gtest-all.o    
 </code></pre>
-<p>在WINDOWS下：<br>
+<p>在WINDOWS下：<br />
 GTEST在MSVC下面提供了相应的工程文件，直接用VS编译即可。</p>
 </li>
 <li>
-<p>简单用法<br>
+<p>简单用法<br />
 在GNU系统下，直接包含GTEST的头文件，连接到GTEST库。</p>
 <pre><code> g++ -I${GTEST_DIR}/include path/to/your_test.cc libgtest.a –lpthread -o your_test        
 </code></pre>
 </li>
 </ol>
-<p>在WINDOWS下直接连接到静态库。<br>
+<p>在WINDOWS下直接连接到静态库。<br />
 3. SetUp &amp; TearDown
-GTEST提供了以下级别的SETUP和TEARDOW。<br>
-3.1 程序级别<br>
-程序级别的是指程序在启动的时候和结束的时候分别SETUP和TEARDOWN一次。其作用与全局变量类似。<br>
+GTEST提供了以下级别的SETUP和TEARDOW。<br />
+3.1 程序级别<br />
+程序级别的是指程序在启动的时候和结束的时候分别SETUP和TEARDOWN一次。其作用与全局变量类似。<br />
 第一步，继承类：</p>
 <pre><code>    class Environment {
 
@@ -201,7 +201,7 @@ GTEST提供了以下级别的SETUP和TEARDOW。<br>
 
     };
 </code></pre>
-<p>重写里面的SETUP和TEARDOWN方法。<br>
+<p>重写里面的SETUP和TEARDOWN方法。<br />
 第二步，调用Environment* AddGlobalTestEnvironment(Environment* env)，注意这个要在RUN_ALL_TESTS前调用。如</p>
 <pre><code>    int main(int argc, char* argv[])
     {
@@ -210,8 +210,8 @@ GTEST提供了以下级别的SETUP和TEARDOW。<br>
         return RUN_ALL_TESTS();
     }
 </code></pre>
-<p>3.2 Fixture 级别<br>
-Fixture 级别是指，对于在这FIXTURE里的所有TESTCASE，只调用一次SETUP和TEARDOWN。<br>
+<p>3.2 Fixture 级别<br />
+Fixture 级别是指，对于在这FIXTURE里的所有TESTCASE，只调用一次SETUP和TEARDOWN。<br />
 在你的FIXTURE里，添加两个静态的函数SetUpTestCase和TearDownTestCase</p>
 <pre><code>    class XXXTest : public ::testing::Test {
      protected:
@@ -221,8 +221,8 @@ Fixture 级别是指，对于在这FIXTURE里的所有TESTCASE，只调用一次
       }
     }
 </code></pre>
-<p>3.3 TestCase 级别<br>
-TestCase 级别是指TESTCASE调用之前和调用后分别调用的。<br>
+<p>3.3 TestCase 级别<br />
+TestCase 级别是指TESTCASE调用之前和调用后分别调用的。<br />
 在你的TESTCASE里，重写虚函数SetUp和TearDown即可。如。</p>
 <pre><code>    class XXXTest : public ::testing::Test {
      protected:
@@ -231,8 +231,8 @@ TestCase 级别是指TESTCASE调用之前和调用后分别调用的。<br>
     }
 </code></pre>
 <ol start="4">
-<li>Assertion<br>
-GTEST提供两种，一种是ASSERT_XXX和EXPECT_XXX。前者表示不继续执行TESTCASE，后者表示继续执行。<br>
+<li>Assertion<br />
+GTEST提供两种，一种是ASSERT_XXX和EXPECT_XXX。前者表示不继续执行TESTCASE，后者表示继续执行。<br />
 比如ASSERT_EQ, ASSERT_STREQ,EXPECT_EQ,EXPECT_TRUE等。</li>
 </ol>
 

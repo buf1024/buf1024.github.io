@@ -154,7 +154,7 @@
 <pre><code>root      8527     1  0 10:30 ?        00:00:00 nginx: master process nginx    
 nginx     8528  8527  0 10:30 ?        00:00:00 nginx: worker process    
 </code></pre>
-<p>实现的原理非常简单，我们只需要修改argv[0],说指向的那段内存空间的内容即可。但是为了使程序的正常逻辑不受影响，事先要把原理的内容保存起来，并通过原来的方式可以访问。<br>
+<p>实现的原理非常简单，我们只需要修改argv[0],说指向的那段内存空间的内容即可。但是为了使程序的正常逻辑不受影响，事先要把原理的内容保存起来，并通过原来的方式可以访问。<br />
 argv[0]所指向的的空间是和·enviorn·所指向的内存空间是连续的，在程序启动的时候，系统已经设置好这些空间了。如图所示：</p>
 <p><figure>
   <picture>
@@ -196,7 +196,7 @@ redis的实现在<a href="https://github.com/antirez/redis/blob/2.8.12/src/setpr
 </code></pre>
 </li>
 </ol>
-<p>按照我们一直以来的常识，是通过argc从argv里面取出数据来的，而他这里<code>i &lt; argc || (i &gt;= argc &amp;&amp; argv[i])</code>这个条件明显就是argc可能会少于argv个数。什么情况下会出现这种情况呢？<br>
+<p>按照我们一直以来的常识，是通过argc从argv里面取出数据来的，而他这里<code>i &lt; argc || (i &gt;= argc &amp;&amp; argv[i])</code>这个条件明显就是argc可能会少于argv个数。什么情况下会出现这种情况呢？<br />
 2. SPT.nul貌似没有用</p>
 <pre><code>	if (nul &lt; SPT.nul) {
 	    *SPT.nul = '.';

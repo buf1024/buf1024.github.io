@@ -175,7 +175,7 @@
 </code></pre>
 <p>可见，pkg-config里面主要包含了包含头文件，连接库的信息。在本例子中，Requires就空的，如果非空，cfalgs, libs将添加相应的依赖项。</p>
 <p>那么pkg-config是从哪里搜索这些文件的呢？</p>
-<p>首先pkg-config会从自己标准的搜索目录（如/usr/lib/pkgconfig/）和PKG_CONFIG_PATH环境变量目录寻找。<br>
+<p>首先pkg-config会从自己标准的搜索目录（如/usr/lib/pkgconfig/）和PKG_CONFIG_PATH环境变量目录寻找。<br />
 如果寻找不到，会输出这样的信息：</p>
 <pre><code>    [heidong@HEIDONGVM bin]$ pkg-config --libs qt 
     Package qt was not found in the pkg-config search path. 
