@@ -6,6 +6,7 @@
     <description>Recent content in tcp on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <copyright>Copyletf buf2024</copyright>
     <lastBuildDate>Thu, 02 Mar 2023 14:10:12 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TCP未建立之前，丢失的SYN报文会不会重传？</title>

@@ -6,6 +6,7 @@
     <description>Recent content in rust-lib on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <copyright>Copyletf buf2024</copyright>
     <lastBuildDate>Mon, 13 Sep 2021 01:12:02 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/tags/rust-lib/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>lazy_static -- 静态变量延迟初始化</title>

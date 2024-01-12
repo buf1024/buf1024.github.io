@@ -6,6 +6,7 @@
     <description>Recent content in libevent on BUF1024!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <copyright>Copyletf buf2024</copyright>
     <lastBuildDate>Sat, 23 Jun 2012 11:08:14 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/libevent/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>基于libevent进程池服务器</title>
