@@ -1,9 +1,9 @@
 ---
-title: "前端保姆级配置"
+title: "前端过程化配置保姆级教程"
 date: 2024-01-08T16:00:10+08:00
 draft: false
-categories: [frontend] 
-tags: [vite]
+categories: [WEB] 
+tags: [vite, vue, react]
 ---
 
 感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。
@@ -12,7 +12,7 @@ tags: [vite]
 
 ## 代码规范
 
-​`eslint`​​代码检查工具，按照规定的规则检测代码可能存在的问题。`prettier`​​则是代码格式化的工具。配合`vscode`​对应的两个扩展[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)和[Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)，代码编写起来如虎添翼。关于Prettier不生效解决办法参考：20240101 VS Code Prettier格式化不生效解决方式。
+​`eslint`​​代码检查工具，按照规定的规则检测代码可能存在的问题。`prettier`​​则是代码格式化的工具。配合`vscode`​对应的两个扩展[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)和[Prettier - Code fORMatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)，代码编写起来如虎添翼。关于Prettier不生效解决办法参考：20240101 VS Code Prettier格式化不生效解决方式。
 
 扩展安装：
 
@@ -142,7 +142,7 @@ module.exports = defineFlatConfig({
 pnpm add -D vite-plugin-eslint
 ```
 
-对`vite.config.js`​配置进行修改：
+对`vite.config.JS`​配置进行修改：
 
 ```javascript
 import { defineConfig } from 'vite'
@@ -154,7 +154,7 @@ export default defineConfig({
     vue(),
     // 增加下面的配置项,这样在运行时就能检查eslint规范
     eslintPlugin({
-      include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue']
+      include: ['src/**/*.JS', 'src/**/*.vue', 'src/*.JS', 'src/*.vue']
     })
   ]
 })
@@ -164,10 +164,10 @@ export default defineConfig({
 
 ​`eslint`​也可以进行代码格式化的，不过代码格式用的人比较多的还是`prettier`​。
 
-这里是`.prettierrc.js`​的参考：
+这里是`.prettierrc.JS`​的参考：
 
 ```javascript
-// 在项目根目录创建文件 .prettierrc.js
+// 在项目根目录创建文件 .prettierrc.JS
 // 以下配置视自己情况而定,并步是每个都需要的
 {
   tabWidth: 4,               // 使用4个空格缩进
@@ -188,7 +188,7 @@ export default defineConfig({
   requirePragma: false,      // 不需要写文件开头的 @prettier
   insertPragma: false,       // 不需要自动在文件开头插入 @prettier
   proseWrap: 'preserve',     // 使用默认的折行标准
-  htmlWhitespaceSensitivity: 'css'  // 根据显示样式决定html要不要折行
+  htmlWhitespaceSensitivity: 'CSS'  // 根据显示样式决定html要不要折行
 }
 
 ```
@@ -236,7 +236,7 @@ npx husky-init && pnpm i
 ```javascript
  "scripts": {
     ...
- "lint": "eslint src --fix --ext .js,.ts,.jsx,.tsx,.vue && prettier --write \"src/**/*.{js,ts,json,tsx,css,scss,vue,html,md}\" --ignore-unknown",
+ "lint": "eslint src --fix --ext .JS,.ts,.jsx,.tsx,.vue && prettier --write \"src/**/*.{JS,ts,json,tsx,CSS,scss,vue,HTML,md}\" --ignore-unknown",
  ...
   },
 ```
@@ -250,7 +250,7 @@ pnpm add -D lint-staged
 
 // package.json 新增
 "lint-staged": {
-    "*.{vue,js,ts,tsx,jsx}": [
+    "*.{vue,JS,ts,tsx,jsx}": [
       "eslint --fix",
       "prettier --write --ignore-unknown"
     ]
@@ -323,7 +323,7 @@ pnpm husky add .husky/commit-msg "npx --no-install commitlint --edit \"$1\""
       "@/*": ["src/*"]
     }
 
-// vite.config.js defineConfig 内增加
+// vite.config.JS defineConfig 内增加
 // 需增加 pnpm install -D @types/node
 import { fileURLToPath, URL } from "node:url";
 ...
@@ -568,7 +568,7 @@ export default mockList
 
 ### esm
 
-新生成的项目基本都是全面拥抱esm，具体的表现为，在`package.json`​里面多了一个配置项：`"type": "module"。`​而很多工具生成的是`CommonJS`​格式，导致报错，最简单的方式是把`js`​扩展名改为`cjs`​扩展名。或者改为esm模式，比如`postcss.config.js`​：
+新生成的项目基本都是全面拥抱esm，具体的表现为，在`package.json`​里面多了一个配置项：`"type": "module"。`​而很多工具生成的是`CommonJS`​格式，导致报错，最简单的方式是把`JS`​扩展名改为`cjs`​扩展名。或者改为esm模式，比如`postcss.config.JS`​：
 
 ```javascript
 // module.exports = {

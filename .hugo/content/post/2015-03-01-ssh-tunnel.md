@@ -1,8 +1,8 @@
 ---
 title: ssh 隧道访问局域网机器
 date: 2015-03-01 18:12:15
-categories: [ssh]
-tags: [ssh]
+categories: [Misc]
+tags: [SSH]
 ---
 1 SSH 免登陆密码
 
@@ -36,7 +36,6 @@ sshd_config中设置GatewayPorts为yes
 
     `$ sudo vim /etc/ssh/sshd_config`
 
-
 ```c
    # 添加
     ClientAliveInterval 30
@@ -46,7 +45,6 @@ sshd_config中设置GatewayPorts为yes
 ---
 
 以下参考资料
-
 
 SSH: Port Forwarding
 
@@ -136,7 +134,7 @@ Dante -- Proxy communication solution
 
 ssh 是有端口转发功能的。（转）
 
-[http://doc.linuxpk.com/80817.html](http://doc.linuxpk.com/80817.html)
+[http://doc.Linuxpk.com/80817.html](http://doc.Linuxpk.com/80817.html)
 
 ssh的三个强大的端口转发命令：
 
@@ -268,7 +266,7 @@ ftp-server# ssh -CNfg -R 2121:localhost:21 [root@100.0.0.50](mailto:root@100.0.0
 
 来一个稍微复杂一点的，做网关的例子：
 
-假如内网有一台提供ftp(linux，port is2121，称为A机器)的机器，通过网关服务器(linux，port is8888，称为B机器)进去，现在外网有一台C机器需要访问网关服务器的某个端口(port is21)来访问内网的ftp服务器。大家可以看到，其实这就像是一个基于ssh的防火墙程序，好，下面我们来具体操作：
+假如内网有一台提供ftp(Linux，port is2121，称为A机器)的机器，通过网关服务器(Linux，port is8888，称为B机器)进去，现在外网有一台C机器需要访问网关服务器的某个端口(port is21)来访问内网的ftp服务器。大家可以看到，其实这就像是一个基于ssh的防火墙程序，好，下面我们来具体操作：
 
 1、login A 机器
 
@@ -288,12 +286,12 @@ ssh -CNfg -L 21:localhost:8888 [root@localhost](mailto:root@localhost)
 
 2(1)。
 
-如果C机器也是一台linux机器，那也可以这样设置：
+如果C机器也是一台Linux机器，那也可以这样设置：
 
 ssh -CNfg -R 21:localhost:8888 [root@C](mailto:root@C)机器IP
 
 3。使用C机器，
 
-可以是linux下的ftp命令，也可以是windows下的客户端软件都可以访问B机器的21端口来连接后台真正的ftp服务器(真正的端口是2121)
+可以是Linux下的ftp命令，也可以是windows下的客户端软件都可以访问B机器的21端口来连接后台真正的ftp服务器(真正的端口是2121)
 
 如果是按照2(1)中的设置，则访问的地址为本机IP。

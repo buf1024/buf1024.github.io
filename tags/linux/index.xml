@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on BUF1024</title>
+    <title>Linux on BUF1024</title>
     <link>https://luoguochun.cn/tags/linux/</link>
-    <description>Recent content in linux on BUF1024</description>
+    <description>Recent content in Linux on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 01 Oct 2018 10:54:00 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
@@ -40,7 +40,87 @@
     </item>
     
     <item>
-      <title>linux /proc 伪文件系统</title>
+      <title>lwan http 服务器</title>
+      <link>https://luoguochun.cn/post/2017-04-28-lwan-http-server/</link>
+      <pubDate>Fri, 28 Apr 2017 22:10:32 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2017-04-28-lwan-http-server/</guid>
+      <description>
+        
+          
+            简介 服务器端程序的设计模式一般比较固定，目前主要有两种主要的解决方式，一种多进程方式(进程池)，另外一种多线程的方式(线程池)(P.S:请忘
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>ld常用特别选项</title>
+      <link>https://luoguochun.cn/post/2016-01-19-ld-special/</link>
+      <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2016-01-19-ld-special/</guid>
+      <description>
+        
+          
+            链接器ld的一些特别选项，编译OS时有用到。 -N --omagic Set the text and data sections to be readable and writable. Also, do not page-align the data segment, and disable linking against shared libraries. If the output fORMat supports Unix style magic numbers, mark the output as &amp;quot;OMAGIC&amp;quot;. Note: Although a writable text section is allowed
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>minix 3</title>
+      <link>https://luoguochun.cn/post/2016-01-18-minix-3/</link>
+      <pubDate>Mon, 18 Jan 2016 11:12:36 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2016-01-18-minix-3/</guid>
+      <description>
+        
+          
+            Linux非常庞大，虽然有很多参考的资料，但是啃这样庞大的东西还是很费力，如果是业余啃，那难度或许更大。然而，我们可以绕道看下另外一个小巧，
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>tcpdump usage</title>
+      <link>https://luoguochun.cn/post/2015-07-25-tcpdump-usage/</link>
+      <pubDate>Sat, 25 Jul 2015 14:26:04 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2015-07-25-tcpdump-usage/</guid>
+      <description>
+        
+          
+            Tcpdump使用方法 （1）第一种是关于类型的关键字主要包括host，net，port 例如： host 210.27.48.2，指明 210.27.48
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>gdb一丢丢常见问题</title>
+      <link>https://luoguochun.cn/post/2015-04-01-gdb-common-issue/</link>
+      <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2015-04-01-gdb-common-issue/</guid>
+      <description>
+        
+          
+            一、gdb 无法自动加载当前文件 .gdbinit文件 提示： warning: File &amp;ldquo;/home/heidong/privt/proj/osv6/.gdbinit&amp;rdquo; auto-loading has been declined by your `auto-load safe-path&amp;rsquo; set to &amp;ldquo;$debugdir:$datadir/auto-load&amp;rdquo;. To enable execution of this file add add-auto-load-safe-path /home/heidong/privt/proj/osv6/.gdbinit line to your configuration file &amp;ldquo;/home/heidong/.gdbinit&amp;rdquo;. To completely disable this security protection add set auto-load safe-path / line to
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Linux /proc 伪文件系统</title>
       <link>https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/</link>
       <pubDate>Mon, 28 Jul 2014 14:57:18 +0000</pubDate>
       
@@ -48,7 +128,7 @@
       <description>
         
           
-            linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一
+            Linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一
           
           
         
@@ -96,7 +176,7 @@
       <description>
         
           
-            ###如何开搞 我们平时ps进程时，显示的进程标题是我们输入的程序名以及一些参数。这种显示方式并非非常直观，我们需要一种方式可以设置程序的标题
+            如何开搞 我们平时ps进程时，显示的进程标题是我们输入的程序名以及一些参数。这种显示方式并非非常直观，我们需要一种方式可以设置程序的标题，一眼
           
           
         
@@ -104,7 +184,7 @@
     </item>
     
     <item>
-      <title>mschedule 简单linux进程管理（树莓派）</title>
+      <title>mschedule 简单Linux进程管理（树莓派）</title>
       <link>https://luoguochun.cn/post/2014-05-30-myschd/</link>
       <pubDate>Fri, 30 May 2014 23:28:16 +0000</pubDate>
       
@@ -152,6 +232,22 @@
     </item>
     
     <item>
+      <title>Linux -- yum</title>
+      <link>https://luoguochun.cn/post/2012-09-13-linux-yum/</link>
+      <pubDate>Thu, 13 Sep 2012 20:10:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-09-13-linux-yum/</guid>
+      <description>
+        
+          
+            Red Hat/CentOS/SuSE等都是采用RPM或者基于RPM的软件包来安装的。而yum则可以认为是rpm的软件仓库。大致的命令如下（前面加
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
       <title>sys/queue.h</title>
       <link>https://luoguochun.cn/post/2012-05-02-sys-queue-h/</link>
       <pubDate>Wed, 02 May 2012 21:08:14 +0000</pubDate>
@@ -160,7 +256,7 @@
       <description>
         
           
-            概述 sys/queue.h是LINUX/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple
+            概述 sys/queue.h是Linux/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple
           
           
         

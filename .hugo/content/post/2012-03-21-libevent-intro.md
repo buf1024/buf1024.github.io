@@ -1,8 +1,8 @@
 ---
 title: libevent 概述
 date: 2012-03-21 21:05:10
-categories: [misc]
-tags: [C]
+categories: [C++]
+tags: [C++, libevent]
 ---
 声明，本文章东搬西扯抄来过的，并非原创，写给自己参考的。
 
@@ -20,7 +20,7 @@ tags: [C]
 
  [libev(另一个有竞争力的事件库)](http://software.schmorp.de/pkg/libev.html)
 
-libevent是一个事件触发的网络库，适用于windows、linux、bsd等多种平台，内部使用select、epoll、kqueue等系统调用管理事件机制。libevent支持用户使用三种类型的事件，分别是网络IO、定时器、信号三种。Libevent提供了DNS，HTTP Server，RPC等组件。
+libevent是一个事件触发的网络库，适用于windows、Linux、bsd等多种平台，内部使用select、epoll、kqueue等系统调用管理事件机制。libevent支持用户使用三种类型的事件，分别是网络IO、定时器、信号三种。Libevent提供了DNS，HTTP Server，RPC等组件。
 
 # 相关组件
 
@@ -66,4 +66,4 @@ libevent是一个事件触发的网络库，适用于windows、linux、bsd等多
 
 # 其它
 
-        本文大多剽窃自[libevent-book](http://www.wangafu.net/~nickm/libevent-book/)。具体请详细参考之。另外很多懒人不太习惯LINUX的编程调试环境，所以根据libevent提供的Makefile建了个VC2008的解决方案，直接解压出来丢到libevent目录，分别编译各个库。另，只为了调试搞DEBUG版本的，RELEASE的动都没动，sameple工程包括所有的例子了，直接编译是不通的。所以如果你要分别测试的话，要搞掉其它的。最简单的方法就是#if 0 #endif之类的。[下载VC2008解决方案](http://download.imlgc.com/lib/libevent/vcbuild.zip)。
+        本文大多剽窃自[libevent-book](http://www.wangafu.net/~nickm/libevent-book/)。具体请详细参考之。另外很多懒人不太习惯Linux的编程调试环境，所以根据libevent提供的Makefile建了个VC2008的解决方案，直接解压出来丢到libevent目录，分别编译各个库。另，只为了调试搞DEBUG版本的，RELEASE的动都没动，sameple工程包括所有的例子了，直接编译是不通的。所以如果你要分别测试的话，要搞掉其它的。最简单的方法就是#if 0 #endif之类的。[下载VC2008解决方案](http://download.imlgc.com/lib/libevent/vcbuild.zip)。

@@ -2,7 +2,7 @@
 title: 'ssl/tls 握手'
 date: 2016-11-16 11:17:11
 aliases: [/2016/11/16/https-handshake/]
-categories: [https]
+categories: [TCP]
 tags: [https, ssl/tls]
 ---
 
@@ -36,9 +36,11 @@ ssl/tls包括单向和双向认证，单向认证即是客户端认证服务端�
 ![ssl/tls握手](/img/tcp/ssl-wireshark.png "ssl/tls握手")
 
 握手的过程发生在No.6 到No.16的帧上面。我们来详细了解一下。
+
 1. Client Hello
  ![Client Hello](/img/tcp/ssl-client-hello.png "Client Hello")
  客户端向服务端发送加密通信请求，主要包括的一些信息：
+
  1) 支持的协议的版本
  2) 一个随机数(**Client Random**)，明文，用于生成加密秘钥
  3) 支持的加密算法和压缩算法
@@ -48,44 +50,47 @@ ssl/tls包括单向和双向认证，单向认证即是客户端认证服务端�
 2. Server Hello, Certificate, Server Key Exchange, Server Hello Done
  ![Server Hello](/img/tcp/ssl-server-hello.png "Server Hello")
  服务端收到客户端的Client Hello后，向客户端发送Server Hello，主要包括的一些信息：
+
  1) 确认双方使用的协议版本
  2) 一个随机数(**Server Random**)，明文，用于生成加密秘钥
  3) 确认双方使用的加密算法和压缩算法
  4) 支持的一些ssl扩展
- 
+
  ![Certificate](/img/tcp/ssl-certificate.png "Certificate")
  服务端发送Server Hello后，发送Certificate，向客户端发送证书信息
- 
+
  ![Server Key Exchange](/img/tcp/ssl-server-key-exchange.png "Server Key Exchange")
  服务端发送Certificate后，发送Server Key Exchange，向客户客户端发送密钥信息。如果采用的是RSA算法，则不需要这一步。这里采用的是DH算法，所以发送的是DH算法服务端的参数。
- 
+
  ![Server Hello Done](/img/tcp/ssl-server-hello-done.png "Server Hello Done")
  服务器向客户端发送Server Hello Done，表明所有的Server Hello信息发送完毕。
- 
+
  PS.: 如果是双向认证，在Server Hello Done之前，还会发送Certificate Request，主要的含义是要求客户端提出证书，主要包括：
+
  1) 客户端应该提供的证书类型
  2) 服务端接收的证书列表
- 
-3. Client Key Exchange, Change Chiper Spec, Encrypted Handshake Message
+
+3. Client Key Exchange, Change Chiper SpeC, Encrypted Handshake Message
  客户端收到服务端的Server Hello Done后，就会对接收的的证书进行校验，如果发现证书不是可信机构签发的，或这域名等信息和证书不对应，浏览器则后弹出警告，由使用者确认是否继续。
  ![Client Key Exchange](/img/tcp/ssl-client-key-exchange.png "Client Key Exchange")
  Client Key Exchange将产生一个随机数(Pre Master Secret)，如果是采用RSA加密，则提取证书的公钥，用公钥对随机数进行加密，并发送到服务端。如果是采用的是DH算法，则和服务端发送的 Server Key Exchange类似，发送的是DH算法的参数。这样Pre Master Secret，就由双方的各种DH算法参数算出来，在传输的过程中不传输实际的Pre Master Secret，这样可以提高传输的安全性。至此，我们有了三个随机数，Client Random， Server Random和Pre Master Secret，由这三个随机数，我们可以算出另外一个随机数，Master Secret，之后，我们就使用这个Master Secret密钥进行加密传输。
- 
+
  Change Chiper Spec 通知服务端，以后的报文采用加密的方式传输
  Encrypted Handshake Message 客户端的发送的第一个加密报文，内容是加密后的，所有接收到和发送的报文的摘要信息。
- 
+
  PS.: 如果是双向认证，客户端还会向服务端发送 Certificate和Certificate Verify报文，Certificate报文包括客户端的证书，Certificate Verify包括客户端发送证书后所有握手过程报文的签名信息。服务端会对证书进行校验，如果发现证书不对，则直接终止ssl/tls连接。
- 
-4. New Session Ticket, Change Chiper Spec, Encrypted Handshake Message
+
+4. New Session Ticket, Change Chiper SpeC, Encrypted Handshake Message
  ![New Session Ticket](/img/tcp/ssl-new-session-ticket.png "New Session Ticket")
  服务端收到客户端的加密报文后，进行解密和校验处理，最重要的是生成一个session ticket。这个ticket在异常的情况下比较有用
  Change Chiper Spec和客户端发送的含义一致，告知客户端，以后的报文采用加密的方式传输。
  Encrypted Handshake Message和客户端发送的含义一致，内容是加密后的，所有接收到和发送的报文的摘要信息。
- 
+
 至此ssl/tls四次握手完毕，握手成功后，我们就可以通过加密的方式传输报文。从上面的交互可看出，ssl/tls建立的过程需要多次交互，而且交互的过程中交互的数据量也比较大，成功建立一个ssl/tls链接需要几K的数据量。如果ssl/tls在传输的过程中由于网络等原因中断了，再进行4次握手，代价是很高的。所以为了解决这个痛点，在握手的第四步，服务端生成了New Session Ticket，网络中断后客户端可以通过发送这个报文，来重新建立链接ssl/tls链接，而不再需要4次握手。
- 
+
 简单的ssl/tls握手简单的探讨完了，下面附一下ssl/tls证书生成过程，作为平时参考：
  一般而言，扩展名以下的文件的含义：
+
 * \*.key：RSA密钥文件
 * \*.csr：证书请求文件，包括公钥等信息，通过签名后可生成证书文件。
 * \*.crt, \*.cert：证书文件
@@ -109,7 +114,7 @@ ssl/tls包括单向和双向认证，单向认证即是客户端认证服务端�
         
         2) 生成证书请求文件
         heidong@HEIDONG:~/tmp/cert$ openssl req -new -key server.key -out server.csr
-        You are about to be asked to enter information that will be incorporated
+        You are about to be asked to enter infORMation that will be incorporated
         into your certificate request.
         What you are about to enter is what is called a Distinguished Name or a DN.
         There are quite a few fields but you can leave some blank
@@ -151,7 +156,7 @@ ssl/tls包括单向和双向认证，单向认证即是客户端认证服务端�
         Enter PEM pass phrase:
         Verifying - Enter PEM pass phrase:
         -----
-        You are about to be asked to enter information that will be incorporated
+        You are about to be asked to enter infORMation that will be incorporated
         into your certificate request.
         What you are about to enter is what is called a Distinguished Name or a DN.
         There are quite a few fields but you can leave some blank
@@ -210,5 +215,3 @@ ssl/tls包括单向和双向认证，单向认证即是客户端认证服务端�
         Verifying - Enter Export Password:
 
 使用上面生成的证书和密钥（服务端，server.key, server.crt, 客户端，client.crt, client.pfx，ca证书, ca.key, ca.cert），则可以在相关的服务器(nginx，apache，tomcat等)实现ssl的配置双向或单向认证，具体配置不再描述。
-
-

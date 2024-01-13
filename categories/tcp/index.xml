@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>tcp on BUF1024</title>
+    <title>TCP on BUF1024</title>
     <link>https://luoguochun.cn/categories/tcp/</link>
-    <description>Recent content in tcp on BUF1024</description>
+    <description>Recent content in TCP on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 02 Mar 2023 14:10:12 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/categories/tcp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Mar 2023 08:10:12 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/categories/tcp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>android https 抓包</title>
+      <link>https://luoguochun.cn/post/2023-03-21-android-https/</link>
+      <pubDate>Tue, 21 Mar 2023 08:10:12 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2023-03-21-android-https/</guid>
+      <description>
+        
+          
+            前几天有个需求，要破解一下某个app的部分通讯协议，需要了解一下某部分功能如何实现，甚至通过其协议抓取一些数据。而这个app只有androi
+          
+          
+        
+      </description>
+    </item>
+    
     <item>
       <title>TCP未建立之前，丢失的SYN报文会不会重传？</title>
       <link>https://luoguochun.cn/post/2023-03-02-tcp-setup/</link>
@@ -33,6 +49,22 @@
         
           
             TCP是什么 TCP是面向连接的，可靠的，基于字节流的传输协议。 面向连接，指的是一对一的，不是一对多。 可靠性，指的是不管网络环境多么的复杂多变
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>ssl/tls 握手</title>
+      <link>https://luoguochun.cn/post/2016-11-16-https-handshake/</link>
+      <pubDate>Wed, 16 Nov 2016 11:17:11 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2016-11-16-https-handshake/</guid>
+      <description>
+        
+          
+            http协议是互联网的基石，然而http却是基于文本的协议，在网络传输中容易被窃听，冒充和篡改。如果对安全性要求相对高，那么一般使用http
           
           
         

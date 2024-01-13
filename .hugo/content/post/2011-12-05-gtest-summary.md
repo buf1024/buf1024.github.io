@@ -1,9 +1,8 @@
 ---
 title: 'gtest 小结'
 date: 2011-12-05 12:00:00
-aliases: [/2011/12/05/gtest-summary/]
-categories: [unittest]
-tags: [c,gtest] 
+categories: [Unittest]
+tags: [C,gtest, TDD] 
 ---
 GTEST 是简单而且又非常实用的测试框架。下面关于GTEST的一些简单总结。  
 
@@ -13,7 +12,7 @@ GTEST 是简单而且又非常实用的测试框架。下面关于GTEST的一些
         g++ -I${GTEST_DIR}/include -I${GTEST_DIR} -c ${GTEST_DIR}/src/gtest-all.cc        
     
         ar -rv libgtest.a gtest-all.o    
-        
+
    在WINDOWS下：  
    GTEST在MSVC下面提供了相应的工程文件，直接用VS编译即可。  
 2. 简单用法  
@@ -55,14 +54,14 @@ GTEST 是简单而且又非常实用的测试框架。下面关于GTEST的一些
         virtual Setup_should_be_spelled_SetUp* Setup() { return NULL; }
  
         };
-                
-   重写里面的SETUP和TEARDOWN方法。  
-   第二步，调用Environment* AddGlobalTestEnvironment(Environment* env)，注意这个要在RUN_ALL_TESTS前调用。如  
 
-        int main(int argc, char* argv[])
+   重写里面的SETUP和TEARDOWN方法。  
+   第二步，调用Environment*AddGlobalTestEnvironment(Environment* env)，注意这个要在RUN_ALL_TESTS前调用。如  
+
+        int main(int argC, char* argv[])
         {
             testing::AddGlobalTestEnvironment(new XXX Environment);
-            testing::InitGoogleTest(&argc, argv);
+            testing::InitGoogleTest(&argC, argv);
             return RUN_ALL_TESTS();
         }
 
@@ -91,4 +90,3 @@ GTEST 是简单而且又非常实用的测试框架。下面关于GTEST的一些
 4. Assertion  
   GTEST提供两种，一种是ASSERT_XXX和EXPECT_XXX。前者表示不继续执行TESTCASE，后者表示继续执行。  
   比如ASSERT_EQ, ASSERT_STREQ,EXPECT_EQ,EXPECT_TRUE等。  
-

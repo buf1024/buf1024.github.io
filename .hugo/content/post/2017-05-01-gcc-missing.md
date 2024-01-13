@@ -1,8 +1,8 @@
 ---
 title: GCC不常见，但有用特别选项
 date: 2017-05-01 22:10:31
-categories: [gcc]
-tags: [http, c]
+categories: [GCC]
+tags: [Http, C]
 ---
  -isystem dir
 
@@ -22,7 +22,7 @@ tags: [http, c]
 
            Use dir as the logical root directory for headers and libraries.  For example, if the
 
-           compiler normally searches for headers in /usr/include and libraries in /usr/lib, it
+           compiler nORMally searches for headers in /usr/include and libraries in /usr/lib, it
 
            instead searches dir/usr/include and dir/usr/lib.
 
@@ -58,7 +58,7 @@ tags: [http, c]
 
           rules you should explicitly specify the dependency output file
 
-           with -MF, or use an environment variable like DEPENDENCIES_OUTPUT.  Debug output will still be sent to the regular output stream as normal.
+           with -MF, or use an environment variable like DEPENDENCIES_OUTPUT.  Debug output will still be sent to the regular output stream as nORMal.
 
            Passing -M to the driver implies -E, and suppresses warnings with an implicit -w.
 
@@ -70,7 +70,7 @@ tags: [http, c]
 
            a large function.
 
-           With -O, the compiler tries to reduce code size and execution time, without performing
+           With -O, the compiler tries to reduce code size and execution time, without perfORMing
 
            any optimizations that take a great deal of compilation time.
 
@@ -92,11 +92,11 @@ tags: [http, c]
 
            with debugging.
 
- -O2 Optimize even more.  GCC performs nearly all supported optimizations that do not
+ -O2 Optimize even more.  GCC perfORMs nearly all supported optimizations that do not
 
            involve a space-speed tradeoff.  As compared to -O, this option increases both
 
-           compilation time and the performance of the generated code.
+           compilation time and the perfORMance of the generated code.
 
            -O2 turns on all optimization flags specified by -O.  It also turns on the following
 
@@ -140,7 +140,7 @@ tags: [http, c]
 
 -Os Optimize for size.  -Os enables all -O2 optimizations that do not typically increase
 
-           code size.  It also performs further optimizations designed to reduce code size.
+           code size.  It also perfORMs further optimizations designed to reduce code size.
 
            -Os disables the following optimization flags: -falign-functions  -falign-jumps
 

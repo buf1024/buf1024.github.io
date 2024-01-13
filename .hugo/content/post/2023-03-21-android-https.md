@@ -2,8 +2,8 @@
 title: "android https 抓包"
 date: 2023-03-21T08:10:12+08:00
 draft: false
-categories: [flutter, 量化] 
-tags: [android, 量化]
+categories: [TCP] 
+tags: [android]
 ---
 前几天有个需求，要破解一下某个app的部分通讯协议，需要了解一下某部分功能如何实现，甚至通过其协议抓取一些数据。而这个app只有android版本和ios版本。从初步看，这个app是同React Native写的。
 
@@ -84,7 +84,6 @@ tags: [android, 量化]
 
 然而，这个app并非自己所写的，本来就没有源码，所以必须反编译后修改，再重新签名。这个方式网上也有比较详细的方式，大体涉及三个工具：
 
-
 1. apktool，编译和反编译apk，从apk中提取图片和布局资源
 
 2. dex2jar，将可运行文件classes.dex反编译为jar源码文件
@@ -96,6 +95,7 @@ tags: [android, 量化]
 解包：`apktool d -o dec xx.apk`  重新打包：`apktool b -o yy.apk dec/`
 
 重新打包后的apk需要经过重新签名之后，方可安装，步骤：
+
 ```shell
 #1 使用keytool生成密钥，如
 keytool -genkeypair -v -keystore hello.keystore -alias hello -keyalg RSA \
@@ -118,7 +118,7 @@ apktool重新打包时，有一个坑。在AndroidManifest.xml文件里，如果
 
 ```
 #1 AndroidManifest.xml 修改为
-platformBuildVersionCode="23"
+platfORMBuildVersionCode="23"
 
 #2 apktool.yml修改为
 sdkInfo:

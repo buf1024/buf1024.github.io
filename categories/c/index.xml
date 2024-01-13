@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>c on BUF1024</title>
+    <title>C on BUF1024</title>
     <link>https://luoguochun.cn/categories/c/</link>
-    <description>Recent content in c on BUF1024</description>
+    <description>Recent content in C on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 03 Jun 2017 11:19:25 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/categories/c/index.xml" rel="self" type="application/rss+xml" />
@@ -24,15 +24,31 @@
     </item>
     
     <item>
-      <title>隐藏make编译的编译输出</title>
-      <link>https://luoguochun.cn/post/2014-07-04-hide-compile-output/</link>
-      <pubDate>Fri, 04 Jul 2014 16:45:00 +0000</pubDate>
+      <title>lwan http 服务器</title>
+      <link>https://luoguochun.cn/post/2017-04-28-lwan-http-server/</link>
+      <pubDate>Fri, 28 Apr 2017 22:10:32 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-07-04-hide-compile-output/</guid>
+      <guid>https://luoguochun.cn/post/2017-04-28-lwan-http-server/</guid>
       <description>
         
           
-            编译程序make时，会看到很多编译输出。对于开发来说，这是非常直观的，但是如果分发到客户（需要编译）或者只需要关注错误时，这种输出就感觉烦人
+            简介 服务器端程序的设计模式一般比较固定，目前主要有两种主要的解决方式，一种多进程方式(进程池)，另外一种多线程的方式(线程池)(P.S:请忘
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>coroutine协程</title>
+      <link>https://luoguochun.cn/post/2014-08-21-coroutine/</link>
+      <pubDate>Thu, 21 Aug 2014 16:46:46 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-08-21-coroutine/</guid>
+      <description>
+        
+          
+            如果你接触过lua这种小巧的脚本语言，你就会经常接触到一个叫做协程的神奇概念。大多数脚本语言都有对协程不同程度的支持。但是大多编译语言，如C
           
           
         
@@ -48,7 +64,7 @@
       <description>
         
           
-            ###如何开搞 我们平时ps进程时，显示的进程标题是我们输入的程序名以及一些参数。这种显示方式并非非常直观，我们需要一种方式可以设置程序的标题
+            如何开搞 我们平时ps进程时，显示的进程标题是我们输入的程序名以及一些参数。这种显示方式并非非常直观，我们需要一种方式可以设置程序的标题，一眼
           
           
         
@@ -88,7 +104,7 @@
     </item>
     
     <item>
-      <title>mschedule 简单linux进程管理（树莓派）</title>
+      <title>mschedule 简单Linux进程管理（树莓派）</title>
       <link>https://luoguochun.cn/post/2014-05-30-myschd/</link>
       <pubDate>Fri, 30 May 2014 23:28:16 +0000</pubDate>
       

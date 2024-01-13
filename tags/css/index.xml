@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>css on BUF1024</title>
+    <title>CSS on BUF1024</title>
     <link>https://luoguochun.cn/tags/css/</link>
-    <description>Recent content in css on BUF1024</description>
+    <description>Recent content in CSS on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 29 Dec 2016 17:08:46 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/css/index.xml" rel="self" type="application/rss+xml" />
@@ -16,7 +16,7 @@
       <description>
         
           
-            P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… js 运行于宿主环境，常见宿主环境有web浏览器和
+            P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… JS 运行于宿主环境，常见宿主环境有web浏览器和
           
           
         

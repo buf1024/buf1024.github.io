@@ -3,7 +3,7 @@ title: "Flutter Trouble shoot"
 date: 2019-06-01T19:13:02+08:00
 draft: false
 categories: [flutter] 
-tags: [flutter]
+tags: [Dart, flutter]
 ---
 
 ## Flutter升级无法翻墙
@@ -36,7 +36,7 @@ http://download.flutter.io
 ## flutter build apk 包错
 
 ```
-/Users/luoguochun/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/600bd9322c1a43475e
+/Users/luoguochun/.gradle/caches/transfORMs-1/files-1.1/support-compat-28.0.0.aar/600bd9322c1a43475e
 7c0ab512969467/res/values/values.xml:133:5-70: AAPT: error: resource
 android:attr/fontVariationSettings not found.
 

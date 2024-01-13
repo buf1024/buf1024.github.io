@@ -2,8 +2,8 @@
 title: 基于libevent进程池服务器
 date: 2012-06-23 11:08:14
 aliases: [/2012/06/23/proccess-pool-server/]
-categories: [linux]
-tags: [c, tcp, libevent]
+categories: [Linux]
+tags: [C, TCP, libevent]
 ---
 
 本程序仅是为了学习libevent而写的，但可以当作是简单的程序框架扩展为实际的应用。程序本身没有经过广泛的功能测试和压力测试，仅作简单的功能测试，如果在实际应用中产生任何问题与作者无关，也不提供任何技术支持。但欢迎讨论相关技术问题。  
@@ -16,17 +16,17 @@ tags: [c, tcp, libevent]
 
 |文件名|说明|  
 |----|:----|  
-|Makefile|	Makefile 文件。如果是扩展应用，则修改第6行 <>JMM_MY_OBJ=myserver.o 改为自己的要编译的文件即可。|  
-|jmm.conf|	一个简单的配置。|  
-|myserver.c|	业务实现模块。这个就是简单的回射而已。|  
-|jmm_cmmhdr.h|	对外提供的扩展程序的头文件，包含一些常量的定义。|  
-|jmm.h|	对外提供的扩展程序的头文件|  
-|clog.h <br>clog.c|	简单的日志处理模块。可独立应用于任何应用程序。|  
-|ciniconfig.h <br>ciniconfig.c|	简单的读取INI配置文件的模块。可独立应用于任何应用程序。|  
+|Makefile| Makefile 文件。如果是扩展应用，则修改第6行 <>JMM_MY_OBJ=myserver.o 改为自己的要编译的文件即可。|  
+|jmm.conf| 一个简单的配置。|  
+|myserver.c| 业务实现模块。这个就是简单的回射而已。|  
+|jmm_cmmhdr.h| 对外提供的扩展程序的头文件，包含一些常量的定义。|  
+|jmm.h| 对外提供的扩展程序的头文件|  
+|clog.h <br>clog.c| 简单的日志处理模块。可独立应用于任何应用程序。|  
+|ciniconfig.h <br>ciniconfig.c| 简单的读取INI配置文件的模块。可独立应用于任何应用程序。|  
 
 编译说明：
 
-1. 安装libevent. 下载地址：[libevent.org](www.libevent.org)    
+1. 安装libevent. 下载地址：[libevent.org](www.libevent.org)
 2. 建立文件夹mkdir conf log bin  
 3. 最后make可以了。  
 4. 如果会Makefile直接看Makefile  

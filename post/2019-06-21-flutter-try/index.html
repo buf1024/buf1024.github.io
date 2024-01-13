@@ -109,7 +109,8 @@
 </span>
     <span class="post_date">
       Jun 21, 2019</span>
-    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://luoguochun.cn/tags/flutter/' title="Flutter" class="post_tag button button_translucent">Flutter
+    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://luoguochun.cn/tags/dart/' title="Dart" class="post_tag button button_translucent">Dart
+        </a><a href='https://luoguochun.cn/tags/flutter/' title="Flutter" class="post_tag button button_translucent">Flutter
         </a>
     </span>
     <span class="page_only">&nbsp;·
@@ -157,7 +158,7 @@
 <h1 id="flutter">Flutter</h1>
 <p>这里不会详述<a href="https://flutter.dev/">Flutter</a>的各个方面，因为也很难描述完整，所以这里描述大多是自己的感受。</p>
 <p>在<a href="https://flutter.dev/">Flutter</a>的世界里，几乎所有的东西都是widget，所谓的widget就是窗口小部件，而已在Flutter里面，<code>Widget</code>只是<code>Element</code>的一个配置，真正渲染的界面的是一个叫<code>RenderObject</code>的东西。做应用开发，其实不用了解到那么深入也没有什么大问题。总体来说，Flutter里面的<code>Widget</code>分为两大类一个种称之为<code>Stateless</code>的，另外一种是<code>Statefull</code>，顾名思义，就是无状态与有状态之分。Flutter里面的widget多如牛毛，那么对应普通开发者来说，是否是都有掌握所有的UI widget呢？非也，Flutter里面很多是重复的，比如说<code>Container</code>增加个<code>padding</code>属性的配置可以实现<code>Padding</code>的功能，<code>Row/Column</code>适当的配置也可以实现<code>Center</code>的功能，<code>GestureDetector</code>可以实现<code>InkWell</code>等等。感觉上是google用着用着觉得不爽了，就添加一个组件。但是常用的组件并不是很多，gayhub上面有两个不错的展示常用UI的仓库：<a href="https://github.com/efoxTeam/flutter-ui">flutter-ui</a>和<a href="https://github.com/alibaba/flutter-go">flutter-go</a>。虽然包括的组件不一定是齐全的，但整体上创建一个类似淘宝一样的app，这些组件应该是足够的了。那么对使用Flutter创建UI界面是否困难呢？如果你写过react-native或知道flex布局，再加上稍微了解一下flutter的基础组件，那么写起来并非困难，速度甚至比react-native还快，但是，很多的括号和嵌套会让你恶心到吐血，如果不是有IDE的支持和十分快的热加载速度，很难相信会有人选择Flutter进行开发。</p>
-<p>做过react-native/react的都知道，跨页面数据共享时，需要全局状态管理工具，而redux几乎是react世界的标准方式。那么Flutter是否也有redux呢，答案是肯定的。然而在实际上使用时，redux在Flutter上面写起来并不顺手，总感觉生硬。在Flutter世界了状态管理大约有：EventBus, Bloc, Scoped_model, Redux(fish-redux), provider等。严格来说，EventBus和Bloc并不算是状态管理，EventBus更像它名字描述一样事件总线，对事件感兴趣的组件就监听，状态变化了就更新UI，而Bloc本质上就是一种设计模式，接口与实现分离的一种模式，数据变化通过StreamBuilder来重绘。Scoped_model, Redux(fish-redux), provider这些全局状态管理工具中，除了Redux(fish-redux)用起来没有像react那么爽外，其他两个都相对简单，网上搜索一下就有响应的文章出来，这里不再累赘。</p>
+<p>做过react-native/react的都知道，跨页面数据共享时，需要全局状态管理工具，而redux几乎是react世界的标准方式。那么Flutter是否也有redux呢，答案是肯定的。然而在实际上使用时，redux在Flutter上面写起来并不顺手，总感觉生硬。在Flutter世界了状态管理大约有：EventBus, BloC, Scoped_model, Redux(fish-redux), provider等。严格来说，EventBus和Bloc并不算是状态管理，EventBus更像它名字描述一样事件总线，对事件感兴趣的组件就监听，状态变化了就更新UI，而Bloc本质上就是一种设计模式，接口与实现分离的一种模式，数据变化通过StreamBuilder来重绘。Scoped_model, Redux(fish-redux), provider这些全局状态管理工具中，除了Redux(fish-redux)用起来没有像react那么爽外，其他两个都相对简单，网上搜索一下就有响应的文章出来，这里不再累赘。</p>
 <p>两个练习的demo，PS.完整的的学习demo, flutter使用方式不完全正确的：<a href="https://github.com/buf1024/monthproj/tree/master/wang_finance">wang_finance</a>和<a href="https://github.com/buf1024/monthproj/tree/master/hellodiary">hellodiary</a>。</p>
 <h1 id="小结">小结</h1>
 <p>总体而言，flutter的开发体验会比react-native好，虽然flutter的生态相对小，发展前景也不确定，但相比于react-native的各种坑，还是值得尝试。</p>
@@ -204,7 +205,10 @@
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://luoguochun.cn/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/" class="nav-link" title="前端保姆级配置">前端保姆级配置</a>
+        <a href="https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder/" class="nav-link" title="Rust sqlx SQLBuilder">Rust sqlx SQLBuilder</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2024-01-08-vite-engineering-config/" class="nav-link" title="前端过程化配置保姆级教程">前端过程化配置保姆级教程</a>
       </li>
       <li>
         <a href="https://luoguochun.cn/post/2023-12-26-rust-proc-macro/" class="nav-link" title="rust 过程宏">rust 过程宏</a>
@@ -224,16 +228,28 @@
       <li>
         <a href="https://luoguochun.cn/post/2023-03-16-love-for-insterest/" class="nav-link" title="为爱发电终是不能长久的……">为爱发电终是不能长久的……</a>
       </li>
-      <li>
-        <a href="https://luoguochun.cn/post/2023-03-02-tcp-setup/" class="nav-link" title="TCP未建立之前，丢失的SYN报文会不会重传？">TCP未建立之前，丢失的SYN报文会不会重传？</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
       <nav class="tags_nav">
         <a href='https://luoguochun.cn/categories/misc/' class="post_tag button button_translucent" title="misc">
           MISC
-          <span class="button_tally">9</span>
+          <span class="button_tally">11</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/linux/' class="post_tag button button_translucent" title="linux">
+          LINUX
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/tcp/' class="post_tag button button_translucent" title="tcp">
+          TCP
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/c/' class="post_tag button button_translucent" title="c">
+          C
+          <span class="button_tally">7</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/flutter/' class="post_tag button button_translucent" title="flutter">
@@ -241,33 +257,43 @@
           <span class="button_tally">7</span>
         </a>
         
-        <a href='https://luoguochun.cn/categories/linux/' class="post_tag button button_translucent" title="linux">
-          LINUX
-          <span class="button_tally">7</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/c/' class="post_tag button button_translucent" title="c">
-          C
-          <span class="button_tally">6</span>
-        </a>
-        
         <a href='https://luoguochun.cn/categories/rust/' class="post_tag button button_translucent" title="rust">
           RUST
-          <span class="button_tally">6</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/tcp/' class="post_tag button button_translucent" title="tcp">
-          TCP
-          <span class="button_tally">6</span>
+          <span class="button_tally">7</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/python/' class="post_tag button button_translucent" title="python">
           PYTHON
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
+          C&#43;&#43;
           <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/web/' class="post_tag button button_translucent" title="web">
+          WEB
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/gcc/' class="post_tag button button_translucent" title="gcc">
+          GCC
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/git/' class="post_tag button button_translucent" title="git">
+          GIT
+          <span class="button_tally">3</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/reactjs/' class="post_tag button button_translucent" title="reactjs">
           REACTJS
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/unittest/' class="post_tag button button_translucent" title="unittest">
+          UNITTEST
           <span class="button_tally">3</span>
         </a>
         
@@ -286,118 +312,13 @@
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/categories/gcc/' class="post_tag button button_translucent" title="gcc">
-          GCC
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/git/' class="post_tag button button_translucent" title="git">
-          GIT
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/os/' class="post_tag button button_translucent" title="os">
-          OS
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/unittest/' class="post_tag button button_translucent" title="unittest">
-          UNITTEST
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/web/' class="post_tag button button_translucent" title="web">
-          WEB
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/%E9%87%8F%E5%8C%96/' class="post_tag button button_translucent" title="量化">
-          量化
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/android/' class="post_tag button button_translucent" title="android">
-          ANDROID
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/app/' class="post_tag button button_translucent" title="app">
-          APP
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/django/' class="post_tag button button_translucent" title="django">
-          DJANGO
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/frontend/' class="post_tag button button_translucent" title="frontend">
-          FRONTEND
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/gdb/' class="post_tag button button_translucent" title="gdb">
-          GDB
+        <a href='https://luoguochun.cn/categories/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
           <span class="button_tally">1</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/go/' class="post_tag button button_translucent" title="go">
           GO
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/http/' class="post_tag button button_translucent" title="http">
-          HTTP
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/https/' class="post_tag button button_translucent" title="https">
-          HTTPS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/mac/' class="post_tag button button_translucent" title="mac">
-          MAC
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/multi_window/' class="post_tag button button_translucent" title="multi_window">
-          MULTI_WINDOW
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/orm/' class="post_tag button button_translucent" title="orm">
-          ORM
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/ssh/' class="post_tag button button_translucent" title="ssh">
-          SSH
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/tdd/' class="post_tag button button_translucent" title="tdd">
-          TDD
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/vcs/' class="post_tag button button_translucent" title="vcs">
-          VCS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/webui/' class="post_tag button button_translucent" title="webui">
-          WEBUI
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/windows/' class="post_tag button button_translucent" title="windows">
-          WINDOWS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA/' class="post_tag button button_translucent" title="收音机">
-          收音机
           <span class="button_tally">1</span>
         </a>
         
@@ -409,12 +330,17 @@
       <nav class="tags_nav">
         <a href='https://luoguochun.cn/tags/c/' class="post_tag button button_translucent" title="c">
           C
-          <span class="button_tally">20</span>
+          <span class="button_tally">21</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/linux/' class="post_tag button button_translucent" title="linux">
           LINUX
-          <span class="button_tally">10</span>
+          <span class="button_tally">16</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
+          C&#43;&#43;
+          <span class="button_tally">7</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/python/' class="post_tag button button_translucent" title="python">
@@ -427,9 +353,24 @@
           <span class="button_tally">7</span>
         </a>
         
+        <a href='https://luoguochun.cn/tags/dart/' class="post_tag button button_translucent" title="dart">
+          DART
+          <span class="button_tally">6</span>
+        </a>
+        
         <a href='https://luoguochun.cn/tags/flutter/' class="post_tag button button_translucent" title="flutter">
           FLUTTER
           <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/rust/' class="post_tag button button_translucent" title="rust">
+          RUST
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/tdd/' class="post_tag button button_translucent" title="tdd">
+          TDD
+          <span class="button_tally">4</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/android/' class="post_tag button button_translucent" title="android">
@@ -447,8 +388,8 @@
           <span class="button_tally">3</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/rust/' class="post_tag button button_translucent" title="rust">
-          RUST
+        <a href='https://luoguochun.cn/tags/js/' class="post_tag button button_translucent" title="js">
+          JS
           <span class="button_tally">3</span>
         </a>
         
@@ -492,18 +433,13 @@
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/js/' class="post_tag button button_translucent" title="js">
-          JS
+        <a href='https://luoguochun.cn/tags/libevent/' class="post_tag button button_translucent" title="libevent">
+          LIBEVENT
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/minix3/' class="post_tag button button_translucent" title="minix3">
-          MINIX3
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/os/' class="post_tag button button_translucent" title="os">
-          OS
+        <a href='https://luoguochun.cn/tags/macos/' class="post_tag button button_translucent" title="macos">
+          MACOS
           <span class="button_tally">2</span>
         </a>
         
@@ -517,19 +453,14 @@
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/tdd/' class="post_tag button button_translucent" title="tdd">
-          TDD
-          <span class="button_tally">2</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/%E6%9E%84%E6%9E%B6/' class="post_tag button button_translucent" title="构架">
           构架
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/%E9%87%8F%E5%8C%96/' class="post_tag button button_translucent" title="量化">
-          量化
-          <span class="button_tally">2</span>
+        <a href='https://luoguochun.cn/tags/api/' class="post_tag button button_translucent" title="api">
+          API
+          <span class="button_tally">1</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/bt/' class="post_tag button button_translucent" title="bt">
@@ -537,8 +468,8 @@
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
-          C&#43;&#43;
+        <a href='https://luoguochun.cn/tags/c&#43;/' class="post_tag button button_translucent" title="c&#43;">
+          C&#43;
           <span class="button_tally">1</span>
         </a>
         
@@ -547,8 +478,18 @@
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/django/' class="post_tag button button_translucent" title="django">
-          DJANGO
+        <a href='https://luoguochun.cn/tags/database/' class="post_tag button button_translucent" title="database">
+          DATABASE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/endian/' class="post_tag button button_translucent" title="endian">
+          ENDIAN
           <span class="button_tally">1</span>
         </a>
         
@@ -577,23 +518,18 @@
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/javascript/' class="post_tag button button_translucent" title="javascript">
-          JAVASCRIPT
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/jquery/' class="post_tag button button_translucent" title="jquery">
           JQUERY
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/libevent/' class="post_tag button button_translucent" title="libevent">
-          LIBEVENT
+        <a href='https://luoguochun.cn/tags/ld/' class="post_tag button button_translucent" title="ld">
+          LD
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/mac/' class="post_tag button button_translucent" title="mac">
-          MAC
+        <a href='https://luoguochun.cn/tags/logger/' class="post_tag button button_translucent" title="logger">
+          LOGGER
           <span class="button_tally">1</span>
         </a>
         
@@ -612,8 +548,18 @@
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/proc/' class="post_tag button button_translucent" title="proc">
-          PROC
+        <a href='https://luoguochun.cn/tags/os/' class="post_tag button button_translucent" title="os">
+          OS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/process/' class="post_tag button button_translucent" title="process">
+          PROCESS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/react/' class="post_tag button button_translucent" title="react">
+          REACT
           <span class="button_tally">1</span>
         </a>
         
@@ -647,21 +593,6 @@
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/tcp-optition/' class="post_tag button button_translucent" title="tcp-optition">
-          TCP-OPTITION
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/tcpdump/' class="post_tag button button_translucent" title="tcpdump">
-          TCPDUMP
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/tidbit/' class="post_tag button button_translucent" title="tidbit">
-          TIDBIT
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/vc/' class="post_tag button button_translucent" title="vc">
           VC
           <span class="button_tally">1</span>
@@ -672,8 +603,18 @@
           <span class="button_tally">1</span>
         </a>
         
+        <a href='https://luoguochun.cn/tags/vue/' class="post_tag button button_translucent" title="vue">
+          VUE
+          <span class="button_tally">1</span>
+        </a>
+        
         <a href='https://luoguochun.cn/tags/webui/' class="post_tag button button_translucent" title="webui">
           WEBUI
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/wechat/' class="post_tag button button_translucent" title="wechat">
+          WECHAT
           <span class="button_tally">1</span>
         </a>
         
@@ -682,23 +623,18 @@
           <span class="button_tally">1</span>
         </a>
         
+        <a href='https://luoguochun.cn/tags/windows/' class="post_tag button button_translucent" title="windows">
+          WINDOWS
+          <span class="button_tally">1</span>
+        </a>
+        
         <a href='https://luoguochun.cn/tags/wireshark/' class="post_tag button button_translucent" title="wireshark">
           WIRESHARK
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/%E5%BE%AE%E4%BF%A1/' class="post_tag button button_translucent" title="微信">
-          微信
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/' class="post_tag button button_translucent" title="微服务">
           微服务
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA/' class="post_tag button button_translucent" title="收音机">
-          收音机
           <span class="button_tally">1</span>
         </a>
         

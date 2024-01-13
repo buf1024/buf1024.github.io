@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on BUF1024</title>
+    <link>https://luoguochun.cn/categories/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 18 Jan 2016 11:12:36 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/categories/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>minix 3</title>
+      <link>https://luoguochun.cn/post/2016-01-18-minix-3/</link>
+      <pubDate>Mon, 18 Jan 2016 11:12:36 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2016-01-18-minix-3/</guid>
+      <description>
+        
+          
+            Linux非常庞大，虽然有很多参考的资料，但是啃这样庞大的东西还是很费力，如果是业余啃，那难度或许更大。然而，我们可以绕道看下另外一个小巧，
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>隐藏make编译的编译输出</title>
+      <link>https://luoguochun.cn/post/2014-07-04-hide-compile-output/</link>
+      <pubDate>Fri, 04 Jul 2014 16:45:00 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-07-04-hide-compile-output/</guid>
+      <description>
+        
+          
+            编译程序make时，会看到很多编译输出。对于开发来说，这是非常直观的，但是如果分发到客户（需要编译）或者只需要关注错误时，这种输出就感觉烦人
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Windows Shell Extension</title>
+      <link>https://luoguochun.cn/post/2012-06-24-windows-shell-extension/</link>
+      <pubDate>Sun, 24 Jun 2012 00:00:43 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-06-24-windows-shell-extension/</guid>
+      <description>
+        
+          
+            分享1，2年前自己还在搞WINDOWS开发时写的一个小工具（当时在公司无聊的时候写了很多小工具啊，只不过拿不出源代码，杯具），个人觉得挺实用
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>libevent 概述</title>
+      <link>https://luoguochun.cn/post/2012-03-21-libevent-intro/</link>
+      <pubDate>Wed, 21 Mar 2012 21:05:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-03-21-libevent-intro/</guid>
+      <description>
+        
+          
+            声明，本文章东搬西扯抄来过的，并非原创，写给自己参考的。 关于libevent的描述，有两个百科的连接可以参考： libevent百度百科 lib
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

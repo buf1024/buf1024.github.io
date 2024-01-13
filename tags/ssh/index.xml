@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ssh on BUF1024</title>
+    <title>SSH on BUF1024</title>
     <link>https://luoguochun.cn/tags/ssh/</link>
-    <description>Recent content in ssh on BUF1024</description>
+    <description>Recent content in SSH on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 01 Mar 2015 18:12:15 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/ssh/index.xml" rel="self" type="application/rss+xml" />

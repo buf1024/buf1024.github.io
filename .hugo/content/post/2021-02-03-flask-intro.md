@@ -2,24 +2,20 @@
 title: flask极简简介
 date: 2021-02-03T19:10:00+08:00
 draft: false
-categories: [python] 
-tags: [python]
+categories: [Python] 
+tags: [Python]
 ---
-todo: 
+todo:
 
 - flask环境变量  -- FLASK_ENV, FLASK_DEBUG
 
 ----
 
-
-
 flask可以支持热更新式的开发，PyCharm的设置方式是在`Run Configuration`上面勾上DEBUG选项。
-
-
 
 假设已有以下代码:
 
-```python
+```Python
 from flask import Flask
 app = Flask(__name__)
 ```
@@ -28,7 +24,7 @@ app = Flask(__name__)
 
 路由使用`@app.route`装饰。路由如包括变量，格式是：`/user/<username>`或`<converter:variable_name>`。对应的函数可传入同名的参数， 如：
 
-```python
+```Python
 @app.route('/user/<username>')
 def show_user_profile(username):
     return 'User %s' % escape(username)
@@ -51,13 +47,11 @@ def show_post(post_id):
 
 使用`url_for`函数，可以获取到对应的url，不用写死，如:
 
-```python
-form flask import url_for
+```Python
+fORM flask import url_for
 
 url_for('index')
 ```
-
-
 
 ### 模板
 
@@ -73,17 +67,13 @@ flask使用的是`jinja2`模板, 模板放置的目录默认位于项目的`temp
 {% endif %}
 ```
 
-
-
 ### 请求数据
 
 web请求的数据位于flask的`request`对象中，这个对象看起来是全局对象，在多线程的环境中不可以使用，实际上，这个是本地安全的。如:
 
-```python
+```Python
 from flask import request
 ```
-
-
 
 ### 响应数据
 
@@ -97,7 +87,7 @@ from flask import request
 
 如果想要在视图内部掌控响应对象的结果，那么可以使用 `make_response()`函数。如:
 
-```python
+```Python
 @app.errorhandler(404)
 def not_found(error):
     resp = make_response(render_template('error.html'), 404)
@@ -108,4 +98,3 @@ def not_found(error):
 ### 会话，日志
 
 会话`from flask import session`, 日志`app.logger.debug`
-

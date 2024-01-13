@@ -1,9 +1,8 @@
 ---
 title: 'Very Very Simple C++ Testing Framework'
 date: 2012-02-09 20:50:00
-aliases: [/2012/02/09/simple-c++-test-framework/]
-categories: [unittest]  
-tags: [c++, gtest, tdd] 
+categories: [Unittest]  
+tags: [C+, C++, gtest, TDD] 
 ---
 ### 简介  
 
@@ -26,15 +25,14 @@ C++单元测试框架google 的[gtest](http://code.google.com/p/googletest/)是�
 
 | 断言宏         | 含义  |  
 | ------------- |:-------------|  
-| EXPECT_EQ/ASSERT_EQ| 期待数值相等 |   
-| EXPECT_NEQ/ASSERT_NEQ	      | 期待数值不相等      |   
-| EXPECT_STREQ/ASSERT_STREQ	 | 期待字符串相等      |     
-| EXPECT_STRNEQ/ASSERT_STRNEQ		 | 期待字符串不相等    |    
-| EXPECT_BINEQ/ASSERT_BINEQ		 | 期待二进制相等      |   
-| EXPECT_BINNEQ/ASSERT_BINNEQ			 | 期待二进制不相等      |  
-| EXPECT_TRUE/ASSERT_TRUE				 | 期待值为真      | 
-| EXPECT_FALSE/ASSERT_FALSE				 | 期待值为假      | 
-
+| EXPECT_EQ/ASSERT_EQ| 期待数值相等 |
+| EXPECT_NEQ/ASSERT_NEQ       | 期待数值不相等      |
+| EXPECT_STREQ/ASSERT_STREQ  | 期待字符串相等      |
+| EXPECT_STRNEQ/ASSERT_STRNEQ   | 期待字符串不相等    |
+| EXPECT_BINEQ/ASSERT_BINEQ   | 期待二进制相等      |
+| EXPECT_BINNEQ/ASSERT_BINNEQ    | 期待二进制不相等      |  
+| EXPECT_TRUE/ASSERT_TRUE     | 期待值为真      |
+| EXPECT_FALSE/ASSERT_FALSE     | 期待值为假      |
 
 ### 固件(Test Fixture)  
 
@@ -66,9 +64,9 @@ C++单元测试框架google 的[gtest](http://code.google.com/p/googletest/)是�
 提供两个宏进行操作：  
 
 | 宏         | 含义  |  实例  |  
-| ------------- |:-------------|:-------------| 
-| TEST_F |测试固件|TEST_F(MyTestFixture, MyCase) <br>{ <br>} <br>MyTestFixture是你继续Test的固件。<br>MyCase是这个用例的名称。|   
-| TEST |测试用用例	|TEST(MyDummyFixture, MyCase) <br>{ <br>} <br>MyTestFixture是固件名称，事实上它什么也不做。<br>MyCase是这个用例的名称。|   
+| ------------- |:-------------|:-------------|
+| TEST_F |测试固件|TEST_F(MyTestFixture, MyCase) <br>{ <br>} <br>MyTestFixture是你继续Test的固件。<br>MyCase是这个用例的名称。|
+| TEST |测试用用例 |TEST(MyDummyFixture, MyCase) <br>{ <br>} <br>MyTestFixture是固件名称，事实上它什么也不做。<br>MyCase是这个用例的名称。|
 
 ### 环境(Test Environment)  
 
@@ -91,22 +89,21 @@ C++单元测试框架google 的[gtest](http://code.google.com/p/googletest/)是�
 
 还有一些与测试无关，但是与本框架相关的一些宏。  
 
-| 宏         | 含义  |    
+| 宏         | 含义  |
 | ------------- |:-------------|  
-| INIT_TEST |初始化框架，在使用调用|     
-| RUN_ALL_TEST |运行测试	|   
+| INIT_TEST |初始化框架，在使用调用|
+| RUN_ALL_TEST |运行测试 |
 
 编译好测试程序后，可执行程序接受一些选项，和GTEST的一样。  
 
-| 选项         | 含义  |    
+| 选项         | 含义  |
 | ------------- |:-------------|  
-| --help	 |输出帮助信息，仅显示英文，因为哥的工作的UNIX不支持中文。|     
-| --list_tests	 |列出测试用例	|  
-| --filter=POSTIVE_PATTERNS[-NEGATIVE_PATTERNS]	 |过虑，仅支持通佩符	|  
+| --help  |输出帮助信息，仅显示英文，因为哥的工作的UNIX不支持中文。|
+| --list_tests  |列出测试用例 |  
+| --filter=POSTIVE_PATTERNS[-NEGATIVE_PATTERNS]  |过虑，仅支持通佩符 |  
 
 居然这个介绍花的时间比写这个测试框架的时间还长。  
 
 ### 示例  
 
 更多示例参考GTEST。  
-

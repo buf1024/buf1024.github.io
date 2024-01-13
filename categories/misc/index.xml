@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>misc on BUF1024</title>
+    <title>Misc on BUF1024</title>
     <link>https://luoguochun.cn/categories/misc/</link>
-    <description>Recent content in misc on BUF1024</description>
+    <description>Recent content in Misc on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 05 May 2019 11:12:02 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Jul 2019 15:12:00 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>android国内源</title>
+      <link>https://luoguochun.cn/post/2019-07-01-android-source/</link>
+      <pubDate>Mon, 01 Jul 2019 15:12:00 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2019-07-01-android-source/</guid>
+      <description>
+        
+          
+            如果是Flutter框架，同时要flutter框架修改文件 flutter\packages\flutter_tools\gradle\flutter.gradle grep找出build.gradle文件 凡是和google相关的，全部替换为 1 2
+          
+          
+        
+      </description>
+    </item>
+    
     <item>
       <title>物理机新建xubuntu一些问题</title>
       <link>https://luoguochun.cn/post/2019-05-05-new-xubuntu-problem/</link>
@@ -17,6 +33,38 @@
         
           
             无线网卡驱动问题 &amp;ndash; 无法显示wifi 解决方法: https://jingyan.baidu.com/article/ca2d939dd4f1b4eb6c31ce09.html PS： 下载需要联网，可以使用手机usb共享网络。 新建用户密码过于简单 1 2 # 去掉Cracklib
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Macos一丢丢小技巧</title>
+      <link>https://luoguochun.cn/post/2018-07-06-mac-newbie/</link>
+      <pubDate>Fri, 06 Jul 2018 11:02:16 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2018-07-06-mac-newbie/</guid>
+      <description>
+        
+          
+            有的人认为用mac是纯粹了了装X，不过用过的人自然才知道什么是无知。 摘录一些常见的问题和使用用的技巧。 Mac cpu占用高 Mac系统中 mdwork
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>ssh 隧道访问局域网机器</title>
+      <link>https://luoguochun.cn/post/2015-03-01-ssh-tunnel/</link>
+      <pubDate>Sun, 01 Mar 2015 18:12:15 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2015-03-01-ssh-tunnel/</guid>
+      <description>
+        
+          
+            1 SSH 免登陆密码 1.1 生产 RSA密钥对 `$ssh-keygen -t rsa` ~/.ssh目录将生成id_rsa（私钥）和id_rsa.pub（公钥） 1.2 将公钥复制到需要自动登陆的机
           
           
         
@@ -97,22 +145,6 @@
         
           
             Red Hat/CentOS/SuSE等都是采用RPM或者基于RPM的软件包来安装的。而yum则可以认为是rpm的软件仓库。大致的命令如下（前面加
-          
-          
-        
-      </description>
-    </item>
-    
-    <item>
-      <title>libevent 概述</title>
-      <link>https://luoguochun.cn/post/2012-03-21-libevent-intro/</link>
-      <pubDate>Wed, 21 Mar 2012 21:05:10 +0000</pubDate>
-      
-      <guid>https://luoguochun.cn/post/2012-03-21-libevent-intro/</guid>
-      <description>
-        
-          
-            声明，本文章东搬西扯抄来过的，并非原创，写给自己参考的。 关于libevent的描述，有两个百科的连接可以参考： libevent百度百科 lib
           
           
         

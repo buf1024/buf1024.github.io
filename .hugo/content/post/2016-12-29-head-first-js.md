@@ -1,13 +1,13 @@
 ---
 title: js快速参考
 date: 2016-12-29 17:08:46
-aliases: [/2016/12/29/head-first-js/]
-categories: [web]
-tags: [html, css, js]
+aliases: [/2016/12/29/head-first-JS/]
+categories: [Web]
+tags: [Html, CSS, JS]
 ---
 P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考……
 
-js 运行于宿主环境，常见宿主环境有web浏览器和node。在web浏览器里，主要是放到html页面，通过`<script>`标签实现。`<script>`包括6个属性:
+JS 运行于宿主环境，常见宿主环境有web浏览器和node。在web浏览器里，主要是放到html页面，通过`<script>`标签实现。`<script>`包括6个属性:
 
         async            -> 可选。异步加载，不影响界面其他元素加载
         charset          -> 可选。制定字符集，浏览器会忽略该值
@@ -18,7 +18,7 @@ js 运行于宿主环境，常见宿主环境有web浏览器和node。在web浏�
 
 如果不包括`defer`和`async`，那么脚本的执行顺序为出现的顺序。`<script>`放的位置可放到`<head>`或`<body>`中，前者需等到脚本加载完毕后，才呈现页面，这样给人的感觉是慢和假死，后者是脚本加载之前，页面可以呈现。`<noscript>`可以检测脚本是否被禁用或步支持。
 
-## js 核心
+## JS 核心
 
 #### 基本语法
 
@@ -28,7 +28,7 @@ js区分大小写，注释风格和c语言一致。js有严格模式的编译指
             var localVar; // 定义局部变量
             globalVar;    // 定义全局变量
         }
-        
+
 js数据类型有，5中基本操作类型: `Undefinded Null Boolean Number String`，一种复杂数据类型: `Object`，以及用户定义函数类型：`function`。`typeof`操作符(注意，是操作符不是函数，类似c语言的`sizeof`)可返回数据类型，字符串表示分别为: `undefined object boolean number string object function (Null类型会返回object)`。
 
 `Boolean()`函数，可将非`Boolean`类型的数据转换为`Boolean`类型数据，转换规则： 任何非空的字符串，任何非零数据，任何非空对象都转换非`true`，其他则为`false`。
@@ -46,7 +46,6 @@ js数据类型有，5中基本操作类型: `Undefinded Null Boolean Number Stri
         toLocalString()                     -> 本地字符串表示
         toString()                          -> 转换为字符串表示
         valueOf()                           -> 返回对象的字符串，数值或布尔值表示，一般和toString一样
-
 
 js函数与其他函数不同，js函数不关心传递参数的个数和数据类型，函数体内，`arguments`数组保存传递过来的参数。函数没有重载，如果定义两个一样的函数，后面的会覆盖前面的参数。
 
@@ -77,7 +76,6 @@ js函数与其他函数不同，js函数不关心传递参数的个数和数据�
 正则表达式类型，重要的方法是`exec`，返回匹配组。
 
 `Function`类型，函数类型。函数类型除了包括`arguments this`属性外，还包括`callee caller`，分别代表函数本身和调用者。由于函数也是对象，所有，也有自己的属性。如，`length prototype`， `length`表示接收的命名参数的个数。每个函数都包含两个方法：`apply() call()`，最只要的作用的扩大函数运行的作用域， 除此之外，还包括了`bind`方法。
-
 
 #### 面向对象
 
@@ -134,7 +132,6 @@ js函数与其他函数不同，js函数不关心传递参数的个数和数据�
 
  原型+构造函数模式，使用最广泛，认可度最高，默认的创建自定义对象模式。
 
-
 继承对象，js主要通过实现继承来实现，而且使用原型链。主要的原理是，用一个引用类型继承另外一个引用类型的属性和方法。
 
 - 原型链继承，如：
@@ -153,7 +150,7 @@ js函数与其他函数不同，js函数不关心传递参数的个数和数据�
 
  上述继承的问题是，SuperType的属性被SubType共享，若包括引用类型，则SubType实例互相影响。稍微改进一下，借用构造函数组合继承。
 
- - 组合继承，如:
+- 组合继承，如:
 
          function SuperType(name) {
                  this.name = name;
@@ -188,6 +185,7 @@ js函数与其他函数不同，js函数不关心传递参数的个数和数据�
 - 触摸和手势事件(`touchstart touchmove touchend touchcancel gesturestart gesturechange gestureend`)
 
 ## ES6
+
 es6为2015发布的的js标准，es6用起来更新现代的编程语言。目前并不是所有的浏览器都支持，[babel](https://babeljs.io/)。es6新特性：
 
 - let, const
@@ -289,6 +287,3 @@ es6为2015发布的的js标准，es6用起来更新现代的编程语言。目�
 对于一个常年工作于古老语言的码农，这里的记录必定是错漏百出的。
 
 最后，多写才是硬道路。[javascript参考](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/)
-
-
-

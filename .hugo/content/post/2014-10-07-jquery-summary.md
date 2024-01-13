@@ -2,19 +2,23 @@
 title: jquery selector小结 
 date: 2014-10-07 21:36:56 
 aliases: [/2014/10/07/jquery-summary/]
-categories: [webui] 
-tags: [javascript, jquery, webui] 
+categories: [Web] 
+tags: [JS, JQuery, WebUI] 
 ---
 ## jQuery 概述  
+
  现代网站基本上都离不开jQuery。它是轻量级的js库，兼容css3，还有各种浏览器。文档齐全而详细，还有众多而成熟的插件可用。jQuery就个人理解，主要有以下几方面功能： 统一的DOM选择器，统一事件处理，动画和ajax等，它大大的简化了html，css和js的耦合度。jQuery UI，bootstrap等非常优秀和方便的前端UI库也是紧紧依赖jQuery，对于这些UI的使用后面将也会做些小结，对于不懂前端而又不想非常深入的人来说，这些优秀UI库，是非常好的神器。  
  jQuery库 使用 jQuery() 或 $()使用，$是jQuery的一个别名，如果使用第三方库和$冲突，可以调用`jQuery.noConfig()`来避免冲突。  
  废话少说，总结下jQuery，不是专门的UI人员，也没有很深的研究，所以避免不了很多错误。  
 
 ## jQuery DOM选择器  
+
  jQuery的选择器很灵活，这里是非常笼统的归类，而且不一定齐全(官方有自己的归类方法，可以参考相关文档: [selectors](http://api.jquery.com/category/selectors/))，以下归类是有可能重复的。而且所有的选择器都不是分开独立使用的，可以任君随意组合。  
+
 ##### 1. CSS选择器  
+
  jQuery是兼容CSS的，因而CSS选择器也适用于jQuery。如 `#id .class element`等。  
-                
+
         例子：         
                  
         $("p")            -> 匹配所有的<p>的元素     
@@ -23,15 +27,15 @@ tags: [javascript, jquery, webui]
         $("p.class#id")   -> 匹配所有的<p>元素,class属性为"class", id属性为"id"的元素   
         $("p a.class#id") -> 匹配所有的<p>元素, 后代（孩子，孙子等）
                           -> 为<a>元素class属性为"class", id属性为"id"的元素 
-    
+
 除此之后， 还多个选择器可以同时使用，用`,`分隔。
 
         例子：
                          
         $("p,div")        -> 匹配所有的<p>和<div>的元素        
 
-
 ##### 2. 容器属性选择器  
+
 有时元素的选择需求是比较bt的，选择的元素可能是某个元素的直接孩子，或者又是要求某属性值等于多少，于是就有了这类元素的选择器。  
 
         例子：       
@@ -51,9 +55,9 @@ tags: [javascript, jquery, webui]
         $("E[A!='V']")      -> 匹配所有的<E>不含有属性A或者含属性A且值不为'V'元素
         $("E[A*='V']")      -> 匹配所有的<E>含有属性A且值包含'V'元素
 
-
 ##### 3. 位置过滤器
-有时，我们还需要根据元素的位置选择，于是有了这类选择器。 这类选择器是从匹配的元素中选出特定位置的元素。如，$("p a:first")，选择所有p元素，后代为a中的第一个元素集合。   
+
+有时，我们还需要根据元素的位置选择，于是有了这类选择器。 这类选择器是从匹配的元素中选出特定位置的元素。如，$("p a:first")，选择所有p元素，后代为a中的第一个元素集合。
 
         例子：       
               
@@ -85,7 +89,8 @@ tags: [javascript, jquery, webui]
                              -> 如, $("li:lt(5)")
 
 ##### 4. 选择过滤器
-有时，我们还需要根据选择的元素进行过滤，于是有了这类选择器。jQuery提供的大量的过滤器给我们使用，基本上很bt的需求都可以满足。如，$(":checkbox:checked:enabled")，选择所有"enabled"和"checked"的checkbox。    
+
+有时，我们还需要根据选择的元素进行过滤，于是有了这类选择器。jQuery提供的大量的过滤器给我们使用，基本上很bt的需求都可以满足。如，$(":checkbox:checked:enabled")，选择所有"enabled"和"checked"的checkbox。
 
         例子：       
               
@@ -103,7 +108,7 @@ tags: [javascript, jquery, webui]
         :header              -> 匹配所有的"header"元素，指<h1> 到 <h6>
         :hidden              -> 匹配所有的隐藏状态元素
         :image               -> 匹配所有的图像元素，指input[type='image']
-        :input               -> 匹配所有的"form"元素，指input, select, textarea, button
+        :input               -> 匹配所有的"fORM"元素，指input, select, textarea, button
         :not(selector)       -> 匹配所有的不包含在"selector"中元素
         :parent              -> 匹配所有的包括孩子而且孩子非空元素
         :password            -> 匹配所有的文件密码元素，指input[type='password']
@@ -116,7 +121,6 @@ tags: [javascript, jquery, webui]
         :text                -> 匹配所有的"text"元素，指input[type='text']
         :visible             -> 匹配所有的可见状态元素
 
-
 ## jQuery 其他杂项
-参考[jQuery API文档](http://api.jquery.com/)
 
+参考[jQuery API文档](http://api.jquery.com/)

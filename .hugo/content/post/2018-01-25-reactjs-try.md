@@ -6,29 +6,33 @@ aliases: [/2018/01/25/reactjs-try/]
 tags: [frontend]
 ---
 ## 简介
+
 在大前端里，有三个特别流行的MVVM（参考：[MVC，MVP 和 MVVM 的图示](http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html)）框架，[AngularJS](https://angularjs.org/)，[ReactJS](https://reactjs.org/)和[Vue](https://vuejs.org/)。在MVVM之前，前后端的开发是紧耦合的，前端设计页面，后端服务端生成渲染页面。这中方式开发最大的坏处是，前后端的代码混合在一起，不容易维护，当然最可能好处就是，前后端紧密合作或许会产生感情的火花~~。使用MVVM框架，前后分离，定好交互的接口后，前后端就可以进行独立的开发，互不干扰，代码分别维护。基于这个优点，毫不犹豫的产生了想使用MVVM的想法。
 
 关于AngularJS，ReactJS和Vue，网上有很多的资料参考。AngularJS没有接触过，由google维护，使用的是[TypeScript](http://www.typescriptlang.org/)，据说使用起来稍微复杂和笨重。ReactJS，是Facebook维护的，兼容相对低版本的浏览器，使用自己发明的JSX语法，因为JSX把JS和HTML混合起来，所以相对一部分人第一次接触，并不会这么喜欢它，但是当你使用时，也不会感觉到什么异样。Vue是个人维护的项目，感觉参考了吸收了AngularJS和ReactJS，上手相对简单，遗憾的是不支持低版本的浏览器。经过对比后，开发使用了ReactJS，最主要的原因是，兼容相对低版本的浏览器。
 
 ## 入门
+
 这里说的是后台人员的入门。因为前端的发展大都是借鉴后台的技术，甚至不少前端框架是后台人员开发的，所以后台开发人员进行前端开发，门槛不会太大。那么对于后端需要掌握什么的技术呢？
 
 JS 是必须的，除了 JS 还不够，你还得熟悉ES6，ES6的最好参考在: [ECMAScript 6 入门](http://es6.ruanyifeng.com/)。看完ES6之后，你才会觉得JS是一门编程语言。JS的参考也很重要，mozilla的参考比较详细：[JavaScript reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)。
 
 ES6代码并不能在浏览器执行，所以需要将ES6代码转换成普通的JS代码，这是[babeljs](http://babeljs.io/)干的事情，不过你很少会直接接触babeljs，更多的情况下，你是通过使用构建工具间接使用到。[webpack](http://webpack.github.io/)是一个很好的构建工具，这篇入门级别介绍挺好：[入门Webpack，看这篇就够了](https://www.jianshu.com/p/42e11515c10f)。当然还有很多构建工具，不过webpack用的人相对多点，webpack的配置对于入门者来说，是比较复杂的，但是很多情况下，也不需要深入。
 
-ReactJS看[react-china](https://doc.react-china.org/)中文翻译，总体上也能入门，入门估计实战可能还有点距离，很多情况下，你可能还需要[React Router](https://reacttraining.com/react-router/web/guides/redux-integration)。React Router据说每次版本变化都比较大，对于新开发的项目，我们当然选择最新版本，这篇文章可能有助于理解: [初探 React Router 4.0](https://www.jianshu.com/p/e3adc9b5f75c/)。你可能还需要全局的状态管理，你需要[Redux](https://redux.js.org/)，看中文翻译即可[Redux 中文文档](http://www.redux.org.cn/)，Redux的代码仓库里面带有不少例子，看里面的例子对理解Redux和ReactJS都很有帮助。[阮一峰](http://www.ruanyifeng.com/)的三篇入门教程对理解Redux也是非常有帮助的。[Redux 入门教程（一）：基本用法](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html), [Redux 入门教程（二）：中间件与异步操作](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html), [Redux 入门教程（三）：React-Redux 的用法](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html)。
+ReactJS看[react-china](https://doc.react-china.org/)中文翻译，总体上也能入门，入门估计实战可能还有点距离，很多情况下，你可能还需要[React Router](https://reacttraining.com/react-router/web/guides/redux-integration)。React Router据说每次版本变化都比较大，对于新开发的项目，我们当然选择最新版本，这篇文章可能有助于理解: [初探 React Router 4.0](https://www.jianshu.com/p/e3adc9b5f75c/)。你可能还需要全局的状态管理，你需要[Redux](https://redux.JS.org/)，看中文翻译即可[Redux 中文文档](http://www.redux.org.cn/)，Redux的代码仓库里面带有不少例子，看里面的例子对理解Redux和ReactJS都很有帮助。[阮一峰](http://www.ruanyifeng.com/)的三篇入门教程对理解Redux也是非常有帮助的。[Redux 入门教程（一）：基本用法](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html), [Redux 入门教程（二）：中间件与异步操作](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html), [Redux 入门教程（三）：React-Redux 的用法](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html)。
 
-web的请求大多数情况下都是异步，异步的数据流Redux推荐的数据流管理是[redux-thunk](https://github.com/gaearon/redux-thunk)，但是实际上使用时，你不用redux-thunk也没什么毛病，自己控制`dispatch action`。所以，对于异步数据，更喜欢[redux-saga](https://redux-saga.js.org/)，他利用了es6的generator，使用起来像后台的协程这样的，用顺序的方式写异步的代码。redux-saga的中文文档，最好看繁体翻译的，因为简体中文翻译好像有点拗口，而且没有跟进最新版本：[redux-saga](https://neighborhood999.github.io/redux-saga/)。
+web的请求大多数情况下都是异步，异步的数据流Redux推荐的数据流管理是[redux-thunk](https://github.com/gaearon/redux-thunk)，但是实际上使用时，你不用redux-thunk也没什么毛病，自己控制`dispatch action`。所以，对于异步数据，更喜欢[redux-saga](https://redux-saga.JS.org/)，他利用了es6的generator，使用起来像后台的协程这样的，用顺序的方式写异步的代码。redux-saga的中文文档，最好看繁体翻译的，因为简体中文翻译好像有点拗口，而且没有跟进最新版本：[redux-saga](https://neighborhood999.github.io/redux-saga/)。
 
 另外推荐一看下[dva](https://github.com/dvajs/dva)这个项目(据说维护不积极)，但是个人觉得封装的很深入，用起来会很顺手，只是使用了之后，很容易忘记原来的技术栈，基于据说的维护不积极，所以我们也不考虑使用它。不过，里面一篇，最佳实践比较值得一看：[React + Redux 最佳实践](https://github.com/sorrycc/blog/issues/1)
 
 以上，看起需要掌握的东西比较多，但是实践上对于后台人员并不会有太多的困难。对于后台开发人员来说，困难的不是以上部分，而是没有提及的css部分，这是要靠天赋和美感的。[less](http://lesscss.org/)和[sass](http://sass-lang.com/)可以简化css的编写，但是对于没有大量实践经验的后台人员来说，css编写很耗时间。
 
 ## React部分技术栈
+
 React相关入门的参考上一节已经做了简介，这里是看上面部分关于React部分的笔记，当然简单不完整：
 
 #### React
+
 `ReactDOM.render` 是React最基本方法，用于将模板转为HTML语言，并插入指定的DOM节点。React元素都是immutable不可变的。当元素被创建之后，你是无法改变其内容或属性的。一个元素就好像是动画里的一帧，它代表应用界面在某一时间点的样子。
 
 React使用的是JSX语法，JSX的基本语法规则其实非常简单：遇到HTML标签（以<开头），就用HTML规则解析；遇到代码块（以{开头），就用JavaScript规则解析。推荐在JSX代码的外面扩上一个小括号，这样可以防止分号自动插入的bug。
@@ -38,7 +42,8 @@ React使用的是JSX语法，JSX的基本语法规则其实非常简单：遇到
 `this.props.children`属性。它表示组件的所有子节点，React 提供一个工具方法 React.Children 来处理 `this.props.children`。我们可以用`React.Children.map`来遍历子节点，而不用担心`this.props.children`的数据类型是 `undefined`还是`object`。
 
 组件最简单的方式是使用JavaScript函数，接收一个单一的`props`对象并返回了一个React元素，缺点是用不了生命周期钩子，写法：
-```js
+
+```JS
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>
 }
@@ -58,8 +63,9 @@ Welcome.defaultProps = {
 1. 不要直接更新状态
   更新方式：`this.setState({comment: 'Hello'})`
 
-2. 状态更新可能是异步的 
-  ``` js
+2. 状态更新可能是异步的
+
+  ``` JS
   this.setState(function(prevState, props) {
     return {
       counter: prevState.counter + props.increment
@@ -68,7 +74,8 @@ Welcome.defaultProps = {
   ```
 
 3. 状态更新支持合并
-  ```js
+
+  ```JS
   this.state = {
       posts: [],
       comments: []
@@ -83,7 +90,8 @@ Welcome.defaultProps = {
 4. 添加生命周期钩子（可选）
 
 例子：
-```js
+
+```JS
 class Clock extends React.Component {
   constructor(props) {
     super(props);
@@ -106,39 +114,42 @@ ReactDOM.render(
 
 组件的生命周期(详细参考: [React：组件的生命周期](https://segmentfault.com/a/1190000004168886))分成三个状态：
 
-  - Mounting：已插入真实 DOM
-  - Updating：正在被重新渲染
-  - Unmounting：已移出真实 DOM
+- Mounting：已插入真实 DOM
+- Updating：正在被重新渲染
+- Unmounting：已移出真实 DOM
 
 组件对应的生命周期
 
-  - componentWillMount()
-  - componentDidMount()
-  - componentWillUpdate(object nextProps, object nextState)
-  - componentDidUpdate(object prevProps, object prevState)
-  - componentWillUnmount()
+- componentWillMount()
+- componentDidMount()
+- componentWillUpdate(object nextProps, object nextState)
+- componentDidUpdate(object prevProps, object prevState)
+- componentWillUnmount()
 
 额外的生命周期
 
-  - componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用
-  - shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用
+- componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用
+- shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用
 
 组件类似于面向对象的类，外部是不需要知道内部的状态。
 
 在事件处理，最好使用箭头函数，这样可以避免`this`的影响。在 React 中你不能使用返回 false 的方式阻止默认行为。你必须明确的使用 `preventDefault`，如。
-```js
+
+```JS
   handleClick = (e) => {
     e.preventDefault();
     console.log('The link was clicked.');
   }
   ```
+
 也可以在构造函数里面绑定`this`, 向事件传递参数：
-``` js
+
+``` JS
 <button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
 <button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
 ```
-参数 e 作为 React 事件对象将会被作为第二个参数进行传递。通过箭头函数的方式，事件对象必须显式的进行传递，但是通过 bind 的方式，事件对象以及更多的参数将会被隐式的进行传递
 
+参数 e 作为 React 事件对象将会被作为第二个参数进行传递。通过箭头函数的方式，事件对象必须显式的进行传递，但是通过 bind 的方式，事件对象以及更多的参数将会被隐式的进行传递
 
 #### REDUX
 
@@ -161,11 +172,11 @@ Action 创建函数 就是生成 action 的方法。Action 只是描述了有事
 
 Store 有以下职责：
 
-  - 维持应用的 state；
-  - 提供 getState() 方法获取 state；
-  - 提供 dispatch(action) 方法更新 state；
-  - 通过 subscribe(listener) 注册监听器;
-  - 通过 subscribe(listener) 返回的函数注销监听器
+- 维持应用的 state；
+- 提供 getState() 方法获取 state；
+- 提供 dispatch(action) 方法更新 state；
+- 通过 subscribe(listener) 注册监听器;
+- 通过 subscribe(listener) 返回的函数注销监听器
 
 Redux 的设计思想很简单
 
@@ -174,17 +185,18 @@ Redux 的设计思想很简单
 
 异步操作的差别是它要发出三种 Action。
 
-  - 操作发起时的 Action
-  - 操作成功时的 Action
-  - 操作失败时的 Action
+- 操作发起时的 Action
+- 操作成功时的 Action
+- 操作失败时的 Action
 
-  - 操作开始时，送出一个 Action，触发 State 更新为"正在操作"状态，View 重新渲染
-  - 操作结束后，再送出一个 Action，触发 State 更新为"操作结束"状态，View 再一次重新渲染
+- 操作开始时，送出一个 Action，触发 State 更新为"正在操作"状态，View 重新渲染
+- 操作结束后，再送出一个 Action，触发 State 更新为"操作结束"状态，View 再一次重新渲染
 
 action creator的写法：
-```js
+
+```JS
 const asyncAction = (base) => {
-  return ['REQUEST', 'SUCCESS', 'FAILURE'].reduce((acc, type) => {
+  return ['REQUEST', 'SUCCESS', 'FAILURE'].reduce((acC, type) => {
     acc[type] = `${base}_${type}`
     return acc
   }, {})
@@ -201,7 +213,8 @@ export const loadCommodity = {
 ```
 
 UI组件和容器组件通过([react-redux](github.com/reactjs/react-redux))connect连接在一起, 通过Provider注入，原型：
-```js
+
+```JS
 connect(mapStateToProps, mapDispatchToProps)(UIComponent)
 
 const mapStateToProps = (state, ownProps) => {
@@ -223,11 +236,13 @@ const mapDispatchToProps = (
   };
 }
 ```
+
 当state变化时，导致filter的改变，用reselect可以缓存state，输入不变，则结果不变。
 如果connect第而个参数是action creator，那么直接调用action creator就可以进行dispatch
 
 Redux中间件是对dispatch的封装（redux-saga是一个中间件），原型：
-``` js
+
+``` JS
 const logger = store => next => action => {
   console.log('dispatching', action)
   let result = next(action)
@@ -235,17 +250,20 @@ const logger = store => next => action => {
   return result
 }
 ```
+
 reducer的原型:
-``` js
+
+``` JS
 const todos = (state = initialState, action) => {
 }
 //必须返回新的state
 ```
 
-
 ## 优化与踩坑
+
 当你写比较多的reducer的时候，你会发现，所有的reducer的写法都类似，只要定义好action传过来的字段是payload，那很多reducer的写法基本和以下类似：
-```js
+
+```JS
 import merge from 'lodash/merge'
 import * as userActions from '../actions/user'
 
@@ -270,7 +288,8 @@ export { user }
 ```
 
 ReactJS真正使用起来还是有不少坑，印象比较深的是key字段，在渲染列表时，或其他组件时遇到多次。举个栗子，如下代码，如果没有key字段，那么DeliveryList组件的生命周期只有创建一次。
-```js
+
+```JS
 class WorkBenchLayout extends Component {
   render () {
     return (
@@ -287,7 +306,9 @@ class WorkBenchLayout extends Component {
 }
 
 ```
+
 ## 总结
+
 这次试水React并不算怎么顺利。可能的原因：
 
 1. 不安规定制定接口
@@ -308,5 +329,3 @@ class WorkBenchLayout extends Component {
 
 P.S:
 这里没有针对任何人。
-
-

@@ -2,11 +2,11 @@
 title: fabric极简简介
 date: 2021-01-15T19:12:00+08:00
 draft: false
-categories: [python] 
-tags: [python]
+categories: [Python] 
+tags: [Python]
 ---
 
-[fabric](fabfile.org)主要用于自动化运维，可以使用类似于`make`命令一样执行python的函数。
+[fabric](fabfile.org)主要用于自动化运维，可以使用类似于`make`命令一样执行Python的函数。
 
 [fabric](fabfile.org)主要依赖于[pyinvoke](http://pyinvoke.org/)和[paramiko](http://paramiko.org/)两个库，前者也是类似于make命令一样的工具，后者是处理ssh远程的库。
 
@@ -18,7 +18,7 @@ tags: [python]
 
 项目目录建立`task.py`,内容如下:
 
-```python
+```Python
 from invoke import task
 
 @task
@@ -39,7 +39,7 @@ Building...
 
 fabric和invoke类似，是invoke的远程版本。`tasks.py`变成`fabfile.py`, 配置文件名， `invoke.yml`改为`fabric.yml`。运行的命令由`invoke`改为`fab`，既然如此，那么用invoke替代fabric是否可以，答案是可以。但是，fab客户端提供更多的和网络相关的功能，省去很多手写的样板代码。
 
-```python
+```Python
 from fabric import task
 import os
 
@@ -66,12 +66,10 @@ def compile(ctx):
 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
 [ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] For more infORMation about the errors and possible solutions, please read the following articles:
 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException
 
 ```
-
-
 
 ### 总结
 

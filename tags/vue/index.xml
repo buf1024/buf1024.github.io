@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vue on BUF1024</title>
+    <link>https://luoguochun.cn/tags/vue/</link>
+    <description>Recent content in vue on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 08 Jan 2024 16:00:10 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/tags/vue/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>前端过程化配置保姆级教程</title>
+      <link>https://luoguochun.cn/post/2024-01-08-vite-engineering-config/</link>
+      <pubDate>Mon, 08 Jan 2024 16:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2024-01-08-vite-engineering-config/</guid>
+      <description>
+        
+          
+            感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。 目前一般使用vite​作为前端构建工具，下面所记录的
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

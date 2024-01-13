@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on BUF1024</title>
+    <link>https://luoguochun.cn/tags/docker/</link>
+    <description>Recent content in Docker on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 02 Jun 2018 11:40:39 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker -- 简介</title>
+      <link>https://luoguochun.cn/post/2018-06-02-docker-intro/</link>
+      <pubDate>Sat, 02 Jun 2018 11:40:39 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2018-06-02-docker-intro/</guid>
+      <description>
+        
+          
+            背景 docker从几年前开始就是开源社区一颗耀眼的明星，自己也在那个时候接触docker，也是因为docker学习了golang（golan
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

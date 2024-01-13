@@ -9,7 +9,7 @@ tags: [git, vcs]
 
 ```shell
 [core]
- repositoryformatversion = 0
+ repositoryfORMatversion = 0
  filemode = true
  bare = false
  logallrefupdates = true
@@ -29,7 +29,7 @@ tags: [git, vcs]
 ^_^@/Users/luoguochun/privt/proj/k-map]$ git remote add mirror git@e.coding.net:toyent/k-map/k-map.git  
 ^_^@/Users/luoguochun/privt/proj/k-map]$ cat .git/config
 [core]
- repositoryformatversion = 0
+ repositoryfORMatversion = 0
  filemode = true
  bare = false
  logallrefupdates = true
@@ -45,10 +45,10 @@ tags: [git, vcs]
  url = git@e.coding.net:toyent/k-map/k-map.git
  fetch = +refs/heads/*:refs/remotes/mirror/*
 ^_^@/Users/luoguochun/privt/proj/k-map]$ git remote -v
-mirror	git@e.coding.net:toyent/k-map/k-map.git (fetch)
-mirror	git@e.coding.net:toyent/k-map/k-map.git (push)
-origin	git@gitee.com:heidonglgc/k-map.git (fetch)
-origin	git@gitee.com:heidonglgc/k-map.git (push)
+mirror git@e.coding.net:toyent/k-map/k-map.git (fetch)
+mirror git@e.coding.net:toyent/k-map/k-map.git (push)
+origin git@gitee.com:heidonglgc/k-map.git (fetch)
+origin git@gitee.com:heidonglgc/k-map.git (push)
 ```
 
 3. pull/push操作
@@ -66,7 +66,7 @@ git push mirror master 
 ^_^@/Users/luoguochun/privt/proj/k-map]$ git remote set-url --add origin git@e.coding.net:toyent/k-map/k-map.git
 ^_^@/Users/luoguochun/privt/proj/k-map]$ cat .git/config 
 [core]
- repositoryformatversion = 0
+ repositoryfORMatversion = 0
  filemode = true
  bare = false
  logallrefupdates = true
@@ -84,11 +84,11 @@ git push mirror master 
  fetch = +refs/heads/*:refs/remotes/mirror/*
  
 ^_^@/Users/luoguochun/privt/proj/k-map]$ git remote -v
-mirror	git@e.coding.net:toyent/k-map/k-map.git (fetch)
-mirror	git@e.coding.net:toyent/k-map/k-map.git (push)
-origin	git@gitee.com:heidonglgc/k-map.git (fetch)
-origin	git@gitee.com:heidonglgc/k-map.git (push)
-origin	git@e.coding.net:toyent/k-map/k-map.git (push)
+mirror git@e.coding.net:toyent/k-map/k-map.git (fetch)
+mirror git@e.coding.net:toyent/k-map/k-map.git (push)
+origin git@gitee.com:heidonglgc/k-map.git (fetch)
+origin git@gitee.com:heidonglgc/k-map.git (push)
+origin git@e.coding.net:toyent/k-map/k-map.git (push)
 ```
 
 意思是多个url指向同一个orgin，这样就可以一次push到多个仓库。

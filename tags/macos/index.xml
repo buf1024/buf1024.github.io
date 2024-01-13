@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MacOS on BUF1024</title>
+    <link>https://luoguochun.cn/tags/macos/</link>
+    <description>Recent content in MacOS on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 04 Jul 2023 18:00:10 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hiqradio 一个简单的收音机软件</title>
+      <link>https://luoguochun.cn/post/2023-07-04-hiqradio/</link>
+      <pubDate>Tue, 04 Jul 2023 18:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2023-07-04-hiqradio/</guid>
+      <description>
+        
+          
+            网页版体验: https://luoguochun.cn/hiqradio/ 有一段时间，在B站那里刷视频的时候，无意刷到一个德生的收音机视频。突然让我想起了我的中学时代，我的中学时代是在收音机的陪伴之下
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Macos一丢丢小技巧</title>
+      <link>https://luoguochun.cn/post/2018-07-06-mac-newbie/</link>
+      <pubDate>Fri, 06 Jul 2018 11:02:16 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2018-07-06-mac-newbie/</guid>
+      <description>
+        
+          
+            有的人认为用mac是纯粹了了装X，不过用过的人自然才知道什么是无知。 摘录一些常见的问题和使用用的技巧。 Mac cpu占用高 Mac系统中 mdwork
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

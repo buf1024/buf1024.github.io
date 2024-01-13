@@ -1,9 +1,9 @@
 ---
 title: gcov 简述
 date: 2013-05-31 17:08:14
-aliases: [/2013/05/31/linux-gcov/]
-categories: [linux, gcc] 
-tags: [c, gcc]
+aliases: [/2013/05/31/Linux-gcov/]
+categories: [Linux, GCC] 
+tags: [C, GCC, TDD]
 ---
 
 代码覆盖率是单元测试的一个指标，通常覆盖率越高，单元测试就做得更完备。（然而，覆盖率是不是和软件质量成正比关系呢？）gcov是GNU工具链中的一个重要的工具，虽然gcov是覆盖率很好的工具，但是gcov的更重要的应用是性能的调优。gcov通过监视程序的执行，从而确定某行代码有没有执行，执行了多少次。gcov的报告是基于文本的格式的，看起来是比较难看点。但是，有个叫lcov的工具，将gcov的报告格式转换为html的直观形式，后面介绍。  
@@ -64,10 +64,9 @@ gcov使用：
         50:   
         51:  }
 
-
 1. 编译程序是增加 -ftest-coverage -fprofile-arcs 选项。  
 
-        [heidong@HEIDONGVM gcov]$ gcc -o bbsort bbsort.c -ftest-coverage -fprofile-arcs
+        [heidong@HEIDONGVM gcov]$ GCC -o bbsort bbsort.c -ftest-coverage -fprofile-arcs
 
 生成.gcno文件。  
 
@@ -151,15 +150,12 @@ gcov使用：
                 1:   51:}
                 -:   52:
         [heidong@HEIDONGVM gcov]$
-         
 
 可以看到某行执行了多少次，哪些行没有执行过（####标示）。gcov 还可以检查其他很多的信息，如分支，函数等，详细参考gcov的帮助文档，并测试之。  
 
- 
-
 对于文本格式，相信很多人的觉得不是很直观，于是便有了lcov这个工具，它可以算是gcov的前端工具，这样生成html文件，可以很直观的看到代码覆盖情况。  
 
-lcov不是标准的unix/linux工具，需要下载，地址是：ltp.sourceforge.net/coverage/lcov.php 注意要FQ才可以访问。  
+lcov不是标准的unix/Linux工具，需要下载，地址是：ltp.sourceforge.net/coverage/lcov.php 注意要FQ才可以访问。  
 
 使用方式：  
 
@@ -179,15 +175,13 @@ lcov不是标准的unix/linux工具，需要下载，地址是：ltp.sourceforge
         Reading data file bbsort.info 
         Found 1 entries. 
         Found common filename prefix "/home/heidong/tmp" 
-        Writing .css and .png files. 
+        Writing .CSS and .png files. 
         Generating output. 
         Processing file gcov/bbsort.c 
         Writing directory view page. 
         Overall coverage rate: 
           lines......: 95.2% (20 of 21 lines) 
           functions..: 100.0% (2 of 2 functions
-
- 
 
 看下生成的html文件：
 ![html report](/img/gcov/gcov.jpg)  

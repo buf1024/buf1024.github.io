@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>git on BUF1024</title>
+    <title>Git on BUF1024</title>
     <link>https://luoguochun.cn/categories/git/</link>
-    <description>Recent content in git on BUF1024</description>
+    <description>Recent content in Git on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 15 Jul 2017 19:56:18 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/categories/git/index.xml" rel="self" type="application/rss+xml" />
@@ -32,7 +32,23 @@
       <description>
         
           
-            查看.git/config 1 2 3 4 5 6 7 8 9 10 11 12 13 [core] repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true ignorecase = true precomposeunicode = true [remote &amp;#34;origin&amp;#34;] url = git@gitee.com:heidonglgc/k-map.git fetch = +refs/heads/*:refs/remotes/origin/* [branch &amp;#34;master&amp;#34;] remote = origin merge = refs/heads/master 增加一个名为mir
+            查看.git/config 1 2 3 4 5 6 7 8 9 10 11 12 13 [core] repositoryfORMatversion = 0 filemode = true bare = false logallrefupdates = true ignorecase = true precomposeunicode = true [remote &amp;#34;origin&amp;#34;] url = git@gitee.com:heidonglgc/k-map.git fetch = +refs/heads/*:refs/remotes/origin/* [branch &amp;#34;master&amp;#34;] remote = origin merge = refs/heads/master 增加一个名为mir
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>git 版本控制</title>
+      <link>https://luoguochun.cn/post/2016-10-10-git-toilet-book/</link>
+      <pubDate>Mon, 10 Oct 2016 14:46:23 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2016-10-10-git-toilet-book/</guid>
+      <description>
+        
+          
+            简介 git，是目前最流行的版本控制系统，没有之一。git作为分布式版本控制系统，与其他集中式版本控制系统(如svn)的一个重要区别是，git
           
           
         

@@ -1,0 +1,1696 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" data-figures=""  class="page"   >
+
+<head>
+<title>前端过程化配置保姆级教程 | BUF1024</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+
+
+<meta property="og:locale" content="zh-cn" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。 目前一般使用vite​作为前端构建工具，下面所记录的" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="">
+<meta name="twitter:title" content="前端过程化配置保姆级教程" />
+<meta name="twitter:image" content="https://luoguochun.cn"/>
+<meta property="og:url" content="https://luoguochun.cn/post/2024-01-08-vite-engineering-config/" />
+<meta property="og:title" content="前端过程化配置保姆级教程" />
+<meta property="og:description" content="感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。 目前一般使用vite​作为前端构建工具，下面所记录的" />
+<meta property="og:image" content="https://luoguochun.cn" />
+  <meta name="keywords" content="blog,computer,luoguochun" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://luoguochun.cn/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://luoguochun.cn/icons/favicon-32x32.png">
+<link rel="manifest" href="https://luoguochun.cn/icons/site.webmanifest">
+
+<link rel="canonical" href="https://luoguochun.cn/post/2024-01-08-vite-engineering-config/">
+
+
+
+<link rel="preload" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity = "sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" as="style" crossorigin="anonymous">
+
+
+
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
+"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+
+
+<link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
+
+</head>
+
+<body data-code="100" data-lines="false" id="documentTop"
+  data-lang="zh-cn">
+
+<header class="nav_header" >
+  <nav class="nav"><a href='https://luoguochun.cn' class="nav_brand nav_item" title="BUF1024">BUF1024
+  <div class="nav_close">
+    <div><svg class="icon">
+  <title>open-menu</title>
+  <use xlink:href="#open-menu"></use>
+</svg>
+<svg class="icon">
+  <title>closeme</title>
+  <use xlink:href="#closeme"></use>
+</svg>
+</div>
+  </div>
+</a>
+
+    <div class='nav_body nav_body_left'>
+      
+      
+      
+        
+
+  <div class="nav_parent">
+    <a href="https://luoguochun.cn/" class="nav_item" title="主页">主页 </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://luoguochun.cn" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <div class="nav_sub">
+      <span class="nav_child"></span>
+        <a href="https://luoguochun.cn/talib-doc/" class="nav_child nav_item" title="TA 技术分析库">TA 技术分析库</a>
+        <a href="https://luoguochun.cn/hiqradio" class="nav_child nav_item" title="hiqadio网络收音机">hiqadio网络收音机</a>
+    </div>
+  </div>
+  <div class="nav_parent">
+    <a href="https://luoguochun.cn/about/" class="nav_item" title="关于">关于 </a>
+  </div>
+      
+<div class='follow'>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+</header>
+
+  <main>
+  
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title">前端过程化配置保姆级教程</h1>
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      Jan 8, 2024</span>
+    <span class="post_time"> · 11 min read</span><span>&nbsp;· <a href='https://luoguochun.cn/tags/vite/' title="vite" class="post_tag button button_translucent">vite
+        </a><a href='https://luoguochun.cn/tags/vue/' title="vue" class="post_tag button button_translucent">vue
+        </a><a href='https://luoguochun.cn/tags/react/' title="react" class="post_tag button button_translucent">react
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=%e5%89%8d%e7%ab%af%e8%bf%87%e7%a8%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e4%bf%9d%e5%a7%86%e7%ba%a7%e6%95%99%e7%a8%8b&url=https%3a%2f%2fluoguochun.cn%2fpost%2f2024-01-08-vite-engineering-config%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fluoguochun.cn%2fpost%2f2024-01-08-vite-engineering-config%2f&t=%e5%89%8d%e7%ab%af%e8%bf%87%e7%a8%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e4%bf%9d%e5%a7%86%e7%ba%a7%e6%95%99%e7%a8%8b" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://luoguochun.cn/post/2024-01-08-vite-engineering-config/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    <div class="post_body"><p>感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。</p>
+<p>目前一般使用<code>vite</code>​作为前端构建工具，下面所记录的是使用<code>vite</code>​，在<code>vscode</code>​编辑器下面的配置，其他构建工具和编辑器可参考，大体类似。使用<code>vite</code>​初始化项目后，一般需要作一下配置，才更加符合前端工程化特点。</p>
+<h2 id="代码规范">代码规范</h2>
+<p>​<code>eslint</code>​​代码检查工具，按照规定的规则检测代码可能存在的问题。<code>prettier</code>​​则是代码格式化的工具。配合<code>vscode</code>​对应的两个扩展<a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint</a>和<a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier - Code fORMatter</a>，代码编写起来如虎添翼。关于Prettier不生效解决办法参考：20240101 VS Code Prettier格式化不生效解决方式。</p>
+<p>扩展安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># eslint支持</span>
+</span></span><span class="line"><span class="cl">pnpm add -D eslint eslint-plugin-vue eslint-define-config
+</span></span><span class="line"><span class="cl"><span class="c1"># prettier 支持</span>
+</span></span><span class="line"><span class="cl">pnpm add -D prettier eslint-plugin-prettier @vue/eslint-config-prettier
+</span></span><span class="line"><span class="cl"><span class="c1"># 对ts的支持</span>
+</span></span><span class="line"><span class="cl">pnpm add -D @vue/eslint-config-typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中<code>eslint</code>​​，<code>prettier和eslint-plugin-prettier</code>​​是必须要安装的，<code>eslint-define-config</code>​​使之更加容易编写配置，添加<code>ts</code>​支持，增加<code>ts</code>​的代码检测。</p>
+<p>需要注意的是，<code>vscode</code>​对于这些配置不是立马生效的，如果遇到不生效，可以尝试<strong>重启</strong>，看是否能解决问题。</p>
+<h3 id="eslint代码检查"><code>eslint</code>​代码检查</h3>
+<p>安装好<code>eslint</code>​之后，运行<code>npx eslint --init</code>​初始化可生成<code>eslint</code>​的配置，跟着提示一步一步的来即可，在当前目录就可以生成对应的配置文件。需要注意的是，默认生成的是<code>CommonJS</code>​格式的，扩展为<code>cjs</code>​的。不过，手工配置更加灵活，不过需要注意的时候，最好用<code>npx eslint --init</code>​生成的名字，否则可能会出现以下莫名其妙的问题。</p>
+<p>​<code>.eslintrc.cjs</code>​参考配置(<code>vue</code>​)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 需要安装依赖:  npm i eslint-define-config
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="p">{</span> <span class="nx">defineFlatConfig</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;eslint-define-config&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">defineFlatConfig</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">root</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* 指定如何解析语法。*/</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">parser</span><span class="o">:</span> <span class="s1">&#39;vue-eslint-parser&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* 优先级低于parse的语法解析配置 */</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">parserOptions</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">parser</span><span class="o">:</span> <span class="s1">&#39;@typescript-eslint/parser&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//模块化方案
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">sourceType</span><span class="o">:</span> <span class="s1">&#39;module&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">browser</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">es2021</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">node</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 解决 defineProps and defineEmits generate no-undef warnings
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;vue/setup-compiler-macros&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// https://eslint.bootcss.com/docs/user-guide/configuring#specifying-globals
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">globals</span><span class="o">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">extends</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;plugin:vue/vue3-recommended&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;eslint:recommended&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;plugin:@typescript-eslint/recommended&#39;</span><span class="p">,</span> <span class="c1">// typescript-eslint推荐规则,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;prettier&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;plugin:prettier/recommended&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;./.eslintrc-auto-import.json&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// https://cn.eslint.org/docs/rules/
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">rules</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 禁止使用 var
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;no-var&#39;</span><span class="o">:</span> <span class="s1">&#39;error&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">semi</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 优先使用 interface 而不是 type
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/consistent-type-definitions&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="s1">&#39;interface&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;@typescript-eslint/no-explicit-any&#39;</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span> <span class="c1">// 可以使用 any 类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/explicit-module-boundary-types&#39;</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 解决使用 require() Require statement not part of import statement. 的问题
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/no-var-requires&#39;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/ban-types.md
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/ban-types&#39;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;error&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">types</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// add a custom message to help explain why not to use it
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>          <span class="nx">Foo</span><span class="o">:</span> <span class="s2">&#34;Don&#39;t use Foo because it is unsafe&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          <span class="c1">// add a custom message, AND tell the plugin how to fix it
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>          <span class="nb">String</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Use string instead&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fixWith</span><span class="o">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          <span class="s1">&#39;{}&#39;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Use object instead&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fixWith</span><span class="o">:</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 禁止出现未使用的变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;@typescript-eslint/no-unused-vars&#39;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;error&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span> <span class="nx">vars</span><span class="o">:</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="nx">args</span><span class="o">:</span> <span class="s1">&#39;after-used&#39;</span><span class="p">,</span> <span class="nx">ignoreRestSiblings</span><span class="o">:</span> <span class="kc">false</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;vue/html-indent&#39;</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 关闭此规则 使用 prettier 的格式化规则，
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;vue/max-attributes-per-line&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;off&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// vue3.2.25之后为props使用解耦赋值语法，删除警告
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;vue/no-setup-props-destructure&#39;</span><span class="o">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 优先使用驼峰，element 组件除外
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;vue/component-name-in-template-casing&#39;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;error&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;PascalCase&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ignores</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;/^el-/&#39;</span><span class="p">,</span> <span class="s1">&#39;/^router-/&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">registeredComponentsOnly</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 强制使用驼峰
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">camelcase</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">properties</span><span class="o">:</span> <span class="s1">&#39;always&#39;</span> <span class="p">}],</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 优先使用 const
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;prefer-const&#39;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;error&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">destructuring</span><span class="o">:</span> <span class="s1">&#39;any&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ignoreReadBeforeAssign</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>大神做好了自己的配置：<a href="https://github.com/antfu/eslint-config">https://github.com/antfu/eslint-config</a>，也可以参考。</p>
+<p>在<code>vite</code>​运行时，也希望运行<code>eslint</code>​进行代码检查，那么可以这么做：</p>
+<p>安装包：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">pnpm</span> <span class="nx">add</span> <span class="o">-</span><span class="nx">D</span> <span class="nx">vite</span><span class="o">-</span><span class="nx">plugin</span><span class="o">-</span><span class="nx">eslint</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对<code>vite.config.JS</code>​配置进行修改：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">defineConfig</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vite&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">vue</span> <span class="nx">from</span> <span class="s1">&#39;@vitejs/plugin-vue&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">eslintPlugin</span> <span class="nx">from</span> <span class="s1">&#39;vite-plugin-eslint&#39;</span> <span class="c1">//导入包
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">defineConfig</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">vue</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 增加下面的配置项,这样在运行时就能检查eslint规范
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">eslintPlugin</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">include</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;src/**/*.JS&#39;</span><span class="p">,</span> <span class="s1">&#39;src/**/*.vue&#39;</span><span class="p">,</span> <span class="s1">&#39;src/*.JS&#39;</span><span class="p">,</span> <span class="s1">&#39;src/*.vue&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="prettier代码格式化"><code>prettier</code>​代码格式化</h3>
+<p>​<code>eslint</code>​也可以进行代码格式化的，不过代码格式用的人比较多的还是<code>prettier</code>​。</p>
+<p>这里是<code>.prettierrc.JS</code>​的参考：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 在项目根目录创建文件 .prettierrc.JS
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 以下配置视自己情况而定,并步是每个都需要的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">tabWidth</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>               <span class="c1">// 使用4个空格缩进
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">semi</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>               <span class="c1">// 代码结尾是否加分号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">trailingComma</span><span class="o">:</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>     <span class="c1">// 代码末尾不需要逗号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">singleQuote</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>         <span class="c1">// 是否使用单引号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">printWidth</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>           <span class="c1">// 超过多少字符强制换行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">arrowParens</span><span class="o">:</span> <span class="s1">&#39;avoid&#39;</span><span class="p">,</span>      <span class="c1">// 单个参数的箭头函数不加括号 x =&gt; x
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">bracketSpacing</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>      <span class="c1">// 对象大括号内两边是否加空格 { a:0 }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">  <span class="nx">endOfLine</span><span class="o">:</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>         <span class="c1">// 文件换行格式 LF/CRLF
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">useTabs</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>            <span class="c1">// 不使用缩进符,而使用空格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">quoteProps</span><span class="o">:</span> <span class="s1">&#39;as-needed&#39;</span><span class="p">,</span>   <span class="c1">// 对象的key仅在必要时用引号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">jsxSingleQuote</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>     <span class="c1">// jsx不使用单引号,而使用双引号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">jsxBracketSameLine</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// jsx标签的反尖括号需要换行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">rangeStart</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>             <span class="c1">// 每个文件格式化的范围是文件的全部内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">rangeEnd</span><span class="o">:</span> <span class="kc">Infinity</span><span class="p">,</span>        <span class="c1">// 结尾
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">requirePragma</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>      <span class="c1">// 不需要写文件开头的 @prettier
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">insertPragma</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>       <span class="c1">// 不需要自动在文件开头插入 @prettier
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">proseWrap</span><span class="o">:</span> <span class="s1">&#39;preserve&#39;</span><span class="p">,</span>     <span class="c1">// 使用默认的折行标准
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">htmlWhitespaceSensitivity</span><span class="o">:</span> <span class="s1">&#39;CSS&#39;</span>  <span class="c1">// 根据显示样式决定html要不要折行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>自用的配置参考如下（单引号，末尾没有分号，这里添加了<code>tailwindcss</code>​）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="cm">/** @type {import { Config  } from &#34;prettier&#34;;}*/</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">useTabs</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">bracketSameLine</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">bracketSpacing</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">trailingComma</span><span class="o">:</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">tabWidth</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">semi</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">singleQuote</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">quoteProps</span><span class="o">:</span> <span class="s1">&#39;as-needed&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">printWidth</span><span class="o">:</span> <span class="mi">120</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;prettier-plugin-tailwindcss&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="husky-git-提交规范">husky git 提交规范</h3>
+<p>​<code>husky</code>​是<code>git</code>​钩子，所谓的钩子，就是在<code>commit，push</code>​等操作之前，检测是否符合规范，如果不符合则直接拒绝。</p>
+<p>安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">npx</span> <span class="nx">husky</span><span class="o">-</span><span class="nx">init</span> <span class="o">&amp;&amp;</span> <span class="nx">pnpm</span> <span class="nx">i</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>安装之后，在<code>package.json</code>​自动增加：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">  <span class="s2">&#34;scripts&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;prepare&#34;</span><span class="o">:</span> <span class="s2">&#34;husky install&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>会在当前项目的目录增加<code>.husky</code>​目录，目录有个脚本文件<code>pre-commit</code>​，提交代码之前，会运行里面的脚本。所以，一般在<code>package.json</code>​增加命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"> <span class="s2">&#34;scripts&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl"> <span class="s2">&#34;lint&#34;</span><span class="o">:</span> <span class="s2">&#34;eslint src --fix --ext .JS,.ts,.jsx,.tsx,.vue &amp;&amp; prettier --write \&#34;src/**/*.{JS,ts,json,tsx,CSS,scss,vue,HTML,md}\&#34; --ignore-unknown&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，<code>pre-commit</code>​增加调用<code>pnpm lint</code>​则可以提交之前，对代码进行检查和格式化。</p>
+<p>这样配置的一个问题是，无论我们改动多少，都会对整个项目代码进行检查和格式化，效率不高的，我们的目标是只对改动的代码做检测和格式化。这个时候要用到另外一个包：<code>lint-staged</code>​，对<code>git add</code>​的暂存区进行检查和格式化。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">pnpm</span> <span class="nx">add</span> <span class="o">-</span><span class="nx">D</span> <span class="nx">lint</span><span class="o">-</span><span class="nx">staged</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// package.json 新增
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="s2">&#34;lint-staged&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;*.{vue,JS,ts,tsx,jsx}&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;eslint --fix&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;prettier --write --ignore-unknown&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// .husky/pre-commit改动：
+</span></span></span><span class="line"><span class="cl"><span class="c1">// pnpm lint替换为
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">npx</span> <span class="nx">lint</span><span class="o">-</span><span class="nx">staged</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>前面的提交约束是代码，下面约束的时候提交的文档，避免无意义的提交说明。</p>
+<p>安装（也可以全局安装，这样各个项目都可以用到）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">pnpm</span> <span class="nx">add</span> <span class="o">-</span><span class="nx">D</span> <span class="nx">commitizen</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 运行以下命令初始化 --force视具体情况添加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">$</span> <span class="nx">commitizen</span> <span class="nx">init</span> <span class="nx">cz</span><span class="o">-</span><span class="nx">conventional</span><span class="o">-</span><span class="nx">changelog</span> <span class="o">--</span><span class="nx">pnpm</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">dev</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">exact</span> <span class="o">--</span><span class="nx">force</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// package.json 增加可以pnpm commit，不过不习惯这个commit方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="s2">&#34;scripts&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;commit&#34;</span><span class="o">:</span> <span class="s2">&#34;cz&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样之后，就可以用<code>git cz</code>​ 或<code>pnpm commit</code>​进行代码的提交。在命令行操作或者感觉不方便，vscode也有提供插件：<a href="https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-commitizen">Visual Studio Code Commitizen Support</a>。安装之后，点一点按钮即可：</p>
+<p><figure>
+  <picture>
+
+    
+      
+        
+        
+        
+        
+        
+        
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="image"
+      
+        class="image_figure image_internal image_unprocessed"
+        src="/img/commitcz.png"
+      
+      
+    />
+
+    </picture>
+</figure>
+</p>
+<p>为了强制提交的<code>messsage</code>​必须符合规范，用<code>commitlint</code>​配合<code>husky</code>​使用的。</p>
+<p>安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">pnpm</span> <span class="nx">add</span> <span class="o">-</span><span class="nx">D</span> <span class="err">@</span><span class="nx">commitlint</span><span class="o">/</span><span class="nx">config</span><span class="o">-</span><span class="nx">conventional</span> <span class="err">@</span><span class="nx">commitlint</span><span class="o">/</span><span class="nx">cli</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>安装后，增加配置文件<code>commitlint.config.cjs</code>​:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">extends</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;@commitlint/config-conventional&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，添加到<code>husky</code>​:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">pnpm</span> <span class="nx">husky</span> <span class="nx">add</span> <span class="p">.</span><span class="nx">husky</span><span class="o">/</span><span class="nx">commit</span><span class="o">-</span><span class="nx">msg</span> <span class="s2">&#34;npx --no-install commitlint --edit \&#34;$1\&#34;&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如此依赖<code>pre-commit</code>​和<code>commit-msg</code>​脚本里面的命令都可以运行到了。</p>
+<h2 id="vite配置">Vite配置</h2>
+<p>目前大多数前端都是使用<code>vite</code>​构建工具，所以也选择<code>vite</code>​作为例子。</p>
+<h3 id="别名">别名</h3>
+<p>别名设置就是为了导入其他文件的时候，不必要写全路径，比如<code>import { useUserStore } from '@/store'</code>​。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// tsconfig.json compilerOptions 内增加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;baseUrl&#34;</span><span class="o">:</span> <span class="s2">&#34;.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;paths&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;@/*&#34;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;src/*&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// vite.config.JS defineConfig 内增加
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 需增加 pnpm install -D @types/node
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">fileURLToPath</span><span class="p">,</span> <span class="nx">URL</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;node:url&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="nx">resolve</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">alias</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;@&#34;</span><span class="o">:</span> <span class="nx">fileURLToPath</span><span class="p">(</span><span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="s2">&#34;./src&#34;</span><span class="p">,</span> <span class="kr">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">url</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样，<code>@</code>​就可以<code>alias</code>​为全<code>src</code>​的全路径，导入时，直接可以使用该前缀。当然是可以指定多个不同文件的前缀的，比如有些项目喜欢将<code>components</code>​目录用<code>cpns</code>​简称。</p>
+<h3 id="环境变量env文件">环境变量.env文件</h3>
+<p>环境变量是使用<a href="https://github.com/motdotla/dotenv">dotenv</a>通过<code>.env</code>​文件提供，使用<a href="https://github.com/motdotla/dotenv-expand">dotenv-expand</a>扩展变量。如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span>                <span class="err">#</span> <span class="nx">所有情况下都会加载</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">local</span>          <span class="err">#</span> <span class="nx">所有情况下都会加载</span><span class="err">，</span><span class="nx">但会被</span> <span class="nx">git</span> <span class="nx">忽略</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span><span class="p">.[</span><span class="nx">mode</span><span class="p">]</span>         <span class="err">#</span> <span class="nx">只在指定模式下加载</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span><span class="p">.[</span><span class="nx">mode</span><span class="p">].</span><span class="nx">local</span>   <span class="err">#</span> <span class="nx">只在指定模式下加载</span><span class="err">，</span><span class="nx">但会被</span> <span class="nx">git</span> <span class="nx">忽略</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>环境变量有优先级，如<code>.env&lt;.env.local&lt;.env.[mode]&lt;.env.[mode].local</code>​。</p>
+<p>如果使用的是typescript，为了使环境变量有提示，需要在<code>env.d.ts</code>​文件（如果没有则创建）下，添加：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">/// &lt;reference types=&#34;vite/client&#34; /&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">ImportMetaEnv</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">readonly</span> <span class="nx">VITE_APP_TITLE</span><span class="o">:</span> <span class="nx">string</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 更多环境变量...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">ImportMeta</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">readonly</span> <span class="nx">env</span><span class="o">:</span> <span class="nx">ImportMetaEnv</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果没有修改<code>envPrefix</code>​，那么访问环境变量使用的是<code>import.meta.env.VITE_SOME_KEY</code>​的方式，只有<code>VITE_</code>​才能被访问到。需要注意的是，这是<code>vite</code>​启动后才能访问到，如果没启动前，在<code>vite.config.ts</code>​怎么访问的环境变量呢？做法是通过<code>loadEnv</code>​函数，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">defineConfig</span><span class="p">,</span> <span class="nx">loadEnv</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vite&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">defineConfig</span><span class="p">(({</span> <span class="nx">mode</span> <span class="p">}</span><span class="o">:</span> <span class="nx">ConfigEnv</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">env</span> <span class="o">=</span> <span class="nx">loadEnv</span><span class="p">(</span><span class="nx">mode</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`env: </span><span class="si">${</span><span class="nx">env</span><span class="p">.</span><span class="nx">VITE_APP_API_BASE_URL</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>环境变量是配置在<code>.env</code>​文件里面的，使用的是<code>dotenv</code>​，使用<a href="https://github.com/motdotla/dotenv-expand">dotenv-expand</a>扩展变量，根据不同的环境加载不同的环境变量。如果环境变量名一样，优先级也不一样，越少详细的，优先级越高如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span>                <span class="err">#</span> <span class="nx">所有情况下都会加载</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">local</span>          <span class="err">#</span> <span class="nx">所有情况下都会加载</span><span class="err">，</span><span class="nx">但会被</span> <span class="nx">git</span> <span class="nx">忽略</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span><span class="p">.[</span><span class="nx">mode</span><span class="p">]</span>         <span class="err">#</span> <span class="nx">只在指定模式下加载</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nx">env</span><span class="p">.[</span><span class="nx">mode</span><span class="p">].</span><span class="nx">local</span>   <span class="err">#</span> <span class="nx">只在指定模式下加载</span><span class="err">，</span><span class="nx">但会被</span> <span class="nx">git</span> <span class="nx">忽略</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">/// &lt;reference types=&#34;vite/client&#34; /&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">ImportMetaEnv</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">readonly</span> <span class="nx">VITE_APP_TITLE</span><span class="o">:</span> <span class="nx">string</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 更多环境变量...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">ImportMeta</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">readonly</span> <span class="nx">env</span><span class="o">:</span> <span class="nx">ImportMetaEnv</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="按需加载和自动导入">按需加载和自动导入</h3>
+<p>一般我们使用库的时候，使用的是库的很小部分功能，如果整个库导入的话，那么必定会导致最终的打包文件过大。所以一般来说，我们要求最终的打包文件都是按需导入的。这是通过<code>unplugin-vue-components</code>​这个插件来完成，<code>unplugin-vue-components</code>​插件内部内置了多个常用的库，比如<code>ElementPlus</code>​的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 我们需要配置dts: &#39;src/type/components.d.ts&#39;, 否则ts-lint会报错
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">Components</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">resolvers</span><span class="o">:</span> <span class="p">[</span><span class="nx">ElementPlusResolver</span><span class="p">()],</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">dts</span><span class="o">:</span> <span class="s1">&#39;src/type/components.d.ts&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>自动导入是自动帮你导入对应的函数等，而不必要自己手工导入，使用的是：<code>unplugin-auto-import</code>​这个插件，比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 没使用unplugin-auto-import写法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">computed</span><span class="p">,</span> <span class="nx">ref</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">doubled</span> <span class="o">=</span> <span class="nx">computed</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">count</span><span class="p">.</span><span class="nx">value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 使用unplugin-auto-import的写法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">doubled</span> <span class="o">=</span> <span class="nx">computed</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">count</span><span class="p">.</span><span class="nx">value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">AutoImport</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">resolvers</span><span class="o">:</span> <span class="p">[</span><span class="nx">ElementPlusResolver</span><span class="p">()],</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 自定引入 Vue VueRouter API,如果还需要其他的可以自行引入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;vue&#39;</span><span class="p">,</span> <span class="s1">&#39;vue-router&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 调整自动引入的文件位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">dts</span><span class="o">:</span> <span class="s1">&#39;src/type/auto-import.d.ts&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 解决自动引入eslint报错问题 需要在eslintrc的extend选项中引入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">eslintrc</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">enabled</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// 配置文件的位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>          <span class="nx">filepath</span><span class="o">:</span> <span class="s1">&#39;./.eslintrc-auto-import.json&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">globalsPropValue</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>vscode等一写编辑器也会自动导入库，自己输入函数时就有弹框选择，与此不同的是，直接的文件上面自动导入。至于是否需要使用这个库，看每个人的口味。</p>
+<p>需要注意的是，此两个插件是<code>vite</code>​的插件，需要运行<code>vite</code>​的时候，才会生成对应的<code>.d.ts</code>​文件。</p>
+<h3 id="代理">代理</h3>
+<p>代理主要是为了解决跨域问题，后端服务可能有多个，有时候也要和后端开发联调。<code>vite</code>​配置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">server</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">proxy</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 使用 proxy 实例，VITE_APP_API_BASE_URL可以配置在环境变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="s1">&#39;/api&#39;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">target</span><span class="o">:</span> <span class="nx">env</span><span class="p">.</span><span class="nx">VITE_APP_API_BASE_URL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">changeOrigin</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">rewrite</span><span class="o">:</span> <span class="nx">path</span> <span class="p">=&gt;</span> <span class="nx">path</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^\/api/</span><span class="p">,</span> <span class="s1">&#39;/api&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意的时候<code>target</code>​是要以<code>http</code>​或<code>https</code>​开头，根据不同的环境配置不同<code>target</code>​。</p>
+<h3 id="mock">mock</h3>
+<p>在后端还没有开发好或者不具备联调，而且接口文档已经制定好的情况下，前端可以直接<code>mock</code>​数据进行测试。又或者是要做演示的时候，也可以使用<code>mock</code>​数据。是通过<code>vite-plugin-mock</code>​插件实现的，<code>mock</code>​数据的生成可以使用<code>mockjs</code>​。<code>vite</code>​配置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// 配置mock
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">viteMockServe</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">mockPath</span><span class="o">:</span> <span class="s1">&#39;mock&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 根据实际情况开启或者关闭
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">enable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">logger</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​<code>mock</code>​目录文件示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">MockMethod</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vite-plugin-mock&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">mockList</span><span class="o">:</span> <span class="nx">MockMethod</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl"> <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/api/login&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="c1">// 请求方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">statusCode</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span> <span class="c1">// 返回的http状态码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">response</span><span class="o">:</span> <span class="nx">opt</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">opt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 返回的结果集
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">statusCode</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">desc</span><span class="o">:</span> <span class="s1">&#39;登录成功&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">result</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">mockList</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当开启<code>mock</code>​时，<code>proxy</code>​不生效。</p>
+<h2 id="其他">其他</h2>
+<h3 id="防抖和节流">防抖和节流</h3>
+<p>防抖和节流是前端性能优化的两种方法，同时也可以避免一些后端考虑不周出现的一些意外问题(比如短时间内出现多起同样的业务)。</p>
+<p>防抖的意思是：指触发事件后，在n秒内函数只执行一次，如果在n秒内又触发了事件，则会重新计算函数执行时间。简单来说，就是让某个函数在一定时间内只执行一次，如果期间有多次调用，则以<code>最后一次为准</code>​。</p>
+<p>节流的意思是：指连续触发事件但是在n秒内只执行一次函数。简单来说，<code>就是某个函数在一定时间内只执行一次</code>​，无论用户触发了多少次。</p>
+<p>两者区别在于执行的时机，防抖是在<strong>某个时间段内最后一次触发后执行</strong>，而<strong>节流是在某个时间段内均匀执行一次</strong>。</p>
+<p>实现这两个功能，一般使用的时候<code>lodash</code>​库，<code>debounce</code>​函数实现防抖，<code>throttle</code>​实现节流。</p>
+<h2 id="其他问题">其他问题</h2>
+<h3 id="extends">extends</h3>
+<p>从旧的项目来，经常会碰到在tsconfig的配置里面<code>extends</code>​的配置项，由于新版删除了这些配置，所以直接报错，修改：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="s2">&#34;extends&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;@vue/tsconfig/tsconfig.web.json&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;extends&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;@vue/tsconfig/tsconfig.dom.json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;@vue/tsconfig/tsconfig.lib.json&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;extends&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;@vue/tsconfig/tsconfig.node.json&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;extends&#34;</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;@vue/tsconfig/tsconfig.json&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="esm">esm</h3>
+<p>新生成的项目基本都是全面拥抱esm，具体的表现为，在<code>package.json</code>​里面多了一个配置项：<code>&quot;type&quot;: &quot;module&quot;。</code>​而很多工具生成的是<code>CommonJS</code>​格式，导致报错，最简单的方式是把<code>JS</code>​扩展名改为<code>cjs</code>​扩展名。或者改为esm模式，比如<code>postcss.config.JS</code>​：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// module.exports = {
+</span></span></span><span class="line"><span class="cl"><span class="c1">//   plugins: {
+</span></span></span><span class="line"><span class="cl"><span class="c1">//     tailwindcss: {},
+</span></span></span><span class="line"><span class="cl"><span class="c1">//     autoprefixer: {},
+</span></span></span><span class="line"><span class="cl"><span class="c1">//   },
+</span></span></span><span class="line"><span class="cl"><span class="c1">// }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">plugins</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">tailwindcss</span><span class="o">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">autoprefixer</span><span class="o">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<p><a href="/raw/vite/vite.config.ts">vite.config.ts</a></p>
+<p>‍</p>
+
+    </div>
+<div class="post_comments">
+  
+  
+  
+</div>
+
+
+
+
+    <hr>
+
+<div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2024-01-08 16:00:10 \u002b0800 CST',
+        title: '前端过程化配置保姆级教程',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    <br>
+    
+
+
+    
+    
+    <h2 class="mt-4">最新文章</h2>
+    <ul class="flex-column">
+      <li>
+        <a href="https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder/" class="nav-link" title="Rust sqlx SQLBuilder">Rust sqlx SQLBuilder</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2024-01-08-vite-engineering-config/" class="nav-link" title="前端过程化配置保姆级教程">前端过程化配置保姆级教程</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2023-12-26-rust-proc-macro/" class="nav-link" title="rust 过程宏">rust 过程宏</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2023-09-21-rust-panic/" class="nav-link" title="一行代码让 rustc panic">一行代码让 rustc panic</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2023-07-19-flutter-muti-window/" class="nav-link" title="Flutter 桌面端多窗口支持">Flutter 桌面端多窗口支持</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2023-07-04-hiqradio/" class="nav-link" title="hiqradio 一个简单的收音机软件">hiqradio 一个简单的收音机软件</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2023-03-21-android-https/" class="nav-link" title="android https 抓包">android https 抓包</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2023-03-16-love-for-insterest/" class="nav-link" title="为爱发电终是不能长久的……">为爱发电终是不能长久的……</a>
+      </li>
+    </ul>
+    <div>
+      <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
+      <nav class="tags_nav">
+        <a href='https://luoguochun.cn/categories/misc/' class="post_tag button button_translucent" title="misc">
+          MISC
+          <span class="button_tally">11</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/linux/' class="post_tag button button_translucent" title="linux">
+          LINUX
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/tcp/' class="post_tag button button_translucent" title="tcp">
+          TCP
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/c/' class="post_tag button button_translucent" title="c">
+          C
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/flutter/' class="post_tag button button_translucent" title="flutter">
+          FLUTTER
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/rust/' class="post_tag button button_translucent" title="rust">
+          RUST
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/python/' class="post_tag button button_translucent" title="python">
+          PYTHON
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
+          C&#43;&#43;
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/web/' class="post_tag button button_translucent" title="web">
+          WEB
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/gcc/' class="post_tag button button_translucent" title="gcc">
+          GCC
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/git/' class="post_tag button button_translucent" title="git">
+          GIT
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/reactjs/' class="post_tag button button_translucent" title="reactjs">
+          REACTJS
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/unittest/' class="post_tag button button_translucent" title="unittest">
+          UNITTEST
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/vim/' class="post_tag button button_translucent" title="vim">
+          VIM
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/%E6%9E%84%E6%9E%B6/' class="post_tag button button_translucent" title="构架">
+          构架
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/asm/' class="post_tag button button_translucent" title="asm">
+          ASM
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/go/' class="post_tag button button_translucent" title="go">
+          GO
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+    <div>
+      <h2 class="mt-4 taxonomy" id="tags-section">标签</h2>
+      <nav class="tags_nav">
+        <a href='https://luoguochun.cn/tags/c/' class="post_tag button button_translucent" title="c">
+          C
+          <span class="button_tally">21</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/linux/' class="post_tag button button_translucent" title="linux">
+          LINUX
+          <span class="button_tally">16</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
+          C&#43;&#43;
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/python/' class="post_tag button button_translucent" title="python">
+          PYTHON
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/tcp/' class="post_tag button button_translucent" title="tcp">
+          TCP
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/dart/' class="post_tag button button_translucent" title="dart">
+          DART
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/flutter/' class="post_tag button button_translucent" title="flutter">
+          FLUTTER
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/rust/' class="post_tag button button_translucent" title="rust">
+          RUST
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/tdd/' class="post_tag button button_translucent" title="tdd">
+          TDD
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/android/' class="post_tag button button_translucent" title="android">
+          ANDROID
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/git/' class="post_tag button button_translucent" title="git">
+          GIT
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/gtest/' class="post_tag button button_translucent" title="gtest">
+          GTEST
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/js/' class="post_tag button button_translucent" title="js">
+          JS
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/rust-lib/' class="post_tag button button_translucent" title="rust-lib">
+          RUST-LIB
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/vcs/' class="post_tag button button_translucent" title="vcs">
+          VCS
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/vim/' class="post_tag button button_translucent" title="vim">
+          VIM
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/asm/' class="post_tag button button_translucent" title="asm">
+          ASM
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/css/' class="post_tag button button_translucent" title="css">
+          CSS
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/gas/' class="post_tag button button_translucent" title="gas">
+          GAS
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/gcc/' class="post_tag button button_translucent" title="gcc">
+          GCC
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/http/' class="post_tag button button_translucent" title="http">
+          HTTP
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/libevent/' class="post_tag button button_translucent" title="libevent">
+          LIBEVENT
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/macos/' class="post_tag button button_translucent" title="macos">
+          MACOS
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/react-native/' class="post_tag button button_translucent" title="react-native">
+          REACT-NATIVE
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/redis/' class="post_tag button button_translucent" title="redis">
+          REDIS
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/%E6%9E%84%E6%9E%B6/' class="post_tag button button_translucent" title="构架">
+          构架
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/api/' class="post_tag button button_translucent" title="api">
+          API
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/bt/' class="post_tag button button_translucent" title="bt">
+          BT
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/c&#43;/' class="post_tag button button_translucent" title="c&#43;">
+          C&#43;
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/coroutine/' class="post_tag button button_translucent" title="coroutine">
+          COROUTINE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/database/' class="post_tag button button_translucent" title="database">
+          DATABASE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/endian/' class="post_tag button button_translucent" title="endian">
+          ENDIAN
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/frontend/' class="post_tag button button_translucent" title="frontend">
+          FRONTEND
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/gdb/' class="post_tag button button_translucent" title="gdb">
+          GDB
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/go/' class="post_tag button button_translucent" title="go">
+          GO
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/html/' class="post_tag button button_translucent" title="html">
+          HTML
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/https/' class="post_tag button button_translucent" title="https">
+          HTTPS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/jquery/' class="post_tag button button_translucent" title="jquery">
+          JQUERY
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/ld/' class="post_tag button button_translucent" title="ld">
+          LD
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/logger/' class="post_tag button button_translucent" title="logger">
+          LOGGER
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/makefile/' class="post_tag button button_translucent" title="makefile">
+          MAKEFILE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/misc/' class="post_tag button button_translucent" title="misc">
+          MISC
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/orm/' class="post_tag button button_translucent" title="orm">
+          ORM
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/os/' class="post_tag button button_translucent" title="os">
+          OS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/process/' class="post_tag button button_translucent" title="process">
+          PROCESS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/react/' class="post_tag button button_translucent" title="react">
+          REACT
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/rpm/' class="post_tag button button_translucent" title="rpm">
+          RPM
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/rsa/' class="post_tag button button_translucent" title="rsa">
+          RSA
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/server/' class="post_tag button button_translucent" title="server">
+          SERVER
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/sqlalchemy/' class="post_tag button button_translucent" title="sqlalchemy">
+          SQLALCHEMY
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/ssh/' class="post_tag button button_translucent" title="ssh">
+          SSH
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/ssl/tls/' class="post_tag button button_translucent" title="ssl/tls">
+          SSL/TLS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/vc/' class="post_tag button button_translucent" title="vc">
+          VC
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/vite/' class="post_tag button button_translucent" title="vite">
+          VITE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/vue/' class="post_tag button button_translucent" title="vue">
+          VUE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/webui/' class="post_tag button button_translucent" title="webui">
+          WEBUI
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/wechat/' class="post_tag button button_translucent" title="wechat">
+          WECHAT
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/win32/' class="post_tag button button_translucent" title="win32">
+          WIN32
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/windows/' class="post_tag button button_translucent" title="windows">
+          WINDOWS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/wireshark/' class="post_tag button button_translucent" title="wireshark">
+          WIRESHARK
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/' class="post_tag button button_translucent" title="微服务">
+          微服务
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+  </section>
+</aside>
+
+  
+</div>
+  </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" id="gitlab">
+    <path d="M12.3 74.7h54L43.3 3c-1-3.6-6.4-3.6-7.6 0L12.3 74.8z" />
+    <path d="M12.3 74.7L.5 111c-1 3.2 0 6.8 3 8.8l101.6 74-92.5-119z"/>
+    <path d="M105 193.7l-38.6-119h-54l92.7 119z"/>
+    <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
+    <path d="M105 193.7l38.7-119H198l-93 119z"/>
+    <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="to-top">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="xing">
+    <path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71 55" id="discord">
+    <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" id="mastodon">
+    <path
+    fill="#ffffff"
+    d="m 15.054695,9.8859583 c -0.22611,1.1632697 -2.02517,2.4363497 -4.09138,2.6830797 -1.0774504,0.12856 -2.1382704,0.24673 -3.2694704,0.19484 -1.84996,-0.0848 -3.30971,-0.44157 -3.30971,-0.44157 0,0.1801 0.0111,0.35157 0.0333,0.51194 0.24051,1.82571 1.81034,1.93508 3.29737,1.98607 1.50088,0.0514 2.8373104,-0.37004 2.8373104,-0.37004 l 0.0617,1.35686 c 0,0 -1.0498104,0.56374 -2.9199404,0.66742 -1.03124,0.0567 -2.3117,-0.0259 -3.80308,-0.42069 -3.23454998,-0.85613 -3.79081998,-4.304 -3.87592998,-7.8024197 -0.026,-1.03871 -0.01,-2.01815 -0.01,-2.83732 0,-3.57732 2.34385998,-4.62587996 2.34385998,-4.62587996 1.18184,-0.54277 3.20976,-0.77101 5.318,-0.7882499985409 h 0.0518 C 9.8267646,0.01719834 11.856025,0.24547834 13.037775,0.78824834 c 0,0 2.34377,1.04855996 2.34377,4.62587996 0,0 0.0294,2.63937 -0.32687,4.47183"/>
+ <path
+    fill="#000000"
+    d="m 12.616925,5.6916583 v 4.3315297 h -1.71607 V 5.8189683 c 0,-0.88624 -0.37289,-1.33607 -1.1187604,-1.33607 -0.82467,0 -1.23799,0.53361 -1.23799,1.58875 v 2.30122 h -1.70594 v -2.30122 c 0,-1.05514 -0.4134,-1.58875 -1.23808,-1.58875 -0.74587,0 -1.11876,0.44983 -1.11876,1.33607 v 4.2042197 h -1.71607 V 5.6916583 c 0,-0.88527 0.22541,-1.58876 0.67817,-2.10922 0.46689,-0.52047 1.07833,-0.78727 1.83735,-0.78727 0.87816,0 1.54317,0.33752 1.98288,1.01267 l 0.42744,0.71655 0.42753,-0.71655 c 0.43961,-0.67515 1.10463,-1.01267 1.9828704,-1.01267 0.75893,0 1.37037,0.2668 1.83735,0.78727 0.45268,0.52046 0.67808,1.22395 0.67808,2.10922"/>
+  </symbol>
+</svg>
+
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='https://luoguochun.cn/icons/apple-touch-icon.png' class="icon icon_2 transparent" alt="BUF1024">
+    <p>Copyright&nbsp;2011-&nbsp;<span class="year"></span>&nbsp;BUF1024. All Rights Reserved</p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <title>to-top</title>
+  <use xlink:href="#to-top"></use>
+</svg>
+
+</a>
+
+  </div>
+</footer>
+
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+</body>
+
+</html>

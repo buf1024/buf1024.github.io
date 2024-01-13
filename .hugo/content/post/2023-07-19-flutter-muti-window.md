@@ -2,8 +2,8 @@
 title: "Flutter 桌面端多窗口支持"
 date: 2023-07-19T18:00:10+08:00
 draft: false
-categories: [flutter, multi_window] 
-tags: [flutter]
+categories: [flutter] 
+tags: [Dart, flutter]
 ---
 
 ### 多窗口
@@ -93,11 +93,11 @@ class AppDelegate: FlutterAppDelegate {
 ```swift
 // lib/macos/Classes/WindowManager.swift
   public func close() {
-        mainWindow.performClose(nil)
+        mainWindow.perfORMClose(nil)
     }
 ```
 
-而`performClose`​在苹果文档里面只是模拟关闭的这按钮而已，所以肯定是关闭不了的了。查看所有[window_manager](https://github.com/leanflutter/window_manager)的函数，并没有一个可以关闭的函数了。不过好在苹果的文档够详细，而且有了样板代码在那里，即使不会swift语言，不会写Flutter Plugin，往里面添加功能还是很容易的。完全关闭，也很简单（当然，使之能够被flutter调用，还有添加其他代码，此处忽略）:
+而`perfORMClose`​在苹果文档里面只是模拟关闭的这按钮而已，所以肯定是关闭不了的了。查看所有[window_manager](https://github.com/leanflutter/window_manager)的函数，并没有一个可以关闭的函数了。不过好在苹果的文档够详细，而且有了样板代码在那里，即使不会swift语言，不会写Flutter Plugin，往里面添加功能还是很容易的。完全关闭，也很简单（当然，使之能够被flutter调用，还有添加其他代码，此处忽略）:
 
 ```swift
     public func forceClose() {

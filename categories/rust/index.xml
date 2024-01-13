@@ -6,7 +6,23 @@
     <description>Recent content in rust on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 26 Dec 2023 16:00:10 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/categories/rust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jan 2024 16:00:10 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/categories/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust sqlx SQLBuilder</title>
+      <link>https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder/</link>
+      <pubDate>Sat, 13 Jan 2024 16:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder/</guid>
+      <description>
+        
+          
+            对于个人来说，一直不喜欢ORM​框架。明明就是熟悉sql​的，为何还要封装一层？抛开针对各个数据库厂商难以作sql​ 优化之外，封装之后的写法
+          
+          
+        
+      </description>
+    </item>
+    
     <item>
       <title>rust 过程宏</title>
       <link>https://luoguochun.cn/post/2023-12-26-rust-proc-macro/</link>
@@ -32,7 +48,7 @@
       <description>
         
           
-            今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 // 敏感信息去掉 format!(&amp;#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;amp;X_=xadf0&amp;#34;, code = &amp;amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22
+            今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 // 敏感信息去掉 fORMat!(&amp;#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;amp;X_=xadf0&amp;#34;, code = &amp;amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22
           
           
         
@@ -96,7 +112,7 @@
       <description>
         
           
-            简介 协程已经是非常成熟的概念了，很多编程语言(比如JS, PYTHON, DART等等)已提供原生的支持了，并且几乎提供相同的关键字async/await。
+            简介 协程已经是非常成熟的概念了，很多编程语言(比如JS, Python, DART等等)已提供原生的支持了，并且几乎提供相同的关键字async/await。
           
           
         

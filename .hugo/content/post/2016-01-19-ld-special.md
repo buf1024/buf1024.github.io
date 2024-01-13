@@ -1,8 +1,8 @@
 ---
 title: 'ld常用特别选项'
 date: 2016-01-19 11:12:36
-categories: [os]
-tags: [os, minix3]
+categories: [Linux]
+tags: [C,C++,Linux, ld]
 ---
 链接器ld的一些特别选项，编译OS时有用到。
 
@@ -10,9 +10,9 @@ tags: [os, minix3]
 
        --omagic
 
-           Set the text and data sections to be readable and writable.  Also, do not page-align the data segment, and disable linking against shared libraries.  If the output format supports Unix style
+           Set the text and data sections to be readable and writable.  Also, do not page-align the data segment, and disable linking against shared libraries.  If the output fORMat supports Unix style
 
-           magic numbers, mark the output as "OMAGIC". Note: Although a writable text section is allowed for PE-COFF targets, it does not conform to the format specification published by Microsoft.
+           magic numbers, mark the output as "OMAGIC". Note: Although a writable text section is allowed for PE-COFF targets, it does not confORM to the fORMat specification published by Microsoft.
 
 致命text段和data段可读写，同事关闭data段页面对齐以及禁止链接动态库
 

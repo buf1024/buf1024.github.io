@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on BUF1024</title>
+    <title>Linux on BUF1024</title>
     <link>https://luoguochun.cn/categories/linux/</link>
-    <description>Recent content in linux on BUF1024</description>
+    <description>Recent content in Linux on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 01 Oct 2018 10:54:00 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/categories/linux/index.xml" rel="self" type="application/rss+xml" />
@@ -24,7 +24,23 @@
     </item>
     
     <item>
-      <title>linux /proc 伪文件系统</title>
+      <title>ld常用特别选项</title>
+      <link>https://luoguochun.cn/post/2016-01-19-ld-special/</link>
+      <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2016-01-19-ld-special/</guid>
+      <description>
+        
+          
+            链接器ld的一些特别选项，编译OS时有用到。 -N --omagic Set the text and data sections to be readable and writable. Also, do not page-align the data segment, and disable linking against shared libraries. If the output fORMat supports Unix style magic numbers, mark the output as &amp;quot;OMAGIC&amp;quot;. Note: Although a writable text section is allowed
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Linux /proc 伪文件系统</title>
       <link>https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/</link>
       <pubDate>Mon, 28 Jul 2014 14:57:18 +0000</pubDate>
       
@@ -32,7 +48,7 @@
       <description>
         
           
-            linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一
+            Linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一
           
           
         
@@ -112,7 +128,7 @@
       <description>
         
           
-            概述 sys/queue.h是LINUX/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple
+            概述 sys/queue.h是Linux/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple
           
           
         

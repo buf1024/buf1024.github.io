@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>redis on BUF1024</title>
+    <title>Redis on BUF1024</title>
     <link>https://luoguochun.cn/tags/redis/</link>
-    <description>Recent content in redis on BUF1024</description>
+    <description>Recent content in Redis on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 04 Jul 2014 16:45:00 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/redis/index.xml" rel="self" type="application/rss+xml" />
@@ -32,7 +32,7 @@
       <description>
         
           
-            ###如何开搞 我们平时ps进程时，显示的进程标题是我们输入的程序名以及一些参数。这种显示方式并非非常直观，我们需要一种方式可以设置程序的标题
+            如何开搞 我们平时ps进程时，显示的进程标题是我们输入的程序名以及一些参数。这种显示方式并非非常直观，我们需要一种方式可以设置程序的标题，一眼
           
           
         

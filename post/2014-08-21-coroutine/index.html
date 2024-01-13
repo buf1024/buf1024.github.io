@@ -109,7 +109,7 @@
 </span>
     <span class="post_date">
       Aug 21, 2014</span>
-    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://luoguochun.cn/tags/coroutine/' title="coroutine" class="post_tag button button_translucent">coroutine
+    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://luoguochun.cn/tags/coroutine/' title="Coroutine" class="post_tag button button_translucent">Coroutine
         </a>
     </span>
     <span class="page_only">&nbsp;·
@@ -148,69 +148,69 @@
   </div>
 
     <div class="post_body"><p>如果你接触过lua这种小巧的脚本语言，你就会经常接触到一个叫做<code>协程</code>的神奇概念。大多数脚本语言都有对<code>协程</code>不同程度的支持。但是大多编译语言，如C/C++，根本就不知道这样的东西存在。当然也很多人研究如何在编译语言实现<code>协程</code>的实现，轮子一个又一个的被发明。<a href="http://coolshell.cn/">酷壳</a> 这篇文章<a href="http://coolshell.cn/articles/10975.html">《一个“蝇量级” C 语言协程库》</a>说的很详细，但对于文中介绍的协程库<a href="http://dunkels.com/adam/pt/">protothread</a>，很难看的懂。<a href="http://blog.codingnow.com/">云风大哥</a>在搜索无满意结果后也重新发明轮子，实现自己版本的一个协程库<a href="http://blog.codingnow.com/2012/07/c_coroutine.html">《C 的 coroutine 库》</a>, 云风版本的<code>coroutine</code>是常规的根据<code>getcontext/swapcontext</code>的非常传统的方法，没有用到其他什么奇淫技巧。同时他接口几乎和lua<code>协程</code>的接口一样，比较容易看的懂，但是貌似和CPU构架相关，下面详细说。这篇文章就是主要写看云风的代码的，代码注释放到github上面<a href="https://github.com/buf1024/coroutine">coroutine</a>，当然因为代码本身很精练和简单，注释也就非常少的。关于<code>协程</code>，可参考百度百科：<a href="http://baike.baidu.com/view/2665148.htm?fr=aladdin"><code>协程</code></a>。</p>
-<p>开始之前，看看unix/linux下面的<code>context系列函数</code>（<a href="http://blog.codingnow.com/">云风大哥</a>说，windows下面可以用<code>纤程</code>实现，以前看《windows核心编程》的时候，了解过这个概念，但是实际上编程运用的只限于进程/线程，没有用到过<code>纤程</code>这高级货，现在接触<code>windows api</code>也相对少，所以这个就不详细展开）。<code>context系列函数</code>大约就以下函数：</p>
+<p>开始之前，看看unix/Linux下面的<code>context系列函数</code>（<a href="http://blog.codingnow.com/">云风大哥</a>说，windows下面可以用<code>纤程</code>实现，以前看《windows核心编程》的时候，了解过这个概念，但是实际上编程运用的只限于进程/线程，没有用到过<code>纤程</code>这高级货，现在接触<code>windows api</code>也相对少，所以这个就不详细展开）。<code>context系列函数</code>大约就以下函数：</p>
 <pre><code>    #include &lt;ucontext.h&gt;        
 
     int getcontext(ucontext_t *ucp);        
     int setcontext(const ucontext_t *ucp);        
 
-    void makecontext(ucontext_t *ucp, void (*func)(), int argc, ...);        
+    void makecontext(ucontext_t *ucp, void (*func)(), int argC, ...);        
     int swapcontext(ucontext_t *oucp, ucontext_t *ucp);        
 </code></pre>
-<p>根据linux手册页，<code>getcontext</code>返回的是当前执行进程的上下文信息，包括信号掩码，执行栈，寄存器等信息。比较值得注意的是<code>makecontext</code>，该函数除了传递<code>ucp</code>外，还传递一个通用的函数指针<code>func</code>和一个<code>argc</code>，传递给<code>func</code>的函数原型并不一定是<code>void(*)()</code>类型的，参数的个数由<code>argc</code>确定。当调用<code>makecontext</code>成功后，如果对这个上下文进行切换(<code>swapcontext</code>)或用这个上下文设置(<code>setcontext</code>)，内核就会调用该<code>func</code>函数。<code>协程</code>的实现就是用到这个重要的原理。linux手册页有个详细的例子介绍<code>makecontext</code>怎么用的，请参考之。</p>
+<p>根据Linux手册页，<code>getcontext</code>返回的是当前执行进程的上下文信息，包括信号掩码，执行栈，寄存器等信息。比较值得注意的是<code>makecontext</code>，该函数除了传递<code>ucp</code>外，还传递一个通用的函数指针<code>func</code>和一个<code>argc</code>，传递给<code>func</code>的函数原型并不一定是<code>void(*)()</code>类型的，参数的个数由<code>argc</code>确定。当调用<code>makecontext</code>成功后，如果对这个上下文进行切换(<code>swapcontext</code>)或用这个上下文设置(<code>setcontext</code>)，内核就会调用该<code>func</code>函数。<code>协程</code>的实现就是用到这个重要的原理。Linux手册页有个详细的例子介绍<code>makecontext</code>怎么用的，请参考之。</p>
 <p>我们来看<a href="http://blog.codingnow.com/">云风大哥</a>的协程库:</p>
 <pre><code>    // 协程调度大小        
     struct schedule {        
-        char stack[STACK_SIZE]; // 当前运行的协程的栈
-        ucontext_t main; // 下个协程切换的上下文状态
-        int nco; // 当前协程
-        int cap; // 容量
-        int running; // 当前运行的协程
-        struct coroutine **co; // 协程数组
+     char stack[STACK_SIZE]; // 当前运行的协程的栈
+     ucontext_t main; // 下个协程切换的上下文状态
+     int nco; // 当前协程
+     int cap; // 容量
+     int running; // 当前运行的协程
+     struct coroutine **co; // 协程数组
     };
 
     struct coroutine {
-        coroutine_func func; // 调用函数
-        void *ud;      // 用户数据
-        ucontext_t ctx; // 保存的协程上下文状态
-        struct schedule * sch; // 保存struct schedule指针
-        ptrdiff_t cap; // 上下文切换时保存的栈的容量
-        ptrdiff_t size; // 上下文切换时保存的栈的大小 size &lt;= cap
-        int status; // 协程状态
-        char *stack; // 保存的协程栈大小
+     coroutine_func func; // 调用函数
+     void *ud;      // 用户数据
+     ucontext_t ctx; // 保存的协程上下文状态
+     struct schedule * sch; // 保存struct schedule指针
+     ptrdiff_t cap; // 上下文切换时保存的栈的容量
+     ptrdiff_t size; // 上下文切换时保存的栈的大小 size &lt;= cap
+     int status; // 协程状态
+     char *stack; // 保存的协程栈大小
     };  
 </code></pre>
 <p>定义的结构体够简洁的，除了<code>struct coroutine</code>里面的<code>cap</code>和<code>size</code>，感觉作用不大。上下文信息是在<code>coroutine_resume</code>里面设置的，这里将栈设置为自己定义的区域，大小也限定了，还设置了下个上下文切换的地址（在<code>swapcontext</code>里为他赋初始值）：</p>
 <pre><code>    getcontext(&amp;C-&gt;ctx);
-	C-&gt;ctx.uc_stack.ss_sp = S-&gt;stack; // 设置栈
-	C-&gt;ctx.uc_stack.ss_size = STACK_SIZE; // 设置栈大小
-	C-&gt;ctx.uc_link = &amp;S-&gt;main; // 下个切换的上下文状态，由swapcontext设置其值
-	S-&gt;running = id;
-	C-&gt;status = COROUTINE_RUNNING;
-	uintptr_t ptr = (uintptr_t)S;
-	makecontext(&amp;C-&gt;ctx, (void (*)(void)) mainfunc, 2, (uint32_t)ptr, (uint32_t)(ptr&gt;&gt;32));
-	swapcontext(&amp;S-&gt;main, &amp;C-&gt;ctx);
 </code></pre>
+<p>C-&gt;ctx.uc_stack.ss_sp = S-&gt;stack; // 设置栈
+C-&gt;ctx.uc_stack.ss_size = STACK_SIZE; // 设置栈大小
+C-&gt;ctx.uc_link = &amp;S-&gt;main; // 下个切换的上下文状态，由swapcontext设置其值
+S-&gt;running = id;
+C-&gt;status = COROUTINE_RUNNING;
+uintptr_t ptr = (uintptr_t)S;
+makecontext(&amp;C-&gt;ctx, (void (*)(void)) mainfunC, 2, (uint32_t)ptr, (uint32_t)(ptr&raquo;32));
+swapcontext(&amp;S-&gt;main, &amp;C-&gt;ctx);</p>
 <p><a href="http://blog.codingnow.com/">云风大哥</a>的协程库有点不好的地方就是这个协程库或许是与CPU的构架相关的，做成与CPU无关应该不难。看保存上下文信息的代码：</p>
 <pre><code>    static void
     _save_stack(struct coroutine *C, char *top) {
-        char dummy = 0;
-     	//这里做了一个特定的假设(事实上大部分CPU也是如此)
-        assert(top - &amp;dummy &lt;= STACK_SIZE); // stack大小
-        if (C-&gt;cap &lt; top - &amp;dummy) {
-	        free(C-&gt;stack); // 首次C-&gt;stack为NULL,free(NULL)是OK的
-	        C-&gt;cap = top-&amp;dummy;
-	        C-&gt;stack = malloc(C-&gt;cap);
-        }
-        C-&gt;size = top - &amp;dummy;
-        memcpy(C-&gt;stack, &amp;dummy, C-&gt;size);
+     char dummy = 0;
+      //这里做了一个特定的假设(事实上大部分CPU也是如此)
+     assert(top - &amp;dummy &lt;= STACK_SIZE); // stack大小
+     if (C-&gt;cap &lt; top - &amp;dummy) {
+      free(C-&gt;stack); // 首次C-&gt;stack为NULL,free(NULL)是OK的
+      C-&gt;cap = top-&amp;dummy;
+      C-&gt;stack = malloc(C-&gt;cap);
+     }
+     C-&gt;size = top - &amp;dummy;
+     memcpy(C-&gt;stack, &amp;dummy, C-&gt;size);
     }
 </code></pre>
 <p>传递的参数<code>top</code>指向的是栈顶，栈顶与新定义的变量相减<code>top - &amp;dummy</code>得到栈的大小。这里做了一个特定的假设，栈由高地址向低地址方向增长(这是非常典型的程序布局方式，虽然我不知道那种CPU不是用这种布局，但是觉得肯定有有低地址向高地址增长的)，这种程序布局的CPU一般是X86构架的，所以这个库时与CPU结构相关的。</p>
 <p>总的来说，这个协程库写的非常精简。<a href="http://dunkels.com/adam/pt/">protothread</a>这种高级货，暂时不看了。粗略的介绍完毕，如有错误，请批评指正。</p>
 <hr />
 <p>2016-04-28 补充：<br />
-&ldquo;&ldquo;&ldquo;根据linux手册页，<code>getcontext</code>返回的是当前执行进程的上下文信息，包括信号掩码，执行栈，寄存器等信息。比较值得注意的是<code>makecontext</code>，该函数除了传递<code>ucp</code>外，还传递一个通用的函数指针<code>func</code>和一个<code>argc</code>，传递给<code>func</code>的函数原型并不一定是<code>void(*)()</code>类型的，参数的个数由<code>argc</code>确定。当调用<code>makecontext</code>成功后，如果对这个上下文进行切换(<code>swapcontext</code>)或用这个上下文设置(<code>setcontext</code>)，内核就会调用该<code>func</code>函数。<code>协程</code>的实现就是用到这个重要的原理。linux手册页有个详细的例子介绍<code>makecontext</code>怎么用的，请参考之。&rdquo;&rdquo;&rdquo;<br />
+&ldquo;&ldquo;&ldquo;根据Linux手册页，<code>getcontext</code>返回的是当前执行进程的上下文信息，包括信号掩码，执行栈，寄存器等信息。比较值得注意的是<code>makecontext</code>，该函数除了传递<code>ucp</code>外，还传递一个通用的函数指针<code>func</code>和一个<code>argc</code>，传递给<code>func</code>的函数原型并不一定是<code>void(*)()</code>类型的，参数的个数由<code>argc</code>确定。当调用<code>makecontext</code>成功后，如果对这个上下文进行切换(<code>swapcontext</code>)或用这个上下文设置(<code>setcontext</code>)，内核就会调用该<code>func</code>函数。<code>协程</code>的实现就是用到这个重要的原理。Linux手册页有个详细的例子介绍<code>makecontext</code>怎么用的，请参考之。&rdquo;&rdquo;&rdquo;<br />
 上面一段说明说的比较笼统，再简单补充不使用这个库的例子：<br />
 main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
 调用co_resume 后，执行上下文切换，调用协程函数func，在协程函数func里面，调用co_yield, 执行上下文切换，返回main，下次co_resume时，func从co_yield后面继续执行(因为之前保存了上下文的切换信息)。</p>
@@ -269,7 +269,10 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://luoguochun.cn/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/" class="nav-link" title="前端保姆级配置">前端保姆级配置</a>
+        <a href="https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder/" class="nav-link" title="Rust sqlx SQLBuilder">Rust sqlx SQLBuilder</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2024-01-08-vite-engineering-config/" class="nav-link" title="前端过程化配置保姆级教程">前端过程化配置保姆级教程</a>
       </li>
       <li>
         <a href="https://luoguochun.cn/post/2023-12-26-rust-proc-macro/" class="nav-link" title="rust 过程宏">rust 过程宏</a>
@@ -289,16 +292,28 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
       <li>
         <a href="https://luoguochun.cn/post/2023-03-16-love-for-insterest/" class="nav-link" title="为爱发电终是不能长久的……">为爱发电终是不能长久的……</a>
       </li>
-      <li>
-        <a href="https://luoguochun.cn/post/2023-03-02-tcp-setup/" class="nav-link" title="TCP未建立之前，丢失的SYN报文会不会重传？">TCP未建立之前，丢失的SYN报文会不会重传？</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
       <nav class="tags_nav">
         <a href='https://luoguochun.cn/categories/misc/' class="post_tag button button_translucent" title="misc">
           MISC
-          <span class="button_tally">9</span>
+          <span class="button_tally">11</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/linux/' class="post_tag button button_translucent" title="linux">
+          LINUX
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/tcp/' class="post_tag button button_translucent" title="tcp">
+          TCP
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/c/' class="post_tag button button_translucent" title="c">
+          C
+          <span class="button_tally">7</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/flutter/' class="post_tag button button_translucent" title="flutter">
@@ -306,33 +321,43 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
           <span class="button_tally">7</span>
         </a>
         
-        <a href='https://luoguochun.cn/categories/linux/' class="post_tag button button_translucent" title="linux">
-          LINUX
-          <span class="button_tally">7</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/c/' class="post_tag button button_translucent" title="c">
-          C
-          <span class="button_tally">6</span>
-        </a>
-        
         <a href='https://luoguochun.cn/categories/rust/' class="post_tag button button_translucent" title="rust">
           RUST
-          <span class="button_tally">6</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/tcp/' class="post_tag button button_translucent" title="tcp">
-          TCP
-          <span class="button_tally">6</span>
+          <span class="button_tally">7</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/python/' class="post_tag button button_translucent" title="python">
           PYTHON
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
+          C&#43;&#43;
           <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/web/' class="post_tag button button_translucent" title="web">
+          WEB
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/gcc/' class="post_tag button button_translucent" title="gcc">
+          GCC
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/git/' class="post_tag button button_translucent" title="git">
+          GIT
+          <span class="button_tally">3</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/reactjs/' class="post_tag button button_translucent" title="reactjs">
           REACTJS
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/unittest/' class="post_tag button button_translucent" title="unittest">
+          UNITTEST
           <span class="button_tally">3</span>
         </a>
         
@@ -351,118 +376,13 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/categories/gcc/' class="post_tag button button_translucent" title="gcc">
-          GCC
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/git/' class="post_tag button button_translucent" title="git">
-          GIT
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/os/' class="post_tag button button_translucent" title="os">
-          OS
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/unittest/' class="post_tag button button_translucent" title="unittest">
-          UNITTEST
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/web/' class="post_tag button button_translucent" title="web">
-          WEB
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/%E9%87%8F%E5%8C%96/' class="post_tag button button_translucent" title="量化">
-          量化
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/android/' class="post_tag button button_translucent" title="android">
-          ANDROID
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/app/' class="post_tag button button_translucent" title="app">
-          APP
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/django/' class="post_tag button button_translucent" title="django">
-          DJANGO
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/frontend/' class="post_tag button button_translucent" title="frontend">
-          FRONTEND
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/gdb/' class="post_tag button button_translucent" title="gdb">
-          GDB
+        <a href='https://luoguochun.cn/categories/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
           <span class="button_tally">1</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/go/' class="post_tag button button_translucent" title="go">
           GO
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/http/' class="post_tag button button_translucent" title="http">
-          HTTP
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/https/' class="post_tag button button_translucent" title="https">
-          HTTPS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/mac/' class="post_tag button button_translucent" title="mac">
-          MAC
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/multi_window/' class="post_tag button button_translucent" title="multi_window">
-          MULTI_WINDOW
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/orm/' class="post_tag button button_translucent" title="orm">
-          ORM
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/ssh/' class="post_tag button button_translucent" title="ssh">
-          SSH
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/tdd/' class="post_tag button button_translucent" title="tdd">
-          TDD
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/vcs/' class="post_tag button button_translucent" title="vcs">
-          VCS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/webui/' class="post_tag button button_translucent" title="webui">
-          WEBUI
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/windows/' class="post_tag button button_translucent" title="windows">
-          WINDOWS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA/' class="post_tag button button_translucent" title="收音机">
-          收音机
           <span class="button_tally">1</span>
         </a>
         
@@ -474,12 +394,17 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
       <nav class="tags_nav">
         <a href='https://luoguochun.cn/tags/c/' class="post_tag button button_translucent" title="c">
           C
-          <span class="button_tally">20</span>
+          <span class="button_tally">21</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/linux/' class="post_tag button button_translucent" title="linux">
           LINUX
-          <span class="button_tally">10</span>
+          <span class="button_tally">16</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
+          C&#43;&#43;
+          <span class="button_tally">7</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/python/' class="post_tag button button_translucent" title="python">
@@ -492,9 +417,24 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
           <span class="button_tally">7</span>
         </a>
         
+        <a href='https://luoguochun.cn/tags/dart/' class="post_tag button button_translucent" title="dart">
+          DART
+          <span class="button_tally">6</span>
+        </a>
+        
         <a href='https://luoguochun.cn/tags/flutter/' class="post_tag button button_translucent" title="flutter">
           FLUTTER
           <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/rust/' class="post_tag button button_translucent" title="rust">
+          RUST
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/tdd/' class="post_tag button button_translucent" title="tdd">
+          TDD
+          <span class="button_tally">4</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/android/' class="post_tag button button_translucent" title="android">
@@ -512,8 +452,8 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
           <span class="button_tally">3</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/rust/' class="post_tag button button_translucent" title="rust">
-          RUST
+        <a href='https://luoguochun.cn/tags/js/' class="post_tag button button_translucent" title="js">
+          JS
           <span class="button_tally">3</span>
         </a>
         
@@ -557,18 +497,13 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/js/' class="post_tag button button_translucent" title="js">
-          JS
+        <a href='https://luoguochun.cn/tags/libevent/' class="post_tag button button_translucent" title="libevent">
+          LIBEVENT
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/minix3/' class="post_tag button button_translucent" title="minix3">
-          MINIX3
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/os/' class="post_tag button button_translucent" title="os">
-          OS
+        <a href='https://luoguochun.cn/tags/macos/' class="post_tag button button_translucent" title="macos">
+          MACOS
           <span class="button_tally">2</span>
         </a>
         
@@ -582,19 +517,14 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/tdd/' class="post_tag button button_translucent" title="tdd">
-          TDD
-          <span class="button_tally">2</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/%E6%9E%84%E6%9E%B6/' class="post_tag button button_translucent" title="构架">
           构架
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/%E9%87%8F%E5%8C%96/' class="post_tag button button_translucent" title="量化">
-          量化
-          <span class="button_tally">2</span>
+        <a href='https://luoguochun.cn/tags/api/' class="post_tag button button_translucent" title="api">
+          API
+          <span class="button_tally">1</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/bt/' class="post_tag button button_translucent" title="bt">
@@ -602,8 +532,8 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
-          C&#43;&#43;
+        <a href='https://luoguochun.cn/tags/c&#43;/' class="post_tag button button_translucent" title="c&#43;">
+          C&#43;
           <span class="button_tally">1</span>
         </a>
         
@@ -612,8 +542,18 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/django/' class="post_tag button button_translucent" title="django">
-          DJANGO
+        <a href='https://luoguochun.cn/tags/database/' class="post_tag button button_translucent" title="database">
+          DATABASE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/endian/' class="post_tag button button_translucent" title="endian">
+          ENDIAN
           <span class="button_tally">1</span>
         </a>
         
@@ -642,23 +582,18 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/javascript/' class="post_tag button button_translucent" title="javascript">
-          JAVASCRIPT
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/jquery/' class="post_tag button button_translucent" title="jquery">
           JQUERY
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/libevent/' class="post_tag button button_translucent" title="libevent">
-          LIBEVENT
+        <a href='https://luoguochun.cn/tags/ld/' class="post_tag button button_translucent" title="ld">
+          LD
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/mac/' class="post_tag button button_translucent" title="mac">
-          MAC
+        <a href='https://luoguochun.cn/tags/logger/' class="post_tag button button_translucent" title="logger">
+          LOGGER
           <span class="button_tally">1</span>
         </a>
         
@@ -677,8 +612,18 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/proc/' class="post_tag button button_translucent" title="proc">
-          PROC
+        <a href='https://luoguochun.cn/tags/os/' class="post_tag button button_translucent" title="os">
+          OS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/process/' class="post_tag button button_translucent" title="process">
+          PROCESS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/react/' class="post_tag button button_translucent" title="react">
+          REACT
           <span class="button_tally">1</span>
         </a>
         
@@ -712,21 +657,6 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/tcp-optition/' class="post_tag button button_translucent" title="tcp-optition">
-          TCP-OPTITION
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/tcpdump/' class="post_tag button button_translucent" title="tcpdump">
-          TCPDUMP
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/tidbit/' class="post_tag button button_translucent" title="tidbit">
-          TIDBIT
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/vc/' class="post_tag button button_translucent" title="vc">
           VC
           <span class="button_tally">1</span>
@@ -737,8 +667,18 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
           <span class="button_tally">1</span>
         </a>
         
+        <a href='https://luoguochun.cn/tags/vue/' class="post_tag button button_translucent" title="vue">
+          VUE
+          <span class="button_tally">1</span>
+        </a>
+        
         <a href='https://luoguochun.cn/tags/webui/' class="post_tag button button_translucent" title="webui">
           WEBUI
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/wechat/' class="post_tag button button_translucent" title="wechat">
+          WECHAT
           <span class="button_tally">1</span>
         </a>
         
@@ -747,23 +687,18 @@ main -&gt; co_resume -&gt; func -&gt; co_yield -&gt; main<br />
           <span class="button_tally">1</span>
         </a>
         
+        <a href='https://luoguochun.cn/tags/windows/' class="post_tag button button_translucent" title="windows">
+          WINDOWS
+          <span class="button_tally">1</span>
+        </a>
+        
         <a href='https://luoguochun.cn/tags/wireshark/' class="post_tag button button_translucent" title="wireshark">
           WIRESHARK
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/%E5%BE%AE%E4%BF%A1/' class="post_tag button button_translucent" title="微信">
-          微信
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/' class="post_tag button button_translucent" title="微服务">
           微服务
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA/' class="post_tag button button_translucent" title="收音机">
-          收音机
           <span class="button_tally">1</span>
         </a>
         

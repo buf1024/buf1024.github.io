@@ -15,14 +15,14 @@
 <meta property="og:locale" content="zh-cn" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="SQLAlchemy 概述 在python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图" />
+<meta name="description" content="SQLAlchemy 概述 在Python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="sqlalchemy orm 概览" />
 <meta name="twitter:image" content="https://luoguochun.cn"/>
 <meta property="og:url" content="https://luoguochun.cn/post/2014-12-28-sqlalchemy-orm-overview/" />
 <meta property="og:title" content="sqlalchemy orm 概览" />
-<meta property="og:description" content="SQLAlchemy 概述 在python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图" />
+<meta property="og:description" content="SQLAlchemy 概述 在Python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图" />
 <meta property="og:image" content="https://luoguochun.cn" />
   <meta name="keywords" content="blog,computer,luoguochun" />
 
@@ -109,9 +109,9 @@
 </span>
     <span class="post_date">
       Dec 28, 2014</span>
-    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://luoguochun.cn/tags/python/' title="python" class="post_tag button button_translucent">python
-        </a><a href='https://luoguochun.cn/tags/sqlalchemy/' title="sqlalchemy" class="post_tag button button_translucent">sqlalchemy
-        </a><a href='https://luoguochun.cn/tags/orm/' title="orm" class="post_tag button button_translucent">orm
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://luoguochun.cn/tags/python/' title="Python" class="post_tag button button_translucent">Python
+        </a><a href='https://luoguochun.cn/tags/sqlalchemy/' title="SQLAlchemy" class="post_tag button button_translucent">SQLAlchemy
+        </a><a href='https://luoguochun.cn/tags/orm/' title="ORM" class="post_tag button button_translucent">ORM
         </a>
     </span>
     <span class="page_only">&nbsp;·
@@ -150,7 +150,7 @@
   </div>
 
     <div class="post_body"><h4 id="sqlalchemy-概述"><em><strong>SQLAlchemy</strong></em> 概述</h4>
-<p>在<code>python</code>的<code>orm</code>世界里，<a href="www.sqlalchemy.org">SQLAlchemy</a>,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下:<br />
+<p>在<code>Python</code>的<code>orm</code>世界里，<a href="www.sqlalchemy.org">SQLAlchemy</a>,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下:<br />
 <figure>
   <picture>
 
@@ -168,7 +168,7 @@
       alt="SQLAlchemy简略构架图"
       
         class="image_figure image_internal image_unprocessed"
-        src="/img/python/sqlalchemy-orm-overview_arch_small.png"
+        src="/img/Python/sqlalchemy-orm-overview_arch_small.png"
       
       
     />
@@ -185,11 +185,11 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">    <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1">#导入sqlalchemy所有包</span>
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl">    <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1">#导入sqlalchemy所有包</span>
 </span></span><span class="line"><span class="cl">    <span class="o">&gt;&gt;&gt;</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&#34;sqlite:///:memory:&#34;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#绑定数据库后端</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><code>create_engine</code>通过不同的<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/engines.html#database-urls">DB URL</a>来识别不同数据库后端，数据库接口必须是符合<a href="http://docs.sqlalchemy.org/en/rel_0_9/glossary.html#term-dbapi">python dbapi</a>规范的。需要注意的是，<code>create_engine</code>并不实际和数据库进行连接，等到第一次执行<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/connections.html#sqlalchemy.engine.Engine.execute">Engine.execute</a>或<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/connections.html#sqlalchemy.engine.Engine.connect">Engine.connect</a>显式连接时，才进行真正的数据库连接。</p>
+</div><p><code>create_engine</code>通过不同的<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/engines.html#database-urls">DB URL</a>来识别不同数据库后端，数据库接口必须是符合<a href="http://docs.sqlalchemy.org/en/rel_0_9/glossary.html#term-dbapi">Python dbapi</a>规范的。需要注意的是，<code>create_engine</code>并不实际和数据库进行连接，等到第一次执行<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/connections.html#sqlalchemy.engine.Engine.execute">Engine.execute</a>或<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/connections.html#sqlalchemy.engine.Engine.connect">Engine.connect</a>显式连接时，才进行真正的数据库连接。</p>
 <h5 id="库表数据表示">库表数据表示</h5>
 <p><a href="www.sqlalchemy.org">SQLAlchemy</a>有3种方式表示关系数据库的库表：</p>
 <ul>
@@ -215,7 +215,7 @@
       alt="SQLAlchemy数据关系映射"
       
         class="image_figure image_internal image_unprocessed"
-        src="/img/python/sqlalchemy-datatype.png"
+        src="/img/Python/sqlalchemy-datatype.png"
       
       
     />
@@ -224,7 +224,7 @@
 </figure>
 </p>
 <h4 id="sqlalchemy-core"><em><strong>SQLAlchemy Core</strong></em></h4>
-<p><strong>SQLAlchemy EL</strong>提供了用<code>python</code>构建数据库对象的方式，而且这些<code>python</code>对象是数据库中立的，<strong>EL</strong>对数据操作也是数据库中立的。<br />
+<p><strong>SQLAlchemy EL</strong>提供了用<code>Python</code>构建数据库对象的方式，而且这些<code>Python</code>对象是数据库中立的，<strong>EL</strong>对数据操作也是数据库中立的。<br />
 <a href="www.sqlalchemy.org">SQLAlchemy</a>使用的<strong>DTATBASE METADATA</strong>和内部数据库结构绑定，能加速<a href="www.sqlalchemy.org">SQLAlchemy</a>对数据库访问。如:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -245,7 +245,7 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">    <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="o">*</span>
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl">    <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="o">*</span>
 </span></span><span class="line"><span class="cl">    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&#34;sqlite:///test.db&#34;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">metadata</span> <span class="o">=</span> <span class="n">MetaData</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="n">user</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span>
@@ -328,7 +328,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">    <span class="n">conn</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl">    <span class="n">conn</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="n">inst</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">insert</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="n">rst</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;hello&#34;</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="s2">&#34;F&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    
@@ -402,7 +402,7 @@ WHERE user.id = ?
 2014-12-31 15:29:07,828 INFO sqlalchemy.engine.base.Engine (2,)
 (2, u'LiShi', u'M')
 </code></pre>
-<p><code>select</code>函数需要的参数是列表，需要选择的结果集放到这里面，具体的列可以通过<code>table.c.colum</code>的方式来获取。为了一致性处理，通常对于<code>select</code>出来的结果集，如果不需要使用，还需调用结果集的<code>close</code>方法来关闭，从而释放数据库资源。这里里例子里面包含了<code>where</code><strong>CLAUSE</strong>，这是个布尔表达式，使用的是<code>python</code>而非<code>sql</code>的语法，详细可参考<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/sqlelement.html#sqlalchemy.sql.expression.ColumnElement">ColumnElement</a>和<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/selectable.html">SelectTable</a>。<a href="www.sqlalchemy.org">SQLAlchemy</a>的选择运算符包括and_, or_, not_, group_by,func.sum聚集函数等，使用这些基本上可以构建日常使用的查询语句。如果还不行，还可以像普通<code>sql</code>一样，直接写，如：</p>
+<p><code>select</code>函数需要的参数是列表，需要选择的结果集放到这里面，具体的列可以通过<code>table.c.colum</code>的方式来获取。为了一致性处理，通常对于<code>select</code>出来的结果集，如果不需要使用，还需调用结果集的<code>close</code>方法来关闭，从而释放数据库资源。这里里例子里面包含了<code>where</code><strong>CLAUSE</strong>，这是个布尔表达式，使用的是<code>Python</code>而非<code>sql</code>的语法，详细可参考<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/sqlelement.html#sqlalchemy.sql.expression.ColumnElement">ColumnElement</a>和<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/selectable.html">SelectTable</a>。<a href="www.sqlalchemy.org">SQLAlchemy</a>的选择运算符包括and_, or_, not_, group_by,func.sum聚集函数等，使用这些基本上可以构建日常使用的查询语句。如果还不行，还可以像普通<code>sql</code>一样，直接写，如：</p>
 <pre><code>s = text(&quot;select * from user where id = :id&quot;)
 r = conn.execute(s, id=1)
 for t in r:
@@ -458,7 +458,10 @@ ere id = ?
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://luoguochun.cn/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/" class="nav-link" title="前端保姆级配置">前端保姆级配置</a>
+        <a href="https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder/" class="nav-link" title="Rust sqlx SQLBuilder">Rust sqlx SQLBuilder</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2024-01-08-vite-engineering-config/" class="nav-link" title="前端过程化配置保姆级教程">前端过程化配置保姆级教程</a>
       </li>
       <li>
         <a href="https://luoguochun.cn/post/2023-12-26-rust-proc-macro/" class="nav-link" title="rust 过程宏">rust 过程宏</a>
@@ -478,16 +481,28 @@ ere id = ?
       <li>
         <a href="https://luoguochun.cn/post/2023-03-16-love-for-insterest/" class="nav-link" title="为爱发电终是不能长久的……">为爱发电终是不能长久的……</a>
       </li>
-      <li>
-        <a href="https://luoguochun.cn/post/2023-03-02-tcp-setup/" class="nav-link" title="TCP未建立之前，丢失的SYN报文会不会重传？">TCP未建立之前，丢失的SYN报文会不会重传？</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
       <nav class="tags_nav">
         <a href='https://luoguochun.cn/categories/misc/' class="post_tag button button_translucent" title="misc">
           MISC
-          <span class="button_tally">9</span>
+          <span class="button_tally">11</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/linux/' class="post_tag button button_translucent" title="linux">
+          LINUX
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/tcp/' class="post_tag button button_translucent" title="tcp">
+          TCP
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/c/' class="post_tag button button_translucent" title="c">
+          C
+          <span class="button_tally">7</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/flutter/' class="post_tag button button_translucent" title="flutter">
@@ -495,33 +510,43 @@ ere id = ?
           <span class="button_tally">7</span>
         </a>
         
-        <a href='https://luoguochun.cn/categories/linux/' class="post_tag button button_translucent" title="linux">
-          LINUX
-          <span class="button_tally">7</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/c/' class="post_tag button button_translucent" title="c">
-          C
-          <span class="button_tally">6</span>
-        </a>
-        
         <a href='https://luoguochun.cn/categories/rust/' class="post_tag button button_translucent" title="rust">
           RUST
-          <span class="button_tally">6</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/tcp/' class="post_tag button button_translucent" title="tcp">
-          TCP
-          <span class="button_tally">6</span>
+          <span class="button_tally">7</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/python/' class="post_tag button button_translucent" title="python">
           PYTHON
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
+          C&#43;&#43;
           <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/web/' class="post_tag button button_translucent" title="web">
+          WEB
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/gcc/' class="post_tag button button_translucent" title="gcc">
+          GCC
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/git/' class="post_tag button button_translucent" title="git">
+          GIT
+          <span class="button_tally">3</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/reactjs/' class="post_tag button button_translucent" title="reactjs">
           REACTJS
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/unittest/' class="post_tag button button_translucent" title="unittest">
+          UNITTEST
           <span class="button_tally">3</span>
         </a>
         
@@ -540,118 +565,13 @@ ere id = ?
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/categories/gcc/' class="post_tag button button_translucent" title="gcc">
-          GCC
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/git/' class="post_tag button button_translucent" title="git">
-          GIT
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/os/' class="post_tag button button_translucent" title="os">
-          OS
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/unittest/' class="post_tag button button_translucent" title="unittest">
-          UNITTEST
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/web/' class="post_tag button button_translucent" title="web">
-          WEB
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/%E9%87%8F%E5%8C%96/' class="post_tag button button_translucent" title="量化">
-          量化
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/android/' class="post_tag button button_translucent" title="android">
-          ANDROID
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/app/' class="post_tag button button_translucent" title="app">
-          APP
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/django/' class="post_tag button button_translucent" title="django">
-          DJANGO
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/frontend/' class="post_tag button button_translucent" title="frontend">
-          FRONTEND
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/gdb/' class="post_tag button button_translucent" title="gdb">
-          GDB
+        <a href='https://luoguochun.cn/categories/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
           <span class="button_tally">1</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/go/' class="post_tag button button_translucent" title="go">
           GO
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/http/' class="post_tag button button_translucent" title="http">
-          HTTP
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/https/' class="post_tag button button_translucent" title="https">
-          HTTPS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/mac/' class="post_tag button button_translucent" title="mac">
-          MAC
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/multi_window/' class="post_tag button button_translucent" title="multi_window">
-          MULTI_WINDOW
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/orm/' class="post_tag button button_translucent" title="orm">
-          ORM
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/ssh/' class="post_tag button button_translucent" title="ssh">
-          SSH
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/tdd/' class="post_tag button button_translucent" title="tdd">
-          TDD
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/vcs/' class="post_tag button button_translucent" title="vcs">
-          VCS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/webui/' class="post_tag button button_translucent" title="webui">
-          WEBUI
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/windows/' class="post_tag button button_translucent" title="windows">
-          WINDOWS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA/' class="post_tag button button_translucent" title="收音机">
-          收音机
           <span class="button_tally">1</span>
         </a>
         
@@ -663,12 +583,17 @@ ere id = ?
       <nav class="tags_nav">
         <a href='https://luoguochun.cn/tags/c/' class="post_tag button button_translucent" title="c">
           C
-          <span class="button_tally">20</span>
+          <span class="button_tally">21</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/linux/' class="post_tag button button_translucent" title="linux">
           LINUX
-          <span class="button_tally">10</span>
+          <span class="button_tally">16</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
+          C&#43;&#43;
+          <span class="button_tally">7</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/python/' class="post_tag button button_translucent" title="python">
@@ -681,9 +606,24 @@ ere id = ?
           <span class="button_tally">7</span>
         </a>
         
+        <a href='https://luoguochun.cn/tags/dart/' class="post_tag button button_translucent" title="dart">
+          DART
+          <span class="button_tally">6</span>
+        </a>
+        
         <a href='https://luoguochun.cn/tags/flutter/' class="post_tag button button_translucent" title="flutter">
           FLUTTER
           <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/rust/' class="post_tag button button_translucent" title="rust">
+          RUST
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/tdd/' class="post_tag button button_translucent" title="tdd">
+          TDD
+          <span class="button_tally">4</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/android/' class="post_tag button button_translucent" title="android">
@@ -701,8 +641,8 @@ ere id = ?
           <span class="button_tally">3</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/rust/' class="post_tag button button_translucent" title="rust">
-          RUST
+        <a href='https://luoguochun.cn/tags/js/' class="post_tag button button_translucent" title="js">
+          JS
           <span class="button_tally">3</span>
         </a>
         
@@ -746,18 +686,13 @@ ere id = ?
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/js/' class="post_tag button button_translucent" title="js">
-          JS
+        <a href='https://luoguochun.cn/tags/libevent/' class="post_tag button button_translucent" title="libevent">
+          LIBEVENT
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/minix3/' class="post_tag button button_translucent" title="minix3">
-          MINIX3
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/os/' class="post_tag button button_translucent" title="os">
-          OS
+        <a href='https://luoguochun.cn/tags/macos/' class="post_tag button button_translucent" title="macos">
+          MACOS
           <span class="button_tally">2</span>
         </a>
         
@@ -771,19 +706,14 @@ ere id = ?
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/tdd/' class="post_tag button button_translucent" title="tdd">
-          TDD
-          <span class="button_tally">2</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/%E6%9E%84%E6%9E%B6/' class="post_tag button button_translucent" title="构架">
           构架
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/%E9%87%8F%E5%8C%96/' class="post_tag button button_translucent" title="量化">
-          量化
-          <span class="button_tally">2</span>
+        <a href='https://luoguochun.cn/tags/api/' class="post_tag button button_translucent" title="api">
+          API
+          <span class="button_tally">1</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/bt/' class="post_tag button button_translucent" title="bt">
@@ -791,8 +721,8 @@ ere id = ?
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
-          C&#43;&#43;
+        <a href='https://luoguochun.cn/tags/c&#43;/' class="post_tag button button_translucent" title="c&#43;">
+          C&#43;
           <span class="button_tally">1</span>
         </a>
         
@@ -801,8 +731,18 @@ ere id = ?
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/django/' class="post_tag button button_translucent" title="django">
-          DJANGO
+        <a href='https://luoguochun.cn/tags/database/' class="post_tag button button_translucent" title="database">
+          DATABASE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/endian/' class="post_tag button button_translucent" title="endian">
+          ENDIAN
           <span class="button_tally">1</span>
         </a>
         
@@ -831,23 +771,18 @@ ere id = ?
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/javascript/' class="post_tag button button_translucent" title="javascript">
-          JAVASCRIPT
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/jquery/' class="post_tag button button_translucent" title="jquery">
           JQUERY
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/libevent/' class="post_tag button button_translucent" title="libevent">
-          LIBEVENT
+        <a href='https://luoguochun.cn/tags/ld/' class="post_tag button button_translucent" title="ld">
+          LD
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/mac/' class="post_tag button button_translucent" title="mac">
-          MAC
+        <a href='https://luoguochun.cn/tags/logger/' class="post_tag button button_translucent" title="logger">
+          LOGGER
           <span class="button_tally">1</span>
         </a>
         
@@ -866,8 +801,18 @@ ere id = ?
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/proc/' class="post_tag button button_translucent" title="proc">
-          PROC
+        <a href='https://luoguochun.cn/tags/os/' class="post_tag button button_translucent" title="os">
+          OS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/process/' class="post_tag button button_translucent" title="process">
+          PROCESS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/react/' class="post_tag button button_translucent" title="react">
+          REACT
           <span class="button_tally">1</span>
         </a>
         
@@ -901,21 +846,6 @@ ere id = ?
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/tcp-optition/' class="post_tag button button_translucent" title="tcp-optition">
-          TCP-OPTITION
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/tcpdump/' class="post_tag button button_translucent" title="tcpdump">
-          TCPDUMP
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/tidbit/' class="post_tag button button_translucent" title="tidbit">
-          TIDBIT
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/vc/' class="post_tag button button_translucent" title="vc">
           VC
           <span class="button_tally">1</span>
@@ -926,8 +856,18 @@ ere id = ?
           <span class="button_tally">1</span>
         </a>
         
+        <a href='https://luoguochun.cn/tags/vue/' class="post_tag button button_translucent" title="vue">
+          VUE
+          <span class="button_tally">1</span>
+        </a>
+        
         <a href='https://luoguochun.cn/tags/webui/' class="post_tag button button_translucent" title="webui">
           WEBUI
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/wechat/' class="post_tag button button_translucent" title="wechat">
+          WECHAT
           <span class="button_tally">1</span>
         </a>
         
@@ -936,23 +876,18 @@ ere id = ?
           <span class="button_tally">1</span>
         </a>
         
+        <a href='https://luoguochun.cn/tags/windows/' class="post_tag button button_translucent" title="windows">
+          WINDOWS
+          <span class="button_tally">1</span>
+        </a>
+        
         <a href='https://luoguochun.cn/tags/wireshark/' class="post_tag button button_translucent" title="wireshark">
           WIRESHARK
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/%E5%BE%AE%E4%BF%A1/' class="post_tag button button_translucent" title="微信">
-          微信
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/' class="post_tag button button_translucent" title="微服务">
           微服务
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA/' class="post_tag button button_translucent" title="收音机">
-          收音机
           <span class="button_tally">1</span>
         </a>
         

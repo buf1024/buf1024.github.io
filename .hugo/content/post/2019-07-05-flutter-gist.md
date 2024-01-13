@@ -3,7 +3,7 @@ title: "Flutter 一丢丢代码片段"
 date: 2019-07-05T16:12:10+08:00
 draft: false
 categories: [flutter] 
-tags: [flutter]
+tags: [Dart, flutter]
 ---
 ### Flutter路由
 
@@ -51,11 +51,11 @@ Navigator.of(context).pushNamed("new_page", arguments: "hi");
 ### app表头透明(无缝连接)
 
 ```dart
-import 'dart:io' show Platform;
+import 'dart:io' show PlatfORM;
 ...
 void main() {
     ...
-    if (Platform.isAndroid) {
+    if (PlatfORM.isAndroid) {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     }
@@ -65,7 +65,7 @@ void main() {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
-      statusBarBrightness: Platform.isAndroid ? Brightness.dark : Brightness.light,
+      statusBarBrightness: PlatfORM.isAndroid ? Brightness.dark : Brightness.light,
       systemNavigationBarColor: Colors.white,
       systemNavigationBarDividerColor: Colors.grey,
       systemNavigationBarIconBrightness: Brightness.dark,

@@ -7,7 +7,7 @@ tags: [rust]
 ---
 ### 简介
 
-[Rust](https://www.rust-lang.org/zh-CN/) 编程语言里面有两种宏系统，一种是声明宏（[Declarative Macros](https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming)），另一种为过程宏（[Procedural Macros](https://doc.rust-lang.org/book/ch19-06-macros.html#procedural-macros-for-generating-code-from-attributes)）。声明宏和过程宏是两种基本上完全不一样的宏系统，编写的方式也完全不一致，使用方式除了函数式外也不一致。关于声明宏学习，[Rust 宏小册](https://zjp-cn.github.io/tlborm/introduction.html) 里面有比较详细的说明，这里不再啰嗦。而对于过程宏，网上是可以搜索到的资料则相对较少，系统介绍学习的资料就更加少了。
+[Rust](https://www.rust-lang.org/zh-CN/) 编程语言里面有两种宏系统，一种是声明宏（[Declarative Macros](https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming)），另一种为过程宏（[Procedural Macros](https://doc.rust-lang.org/book/ch19-06-macros.html#procedural-macros-for-generating-code-from-attributes)）。声明宏和过程宏是两种基本上完全不一样的宏系统，编写的方式也完全不一致，使用方式除了函数式外也不一致。关于声明宏学习，[Rust 宏小册](https://zjp-cn.github.io/tlbORM/introduction.html) 里面有比较详细的说明，这里不再啰嗦。而对于过程宏，网上是可以搜索到的资料则相对较少，系统介绍学习的资料就更加少了。
 
 过程宏所做的事情则是从输入中获**取到标记流**，**处理这些标记流或者生成新的标记流**，然后将处理后的标记流返回给编译器作下一步的处理。需要注意的是，过程宏操作的是[Rust](https://www.rust-lang.org/zh-CN/) `AST`（抽象语法树），所以即使是在宏里面，也必须是合法[Rust](https://www.rust-lang.org/zh-CN/)的语法结构。这也就意味着，解析过程宏的过程中，`var`表示的是一个合法的标识符，而`6var`则是非法的。
 
@@ -26,7 +26,7 @@ proc-macro = true
 
 #### `derive` 式
 
-1. 函数带有`#[proc_macro_derive(Name)]` 属性或者` #[proc_macro_derive(Name, attributes(attr))]`属性
+1. 函数带有`#[proc_macro_derive(Name)]` 属性或者`#[proc_macro_derive(Name, attributes(attr))]`属性
 2. 函数签名为 `pub fn xxxx (proc_macro::TokenStream) -> proc_macro::TokenStream`
 
 函数的名称叫什么并不重要，使用时是使用`proc_macro_derive`里面的名称，如下例子
@@ -50,7 +50,7 @@ struct Test {
 
 #### 函数式
 
-1. 函数带有 `#[proc_macro] `属性
+1. 函数带有 `#[proc_macro]`属性
 2. 函数签名为 `pub fn xxx (proc_macro::TokenStream) -> proc_macro::TokenStream`
 
 函数的名称就是使用时名称，如下例子：
@@ -108,7 +108,7 @@ pub fn fetch_data(url: String) -> Result<MyData> {
 
 #### `quote`
 
-`quote`是将编写的代码转换为[Rust](https://www.rust-lang.org/zh-CN/) token的方式，提供一种称之为`quasi-quoting`的方式，将代码视为数据，并可以进行插值。比较常用的是这两个宏：`parse_quote!`，`quote!`，以及`format_ident!`。
+`quote`是将编写的代码转换为[Rust](https://www.rust-lang.org/zh-CN/) token的方式，提供一种称之为`quasi-quoting`的方式，将代码视为数据，并可以进行插值。比较常用的是这两个宏：`parse_quote!`，`quote!`，以及`fORMat_ident!`。
 
 #### `syn`
 
@@ -122,7 +122,6 @@ pub fn fetch_data(url: String) -> Result<MyData> {
 
 [`cargo-expand`](https://github.com/dtolnay/cargo-expand)用于宏代码的展开，需要注意的是，需要正常编译通过的代码才可以进行展开。
 
-
 使用这`quote`, `syn`, `proc_macro2`三个库来编写过程宏后，框架代码基本一致，一般有如下三个步骤，如下方式：
 
 ```rust
@@ -134,7 +133,7 @@ pub fn my_macro(input: TokenStream) -> TokenStream {
     // 将输入的标记解析成语法树
     let input = parse_macro_input!(input as DeriveInput);
   
-	// 使用quote！进行插值处理
+ // 使用quote！进行插值处理
     let expanded = quote! {
         // ...
     };
@@ -169,7 +168,7 @@ struct MyStruct {
 // 又或者是这样
 #[derive(Getters)]
 struct MyStruct {
-	#[getter(vis=pub(crate))]
+ #[getter(vis=pub(crate))]
     #[getter(name=get_fuck_data)]
     data: String,
 }
@@ -178,7 +177,7 @@ struct MyStruct {
 #[derive(Getters)]
 struct MyStruct {
     /// 这是一个data的属性
-	#[getter(vis=pub(crate))]
+ #[getter(vis=pub(crate))]
     #[getter(name=get_fuck_data)]
     data: String,
 }
@@ -186,7 +185,7 @@ struct MyStruct {
 // 设置机构体可能复杂, 带上了生命周期参数和泛型
 #[derive(Getters)]
 struct MyStruct<'a, T: Sync+Send+Constraint> {
-	#[getter(vis=pub(crate))]
+ #[getter(vis=pub(crate))]
     #[getter(name=get_fuck_data)]
     data: &'a str,
     constraint: T
@@ -275,7 +274,7 @@ let doc_str: String = f
                 .attrs
                 .iter()
                 .filter(|attr| attr.path().is_ident("doc"))
-                .try_fold(String::new(), |acc, attr| {
+                .try_fold(String::new(), |acC, attr| {
                     let mnv = match &attr.meta {
                         syn::Meta::NameValue(mnv) => mnv,
                         _ => return Err(syn::Error::new_spanned(attr, "expect name value!")),
@@ -288,7 +287,7 @@ let doc_str: String = f
 
                         _ => return Err(syn::Error::new_spanned(attr, "expect string literal!")),
                     };
-                    Ok(format!("{}\n{}", acc, doc_str))
+                    Ok(fORMat!("{}\n{}", acC, doc_str))
                 })?;
 ```
 
@@ -306,7 +305,7 @@ impl Parse for GetterMeta {
                 let sl: LitStr = input.parse()?;
                 let value = sl.value();
 
-                format_ident!("{}", value.trim())
+                fORMat_ident!("{}", value.trim())
             } else {
                 input.parse()?
             };
@@ -337,7 +336,7 @@ impl Parse for GetterMeta {
 获取到基本的数据后，自然就生成代码，这里两个重要的宏: `quote!`和`parse_quote!`。最后生成的代码用`#[automatically_derived]`进行装饰，说明这是自动生成的代码。
 
 ```rust
-let (impl_generic, type_generic, where_clause) = input.generics.split_for_impl();
+let (impl_generiC, type_generiC, where_clause) = input.generics.split_for_impl();
 
     Ok(quote! {
         #[automatically_derived]
@@ -390,7 +389,7 @@ struct MyStructRef<'a> {
 impl<'a> MyStructRef<'a> {
     pub fn hello(&self) {
         {
-            ::std::io::_print(format_args!("hello!\n"));
+            ::std::io::_print(fORMat_args!("hello!\n"));
         };
     }
     pub(crate) fn get_fuck_data(&self) -> &'a str {
@@ -424,7 +423,7 @@ fn remote_request(a: i32, b: i32) -> i32 {
 fn remote_request(a: i32, b: i32) -> i32 {
     fn __new_remote_request(a: i32, b: i32) -> i32 {
         {
-            ::std::io::_print(format_args!("@remote_request!\n"));
+            ::std::io::_print(fORMat_args!("@remote_request!\n"));
         };
         a + b
     }
@@ -499,35 +498,35 @@ impl Parse for RetryAttr {
 假设我们要计算二元二次方程组的值，我们计划是这样使用的：
 
 ```rust
-let (x, y) = formula!(1 * x + 1 * y = 2, 2 * x + 1 * y = 9);
+let (x, y) = fORMula!(1 * x + 1 * y = 2, 2 * x + 1 * y = 9);
 ```
 
 这个宏直接就在编译期间就计算出x，y的值（当然是存在有解的情况下），无解就`panic`。为了使问题简单，我们假设x，y前面都是有系数的。过程宏的操作过程就是解析出里面的表达式：
 
 ```rust
-pub(crate) struct FormulaArgs {
-    formula: Vec<Formula>,
+pub(crate) struct FORMulaArgs {
+    fORMula: Vec<FORMula>,
 }
 
-impl Parse for FormulaArgs {
+impl Parse for FORMulaArgs {
     fn parse(input: syn::parse::ParseStream) -> Result<Self> {
-        let attrs = Punctuated::<Formula, Token![,]>::parse_terminated(input)?;
-        let formula: Vec<_> = attrs.into_iter().collect();
-        if formula.len() != 2 {
-            panic!("require two formula")
+        let attrs = Punctuated::<FORMula, Token![,]>::parse_terminated(input)?;
+        let fORMula: Vec<_> = attrs.into_iter().collect();
+        if fORMula.len() != 2 {
+            panic!("require two fORMula")
         }
-        Ok(FormulaArgs { formula })
+        Ok(FORMulaArgs { fORMula })
     }
 }
 
 #[derive(Default)]
-pub(crate) struct Formula {
+pub(crate) struct FORMula {
     x: i32,
     y: i32,
     rs: i32,
 }
 
-impl Parse for Formula {
+impl Parse for FORMula {
     fn parse(input: syn::parse::ParseStream) -> Result<Self> {
         let lookahead = input.lookahead1();
 

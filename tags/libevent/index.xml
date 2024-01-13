@@ -23,5 +23,21 @@
       </description>
     </item>
     
+    <item>
+      <title>libevent 概述</title>
+      <link>https://luoguochun.cn/post/2012-03-21-libevent-intro/</link>
+      <pubDate>Wed, 21 Mar 2012 21:05:10 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-03-21-libevent-intro/</guid>
+      <description>
+        
+          
+            声明，本文章东搬西扯抄来过的，并非原创，写给自己参考的。 关于libevent的描述，有两个百科的连接可以参考： libevent百度百科 lib
+          
+          
+        
+      </description>
+    </item>
+    
   </channel>
 </rss>

@@ -1,8 +1,8 @@
 ---
 title: gdb一丢丢常见问题
 date: 2015-04-01 17:12:10
-categories: [gdb]
-tags: [gdb]
+categories: [GCC]
+tags: [C,C++,Linux,GDB]
 ---
 
 一、gdb 无法自动加载当前文件 .gdbinit文件
@@ -23,7 +23,7 @@ To completely disable this security protection add
 
 line to your configuration file "/home/heidong/.gdbinit".
 
-For more information about this security protection see the
+For more infORMation about this security protection see the
 
 "Auto-loading safe path" section in the GDB manual.  E.g., run from the shell:
 

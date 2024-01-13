@@ -7,7 +7,6 @@ tags: [构架]
 ---
 很久之前，在公司鼎盛的时期，还存在运维人员的时候，我们开发应用的时候，就会和运维人员讨论一下部署的方案，听的比较多的是，运维人员说的比较多的是两个专业的名词是，负载均衡和ip漂移，前者是为减轻应用服务的压力使性能均衡，后者是为了负载均衡宕机后系统的高可用性。由于这些都是运作部署的，我们只关注应用功能的实现，并不是很在意这些部署的细节，只是了解到有这样的东西。现在公司没落了，很多事情都得自己搞了。
 
-
 负载均衡，无非就减轻后台应用服务器的压力，提高系统的可扩展性。方法是很多，比如有些在客户端实现，有些自己写分发程序，还有业界比较常用的F5负载均衡（贵，高大上），使用LVS/haproxy/nginx等开源的方案，这些都是支持4层/7层负载均衡。LVS已经集成在内核，没有使用过，haproxy/nginx曾经窥视过其内部数据结构，可没有非常深入的了解，nginx支持模块开发，如果对nginx比较熟悉，那么在其继承上开发对应的模块，其效率是比较高效的。这次用nginx的4层负载均衡测试一下，然而据说nginx的健康检查是惰性的，它不能及时知道后端服务的存活，所以有些人开发了相关的模块（更新年限久远，不知道是否能用）：[nginx_upstream_check_module](https://github.com/yaoweibin/nginx_upstream_check_module)
 
 当应用部署上负载均衡后，负载均衡很容易成为单点，如果负载均衡挂掉了，这个时候keepalived上场。要了解keepalived的工作原理，首先要先了解[VRRP协议--虚拟路由器冗余协议](https://baike.baidu.com/item/%E8%99%9A%E6%8B%9F%E8%B7%AF%E7%94%B1%E5%99%A8%E5%86%97%E4%BD%99%E5%8D%8F%E8%AE%AE/2991482?fromtitle=VRRP&fromid=932628),这里有份详细的原理描述：[虚拟路由器冗余协议【原理篇】VRRP详解](http://blog.51cto.com/zhaoyuqiang/1166840)。简单来说，VRRP就是把N台路由器(机器)放到一个组里面，组里面有一个MASTER和N-1个BACKUP，对外拥有一个虚拟IP，MASTER所在的机器拥有这个虚拟IP，MASTER通过广播报文到组内的BACKUP，当BACKUP在规定时间内没有收到MASTER的广播报文，则认为MASTER宕机了，当MASTER宕机后，组内的BACKUP通过特定的选举算法机制，选择出一个MASTER，然后这个MASTER拥有这个虚拟IP，这样看起来，感觉就是“IP从一台机器漂移到另外一台机器”了。Keepalived就是一个实现VRRP协议高可用方案。
@@ -25,7 +24,7 @@ VNODE-01:
     inet6 fe80::950a:8286:4242:1da3/64 scope link noprefixroute 
        valid_lft forever preferred_lft forever
 
-able@VNODE-01:~/luoguochun/privt/proj/privt-prj/web/nodejs/node-demo/echo-svr$ node echo-svr.js -h 172.20.46.78 -p 9978 -i vnode-01
+able@VNODE-01:~/luoguochun/privt/proj/privt-prj/web/nodejs/node-demo/echo-svr$ node echo-svr.JS -h 172.20.46.78 -p 9978 -i vnode-01
 server(vnode-01) listen 172.20.46.78:9978 started
 
 VNODE-02:
@@ -36,7 +35,7 @@ VNODE-02:
     inet6 fe80::146f:4835:5b3e:29c1/64 scope link noprefixroute 
        valid_lft forever preferred_lft forever
 
-able@VNODE-02:~/luoguochun/privt/proj/privt-prj/web/nodejs/node-demo/echo-svr$ node echo-svr.js -h 172.20.46.80 -p 9980 -i vnode-02
+able@VNODE-02:~/luoguochun/privt/proj/privt-prj/web/nodejs/node-demo/echo-svr$ node echo-svr.JS -h 172.20.46.80 -p 9980 -i vnode-02
 server(vnode-02) listen 172.20.46.80:9980 started
 
 VNODE-03:
@@ -46,7 +45,7 @@ VNODE-03:
        valid_lft 17720sec preferred_lft 17720sec
     inet6 fe80::e7aa:1f55:1bdc:aaeb/64 scope link noprefixroute 
        valid_lft forever preferred_lft forever
-able@VNODE-03:~/luoguochun/privt/proj/privt-prj/web/nodejs/node-demo/echo-svr$ node echo-svr.js -h 172.20.46.79 -p 9979 -i vnode-03
+able@VNODE-03:~/luoguochun/privt/proj/privt-prj/web/nodejs/node-demo/echo-svr$ node echo-svr.JS -h 172.20.46.79 -p 9979 -i vnode-03
 server(vnode-03) listen 172.20.46.79:9979 started
 ```
 
@@ -61,8 +60,8 @@ pid /tmp/nginx.pid;
 include /etc/nginx/modules-enabled/*.conf;
 
 events {
-	worker_connections 768;
-	# multi_accept on;
+ worker_connections 768;
+ # multi_accept on;
 }
 
 stream {

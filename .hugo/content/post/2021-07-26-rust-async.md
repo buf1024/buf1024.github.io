@@ -10,7 +10,7 @@ tags: [rust]
 
 ## 简介
 
-[协程](/post/2014-08-21-coroutine/)已经是非常成熟的概念了，很多编程语言(比如JS, PYTHON, DART等等)已提供原生的支持了，并且几乎提供相同的关键字`async/await`。没有提供原生支持的其他编程语言，比如C/C++等，也有类似的库实现（虽然支持并不太完美）。作为比较现代的rust编程语言，在各种编程语言比较雷同的背景之下，也不例外原生支持协程这种异步编程方式。引入协程的目的就是为了用同步的方式编写异步的代码，所以和其他语言一样，在使用上，async/.await的异常简单。比如：
+[协程](/post/2014-08-21-coroutine/)已经是非常成熟的概念了，很多编程语言(比如JS, Python, DART等等)已提供原生的支持了，并且几乎提供相同的关键字`async/await`。没有提供原生支持的其他编程语言，比如C/C++等，也有类似的库实现（虽然支持并不太完美）。作为比较现代的rust编程语言，在各种编程语言比较雷同的背景之下，也不例外原生支持协程这种异步编程方式。引入协程的目的就是为了用同步的方式编写异步的代码，所以和其他语言一样，在使用上，async/.await的异常简单。比如：
 
 ```rust
 use futures::executor::block_on;
@@ -74,7 +74,7 @@ impl Future for HelloStateMachine {
                       Poll::Pending => return Poll::Pending,
                       Poll::Ready(content) => {
                           *self = ExampleStateMachine::WaitingBTxt(state);
-                        	return Poll::Ready(content);
+                         return Poll::Ready(content);
                       }
                   }
                 }

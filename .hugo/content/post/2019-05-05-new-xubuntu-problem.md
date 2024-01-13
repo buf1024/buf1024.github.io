@@ -2,8 +2,8 @@
 title: "物理机新建xubuntu一些问题"
 date: 2019-05-05T11:12:02+08:00
 draft: false
-categories: [misc] 
-tags: [misc]
+categories: [Misc] 
+tags: [Misc]
 ---
 * 无线网卡驱动问题 -- 无法显示wifi
 
@@ -43,10 +43,10 @@ tags: [misc]
   sudo systemctl enable frpc.service
   ```
 
-* 设置python
+* 设置Python
 
   ```markdown
-  sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
+  sudo update-alternatives --install /usr/bin/Python Python /usr/bin/Python3 150
   sudo update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 150
 
   # 修改安装源(不存在则新建)
@@ -120,9 +120,9 @@ tags: [misc]
 
 #password    requisite     pam_cracklib.so try_first_pass retry=3
 
-4. Remove use_authtok on the second line. Otherwise you’ll get “passwd: Authentication information cannot be recovered” error.
+4. Remove use_authtok on the second line. Otherwise you’ll get “passwd: Authentication infORMation cannot be recovered” error.
 
-删除掉 "use_authtok “从第二行，否则你会得到"passwd : Authentication information canot be recovered "的错误提示
+删除掉 "use_authtok “从第二行，否则你会得到"passwd : Authentication infORMation canot be recovered "的错误提示
 
 password    sufficient    pam_unix.so md5 shadow nullok try_first_pass
 

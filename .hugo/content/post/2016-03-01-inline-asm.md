@@ -2,7 +2,7 @@
 title: '内联ASM'
 date: 2016-03-01 14:13:05
 categories: [asm]
-tags: [asm, gas]
+tags: [Asm, gas]
 ---
 一、最基本格式:
 

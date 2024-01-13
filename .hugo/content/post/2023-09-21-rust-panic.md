@@ -10,7 +10,7 @@ tags: [rust]
 
 ```rust
 // 敏感信息去掉
-format!("https://xxxget?\
+fORMat!("https://xxxget?\
          a=(ab%3D%22code%22)&X_=xadf0",
          code = &code[2..]);
 ```
@@ -20,8 +20,8 @@ format!("https://xxxget?\
 ​`rls`​没有检测出来，本来传说中的非常强大的编译应该检测出来，只不过这个简单的问题，却导致编译器`panic`​了!并生成了`rustc-ice`​文件，并让我提交`issue`​。
 
 ```rust
-thread 'rustc' panicked at compiler/rustc_builtin_macros/src/format_foreign.rs:272:55:
-invalid format num `"22600000"`
+thread 'rustc' panicked at compiler/rustc_builtin_macros/src/fORMat_foreign.rs:272:55:
+invalid fORMat num `"22600000"`
 stack backtrace:
    0:        0x1063bb42f - std::backtrace::Backtrace::create::h276e52d394804866
    1:        0x1063bb375 - std::backtrace::Backtrace::force_capture::hf01754881169428b
@@ -31,9 +31,9 @@ stack backtrace:
    5:        0x1063d3009 - std::sys_common::backtrace::__rust_end_short_backtrace::h62f21dd221c17a86
    6:        0x1063d605d - _rust_begin_unwind
    7:        0x10645e395 - core::panicking::panic_fmt::h74b5171bcf212936
-   8:        0x11290024c - <rustc_builtin_macros[c397c70d617caee1]::format_foreign::printf::Substitutions as core[a5946ab14a20e1f4]::iter::traits::iterator::Iterator>::next
-   9:        0x11290e77c - rustc_builtin_macros[c397c70d617caee1]::format::make_format_args
-  10:        0x1129117cb - rustc_builtin_macros[c397c70d617caee1]::format::expand_format_args_impl
+   8:        0x11290024c - <rustc_builtin_macros[c397c70d617caee1]::fORMat_foreign::printf::Substitutions as core[a5946ab14a20e1f4]::iter::traits::iterator::Iterator>::next
+   9:        0x11290e77c - rustc_builtin_macros[c397c70d617caee1]::fORMat::make_fORMat_args
+  10:        0x1129117cb - rustc_builtin_macros[c397c70d617caee1]::fORMat::expand_fORMat_args_impl
   11:        0x112f18c3b - <rustc_expand[33739c2ad659c2f6]::expand::MacroExpander>::fully_expand_fragment
   12:        0x112f17760 - <rustc_expand[33739c2ad659c2f6]::expand::MacroExpander>::expand_crate
   13:        0x1135a2ccd - <rustc_session[ae81351961406b05]::session::Session>::time::<rustc_ast[95b967775af3a4bd]::ast::Crate, rustc_interface[9ea207dfe3565402]::passes::configure_and_expand::{closure#1}>
@@ -51,7 +51,7 @@ stack backtrace:
 
 
 rustc version: 1.74.0-nightly (3223b0b5e 2023-09-20)
-platform: x86_64-apple-darwin
+platfORM: x86_64-apple-darwin
 
 query stack during panic:
 #0 [resolver_for_lowering] getting the resolver for lowering
@@ -62,7 +62,7 @@ end of query stack
 
 本着不服输的姿态，我要定位到到底是哪一行代码导出编译器`panic`​了，于是便像之前写C++那样，一行一行代码的删除，直到最后定位到文中开头的那一行。原来就是自己的粗心导致的，稍微做一下修改便可以让编译器正常通过。
 
-然而，无论如何，编译器都不能挂的。难道强大的rust编译器就那么脆弱，一个简单的`format`​宏就能让编译器挂了？于是，便把那一行单独的拿出来试，这个时候，奇怪的事情发生了，它居然能正确之处问题的所在，它又展示了它的强大之处：
+然而，无论如何，编译器都不能挂的。难道强大的rust编译器就那么脆弱，一个简单的`fORMat`​宏就能让编译器挂了？于是，便把那一行单独的拿出来试，这个时候，奇怪的事情发生了，它居然能正确之处问题的所在，它又展示了它的强大之处：
 
 ```rust
 error: named argument never used
@@ -71,17 +71,17 @@ error: named argument never used
 7 |             code="abc");
   |                  ^^^^^ named argument never used
   |
-note: format specifiers use curly braces, and the conversion specifier `D` is unknown or unsupported
+note: fORMat specifiers use curly braces, and the conversion specifier `D` is unknown or unsupported
  --> a.rs:5:20
   |
 5 |             filter=(SE%3D%22123%22)&\
   |                    ^^^
-note: format specifiers use curly braces, and the conversion specifier `%` is unknown or unsupported
+note: fORMat specifiers use curly braces, and the conversion specifier `%` is unknown or unsupported
  --> a.rs:5:23
   |
 5 |             filter=(SE%3D%22123%22)&\
   |                       ^^^^^^^
-  = note: printf formatting is not supported; see the documentation for `std::fmt`
+  = note: printf fORMatting is not supported; see the documentation for `std::fmt`
 
 error: aborting due to previous error
 

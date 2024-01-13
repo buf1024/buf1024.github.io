@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Logger on BUF1024</title>
+    <link>https://luoguochun.cn/tags/logger/</link>
+    <description>Recent content in Logger on BUF1024</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 18 Feb 2012 10:15:09 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/logger/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>迷你日志类Minilog</title>
+      <link>https://luoguochun.cn/post/2012-02-18-minlog/</link>
+      <pubDate>Sat, 18 Feb 2012 10:15:09 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2012-02-18-minlog/</guid>
+      <description>
+        
+          
+            简介 日志，在一般系统里是非常非常重要的，它不仅跟踪到程序的执行，同时也是对系统进行各方面分析的基础。其重要性在这里不再一一说明，有兴趣可自行
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

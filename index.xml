@@ -6,13 +6,29 @@
     <description>Recent content on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 08 Jan 2024 16:00:10 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jan 2024 16:00:10 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>前端保姆级配置</title>
-      <link>https://luoguochun.cn/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/</link>
+      <title>Rust sqlx SQLBuilder</title>
+      <link>https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder/</link>
+      <pubDate>Sat, 13 Jan 2024 16:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder/</guid>
+      <description>
+        
+          
+            对于个人来说，一直不喜欢ORM​框架。明明就是熟悉sql​的，为何还要封装一层？抛开针对各个数据库厂商难以作sql​ 优化之外，封装之后的写法
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>前端过程化配置保姆级教程</title>
+      <link>https://luoguochun.cn/post/2024-01-08-vite-engineering-config/</link>
       <pubDate>Mon, 08 Jan 2024 16:00:10 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://luoguochun.cn/post/2024-01-08-vite-engineering-config/</guid>
       <description>
         
           
@@ -48,7 +64,7 @@
       <description>
         
           
-            今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 // 敏感信息去掉 format!(&amp;#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;amp;X_=xadf0&amp;#34;, code = &amp;amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22
+            今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 // 敏感信息去掉 fORMat!(&amp;#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;amp;X_=xadf0&amp;#34;, code = &amp;amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22
           
           
         
@@ -208,7 +224,7 @@
       <description>
         
           
-            简介 协程已经是非常成熟的概念了，很多编程语言(比如JS, PYTHON, DART等等)已提供原生的支持了，并且几乎提供相同的关键字async/await。
+            简介 协程已经是非常成熟的概念了，很多编程语言(比如JS, Python, DART等等)已提供原生的支持了，并且几乎提供相同的关键字async/await。
           
           
         
@@ -240,7 +256,7 @@
       <description>
         
           
-            fabric主要用于自动化运维，可以使用类似于make命令一样执行python的函数。 fabric主要依赖于pyinvoke和paramik
+            fabric主要用于自动化运维，可以使用类似于make命令一样执行Python的函数。 fabric主要依赖于pyinvoke和paramik
           
           
         
@@ -248,7 +264,7 @@
     </item>
     
     <item>
-      <title>python 使用到的一丢丢代码片段</title>
+      <title>Python 使用到的一丢丢代码片段</title>
       <link>https://luoguochun.cn/post/2021-01-01-py-gist/</link>
       <pubDate>Fri, 01 Jan 2021 11:12:08 +0800</pubDate>
       
@@ -256,7 +272,7 @@
       <description>
         
           
-            python 装饰器终极写法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 # 假如需要用到装饰的功能（建议经常使用），那么建议使用下面写法 # 目的
+            Python 装饰器终极写法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 # 假如需要用到装饰的功能（建议经常使用），那么建议使用下面写法 # 目的
           
           
         
@@ -438,6 +454,22 @@
     </item>
     
     <item>
+      <title>Docker -- 简介</title>
+      <link>https://luoguochun.cn/post/2018-06-02-docker-intro/</link>
+      <pubDate>Sat, 02 Jun 2018 11:40:39 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2018-06-02-docker-intro/</guid>
+      <description>
+        
+          
+            背景 docker从几年前开始就是开源社区一颗耀眼的明星，自己也在那个时候接触docker，也是因为docker学习了golang（golan
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
       <title>react-native 实践部分</title>
       <link>https://luoguochun.cn/post/2018-05-25-react-native-practice/</link>
       <pubDate>Fri, 25 May 2018 17:04:10 +0000</pubDate>
@@ -526,7 +558,7 @@
       <description>
         
           
-            查看.git/config 1 2 3 4 5 6 7 8 9 10 11 12 13 [core] repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true ignorecase = true precomposeunicode = true [remote &amp;#34;origin&amp;#34;] url = git@gitee.com:heidonglgc/k-map.git fetch = +refs/heads/*:refs/remotes/origin/* [branch &amp;#34;master&amp;#34;] remote = origin merge = refs/heads/master 增加一个名为mir
+            查看.git/config 1 2 3 4 5 6 7 8 9 10 11 12 13 [core] repositoryfORMatversion = 0 filemode = true bare = false logallrefupdates = true ignorecase = true precomposeunicode = true [remote &amp;#34;origin&amp;#34;] url = git@gitee.com:heidonglgc/k-map.git fetch = +refs/heads/*:refs/remotes/origin/* [branch &amp;#34;master&amp;#34;] remote = origin merge = refs/heads/master 增加一个名为mir
           
           
         
@@ -622,7 +654,7 @@
       <description>
         
           
-            P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… js 运行于宿主环境，常见宿主环境有web浏览器和
+            P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… JS 运行于宿主环境，常见宿主环境有web浏览器和
           
           
         
@@ -718,7 +750,7 @@
       <description>
         
           
-            链接器ld的一些特别选项，编译OS时有用到。 -N --omagic Set the text and data sections to be readable and writable. Also, do not page-align the data segment, and disable linking against shared libraries. If the output format supports Unix style magic numbers, mark the output as &amp;quot;OMAGIC&amp;quot;. Note: Although a writable text section is allowed
+            链接器ld的一些特别选项，编译OS时有用到。 -N --omagic Set the text and data sections to be readable and writable. Also, do not page-align the data segment, and disable linking against shared libraries. If the output fORMat supports Unix style magic numbers, mark the output as &amp;quot;OMAGIC&amp;quot;. Note: Although a writable text section is allowed
           
           
         
@@ -734,7 +766,7 @@
       <description>
         
           
-            linux非常庞大，虽然有很多参考的资料，但是啃这样庞大的东西还是很费力，如果是业余啃，那难度或许更大。然而，我们可以绕道看下另外一个小巧，
+            Linux非常庞大，虽然有很多参考的资料，但是啃这样庞大的东西还是很费力，如果是业余啃，那难度或许更大。然而，我们可以绕道看下另外一个小巧，
           
           
         
@@ -830,7 +862,7 @@
       <description>
         
           
-            SQLAlchemy 概述 在python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图
+            SQLAlchemy 概述 在Python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图
           
           
         
@@ -918,7 +950,7 @@
     </item>
     
     <item>
-      <title>linux /proc 伪文件系统</title>
+      <title>Linux /proc 伪文件系统</title>
       <link>https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/</link>
       <pubDate>Mon, 28 Jul 2014 14:57:18 +0000</pubDate>
       
@@ -926,7 +958,7 @@
       <description>
         
           
-            linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一
+            Linux /proc伪文件系统是内核数据结构的接口，是异常强大的，大部分的文件都是只读的。本文主要是根据man proc来补充说明(未完待续)。 /proc/[pid] 每一
           
           
         
@@ -990,7 +1022,7 @@
       <description>
         
           
-            ###如何开搞 我们平时ps进程时，显示的进程标题是我们输入的程序名以及一些参数。这种显示方式并非非常直观，我们需要一种方式可以设置程序的标题
+            如何开搞 我们平时ps进程时，显示的进程标题是我们输入的程序名以及一些参数。这种显示方式并非非常直观，我们需要一种方式可以设置程序的标题，一眼
           
           
         
@@ -1062,7 +1094,7 @@
     </item>
     
     <item>
-      <title>mschedule 简单linux进程管理（树莓派）</title>
+      <title>mschedule 简单Linux进程管理（树莓派）</title>
       <link>https://luoguochun.cn/post/2014-05-30-myschd/</link>
       <pubDate>Fri, 30 May 2014 23:28:16 +0000</pubDate>
       
@@ -1230,7 +1262,7 @@
       <description>
         
           
-            概述 sys/queue.h是LINUX/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple
+            概述 sys/queue.h是Linux/UNIX系统下面的一个标准头文件，用一系列的数据结构定义了一队列。包括singly-lined list, list, simple
           
           
         

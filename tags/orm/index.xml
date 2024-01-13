@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>orm on BUF1024</title>
+    <title>ORM on BUF1024</title>
     <link>https://luoguochun.cn/tags/orm/</link>
-    <description>Recent content in orm on BUF1024</description>
+    <description>Recent content in ORM on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 28 Dec 2014 21:08:34 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/orm/index.xml" rel="self" type="application/rss+xml" />
@@ -16,7 +16,7 @@
       <description>
         
           
-            SQLAlchemy 概述 在python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图
+            SQLAlchemy 概述 在Python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图
           
           
         

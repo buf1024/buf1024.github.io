@@ -28,8 +28,6 @@ key = "def-key-ini"
 token = "def-token-ini"
 ```
 
-
-
 ```rust
 use config::{Config, Environment, File};
 use std::env;
@@ -61,13 +59,13 @@ struct Settings {
 fn main() {
     let run_mode = env::var("RUN_MODE").unwrap_or("dev".into());
 
-  	// add_source后面的，会覆盖前面的
+   // add_source后面的，会覆盖前面的
     let s = Config::builder()
-  			// 默认配置
+     // 默认配置
         .add_source(File::with_name("examples/config/default"))
-  			// pro/dev 配置会覆盖默认配置
-        .add_source(File::with_name(&format!("example/config/{}", run_mode)).required(false))
-  			// 注意环境变量一APP_开头的，如果APP_DEBUG，大小写无关
+     // pro/dev 配置会覆盖默认配置
+        .add_source(File::with_name(&fORMat!("example/config/{}", run_mode)).required(false))
+     // 注意环境变量一APP_开头的，如果APP_DEBUG，大小写无关
         .add_source(Environment::with_prefix("APP"))
         .build()
         .unwrap();

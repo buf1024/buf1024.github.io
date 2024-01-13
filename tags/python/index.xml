@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on BUF1024</title>
+    <title>Python on BUF1024</title>
     <link>https://luoguochun.cn/tags/python/</link>
-    <description>Recent content in python on BUF1024</description>
+    <description>Recent content in Python on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 03 Feb 2021 19:10:00 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/tags/python/index.xml" rel="self" type="application/rss+xml" />
@@ -32,7 +32,7 @@
       <description>
         
           
-            fabric主要用于自动化运维，可以使用类似于make命令一样执行python的函数。 fabric主要依赖于pyinvoke和paramik
+            fabric主要用于自动化运维，可以使用类似于make命令一样执行Python的函数。 fabric主要依赖于pyinvoke和paramik
           
           
         
@@ -40,7 +40,7 @@
     </item>
     
     <item>
-      <title>python 使用到的一丢丢代码片段</title>
+      <title>Python 使用到的一丢丢代码片段</title>
       <link>https://luoguochun.cn/post/2021-01-01-py-gist/</link>
       <pubDate>Fri, 01 Jan 2021 11:12:08 +0800</pubDate>
       
@@ -48,7 +48,7 @@
       <description>
         
           
-            python 装饰器终极写法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 # 假如需要用到装饰的功能（建议经常使用），那么建议使用下面写法 # 目的
+            Python 装饰器终极写法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 # 假如需要用到装饰的功能（建议经常使用），那么建议使用下面写法 # 目的
           
           
         
@@ -64,7 +64,7 @@
       <description>
         
           
-            SQLAlchemy 概述 在python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图
+            SQLAlchemy 概述 在Python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图
           
           
         

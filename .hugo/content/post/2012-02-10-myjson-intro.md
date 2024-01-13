@@ -1,7 +1,7 @@
 ---
 title: MyJson, JSON C++ 的另一种实现
 date: 2012-02-10 21:05:10
-categories: [misc]
+categories: [Misc]
 tags: [C]
 ---
 
@@ -54,15 +54,15 @@ myjson的主要类的结构：
 | Json      | static int Parse(Json*&amp; pJson, const char* pBuf);      | 解析JSON数据。<br />参数：pJson 返回的JSON对象<br />参数：pBuf  要解析的数据<br />返回：0成功，其它参考错误码      |
 |   | static int Load(Json*&amp; pJson, const char* pFilePath);  | 从文件解析JSON数据。<br />参数：pJson 返回的JSON对象<br />参数：pFilePath文件路径<br />返回：0成功，其它参考错误码 |
 |   | int Save(const char* pFilePath);  | 将JSON对象保存到文件。<br />参数：pFilePath文件路径<br />返回：0成功，其它参考错误码   |
-|   | JsonValue* Set(const char* szKey, JsonValue& sVal);       | 设置JSON键值。<br />参数：szKey 健<br />参数：sVal 值<br />返回：JSON值，0则出错   |
-|   | JsonValue* Get(const char* szKey) const;  | 获取JSON值。<br />参数：szKey 健<br />返回：JSON值，0则出错    |
+|   | JsonValue*Set(const char* szKey, JsonValue& sVal);       | 设置JSON键值。<br />参数：szKey 健<br />参数：sVal 值<br />返回：JSON值，0则出错   |
+|   | JsonValue*Get(const char* szKey) const;  | 获取JSON值。<br />参数：szKey 健<br />返回：JSON值，0则出错    |
 |   | void Dump(std::string& strDump) const;    | 将JSON对象以最紧密的方式导出。<br />参数：strDump返回的数据<br />返回：无      |
-|   | void DumpFormat(std::string& strDump, int nSpace = FORMAT_SPACE) const;   | 将JSON对象以格式化的方式导出。<br />参数：strDump返回的数据<br />参数：Space 空格数<br />返回：无  |
-|   | JsonValue& operator [] (const char* szKey);/const JsonValue& operator [] (const char* szKey) const;       | JSON对象[]操作符，有点类似STL的MAP，当键不存在时，插入一个。<br />参数：szKey 健<br />返回：JSON值（可能无效） |
+|   | void DumpFORMat(std::string& strDump, int nSpace = FORMAT_SPACE) const;   | 将JSON对象以格式化的方式导出。<br />参数：strDump返回的数据<br />参数：Space 空格数<br />返回：无  |
+|   | JsonValue& operator [] (const char*szKey);/const JsonValue& operator [] (const char* szKey) const;       | JSON对象[]操作符，有点类似STL的MAP，当键不存在时，插入一个。<br />参数：szKey 健<br />返回：JSON值（可能无效） |
 | JsonValue | operator const char*();
 operator char*();<br />operator int();<br />operator long long();<br />operator float();<br />operator double();<br />operator Json();<br />operator JsonArray();    | 各种转换操作符。       |
 |   | JsonValue& operator = (bool bVal);<br />JsonValue& operator = (const char* szVal);<br />JsonValue& operator = (int nVal);<br />JsonValue& operator = (long long llVal);<br />JsonValue& operator = (float fVal);<br />JsonValue& operator = (double fVal);<br />JsonValue& operator = (const Json& sVal);<br />JsonValue& operator = (const JsonArray& sArr); | 各种转换赋值符。       |
-|   | JsonValue& operator [] (const char* szKey);<br />const JsonValue& operator [] (const char* szKey) const;      | 当值是JSON对象是，此操作符有效。       |
+|   | JsonValue& operator [] (const char*szKey);<br />const JsonValue& operator [] (const char* szKey) const;      | 当值是JSON对象是，此操作符有效。       |
 | JsonArray | JsonValue& Get(int nIndex) const; | 获取某下标的JSON值。<br />参数：下标<br />返回：JSON值 |
 |   | JsonValue& operator[](int nIndex);/const JsonValue& operator[](int nIndex) const; | 同上   |
 |   | int Add(JsonValue& sVal); | 增加一JSON值到数组里。<br />参数：sVal<br />返回：0    |

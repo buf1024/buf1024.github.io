@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>web on BUF1024</title>
+    <title>Web on BUF1024</title>
     <link>https://luoguochun.cn/categories/web/</link>
-    <description>Recent content in web on BUF1024</description>
+    <description>Recent content in Web on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 20 Apr 2017 21:12:03 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Jan 2024 16:00:10 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>前端过程化配置保姆级教程</title>
+      <link>https://luoguochun.cn/post/2024-01-08-vite-engineering-config/</link>
+      <pubDate>Mon, 08 Jan 2024 16:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2024-01-08-vite-engineering-config/</guid>
+      <description>
+        
+          
+            感觉自己有点不务正业，明明是一个大后端，却要去折腾前端，又折腾的不够专业。都来鄙视我吧。 目前一般使用vite​作为前端构建工具，下面所记录的
+          
+          
+        
+      </description>
+    </item>
+    
     <item>
       <title>微信web通信协议</title>
       <link>https://luoguochun.cn/post/2017-04-20-weixin-web-proto/</link>
@@ -32,7 +48,23 @@
       <description>
         
           
-            P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… js 运行于宿主环境，常见宿主环境有web浏览器和
+            P.S.: 因为极少用，所以js一直都忘记，所以，现在记录一下, 适合于曾以为入门js却又少使用的参考…… JS 运行于宿主环境，常见宿主环境有web浏览器和
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>jquery selector小结</title>
+      <link>https://luoguochun.cn/post/2014-10-07-jquery-summary/</link>
+      <pubDate>Tue, 07 Oct 2014 21:36:56 +0000</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2014-10-07-jquery-summary/</guid>
+      <description>
+        
+          
+            jQuery 概述 现代网站基本上都离不开jQuery。它是轻量级的js库，兼容css3，还有各种浏览器。文档齐全而详细，还有众多而成熟的插件可用。jQu
           
           
         

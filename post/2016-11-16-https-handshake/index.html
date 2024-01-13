@@ -365,7 +365,7 @@
 <li>服务端接收的证书列表</li>
 </ol>
 <ol start="3">
-<li>Client Key Exchange, Change Chiper Spec, Encrypted Handshake Message
+<li>Client Key Exchange, Change Chiper SpeC, Encrypted Handshake Message
 客户端收到服务端的Server Hello Done后，就会对接收的的证书进行校验，如果发现证书不是可信机构签发的，或这域名等信息和证书不对应，浏览器则后弹出警告，由使用者确认是否继续。
 <figure>
   <picture>
@@ -400,7 +400,7 @@ Client Key Exchange将产生一个随机数(Pre Master Secret)，如果是采用
 Encrypted Handshake Message 客户端的发送的第一个加密报文，内容是加密后的，所有接收到和发送的报文的摘要信息。</p>
 <p>PS.: 如果是双向认证，客户端还会向服务端发送 Certificate和Certificate Verify报文，Certificate报文包括客户端的证书，Certificate Verify包括客户端发送证书后所有握手过程报文的签名信息。服务端会对证书进行校验，如果发现证书不对，则直接终止ssl/tls连接。</p>
 <ol start="4">
-<li>New Session Ticket, Change Chiper Spec, Encrypted Handshake Message
+<li>New Session Ticket, Change Chiper SpeC, Encrypted Handshake Message
 <figure>
   <picture>
 
@@ -460,7 +460,7 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
 
  2) 生成证书请求文件
  heidong@HEIDONG:~/tmp/cert$ openssl req -new -key server.key -out server.csr
- You are about to be asked to enter information that will be incorporated
+ You are about to be asked to enter infORMation that will be incorporated
  into your certificate request.
  What you are about to enter is what is called a Distinguished Name or a DN.
  There are quite a few fields but you can leave some blank
@@ -502,7 +502,7 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
  Enter PEM pass phrase:
  Verifying - Enter PEM pass phrase:
  -----
- You are about to be asked to enter information that will be incorporated
+ You are about to be asked to enter infORMation that will be incorporated
  into your certificate request.
  What you are about to enter is what is called a Distinguished Name or a DN.
  There are quite a few fields but you can leave some blank
@@ -607,7 +607,10 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://luoguochun.cn/post/2024-01-08-%E5%89%8D%E7%AB%AF%E4%BF%9D%E5%A7%86%E7%BA%A7%E9%85%8D%E7%BD%AE/" class="nav-link" title="前端保姆级配置">前端保姆级配置</a>
+        <a href="https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder/" class="nav-link" title="Rust sqlx SQLBuilder">Rust sqlx SQLBuilder</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2024-01-08-vite-engineering-config/" class="nav-link" title="前端过程化配置保姆级教程">前端过程化配置保姆级教程</a>
       </li>
       <li>
         <a href="https://luoguochun.cn/post/2023-12-26-rust-proc-macro/" class="nav-link" title="rust 过程宏">rust 过程宏</a>
@@ -627,16 +630,28 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
       <li>
         <a href="https://luoguochun.cn/post/2023-03-16-love-for-insterest/" class="nav-link" title="为爱发电终是不能长久的……">为爱发电终是不能长久的……</a>
       </li>
-      <li>
-        <a href="https://luoguochun.cn/post/2023-03-02-tcp-setup/" class="nav-link" title="TCP未建立之前，丢失的SYN报文会不会重传？">TCP未建立之前，丢失的SYN报文会不会重传？</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
       <nav class="tags_nav">
         <a href='https://luoguochun.cn/categories/misc/' class="post_tag button button_translucent" title="misc">
           MISC
-          <span class="button_tally">9</span>
+          <span class="button_tally">11</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/linux/' class="post_tag button button_translucent" title="linux">
+          LINUX
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/tcp/' class="post_tag button button_translucent" title="tcp">
+          TCP
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/c/' class="post_tag button button_translucent" title="c">
+          C
+          <span class="button_tally">7</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/flutter/' class="post_tag button button_translucent" title="flutter">
@@ -644,33 +659,43 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
           <span class="button_tally">7</span>
         </a>
         
-        <a href='https://luoguochun.cn/categories/linux/' class="post_tag button button_translucent" title="linux">
-          LINUX
-          <span class="button_tally">7</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/c/' class="post_tag button button_translucent" title="c">
-          C
-          <span class="button_tally">6</span>
-        </a>
-        
         <a href='https://luoguochun.cn/categories/rust/' class="post_tag button button_translucent" title="rust">
           RUST
-          <span class="button_tally">6</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/tcp/' class="post_tag button button_translucent" title="tcp">
-          TCP
-          <span class="button_tally">6</span>
+          <span class="button_tally">7</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/python/' class="post_tag button button_translucent" title="python">
           PYTHON
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
+          C&#43;&#43;
           <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/web/' class="post_tag button button_translucent" title="web">
+          WEB
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/gcc/' class="post_tag button button_translucent" title="gcc">
+          GCC
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/git/' class="post_tag button button_translucent" title="git">
+          GIT
+          <span class="button_tally">3</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/reactjs/' class="post_tag button button_translucent" title="reactjs">
           REACTJS
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/unittest/' class="post_tag button button_translucent" title="unittest">
+          UNITTEST
           <span class="button_tally">3</span>
         </a>
         
@@ -689,118 +714,13 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/categories/gcc/' class="post_tag button button_translucent" title="gcc">
-          GCC
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/git/' class="post_tag button button_translucent" title="git">
-          GIT
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/os/' class="post_tag button button_translucent" title="os">
-          OS
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/unittest/' class="post_tag button button_translucent" title="unittest">
-          UNITTEST
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/web/' class="post_tag button button_translucent" title="web">
-          WEB
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/%E9%87%8F%E5%8C%96/' class="post_tag button button_translucent" title="量化">
-          量化
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/android/' class="post_tag button button_translucent" title="android">
-          ANDROID
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/app/' class="post_tag button button_translucent" title="app">
-          APP
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/django/' class="post_tag button button_translucent" title="django">
-          DJANGO
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/frontend/' class="post_tag button button_translucent" title="frontend">
-          FRONTEND
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/gdb/' class="post_tag button button_translucent" title="gdb">
-          GDB
+        <a href='https://luoguochun.cn/categories/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
           <span class="button_tally">1</span>
         </a>
         
         <a href='https://luoguochun.cn/categories/go/' class="post_tag button button_translucent" title="go">
           GO
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/http/' class="post_tag button button_translucent" title="http">
-          HTTP
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/https/' class="post_tag button button_translucent" title="https">
-          HTTPS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/mac/' class="post_tag button button_translucent" title="mac">
-          MAC
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/multi_window/' class="post_tag button button_translucent" title="multi_window">
-          MULTI_WINDOW
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/orm/' class="post_tag button button_translucent" title="orm">
-          ORM
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/ssh/' class="post_tag button button_translucent" title="ssh">
-          SSH
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/tdd/' class="post_tag button button_translucent" title="tdd">
-          TDD
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/vcs/' class="post_tag button button_translucent" title="vcs">
-          VCS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/webui/' class="post_tag button button_translucent" title="webui">
-          WEBUI
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/windows/' class="post_tag button button_translucent" title="windows">
-          WINDOWS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/categories/%E6%94%B6%E9%9F%B3%E6%9C%BA/' class="post_tag button button_translucent" title="收音机">
-          收音机
           <span class="button_tally">1</span>
         </a>
         
@@ -812,12 +732,17 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
       <nav class="tags_nav">
         <a href='https://luoguochun.cn/tags/c/' class="post_tag button button_translucent" title="c">
           C
-          <span class="button_tally">20</span>
+          <span class="button_tally">21</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/linux/' class="post_tag button button_translucent" title="linux">
           LINUX
-          <span class="button_tally">10</span>
+          <span class="button_tally">16</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
+          C&#43;&#43;
+          <span class="button_tally">7</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/python/' class="post_tag button button_translucent" title="python">
@@ -830,9 +755,24 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
           <span class="button_tally">7</span>
         </a>
         
+        <a href='https://luoguochun.cn/tags/dart/' class="post_tag button button_translucent" title="dart">
+          DART
+          <span class="button_tally">6</span>
+        </a>
+        
         <a href='https://luoguochun.cn/tags/flutter/' class="post_tag button button_translucent" title="flutter">
           FLUTTER
           <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/rust/' class="post_tag button button_translucent" title="rust">
+          RUST
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/tdd/' class="post_tag button button_translucent" title="tdd">
+          TDD
+          <span class="button_tally">4</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/android/' class="post_tag button button_translucent" title="android">
@@ -850,8 +790,8 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
           <span class="button_tally">3</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/rust/' class="post_tag button button_translucent" title="rust">
-          RUST
+        <a href='https://luoguochun.cn/tags/js/' class="post_tag button button_translucent" title="js">
+          JS
           <span class="button_tally">3</span>
         </a>
         
@@ -895,18 +835,13 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/js/' class="post_tag button button_translucent" title="js">
-          JS
+        <a href='https://luoguochun.cn/tags/libevent/' class="post_tag button button_translucent" title="libevent">
+          LIBEVENT
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/minix3/' class="post_tag button button_translucent" title="minix3">
-          MINIX3
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/os/' class="post_tag button button_translucent" title="os">
-          OS
+        <a href='https://luoguochun.cn/tags/macos/' class="post_tag button button_translucent" title="macos">
+          MACOS
           <span class="button_tally">2</span>
         </a>
         
@@ -920,19 +855,14 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/tdd/' class="post_tag button button_translucent" title="tdd">
-          TDD
-          <span class="button_tally">2</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/%E6%9E%84%E6%9E%B6/' class="post_tag button button_translucent" title="构架">
           构架
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/%E9%87%8F%E5%8C%96/' class="post_tag button button_translucent" title="量化">
-          量化
-          <span class="button_tally">2</span>
+        <a href='https://luoguochun.cn/tags/api/' class="post_tag button button_translucent" title="api">
+          API
+          <span class="button_tally">1</span>
         </a>
         
         <a href='https://luoguochun.cn/tags/bt/' class="post_tag button button_translucent" title="bt">
@@ -940,8 +870,8 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
-          C&#43;&#43;
+        <a href='https://luoguochun.cn/tags/c&#43;/' class="post_tag button button_translucent" title="c&#43;">
+          C&#43;
           <span class="button_tally">1</span>
         </a>
         
@@ -950,8 +880,18 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/django/' class="post_tag button button_translucent" title="django">
-          DJANGO
+        <a href='https://luoguochun.cn/tags/database/' class="post_tag button button_translucent" title="database">
+          DATABASE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/endian/' class="post_tag button button_translucent" title="endian">
+          ENDIAN
           <span class="button_tally">1</span>
         </a>
         
@@ -980,23 +920,18 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/javascript/' class="post_tag button button_translucent" title="javascript">
-          JAVASCRIPT
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/jquery/' class="post_tag button button_translucent" title="jquery">
           JQUERY
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/libevent/' class="post_tag button button_translucent" title="libevent">
-          LIBEVENT
+        <a href='https://luoguochun.cn/tags/ld/' class="post_tag button button_translucent" title="ld">
+          LD
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/mac/' class="post_tag button button_translucent" title="mac">
-          MAC
+        <a href='https://luoguochun.cn/tags/logger/' class="post_tag button button_translucent" title="logger">
+          LOGGER
           <span class="button_tally">1</span>
         </a>
         
@@ -1015,8 +950,18 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/proc/' class="post_tag button button_translucent" title="proc">
-          PROC
+        <a href='https://luoguochun.cn/tags/os/' class="post_tag button button_translucent" title="os">
+          OS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/process/' class="post_tag button button_translucent" title="process">
+          PROCESS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/react/' class="post_tag button button_translucent" title="react">
+          REACT
           <span class="button_tally">1</span>
         </a>
         
@@ -1050,21 +995,6 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/tcp-optition/' class="post_tag button button_translucent" title="tcp-optition">
-          TCP-OPTITION
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/tcpdump/' class="post_tag button button_translucent" title="tcpdump">
-          TCPDUMP
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/tidbit/' class="post_tag button button_translucent" title="tidbit">
-          TIDBIT
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/vc/' class="post_tag button button_translucent" title="vc">
           VC
           <span class="button_tally">1</span>
@@ -1075,8 +1005,18 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
           <span class="button_tally">1</span>
         </a>
         
+        <a href='https://luoguochun.cn/tags/vue/' class="post_tag button button_translucent" title="vue">
+          VUE
+          <span class="button_tally">1</span>
+        </a>
+        
         <a href='https://luoguochun.cn/tags/webui/' class="post_tag button button_translucent" title="webui">
           WEBUI
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/wechat/' class="post_tag button button_translucent" title="wechat">
+          WECHAT
           <span class="button_tally">1</span>
         </a>
         
@@ -1085,23 +1025,18 @@ Encrypted Handshake Message和客户端发送的含义一致，内容是加密�
           <span class="button_tally">1</span>
         </a>
         
+        <a href='https://luoguochun.cn/tags/windows/' class="post_tag button button_translucent" title="windows">
+          WINDOWS
+          <span class="button_tally">1</span>
+        </a>
+        
         <a href='https://luoguochun.cn/tags/wireshark/' class="post_tag button button_translucent" title="wireshark">
           WIRESHARK
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://luoguochun.cn/tags/%E5%BE%AE%E4%BF%A1/' class="post_tag button button_translucent" title="微信">
-          微信
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://luoguochun.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/' class="post_tag button button_translucent" title="微服务">
           微服务
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://luoguochun.cn/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA/' class="post_tag button button_translucent" title="收音机">
-          收音机
           <span class="button_tally">1</span>
         </a>
         
