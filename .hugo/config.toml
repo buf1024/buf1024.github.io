@@ -55,12 +55,12 @@ identifier = "Links"
 name = "链接"
 weight = 30
 [[menu.main]]
-name = "TA Library"
+name = "TA 技术分析库"
 parent = "Links"
 url = "/talib-doc/"
 weight = 10
 [[menu.main]]
-name = "Hiq Radio"
+name = "hiqadio网络收音机"
 parent = "Links"
 url = "/hiqradio"
 weight = 20
