@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
-"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -300,7 +300,7 @@ git使用<code>git config</code>来进制配置git。git的配置存在于三个
     </picture>
 </figure>
 
-先对<code>experiment</code>分进行<code>rebase</code>：<code>git rebase experiment master</code>。git取出C4和C3的补丁，然后在C3那里进行一次合并，生成快照C4&rsquo;，再在<code>master</code>分支上面进行一次<code>fast forward</code>合并：<code>git merge master experiment</code>。合并后：
+先对<code>experiment</code>分进行<code>rebase</code>：<code>git rebase experiment master</code>。git取出C4和C3的补丁，然后在C3那里进行一次合并，生成快照C4'，再在<code>master</code>分支上面进行一次<code>fast forward</code>合并：<code>git merge master experiment</code>。合并后：
 <figure>
   <picture>
 
@@ -436,7 +436,7 @@ git使用<code>git config</code>来进制配置git。git的配置存在于三个
 <p>使用配置</p>
 <pre><code> [alias]
 </code></pre>
-<p>lg = log &ndash;color &ndash;graph &ndash;pretty=fORMat:&rsquo;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%ce&gt;%Creset&rsquo; &ndash;abbrev-commit #带颜色输出日志
+<p>lg = log &ndash;color &ndash;graph &ndash;pretty=fORMat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%ce&gt;%Creset' &ndash;abbrev-commit #带颜色输出日志
 # 简写
 st = status -s
 br = branch
@@ -459,15 +459,15 @@ cm = commit</p>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. 首先要先确定一下是否建立了主repo的远程源：
-</span></span><span class="line"><span class="cl">   git remote -v
-</span></span><span class="line"><span class="cl">2. 如果里面只能看到你自己的两个源(fetch 和 push)，那就需要添加主repo的源：
-</span></span><span class="line"><span class="cl">   git remote add upstream URL
-</span></span><span class="line"><span class="cl">   git remote -v
-</span></span><span class="line"><span class="cl">3. 然后你就能看到upstream了。如果想与主repo合并：
-</span></span><span class="line"><span class="cl">   git fetch upstream
-</span></span><span class="line"><span class="cl">   git merge upstream/master
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1. 首先要先确定一下是否建立了主repo的远程源：
+   git remote -v
+2. 如果里面只能看到你自己的两个源(fetch 和 push)，那就需要添加主repo的源：
+   git remote add upstream URL
+   git remote -v
+3. 然后你就能看到upstream了。如果想与主repo合并：
+   git fetch upstream
+   git merge upstream/master
+</code></pre></td></tr></table>
 </div>
 </div><p>完。</p>
 
@@ -1044,7 +1044,7 @@ cm = commit</p>
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
-"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -182,24 +182,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="cp">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">Homebrew</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">set</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="n">https</span>:<span class="c1">//mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">Homebrew</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Taps</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">homebrew</span><span class="o">-</span><span class="n">core</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">set</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="n">https</span>:<span class="c1">//mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">brew</span><span class="w"> </span><span class="n">update</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>#<span class="w"> </span><span class="err">还原</span>:
-</span></span><span class="line"><span class="cl"><span class="cp">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="s">&#34;$(brew --repo)&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">set</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="n">https</span>:<span class="c1">//github.com/Homebrew/brew.git
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="s">&#34;$(brew --repo)/Library/Taps/homebrew/homebrew-core&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">set</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="n">https</span>:<span class="c1">//github.com/Homebrew/homebrew-core
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">brew</span><span class="w"> </span><span class="n">update</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>#<span class="w"> </span><span class="s">&#34;$(brew --repo)&#34;</span><span class="w"> </span><span class="err">这里填</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">Homebrew</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">Homebrew</span><span class="w">
+</span><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">set</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="n">https</span>:<span class="c1">//mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
+</span><span class="c1"></span><span class="w">
+</span><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">Homebrew</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Taps</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">homebrew</span><span class="o">-</span><span class="n">core</span><span class="w">
+</span><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">set</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="n">https</span>:<span class="c1">//mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+</span><span class="c1"></span><span class="w">
+</span><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">brew</span><span class="w"> </span><span class="n">update</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span>#<span class="w"> </span><span class="err">还原</span>:
+<span class="cp">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="s">&#34;$(brew --repo)&#34;</span><span class="w">
+</span><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">set</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="n">https</span>:<span class="c1">//github.com/Homebrew/brew.git
+</span><span class="c1"></span><span class="w">
+</span><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="s">&#34;$(brew --repo)/Library/Taps/homebrew/homebrew-core&#34;</span><span class="w">
+</span><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">set</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="n">https</span>:<span class="c1">//github.com/Homebrew/homebrew-core
+</span><span class="c1"></span><span class="w">
+</span><span class="w"></span><span class="cp">$</span><span class="w"> </span><span class="n">brew</span><span class="w"> </span><span class="n">update</span><span class="w">
+</span><span class="w"></span>#<span class="w"> </span><span class="s">&#34;$(brew --repo)&#34;</span><span class="w"> </span><span class="err">这里填</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">Homebrew</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><h3 id="mac-update文件删除">mac update文件删除</h3>
 <p>自动更新下载的问题，好就几个G，删除是个问题：</p>
@@ -214,8 +214,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo rm -R /Library/Updates/0##-#####
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">sudo rm -R /Library/Updates/0##-#####
+</code></pre></td></tr></table>
 </div>
 </div><p>Now the files or folders which were restricted can be removed.</p>
 <p>NOTE: (0##-##### is the folder name)</p>
@@ -228,8 +228,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">csrutil enable
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">csrutil enable
+</code></pre></td></tr></table>
 </div>
 </div><ol start="6">
 <li>Restart your Mac and SIP should be back on track.</li>
@@ -249,12 +249,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo launchctl limit maxfiles <span class="m">100000</span> <span class="m">500000</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sudo launchctl limit maxproc <span class="m">100000</span> <span class="m">100000</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> launchctl limit
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo launchctl limit maxfiles <span class="m">100000</span> <span class="m">500000</span>
+
+sudo launchctl limit maxproc <span class="m">100000</span> <span class="m">100000</span>
+
+ launchctl limit
+</code></pre></td></tr></table>
 </div>
 </div><p>新建文件/etc/sysctl.conf写入</p>
 <div class="highlight"><div class="chroma">
@@ -264,10 +264,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">kern.maxfiles<span class="o">=</span><span class="m">1024000000</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">kern.maxfilesperproc<span class="o">=</span><span class="m">1024000000</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">kern.maxfiles<span class="o">=</span><span class="m">1024000000</span>
+
+kern.maxfilesperproc<span class="o">=</span><span class="m">1024000000</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>设置好之后不能再设置大</p>
 <hr />
@@ -851,7 +851,7 @@
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
 </body>
 
 </html>

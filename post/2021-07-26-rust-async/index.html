@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
-"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -166,20 +166,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">use</span><span class="w"> </span><span class="n">futures</span>::<span class="n">executor</span>::<span class="n">block_on</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">async</span><span class="w"> </span><span class="k">fn</span> <span class="nf">hello</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">async_read</span><span class="p">(</span><span class="s">&#34;a.txt&#34;</span><span class="p">).</span><span class="k">await</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;</span><span class="si">{}</span><span class="s">&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">async_read</span><span class="p">(</span><span class="s">&#34;b.txt&#34;</span><span class="p">).</span><span class="k">await</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;</span><span class="si">{}</span><span class="s">&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hello</span><span class="p">();</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">block_on</span><span class="p">(</span><span class="n">future</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">futures</span>::<span class="n">executor</span>::<span class="n">block_on</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">async</span><span class="w"> </span><span class="k">fn</span> <span class="nf">hello</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">async_read</span><span class="p">(</span><span class="s">&#34;a.txt&#34;</span><span class="p">).</span><span class="k">await</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;{}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">async_read</span><span class="p">(</span><span class="s">&#34;b.txt&#34;</span><span class="p">).</span><span class="k">await</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;{}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p">);</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hello</span><span class="p">();</span><span class="w"> 
+</span><span class="w">    </span><span class="n">block_on</span><span class="p">(</span><span class="n">future</span><span class="p">);</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>然而，rust只提供关于异步的的最小集合的相关概念，美名rust依赖于社区，所以runtime就让社区去折腾，去实现。所以现在rust上面使用异步特性，必须引入社区的runtime。相对比较流行的runtime，有3个: <a href="https://toko.rs">tokio</a>, <a href="https://github.com/async-rs/async-std">async-std</a>和<a href="https://github.com/smol-rs/smol">smol</a>，最流行的莫属 <a href="https://toko.rs">tokio</a>。对于各个runtime的优缺点和使用方式不做过多介绍，直接参考相关库文档。</p>
 <p>rust异步代码虽然在使用上面比较简单，然而，在原理上面，对比其他语言，复杂不少，毕竟其他语言的runtime是在语言层提供的。</p>
@@ -199,16 +199,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">pub</span><span class="w"> </span><span class="k">trait</span><span class="w"> </span><span class="n">Future</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">type</span> <span class="nc">Output</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">poll</span><span class="p">(</span><span class="bp">self</span>: <span class="nc">Pin</span><span class="o">&lt;&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">Self</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Context</span><span class="o">&lt;</span><span class="nb">&#39;_</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Poll</span><span class="o">&lt;</span><span class="bp">Self</span>::<span class="n">Output</span><span class="o">&gt;</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">enum</span> <span class="nc">Poll</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Ready</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Pending</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="k">pub</span><span class="w"> </span><span class="k">trait</span><span class="w"> </span><span class="n">Future</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">type</span> <span class="nc">Output</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">poll</span><span class="p">(</span><span class="bp">self</span>: <span class="nc">Pin</span><span class="o">&lt;&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">Self</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Context</span><span class="o">&lt;&#39;</span><span class="nb">_</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Poll</span><span class="o">&lt;</span><span class="bp">Self</span>::<span class="n">Output</span><span class="o">&gt;</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">enum</span> <span class="nc">Poll</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">Ready</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="n">Pending</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p><code>poll</code>中的第二个参数ctx，包括一个重要的内容，<a href="https://doc.rust-lang.org/nightly/core/task/struct.Waker.html">Waker</a>。如果runtime会对所有的<code>Futrue</code>进行<code>poll</code>，当<code>poll</code>返回Pending时，继续轮询下一个<code>Futrue</code>，这样cpu一直处于繁忙或空转状态，所以runtime会创建waker，waker的作用是告诉runtime，<code>Futrue</code>可能已经<code>Ready(T)</code>了，让runtime对该<code>Futrue</code>进行<code>poll</code>，这用不至于空耗cpu。</p>
 <p>以上面例子为例，编译器转换的代码可能如下：</p>
@@ -245,36 +245,36 @@
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">HelloStateMachine</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Start</span><span class="p">(</span><span class="n">StartState</span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">WaitingOnATxt</span><span class="p">(</span><span class="n">WaitingOnATxtState</span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">WaitingOnBTxt</span><span class="p">(</span><span class="n">WaitingOnATxtState</span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">End</span><span class="p">(</span><span class="n">EndState</span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">impl</span><span class="w"> </span><span class="n">Future</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">HelloStateMachine</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">type</span> <span class="nc">Output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">（）；</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">fn</span> <span class="nf">poll</span><span class="p">(</span><span class="bp">self</span>: <span class="nc">Pin</span><span class="o">&lt;&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">Self</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">cx</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Context</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Poll</span><span class="o">&lt;</span><span class="bp">Self</span>::<span class="n">Output</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">ExampleStateMachine</span>::<span class="n">Start</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">ExampleStateMachine</span>::<span class="n">WaitingATxt</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="k">match</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="n">foo_txt_future</span><span class="p">.</span><span class="n">poll</span><span class="p">(</span><span class="n">cx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                      </span><span class="n">Poll</span>::<span class="n">Pending</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Poll</span>::<span class="n">Pending</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                      </span><span class="n">Poll</span>::<span class="n">Ready</span><span class="p">(</span><span class="n">content</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                          </span><span class="o">*</span><span class="bp">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExampleStateMachine</span>::<span class="n">WaitingBTxt</span><span class="p">(</span><span class="n">state</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                         </span><span class="k">return</span><span class="w"> </span><span class="n">Poll</span>::<span class="n">Ready</span><span class="p">(</span><span class="n">content</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                      </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">ExampleStateMachine</span>::<span class="n">WaitingBTxt</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">ExampleStateMachine</span>::<span class="n">End</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="k">enum</span> <span class="nc">HelloStateMachine</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">Start</span><span class="p">(</span><span class="n">StartState</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="n">WaitingOnATxt</span><span class="p">(</span><span class="n">WaitingOnATxtState</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="n">WaitingOnBTxt</span><span class="p">(</span><span class="n">WaitingOnATxtState</span><span class="p">),</span><span class="w">
+</span><span class="w">    </span><span class="n">End</span><span class="p">(</span><span class="n">EndState</span><span class="p">),</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">impl</span><span class="w"> </span><span class="n">Future</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">HelloStateMachine</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">type</span> <span class="nc">Output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">（）；</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">poll</span><span class="p">(</span><span class="bp">self</span>: <span class="nc">Pin</span><span class="o">&lt;&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">Self</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">cx</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Context</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Poll</span><span class="o">&lt;</span><span class="bp">Self</span>::<span class="n">Output</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+</span><span class="w">                </span><span class="n">ExampleStateMachine</span>::<span class="n">Start</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span><span class="w">
+</span><span class="w">                </span><span class="n">ExampleStateMachine</span>::<span class="n">WaitingATxt</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                  </span><span class="k">match</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="n">foo_txt_future</span><span class="p">.</span><span class="n">poll</span><span class="p">(</span><span class="n">cx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                      </span><span class="n">Poll</span>::<span class="n">Pending</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Poll</span>::<span class="n">Pending</span><span class="p">,</span><span class="w">
+</span><span class="w">                      </span><span class="n">Poll</span>::<span class="n">Ready</span><span class="p">(</span><span class="n">content</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                          </span><span class="o">*</span><span class="bp">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExampleStateMachine</span>::<span class="n">WaitingBTxt</span><span class="p">(</span><span class="n">state</span><span class="p">);</span><span class="w">
+</span><span class="w">                         </span><span class="k">return</span><span class="w"> </span><span class="n">Poll</span>::<span class="n">Ready</span><span class="p">(</span><span class="n">content</span><span class="p">);</span><span class="w">
+</span><span class="w">                      </span><span class="p">}</span><span class="w">
+</span><span class="w">                  </span><span class="p">}</span><span class="w">
+</span><span class="w">                </span><span class="p">}</span><span class="w">
+</span><span class="w">                </span><span class="n">ExampleStateMachine</span>::<span class="n">WaitingBTxt</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span><span class="w">
+</span><span class="w">                </span><span class="n">ExampleStateMachine</span>::<span class="n">End</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="err">…</span><span class="p">}</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>当然实际上编译器产生的代码更复杂，但是本质上是产生不同的状态机的代码，以上代码不涉及状态保存。状态保存涉及一个一头雾水的特性<code>Pin</code>。</p>
 <p><code>Pin</code>是为了解决自引用结构体的问题，因为状态定义基本上都是自引用结构体，比如状态:</p>
@@ -286,11 +286,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">WaitingState</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">array</span>: <span class="p">[</span><span class="s">&#34;hello&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;world&#34;</span><span class="p">],</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">element</span>: <span class="mh">0x1001cdd</span><span class="p">,</span><span class="w"> </span><span class="c1">// element为arry最后一个元素地址
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="k">struct</span> <span class="nc">WaitingState</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">array</span>: <span class="p">[</span><span class="s">&#34;hello&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;world&#34;</span><span class="p">],</span><span class="w">
+</span><span class="w">    </span><span class="n">element</span>: <span class="mh">0x1001cdd</span><span class="p">,</span><span class="w"> </span><span class="c1">// element为arry最后一个元素地址
+</span><span class="c1"></span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>当<code>WaitingState</code>在内存移动到另外一新的内存位置时，element的地址没有更新，那么会造成element的指针无效。最简单的办法是在堆分配elment，在栈中记录内存地址，这样即使无论怎么移动，element都是指向有效的内存地址。但是<code>mem::replace</code>或者<code>mem::swap</code>等这些不守规则的同学还可以改变内存地址。于是<code>Pin</code>就出来了。Pin保证了<code>Poll::Pending</code>在状态保存时，状态结构数据总指向正确的地址。</p>
 <h2 id="小结">小结</h2>
@@ -869,7 +869,7 @@
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
 </body>
 
 </html>

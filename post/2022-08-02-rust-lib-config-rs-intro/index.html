@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
-"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -167,19 +167,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># 文件</span>
-</span></span><span class="line"><span class="cl"><span class="c">#examples/config/default.toml</span>
-</span></span><span class="line"><span class="cl"><span class="c">#examples/config/dev.toml</span>
-</span></span><span class="line"><span class="cl"><span class="c">#examples/config/pro.toml</span>
-</span></span><span class="line"><span class="cl"><span class="c">#分别对应default配置，开发和生产配置</span>
-</span></span><span class="line"><span class="cl"><span class="c"># 配置内容都是以下，键一样，值不一样，甚至default缺失一些值</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">database</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;postgres://postgres@localhost-def-ini&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">secret</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="nx">key</span> <span class="p">=</span> <span class="s2">&#34;def-key-ini&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">token</span> <span class="p">=</span> <span class="s2">&#34;def-token-ini&#34;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="c"># 文件</span>
+<span class="c">#examples/config/default.toml</span>
+<span class="c">#examples/config/dev.toml</span>
+<span class="c">#examples/config/pro.toml</span>
+<span class="c">#分别对应default配置，开发和生产配置</span>
+<span class="c"># 配置内容都是以下，键一样，值不一样，甚至default缺失一些值</span>
+<span class="p">[</span><span class="nx">database</span><span class="p">]</span>
+<span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;postgres://postgres@localhost-def-ini&#34;</span>
+
+<span class="p">[</span><span class="nx">secret</span><span class="p">]</span>
+<span class="nx">key</span> <span class="p">=</span> <span class="s2">&#34;def-key-ini&#34;</span>
+<span class="nx">token</span> <span class="p">=</span> <span class="s2">&#34;def-token-ini&#34;</span>
+</code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -230,56 +230,58 @@
 </span><span class="lnt">45
 </span><span class="lnt">46
 </span><span class="lnt">47
+</span><span class="lnt">48
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">use</span><span class="w"> </span><span class="n">config</span>::<span class="p">{</span><span class="n">Config</span><span class="p">,</span><span class="w"> </span><span class="n">Environment</span><span class="p">,</span><span class="w"> </span><span class="n">File</span><span class="p">};</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">env</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">serde_derive</span>::<span class="n">Deserialize</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">#[derive(Debug, Deserialize)]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">#[allow(unused)]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">struct</span> <span class="nc">Database</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">url</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">#[derive(Debug, Deserialize)]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">#[allow(unused)]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">struct</span> <span class="nc">Secret</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">key</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">token</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">version</span>: <span class="kt">u8</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">#[derive(Debug, Deserialize)]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">#[allow(unused)]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">struct</span> <span class="nc">Settings</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">debug</span>: <span class="kt">bool</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">database</span>: <span class="nc">Database</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">secret</span>: <span class="nc">Secret</span><span class="p">,</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">run_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">env</span>::<span class="n">var</span><span class="p">(</span><span class="s">&#34;RUN_MODE&#34;</span><span class="p">).</span><span class="n">unwrap_or</span><span class="p">(</span><span class="s">&#34;dev&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">());</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="c1">// add_source后面的，会覆盖前面的
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Config</span>::<span class="n">builder</span><span class="p">()</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="c1">// 默认配置
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">        </span><span class="p">.</span><span class="n">add_source</span><span class="p">(</span><span class="n">File</span>::<span class="n">with_name</span><span class="p">(</span><span class="s">&#34;examples/config/default&#34;</span><span class="p">))</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="c1">// pro/dev 配置会覆盖默认配置
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">        </span><span class="p">.</span><span class="n">add_source</span><span class="p">(</span><span class="n">File</span>::<span class="n">with_name</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">fORMat!</span><span class="p">(</span><span class="s">&#34;example/config/{}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">run_mode</span><span class="p">)).</span><span class="n">required</span><span class="p">(</span><span class="kc">false</span><span class="p">))</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="c1">// 注意环境变量一APP_开头的，如果APP_DEBUG，大小写无关
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">        </span><span class="p">.</span><span class="n">add_source</span><span class="p">(</span><span class="n">Environment</span>::<span class="n">with_prefix</span><span class="p">(</span><span class="s">&#34;APP&#34;</span><span class="p">))</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="n">build</span><span class="p">()</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;debug: </span><span class="si">{:?}</span><span class="s">&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">get_bool</span><span class="p">(</span><span class="s">&#34;debug&#34;</span><span class="p">));</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;database: </span><span class="si">{:?}</span><span class="s">&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">get</span>::<span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&#34;database.url&#34;</span><span class="p">));</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">settings</span>: <span class="nc">Settings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">try_deserialize</span><span class="p">().</span><span class="n">unwrap</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;settings: </span><span class="si">{:?}</span><span class="s">&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">settings</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">config</span>::<span class="p">{</span><span class="n">Config</span><span class="p">,</span><span class="w"> </span><span class="n">Environment</span><span class="p">,</span><span class="w"> </span><span class="n">File</span><span class="p">};</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">env</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">serde_derive</span>::<span class="n">Deserialize</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Debug, Deserialize)]</span><span class="w">
+</span><span class="w"></span><span class="cp">#[allow(unused)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">Database</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">url</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Debug, Deserialize)]</span><span class="w">
+</span><span class="w"></span><span class="cp">#[allow(unused)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">Secret</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">key</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">token</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">version</span>: <span class="kt">u8</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Debug, Deserialize)]</span><span class="w">
+</span><span class="w"></span><span class="cp">#[allow(unused)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">Settings</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">debug</span>: <span class="kt">bool</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">database</span>: <span class="nc">Database</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">secret</span>: <span class="nc">Secret</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">run_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">env</span>::<span class="n">var</span><span class="p">(</span><span class="s">&#34;RUN_MODE&#34;</span><span class="p">).</span><span class="n">unwrap_or</span><span class="p">(</span><span class="s">&#34;dev&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">());</span><span class="w">
+</span><span class="w">
+</span><span class="w">   </span><span class="c1">// add_source后面的，会覆盖前面的
+</span><span class="c1"></span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Config</span>::<span class="n">builder</span><span class="p">()</span><span class="w">
+</span><span class="w">     </span><span class="c1">// 默认配置
+</span><span class="c1"></span><span class="w">        </span><span class="p">.</span><span class="n">add_source</span><span class="p">(</span><span class="n">File</span>::<span class="n">with_name</span><span class="p">(</span><span class="s">&#34;examples/config/default&#34;</span><span class="p">))</span><span class="w">
+</span><span class="w">     </span><span class="c1">// pro/dev 配置会覆盖默认配置
+</span><span class="c1"></span><span class="w">        </span><span class="p">.</span><span class="n">add_source</span><span class="p">(</span><span class="n">File</span>::<span class="n">with_name</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fORMat</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;example/config/{}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">run_mode</span><span class="p">)).</span><span class="n">required</span><span class="p">(</span><span class="kc">false</span><span class="p">))</span><span class="w">
+</span><span class="w">     </span><span class="c1">// 注意环境变量一APP_开头的，如果APP_DEBUG，大小写无关
+</span><span class="c1"></span><span class="w">        </span><span class="p">.</span><span class="n">add_source</span><span class="p">(</span><span class="n">Environment</span>::<span class="n">with_prefix</span><span class="p">(</span><span class="s">&#34;APP&#34;</span><span class="p">))</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">build</span><span class="p">()</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;debug: {:?}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">get_bool</span><span class="p">(</span><span class="s">&#34;debug&#34;</span><span class="p">));</span><span class="w">
+</span><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;database: {:?}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">get</span>::<span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&#34;database.url&#34;</span><span class="p">));</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">settings</span>: <span class="nc">Settings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">try_deserialize</span><span class="p">().</span><span class="n">unwrap</span><span class="p">();</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;settings: {:?}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">settings</span><span class="p">);</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>输出:</p>
 <div class="highlight"><div class="chroma">
@@ -288,13 +290,15 @@
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="cp">$</span><span class="w"> </span><span class="n">APP_debug</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="n">cargo</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">color</span><span class="o">=</span><span class="n">always</span><span class="w"> </span><span class="o">--</span><span class="n">package</span><span class="w"> </span><span class="n">rust</span><span class="o">-</span><span class="n">me</span><span class="w"> </span><span class="o">--</span><span class="n">example</span><span class="w"> </span><span class="n">config</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">debug</span>: <span class="nb">Ok</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">database</span>: <span class="nb">Ok</span><span class="p">(</span><span class="s">&#34;postgres://postgres@localhost-def-ini&#34;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">settings</span>: <span class="nc">Settings</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">debug</span>: <span class="nc">false</span><span class="p">,</span><span class="w"> </span><span class="n">database</span>: <span class="nc">Database</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">url</span>: <span class="s">&#34;postgres://postgres@localhost-def-ini&#34;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">secret</span>: <span class="nc">Secret</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">key</span>: <span class="s">&#34;def-key-ini&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">token</span>: <span class="s">&#34;def-token-ini&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span>: <span class="mi">120</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">$</span><span class="w"> </span><span class="n">APP_debug</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="n">cargo</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">color</span><span class="o">=</span><span class="n">always</span><span class="w"> </span><span class="o">--</span><span class="n">package</span><span class="w"> </span><span class="n">rust</span><span class="o">-</span><span class="n">me</span><span class="w"> </span><span class="o">--</span><span class="n">example</span><span class="w"> </span><span class="n">config</span><span class="w">
+</span><span class="w"></span><span class="n">debug</span>: <span class="nb">Ok</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="n">database</span>: <span class="nb">Ok</span><span class="p">(</span><span class="s">&#34;postgres://postgres@localhost-def-ini&#34;</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="n">settings</span>: <span class="nc">Settings</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">debug</span>: <span class="nc">false</span><span class="p">,</span><span class="w"> </span><span class="n">database</span>: <span class="nc">Database</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">url</span>: <span class="s">&#34;postgres://postgres@localhost-def-ini&#34;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">secret</span>: <span class="nc">Secret</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">key</span>: <span class="s">&#34;def-key-ini&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">token</span>: <span class="s">&#34;def-token-ini&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span>: <span class="mi">120</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>可见，使用太简单了。</p>
 
@@ -871,7 +875,7 @@
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
 </body>
 
 </html>

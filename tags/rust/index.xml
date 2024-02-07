@@ -48,7 +48,7 @@
       <description>
         
           
-            今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 // 敏感信息去掉 fORMat!(&amp;#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;amp;X_=xadf0&amp;#34;, code = &amp;amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22
+            今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 // 敏感信息去掉 fORMat!(&amp;#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;amp;X_=xadf0&amp;#34;,code=&amp;amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22cod
           
           
         

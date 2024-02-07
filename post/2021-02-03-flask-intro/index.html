@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
-"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -160,9 +160,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
-</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="路由">路由</h3>
 <p>路由使用<code>@app.route</code>装饰。路由如包括变量，格式是：<code>/user/&lt;username&gt;</code>或<code>&lt;converter:variable_name&gt;</code>。对应的函数可传入同名的参数， 如：</p>
@@ -177,14 +177,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/user/&lt;username&gt;&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">show_user_profile</span><span class="p">(</span><span class="n">username</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;User </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">escape</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/post/&lt;int:post_id&gt;&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">show_post</span><span class="p">(</span><span class="n">post_id</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;Post </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">post_id</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/user/&lt;username&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_user_profile</span><span class="p">(</span><span class="n">username</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;User </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">escape</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/post/&lt;int:post_id&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_post</span><span class="p">(</span><span class="n">post_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Post </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">post_id</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>转换器包括:</p>
 <table>
@@ -222,10 +222,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="n">fORM</span> <span class="n">flask</span> <span class="kn">import</span> <span class="nn">url_for</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="n">fORM</span> <span class="n">flask</span> <span class="kn">import</span> <span class="nn">url_for</span>
+
+<span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="模板">模板</h3>
 <p>flask使用的是<code>jinja2</code>模板, 模板放置的目录默认位于项目的<code>templates</code>目录。如果使用的前后分离的模式，貌似用模板的几率并不是很高 :happy:。 但<code>jinja2</code>模板本身却够简单，使用flask里面的, <code>render_template</code>，即可渲染。如:</p>
@@ -240,14 +240,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!doctype html&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Hello from Flask<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">{% if name %}
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello {{ name }}!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">{% else %}
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello, World!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">{% endif %}
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="cp">&lt;!doctype html&gt;</span>
+<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Hello from Flask<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+{% if name %}
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello {{ name }}!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+{% else %}
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello, World!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+{% endif %}
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="请求数据">请求数据</h3>
 <p>web请求的数据位于flask的<code>request</code>对象中，这个对象看起来是全局对象，在多线程的环境中不可以使用，实际上，这个是本地安全的。如:</p>
@@ -256,8 +256,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="响应数据">响应数据</h3>
 <p>响应数据规则:</p>
@@ -278,12 +278,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="nd">@app.errorhandler</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">not_found</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="n">resp</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;error.html&#39;</span><span class="p">),</span> <span class="mi">404</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">resp</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;X-Something&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;A value&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">resp</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="nd">@app</span><span class="o">.</span><span class="n">errorhandler</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">not_found</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;error.html&#39;</span><span class="p">),</span> <span class="mi">404</span><span class="p">)</span>
+    <span class="n">resp</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;X-Something&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;A value&#39;</span>
+    <span class="k">return</span> <span class="n">resp</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="会话日志">会话，日志</h3>
 <p>会话<code>from flask import session</code>, 日志<code>app.logger.debug</code></p>
@@ -861,7 +861,7 @@
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
 </body>
 
 </html>

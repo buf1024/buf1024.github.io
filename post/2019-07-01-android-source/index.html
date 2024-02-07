@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
-"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -163,15 +163,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">maven{</span> <span class="s">url &#39;https://maven.aliyun.com/repository/central/&#39;}</span>
-</span></span><span class="line"><span class="cl"><span class="na">maven{</span> <span class="s">url &#39;https://maven.aliyun.com/repository/public/&#39;}</span>
-</span></span><span class="line"><span class="cl"><span class="na">maven{</span> <span class="s">url &#39;https://maven.aliyun.com/repository/google/&#39;}</span>
-</span></span><span class="line"><span class="cl"><span class="na">maven{</span> <span class="s">url &#39;https://maven.aliyun.com/repository/gradle-plugin/&#39;}</span>
-</span></span><span class="line"><span class="cl"><span class="na">maven{</span> <span class="s">url &#39;https://maven.aliyun.com/repository/spring/&#39;}</span>
-</span></span><span class="line"><span class="cl"><span class="na">maven{</span> <span class="s">url &#39;https://maven.aliyun.com/repository/spring-plugin/&#39;}</span>
-</span></span><span class="line"><span class="cl"><span class="na">maven{</span> <span class="s">url &#39;https://maven.aliyun.com/repository/grails-core/&#39;}</span>
-</span></span><span class="line"><span class="cl"><span class="na">maven{</span> <span class="s">url &#39;https://maven.aliyun.com/repository/apache-snapshots/&#39;}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">maven{ url &#39;https://maven.aliyun.com/repository/central/&#39;}
+maven{ url &#39;https://maven.aliyun.com/repository/public/&#39;}
+maven{ url &#39;https://maven.aliyun.com/repository/google/&#39;}
+maven{ url &#39;https://maven.aliyun.com/repository/gradle-plugin/&#39;}
+maven{ url &#39;https://maven.aliyun.com/repository/spring/&#39;}
+maven{ url &#39;https://maven.aliyun.com/repository/spring-plugin/&#39;}
+maven{ url &#39;https://maven.aliyun.com/repository/grails-core/&#39;}
+maven{ url &#39;https://maven.aliyun.com/repository/apache-snapshots/&#39;}
+</code></pre></td></tr></table>
 </div>
 </div><p>或者万能的解决办法：</p>
 <p>新建~/.gradle/init.gradle</p>
@@ -242,69 +242,69 @@
 </span><span class="lnt">62
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">allprojects{</span>
-</span></span><span class="line"><span class="cl">    <span class="na">repositories</span> <span class="s">{</span>
-</span></span><span class="line"><span class="cl">        <span class="na">def</span> <span class="s">ALIYUN_REPOSITORY_URL = &#39;https://maven.aliyun.com/repository/central&#39;</span>
-</span></span><span class="line"><span class="cl">        <span class="na">def</span> <span class="s">ALIYUN_JCENTER_URL = &#39;https://maven.aliyun.com/repository/public&#39;</span>
-</span></span><span class="line"><span class="cl"> <span class="na">def</span> <span class="s">ALIYUN_GOOGLE_URL = &#39;https://maven.aliyun.com/repository/google&#39;</span>
-</span></span><span class="line"><span class="cl">        <span class="na">def</span> <span class="s">ALIYUN_GOOGLE_PLUGIN_URL = &#39;https://maven.aliyun.com/repository/gradle-plugin&#39;</span>
-</span></span><span class="line"><span class="cl">        <span class="na">def</span> <span class="s">ALIYUN_SPRING_URL = &#39;https://maven.aliyun.com/repository/spring&#39;</span>
-</span></span><span class="line"><span class="cl">  <span class="na">def</span> <span class="s">ALIYUN_SPRING_PLUGIN_URL = &#39;https://maven.aliyun.com/repository/spring-plugin&#39;</span>
-</span></span><span class="line"><span class="cl">  <span class="na">def</span> <span class="s">ALIYUN_GRAILS_CORE_URL = &#39;https://maven.aliyun.com/repository/grails-core&#39;</span>
-</span></span><span class="line"><span class="cl">  <span class="na">def</span> <span class="s">ALIYUN_APACHE_SNAPSHOTS_URL = &#39;https://maven.aliyun.com/repository/apache-snapshots&#39;</span>
-</span></span><span class="line"><span class="cl">        <span class="na">all</span> <span class="s">{ ArtifactRepository repo -&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="na">if(repo</span> <span class="s">instanceof MavenArtifactRepository){</span>
-</span></span><span class="line"><span class="cl">                <span class="na">def</span> <span class="s">url = repo.url.toString()</span>
-</span></span><span class="line"><span class="cl">                <span class="na">if</span> <span class="s">(url.startsWith(&#39;https://repo1.maven.org/maven2/&#39;)) {</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">project.logger.lifecycle</span> <span class="s">&#34;Repository ${repo.url} replaced by $ALIYUN_REPOSITORY_URL.&#34;</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">remove</span> <span class="s">repo</span>
-</span></span><span class="line"><span class="cl"><span class="err">                }</span>
-</span></span><span class="line"><span class="cl">                <span class="na">if</span> <span class="s">(url.startsWith(&#39;https://jcenter.bintray.com/&#39;)) {</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">project.logger.lifecycle</span> <span class="s">&#34;Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL.&#34;</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">remove</span> <span class="s">repo</span>
-</span></span><span class="line"><span class="cl"><span class="err">                }</span>
-</span></span><span class="line"><span class="cl">  <span class="na">if</span> <span class="s">(url.startsWith(&#39;https://maven.google.com/&#39;)) {</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">project.logger.lifecycle</span> <span class="s">&#34;Repository ${repo.url} replaced by $ALIYUN_GOOGLE_URL.&#34;</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">remove</span> <span class="s">repo</span>
-</span></span><span class="line"><span class="cl"><span class="err">                }</span>
-</span></span><span class="line"><span class="cl">  <span class="na">if</span> <span class="s">(url.startsWith(&#39;https://plugins.gradle.org/m2/&#39;)) {</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">project.logger.lifecycle</span> <span class="s">&#34;Repository ${repo.url} replaced by $ALIYUN_GOOGLE_PLUGIN_URL.&#34;</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">remove</span> <span class="s">repo</span>
-</span></span><span class="line"><span class="cl"><span class="err">                }</span>
-</span></span><span class="line"><span class="cl">  <span class="na">if</span> <span class="s">(url.startsWith(&#39;https://repo.spring.io/libs-milestone/&#39;)) {</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">project.logger.lifecycle</span> <span class="s">&#34;Repository ${repo.url} replaced by $ALIYUN_SPRING_URL.&#34;</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">remove</span> <span class="s">repo</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">                }</span>
-</span></span><span class="line"><span class="cl">  <span class="na">if</span> <span class="s">(url.startsWith(&#39;https://repo.spring.io/plugins-release/&#39;)) {</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">project.logger.lifecycle</span> <span class="s">&#34;Repository ${repo.url} replaced by $ALIYUN_SPRING_PLUGIN_URL.&#34;</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">remove</span> <span class="s">repo</span>
-</span></span><span class="line"><span class="cl"><span class="err">                }</span>
-</span></span><span class="line"><span class="cl">  <span class="na">if</span> <span class="s">(url.startsWith(&#39;https://repo.grails.org/grails/core&#39;)) {</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">project.logger.lifecycle</span> <span class="s">&#34;Repository ${repo.url} replaced by $ALIYUN_GRAILS_CORE_URL.&#34;</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">remove</span> <span class="s">repo</span>
-</span></span><span class="line"><span class="cl"><span class="err">                }</span>
-</span></span><span class="line"><span class="cl">  <span class="na">if</span> <span class="s">(url.startsWith(&#39;https://repository.apache.org/snapshots/&#39;)) {</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">project.logger.lifecycle</span> <span class="s">&#34;Repository ${repo.url} replaced by $ALIYUN_APACHE_SNAPSHOTS_URL.&#34;</span>
-</span></span><span class="line"><span class="cl">                    <span class="na">remove</span> <span class="s">repo</span>
-</span></span><span class="line"><span class="cl"><span class="err">                }</span>
-</span></span><span class="line"><span class="cl"><span class="err">            }</span>
-</span></span><span class="line"><span class="cl"><span class="err">        }</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="na">maven</span> <span class="s">{</span>
-</span></span><span class="line"><span class="cl">                <span class="na">url</span> <span class="s">ALIYUN_REPOSITORY_URL</span>
-</span></span><span class="line"><span class="cl">  <span class="na">url</span> <span class="s">ALIYUN_JCENTER_URL</span>
-</span></span><span class="line"><span class="cl">  <span class="na">url</span> <span class="s">ALIYUN_GOOGLE_URL</span>
-</span></span><span class="line"><span class="cl">  <span class="na">url</span> <span class="s">ALIYUN_GOOGLE_PLUGIN_URL</span>
-</span></span><span class="line"><span class="cl">  <span class="na">url</span> <span class="s">ALIYUN_SPRING_URL</span>
-</span></span><span class="line"><span class="cl">  <span class="na">url</span> <span class="s">ALIYUN_SPRING_PLUGIN_URL</span>
-</span></span><span class="line"><span class="cl">  <span class="na">url</span> <span class="s">ALIYUN_GRAILS_CORE_URL</span>
-</span></span><span class="line"><span class="cl">  <span class="na">url</span> <span class="s">ALIYUN_APACHE_SNAPSHOTS_URL</span>
-</span></span><span class="line"><span class="cl"><span class="err">        }</span>
-</span></span><span class="line"><span class="cl"><span class="err">    }</span>
-</span></span><span class="line"><span class="cl"><span class="err">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">
+allprojects{
+    repositories {
+        def ALIYUN_REPOSITORY_URL = &#39;https://maven.aliyun.com/repository/central&#39;
+        def ALIYUN_JCENTER_URL = &#39;https://maven.aliyun.com/repository/public&#39;
+ def ALIYUN_GOOGLE_URL = &#39;https://maven.aliyun.com/repository/google&#39;
+        def ALIYUN_GOOGLE_PLUGIN_URL = &#39;https://maven.aliyun.com/repository/gradle-plugin&#39;
+        def ALIYUN_SPRING_URL = &#39;https://maven.aliyun.com/repository/spring&#39;
+  def ALIYUN_SPRING_PLUGIN_URL = &#39;https://maven.aliyun.com/repository/spring-plugin&#39;
+  def ALIYUN_GRAILS_CORE_URL = &#39;https://maven.aliyun.com/repository/grails-core&#39;
+  def ALIYUN_APACHE_SNAPSHOTS_URL = &#39;https://maven.aliyun.com/repository/apache-snapshots&#39;
+        all { ArtifactRepository repo -&gt;
+            if(repo instanceof MavenArtifactRepository){
+                def url = repo.url.toString()
+                if (url.startsWith(&#39;https://repo1.maven.org/maven2/&#39;)) {
+                    project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_REPOSITORY_URL.&#34;
+                    remove repo
+                }
+                if (url.startsWith(&#39;https://jcenter.bintray.com/&#39;)) {
+                    project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL.&#34;
+                    remove repo
+                }
+  if (url.startsWith(&#39;https://maven.google.com/&#39;)) {
+                    project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_GOOGLE_URL.&#34;
+                    remove repo
+                }
+  if (url.startsWith(&#39;https://plugins.gradle.org/m2/&#39;)) {
+                    project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_GOOGLE_PLUGIN_URL.&#34;
+                    remove repo
+                }
+  if (url.startsWith(&#39;https://repo.spring.io/libs-milestone/&#39;)) {
+                    project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_SPRING_URL.&#34;
+                    remove repo
+
+                }
+  if (url.startsWith(&#39;https://repo.spring.io/plugins-release/&#39;)) {
+                    project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_SPRING_PLUGIN_URL.&#34;
+                    remove repo
+                }
+  if (url.startsWith(&#39;https://repo.grails.org/grails/core&#39;)) {
+                    project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_GRAILS_CORE_URL.&#34;
+                    remove repo
+                }
+  if (url.startsWith(&#39;https://repository.apache.org/snapshots/&#39;)) {
+                    project.logger.lifecycle &#34;Repository ${repo.url} replaced by $ALIYUN_APACHE_SNAPSHOTS_URL.&#34;
+                    remove repo
+                }
+            }
+        }
+
+        maven {
+                url ALIYUN_REPOSITORY_URL
+  url ALIYUN_JCENTER_URL
+  url ALIYUN_GOOGLE_URL
+  url ALIYUN_GOOGLE_PLUGIN_URL
+  url ALIYUN_SPRING_URL
+  url ALIYUN_SPRING_PLUGIN_URL
+  url ALIYUN_GRAILS_CORE_URL
+  url ALIYUN_APACHE_SNAPSHOTS_URL
+        }
+    }
+}
+</code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -880,7 +880,7 @@
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
 </body>
 
 </html>

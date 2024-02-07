@@ -15,14 +15,14 @@
 <meta property="og:locale" content="zh-cn" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="全局静态变量初化，在他编程语言里面，是一个很简单又自然的事，然而在rust里面并非容易。如果像下面定义全局静态变量，那么会报错： 1 static ref VEC_VAL: Vec&lt;String&gt; =" />
+<meta name="description" content="全局静态变量初化，在他编程语言里面，是一个很简单又自然的事，然而在rust里面并非容易。如果像下面定义全局静态变量，那么会报错： 1 staticrefVEC_VAL: Vec&lt;String&gt;=vec![&#34;1, 2, 3&#34;.into()]; 静" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="lazy_static -- 静态变量延迟初始化" />
 <meta name="twitter:image" content="https://luoguochun.cn"/>
 <meta property="og:url" content="https://luoguochun.cn/post/2021-09-13-rust-lib-lazy-static-intro/" />
 <meta property="og:title" content="lazy_static -- 静态变量延迟初始化" />
-<meta property="og:description" content="全局静态变量初化，在他编程语言里面，是一个很简单又自然的事，然而在rust里面并非容易。如果像下面定义全局静态变量，那么会报错： 1 static ref VEC_VAL: Vec&lt;String&gt; =" />
+<meta property="og:description" content="全局静态变量初化，在他编程语言里面，是一个很简单又自然的事，然而在rust里面并非容易。如果像下面定义全局静态变量，那么会报错： 1 staticrefVEC_VAL: Vec&lt;String&gt;=vec![&#34;1, 2, 3&#34;.into()]; 静" />
 <meta property="og:image" content="https://luoguochun.cn" />
   <meta name="keywords" content="blog,computer,luoguochun" />
 
@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
-"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -153,8 +153,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">static</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="no">VEC_VAL</span>: <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="s">&#34;1, 2, 3&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">()];</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="k">static</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">VEC_VAL</span>: <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="s">&#34;1, 2, 3&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">()];</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>静态变量不允许动态分配内存:</p>
 <div class="highlight"><div class="chroma">
@@ -168,14 +168,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">error<span class="o">[</span>E0010<span class="o">]</span>: allocations are not allowed in statics
-</span></span><span class="line"><span class="cl"> --&gt; bin/lazy_static.rs:5:29
-</span></span><span class="line"><span class="cl">  <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="m">5</span> <span class="p">|</span> static VEC_VAL: Vec&lt;String&gt; <span class="o">=</span> vec!<span class="o">[</span><span class="s2">&#34;1, 2, 3&#34;</span>.into<span class="o">()]</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">|</span>                             ^^^^^^^^^^^^^^^ allocation not allowed in statics
-</span></span><span class="line"><span class="cl">  <span class="p">|</span>
-</span></span><span class="line"><span class="cl">  <span class="o">=</span> note: this error originates in a macro <span class="o">(</span>in Nightly builds, run with -Z macro-backtrace <span class="k">for</span> more info<span class="o">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">error<span class="o">[</span>E0010<span class="o">]</span>: allocations are not allowed in statics
+ --&gt; bin/lazy_static.rs:5:29
+  <span class="p">|</span>
+<span class="m">5</span> <span class="p">|</span> static VEC_VAL: Vec&lt;String&gt; <span class="o">=</span> vec!<span class="o">[</span><span class="s2">&#34;1, 2, 3&#34;</span>.into<span class="o">()]</span><span class="p">;</span>
+  <span class="p">|</span>                             ^^^^^^^^^^^^^^^ allocation not allowed in statics
+  <span class="p">|</span>
+  <span class="o">=</span> note: this error originates in a macro <span class="o">(</span>in Nightly builds, run with -Z macro-backtrace <span class="k">for</span> more info<span class="o">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><a href="https://docs.rs/lazy_static/1.4.0/lazy_static/">lazy_static</a>提供一种初始化静态全局变量的方式，通过<a href="https://docs.rs/lazy_static/1.4.0/lazy_static/">lazy_static</a>宏，全局静态变量被延迟到第一次调用时才初始化，并只初始化一次。<a href="https://docs.rs/lazy_static/1.4.0/lazy_static/">lazy_static</a>宏，匹配的是<code>static ref</code>，所以定义的静态变量都是不可变引用。如:</p>
 <div class="highlight"><div class="chroma">
@@ -204,29 +204,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">collections</span>::<span class="n">HashMap</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">#[macro_use]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">lazy_static</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="fm">lazy_static!</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="no">INT_VAL</span>: <span class="kt">i32</span> <span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="no">VEC_VAL</span>: <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="s">&#34;1, 2, 3&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">()];</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="no">MAP_VAL</span>: <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HashMap</span>::<span class="n">new</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">map</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&#34;Hello&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;world&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">());</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">map</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&#34;F*k&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;me&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">());</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">map</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">};</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;</span><span class="si">{}</span><span class="s">, </span><span class="si">{:?}</span><span class="s">&#34;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="no">INT_VAL</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="no">VEC_VAL</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="no">MAP_VAL</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">for_each</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;key=</span><span class="si">{}</span><span class="s">, value=</span><span class="si">{}</span><span class="s">&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">})</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">collections</span>::<span class="n">HashMap</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[macro_use]</span><span class="w">
+</span><span class="w"></span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">lazy_static</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="n">lazy_static</span><span class="o">!</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">INT_VAL</span>: <span class="kt">i32</span> <span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">VEC_VAL</span>: <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="s">&#34;1, 2, 3&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">()];</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">MAP_VAL</span>: <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HashMap</span>::<span class="n">new</span><span class="p">();</span><span class="w">
+</span><span class="w">        </span><span class="n">map</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&#34;Hello&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;world&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">());</span><span class="w">
+</span><span class="w">        </span><span class="n">map</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&#34;F*k&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;me&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">());</span><span class="w">
+</span><span class="w">        </span><span class="n">map</span><span class="w">
+</span><span class="w">    </span><span class="p">};</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;{}, {:?}&#34;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">INT_VAL</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">VEC_VAL</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="n">MAP_VAL</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">for_each</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;key={}, value={}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="p">})</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>输出:</p>
 <div class="highlight"><div class="chroma">
@@ -236,10 +236,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">10, <span class="o">[</span><span class="s2">&#34;1, 2, 3&#34;</span><span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="nv">key</span><span class="o">=</span>Hello, <span class="nv">value</span><span class="o">=</span>world
-</span></span><span class="line"><span class="cl"><span class="nv">key</span><span class="o">=</span>F*k, <span class="nv">value</span><span class="o">=</span>me
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">10, <span class="o">[</span><span class="s2">&#34;1, 2, 3&#34;</span><span class="o">]</span>
+<span class="nv">key</span><span class="o">=</span>Hello, <span class="nv">value</span><span class="o">=</span>world
+<span class="nv">key</span><span class="o">=</span>F*k, <span class="nv">value</span><span class="o">=</span>me
+</code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -815,7 +815,7 @@
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
 </body>
 
 </html>

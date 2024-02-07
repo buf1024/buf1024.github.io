@@ -16,7 +16,7 @@
       <description>
         
           
-            全局静态变量初化，在他编程语言里面，是一个很简单又自然的事，然而在rust里面并非容易。如果像下面定义全局静态变量，那么会报错： 1 static ref VEC_VAL: Vec&amp;lt;String&amp;gt; =
+            全局静态变量初化，在他编程语言里面，是一个很简单又自然的事，然而在rust里面并非容易。如果像下面定义全局静态变量，那么会报错： 1 staticrefVEC_VAL: Vec&amp;lt;String&amp;gt;=vec![&amp;#34;1, 2, 3&amp;#34;.into()]; 静
           
           
         

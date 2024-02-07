@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
-"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -162,11 +162,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">able@ABLE-VM:~/tmp$ cat /etc/docker/daemon.json 
-</span></span><span class="line"><span class="cl"><span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;registry-mirrors&#34;</span>: <span class="o">[</span><span class="s2">&#34;http://ef017c13.m.daocloud.io&#34;</span><span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">able@ABLE-VM:~/tmp$ cat /etc/docker/daemon.json 
+<span class="o">{</span>
+    <span class="s2">&#34;registry-mirrors&#34;</span>: <span class="o">[</span><span class="s2">&#34;http://ef017c13.m.daocloud.io&#34;</span><span class="o">]</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>也可以<code>pull</code>的时候指定地址，当然你也可以像maven一样建立私服。</p>
 <h4 id="镜像">镜像</h4>
@@ -181,12 +181,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull          <span class="c1"># 从仓库拉取镜像</span>
-</span></span><span class="line"><span class="cl">docker push          <span class="c1"># 推送镜像到仓库</span>
-</span></span><span class="line"><span class="cl">docker image         <span class="c1"># 大部分镜像操作命令</span>
-</span></span><span class="line"><span class="cl">docker commit        <span class="c1"># 为运行中容器提交进行镜像，不用次命令构建镜像</span>
-</span></span><span class="line"><span class="cl">docker build         <span class="c1"># 使用Dockerfile构建镜像</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">docker pull          <span class="c1"># 从仓库拉取镜像</span>
+docker push          <span class="c1"># 推送镜像到仓库</span>
+docker image         <span class="c1"># 大部分镜像操作命令</span>
+docker commit        <span class="c1"># 为运行中容器提交进行镜像，不用次命令构建镜像</span>
+docker build         <span class="c1"># 使用Dockerfile构建镜像</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><code>Dockerfile</code>是构建镜像的最主要方式，指令并发很多，作为开发人员需要掌握的，具体指令参考官方文档，这些需要在实践中才能记住。</p>
 <h4 id="容器">容器</h4>
@@ -209,21 +209,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 启动docker</span>
-</span></span><span class="line"><span class="cl">able@ABLE-VM:~/tmp$ docker run -d --name my-nginx --rm -p 8081:80 nginx
-</span></span><span class="line"><span class="cl">0ed5ce3580067d301ebca05af55b0fced69c841f8cccbe1e976ab01a4f09a5eb
-</span></span><span class="line"><span class="cl"><span class="c1">#进入运行中的docker</span>
-</span></span><span class="line"><span class="cl">able@ABLE-VM:~/tmp$ docker <span class="nb">exec</span> -it nginx bash
-</span></span><span class="line"><span class="cl">root@17d67ddec2e0:/# 
-</span></span><span class="line"><span class="cl">root@17d67ddec2e0:/# <span class="nb">exit</span>
-</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># ps 运行中的docker</span>
-</span></span><span class="line"><span class="cl">able@ABLE-VM:~/tmp$ docker ps
-</span></span><span class="line"><span class="cl">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
-</span></span><span class="line"><span class="cl">0ed5ce358006        nginx               <span class="s2">&#34;nginx -g &#39;daemon of…&#34;</span>   <span class="m">47</span> seconds ago      Up <span class="m">46</span> seconds       0.0.0.0:8081-&gt;80/tcp   my-nginx
-</span></span><span class="line"><span class="cl">17d67ddec2e0        nginx:v3            <span class="s2">&#34;nginx -g &#39;daemon of…&#34;</span>   <span class="m">2</span> hours ago         Up <span class="m">2</span> hours          0.0.0.0:8080-&gt;80/tcp   nginx
-</span></span><span class="line"><span class="cl">able@ABLE-VM:~/tmp$ 
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 启动docker</span>
+able@ABLE-VM:~/tmp$ docker run -d --name my-nginx --rm -p 8081:80 nginx
+0ed5ce3580067d301ebca05af55b0fced69c841f8cccbe1e976ab01a4f09a5eb
+<span class="c1">#进入运行中的docker</span>
+able@ABLE-VM:~/tmp$ docker <span class="nb">exec</span> -it nginx bash
+root@17d67ddec2e0:/# 
+root@17d67ddec2e0:/# <span class="nb">exit</span>
+<span class="nb">exit</span>
+<span class="c1"># ps 运行中的docker</span>
+able@ABLE-VM:~/tmp$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
+0ed5ce358006        nginx               <span class="s2">&#34;nginx -g &#39;daemon of…&#34;</span>   <span class="m">47</span> seconds ago      Up <span class="m">46</span> seconds       0.0.0.0:8081-&gt;80/tcp   my-nginx
+17d67ddec2e0        nginx:v3            <span class="s2">&#34;nginx -g &#39;daemon of…&#34;</span>   <span class="m">2</span> hours ago         Up <span class="m">2</span> hours          0.0.0.0:8080-&gt;80/tcp   nginx
+able@ABLE-VM:~/tmp$ 
+</code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -799,7 +799,7 @@
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
-"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -162,12 +162,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">invoke</span> <span class="kn">import</span> <span class="n">task</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@task</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Building...&#39;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">from</span> <span class="nn">invoke</span> <span class="kn">import</span> <span class="n">task</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Building...&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>运行方式:</p>
 <div class="highlight"><div class="chroma">
@@ -176,9 +176,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">^_^@~<span class="o">]</span>$ inv build
-</span></span><span class="line"><span class="cl">Building...
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">^_^@~<span class="o">]</span>$ inv build
+Building...
+</code></pre></td></tr></table>
 </div>
 </div><p>参数<code>ctx</code>里面可运行命令，命令分组，读配置(<code>ctx.config</code>获得)等，配置文件可位于项目当前目录，用户目录，系统目录等，文件名<code>invoke.yml</code>或<code>.invoke.yml</code>格式不限，不过推荐<code>yml</code>格式。<code>task</code>函数里面可有参数，依赖关系等。</p>
 <h3 id="fabric最简介">fabric最简介</h3>
@@ -191,15 +191,17 @@
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">fabric</span> <span class="kn">import</span> <span class="n">task</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@task</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">compile</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="n">ctx</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&#34;mvn compile&#34;</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">from</span> <span class="nn">fabric</span> <span class="kn">import</span> <span class="n">task</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">compile</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&#34;mvn compile&#34;</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">)</span>
+
+</code></pre></td></tr></table>
 </div>
 </div><p>输出:</p>
 <div class="highlight"><div class="chroma">
@@ -220,25 +222,27 @@
 </span><span class="lnt">14
 </span><span class="lnt">15
 </span><span class="lnt">16
+</span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">^_^@~<span class="o">]</span>$ fab compile
-</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span> Scanning <span class="k">for</span> projects...
-</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span> ------------------------------------------------------------------------
-</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span> BUILD FAILURE
-</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span> ------------------------------------------------------------------------
-</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span> Total time: 0.138 s
-</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span> Finished at: 2020-06-29T17:07:46+08:00
-</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span> Final Memory: 6M/123M
-</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span> ------------------------------------------------------------------------
-</span></span><span class="line"><span class="cl"><span class="o">[</span>ERROR<span class="o">]</span> The goal you specified requires a project to execute but there is no POM in this directory <span class="o">(</span>/Users/luoguochun/tmp/fabric<span class="o">)</span>. Please verify you invoked Maven from the correct directory. -&gt; <span class="o">[</span>Help 1<span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>ERROR<span class="o">]</span> 
-</span></span><span class="line"><span class="cl"><span class="o">[</span>ERROR<span class="o">]</span> To see the full stack trace of the errors, re-run Maven with the -e switch.
-</span></span><span class="line"><span class="cl"><span class="o">[</span>ERROR<span class="o">]</span> Re-run Maven using the -X switch to <span class="nb">enable</span> full debug logging.
-</span></span><span class="line"><span class="cl"><span class="o">[</span>ERROR<span class="o">]</span> 
-</span></span><span class="line"><span class="cl"><span class="o">[</span>ERROR<span class="o">]</span> For more infORMation about the errors and possible solutions, please <span class="nb">read</span> the following articles:
-</span></span><span class="line"><span class="cl"><span class="o">[</span>ERROR<span class="o">]</span> <span class="o">[</span>Help 1<span class="o">]</span> http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">^_^@~<span class="o">]</span>$ fab compile
+<span class="o">[</span>INFO<span class="o">]</span> Scanning <span class="k">for</span> projects...
+<span class="o">[</span>INFO<span class="o">]</span> ------------------------------------------------------------------------
+<span class="o">[</span>INFO<span class="o">]</span> BUILD FAILURE
+<span class="o">[</span>INFO<span class="o">]</span> ------------------------------------------------------------------------
+<span class="o">[</span>INFO<span class="o">]</span> Total time: 0.138 s
+<span class="o">[</span>INFO<span class="o">]</span> Finished at: 2020-06-29T17:07:46+08:00
+<span class="o">[</span>INFO<span class="o">]</span> Final Memory: 6M/123M
+<span class="o">[</span>INFO<span class="o">]</span> ------------------------------------------------------------------------
+<span class="o">[</span>ERROR<span class="o">]</span> The goal you specified requires a project to execute but there is no POM in this directory <span class="o">(</span>/Users/luoguochun/tmp/fabric<span class="o">)</span>. Please verify you invoked Maven from the correct directory. -&gt; <span class="o">[</span>Help 1<span class="o">]</span>
+<span class="o">[</span>ERROR<span class="o">]</span> 
+<span class="o">[</span>ERROR<span class="o">]</span> To see the full stack trace of the errors, re-run Maven with the -e switch.
+<span class="o">[</span>ERROR<span class="o">]</span> Re-run Maven using the -X switch to <span class="nb">enable</span> full debug logging.
+<span class="o">[</span>ERROR<span class="o">]</span> 
+<span class="o">[</span>ERROR<span class="o">]</span> For more infORMation about the errors and possible solutions, please <span class="nb">read</span> the following articles:
+<span class="o">[</span>ERROR<span class="o">]</span> <span class="o">[</span>Help 1<span class="o">]</span> http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException
+
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="总结">总结</h3>
 <p>没细到fabric的细节，非常粗暴的介绍，细节用时，需要参考官网。不过好像，不用fabric也可以完成那么一回事，那么用fabric/invoke做系统管理运维的好处是啥？最大的好处估计是，用统一的方式去处理一件事，提供类似于make的方式。</p>
@@ -816,7 +820,7 @@
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
 </body>
 
 </html>

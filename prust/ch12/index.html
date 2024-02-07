@@ -1,0 +1,1922 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn" data-figures=""  class="page"   >
+
+<head>
+<title>BUF1024</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+
+
+<meta property="og:locale" content="zh-cn" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="运算符重载 在”第2章”的曼德勃罗集绘制器中，我们使用了num crate的Complex类型来表示一个复平面中的点： 1 2 3 4 5 6 7 8 #[derive(Clone, Copy, Debug)]struct Complex&lt;T&gt;{/// 复" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="">
+<meta name="twitter:title" content="" />
+<meta name="twitter:image" content="https://luoguochun.cn"/>
+<meta property="og:url" content="https://luoguochun.cn/prust/ch12/" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="运算符重载 在”第2章”的曼德勃罗集绘制器中，我们使用了num crate的Complex类型来表示一个复平面中的点： 1 2 3 4 5 6 7 8 #[derive(Clone, Copy, Debug)]struct Complex&lt;T&gt;{/// 复" />
+<meta property="og:image" content="https://luoguochun.cn" />
+  <meta name="keywords" content="blog,computer,luoguochun" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://luoguochun.cn/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://luoguochun.cn/icons/favicon-32x32.png">
+<link rel="manifest" href="https://luoguochun.cn/icons/site.webmanifest">
+
+<link rel="canonical" href="https://luoguochun.cn/prust/ch12/">
+
+
+
+<link rel="preload" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity = "sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" as="style" crossorigin="anonymous">
+
+
+
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
+
+
+<link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
+
+</head>
+
+<body data-code="100" data-lines="false" id="documentTop"
+  data-lang="zh-cn">
+
+<header class="nav_header" >
+  <nav class="nav"><a href='https://luoguochun.cn' class="nav_brand nav_item" title="BUF1024">BUF1024
+  <div class="nav_close">
+    <div><svg class="icon">
+  <title>open-menu</title>
+  <use xlink:href="#open-menu"></use>
+</svg>
+<svg class="icon">
+  <title>closeme</title>
+  <use xlink:href="#closeme"></use>
+</svg>
+</div>
+  </div>
+</a>
+
+    <div class='nav_body nav_body_left'>
+      
+      
+      
+        
+
+  <div class="nav_parent">
+    <a href="https://luoguochun.cn/" class="nav_item" title="主页">主页 </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://luoguochun.cn" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <div class="nav_sub">
+      <span class="nav_child"></span>
+        <a href="https://luoguochun.cn/talib-doc/" class="nav_child nav_item" title="TA 技术分析库">TA 技术分析库</a>
+        <a href="https://luoguochun.cn/hiqradio" class="nav_child nav_item" title="hiqadio网络收音机">hiqadio网络收音机</a>
+    </div>
+  </div>
+  <div class="nav_parent">
+    <a href="https://luoguochun.cn/about/" class="nav_item" title="关于">关于 </a>
+  </div>
+      
+<div class='follow'>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+</header>
+
+  <main>
+  
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title"></h1>
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      Jan 1, 0001</span>
+    <span class="post_time"> · 19 min read</span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=&url=https%3a%2f%2fluoguochun.cn%2fprust%2fch12%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fluoguochun.cn%2fprust%2fch12%2f&t=" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://luoguochun.cn/prust/ch12/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+
+    <div class="post_body"><h1 id="运算符重载">运算符重载</h1>
+<p>在”第2章”的曼德勃罗集绘制器中，我们使用了<code>num</code> crate的<code>Complex</code>类型来表示一个复平面中的点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="cp">#[derive(Clone, Copy, Debug)]</span><span class="w">
+</span><span class="w">    </span><span class="k">struct</span> <span class="nc">Complex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="sd">/// 复数的实部
+</span><span class="sd"></span><span class="w">        </span><span class="n">re</span>: <span class="nc">T</span><span class="p">,</span><span class="w">
+</span><span class="w">
+</span><span class="w">        </span><span class="sd">/// 复数的虚部
+</span><span class="sd"></span><span class="w">        </span><span class="n">im</span>: <span class="nc">T</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>我们可以使用Rust的<code>+</code>和<code>*</code>运算符，像操作内建类型一样把<code>Complex</code>值相加和相乘：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>你也可以让你自己的类型支持算数和其他运算符，只需要实现一些内建的trait。这被称为 <em>运算符重载(operator overloading)</em> ，它的效果也类似于C++、C#、Python和Ruby中的运算符重载。</p>
+<p>如”表12-1”所示，这些用于重载运算符的trait根据支持的语言部分被分为几个类别。在本章中，我们将介绍每一种类别。我们的目的不只是帮你把自己的类型漂亮地集成到语言中，还是为了让你更好地了解如何编写使用这些运算符的泛型函数，例如在“逆向工程约束”中介绍的点积函数。本章还会深入了解语言某些功能本身是如何实现的。</p>
+<table>
+<thead>
+<tr>
+<th><strong>类别</strong></th>
+<th><strong>trait</strong></th>
+<th><strong>运算符</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一元运算符</td>
+<td><code>std::ops::Neg</code></td>
+<td><code>-x</code></td>
+</tr>
+<tr>
+<td>一元运算符</td>
+<td><code>std::ops::Not</code></td>
+<td><code>!x</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::Add</code></td>
+<td><code>x + y</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::Sub</code></td>
+<td><code>x - y</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>sdt::ops::Mul</code></td>
+<td><code>x * y</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::Div</code></td>
+<td><code>x / y</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::Rem</code></td>
+<td><code>x % y</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::BitAnd</code></td>
+<td><code>x &amp; y</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::BitOr</code></td>
+<td><code>x | y</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::BitXor</code></td>
+<td><code>x ^ y</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::Shl</code></td>
+<td><code>x &lt;&lt; y</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::Shr</code></td>
+<td><code>x &gt;&gt; y</code></td>
+</tr>
+<tr>
+<td>复合赋值算术运算符</td>
+<td><code>std::ops::AddAssign</code></td>
+<td><code>x += y</code></td>
+</tr>
+<tr>
+<td>复合赋值算术运算符</td>
+<td><code>std::ops::SubAssign</code></td>
+<td><code>x -= y</code></td>
+</tr>
+<tr>
+<td>复合赋值算术运算符</td>
+<td><code>std::ops::MulAssign</code></td>
+<td><code>x *= y</code></td>
+</tr>
+<tr>
+<td>复合赋值算术运算符</td>
+<td><code>std::ops::DivAssign</code></td>
+<td><code>x /= y</code></td>
+</tr>
+<tr>
+<td>复合赋值算术运算符</td>
+<td><code>std::ops::RemAssign</code></td>
+<td><code>x %= y</code></td>
+</tr>
+<tr>
+<td>复合赋值位运算符</td>
+<td><code>std::ops::BitAndAssign</code></td>
+<td><code>x &amp;= y</code></td>
+</tr>
+<tr>
+<td>复合赋值位运算符</td>
+<td><code>std::ops::BitOrAssign</code></td>
+<td><code>x |= y</code></td>
+</tr>
+<tr>
+<td>复合赋值位运算符</td>
+<td><code>std::ops::BitXorAssign</code></td>
+<td><code>x ^= y</code></td>
+</tr>
+<tr>
+<td>复合赋值位运算符</td>
+<td><code>std::ops::ShlAssign</code></td>
+<td><code>x &lt;&lt;= y</code></td>
+</tr>
+<tr>
+<td>复合赋值位运算符</td>
+<td><code>std::ops::ShrAssign</code></td>
+<td><code>x &gt;&gt;= y</code></td>
+</tr>
+<tr>
+<td>比较</td>
+<td><code>std::cmp::PartialEq</code></td>
+<td><code>x == y, x != y</code></td>
+</tr>
+<tr>
+<td>比较</td>
+<td><code>std::cmp::PartialOrd</code></td>
+<td><code>x &lt; y, x &lt;= y, x &gt; y, x &gt;= y</code></td>
+</tr>
+<tr>
+<td>索引</td>
+<td><code>std::ops::Index</code></td>
+<td><code>x[y], &amp;x[y]</code></td>
+</tr>
+<tr>
+<td>索引</td>
+<td><code>std::ops::IndexMut</code></td>
+<td><code>x[y] = z, &amp;mut x[y]</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="算术和位运算符">算术和位运算符</h2>
+<p>在Rust中，表达式<code>a + b</code>实际上是<code>a.add(b)</code>的缩写，即对标准库中的<code>std::ops::Add</code> trait的<code>add</code>方法的调用。Rust的标准数值类型都实现了<code>std::ops::Add</code>。为了让表达式<code>a + b</code>能用于<code>Complex</code>类型的值，<code>num</code> crate为<code>Complex</code>类型实现了这个trait。其他运算符也有类似的trait：<code>a * b</code>是<code>a.mul(b)</code>的缩写，这个方法来自<code>std::ops::Mul</code> trait，<code>std::ops::Neg</code>包含取负数运算符，等等。</p>
+<p>如果你想尝试写<code>z.add(c)</code>，你需要在作用域中引入<code>Add</code> trait，这样这个方法才可见。然后，你就可以把所有算术看作函数调用：<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">ops</span>::<span class="n">Add</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="mf">4.125</span><span class="k">f32</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="mf">5.75</span><span class="p">),</span><span class="w"> </span><span class="mf">9.875</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="mf">10.</span><span class="n">add</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>这是<code>std::ops::Add</code>的定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">trait</span><span class="w"> </span><span class="n">Add</span><span class="o">&lt;</span><span class="n">Rhs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">type</span> <span class="nc">Output</span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">rhs</span>: <span class="nc">Rhs</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span>::<span class="n">Output</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>换句话说，<code>Add&lt;T&gt;</code> trait让你的类型可以加上<code>T</code>类型的值。例如，为了让你的类型能加上<code>i32</code>和<code>u32</code>，你的类型必须实现了<code>Add&lt;i32&gt;</code>和<code>Add&lt;u32&gt;</code>。trait的类型参数<code>Rhs</code>默认是<code>Self</code>，因此如果你想实现两个相同类型的值的加法，可以直接实现<code>Add</code> trait。关联类型<code>Output</code>表示加法结果的类型。</p>
+<p>例如，为了能把<code>Complex&lt;i32&gt;</code>值相加，<code>Complex&lt;i32&gt;</code>必须实现<code>Add&lt;Complex&lt;i32&gt;&gt;</code>。因为我们是把一个类型加到同类型的值上，所以可以简单地写<code>Add</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">ops</span>::<span class="n">Add</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="k">impl</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Complex</span><span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">type</span> <span class="nc">Output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Complex</span><span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">rhs</span>: <span class="nc">Self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="n">Complex</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="n">re</span>: <span class="nc">self</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rhs</span><span class="p">.</span><span class="n">re</span><span class="p">,</span><span class="w">
+</span><span class="w">                </span><span class="n">im</span>: <span class="nc">self</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rhs</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>当然，我们不需要单独为<code>Complex&lt;i32&gt;</code>、<code>Complex&lt;f32&gt;</code>、<code>Complex&lt;f64&gt;</code>等实现<code>Add</code>。除了类型不同以外所有的定义看起来完全相同，所以我们可以写一个覆盖所有情况的泛型实现，只要实部和虚部的类型支持加法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">impl</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Complex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w">
+</span><span class="w">    </span><span class="k">where</span><span class="w">
+</span><span class="w">        </span><span class="n">T</span>: <span class="nc">Add</span><span class="o">&lt;</span><span class="n">Output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">type</span> <span class="nc">Output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">Self</span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">rhs</span>: <span class="nc">Self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="n">Complex</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="n">re</span>: <span class="nc">self</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rhs</span><span class="p">.</span><span class="n">re</span><span class="p">,</span><span class="w">
+</span><span class="w">                </span><span class="n">im</span>: <span class="nc">self</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rhs</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>通过<code>where T: Add&lt;Output = T&gt;</code>，我们可以把<code>T</code>限制为可以与同类型的值相加并且返回同类型的值的类型。这个限制是有原因的，但我们可以进一步放松限制：<code>Add</code> trait并不要求<code>+</code>两侧的操作数类型相同，也不需要返回相同的类型。因此一个最大限度的泛型实现可以让左边的操作数和右边的操作数类型不同，并让返回值中的实部和虚部的类型是加法返回的类型：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">ops</span>::<span class="n">Add</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="k">impl</span><span class="o">&lt;</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Add</span><span class="o">&lt;</span><span class="n">Complex</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Complex</span><span class="o">&lt;</span><span class="n">L</span><span class="o">&gt;</span><span class="w">
+</span><span class="w">        </span><span class="k">where</span><span class="w"> </span><span class="n">L</span>: <span class="nc">Add</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="w">
+</span><span class="w">    </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">type</span> <span class="nc">Output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Complex</span><span class="o">&lt;</span><span class="n">L</span>::<span class="n">Output</span><span class="o">&gt;</span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">rhs</span>: <span class="nc">Complex</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span>::<span class="n">Output</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="n">Complex</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="n">re</span>: <span class="nc">self</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rhs</span><span class="p">.</span><span class="n">re</span><span class="p">,</span><span class="w">
+</span><span class="w">                </span><span class="n">im</span>: <span class="nc">self</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rhs</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>然而在实践中，Rust更倾向于避免支持混合类型的操作。我们的类型参数<code>L</code>必须要实现<code>Add&lt;R&gt;</code>，但并没有多少类型实现了与其他类型相加的trait，所以一般<code>L</code>和<code>R</code>都是相同的类型。因此到最后，这个极致泛型化的版本可能并不比之前更简单的泛型定义版本有用。</p>
+<p>Rust中为算术和位运算符设计的内建trait被分为三组：一元运算符、二元运算符和复合赋值运算符。每个组中的所有trait和它们的方法的形式都相同，因此我们会从中挑选一个作为示例。</p>
+<h3 id="一元运算符">一元运算符</h3>
+<p>除了解引用运算符<code>*</code>将在\nameref{deref}一节中单独介绍之外，Rust还有可以自定义的一元运算符，如”表12-2”所示。</p>
+<table>
+<thead>
+<tr>
+<th><strong>trait名称</strong></th>
+<th><strong>表达式</strong></th>
+<th><strong>等价的表达式</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>std::ops::Neg</code></td>
+<td><code>-x</code></td>
+<td><code>x.neg()</code></td>
+</tr>
+<tr>
+<td><code>std::ops::Not</code></td>
+<td><code>!x</code></td>
+<td><code>x.not()</code></td>
+</tr>
+</tbody>
+</table>
+<p>所有Rust的有符号数值类型都实现了<code>std::ops::Neg</code>，用于一元运算符<code>-</code>。整数类型和<code>bool</code>类型实现了<code>std::ops::Not</code>，用于一元运算符<code>!</code>。这些类型的引用也有相应的实现。</p>
+<p>注意<code>!</code>会按位取反整数（即反转所有位）值、反转<code>bool</code>值。它同时提供C和C++中的<code>!</code>和<code>~</code>的功能。</p>
+<p>这些trait的定义很简单：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">trait</span><span class="w"> </span><span class="n">Neg</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">type</span> <span class="nc">Output</span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">neg</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span>::<span class="n">Output</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="k">trait</span><span class="w"> </span><span class="n">Not</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">type</span> <span class="nc">Output</span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">not</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span>::<span class="n">Output</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>求一个复数值的负数只需要简单的求它的每个部分的负数。这里我们可以为<code>Complex</code>值写一个泛型的求负数实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">ops</span>::<span class="n">Neg</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="k">impl</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Neg</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Complex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w">
+</span><span class="w">    </span><span class="k">where</span><span class="w">
+</span><span class="w">        </span><span class="n">T</span>: <span class="nc">Neg</span><span class="o">&lt;</span><span class="n">Output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">type</span> <span class="nc">Output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Complex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">neg</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Complex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="n">Complex</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="n">re</span>: <span class="o">-</span><span class="bp">self</span><span class="p">.</span><span class="n">re</span><span class="p">,</span><span class="w">
+</span><span class="w">                </span><span class="n">im</span>: <span class="o">-</span><span class="bp">self</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="二元运算符">二元运算符</h3>
+<p>Rust的二元算术和位运算以及对应的内建trait如”表12-3”所示。</p>
+<table>
+<thead>
+<tr>
+<th><strong>类别</strong></th>
+<th><strong>trait名称</strong></th>
+<th><strong>表达式</strong></th>
+<th><strong>等价的表达式</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::Add</code></td>
+<td><code>x + y</code></td>
+<td><code>x.add(y)</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::Sub</code></td>
+<td><code>x - y</code></td>
+<td><code>x.sub(y)</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::Mul</code></td>
+<td><code>x * y</code></td>
+<td><code>x.mul(y)</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::Div</code></td>
+<td><code>x / y</code></td>
+<td><code>x.div(y)</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::Rem</code></td>
+<td><code>x % y</code></td>
+<td><code>x.rem(y)</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::BitAnd</code></td>
+<td><code>x &amp; y</code></td>
+<td><code>x.bitand(y)</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::BitOr</code></td>
+<td><code>x | y</code></td>
+<td><code>x.bitor(y)</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::BitXor</code></td>
+<td><code>x ^ y</code></td>
+<td><code>x.bitxor(y)</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::Shl</code></td>
+<td><code>x &lt;&lt; y</code></td>
+<td><code>x.shl(y)</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::Shr</code></td>
+<td><code>x &gt;&gt; y</code></td>
+<td><code>x.shr(y)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Rust的所有数值类型都实现了算术运算符。Rust的整数类型和<code>bool</code>类型实现了位运算符。还有一个操作数是引用或者两个操作数都是引用的版本的实现。</p>
+<p>所有这些trait都有相同的形式。例如<code>std::ops::BitXor</code>(用于<code>^</code>运算符)的定义看起来像这样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">trait</span><span class="w"> </span><span class="n">BitXor</span><span class="o">&lt;</span><span class="n">Rhs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">type</span> <span class="nc">Output</span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">bitxor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">rhs</span>: <span class="nc">Rhs</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span>::<span class="n">Output</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>在本章的开始处，我们还展示了这个分类中的另一个trait <code>std::ops::Add</code>，以及几个示例实现。</p>
+<p>你可以使用<code>+</code>运算符来连接一个<code>String</code>和一个<code>&amp;str</code>切片或者另一个<code>String</code>。然而，Rust不允许<code>+</code>左侧的操作数是<code>&amp;str</code>，以避免通过在左侧反复连接小块来构建长字符串。（这样做的性能很差，需要最终字符串长度平方数量级的时间。）通常来说，<code>write!</code>宏是更好的通过多个小块构建字符串的方式，我们会在“附加和插入文本”一节中展示如何做到这一点。</p>
+<h3 id="复合赋值运算符">复合赋值运算符</h3>
+<p>复合赋值运算符例如<code>x += y</code>或<code>x &amp;= y</code>需要两个参数，然后对它们进行一些操作例如加法或位与，最后把结果保存到左侧的操作数。在Rust中，复合赋值表达式的值总是<code>()</code>，而不是最后被存储的值。</p>
+<p>很多语言都有这些运算符，并通常把它们定义为像<code>x = x + y</code>或<code>x = x &amp; y</code>这样的表达式的缩写。然而，Rust并没有采用这种方案。作为代替，<code>x += y</code>是方法调用<code>x.add_assign(y)</code>的缩写，而<code>add_assign</code>是<code>std::ops::AddAssign</code> trait唯一的方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">trait</span><span class="w"> </span><span class="n">AddAssign</span><span class="o">&lt;</span><span class="n">Rhs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">add_assign</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">rhs</span>: <span class="nc">Rhs</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>”表12-4”展示了Rust的所有复合赋值运算符以及实现它们的所有内建trait。</p>
+<table>
+<thead>
+<tr>
+<th><strong>类别</strong></th>
+<th><strong>trait名称</strong></th>
+<th><strong>表达式</strong></th>
+<th><strong>等价的表达式</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::AddAssign</code></td>
+<td><code>x += y</code></td>
+<td><code>x.add_assign(y)</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::SubAssign</code></td>
+<td><code>x -= y</code></td>
+<td><code>x.sub_assign(y)</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::MulAssign</code></td>
+<td><code>x *= y</code></td>
+<td><code>x.mul_assign(y)</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::DivAssign</code></td>
+<td><code>x /= y</code></td>
+<td><code>x.div_assign(y)</code></td>
+</tr>
+<tr>
+<td>算术运算符</td>
+<td><code>std::ops::RemAssign</code></td>
+<td><code>x %= y</code></td>
+<td><code>x.rem_assign(y)</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::BitAndAssign</code></td>
+<td><code>x &amp;= y</code></td>
+<td><code>x.bitand_assign(y)</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::BitOrAssign</code></td>
+<td><code>x |= y</code></td>
+<td><code>x.bitor_assign(y)</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::BitXorAssign</code></td>
+<td><code>x ^= y</code></td>
+<td><code>x.bitxor_assign(y)</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::ShlAssign</code></td>
+<td><code>x &lt;&lt;= y</code></td>
+<td><code>x.shl_assign(y)</code></td>
+</tr>
+<tr>
+<td>位运算符</td>
+<td><code>std::ops::ShrAssign</code></td>
+<td><code>x &gt;&gt;= y</code></td>
+<td><code>x.shr_assign(y)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Rust的所有数值类型都实现了算术复合赋值运算符。Rust的整数类型和<code>bool</code>实现了位运算复合赋值运算符。一个为我们的<code>Complex</code>类型的<code>AddAssign</code>的泛型实现非常直观：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">ops</span>::<span class="n">AddAssign</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="k">impl</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AddAssign</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Complex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w">
+</span><span class="w">    </span><span class="k">where</span><span class="w">
+</span><span class="w">        </span><span class="n">T</span>: <span class="nc">AddAssign</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w">
+</span><span class="w">    </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">add_assign</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">rhs</span>: <span class="nc">Complex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">rhs</span><span class="p">.</span><span class="n">re</span><span class="p">;</span><span class="w">
+</span><span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">rhs</span><span class="p">.</span><span class="n">im</span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>复合赋值运算符的内建trait和相应的二元运算符的内建trait完全独立。实现<code>std::ops::Add</code>并不会自动实现<code>std::ops::AddAssign</code>。如果你想让Rust允许你的类型使用<code>+=</code>运算符，那你必须自己实现<code>AddAssign</code>。</p>
+<h2 id="相等性比较">相等性比较</h2>
+<p>Rust的相等运算符<code>==</code>和<code>!=</code>，是<code>std::cmp::PartialEq</code> trait的<code>eq</code>和<code>ne</code>方法的缩写：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">eq</span><span class="p">(</span><span class="o">&amp;</span><span class="n">y</span><span class="p">));</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">ne</span><span class="p">(</span><span class="o">&amp;</span><span class="n">y</span><span class="p">));</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>这是<code>std::cmp::PartialEq</code>的定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">trait</span><span class="w"> </span><span class="nb">PartialEq</span><span class="o">&lt;</span><span class="n">Rhs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">Self</span><span class="o">&gt;</span><span class="w">
+</span><span class="w">    </span><span class="k">where</span><span class="w">
+</span><span class="w">        </span><span class="n">Rhs</span>: <span class="o">?</span><span class="nb">Sized</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">eq</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">other</span>: <span class="kp">&amp;</span><span class="nc">Rhs</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">bool</span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">ne</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">other</span>: <span class="kp">&amp;</span><span class="nc">Rhs</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">bool</span> <span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="o">!</span><span class="bp">self</span><span class="p">.</span><span class="n">eq</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>因为<code>ne</code>方法有默认的定义，所以实现<code>PartialEq</code>时只需要实现<code>eq</code>。这里有一个<code>Complex</code>类型的实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">impl</span><span class="o">&lt;</span><span class="n">T</span>: <span class="nb">PartialEq</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">PartialEq</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Complex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">eq</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">other</span>: <span class="kp">&amp;</span><span class="nc">Complex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">bool</span> <span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">im</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>换句话说，就是为任何可以比较相等性的类型<code>T</code>实现<code>Complex&lt;T&gt;</code>的比较运算。假设我们已经为<code>Complex</code>实现了<code>std::ops::Mul</code>，那我们现在可以写：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Complex</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">re</span>: <span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">im</span>: <span class="mi">2</span><span class="w"> </span><span class="p">};</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Complex</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">re</span>: <span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">im</span>: <span class="mi">5</span><span class="w"> </span><span class="p">};</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">Complex</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">re</span>: <span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">im</span>: <span class="mi">29</span><span class="w"> </span><span class="p">});</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><code>PartialEq</code>的实现通常都是这里展示的形式：比较左右操作数的每一个字段是否都相同。这写起来非常无聊，而且相等性比较是通常都需要支持的操作，所以如果你要求的话，Rust可以为你自动生成一个<code>PartialEq</code>的实现。简单地像这样给这个类型的定义的<code>derive</code>属性加上<code>PartialEq</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="cp">#[derive(Clone, Copy, Debug, PartialEq)]</span><span class="w">
+</span><span class="w">    </span><span class="k">struct</span> <span class="nc">Complex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="o">..</span><span class="p">.</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>Rust自动生成的实现跟我们手写的代码基本完全相同，就是依次比较每一个字段或元素。Rust也可以为<code>enum</code>类型自动生成<code>PartialEq</code>实现。当然，这些类型持有的每个值自身必须实现了<code>PartialEq</code>。</p>
+<p>与算术和位trait以值传递操作数不同，<code>PartialEq</code>以引用获取操作数。这意味着比较像<code>String</code>、<code>Vec</code>、<code>HashMap</code>这样的非<code>Copy</code>值不会导致它们被移动，否则可能会导致问题：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;d\x6fv\x65t\x61i\x6c&#34;</span><span class="p">.</span><span class="n">to_string</span><span class="p">();</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;\x64o\x76e\x74a\x69l&#34;</span><span class="p">.</span><span class="n">to_string</span><span class="p">();</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert!</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">t</span><span class="p">);</span><span class="w"> </span><span class="c1">// s和t只会被借用
+</span><span class="c1"></span><span class="w">
+</span><span class="w">    </span><span class="c1">// 因此它们仍然保持原来的值
+</span><span class="c1"></span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">&#34;{} {}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="s">&#34;dovetail dovetail&#34;</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>让我们看看这个trait中的<code>Rhs</code>类型参数的约束，它的类型我们之前从来没有见过：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">where</span><span class="w">
+</span><span class="w">        </span><span class="n">Rhs</span>: <span class="o">?</span><span class="nb">Sized</span><span class="p">,</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>这放松了Rust通常要求类型参数必须是固定大小类型的要求，所以我们才可以写<code>PartialEq&lt;str&gt;</code>或<code>PartialEq&lt;[T]&gt;</code>这样的trait。<code>eq</code>和<code>ne</code>方法以类型<code>&amp;Rhs</code>获取参数，并用<code>&amp;str</code>或者<code>&amp;[T]</code>来进行比较是完全合理的。因为<code>str</code>实现了<code>PartialEq&lt;str&gt;</code>，所以下面的断言是等价的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="fm">assert!</span><span class="p">(</span><span class="s">&#34;ungula&#34;</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&#34;ungulate&#34;</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert!</span><span class="p">(</span><span class="s">&#34;ungula&#34;</span><span class="p">.</span><span class="n">ne</span><span class="p">(</span><span class="s">&#34;ungulate&#34;</span><span class="p">));</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>这里，<code>Self</code>和<code>Rhs</code>都是无固定大小的<code>str</code>类型，这导致<code>ne</code>的<code>self</code>和<code>rhs</code>参数都只能是<code>&amp;str</code>值。我们将在“<code>Sized</code>”中讨论固定大小类型、非固定大小类型以及<code>Sized</code> trait。</p>
+<p>为什么这个trait被称为<code>PartialEq</code>？相等性是 <em>等价关系(equivalence relation)</em> 的传统数学定义中的一种，等价关系需要满足三个要求。对于任意值<code>x</code>和<code>y</code>：</p>
+<ul>
+<li>如果<code>x == y</code>为真，那么<code>y == x</code>也必须为真。换句话说，交换等价性比较的两侧并不会影响结果。</li>
+<li>如果<code>x == y</code>和<code>y == z</code>，那么<code>x == z</code>也必须为真。给定一个值链，如果其中相邻的两个值相等，那么链中的每个值一定等于其他每一个值。相等性有传递性。</li>
+<li><code>x == x</code>必须总是为真。</li>
+</ul>
+<p>最后一个要求看起来似乎太明显以至于不值得列出来，但这正是导致事情变得复杂的地方。Rust的<code>f32</code>和<code>f64</code>是IEEE标准的浮点数类型。根据这个标准，像<code>0.0/0.0</code>以及其他没有合适的结果的表达式必须产生一个特殊的 <em>非数(not-a-number)</em> 值，通常被称为NaN值。标准还要求一个NaN值必须和其他任何值都不相等——包括它自己。例如，这个标准要求以下行为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="fm">assert!</span><span class="p">(</span><span class="kt">f64</span>::<span class="n">is_nan</span><span class="p">(</span><span class="mf">0.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="p">));</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="mf">0.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="mf">0.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>另外，任何与NaN的顺序性比较都必须返回假：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="mf">0.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="mf">0.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="mf">0.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="mf">0.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>因此尽管Rust的<code>==</code>运算符满足前两个等价关系的要求，但使用IEEE浮点数值显然不满足第三个要求。这被称为 <em>部分等价关系(partial equivalence relation)</em> ，因此Rust使用名称<code>PartialEq</code>作为内建的<code>==</code>运算符。如果你写泛型代码时类型参数已知是<code>PartialEq</code>，那你应该假设它们满足前两个要求，但你不应该假设那些值总是和它们自身相等。</p>
+<p>这有点违反直觉，如果你不保持警惕可能会导致bug。如果你希望你的泛型代码满足完全的等价关系，你可以使用<code>std::cmp::Eq</code> trait作为约束，它代表完全的等价关系：如果一个类型实现了<code>Eq</code>，那么对于任何该类型的值<code>x</code>，<code>x == x</code>一定为<code>true</code>。在实践中，几乎所有实现了<code>PartialEq</code>的类型也实现了<code>Eq</code>，<code>f32</code>和<code>f64</code>是标准库中仅有的实现了<code>PartialEq</code>但却没有实现<code>Eq</code>的类型。</p>
+<p>标准库将<code>Eq</code>定义为<code>PartialEq</code>的扩展，没有添加任何新方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">trait</span><span class="w"> </span><span class="nb">Eq</span>: <span class="nb">PartialEq</span><span class="o">&lt;</span><span class="bp">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>如果你的类型是<code>PartialEq</code>并且你希望它也是<code>Eq</code>，那你必须显式地实现<code>Eq</code>，即使你并不需要为此再定义任何新的方法或类型。因此为我们的<code>Complex</code>类型实现<code>Eq</code>非常迅速：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">impl</span><span class="o">&lt;</span><span class="n">T</span>: <span class="nb">Eq</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">Eq</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Complex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>我们也可以直接在<code>Complex</code>类型定义中的<code>derive</code>属性里加上<code>Eq</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="cp">#[derive(Clone, Copy, Debug, Eq, PartialEq)]</span><span class="w">
+</span><span class="w">    </span><span class="k">struct</span> <span class="nc">Complex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="o">..</span><span class="p">.</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>在泛型类型上派生实现会依赖类型参数。有了这个<code>derive</code>属性，<code>Complex&lt;i32&gt;</code>将会实现<code>Eq</code>，因为<code>i32</code>实现了<code>Eq</code>；但<code>Complex&lt;f32&gt;</code>将只实现<code>PartialEq</code>，因为<code>f32</code>并没有实现<code>Eq</code>。</p>
+<p>当你自己实现<code>std::cmp::PartialEq</code>时，Rust无法检查你的<code>eq</code>和<code>ne</code>方法的定义是否真的满足等价关系的部分或全部要求。它们的行为可以是任意的。Rust简单地认为你实现等价性的方式满足用户的需求。</p>
+<p>尽管<code>PartialEq</code>的定义为<code>ne</code>提供了默认的实现，如果你愿意的话也可以提供自己的实现。然而，你必须要保证<code>ne</code>和<code>eq</code>彼此完全互补。<code>PartialEq</code> trait的用户也会这么假设。</p>
+<h2 id="顺序性比较">顺序性比较</h2>
+<p>Rust用单个trait <code>std::cmp::PartialOrd</code>来指定比较运算符<code>&lt;, &gt;, &lt;=, &gt;=</code>的行为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">trait</span><span class="w"> </span><span class="nb">PartialOrd</span><span class="o">&lt;</span><span class="n">Rhs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">Self</span><span class="o">&gt;</span>: <span class="nb">PartialEq</span><span class="o">&lt;</span><span class="n">Rhs</span><span class="o">&gt;</span><span class="w">
+</span><span class="w">    </span><span class="k">where</span><span class="w">
+</span><span class="w">        </span><span class="n">Rhs</span>: <span class="o">?</span><span class="nb">Sized</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">partial_cmp</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">other</span>: <span class="kp">&amp;</span><span class="nc">Rhs</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Option</span><span class="o">&lt;</span><span class="n">Ordering</span><span class="o">&gt;</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">lt</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">other</span>: <span class="kp">&amp;</span><span class="nc">Rhs</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">bool</span> <span class="p">{</span><span class="w"> </span><span class="o">..</span><span class="p">.</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">le</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">other</span>: <span class="kp">&amp;</span><span class="nc">Rhs</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">bool</span> <span class="p">{</span><span class="w"> </span><span class="o">..</span><span class="p">.</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">gt</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">other</span>: <span class="kp">&amp;</span><span class="nc">Rhs</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">bool</span> <span class="p">{</span><span class="w"> </span><span class="o">..</span><span class="p">.</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">ge</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">other</span>: <span class="kp">&amp;</span><span class="nc">Rhs</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">bool</span> <span class="p">{</span><span class="w"> </span><span class="o">..</span><span class="p">.</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>注意<code>PartialOrd&lt;Rhs&gt;</code>扩展了<code>PartialEq&lt;Rhs&gt;</code>：你只能对可以比较相等性的类型比较顺序性。</p>
+<p>你唯一需要实现的<code>PartialOrd</code>的方法就是<code>partial_cmp</code>。当<code>partial_cmp</code>返回<code>Some(o)</code>时，<code>o</code>表示<code>self</code>和<code>other</code>的关系：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">enum</span> <span class="nc">Ordering</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="n">Less</span><span class="p">,</span><span class="w">       </span><span class="c1">// self &lt; other
+</span><span class="c1"></span><span class="w">        </span><span class="n">Equal</span><span class="p">,</span><span class="w">      </span><span class="c1">// self == other
+</span><span class="c1"></span><span class="w">        </span><span class="n">Greater</span><span class="p">,</span><span class="w">    </span><span class="c1">// self &gt; other
+</span><span class="c1"></span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>但如果<code>partial_cmp</code>返回<code>None</code>，那么意味着<code>self</code>和<code>other</code>无法比较顺序：每一个都不比另一个大，也不相等。在所有的Rust基本类型中，只有浮点数的比较可能会返回<code>None</code>：确切地说，在比较<code>NaN</code>(not-a-number)和其他任何值时会返回<code>None</code>。我们已经在“相等性比较”中给出了一些关于NaN值的背景。</p>
+<p>和其他二元运算符一样，为了比较两个类型<code>Left</code>和<code>Right</code>，<code>Left</code>必须实现了<code>PartialOrd&lt;Right&gt;</code>。像<code>x &lt; y</code>或<code>x &gt;= y</code>这样的表达式是对<code>PartialOrd</code>方法调用的缩写，如”表12-5”所示。</p>
+<table>
+<thead>
+<tr>
+<th><strong>表达式</strong></th>
+<th><strong>等价的方法调用</strong></th>
+<th><strong>默认实现</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x &lt; y</code></td>
+<td><code>x.lt(y)</code></td>
+<td><code>x.partial_cmp(&amp;y) == Some(Less)</code></td>
+</tr>
+<tr>
+<td><code>x &gt; y</code></td>
+<td><code>x.gt(y)</code></td>
+<td><code>x.partial_cmp(&amp;y) == Some(Greater)</code></td>
+</tr>
+<tr>
+<td><code>x &lt;= y</code></td>
+<td><code>x.le(y)</code></td>
+<td><code>matches!(x.partial_cmp(&amp;y), Some(Less) | Some(Equal))</code></td>
+</tr>
+<tr>
+<td><code>x &gt;= y</code></td>
+<td><code>x.ge(y)</code></td>
+<td><code>matches!(x.partial_cmp(&amp;y), Some(Greater) | Some(Equal))</code></td>
+</tr>
+</tbody>
+</table>
+<p>和之前的例子一样，这里展示的顺序性方法调用代码假设<code>std::cmp::PartialOrd</code>和<code>std::cmp::Ordering</code>在作用域里。</p>
+<p>如果你知道某个类型的两个值总是可以互相比较顺序性，那么你可以实现更加严格的<code>std::cmp::Ord</code> trait：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">trait</span><span class="w"> </span><span class="nb">Ord</span>: <span class="nb">Eq</span> <span class="o">+</span><span class="w"> </span><span class="nb">PartialOrd</span><span class="o">&lt;</span><span class="bp">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">cmp</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">other</span>: <span class="kp">&amp;</span><span class="nc">Self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Ordering</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><code>cmp</code>方法直接返回<code>Ordering</code>，而不是像<code>partial_cmp</code>一样返回<code>Option&lt;Ordering&gt;</code>：<code>cmp</code>总是返回两个参数相等或它们的相对顺序。几乎所有实现了<code>PartialOrd</code>的类型都应该实现<code>Ord</code>。在标准库中，<code>f32</code>和<code>f64</code>是仅有的例外。</p>
+<p>因为复数没有自然的顺序性，我们不能使用上一节的<code>Complex</code>类型来展示<code>PartialOrd</code>的示例实现。作为替代，假设你正在使用一个类型，这个类型表示表示一个半开区间内的数字的集合：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="cp">#[derive(Debug, PartialEq)]</span><span class="w">
+</span><span class="w">    </span><span class="k">struct</span> <span class="nc">Interval</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="n">lower</span>: <span class="nc">T</span><span class="p">,</span><span class="w">   </span><span class="c1">// 包括
+</span><span class="c1"></span><span class="w">        </span><span class="n">upper</span>: <span class="nc">T</span><span class="p">,</span><span class="w">   </span><span class="c1">// 不包括
+</span><span class="c1"></span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>你可能会希望让这种类型是部分有序的：如果一个区间A完全落在另一个区间B里，那么A小于B；如果两个不同的区间交叉，那么它们是无序的：每个区间里都有部分元素小于另一个区间里的部分元素；如果两个区间相同则相等。下面的<code>PartialOrd</code>的实现实现了这些规则：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">cmp</span>::<span class="p">{</span><span class="n">Ordering</span><span class="p">,</span><span class="w"> </span><span class="nb">PartialOrd</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="k">impl</span><span class="o">&lt;</span><span class="n">T</span>: <span class="nb">PartialOrd</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">PartialOrd</span><span class="o">&lt;</span><span class="n">Interval</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Interval</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">partial_cmp</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">other</span>: <span class="kp">&amp;</span><span class="nc">Interval</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Option</span><span class="o">&lt;</span><span class="n">Ordering</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="nb">Some</span><span class="p">(</span><span class="n">Ordering</span>::<span class="n">Equal</span><span class="p">)</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">lower</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">upper</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="nb">Some</span><span class="p">(</span><span class="n">Ordering</span>::<span class="n">Greater</span><span class="p">)</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">upper</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">lower</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="nb">Some</span><span class="p">(</span><span class="n">Ordering</span>::<span class="n">Less</span><span class="p">)</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="nb">None</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>有了这个实现，你可以写下面的代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="fm">assert!</span><span class="p">(</span><span class="n">Interval</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">lower</span>: <span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">upper</span>: <span class="mi">20</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Interval</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">lower</span>: <span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">upper</span>: <span class="mi">40</span><span class="p">});</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert!</span><span class="p">(</span><span class="n">Interval</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">lower</span>: <span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="n">upper</span>: <span class="mi">8</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">Interval</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">lower</span>: <span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">upper</span>: <span class="mi">1</span><span class="w"> </span><span class="p">});</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert!</span><span class="p">(</span><span class="n">Interval</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">lower</span>: <span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="n">upper</span>: <span class="mi">8</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">Interval</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">lower</span>: <span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="n">upper</span>: <span class="mi">8</span><span class="w"> </span><span class="p">});</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="c1">// 交叉的区间彼此无序
+</span><span class="c1"></span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">left</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">Interval</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">lower</span>: <span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">upper</span>: <span class="mi">30</span><span class="w"> </span><span class="p">};</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Interval</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">lower</span>: <span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">upper</span>: <span class="mi">40</span><span class="w"> </span><span class="p">};</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert!</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">left</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">right</span><span class="p">));</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert!</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">left</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">right</span><span class="p">));</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>尽管你通常见到的是<code>PartialOrd</code>，但<code>Ord</code>定义的全序关系在有些场景下也是必要的，例如标准库中实现的排序算法。例如，只有<code>PartialOrd</code>实现的情况下不能对区间排序。如果你确实想排序它们，你需要消除无序的情况。例如，你可以根据上界排序，使用<code>sort_by_key</code>可以很容易做到这一点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="n">intervals</span><span class="p">.</span><span class="n">sort_by_key</span><span class="p">(</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">upper</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>实现<code>Ord</code>的类型还可以使用<code>Reverse</code>包装类型来反转顺序。对于任何实现了<code>Ord</code>的类型<code>T</code>，<code>std::cmp::Reverse&lt;T&gt;</code>也会自动实现<code>Ord</code>，但是是以相反的顺序。例如，将我们的区间按照下界降序排列会很简单：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">cmp</span>::<span class="n">Reverse</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="n">intervals</span><span class="p">.</span><span class="n">sort_by_key</span><span class="p">(</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="n">Reverse</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">lower</span><span class="p">));</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="index与indexmut"><code>Index</code>与<code>IndexMut</code></h2>
+<p>你可以通过为你的类型实现<code>std::ops::Index</code>和<code>std::ops::IndexMut</code> trait来指明索引表达式例如<code>a[i]</code>的行为。数组直接支持<code>[]</code>运算符，但对于任何其他类型，表达式<code>a[i]</code>通常是<code>*a.index(i)</code>的缩写，其中<code>index</code>是<code>std::ops::Index</code> trait的一个方法。然而，如果表达式被赋值或者可变借用，那么将是<code>*a.index_mut(i)</code>的缩写，它是<code>std::ops::IndexMut</code> trait的一个方法。</p>
+<p>这是这两个trait的定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">trait</span><span class="w"> </span><span class="n">Index</span><span class="o">&lt;</span><span class="n">Idx</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">type</span> <span class="nc">Output</span>: <span class="o">?</span><span class="nb">Sized</span><span class="p">;</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">index</span>: <span class="nc">Idx</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kp">&amp;</span><span class="nc">Self</span>::<span class="n">Output</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="k">trait</span><span class="w"> </span><span class="n">IndexMut</span><span class="o">&lt;</span><span class="n">Idx</span><span class="o">&gt;</span>: <span class="nc">Index</span><span class="o">&lt;</span><span class="n">Idx</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">index_mut</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">index</span>: <span class="nc">Idx</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="bp">Self</span>::<span class="n">Output</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>注意这些trait将索引的类型作为参数。你可以用单个<code>usize</code>值索引一个切片，来得到单个元素的引用，因为切片实现了<code>Index&lt;usize&gt;</code>。但你可以通过像<code>a[i..j]</code>这样的表达式来引用一个子切片，因为它们也实现了<code>Index&lt;Range&lt;usize&gt;&gt;</code>。这个表达式是如下表达式的缩写：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="o">*</span><span class="n">a</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">std</span>::<span class="n">ops</span>::<span class="n">Range</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">start</span>: <span class="nc">i</span><span class="p">,</span><span class="w"> </span><span class="n">end</span>: <span class="nc">j</span><span class="w"> </span><span class="p">})</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>Rust的<code>HashMap</code>和<code>BTreeMap</code>集合让你可以用任何可哈希或可比较的类型作为索引。下面的代码能正常工作，因为<code>HashMap&lt;&amp;str, i32&gt;</code>实现了<code>Index&lt;&amp;str&gt;</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">collections</span>::<span class="n">HashMap</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HashMap</span>::<span class="n">new</span><span class="p">();</span><span class="w">
+</span><span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&#34;十&#34;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&#34;百&#34;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&#34;千&#34;</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&#34;万&#34;</span><span class="p">,</span><span class="w"> </span><span class="mi">1_0000</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&#34;億&#34;</span><span class="p">,</span><span class="w"> </span><span class="mi">1_0000_0000</span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s">&#34;十&#34;</span><span class="p">],</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s">&#34;千&#34;</span><span class="p">],</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>那两个索引表达式等价于：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">ops</span>::<span class="n">Index</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="o">*</span><span class="n">m</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="s">&#34;十&#34;</span><span class="p">),</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="o">*</span><span class="n">m</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="s">&#34;千&#34;</span><span class="p">),</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><code>Index</code> trait的关联类型<code>Output</code>指定了索引表达式产生的值的类型：对于这里的<code>HashMap</code>，<code>Index</code>实现的<code>Output</code>类型是<code>i32</code>。</p>
+<p><code>IndexMut</code> trait扩展了<code>Index</code>，增加了一个<code>index_mut</code>方法，这个方法获取<code>self</code>的引用，并返回一个指向<code>Output</code>值的可变引用。当索引表达式出现在一个必须可变的上下文中时，Rust会自动选择<code>index_mut</code>。例如，假设我们写了下面的代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">desserts</span><span class="w"> </span><span class="o">=</span><span class="w">
+</span><span class="w">        </span><span class="fm">vec!</span><span class="p">[</span><span class="s">&#34;Howalon&#34;</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;Soan papdi&#34;</span><span class="p">.</span><span class="n">to_string</span><span class="p">()];</span><span class="w">
+</span><span class="w">    </span><span class="n">desserts</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">push_str</span><span class="p">(</span><span class="s">&#34; (fictional)&#34;</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="n">desserts</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">push_str</span><span class="p">(</span><span class="s">&#34; (real)&#34;</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>因为<code>push_str</code>方法在<code>&amp;mut self</code>上进行操作，最后的两行等价于：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">ops</span>::<span class="n">IndexMut</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="p">(</span><span class="o">*</span><span class="n">desserts</span><span class="p">.</span><span class="n">index_mut</span><span class="p">(</span><span class="mi">0</span><span class="p">)).</span><span class="n">push_str</span><span class="p">(</span><span class="s">&#34; (fictional)&#34;</span><span class="p">);</span><span class="w">
+</span><span class="w">    </span><span class="p">(</span><span class="o">*</span><span class="n">desserts</span><span class="p">.</span><span class="n">index_mut</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="n">push_str</span><span class="p">(</span><span class="s">&#34; (real)&#34;</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><code>IndexMut</code>的一个限制是，设计上它必须返回一个值的可变引用，所以你不能用类似<code>m[&quot;十&quot;] = 10;</code>这样的表达式在<code>HashMap m</code>中插入一个值：哈希表需要首先为<code>&quot;十&quot;</code>创建一个值为默认的条目，然后返回指向它的可变引用。但并不是所有的类型都有开销很低的默认值，还有一些类型drop时可能开销很大。如果这种赋值先创建一个临时值然后立刻drop它将是一种浪费。（有计划在后续的语言版本中改善这种情况。）</p>
+<p>索引最常见的用途是集合。例如，假设我们正在处理类似于我们在”第2章”中创建的曼德勃罗集绘制器的位图。回想一下我们的程序中包含这样的代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="n">pixels</span><span class="p">[</span><span class="n">row</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">bounds</span><span class="p">.</span><span class="mi">0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">column</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">..</span><span class="p">.;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>如果用<code>Image&lt;u8&gt;</code>类型来充当二维数组显然会更好，这样我们就可以在不需要写出算术运算的情况下访问像素：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="n">image</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">column</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">..</span><span class="p">.;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>为了做到这一点，我们需要声明一个结构体：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">struct</span> <span class="nc">Image</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="n">width</span>: <span class="kt">usize</span><span class="p">,</span><span class="w">
+</span><span class="w">        </span><span class="n">pixels</span>: <span class="nb">Vec</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="k">impl</span><span class="o">&lt;</span><span class="n">P</span>: <span class="nb">Default</span> <span class="o">+</span><span class="w"> </span><span class="nb">Copy</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Image</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="sd">/// 创建一个给定大小的新图片。
+</span><span class="sd"></span><span class="w">        </span><span class="k">fn</span> <span class="nf">new</span><span class="p">(</span><span class="n">width</span>: <span class="kt">usize</span><span class="p">,</span><span class="w"> </span><span class="n">height</span>: <span class="kt">usize</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Image</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="n">Image</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                </span><span class="n">width</span><span class="p">,</span><span class="w">
+</span><span class="w">                </span><span class="n">pixels</span>: <span class="nc">vec</span><span class="o">!</span><span class="p">[</span><span class="n">P</span>::<span class="n">default</span><span class="p">();</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">height</span><span class="p">],</span><span class="w">
+</span><span class="w">            </span><span class="p">}</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><code>Index</code>和<code>IndexMut</code>的实现将是：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Rust" data-lang="Rust"><span class="w">    </span><span class="k">impl</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">std</span>::<span class="n">ops</span>::<span class="n">Index</span><span class="o">&lt;</span><span class="kt">usize</span><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Image</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">type</span> <span class="nc">Output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">P</span><span class="p">];</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">row</span>: <span class="kt">usize</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kp">&amp;</span><span class="p">[</span><span class="n">P</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">width</span><span class="p">;</span><span class="w">
+</span><span class="w">            </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">pixels</span><span class="p">[</span><span class="n">start</span><span class="o">..</span><span class="n">start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">width</span><span class="p">]</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="k">impl</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="n">std</span>::<span class="n">ops</span>::<span class="n">IndexMut</span><span class="o">&lt;</span><span class="kt">usize</span><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Image</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="k">fn</span> <span class="nf">index_mut</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">row</span>: <span class="kt">usize</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="p">[</span><span class="n">P</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">width</span><span class="p">;</span><span class="w">
+</span><span class="w">            </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">pixels</span><span class="p">[</span><span class="n">start</span><span class="o">..</span><span class="n">start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">width</span><span class="p">]</span><span class="w">
+</span><span class="w">        </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>当你索引一个<code>Image</code>时，你会得到一个像素的切片，再索引切片你会得到单独的像素。</p>
+<p>注意当我们写<code>image[row][column]</code>时，如果<code>row</code>越界了，我们的<code>.index()</code>方法会尝试索引越界的<code>self.pixels</code>，触发一个panic。这是<code>Index</code>和<code>IndexMut</code>的实现应有的行为：越界访问将被检测到并触发一个panic，当你索引一个越界的数组、切片或vector时也是这样。</p>
+<h2 id="其他运算符">其他运算符</h2>
+<p>Rust中并不是所有运算符都可以被重载。在Rust 1.50中，错误检查的<code>?</code>运算符只能用于<code>Result</code>和<code>Option</code>值，尽管有工作正在将其扩展到用户自定义的类型。 类似的，逻辑运算符<code>&amp;&amp;</code>和<code>||</code>只能用于布尔值。<code>..</code>和<code>..=</code>运算符总是创建一个表示范围的结构体、<code>&amp;</code>运算符总是借用引用、<code>=</code>运算符总是移动或者拷贝值。它们都不能被重载。</p>
+<p>解引用运算符<code>*val</code>以及访问字段和方法的点运算符<code>val.field</code>和<code>val.method()</code>可以使用“<code>Deref</code>与<code>DerefMut</code>” trait来重载，我们将在下一节介绍它。（我们没有在这里介绍是因为这些trait不仅仅只是重载一些运算符。）</p>
+<p>Rust不支持重载函数调用运算符<code>f(x)</code>。作为代替，当你需要一个可调用的值时，你通常只需要写一个闭包。我们将在”第14章”中解释这是怎么工作的，并介绍特殊的<code>Fn</code>、<code>FnMut</code>和<code>FnOnce</code> trait。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Lisp程序员狂喜！表达式<code>&lt;i32 as Add&gt;::add</code>是<code>i32</code>的<code>+</code>运算符，被捕获为函数类型的值。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+<div class="post_comments">
+  
+  
+  
+</div>
+
+
+
+
+    <hr>
+
+<div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '0001-01-01 00:00:00 \u002b0000 UTC',
+        title: '',
+        clientID: '72786bf87c19beec6abe',
+        clientSecret: '93ce647699b49ea6434332d36b0122a4ad8281ad',
+        repo: 'buf1024.github.io',
+        owner: 'buf1024',
+        admin: ['buf1024'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    <br>
+    
+
+
+    
+    
+    <h2 class="mt-4">最新文章</h2>
+    <ul class="flex-column">
+      <li>
+        <a href="https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder/" class="nav-link" title="Rust sqlx SQLBuilder">Rust sqlx SQLBuilder</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2024-01-08-vite-engineering-config/" class="nav-link" title="前端工程化配置保姆级教程">前端工程化配置保姆级教程</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2023-12-26-rust-proc-macro/" class="nav-link" title="rust 过程宏">rust 过程宏</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2023-09-21-rust-panic/" class="nav-link" title="一行代码让 rustc panic">一行代码让 rustc panic</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2023-07-19-flutter-muti-window/" class="nav-link" title="Flutter 桌面端多窗口支持">Flutter 桌面端多窗口支持</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2023-07-04-hiqradio/" class="nav-link" title="hiqradio 一个简单的收音机软件">hiqradio 一个简单的收音机软件</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2023-03-21-android-https/" class="nav-link" title="android https 抓包">android https 抓包</a>
+      </li>
+      <li>
+        <a href="https://luoguochun.cn/post/2023-03-16-love-for-insterest/" class="nav-link" title="为爱发电终是不能长久的……">为爱发电终是不能长久的……</a>
+      </li>
+    </ul>
+    <div>
+      <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
+      <nav class="tags_nav">
+        <a href='https://luoguochun.cn/categories/misc/' class="post_tag button button_translucent" title="misc">
+          MISC
+          <span class="button_tally">11</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/linux/' class="post_tag button button_translucent" title="linux">
+          LINUX
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/tcp/' class="post_tag button button_translucent" title="tcp">
+          TCP
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/c/' class="post_tag button button_translucent" title="c">
+          C
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/flutter/' class="post_tag button button_translucent" title="flutter">
+          FLUTTER
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/rust/' class="post_tag button button_translucent" title="rust">
+          RUST
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/python/' class="post_tag button button_translucent" title="python">
+          PYTHON
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
+          C&#43;&#43;
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/web/' class="post_tag button button_translucent" title="web">
+          WEB
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/gcc/' class="post_tag button button_translucent" title="gcc">
+          GCC
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/git/' class="post_tag button button_translucent" title="git">
+          GIT
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/reactjs/' class="post_tag button button_translucent" title="reactjs">
+          REACTJS
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/unittest/' class="post_tag button button_translucent" title="unittest">
+          UNITTEST
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/vim/' class="post_tag button button_translucent" title="vim">
+          VIM
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/%E6%9E%84%E6%9E%B6/' class="post_tag button button_translucent" title="构架">
+          构架
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/asm/' class="post_tag button button_translucent" title="asm">
+          ASM
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/categories/go/' class="post_tag button button_translucent" title="go">
+          GO
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+    <div>
+      <h2 class="mt-4 taxonomy" id="tags-section">标签</h2>
+      <nav class="tags_nav">
+        <a href='https://luoguochun.cn/tags/c/' class="post_tag button button_translucent" title="c">
+          C
+          <span class="button_tally">21</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/linux/' class="post_tag button button_translucent" title="linux">
+          LINUX
+          <span class="button_tally">16</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
+          C&#43;&#43;
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/python/' class="post_tag button button_translucent" title="python">
+          PYTHON
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/tcp/' class="post_tag button button_translucent" title="tcp">
+          TCP
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/dart/' class="post_tag button button_translucent" title="dart">
+          DART
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/flutter/' class="post_tag button button_translucent" title="flutter">
+          FLUTTER
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/rust/' class="post_tag button button_translucent" title="rust">
+          RUST
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/tdd/' class="post_tag button button_translucent" title="tdd">
+          TDD
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/android/' class="post_tag button button_translucent" title="android">
+          ANDROID
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/git/' class="post_tag button button_translucent" title="git">
+          GIT
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/gtest/' class="post_tag button button_translucent" title="gtest">
+          GTEST
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/js/' class="post_tag button button_translucent" title="js">
+          JS
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/rust-lib/' class="post_tag button button_translucent" title="rust-lib">
+          RUST-LIB
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/vcs/' class="post_tag button button_translucent" title="vcs">
+          VCS
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/vim/' class="post_tag button button_translucent" title="vim">
+          VIM
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/asm/' class="post_tag button button_translucent" title="asm">
+          ASM
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/css/' class="post_tag button button_translucent" title="css">
+          CSS
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/gas/' class="post_tag button button_translucent" title="gas">
+          GAS
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/gcc/' class="post_tag button button_translucent" title="gcc">
+          GCC
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/http/' class="post_tag button button_translucent" title="http">
+          HTTP
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/libevent/' class="post_tag button button_translucent" title="libevent">
+          LIBEVENT
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/macos/' class="post_tag button button_translucent" title="macos">
+          MACOS
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/react-native/' class="post_tag button button_translucent" title="react-native">
+          REACT-NATIVE
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/redis/' class="post_tag button button_translucent" title="redis">
+          REDIS
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/%E6%9E%84%E6%9E%B6/' class="post_tag button button_translucent" title="构架">
+          构架
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/api/' class="post_tag button button_translucent" title="api">
+          API
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/bt/' class="post_tag button button_translucent" title="bt">
+          BT
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/c&#43;/' class="post_tag button button_translucent" title="c&#43;">
+          C&#43;
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/coroutine/' class="post_tag button button_translucent" title="coroutine">
+          COROUTINE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/database/' class="post_tag button button_translucent" title="database">
+          DATABASE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/docker/' class="post_tag button button_translucent" title="docker">
+          DOCKER
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/endian/' class="post_tag button button_translucent" title="endian">
+          ENDIAN
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/frontend/' class="post_tag button button_translucent" title="frontend">
+          FRONTEND
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/gdb/' class="post_tag button button_translucent" title="gdb">
+          GDB
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/go/' class="post_tag button button_translucent" title="go">
+          GO
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/html/' class="post_tag button button_translucent" title="html">
+          HTML
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/https/' class="post_tag button button_translucent" title="https">
+          HTTPS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/jquery/' class="post_tag button button_translucent" title="jquery">
+          JQUERY
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/ld/' class="post_tag button button_translucent" title="ld">
+          LD
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/logger/' class="post_tag button button_translucent" title="logger">
+          LOGGER
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/makefile/' class="post_tag button button_translucent" title="makefile">
+          MAKEFILE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/misc/' class="post_tag button button_translucent" title="misc">
+          MISC
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/orm/' class="post_tag button button_translucent" title="orm">
+          ORM
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/os/' class="post_tag button button_translucent" title="os">
+          OS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/process/' class="post_tag button button_translucent" title="process">
+          PROCESS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/react/' class="post_tag button button_translucent" title="react">
+          REACT
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/rpm/' class="post_tag button button_translucent" title="rpm">
+          RPM
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/rsa/' class="post_tag button button_translucent" title="rsa">
+          RSA
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/server/' class="post_tag button button_translucent" title="server">
+          SERVER
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/sqlalchemy/' class="post_tag button button_translucent" title="sqlalchemy">
+          SQLALCHEMY
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/ssh/' class="post_tag button button_translucent" title="ssh">
+          SSH
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/ssl/tls/' class="post_tag button button_translucent" title="ssl/tls">
+          SSL/TLS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/vc/' class="post_tag button button_translucent" title="vc">
+          VC
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/vite/' class="post_tag button button_translucent" title="vite">
+          VITE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/vue/' class="post_tag button button_translucent" title="vue">
+          VUE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/webui/' class="post_tag button button_translucent" title="webui">
+          WEBUI
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/wechat/' class="post_tag button button_translucent" title="wechat">
+          WECHAT
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/win32/' class="post_tag button button_translucent" title="win32">
+          WIN32
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/windows/' class="post_tag button button_translucent" title="windows">
+          WINDOWS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/wireshark/' class="post_tag button button_translucent" title="wireshark">
+          WIRESHARK
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://luoguochun.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/' class="post_tag button button_translucent" title="微服务">
+          微服务
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+  </section>
+</aside>
+
+  
+</div>
+  </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" id="gitlab">
+    <path d="M12.3 74.7h54L43.3 3c-1-3.6-6.4-3.6-7.6 0L12.3 74.8z" />
+    <path d="M12.3 74.7L.5 111c-1 3.2 0 6.8 3 8.8l101.6 74-92.5-119z"/>
+    <path d="M105 193.7l-38.6-119h-54l92.7 119z"/>
+    <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
+    <path d="M105 193.7l38.7-119H198l-93 119z"/>
+    <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="to-top">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="xing">
+    <path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71 55" id="discord">
+    <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" id="mastodon">
+    <path
+    fill="#ffffff"
+    d="m 15.054695,9.8859583 c -0.22611,1.1632697 -2.02517,2.4363497 -4.09138,2.6830797 -1.0774504,0.12856 -2.1382704,0.24673 -3.2694704,0.19484 -1.84996,-0.0848 -3.30971,-0.44157 -3.30971,-0.44157 0,0.1801 0.0111,0.35157 0.0333,0.51194 0.24051,1.82571 1.81034,1.93508 3.29737,1.98607 1.50088,0.0514 2.8373104,-0.37004 2.8373104,-0.37004 l 0.0617,1.35686 c 0,0 -1.0498104,0.56374 -2.9199404,0.66742 -1.03124,0.0567 -2.3117,-0.0259 -3.80308,-0.42069 -3.23454998,-0.85613 -3.79081998,-4.304 -3.87592998,-7.8024197 -0.026,-1.03871 -0.01,-2.01815 -0.01,-2.83732 0,-3.57732 2.34385998,-4.62587996 2.34385998,-4.62587996 1.18184,-0.54277 3.20976,-0.77101 5.318,-0.7882499985409 h 0.0518 C 9.8267646,0.01719834 11.856025,0.24547834 13.037775,0.78824834 c 0,0 2.34377,1.04855996 2.34377,4.62587996 0,0 0.0294,2.63937 -0.32687,4.47183"/>
+ <path
+    fill="#000000"
+    d="m 12.616925,5.6916583 v 4.3315297 h -1.71607 V 5.8189683 c 0,-0.88624 -0.37289,-1.33607 -1.1187604,-1.33607 -0.82467,0 -1.23799,0.53361 -1.23799,1.58875 v 2.30122 h -1.70594 v -2.30122 c 0,-1.05514 -0.4134,-1.58875 -1.23808,-1.58875 -0.74587,0 -1.11876,0.44983 -1.11876,1.33607 v 4.2042197 h -1.71607 V 5.6916583 c 0,-0.88527 0.22541,-1.58876 0.67817,-2.10922 0.46689,-0.52047 1.07833,-0.78727 1.83735,-0.78727 0.87816,0 1.54317,0.33752 1.98288,1.01267 l 0.42744,0.71655 0.42753,-0.71655 c 0.43961,-0.67515 1.10463,-1.01267 1.9828704,-1.01267 0.75893,0 1.37037,0.2668 1.83735,0.78727 0.45268,0.52046 0.67808,1.22395 0.67808,2.10922"/>
+  </symbol>
+</svg>
+
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='https://luoguochun.cn/icons/apple-touch-icon.png' class="icon icon_2 transparent" alt="BUF1024">
+    <p>Copyright&nbsp;2011-&nbsp;<span class="year"></span>&nbsp;BUF1024. All Rights Reserved</p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <title>to-top</title>
+  <use xlink:href="#to-top"></use>
+</svg>
+
+</a>
+
+  </div>
+</footer>
+
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
+</body>
+
+</html>

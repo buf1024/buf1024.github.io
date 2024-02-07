@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
-"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -164,11 +164,11 @@ before an output is generated) set to <code>NaN</code>.<br />
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">talib</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">close</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">talib</span>
+
+<span class="n">close</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>计算收盘价的一个简单移动平均数SMA:</p>
 <div class="highlight"><div class="chroma">
@@ -176,8 +176,8 @@ before an output is generated) set to <code>NaN</code>.<br />
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">output</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">SMA</span><span class="p">(</span><span class="n">close</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">output</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">SMA</span><span class="p">(</span><span class="n">close</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>计算布林线，三指数移动平均：</p>
 <div class="highlight"><div class="chroma">
@@ -187,10 +187,10 @@ before an output is generated) set to <code>NaN</code>.<br />
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">talib</span> <span class="kn">import</span> <span class="n">MA_Type</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">upper</span><span class="p">,</span> <span class="n">middle</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">BBANDS</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">matype</span><span class="o">=</span><span class="n">MA_Type</span><span class="o">.</span><span class="n">T3</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">talib</span> <span class="kn">import</span> <span class="n">MA_Type</span>
+
+<span class="n">upper</span><span class="p">,</span> <span class="n">middle</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">BBANDS</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">matype</span><span class="o">=</span><span class="n">MA_Type</span><span class="o">.</span><span class="n">T3</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>计算收盘价的动量，时间为5：</p>
 <div class="highlight"><div class="chroma">
@@ -198,8 +198,8 @@ before an output is generated) set to <code>NaN</code>.<br />
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">output</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">MOM</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">output</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">MOM</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>方法类型分组:</p>
 <ul>
@@ -790,7 +790,7 @@ before an output is generated) set to <code>NaN</code>.<br />
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
 </body>
 
 </html>

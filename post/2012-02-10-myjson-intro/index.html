@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
-"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -384,34 +384,34 @@
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">    Json json;
-</span></span><span class="line"><span class="cl">    JsonValue jv = true;
-</span></span><span class="line"><span class="cl">    json[&#34;a&#34;] = jv;
-</span></span><span class="line"><span class="cl">    jv = json;
-</span></span><span class="line"><span class="cl">    json.Set(&#34;c&#34;, jv);
-</span></span><span class="line"><span class="cl">    jv = (char*)0;
-</span></span><span class="line"><span class="cl">    json.Set(&#34;d&#34;, jv);
-</span></span><span class="line"><span class="cl">    JsonArray sArr;
-</span></span><span class="line"><span class="cl">    sArr[0] = 100;
-</span></span><span class="line"><span class="cl">    sArr[1] = &#34;abcdefg&#34;;
-</span></span><span class="line"><span class="cl">    sArr[2] = false;
-</span></span><span class="line"><span class="cl">    jv = sArr;
-</span></span><span class="line"><span class="cl">    json.Set(&#34;e&#34;, jv);
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl"> // 上述代码产生以下JSON数据
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">  &#34;a&#34;:true,
-</span></span><span class="line"><span class="cl">  &#34;c&#34;:{
-</span></span><span class="line"><span class="cl">     &#34;a&#34;:true
-</span></span><span class="line"><span class="cl">   },
-</span></span><span class="line"><span class="cl">   &#34;d&#34;:null,
-</span></span><span class="line"><span class="cl">   &#34;e&#34;:[
-</span></span><span class="line"><span class="cl">     100,
-</span></span><span class="line"><span class="cl">     &#34;abcdefg&#34;,
-</span></span><span class="line"><span class="cl">     false
-</span></span><span class="line"><span class="cl">    ]
-</span></span><span class="line"><span class="cl">}
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">    Json json;
+    JsonValue jv = true;
+    json[&#34;a&#34;] = jv;
+    jv = json;
+    json.Set(&#34;c&#34;, jv);
+    jv = (char*)0;
+    json.Set(&#34;d&#34;, jv);
+    JsonArray sArr;
+    sArr[0] = 100;
+    sArr[1] = &#34;abcdefg&#34;;
+    sArr[2] = false;
+    jv = sArr;
+    json.Set(&#34;e&#34;, jv);
+  
+ // 上述代码产生以下JSON数据
+{
+  &#34;a&#34;:true,
+  &#34;c&#34;:{
+     &#34;a&#34;:true
+   },
+   &#34;d&#34;:null,
+   &#34;e&#34;:[
+     100,
+     &#34;abcdefg&#34;,
+     false
+    ]
+}
+</code></pre></td></tr></table>
 </div>
 </div><h1 id="其它">其它</h1>
 <p>一时兴趣的东西，没有经过大脑的设计，如果用于实时系统还要应该考虑一下其性能，NEW太多了。但是用于实时系统的初始化和清理保存信息还是不错的。注意，这里说的是实时系统。</p>
@@ -430,17 +430,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[==========] Running 2 tests from 1 test cases
-</span></span><span class="line"><span class="cl">[----------] 2 tests from Json
-</span></span><span class="line"><span class="cl">[ RUN      ] Json.ConstructJson
-</span></span><span class="line"><span class="cl">[       OK ] Json.ConstructJson (1 ms)
-</span></span><span class="line"><span class="cl">[ RUN      ] Json.ParseJson
-</span></span><span class="line"><span class="cl">[       OK ] Json.ParseJson (7 ms)
-</span></span><span class="line"><span class="cl">[----------] 2 tests from Json (17 ms total)
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">[==========] 2 tests from 1 test case ran (26 ms total)
-</span></span><span class="line"><span class="cl">[  PASSED  ] 2 tests
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[==========] Running 2 tests from 1 test cases
+[----------] 2 tests from Json
+[ RUN      ] Json.ConstructJson
+[       OK ] Json.ConstructJson (1 ms)
+[ RUN      ] Json.ParseJson
+[       OK ] Json.ParseJson (7 ms)
+[----------] 2 tests from Json (17 ms total)
+
+[==========] 2 tests from 1 test case ran (26 ms total)
+[  PASSED  ] 2 tests
+</code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -1016,7 +1016,7 @@
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
 </body>
 
 </html>

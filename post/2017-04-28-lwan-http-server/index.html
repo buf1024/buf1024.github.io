@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
-"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -209,30 +209,32 @@
 </span><span class="lnt">19
 </span><span class="lnt">20
 </span><span class="lnt">21
+</span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="c1">// trie数据结构定义
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="n">lwan_trie_node</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">lwan_trie_node</span> <span class="o">*</span><span class="n">next</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">lwan_trie_leaf</span> <span class="o">*</span><span class="n">leaf</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ref_count</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">lwan_trie_leaf</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">lwan_trie_leaf</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">lwan_trie</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">lwan_trie_node</span> <span class="o">*</span><span class="n">root</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">free_node</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//查找或插入时，就已经确认位置了    /* Traverse the trie, allocating nodes if necessary */
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="n">knode</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">trie</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span> <span class="o">*</span><span class="n">key</span><span class="p">;</span> <span class="n">knode</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[(</span><span class="kt">int</span><span class="p">)(</span><span class="o">*</span><span class="n">key</span><span class="o">++</span> <span class="o">&amp;</span> <span class="mi">7</span><span class="p">)])</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">GET_NODE</span><span class="p">();</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="c1">// trie数据结构定义
+</span><span class="c1"></span><span class="k">struct</span> <span class="n">lwan_trie_node</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">lwan_trie_node</span> <span class="o">*</span><span class="n">next</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+    <span class="k">struct</span> <span class="n">lwan_trie_leaf</span> <span class="o">*</span><span class="n">leaf</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">ref_count</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">lwan_trie_leaf</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">lwan_trie_leaf</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">lwan_trie</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">lwan_trie_node</span> <span class="o">*</span><span class="n">root</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">free_node</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">//查找或插入时，就已经确认位置了    /* Traverse the trie, allocating nodes if necessary */
+</span><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="n">knode</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">trie</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span> <span class="o">*</span><span class="n">key</span><span class="p">;</span> <span class="n">knode</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[(</span><span class="kt">int</span><span class="p">)(</span><span class="o">*</span><span class="n">key</span><span class="o">++</span> <span class="o">&amp;</span> <span class="mi">7</span><span class="p">)])</span>
+        <span class="n">GET_NODE</span><span class="p">();</span>
+
+</code></pre></td></tr></table>
 </div>
 </div><p>比如，5，58,12,123,1234,12345在内存的存储情况（简化，假设<code>struct lwan_trie_node *next[4]</code>）：
 <figure>
@@ -282,19 +284,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="c1">// 模块需实现函数，模块名可在配置文件进行配置，返回const struct lwan_module *结构体指针
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="k">struct</span> <span class="n">lwan_module</span> <span class="o">*</span><span class="nf">lwan_module_模块名</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="cm">/*lwan 模块是函数名为 lwan_module_模块名的函数，内置模块使用-rdynamic编译进可执行程序内*/</span>
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">lwan_module</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">prefix</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">args</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">init_from_hash</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">prefix</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">hash</span> <span class="o">*</span><span class="n">hash</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">shutdown</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span> 
-</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">parse_conf</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="k">struct</span> <span class="n">config</span> <span class="o">*</span><span class="n">config</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// http 请求处理函数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">enum</span> <span class="nf">lwan_http_status</span> <span class="p">(</span><span class="o">*</span><span class="n">handle</span><span class="p">)(</span><span class="k">struct</span> <span class="n">lwan_request</span> <span class="o">*</span><span class="n">request</span><span class="p">,</span> <span class="k">struct</span> <span class="n">lwan_response</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">enum</span> <span class="n">lwan_handler_flags</span> <span class="n">flags</span><span class="p">;</span> <span class="c1">// 处理标志
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="c1">// 模块需实现函数，模块名可在配置文件进行配置，返回const struct lwan_module *结构体指针
+</span><span class="c1"></span><span class="k">const</span> <span class="k">struct</span> <span class="n">lwan_module</span> <span class="o">*</span><span class="nf">lwan_module_模块名</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="cm">/*lwan 模块是函数名为 lwan_module_模块名的函数，内置模块使用-rdynamic编译进可执行程序内*/</span>
+<span class="k">struct</span> <span class="n">lwan_module</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">prefix</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">args</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">init_from_hash</span><span class="p">)(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">prefix</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">hash</span> <span class="o">*</span><span class="n">hash</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">shutdown</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span> 
+    <span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">parse_conf</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="k">struct</span> <span class="n">config</span> <span class="o">*</span><span class="n">config</span><span class="p">);</span>
+    <span class="c1">// http 请求处理函数
+</span><span class="c1"></span>    <span class="k">enum</span> <span class="nf">lwan_http_status</span> <span class="p">(</span><span class="o">*</span><span class="n">handle</span><span class="p">)(</span><span class="k">struct</span> <span class="n">lwan_request</span> <span class="o">*</span><span class="n">request</span><span class="p">,</span> <span class="k">struct</span> <span class="n">lwan_response</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
+    <span class="k">enum</span> <span class="n">lwan_handler_flags</span> <span class="n">flags</span><span class="p">;</span> <span class="c1">// 处理标志
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>自己实现一个helloworld模块可参考：<a href="https://github.com/buf1024/lwan/blob/master/common/lwan-mod-helloworld.c">helloworld</a></p>
 <h3 id="配置文件">配置文件</h3>
@@ -372,80 +374,84 @@
 </span><span class="lnt">69
 </span><span class="lnt">70
 </span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#true on yes    以及非0数值，被解析为true
-</span></span><span class="line"><span class="cl">#false off no   以及非0数值，被解析为false
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># Timeout in seconds to keep a connection alive.
-</span></span><span class="line"><span class="cl">keep_alive_timeout = 15
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># Set to true to not print any debugging messages. (Only effective in
-</span></span><span class="line"><span class="cl"># release builds.)
-</span></span><span class="line"><span class="cl">quiet = false
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># Set SO_REUSEPORT=1 in the master socket.
-</span></span><span class="line"><span class="cl">reuse_port = true
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># Disable HAProxy&#39;s PROXY protocol by default. Only enable if needed.
-</span></span><span class="line"><span class="cl">proxy_protocol = false
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">allow_cors=false
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># Value of &#34;Expires&#34; header. Default is 1 month and 1 week.
-</span></span><span class="line"><span class="cl">expires = 1M 1w
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">#error_template = error.html
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># post 数据大小，最多为128m
-</span></span><span class="line"><span class="cl">max_post_data_size=40960000
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">allow_temp_files=true
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># Number of I/O threads. Default (0) is number of online CPUs.
-</span></span><span class="line"><span class="cl">threads = 0
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">#需要root用户，或者有root权限的用户执行， 该section必须在所以listener之前
-</span></span><span class="line"><span class="cl">#straitjacket {
-</span></span><span class="line"><span class="cl">#  # 切换运行改程序的用户
-</span></span><span class="line"><span class="cl">#  user = heidong
-</span></span><span class="line"><span class="cl">#  # 程序运行的根目录
-</span></span><span class="line"><span class="cl">#  chroot = /home/heidong
-</span></span><span class="line"><span class="cl">#}
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># section解析  ip:port
-</span></span><span class="line"><span class="cl">listener *:8080 {
-</span></span><span class="line"><span class="cl">    # 配置三种方式 1. prefix 路径 1. &amp;handler 路径 3. module 路径。 只有配置为module的，方有回调函数读里面配置项目
-</span></span><span class="line"><span class="cl">    #prefix / {
-</span></span><span class="line"><span class="cl">    #        #handler和module只能是一个, module 为函数名为 lwan_module_{module_name}的模块
-</span></span><span class="line"><span class="cl">    #        module = module_name
-</span></span><span class="line"><span class="cl">    #        #handler 函数原型 lwan_http_status_t (*handler)(lwan_request_t *request, lwan_response_t *response, void *data);
-</span></span><span class="line"><span class="cl">    #        handler  = handler_symbol
-</span></span><span class="line"><span class="cl">    #        authorization basic {     #目前只支持basic
-</span></span><span class="line"><span class="cl">    #            realm=value #默认Lwan
-</span></span><span class="line"><span class="cl">    #            passowrd_file=file #默认htpasswd
-</span></span><span class="line"><span class="cl">    #        }
-</span></span><span class="line"><span class="cl">    #}
-</span></span><span class="line"><span class="cl">    # 配置handler
-</span></span><span class="line"><span class="cl">    #&amp;handler / {
-</span></span><span class="line"><span class="cl">    #}
-</span></span><span class="line"><span class="cl">    serve_files / {
-</span></span><span class="line"><span class="cl">            path = ./
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            # When requesting for file.ext, look for a smaller/newer file.ext.gz,
-</span></span><span class="line"><span class="cl">            # and serve that instead if `Accept-Encoding: gzip` is in the
-</span></span><span class="line"><span class="cl">            # request headers.
-</span></span><span class="line"><span class="cl">            serve precompressed files = true
-</span></span><span class="line"><span class="cl">            
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            # 配置该section后，必须授权才可访问该url
-</span></span><span class="line"><span class="cl">            authorization basic {     #目前只支持basic
-</span></span><span class="line"><span class="cl">                realm=测试测试 #默认Lwan
-</span></span><span class="line"><span class="cl">                password_file=/home/heidong/privt/proj/lwan/htpasswd.conf #默认htpasswd，数据格式为：用户名=密码
-</span></span><span class="line"><span class="cl">            }
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">}
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#true on yes    以及非0数值，被解析为true
+#false off no   以及非0数值，被解析为false
+
+# Timeout in seconds to keep a connection alive.
+keep_alive_timeout = 15
+
+# Set to true to not print any debugging messages. (Only effective in
+# release builds.)
+quiet = false
+
+# Set SO_REUSEPORT=1 in the master socket.
+reuse_port = true
+
+# Disable HAProxy&#39;s PROXY protocol by default. Only enable if needed.
+proxy_protocol = false
+
+allow_cors=false
+
+# Value of &#34;Expires&#34; header. Default is 1 month and 1 week.
+expires = 1M 1w
+
+#error_template = error.html
+
+# post 数据大小，最多为128m
+max_post_data_size=40960000
+
+allow_temp_files=true
+
+# Number of I/O threads. Default (0) is number of online CPUs.
+threads = 0
+
+#需要root用户，或者有root权限的用户执行， 该section必须在所以listener之前
+#straitjacket {
+#  # 切换运行改程序的用户
+#  user = heidong
+#  # 程序运行的根目录
+#  chroot = /home/heidong
+#}
+
+# section解析  ip:port
+listener *:8080 {
+    # 配置三种方式 1. prefix 路径 1. &amp;handler 路径 3. module 路径。 只有配置为module的，方有回调函数读里面配置项目
+    #prefix / {
+    #        #handler和module只能是一个, module 为函数名为 lwan_module_{module_name}的模块
+    #        module = module_name
+    #        #handler 函数原型 lwan_http_status_t (*handler)(lwan_request_t *request, lwan_response_t *response, void *data);
+    #        handler  = handler_symbol
+    #        authorization basic {     #目前只支持basic
+    #            realm=value #默认Lwan
+    #            passowrd_file=file #默认htpasswd
+    #        }
+    #}
+    # 配置handler
+    #&amp;handler / {
+    #}
+    serve_files / {
+            path = ./
+
+            # When requesting for file.ext, look for a smaller/newer file.ext.gz,
+            # and serve that instead if `Accept-Encoding: gzip` is in the
+            # request headers.
+            serve precompressed files = true
+            
+
+            # 配置该section后，必须授权才可访问该url
+            authorization basic {     #目前只支持basic
+                realm=测试测试 #默认Lwan
+                password_file=/home/heidong/privt/proj/lwan/htpasswd.conf #默认htpasswd，数据格式为：用户名=密码
+            }
+    }
+}
+
+
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="其他">其他</h3>
 <p>这里只是简单过一些lwan最基本的东西，没有详细的过里面的其他方面，仔细分析的话还有很多东西可以学，这里不再罗列了，暂时先这样。</p>
@@ -1023,7 +1029,7 @@
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
 </body>
 
 </html>

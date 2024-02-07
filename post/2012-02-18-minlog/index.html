@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" as="script" integrity=
-"sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
+"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -291,33 +291,33 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Minilog&amp; Minilog::GetInst()
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">/*    if (sm_pInst == 0)
-</span></span><span class="line"><span class="cl">    {
-</span></span><span class="line"><span class="cl">sm_pInst = new Minilog;
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    return *sm_pInst;*/
-</span></span><span class="line"><span class="cl">    static Minilog theLog;
-</span></span><span class="line"><span class="cl">    return theLog;
-</span></span><span class="line"><span class="cl">}
-</span></span><span class="line"><span class="cl">void Minilog::ReleaseRC()
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">/*    if (sm_pInst != 0)
-</span></span><span class="line"><span class="cl">    {
-</span></span><span class="line"><span class="cl">delete sm_pInst;
-</span></span><span class="line"><span class="cl">sm_pInst = 0;
-</span></span><span class="line"><span class="cl">    }*/
-</span></span><span class="line"><span class="cl">}
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Minilog&amp; Minilog::GetInst()
+{
+/*    if (sm_pInst == 0)
+    {
+sm_pInst = new Minilog;
+    }
+    return *sm_pInst;*/
+    static Minilog theLog;
+    return theLog;
+}
+void Minilog::ReleaseRC()
+{
+/*    if (sm_pInst != 0)
+    {
+delete sm_pInst;
+sm_pInst = 0;
+    }*/
+}
+</code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  基本使用方法，如果你有一个叫MODULE的模块，要记录这个模块的日志，你可以这样做：
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">  基本使用方法，如果你有一个叫MODULE的模块，要记录这个模块的日志，你可以这样做：
+</code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -326,26 +326,26 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#define MODULE &#34;[module]&#34;
-</span></span><span class="line"><span class="cl">#define X_INFO(...) LOG_INFO(MODULE __VA_ARGS__)
-</span></span><span class="line"><span class="cl">// 以下省略
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#define MODULE &#34;[module]&#34;
+#define X_INFO(...) LOG_INFO(MODULE __VA_ARGS__)
+// 以下省略
+</code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Minilog提供了很多方法，但是通常情况下用宏就可以进行日常的使用了，不建议直接使
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Minilog提供了很多方法，但是通常情况下用宏就可以进行日常的使用了，不建议直接使
+</code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">用，如果想了解如何实现，请参阅代码。
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">用，如果想了解如何实现，请参阅代码。
+</code></pre></td></tr></table>
 </div>
 </div><h1 id="示例">示例</h1>
 <div class="highlight"><div class="chroma">
@@ -368,23 +368,23 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">    <span class="nf">SET_LOG_PATH</span><span class="p">(</span><span class="s">&#34;.&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">SET_LOG_FILE</span><span class="p">(</span><span class="s">&#34;hello&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">//SET_LOG_LEVEL(&#34;debug&#34;);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">SET_LOG_FILE_LEVEL</span><span class="p">(</span><span class="s">&#34;DEBUG&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">SET_LOG_CONSOLE_LEVEL</span><span class="p">(</span><span class="s">&#34;debug&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">LOG_DEBUG</span><span class="p">(</span><span class="s">&#34;%s %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="s">&#34;DEBUG&#34;</span><span class="p">,</span> <span class="mi">207</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">LOG_INFO</span><span class="p">(</span><span class="s">&#34;%s %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="s">&#34;hello&#34;</span><span class="p">,</span> <span class="mi">207</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#ifdef _MSC_VER
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="nf">Sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#else
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="nf">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#endif
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="nf">LOG_WARN</span><span class="p">(</span><span class="s">&#34;%s %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="s">&#34;hello&#34;</span><span class="p">,</span> <span class="mi">207</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">LOG_ERROR</span><span class="p">(</span><span class="s">&#34;%s %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="s">&#34;hello&#34;</span><span class="p">,</span> <span class="mi">207</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">LOG_FATAL</span><span class="p">(</span><span class="s">&#34;%s %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="s">&#34;hello&#34;</span><span class="p">,</span> <span class="mi">207</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">LOG_FLUSH</span><span class="p">();</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">    SET_LOG_PATH(&#34;.&#34;);
+    SET_LOG_FILE(&#34;hello&#34;);
+    //SET_LOG_LEVEL(&#34;debug&#34;);
+    SET_LOG_FILE_LEVEL(&#34;DEBUG&#34;);
+    SET_LOG_CONSOLE_LEVEL(&#34;debug&#34;);
+    LOG_DEBUG(&#34;%s %d\n&#34;, &#34;DEBUG&#34;, 207);
+    LOG_INFO(&#34;%s %d\n&#34;, &#34;hello&#34;, 207);
+#ifdef _MSC_VER
+    Sleep(1000);
+#else
+    sleep(1);
+#endif
+    LOG_WARN(&#34;%s %d\n&#34;, &#34;hello&#34;, 207);
+    LOG_ERROR(&#34;%s %d\n&#34;, &#34;hello&#34;, 207);
+    LOG_FATAL(&#34;%s %d\n&#34;, &#34;hello&#34;, 207);
+    LOG_FLUSH();
+</code></pre></td></tr></table>
 </div>
 </div><p>运行结果：
 <figure>
@@ -433,22 +433,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">E:\minilog&gt;cl /c /EHsc *.cpp
-</span></span><span class="line"><span class="cl">用于 80x86 的 Microsoft (R) 32 位 C/C++ 优化编译器 15.00.30729.01 版
-</span></span><span class="line"><span class="cl">版权所有(C) Microsoft Corporation。保留所有权利。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">minilog.cpp
-</span></span><span class="line"><span class="cl">minilogtest.cpp
-</span></span><span class="line"><span class="cl">test.cpp
-</span></span><span class="line"><span class="cl">正在生成代码...
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">E:\minilog&gt;link /out:test.exe *.obj
-</span></span><span class="line"><span class="cl">Microsoft (R) Incremental Linker Version 9.00.30729.01
-</span></span><span class="line"><span class="cl">Copyright (C) Microsoft Corporation.  All rights reserved.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">E:\minilog&gt;
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">E:\minilog&gt;cl /c /EHsc *.cpp
+用于 80x86 的 Microsoft (R) 32 位 C/C++ 优化编译器 15.00.30729.01 版
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+minilog.cpp
+minilogtest.cpp
+test.cpp
+正在生成代码...
+
+E:\minilog&gt;link /out:test.exe *.obj
+Microsoft (R) Incremental Linker Version 9.00.30729.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+E:\minilog&gt;
+</code></pre></td></tr></table>
 </div>
 </div><p>当然，你用其它编译器的话，你伪装一下VC，因为VC会定义_MSC_VER这个宏，其实编译器没有，这个宏是判定是否在WINDOWS的标准，当然实际是不合理的，如果需要，请自行修改，比如用mingw g++：</p>
 <div class="highlight"><div class="chroma">
@@ -456,8 +456,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">E:\minilog&gt;g++ -o test.exe *.cpp -D_MSC_VER
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">E:\minilog&gt;g++ -o test.exe *.cpp -D_MSC_VER
+</code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -1033,7 +1033,7 @@
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.10189ef5297c86a87693ed99e5e19d6d9a4a86d743d554d63c607d4d6d008856dc4a4d90250c2c263c2ca1df642fe77416ed765401e63d45e6cff0ccc217cc6e.js" integrity="sha512-EBie9Sl8hqh2k&#43;2Z5eGdbZpKhtdD1VTWPGB9TW0AiFbcSk2QJQwsJjwsod9kL&#43;d0Fu12VAHmPUXmz/DMwhfMbg==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
 </body>
 
 </html>
