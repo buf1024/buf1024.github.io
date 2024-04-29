@@ -19,11 +19,11 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Docker -- 简介" />
-<meta name="twitter:image" content="https://luoguochun.cn"/>
+<meta name="twitter:image" content="https://luoguochun.cn/"/>
 <meta property="og:url" content="https://luoguochun.cn/post/2018-06-02-docker-intro/" />
 <meta property="og:title" content="Docker -- 简介" />
 <meta property="og:description" content="背景 docker从几年前开始就是开源社区一颗耀眼的明星，自己也在那个时候接触docker，也是因为docker学习了golang（golan" />
-<meta property="og:image" content="https://luoguochun.cn" />
+<meta property="og:image" content="https://luoguochun.cn/" />
   <meta name="keywords" content="blog,computer,luoguochun" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://luoguochun.cn/icons/apple-touch-icon.png">
@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
-"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" as="script" integrity=
+"sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -50,7 +50,7 @@
   data-lang="zh-cn">
 
 <header class="nav_header" >
-  <nav class="nav"><a href='https://luoguochun.cn' class="nav_brand nav_item" title="BUF1024">BUF1024
+  <nav class="nav"><a href='https://luoguochun.cn/' class="nav_brand nav_item" title="BUF1024">BUF1024
   <div class="nav_close">
     <div><svg class="icon">
   <title>open-menu</title>
@@ -74,7 +74,7 @@
     <a href="https://luoguochun.cn/" class="nav_item" title="主页">主页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://luoguochun.cn" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://luoguochun.cn/" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://luoguochun.cn/talib-doc/" class="nav_child nav_item" title="TA 技术分析库">TA 技术分析库</a>
@@ -162,11 +162,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">able@ABLE-VM:~/tmp$ cat /etc/docker/daemon.json 
-<span class="o">{</span>
-    <span class="s2">&#34;registry-mirrors&#34;</span>: <span class="o">[</span><span class="s2">&#34;http://ef017c13.m.daocloud.io&#34;</span><span class="o">]</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">able@ABLE-VM:~/tmp$ cat /etc/docker/daemon.json 
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;registry-mirrors&#34;</span>: <span class="o">[</span><span class="s2">&#34;http://ef017c13.m.daocloud.io&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>也可以<code>pull</code>的时候指定地址，当然你也可以像maven一样建立私服。</p>
 <h4 id="镜像">镜像</h4>
@@ -181,12 +181,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">docker pull          <span class="c1"># 从仓库拉取镜像</span>
-docker push          <span class="c1"># 推送镜像到仓库</span>
-docker image         <span class="c1"># 大部分镜像操作命令</span>
-docker commit        <span class="c1"># 为运行中容器提交进行镜像，不用次命令构建镜像</span>
-docker build         <span class="c1"># 使用Dockerfile构建镜像</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull          <span class="c1"># 从仓库拉取镜像</span>
+</span></span><span class="line"><span class="cl">docker push          <span class="c1"># 推送镜像到仓库</span>
+</span></span><span class="line"><span class="cl">docker image         <span class="c1"># 大部分镜像操作命令</span>
+</span></span><span class="line"><span class="cl">docker commit        <span class="c1"># 为运行中容器提交进行镜像，不用次命令构建镜像</span>
+</span></span><span class="line"><span class="cl">docker build         <span class="c1"># 使用Dockerfile构建镜像</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>Dockerfile</code>是构建镜像的最主要方式，指令并发很多，作为开发人员需要掌握的，具体指令参考官方文档，这些需要在实践中才能记住。</p>
 <h4 id="容器">容器</h4>
@@ -209,21 +209,21 @@ docker build         <span class="c1"># 使用Dockerfile构建镜像</span>
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 启动docker</span>
-able@ABLE-VM:~/tmp$ docker run -d --name my-nginx --rm -p 8081:80 nginx
-0ed5ce3580067d301ebca05af55b0fced69c841f8cccbe1e976ab01a4f09a5eb
-<span class="c1">#进入运行中的docker</span>
-able@ABLE-VM:~/tmp$ docker <span class="nb">exec</span> -it nginx bash
-root@17d67ddec2e0:/# 
-root@17d67ddec2e0:/# <span class="nb">exit</span>
-<span class="nb">exit</span>
-<span class="c1"># ps 运行中的docker</span>
-able@ABLE-VM:~/tmp$ docker ps
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
-0ed5ce358006        nginx               <span class="s2">&#34;nginx -g &#39;daemon of…&#34;</span>   <span class="m">47</span> seconds ago      Up <span class="m">46</span> seconds       0.0.0.0:8081-&gt;80/tcp   my-nginx
-17d67ddec2e0        nginx:v3            <span class="s2">&#34;nginx -g &#39;daemon of…&#34;</span>   <span class="m">2</span> hours ago         Up <span class="m">2</span> hours          0.0.0.0:8080-&gt;80/tcp   nginx
-able@ABLE-VM:~/tmp$ 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 启动docker</span>
+</span></span><span class="line"><span class="cl">able@ABLE-VM:~/tmp$ docker run -d --name my-nginx --rm -p 8081:80 nginx
+</span></span><span class="line"><span class="cl">0ed5ce3580067d301ebca05af55b0fced69c841f8cccbe1e976ab01a4f09a5eb
+</span></span><span class="line"><span class="cl"><span class="c1">#进入运行中的docker</span>
+</span></span><span class="line"><span class="cl">able@ABLE-VM:~/tmp$ docker <span class="nb">exec</span> -it nginx bash
+</span></span><span class="line"><span class="cl">root@17d67ddec2e0:/# 
+</span></span><span class="line"><span class="cl">root@17d67ddec2e0:/# <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ps 运行中的docker</span>
+</span></span><span class="line"><span class="cl">able@ABLE-VM:~/tmp$ docker ps
+</span></span><span class="line"><span class="cl">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
+</span></span><span class="line"><span class="cl">0ed5ce358006        nginx               <span class="s2">&#34;nginx -g &#39;daemon of…&#34;</span>   <span class="m">47</span> seconds ago      Up <span class="m">46</span> seconds       0.0.0.0:8081-&gt;80/tcp   my-nginx
+</span></span><span class="line"><span class="cl">17d67ddec2e0        nginx:v3            <span class="s2">&#34;nginx -g &#39;daemon of…&#34;</span>   <span class="m">2</span> hours ago         Up <span class="m">2</span> hours          0.0.0.0:8080-&gt;80/tcp   nginx
+</span></span><span class="line"><span class="cl">able@ABLE-VM:~/tmp$ 
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -799,7 +799,7 @@ able@ABLE-VM:~/tmp$
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" integrity="sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous"></script>
 </body>
 
 </html>

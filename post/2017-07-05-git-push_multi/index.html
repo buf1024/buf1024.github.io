@@ -19,11 +19,11 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="git推送多个远程分支" />
-<meta name="twitter:image" content="https://luoguochun.cn"/>
+<meta name="twitter:image" content="https://luoguochun.cn/"/>
 <meta property="og:url" content="https://luoguochun.cn/post/2017-07-05-git-push_multi/" />
 <meta property="og:title" content="git推送多个远程分支" />
 <meta property="og:description" content="查看.git/config 1 2 3 4 5 6 7 8 9 10 11 12 13 [core] repositoryfORMatversion = 0 filemode = true bare = false logallrefupdates = true ignorecase = true …" />
-<meta property="og:image" content="https://luoguochun.cn" />
+<meta property="og:image" content="https://luoguochun.cn/" />
   <meta name="keywords" content="blog,computer,luoguochun" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://luoguochun.cn/icons/apple-touch-icon.png">
@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
-"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" as="script" integrity=
+"sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -50,7 +50,7 @@
   data-lang="zh-cn">
 
 <header class="nav_header" >
-  <nav class="nav"><a href='https://luoguochun.cn' class="nav_brand nav_item" title="BUF1024">BUF1024
+  <nav class="nav"><a href='https://luoguochun.cn/' class="nav_brand nav_item" title="BUF1024">BUF1024
   <div class="nav_close">
     <div><svg class="icon">
   <title>open-menu</title>
@@ -74,7 +74,7 @@
     <a href="https://luoguochun.cn/" class="nav_item" title="主页">主页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://luoguochun.cn" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://luoguochun.cn/" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://luoguochun.cn/talib-doc/" class="nav_child nav_item" title="TA 技术分析库">TA 技术分析库</a>
@@ -168,20 +168,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>core<span class="o">]</span>
- <span class="nv">repositoryfORMatversion</span> <span class="o">=</span> <span class="m">0</span>
- <span class="nv">filemode</span> <span class="o">=</span> <span class="nb">true</span>
- <span class="nv">bare</span> <span class="o">=</span> <span class="nb">false</span>
- <span class="nv">logallrefupdates</span> <span class="o">=</span> <span class="nb">true</span>
- <span class="nv">ignorecase</span> <span class="o">=</span> <span class="nb">true</span>
- <span class="nv">precomposeunicode</span> <span class="o">=</span> <span class="nb">true</span>
-<span class="o">[</span>remote <span class="s2">&#34;origin&#34;</span><span class="o">]</span>
- <span class="nv">url</span> <span class="o">=</span> git@gitee.com:heidonglgc/k-map.git
- <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/origin/*
-<span class="o">[</span>branch <span class="s2">&#34;master&#34;</span><span class="o">]</span>
- <span class="nv">remote</span> <span class="o">=</span> origin
- <span class="nv">merge</span> <span class="o">=</span> refs/heads/master
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>core<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">repositoryfORMatversion</span> <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">filemode</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">bare</span> <span class="o">=</span> <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">logallrefupdates</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">ignorecase</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">precomposeunicode</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>remote <span class="s2">&#34;origin&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">url</span> <span class="o">=</span> git@gitee.com:heidonglgc/k-map.git
+</span></span><span class="line"><span class="cl"> <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/origin/*
+</span></span><span class="line"><span class="cl"><span class="o">[</span>branch <span class="s2">&#34;master&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">remote</span> <span class="o">=</span> origin
+</span></span><span class="line"><span class="cl"> <span class="nv">merge</span> <span class="o">=</span> refs/heads/master
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>增加一个名为mirror的远程仓库后</li>
@@ -213,30 +213,30 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">^_^@/Users/luoguochun/privt/proj/k-map<span class="o">]</span>$ git remote add mirror git@e.coding.net:toyent/k-map/k-map.git  
-^_^@/Users/luoguochun/privt/proj/k-map<span class="o">]</span>$ cat .git/config
-<span class="o">[</span>core<span class="o">]</span>
- <span class="nv">repositoryfORMatversion</span> <span class="o">=</span> <span class="m">0</span>
- <span class="nv">filemode</span> <span class="o">=</span> <span class="nb">true</span>
- <span class="nv">bare</span> <span class="o">=</span> <span class="nb">false</span>
- <span class="nv">logallrefupdates</span> <span class="o">=</span> <span class="nb">true</span>
- <span class="nv">ignorecase</span> <span class="o">=</span> <span class="nb">true</span>
- <span class="nv">precomposeunicode</span> <span class="o">=</span> <span class="nb">true</span>
-<span class="o">[</span>remote <span class="s2">&#34;origin&#34;</span><span class="o">]</span>
- <span class="nv">url</span> <span class="o">=</span> git@gitee.com:heidonglgc/k-map.git
- <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/origin/*
-<span class="o">[</span>branch <span class="s2">&#34;master&#34;</span><span class="o">]</span>
- <span class="nv">remote</span> <span class="o">=</span> origin
- <span class="nv">merge</span> <span class="o">=</span> refs/heads/master
-<span class="o">[</span>remote <span class="s2">&#34;mirror&#34;</span><span class="o">]</span>
- <span class="nv">url</span> <span class="o">=</span> git@e.coding.net:toyent/k-map/k-map.git
- <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/mirror/*
-^_^@/Users/luoguochun/privt/proj/k-map<span class="o">]</span>$ git remote -v
-mirror git@e.coding.net:toyent/k-map/k-map.git <span class="o">(</span>fetch<span class="o">)</span>
-mirror git@e.coding.net:toyent/k-map/k-map.git <span class="o">(</span>push<span class="o">)</span>
-origin git@gitee.com:heidonglgc/k-map.git <span class="o">(</span>fetch<span class="o">)</span>
-origin git@gitee.com:heidonglgc/k-map.git <span class="o">(</span>push<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">^_^@/Users/luoguochun/privt/proj/k-map<span class="o">]</span>$ git remote add mirror git@e.coding.net:toyent/k-map/k-map.git  
+</span></span><span class="line"><span class="cl">^_^@/Users/luoguochun/privt/proj/k-map<span class="o">]</span>$ cat .git/config
+</span></span><span class="line"><span class="cl"><span class="o">[</span>core<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">repositoryfORMatversion</span> <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">filemode</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">bare</span> <span class="o">=</span> <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">logallrefupdates</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">ignorecase</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">precomposeunicode</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>remote <span class="s2">&#34;origin&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">url</span> <span class="o">=</span> git@gitee.com:heidonglgc/k-map.git
+</span></span><span class="line"><span class="cl"> <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/origin/*
+</span></span><span class="line"><span class="cl"><span class="o">[</span>branch <span class="s2">&#34;master&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">remote</span> <span class="o">=</span> origin
+</span></span><span class="line"><span class="cl"> <span class="nv">merge</span> <span class="o">=</span> refs/heads/master
+</span></span><span class="line"><span class="cl"><span class="o">[</span>remote <span class="s2">&#34;mirror&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">url</span> <span class="o">=</span> git@e.coding.net:toyent/k-map/k-map.git
+</span></span><span class="line"><span class="cl"> <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/mirror/*
+</span></span><span class="line"><span class="cl">^_^@/Users/luoguochun/privt/proj/k-map<span class="o">]</span>$ git remote -v
+</span></span><span class="line"><span class="cl">mirror git@e.coding.net:toyent/k-map/k-map.git <span class="o">(</span>fetch<span class="o">)</span>
+</span></span><span class="line"><span class="cl">mirror git@e.coding.net:toyent/k-map/k-map.git <span class="o">(</span>push<span class="o">)</span>
+</span></span><span class="line"><span class="cl">origin git@gitee.com:heidonglgc/k-map.git <span class="o">(</span>fetch<span class="o">)</span>
+</span></span><span class="line"><span class="cl">origin git@gitee.com:heidonglgc/k-map.git <span class="o">(</span>push<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>pull/push操作</li>
@@ -249,11 +249,11 @@ origin git@gitee.com:heidonglgc/k-map.git <span class="o">(</span>push<span clas
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git pull origin master 
-git push origin master 
-git pull mirror master 
-git push mirror master 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git pull origin master 
+</span></span><span class="line"><span class="cl">git push origin master 
+</span></span><span class="line"><span class="cl">git pull mirror master 
+</span></span><span class="line"><span class="cl">git push mirror master 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="4">
 <li>一次要打两次命令不爽，合并一条push</li>
@@ -288,33 +288,33 @@ git push mirror master 
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">^_^@/Users/luoguochun/privt/proj/k-map<span class="o">]</span>$ git remote set-url --add origin git@e.coding.net:toyent/k-map/k-map.git
-^_^@/Users/luoguochun/privt/proj/k-map<span class="o">]</span>$ cat .git/config 
-<span class="o">[</span>core<span class="o">]</span>
- <span class="nv">repositoryfORMatversion</span> <span class="o">=</span> <span class="m">0</span>
- <span class="nv">filemode</span> <span class="o">=</span> <span class="nb">true</span>
- <span class="nv">bare</span> <span class="o">=</span> <span class="nb">false</span>
- <span class="nv">logallrefupdates</span> <span class="o">=</span> <span class="nb">true</span>
- <span class="nv">ignorecase</span> <span class="o">=</span> <span class="nb">true</span>
- <span class="nv">precomposeunicode</span> <span class="o">=</span> <span class="nb">true</span>
-<span class="o">[</span>remote <span class="s2">&#34;origin&#34;</span><span class="o">]</span>
- <span class="nv">url</span> <span class="o">=</span> git@gitee.com:heidonglgc/k-map.git
- <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/origin/*
- <span class="nv">url</span> <span class="o">=</span> git@e.coding.net:toyent/k-map/k-map.git
-<span class="o">[</span>branch <span class="s2">&#34;master&#34;</span><span class="o">]</span>
- <span class="nv">remote</span> <span class="o">=</span> origin
- <span class="nv">merge</span> <span class="o">=</span> refs/heads/master
-<span class="o">[</span>remote <span class="s2">&#34;mirror&#34;</span><span class="o">]</span>
- <span class="nv">url</span> <span class="o">=</span> git@e.coding.net:toyent/k-map/k-map.git
- <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/mirror/*
- 
-^_^@/Users/luoguochun/privt/proj/k-map<span class="o">]</span>$ git remote -v
-mirror git@e.coding.net:toyent/k-map/k-map.git <span class="o">(</span>fetch<span class="o">)</span>
-mirror git@e.coding.net:toyent/k-map/k-map.git <span class="o">(</span>push<span class="o">)</span>
-origin git@gitee.com:heidonglgc/k-map.git <span class="o">(</span>fetch<span class="o">)</span>
-origin git@gitee.com:heidonglgc/k-map.git <span class="o">(</span>push<span class="o">)</span>
-origin git@e.coding.net:toyent/k-map/k-map.git <span class="o">(</span>push<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">^_^@/Users/luoguochun/privt/proj/k-map<span class="o">]</span>$ git remote set-url --add origin git@e.coding.net:toyent/k-map/k-map.git
+</span></span><span class="line"><span class="cl">^_^@/Users/luoguochun/privt/proj/k-map<span class="o">]</span>$ cat .git/config 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>core<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">repositoryfORMatversion</span> <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">filemode</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">bare</span> <span class="o">=</span> <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">logallrefupdates</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">ignorecase</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">precomposeunicode</span> <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>remote <span class="s2">&#34;origin&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">url</span> <span class="o">=</span> git@gitee.com:heidonglgc/k-map.git
+</span></span><span class="line"><span class="cl"> <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/origin/*
+</span></span><span class="line"><span class="cl"> <span class="nv">url</span> <span class="o">=</span> git@e.coding.net:toyent/k-map/k-map.git
+</span></span><span class="line"><span class="cl"><span class="o">[</span>branch <span class="s2">&#34;master&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">remote</span> <span class="o">=</span> origin
+</span></span><span class="line"><span class="cl"> <span class="nv">merge</span> <span class="o">=</span> refs/heads/master
+</span></span><span class="line"><span class="cl"><span class="o">[</span>remote <span class="s2">&#34;mirror&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">url</span> <span class="o">=</span> git@e.coding.net:toyent/k-map/k-map.git
+</span></span><span class="line"><span class="cl"> <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/mirror/*
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">^_^@/Users/luoguochun/privt/proj/k-map<span class="o">]</span>$ git remote -v
+</span></span><span class="line"><span class="cl">mirror git@e.coding.net:toyent/k-map/k-map.git <span class="o">(</span>fetch<span class="o">)</span>
+</span></span><span class="line"><span class="cl">mirror git@e.coding.net:toyent/k-map/k-map.git <span class="o">(</span>push<span class="o">)</span>
+</span></span><span class="line"><span class="cl">origin git@gitee.com:heidonglgc/k-map.git <span class="o">(</span>fetch<span class="o">)</span>
+</span></span><span class="line"><span class="cl">origin git@gitee.com:heidonglgc/k-map.git <span class="o">(</span>push<span class="o">)</span>
+</span></span><span class="line"><span class="cl">origin git@e.coding.net:toyent/k-map/k-map.git <span class="o">(</span>push<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>意思是多个url指向同一个orgin，这样就可以一次push到多个仓库。</p>
 
@@ -891,7 +891,7 @@ origin git@e.coding.net:toyent/k-map/k-map.git <span class="o">(</span>push<span
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" integrity="sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous"></script>
 </body>
 
 </html>

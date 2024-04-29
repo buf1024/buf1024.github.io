@@ -19,11 +19,11 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="物理机新建xubuntu一些问题" />
-<meta name="twitter:image" content="https://luoguochun.cn"/>
+<meta name="twitter:image" content="https://luoguochun.cn/"/>
 <meta property="og:url" content="https://luoguochun.cn/post/2019-05-05-new-xubuntu-problem/" />
 <meta property="og:title" content="物理机新建xubuntu一些问题" />
 <meta property="og:description" content="无线网卡驱动问题 &ndash; 无法显示wifi 解决方法: https://jingyan.baidu.com/article/ca2d939dd4f1b4eb6c31ce09.html PS： 下载需要联网，可以使用手机usb共享网络。 新建用户密码过于简单 1 2 # 去掉Cracklib" />
-<meta property="og:image" content="https://luoguochun.cn" />
+<meta property="og:image" content="https://luoguochun.cn/" />
   <meta name="keywords" content="blog,computer,luoguochun" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://luoguochun.cn/icons/apple-touch-icon.png">
@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
-"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" as="script" integrity=
+"sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -50,7 +50,7 @@
   data-lang="zh-cn">
 
 <header class="nav_header" >
-  <nav class="nav"><a href='https://luoguochun.cn' class="nav_brand nav_item" title="BUF1024">BUF1024
+  <nav class="nav"><a href='https://luoguochun.cn/' class="nav_brand nav_item" title="BUF1024">BUF1024
   <div class="nav_close">
     <div><svg class="icon">
   <title>open-menu</title>
@@ -74,7 +74,7 @@
     <a href="https://luoguochun.cn/" class="nav_item" title="主页">主页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://luoguochun.cn" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://luoguochun.cn/" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://luoguochun.cn/talib-doc/" class="nav_child nav_item" title="TA 技术分析库">TA 技术分析库</a>
@@ -161,9 +161,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 去掉Cracklib password strength checking 
-</span><span class="gh"></span>sudo pam-auth-update
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="gh"># 去掉Cracklib password strength checking 
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>sudo pam-auth-update
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -180,12 +180,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cd /etc/default/grub.d
-<span class="gh"># 修改启动顺序，可能需要记得启动界面顺序修改
-</span><span class="gh"></span>sudo vi grub
-<span class="gh"># 生效
-</span><span class="gh"></span>sudo update-grub
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">cd /etc/default/grub.d
+</span></span><span class="line"><span class="cl"><span class="gh"># 修改启动顺序，可能需要记得启动界面顺序修改
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>sudo vi grub
+</span></span><span class="line"><span class="cl"><span class="gh"># 生效
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>sudo update-grub
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -196,9 +196,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 直接看修改
-</span><span class="gh"></span>vim .config/user-dirs.dirs
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="gh"># 直接看修改
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>vim .config/user-dirs.dirs
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -210,10 +210,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">sudo cp frpc.service /lib/systemd/system/sudo 
-<span class="gh"># 开机启动
-</span><span class="gh"></span>sudo systemctl enable frpc.service
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">sudo cp frpc.service /lib/systemd/system/sudo 
+</span></span><span class="line"><span class="cl"><span class="gh"># 开机启动
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>sudo systemctl enable frpc.service
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -231,16 +231,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">sudo update-alternatives --install /usr/bin/Python Python /usr/bin/Python3 150
-sudo update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 150
-
-<span class="gh"># 修改安装源(不存在则新建)
-</span><span class="gh"></span>vim .pip/pip.conf
-[global] 
-index-url=http://mirrors.aliyun.com/pypi/simple 
-[install] 
-trusted-host=mirrors.aliyun.com
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">sudo update-alternatives --install /usr/bin/Python Python /usr/bin/Python3 150
+</span></span><span class="line"><span class="cl">sudo update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 150
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gh"># 修改安装源(不存在则新建)
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>vim .pip/pip.conf
+</span></span><span class="line"><span class="cl">[global] 
+</span></span><span class="line"><span class="cl">index-url=http://mirrors.aliyun.com/pypi/simple 
+</span></span><span class="line"><span class="cl">[install] 
+</span></span><span class="line"><span class="cl">trusted-host=mirrors.aliyun.com
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -266,24 +266,24 @@ trusted-host=mirrors.aliyun.com
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 修改下载源（不存在则新建）
-</span><span class="gh"></span>sudo vim /etc/docker/daemon.json
-{
-    &#34;registry-mirrors&#34;: [
-        &#34;https://2gpinm2f.mirror.aliyuncs.com&#34;
-    ]
-}
-
-<span class="gh"># docker ps报权限问题
-</span><span class="gh"># 增加用户组
-</span><span class="gh"></span>sudo usermod -aG docker able
-sudo groupadd docker
-sudo gpasswd -a able docker
-newgrp docker
-
-<span class="gh"># docker 使用volume权限问题
-</span><span class="gh"></span>chmod a+w xxx.dir
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="gh"># 修改下载源（不存在则新建）
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>sudo vim /etc/docker/daemon.json
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    &#34;registry-mirrors&#34;: [
+</span></span><span class="line"><span class="cl">        &#34;https://2gpinm2f.mirror.aliyuncs.com&#34;
+</span></span><span class="line"><span class="cl">    ]
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gh"># docker ps报权限问题
+</span></span></span><span class="line"><span class="cl"><span class="gh"># 增加用户组
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>sudo usermod -aG docker able
+</span></span><span class="line"><span class="cl">sudo groupadd docker
+</span></span><span class="line"><span class="cl">sudo gpasswd -a able docker
+</span></span><span class="line"><span class="cl">newgrp docker
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gh"># docker 使用volume权限问题
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>chmod a+w xxx.dir
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -307,22 +307,22 @@ newgrp docker
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 修改pam， 末尾增加
-</span><span class="gh"></span>sudo /etc/pam.d/common-session
-session required pam_limits.so
-
-<span class="gh"># 修改系统配置, 末尾增加，重启或sysctl -p生效
-</span><span class="gh"></span>sudo vim /etc/sysctl.conf
-fs.file-max=1024000000
-fs.nr_open=1024000000
-
-<span class="gh"># 末尾增加, 单加这个，此方式不生效，需要加
-</span><span class="gh"></span>sudo vim /etc/security/limits.conf
-able              soft    nofile 1024000000
-able              hard    nofile 1024000000
-able              soft    nproc  1024000000 
-able              hard    nproc  1024000000
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="gh"># 修改pam， 末尾增加
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>sudo /etc/pam.d/common-session
+</span></span><span class="line"><span class="cl">session required pam_limits.so
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gh"># 修改系统配置, 末尾增加，重启或sysctl -p生效
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>sudo vim /etc/sysctl.conf
+</span></span><span class="line"><span class="cl">fs.file-max=1024000000
+</span></span><span class="line"><span class="cl">fs.nr_open=1024000000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gh"># 末尾增加, 单加这个，此方式不生效，需要加
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>sudo vim /etc/security/limits.conf
+</span></span><span class="line"><span class="cl">able              soft    nofile 1024000000
+</span></span><span class="line"><span class="cl">able              hard    nofile 1024000000
+</span></span><span class="line"><span class="cl">able              soft    nproc  1024000000 
+</span></span><span class="line"><span class="cl">able              hard    nproc  1024000000
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -357,20 +357,20 @@ able              hard    nproc  1024000000
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">1. password    requisite     pam_cracklib.so try_first_pass <span class="nv">retry</span><span class="o">=</span><span class="m">3</span>
-2. password    sufficient    pam_unix.so md5 shadow nullok try_first_pass use_authtok
-3. Comment out the first of the two lines:   注释掉此行
-
-<span class="c1">#password    requisite     pam_cracklib.so try_first_pass retry=3</span>
-
-4. Remove use_authtok on the second line. Otherwise you’ll get “passwd: Authentication infORMation cannot be recovered” error.
-
-删除掉 <span class="s2">&#34;use_authtok “从第二行，否则你会得到&#34;</span>passwd : Authentication infORMation canot be recovered <span class="s2">&#34;的错误提示
-</span><span class="s2">
-</span><span class="s2">password    sufficient    pam_unix.so md5 shadow nullok try_first_pass
-</span><span class="s2">
-</span><span class="s2">5. That’s it. Try changing your password again.
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">1. password    requisite     pam_cracklib.so try_first_pass <span class="nv">retry</span><span class="o">=</span><span class="m">3</span>
+</span></span><span class="line"><span class="cl">2. password    sufficient    pam_unix.so md5 shadow nullok try_first_pass use_authtok
+</span></span><span class="line"><span class="cl">3. Comment out the first of the two lines:   注释掉此行
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#password    requisite     pam_cracklib.so try_first_pass retry=3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4. Remove use_authtok on the second line. Otherwise you’ll get “passwd: Authentication infORMation cannot be recovered” error.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">删除掉 <span class="s2">&#34;use_authtok “从第二行，否则你会得到&#34;</span>passwd : Authentication infORMation canot be recovered <span class="s2">&#34;的错误提示
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">password    sufficient    pam_unix.so md5 shadow nullok try_first_pass
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">5. That’s it. Try changing your password again.
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>搞定，再次尝试修改密码（）</p>
 
@@ -947,7 +947,7 @@ able              hard    nproc  1024000000
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" integrity="sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous"></script>
 </body>
 
 </html>

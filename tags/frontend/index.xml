@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>frontend on BUF1024</title>
+    <title>Frontend on BUF1024</title>
     <link>https://luoguochun.cn/tags/frontend/</link>
-    <description>Recent content in frontend on BUF1024</description>
+    <description>Recent content in Frontend on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 25 Jan 2018 09:32:32 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/frontend/index.xml" rel="self" type="application/rss+xml" />

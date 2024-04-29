@@ -19,11 +19,11 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="android https 抓包" />
-<meta name="twitter:image" content="https://luoguochun.cn"/>
+<meta name="twitter:image" content="https://luoguochun.cn/"/>
 <meta property="og:url" content="https://luoguochun.cn/post/2023-03-21-android-https/" />
 <meta property="og:title" content="android https 抓包" />
 <meta property="og:description" content="前几天有个需求，要破解一下某个app的部分通讯协议，需要了解一下某部分功能如何实现，甚至通过其协议抓取一些数据。而这个app只有androi" />
-<meta property="og:image" content="https://luoguochun.cn" />
+<meta property="og:image" content="https://luoguochun.cn/" />
   <meta name="keywords" content="blog,computer,luoguochun" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://luoguochun.cn/icons/apple-touch-icon.png">
@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
-"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" as="script" integrity=
+"sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -50,7 +50,7 @@
   data-lang="zh-cn">
 
 <header class="nav_header" >
-  <nav class="nav"><a href='https://luoguochun.cn' class="nav_brand nav_item" title="BUF1024">BUF1024
+  <nav class="nav"><a href='https://luoguochun.cn/' class="nav_brand nav_item" title="BUF1024">BUF1024
   <div class="nav_close">
     <div><svg class="icon">
   <title>open-menu</title>
@@ -74,7 +74,7 @@
     <a href="https://luoguochun.cn/" class="nav_item" title="主页">主页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://luoguochun.cn" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://luoguochun.cn/" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://luoguochun.cn/talib-doc/" class="nav_child nav_item" title="TA 技术分析库">TA 技术分析库</a>
@@ -274,12 +274,10 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -326,16 +324,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#1 使用keytool生成密钥，如</span>
-keytool -genkeypair -v -keystore hello.keystore -alias hello -keyalg RSA <span class="se">\
-</span><span class="se"></span>          -keysize <span class="m">2048</span> -validity <span class="m">10000</span>
-
-<span class="c1">#2 重新打包</span>
-apktool b -o yy.apk dec/
-
-<span class="c1">#3 重新签名，使用android sdk tool自带的工具</span>
-<span class="nv">$ANDROID_HOME</span>/build-tools/30.0.3/apksigner sign --ks hello.keystore --ks-key-alias hello yy.apk
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#1 使用keytool生成密钥，如</span>
+</span></span><span class="line"><span class="cl">keytool -genkeypair -v -keystore hello.keystore -alias hello -keyalg RSA <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>          -keysize <span class="m">2048</span> -validity <span class="m">10000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#2 重新打包</span>
+</span></span><span class="line"><span class="cl">apktool b -o yy.apk dec/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#3 重新签名，使用android sdk tool自带的工具</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$ANDROID_HOME</span>/build-tools/30.0.3/apksigner sign --ks hello.keystore --ks-key-alias hello yy.apk
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>apktool重新打包时，有一个坑。在AndroidManifest.xml文件里，如果<code>android:extractNativeLibs=&quot;false&quot;</code>，则需要修改为<code>android:extractNativeLibs=&quot;true&quot;</code>，否则按装时会报错。</p>
 <p>按照上述修改后，本以为就可以了，可事实上，压根就没有解决https无法查看的问题。这就如同说TCP挥手必须要四次才行的那些背八股文的人一样，根本就没有经过实践，把不完整的知识当是真理。当然，因为这是修改别的软件，不知道自己编写的软件这么修改后，有没有效果。</p>
@@ -352,14 +350,14 @@ apktool b -o yy.apk dec/
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#1 AndroidManifest.xml 修改为
-platfORMBuildVersionCode=&#34;23&#34;
-
-#2 apktool.yml修改为
-sdkInfo:
-  minSdkVersion: &#39;23&#39;
-  targetSdkVersion: &#39;23&#39;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1">#1 AndroidManifest.xml 修改为</span>
+</span></span><span class="line"><span class="cl"><span class="n">platfORMBuildVersionCode</span><span class="o">=</span><span class="s2">&#34;23&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#2 apktool.yml修改为</span>
+</span></span><span class="line"><span class="cl"><span class="n">sdkInfo</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">minSdkVersion</span><span class="p">:</span> <span class="s1">&#39;23&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">targetSdkVersion</span><span class="p">:</span> <span class="s1">&#39;23&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后，然后，结果居然行了！！！</p>
 <p><figure>
@@ -967,7 +965,7 @@ sdkInfo:
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" integrity="sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous"></script>
 </body>
 
 </html>

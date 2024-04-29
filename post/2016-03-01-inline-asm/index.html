@@ -19,11 +19,11 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="内联ASM" />
-<meta name="twitter:image" content="https://luoguochun.cn"/>
+<meta name="twitter:image" content="https://luoguochun.cn/"/>
 <meta property="og:url" content="https://luoguochun.cn/post/2016-03-01-inline-asm/" />
 <meta property="og:title" content="内联ASM" />
 <meta property="og:description" content="一、最基本格式: `asm(&quot;assembly code&quot;)` 注意： 1. 汇编代码必须用双引号括起来 2. 如果汇编代码有多行，下一行必须有制表符开始 例子： 1 2 3 4 5 asm ( “movl $1, %eax\" />
-<meta property="og:image" content="https://luoguochun.cn" />
+<meta property="og:image" content="https://luoguochun.cn/" />
   <meta name="keywords" content="blog,computer,luoguochun" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://luoguochun.cn/icons/apple-touch-icon.png">
@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
-"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" as="script" integrity=
+"sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -50,7 +50,7 @@
   data-lang="zh-cn">
 
 <header class="nav_header" >
-  <nav class="nav"><a href='https://luoguochun.cn' class="nav_brand nav_item" title="BUF1024">BUF1024
+  <nav class="nav"><a href='https://luoguochun.cn/' class="nav_brand nav_item" title="BUF1024">BUF1024
   <div class="nav_close">
     <div><svg class="icon">
   <title>open-menu</title>
@@ -74,7 +74,7 @@
     <a href="https://luoguochun.cn/" class="nav_item" title="主页">主页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://luoguochun.cn" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://luoguochun.cn/" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://luoguochun.cn/talib-doc/" class="nav_child nav_item" title="TA 技术分析库">TA 技术分析库</a>
@@ -168,12 +168,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c">    <span class="k">asm</span> <span class="p">(</span> <span class="err">“</span><span class="n">movl</span> <span class="err">$</span><span class="mi">1</span><span class="p">,</span> <span class="o">%</span><span class="n">eax</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
-
-              <span class="err">“</span><span class="n">movl</span> <span class="err">$</span><span class="mi">0</span><span class="p">,</span> <span class="o">%</span><span class="n">ebx</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
-
-              <span class="err">“</span><span class="kt">int</span> <span class="err">$</span><span class="mh">0x80</span><span class="err">”</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">    <span class="k">asm</span> <span class="p">(</span> <span class="err">“</span><span class="n">movl</span> <span class="err">$</span><span class="mi">1</span><span class="p">,</span> <span class="o">%</span><span class="n">eax</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">              <span class="err">“</span><span class="n">movl</span> <span class="err">$</span><span class="mi">0</span><span class="p">,</span> <span class="o">%</span><span class="n">ebx</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">              <span class="err">“</span><span class="kt">int</span> <span class="err">$</span><span class="mh">0x80</span><span class="err">”</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><pre><code>使用全局变量，基本格式只能使用全局变量，无法使用局部变量
 
@@ -206,30 +206,30 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c">    <span class="cp">#include</span>
-
-    <span class="cpf">int a = 10, b = 20;</span><span class="cp">
-</span><span class="cp"></span>
-    <span class="kt">int</span> <span class="n">rst</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-    <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-
-    <span class="p">{</span>
-
-        <span class="k">asm</span><span class="p">(</span><span class="s">&#34;movl a, %eax</span><span class="se">\n\t</span><span class="s">&#34;</span>
-
-                <span class="s">&#34;movl b, %ebx</span><span class="se">\n\t</span><span class="s">&#34;</span>
-
-                <span class="s">&#34;imull %ebx, %eax</span><span class="se">\n\t</span><span class="s">&#34;</span>
-
-                <span class="s">&#34;movl %eax, rst</span><span class="se">\n\t</span><span class="s">&#34;</span><span class="p">);</span>
-
-        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">rst</span><span class="p">);</span>
-
-        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-
-    <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">    <span class="cp">#include</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cpf">int a = 10, b = 20;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">rst</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">asm</span><span class="p">(</span><span class="s">&#34;movl a, %eax</span><span class="se">\n\t</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;movl b, %ebx</span><span class="se">\n\t</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;imull %ebx, %eax</span><span class="se">\n\t</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;movl %eax, rst</span><span class="se">\n\t</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">rst</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><pre><code>==
 
@@ -269,14 +269,14 @@ Input operands  :  输入位置，内存/寄存器，多个数据用逗号分隔
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c">  <span class="k">asm</span> <span class="p">(</span><span class="err">“</span><span class="n">imull</span> <span class="o">%%</span><span class="n">edx</span><span class="p">,</span> <span class="o">%%</span><span class="n">ecx</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
-
-           <span class="err">“</span><span class="n">movl</span> <span class="o">%%</span><span class="n">ecx</span><span class="p">,</span> <span class="o">%%</span><span class="n">eax</span><span class="err">”</span>
-
-              <span class="o">:</span> <span class="err">“</span><span class="o">=</span><span class="n">a</span><span class="err">”</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-              <span class="o">:</span> <span class="err">“</span><span class="n">d</span><span class="err">”</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span> <span class="err">“</span><span class="n">c</span><span class="err">”</span><span class="p">(</span><span class="n">data2</span><span class="p">));</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">  <span class="k">asm</span> <span class="p">(</span><span class="err">“</span><span class="n">imull</span> <span class="o">%%</span><span class="n">edx</span><span class="p">,</span> <span class="o">%%</span><span class="n">ecx</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">           <span class="err">“</span><span class="n">movl</span> <span class="o">%%</span><span class="n">ecx</span><span class="p">,</span> <span class="o">%%</span><span class="n">eax</span><span class="err">”</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">              <span class="o">:</span> <span class="err">“</span><span class="o">=</span><span class="n">a</span><span class="err">”</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">              <span class="o">:</span> <span class="err">“</span><span class="n">d</span><span class="err">”</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span> <span class="err">“</span><span class="n">c</span><span class="err">”</span><span class="p">(</span><span class="n">data2</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Output locations/ Input operands 格式：</p>
 <p>“constraint”(variable)</p>
@@ -338,12 +338,12 @@ g    使用内存或寄存器
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c">    <span class="k">asm</span> <span class="p">(</span><span class="err">“</span><span class="n">assembly</span> <span class="n">code</span><span class="err">”</span>
-
-                <span class="o">:</span> <span class="err">“</span><span class="o">=</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-                <span class="o">:</span> <span class="err">“</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span> <span class="err">“</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">data2</span><span class="p">));</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">    <span class="k">asm</span> <span class="p">(</span><span class="err">“</span><span class="n">assembly</span> <span class="n">code</span><span class="err">”</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="o">:</span> <span class="err">“</span><span class="o">=</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="o">:</span> <span class="err">“</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span> <span class="err">“</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">data2</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><pre><code> $0, 表示包含result的寄存器，$1表示包含data1的寄存器，$2表示包含data2的寄存器。
 
@@ -358,12 +358,12 @@ g    使用内存或寄存器
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c">    <span class="k">asm</span> <span class="p">(</span><span class="err">“</span><span class="n">assembly</span> <span class="n">code</span><span class="err">”</span>
-
-                <span class="o">:</span> <span class="err">“</span><span class="o">=</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
-
-                <span class="o">:</span> <span class="err">“</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span> <span class="err">“</span><span class="mi">0</span><span class="err">”</span><span class="p">(</span><span class="n">data2</span><span class="p">));</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">    <span class="k">asm</span> <span class="p">(</span><span class="err">“</span><span class="n">assembly</span> <span class="n">code</span><span class="err">”</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="o">:</span> <span class="err">“</span><span class="o">=</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="o">:</span> <span class="err">“</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span> <span class="err">“</span><span class="mi">0</span><span class="err">”</span><span class="p">(</span><span class="n">data2</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><pre><code>Output locations/ Input operands 中的寄存器，也可以赋一个变量，格式：
 
@@ -380,12 +380,12 @@ g    使用内存或寄存器
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c">    <span class="k">asm</span> <span class="p">(</span><span class="err">“</span><span class="n">imull</span> <span class="o">%</span><span class="p">[</span><span class="n">value1</span><span class="p">],</span> <span class="o">%</span><span class="p">[</span><span class="n">value2</span><span class="p">]</span><span class="err">”</span>
-
-              <span class="o">:</span> <span class="p">[</span><span class="n">value2</span><span class="p">]</span> <span class="err">“</span><span class="o">=</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
-
-              <span class="o">:</span> <span class="p">[</span><span class="n">value1</span><span class="p">]</span> <span class="err">“</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span> <span class="err">“</span><span class="mi">0</span><span class="err">”</span><span class="p">(</span><span class="n">data2</span><span class="p">));</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">    <span class="k">asm</span> <span class="p">(</span><span class="err">“</span><span class="n">imull</span> <span class="o">%</span><span class="p">[</span><span class="n">value1</span><span class="p">],</span> <span class="o">%</span><span class="p">[</span><span class="n">value2</span><span class="p">]</span><span class="err">”</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">              <span class="o">:</span> <span class="p">[</span><span class="n">value2</span><span class="p">]</span> <span class="err">“</span><span class="o">=</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">              <span class="o">:</span> <span class="p">[</span><span class="n">value1</span><span class="p">]</span> <span class="err">“</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span> <span class="err">“</span><span class="mi">0</span><span class="err">”</span><span class="p">(</span><span class="n">data2</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><pre><code>扩展asm格式里面可以包含跳转指令，需要加后缀指明跳转的方向，f表示向前跳转，b表示向后跳转。如
 </code></pre>
@@ -410,24 +410,24 @@ g    使用内存或寄存器
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c">   <span class="k">asm</span><span class="p">(</span><span class="err">“</span><span class="n">cmp</span> <span class="o">%</span><span class="mi">1</span><span class="p">,</span> <span class="o">%</span><span class="mi">2</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
-
-            <span class="err">“</span><span class="n">jge</span> <span class="mf">0f</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
-
-            <span class="err">“</span><span class="n">movl</span> <span class="o">%</span><span class="mi">1</span><span class="p">,</span> <span class="o">%</span><span class="mi">0</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
-
-            <span class="err">“</span><span class="n">jmp</span> <span class="mf">1f</span><span class="err">\</span><span class="n">n</span> <span class="err">“</span>
-
-            <span class="err">“</span><span class="mi">0</span><span class="o">:</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
-
-            <span class="err">“</span><span class="n">movl</span> <span class="o">%</span><span class="mi">2</span><span class="p">,</span> <span class="o">%</span><span class="mi">0</span><span class="err">\</span><span class="n">n</span> <span class="err">“</span>
-
-            <span class="err">“</span><span class="mi">1</span><span class="o">:</span><span class="err">”</span>
-
-                <span class="o">:</span><span class="err">”</span><span class="o">=</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-                <span class="o">:</span><span class="err">”</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="err">“</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">b</span><span class="p">));</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">   <span class="k">asm</span><span class="p">(</span><span class="err">“</span><span class="n">cmp</span> <span class="o">%</span><span class="mi">1</span><span class="p">,</span> <span class="o">%</span><span class="mi">2</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="err">“</span><span class="n">jge</span> <span class="mf">0f</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="err">“</span><span class="n">movl</span> <span class="o">%</span><span class="mi">1</span><span class="p">,</span> <span class="o">%</span><span class="mi">0</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="err">“</span><span class="n">jmp</span> <span class="mf">1f</span><span class="err">\</span><span class="n">n</span> <span class="err">“</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="err">“</span><span class="mi">0</span><span class="o">:</span><span class="err">\</span><span class="n">n</span><span class="err">\</span><span class="n">t</span><span class="err">”</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="err">“</span><span class="n">movl</span> <span class="o">%</span><span class="mi">2</span><span class="p">,</span> <span class="o">%</span><span class="mi">0</span><span class="err">\</span><span class="n">n</span> <span class="err">“</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="err">“</span><span class="mi">1</span><span class="o">:</span><span class="err">”</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="o">:</span><span class="err">”</span><span class="o">=</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="o">:</span><span class="err">”</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="err">“</span><span class="n">r</span><span class="err">”</span><span class="p">(</span><span class="n">b</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -1003,7 +1003,7 @@ g    使用内存或寄存器
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" integrity="sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous"></script>
 </body>
 
 </html>

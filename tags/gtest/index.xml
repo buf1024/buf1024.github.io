@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>gtest on BUF1024</title>
+    <title>Gtest on BUF1024</title>
     <link>https://luoguochun.cn/tags/gtest/</link>
-    <description>Recent content in gtest on BUF1024</description>
+    <description>Recent content in Gtest on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 11 Jan 2014 23:48:14 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/gtest/index.xml" rel="self" type="application/rss+xml" />

@@ -19,11 +19,11 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Flutter 桌面端多窗口支持" />
-<meta name="twitter:image" content="https://luoguochun.cn"/>
+<meta name="twitter:image" content="https://luoguochun.cn/"/>
 <meta property="og:url" content="https://luoguochun.cn/post/2023-07-19-flutter-muti-window/" />
 <meta property="og:title" content="Flutter 桌面端多窗口支持" />
 <meta property="og:description" content="多窗口 Flutter的已经支持桌面端开发已经一段时间了，不过关注桌面端开发的应该也知道，flutter的桌面端并不支持多窗口。虽然官方表示以" />
-<meta property="og:image" content="https://luoguochun.cn" />
+<meta property="og:image" content="https://luoguochun.cn/" />
   <meta name="keywords" content="blog,computer,luoguochun" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://luoguochun.cn/icons/apple-touch-icon.png">
@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
-"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" as="script" integrity=
+"sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -50,7 +50,7 @@
   data-lang="zh-cn">
 
 <header class="nav_header" >
-  <nav class="nav"><a href='https://luoguochun.cn' class="nav_brand nav_item" title="BUF1024">BUF1024
+  <nav class="nav"><a href='https://luoguochun.cn/' class="nav_brand nav_item" title="BUF1024">BUF1024
   <div class="nav_close">
     <div><svg class="icon">
   <title>open-menu</title>
@@ -74,7 +74,7 @@
     <a href="https://luoguochun.cn/" class="nav_item" title="主页">主页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://luoguochun.cn" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://luoguochun.cn/" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://luoguochun.cn/talib-doc/" class="nav_child nav_item" title="TA 技术分析库">TA 技术分析库</a>
@@ -184,40 +184,38 @@
 </span><span class="lnt">27
 </span><span class="lnt">28
 </span><span class="lnt">29
-</span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// macos/Runner/MainFlutterWindow.swift</span>
-<span class="kd">import</span> <span class="nc">Cocoa</span>
-<span class="kd">import</span> <span class="nc">FlutterMacOS</span>
-<span class="o">+</span> <span class="kd">import</span> <span class="nc">desktop_multi_window</span>
-<span class="o">+</span> <span class="kd">import</span> <span class="nc">screen_retriever</span>
-<span class="o">+</span> <span class="kd">import</span> <span class="nc">window_manager</span>
-<span class="o">+</span> <span class="kd">import</span> <span class="nc">hotkey_manager</span>
-
-<span class="kd">class</span> <span class="nc">MainFlutterWindow</span><span class="p">:</span> <span class="n">NSWindow</span> <span class="p">{</span>
-  <span class="kr">override</span> <span class="kd">func</span> <span class="nf">awakeFromNib</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nv">flutterViewController</span> <span class="p">=</span> <span class="n">FlutterViewController</span><span class="p">()</span>
-    <span class="kd">let</span> <span class="nv">windowFrame</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">frame</span>
-    <span class="kc">self</span><span class="p">.</span><span class="n">contentViewController</span> <span class="p">=</span> <span class="n">flutterViewController</span>
-    <span class="kc">self</span><span class="p">.</span><span class="n">setFrame</span><span class="p">(</span><span class="n">windowFrame</span><span class="p">,</span> <span class="n">display</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
-
-    <span class="n">RegisterGeneratedPlugins</span><span class="p">(</span><span class="n">registry</span><span class="p">:</span> <span class="n">flutterViewController</span><span class="p">)</span>
-
-<span class="o">+</span>      <span class="n">FlutterMultiWindowPlugin</span><span class="p">.</span><span class="n">setOnWindowCreatedCallback</span> <span class="p">{</span> <span class="n">controller</span> <span class="k">in</span>
-<span class="o">+</span>      <span class="c1">// Register the plugin which you want access from other isolate.</span>
-<span class="o">+</span>    
-<span class="o">+</span>
-<span class="o">+</span>       <span class="n">WindowManagerPlugin</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="n">with</span><span class="p">:</span> <span class="n">controller</span><span class="p">.</span><span class="n">registrar</span><span class="p">(</span><span class="n">forPlugin</span><span class="p">:</span> <span class="s">&#34;WindowManagerPlugin&#34;</span><span class="p">))</span>
-<span class="o">+</span>       <span class="n">HotkeyManagerPlugin</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="n">with</span><span class="p">:</span> <span class="n">controller</span><span class="p">.</span><span class="n">registrar</span><span class="p">(</span><span class="n">forPlugin</span><span class="p">:</span> <span class="s">&#34;HotkeyManagerPlugin&#34;</span><span class="p">))</span>
-<span class="o">+</span>       <span class="n">ScreenRetrieverPlugin</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="n">with</span><span class="p">:</span> <span class="n">controller</span><span class="p">.</span><span class="n">registrar</span><span class="p">(</span><span class="n">forPlugin</span><span class="p">:</span> <span class="s">&#34;ScreenRetrieverPlugin&#34;</span><span class="p">))</span>
-<span class="o">+</span>    <span class="p">}</span>
-
-    <span class="kc">super</span><span class="p">.</span><span class="n">awakeFromNib</span><span class="p">()</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="c1">// macos/Runner/MainFlutterWindow.swift</span>
+</span></span><span class="line"><span class="cl"><span class="kd">import</span> <span class="nc">Cocoa</span>
+</span></span><span class="line"><span class="cl"><span class="kd">import</span> <span class="nc">FlutterMacOS</span>
+</span></span><span class="line"><span class="cl"><span class="o">+</span> <span class="kd">import</span> <span class="nc">desktop_multi_window</span>
+</span></span><span class="line"><span class="cl"><span class="o">+</span> <span class="kd">import</span> <span class="nc">screen_retriever</span>
+</span></span><span class="line"><span class="cl"><span class="o">+</span> <span class="kd">import</span> <span class="nc">window_manager</span>
+</span></span><span class="line"><span class="cl"><span class="o">+</span> <span class="kd">import</span> <span class="nc">hotkey_manager</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">MainFlutterWindow</span><span class="p">:</span> <span class="n">NSWindow</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">override</span> <span class="kd">func</span> <span class="nf">awakeFromNib</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nv">flutterViewController</span> <span class="p">=</span> <span class="n">FlutterViewController</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nv">windowFrame</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">frame</span>
+</span></span><span class="line"><span class="cl">    <span class="kc">self</span><span class="p">.</span><span class="n">contentViewController</span> <span class="p">=</span> <span class="n">flutterViewController</span>
+</span></span><span class="line"><span class="cl">    <span class="kc">self</span><span class="p">.</span><span class="n">setFrame</span><span class="p">(</span><span class="n">windowFrame</span><span class="p">,</span> <span class="n">display</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">RegisterGeneratedPlugins</span><span class="p">(</span><span class="n">registry</span><span class="p">:</span> <span class="n">flutterViewController</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">+</span>      <span class="n">FlutterMultiWindowPlugin</span><span class="p">.</span><span class="n">setOnWindowCreatedCallback</span> <span class="p">{</span> <span class="n">controller</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl"><span class="o">+</span>      <span class="c1">// Register the plugin which you want access from other isolate.</span>
+</span></span><span class="line"><span class="cl"><span class="o">+</span>    
+</span></span><span class="line"><span class="cl"><span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="o">+</span>       <span class="n">WindowManagerPlugin</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="n">with</span><span class="p">:</span> <span class="n">controller</span><span class="p">.</span><span class="n">registrar</span><span class="p">(</span><span class="n">forPlugin</span><span class="p">:</span> <span class="s">&#34;WindowManagerPlugin&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="o">+</span>       <span class="n">HotkeyManagerPlugin</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="n">with</span><span class="p">:</span> <span class="n">controller</span><span class="p">.</span><span class="n">registrar</span><span class="p">(</span><span class="n">forPlugin</span><span class="p">:</span> <span class="s">&#34;HotkeyManagerPlugin&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="o">+</span>       <span class="n">ScreenRetrieverPlugin</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="n">with</span><span class="p">:</span> <span class="n">controller</span><span class="p">.</span><span class="n">registrar</span><span class="p">(</span><span class="n">forPlugin</span><span class="p">:</span> <span class="s">&#34;ScreenRetrieverPlugin&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="o">+</span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kc">super</span><span class="p">.</span><span class="n">awakeFromNib</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个注册，不单单是依赖的插件的<code>Plugin</code>​，还有所依赖的<code>Plugin</code>​依赖的<code>Plugin</code>​, 比如<code>window_manager</code>​这个，它还依赖<code>screen_retriever</code>​，你必须把两个都注册进来。这就比较烦人了，你怎么知道你导入的库，还依赖哪个插件，所依赖的那个插件由叫什么名字呢？所以，必须一个一个的试等到异常抛出来之后，去网上找到对应的库，找到代码中的名称，才能确定，然后才能添加到代码之中。</p>
 <p>踩过第一坑之后，马上便迎来第二个坑。在我设置场景中，主窗口丢失焦点之后，就进行关闭，由系统托盘管理，关闭子窗口的时候，子窗口将完全关闭，还有一个功能，就是窗口关闭之后，点docker程序是恢复到主窗口的（系统托盘了，不应该还有docker window的，不过这是测试）。实现docker恢复，大体增加的代码:</p>
@@ -251,33 +249,33 @@
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// macos/Runner/AppDelegate.swift</span>
-<span class="kd">import</span> <span class="nc">Cocoa</span>
-<span class="kd">import</span> <span class="nc">FlutterMacOS</span>
-
-<span class="kr">@NSApplicationMain</span>
-<span class="kd">class</span> <span class="nc">AppDelegate</span><span class="p">:</span> <span class="n">FlutterAppDelegate</span> <span class="p">{</span>
-  <span class="kr">override</span> <span class="kd">func</span> <span class="nf">applicationShouldTerminateAfterLastWindowClosed</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="n">NSApplication</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
- <span class="o">-</span>   <span class="k">return</span> <span class="kc">true</span>
- <span class="o">+</span>   <span class="k">return</span> <span class="kc">false</span>
-  <span class="p">}</span>
- <span class="o">+</span><span class="kr">override</span> <span class="kd">func</span> <span class="nf">applicationShouldHandleReopen</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="n">NSApplication</span><span class="p">,</span> <span class="n">hasVisibleWindows</span> <span class="n">flag</span><span class="p">:</span> <span class="nb">Bool</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
- <span class="o">+</span>   <span class="k">if</span> <span class="o">!</span><span class="n">flag</span> <span class="p">{</span>
- <span class="o">+</span>     <span class="k">for</span> <span class="n">window</span> <span class="k">in</span> <span class="n">NSApp</span><span class="p">.</span><span class="n">windows</span> <span class="p">{</span>
- <span class="o">+</span>       <span class="c1">// if window.parent == nil {</span>
- <span class="o">+</span>       <span class="k">if</span> <span class="o">!</span><span class="n">window</span><span class="p">.</span><span class="n">isVisible</span> <span class="p">{</span>
- <span class="o">+</span>         <span class="n">window</span><span class="p">.</span><span class="n">setIsVisible</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
- <span class="o">+</span>       <span class="p">}</span>
- <span class="o">+</span>       <span class="n">window</span><span class="p">.</span><span class="n">makeKeyAndOrderFront</span><span class="p">(</span><span class="kc">self</span><span class="p">)</span>
- <span class="o">+</span>       <span class="n">NSApp</span><span class="p">.</span><span class="n">activate</span><span class="p">(</span><span class="n">ignoringOtherApps</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
- <span class="o">+</span>       <span class="c1">// break</span>
- <span class="o">+</span>       <span class="c1">// }</span>
- <span class="o">+</span>     <span class="p">}</span>
- <span class="o">+</span>   <span class="p">}</span>
- <span class="o">+</span>   <span class="k">return</span> <span class="kc">true</span>
- <span class="o">+</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="c1">// macos/Runner/AppDelegate.swift</span>
+</span></span><span class="line"><span class="cl"><span class="kd">import</span> <span class="nc">Cocoa</span>
+</span></span><span class="line"><span class="cl"><span class="kd">import</span> <span class="nc">FlutterMacOS</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">@NSApplicationMain</span>
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">AppDelegate</span><span class="p">:</span> <span class="n">FlutterAppDelegate</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">override</span> <span class="kd">func</span> <span class="nf">applicationShouldTerminateAfterLastWindowClosed</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="n">NSApplication</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span>   <span class="k">return</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>   <span class="k">return</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span><span class="kr">override</span> <span class="kd">func</span> <span class="nf">applicationShouldHandleReopen</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="n">NSApplication</span><span class="p">,</span> <span class="n">hasVisibleWindows</span> <span class="n">flag</span><span class="p">:</span> <span class="nb">Bool</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>   <span class="k">if</span> <span class="o">!</span><span class="n">flag</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>     <span class="k">for</span> <span class="n">window</span> <span class="k">in</span> <span class="n">NSApp</span><span class="p">.</span><span class="n">windows</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>       <span class="c1">// if window.parent == nil {</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>       <span class="k">if</span> <span class="o">!</span><span class="n">window</span><span class="p">.</span><span class="n">isVisible</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>         <span class="n">window</span><span class="p">.</span><span class="n">setIsVisible</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>       <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>       <span class="n">window</span><span class="p">.</span><span class="n">makeKeyAndOrderFront</span><span class="p">(</span><span class="kc">self</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>       <span class="n">NSApp</span><span class="p">.</span><span class="n">activate</span><span class="p">(</span><span class="n">ignoringOtherApps</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>       <span class="c1">// break</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>       <span class="c1">// }</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>     <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>   <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span>   <span class="k">return</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>场景示意：</p>
 <p>​<figure>
@@ -315,11 +313,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="c1">// lib/macos/Classes/WindowManager.swift</span>
-  <span class="kd">public</span> <span class="kd">func</span> <span class="nf">close</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">mainWindow</span><span class="p">.</span><span class="n">perfORMClose</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
-    <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="c1">// lib/macos/Classes/WindowManager.swift</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">public</span> <span class="kd">func</span> <span class="nf">close</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mainWindow</span><span class="p">.</span><span class="n">perfORMClose</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>而<code>perfORMClose</code>​在苹果文档里面只是模拟关闭的这按钮而已，所以肯定是关闭不了的了。查看所有<a href="https://github.com/leanflutter/window_manager">window_manager</a>的函数，并没有一个可以关闭的函数了。不过好在苹果的文档够详细，而且有了样板代码在那里，即使不会swift语言，不会写Flutter Plugin，往里面添加功能还是很容易的。完全关闭，也很简单（当然，使之能够被flutter调用，还有添加其他代码，此处忽略）:</p>
 <div class="highlight"><div class="chroma">
@@ -330,11 +328,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift">    <span class="kd">public</span> <span class="kd">func</span> <span class="nf">forceClose</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">mainWindow</span><span class="p">.</span><span class="n">isReleasedWhenClosed</span> <span class="p">=</span> <span class="kc">true</span>
-        <span class="n">mainWindow</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">func</span> <span class="nf">forceClose</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mainWindow</span><span class="p">.</span><span class="n">isReleasedWhenClosed</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mainWindow</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>解决了上述坑之外，就以为没坑了？非也，最大的坑还在后面，<a href="https://github.com/MixinNetwork/flutter-plugins/tree/main/packages/desktop_multi_window" title="desktop_multi_window">desktop_multi_window</a>所创建的字窗口，和其他窗口是完全独立的，几乎相当于新起了一个程序，所以，应用程序的状态并不能共享，更加不会得到更新。所以它用自己独特的消息传递方式，用<code>DesktopMultiWindow.setMethodHandler</code>​监听消息，用<code>DesktopMultiWindow.invokeMethod</code>​发送消息，把名字写得像远程调用似的，不过也像是远程调用。而这种通讯方式，最大的弊端就是，对代码有极高的入侵性，你必须要按照这种模式来思考和构建你的程序。如果Flutter真的开始支持了多窗口，那么程序也必须重写一次，不过好在Flutter界面开发的高效率，重构所花费的时间感觉也是可以接受。</p>
 <h3 id="小结">小结</h3>
@@ -914,7 +912,7 @@
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" integrity="sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous"></script>
 </body>
 
 </html>

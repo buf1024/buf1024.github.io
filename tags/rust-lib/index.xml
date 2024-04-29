@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>rust-lib on BUF1024</title>
+    <title>Rust-Lib on BUF1024</title>
     <link>https://luoguochun.cn/tags/rust-lib/</link>
-    <description>Recent content in rust-lib on BUF1024</description>
+    <description>Recent content in Rust-Lib on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 13 Sep 2021 01:12:02 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/tags/rust-lib/index.xml" rel="self" type="application/rss+xml" />
@@ -16,7 +16,7 @@
       <description>
         
           
-            全局静态变量初化，在他编程语言里面，是一个很简单又自然的事，然而在rust里面并非容易。如果像下面定义全局静态变量，那么会报错： 1 staticrefVEC_VAL: Vec&amp;lt;String&amp;gt;=vec![&amp;#34;1, 2, 3&amp;#34;.into()]; 静
+            全局静态变量初化，在他编程语言里面，是一个很简单又自然的事，然而在rust里面并非容易。如果像下面定义全局静态变量，那么会报错： 1 static ref VEC_VAL: Vec&amp;lt;String&amp;gt; =
           
           
         

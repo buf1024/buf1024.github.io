@@ -19,11 +19,11 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="Flutter Trouble shoot" />
-<meta name="twitter:image" content="https://luoguochun.cn"/>
+<meta name="twitter:image" content="https://luoguochun.cn/"/>
 <meta property="og:url" content="https://luoguochun.cn/post/2019-06-01-flutter-trouble-shoot/" />
 <meta property="og:title" content="Flutter Trouble shoot" />
 <meta property="og:description" content="Flutter升级无法翻墙 1 2 3 4 5 6 7 升级没法fq的，运行报错的，可以做以下操作将sdk中 flutter/packages/flutter_tools/gradle/resolve_dependencies.gradle …" />
-<meta property="og:image" content="https://luoguochun.cn" />
+<meta property="og:image" content="https://luoguochun.cn/" />
   <meta name="keywords" content="blog,computer,luoguochun" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://luoguochun.cn/icons/apple-touch-icon.png">
@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
-"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" as="script" integrity=
+"sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -50,7 +50,7 @@
   data-lang="zh-cn">
 
 <header class="nav_header" >
-  <nav class="nav"><a href='https://luoguochun.cn' class="nav_brand nav_item" title="BUF1024">BUF1024
+  <nav class="nav"><a href='https://luoguochun.cn/' class="nav_brand nav_item" title="BUF1024">BUF1024
   <div class="nav_close">
     <div><svg class="icon">
   <title>open-menu</title>
@@ -74,7 +74,7 @@
     <a href="https://luoguochun.cn/" class="nav_item" title="主页">主页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://luoguochun.cn" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://luoguochun.cn/" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://luoguochun.cn/talib-doc/" class="nav_child nav_item" title="TA 技术分析库">TA 技术分析库</a>
@@ -160,14 +160,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">升级没法fq的，运行报错的，可以做以下操作将sdk中
-flutter/packages/flutter_tools/gradle/resolve_dependencies.gradle
-flutter/packages/flutter_tools/gradle/aar_init_script.gradle
-flutter/packages/flutter_tools/gradle/flutter.gradle
-3个文件中的 https://storage.googleapis.com/download.flutter.io 
-替换为：
-http://download.flutter.io
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="err">升级没法</span><span class="n">fq的</span><span class="err">，运行报错的，可以做以下操作将</span><span class="n">sdk中</span>
+</span></span><span class="line"><span class="cl"><span class="n">flutter</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">flutter_tools</span><span class="o">/</span><span class="n">gradle</span><span class="o">/</span><span class="n">resolve_dependencies</span><span class="o">.</span><span class="n">gradle</span>
+</span></span><span class="line"><span class="cl"><span class="n">flutter</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">flutter_tools</span><span class="o">/</span><span class="n">gradle</span><span class="o">/</span><span class="n">aar_init_script</span><span class="o">.</span><span class="n">gradle</span>
+</span></span><span class="line"><span class="cl"><span class="n">flutter</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">flutter_tools</span><span class="o">/</span><span class="n">gradle</span><span class="o">/</span><span class="n">flutter</span><span class="o">.</span><span class="n">gradle</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3</span><span class="err">个文件中的</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">storage</span><span class="o">.</span><span class="n">googleapis</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">download</span><span class="o">.</span><span class="n">flutter</span><span class="o">.</span><span class="n">io</span> 
+</span></span><span class="line"><span class="cl"><span class="err">替换为：</span>
+</span></span><span class="line"><span class="cl"><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">flutter</span><span class="o">.</span><span class="n">io</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="flutter-upgrade-经常失败或超时最后重新用git协议重新下载">Flutter upgrade 经常失败或超时(最后重新用git协议重新下载)</h2>
 <div class="highlight"><div class="chroma">
@@ -184,17 +184,17 @@ http://download.flutter.io
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1. git remote -v 检查git 仓库是否是https协议，如果不是修改为git协议
-
-2. git remote rm orgin
-   git remote add origin git@github.com:flutter/flutter.git
-   git checkout master
-   git pull orign master
-   
-3. flutter channnel stable
-
-4. flutter upgrade -v
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. git remote -v 检查git 仓库是否是https协议，如果不是修改为git协议
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2. git remote rm orgin
+</span></span><span class="line"><span class="cl">   git remote add origin git@github.com:flutter/flutter.git
+</span></span><span class="line"><span class="cl">   git checkout master
+</span></span><span class="line"><span class="cl">   git pull orign master
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">3. flutter channnel stable
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4. flutter upgrade -v
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="flutter-build-apk-包错">flutter build apk 包错</h2>
 <div class="highlight"><div class="chroma">
@@ -211,17 +211,17 @@ http://download.flutter.io
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">/Users/luoguochun/.gradle/caches/transfORMs-1/files-1.1/support-compat-28.0.0.aar/600bd9322c1a43475e
-7c0ab512969467/res/values/values.xml:133:5-70: AAPT: error: resource
-android:attr/fontVariationSettings not found.
-
-# 解决
-修改： android/app/build.gradle
-compileSdkVersion 28
-
-# 参考:
-https://stackoverflow.com/questions/49208772/error-resource-androidattr-fontvariationsettings-not-found
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">luoguochun</span><span class="o">/.</span><span class="n">gradle</span><span class="o">/</span><span class="n">caches</span><span class="o">/</span><span class="n">transfORMs</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">files</span><span class="o">-</span><span class="mf">1.1</span><span class="o">/</span><span class="n">support</span><span class="o">-</span><span class="n">compat</span><span class="o">-</span><span class="mf">28.0</span><span class="o">.</span><span class="mf">0.</span><span class="n">aar</span><span class="o">/</span><span class="mi">600</span><span class="n">bd9322c1a43475e</span>
+</span></span><span class="line"><span class="cl"><span class="mi">7</span><span class="n">c0ab512969467</span><span class="o">/</span><span class="n">res</span><span class="o">/</span><span class="n">values</span><span class="o">/</span><span class="n">values</span><span class="o">.</span><span class="n">xml</span><span class="p">:</span><span class="mi">133</span><span class="p">:</span><span class="mi">5</span><span class="o">-</span><span class="mi">70</span><span class="p">:</span> <span class="n">AAPT</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">resource</span>
+</span></span><span class="line"><span class="cl"><span class="n">android</span><span class="p">:</span><span class="n">attr</span><span class="o">/</span><span class="n">fontVariationSettings</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 解决</span>
+</span></span><span class="line"><span class="cl"><span class="err">修改：</span> <span class="n">android</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">gradle</span>
+</span></span><span class="line"><span class="cl"><span class="n">compileSdkVersion</span> <span class="mi">28</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 参考:</span>
+</span></span><span class="line"><span class="cl"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">stackoverflow</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">questions</span><span class="o">/</span><span class="mi">49208772</span><span class="o">/</span><span class="n">error</span><span class="o">-</span><span class="n">resource</span><span class="o">-</span><span class="n">androidattr</span><span class="o">-</span><span class="n">fontvariationsettings</span><span class="o">-</span><span class="ow">not</span><span class="o">-</span><span class="n">found</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="库延迟载入">库延迟载入</h2>
 <div class="highlight"><div class="chroma">
@@ -242,21 +242,21 @@ https://stackoverflow.com/questions/49208772/error-resource-androidattr-fontvari
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1. 使用defered as 导入
-2. 使用 async loadLibrary.
-如：
-import &#39;mylib.dart&#39; defered as lazylib
-
-void main() {
-    loadLazy()
-}
-
-void loadLazy() async {
-    await lazylib.loadLibary()
-  
-    # lazylib.doxxx
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="mf">1.</span> <span class="err">使用</span><span class="n">defered</span> <span class="n">as</span> <span class="err">导入</span>
+</span></span><span class="line"><span class="cl"><span class="mf">2.</span> <span class="err">使用</span> <span class="n">async</span> <span class="n">loadLibrary</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="err">如：</span>
+</span></span><span class="line"><span class="cl"><span class="n">import</span> <span class="s1">&#39;mylib.dart&#39;</span> <span class="n">defered</span> <span class="n">as</span> <span class="n">lazylib</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loadLazy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">void</span> <span class="n">loadLazy</span><span class="p">()</span> <span class="n">async</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">await</span> <span class="n">lazylib</span><span class="o">.</span><span class="n">loadLibary</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    <span class="c1"># lazylib.doxxx</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -832,7 +832,7 @@ void loadLazy() async {
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" integrity="sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous"></script>
 </body>
 
 </html>

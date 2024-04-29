@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>rust on BUF1024</title>
+    <title>Rust on BUF1024</title>
     <link>https://luoguochun.cn/tags/rust/</link>
-    <description>Recent content in rust on BUF1024</description>
+    <description>Recent content in Rust on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 13 Jan 2024 16:00:10 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/tags/rust/index.xml" rel="self" type="application/rss+xml" />
@@ -48,7 +48,7 @@
       <description>
         
           
-            今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 // 敏感信息去掉 fORMat!(&amp;#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;amp;X_=xadf0&amp;#34;,code=&amp;amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22cod
+            今天遇到一个非常特殊的问题，源自于以下一段代码： 1 2 3 4 // 敏感信息去掉 fORMat!(&amp;#34;https://xxxget?\ a=(ab%3D%22code%22)&amp;amp;X_=xadf0&amp;#34;, code = &amp;amp;code[2..]); 这是一段拼接url的代码，以上代码是错误的写法，%3D%22
           
           
         

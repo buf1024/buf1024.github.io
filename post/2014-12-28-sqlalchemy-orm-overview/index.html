@@ -19,11 +19,11 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
 <meta name="twitter:title" content="sqlalchemy orm 概览" />
-<meta name="twitter:image" content="https://luoguochun.cn"/>
+<meta name="twitter:image" content="https://luoguochun.cn/"/>
 <meta property="og:url" content="https://luoguochun.cn/post/2014-12-28-sqlalchemy-orm-overview/" />
 <meta property="og:title" content="sqlalchemy orm 概览" />
 <meta property="og:description" content="SQLAlchemy 概述 在Python的orm世界里，SQLAlchemy,无疑是数据库工具链里面的一个重量级的工具。SQLAlchemy简略构架图如下: 如图" />
-<meta property="og:image" content="https://luoguochun.cn" />
+<meta property="og:image" content="https://luoguochun.cn/" />
   <meta name="keywords" content="blog,computer,luoguochun" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://luoguochun.cn/icons/apple-touch-icon.png">
@@ -38,8 +38,8 @@
 
 
 
-<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" as="script" integrity=
-"sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous">
+<link rel="preload" href="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" as="script" integrity=
+"sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous">
 
 
 <link rel="stylesheet" type="text/css" href="https://luoguochun.cn/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
@@ -50,7 +50,7 @@
   data-lang="zh-cn">
 
 <header class="nav_header" >
-  <nav class="nav"><a href='https://luoguochun.cn' class="nav_brand nav_item" title="BUF1024">BUF1024
+  <nav class="nav"><a href='https://luoguochun.cn/' class="nav_brand nav_item" title="BUF1024">BUF1024
   <div class="nav_close">
     <div><svg class="icon">
   <title>open-menu</title>
@@ -74,7 +74,7 @@
     <a href="https://luoguochun.cn/" class="nav_item" title="主页">主页 </a>
   </div>
   <div class="nav_parent">
-    <a href="https://luoguochun.cn" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
+    <a href="https://luoguochun.cn/" class="nav_item" title="链接">链接 <img src='https://luoguochun.cn/icons/caret-icon.svg' alt="icon" class="nav_icon"></a>
     <div class="nav_sub">
       <span class="nav_child"></span>
         <a href="https://luoguochun.cn/talib-doc/" class="nav_child nav_item" title="TA 技术分析库">TA 技术分析库</a>
@@ -185,9 +185,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python">    <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1">#导入sqlalchemy所有包</span>
-    <span class="o">&gt;&gt;&gt;</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&#34;sqlite:///:memory:&#34;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#绑定数据库后端</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl">    <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1">#导入sqlalchemy所有包</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&gt;&gt;&gt;</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&#34;sqlite:///:memory:&#34;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#绑定数据库后端</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>create_engine</code>通过不同的<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/engines.html#database-urls">DB URL</a>来识别不同数据库后端，数据库接口必须是符合<a href="http://docs.sqlalchemy.org/en/rel_0_9/glossary.html#term-dbapi">Python dbapi</a>规范的。需要注意的是，<code>create_engine</code>并不实际和数据库进行连接，等到第一次执行<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/connections.html#sqlalchemy.engine.Engine.execute">Engine.execute</a>或<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/connections.html#sqlalchemy.engine.Engine.connect">Engine.connect</a>显式连接时，才进行真正的数据库连接。</p>
 <h5 id="库表数据表示">库表数据表示</h5>
@@ -245,22 +245,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python">    <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="o">*</span>
-    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&#34;sqlite:///test.db&#34;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">metadata</span> <span class="o">=</span> <span class="n">MetaData</span><span class="p">()</span>
-    <span class="n">user</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span>
-      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">(</span><span class="mi">64</span><span class="p">)),</span>
-      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span>
-    <span class="p">)</span>
-    
-    <span class="n">address</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s1">&#39;address&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span>
-      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;user.id&#39;</span><span class="p">)),</span>
-      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;address&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="p">)</span>
-    <span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl">    <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&#34;sqlite:///test.db&#34;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">metadata</span> <span class="o">=</span> <span class="n">MetaData</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">user</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">(</span><span class="mi">64</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">address</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s1">&#39;address&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;user.id&#39;</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;address&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>执行后输出如下:</p>
 <div class="highlight"><div class="chroma">
@@ -288,28 +288,28 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">    ……忽略无关内容
-    CREATE TABLE user (
-            id INTEGER NOT NULL,
-            name VARCHAR(64),
-            sex VARCHAR(2),
-            PRIMARY KEY (id)
-    )
-
-    2014-12-31 12:21:45,555 INFO sqlalchemy.engine.base.Engine ()
-    2014-12-31 12:21:45,704 INFO sqlalchemy.engine.base.Engine COMMIT
-    2014-12-31 12:21:45,707 INFO sqlalchemy.engine.base.Engine
-    CREATE TABLE address (
-            id INTEGER NOT NULL,
-            user_id INTEGER,
-            address VARCHAR(256) NOT NULL,
-            PRIMARY KEY (id),
-            FOREIGN KEY(user_id) REFERENCES user (id)
-    )
-    
-    2014-12-31 12:21:45,710 INFO sqlalchemy.engine.base.Engine ()
-    2014-12-31 12:21:45,716 INFO sqlalchemy.engine.base.Engine COMMIT
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">    ……忽略无关内容
+</span></span><span class="line"><span class="cl">    CREATE TABLE user (
+</span></span><span class="line"><span class="cl">            id INTEGER NOT NULL,
+</span></span><span class="line"><span class="cl">            name VARCHAR(64),
+</span></span><span class="line"><span class="cl">            sex VARCHAR(2),
+</span></span><span class="line"><span class="cl">            PRIMARY KEY (id)
+</span></span><span class="line"><span class="cl">    )
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    2014-12-31 12:21:45,555 INFO sqlalchemy.engine.base.Engine ()
+</span></span><span class="line"><span class="cl">    2014-12-31 12:21:45,704 INFO sqlalchemy.engine.base.Engine COMMIT
+</span></span><span class="line"><span class="cl">    2014-12-31 12:21:45,707 INFO sqlalchemy.engine.base.Engine
+</span></span><span class="line"><span class="cl">    CREATE TABLE address (
+</span></span><span class="line"><span class="cl">            id INTEGER NOT NULL,
+</span></span><span class="line"><span class="cl">            user_id INTEGER,
+</span></span><span class="line"><span class="cl">            address VARCHAR(256) NOT NULL,
+</span></span><span class="line"><span class="cl">            PRIMARY KEY (id),
+</span></span><span class="line"><span class="cl">            FOREIGN KEY(user_id) REFERENCES user (id)
+</span></span><span class="line"><span class="cl">    )
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    2014-12-31 12:21:45,710 INFO sqlalchemy.engine.base.Engine ()
+</span></span><span class="line"><span class="cl">    2014-12-31 12:21:45,716 INFO sqlalchemy.engine.base.Engine COMMIT
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>create_engine</code>会根据数据库表名而决定是否需要在数据库创建库表，如果通过<code>metadata</code>增加库表，数据库如果没有该库表的话，就会创建。但如果修改列或在<code>metadata</code>删除表，则不受影响，不会执行。另外还有另外一种方法描述库表：<strong>TABLE REFLECTION</strong>，在已有的数据库的基础上通过反射获取库表的描述，这种方法虽然方便，但是可控程度稍低。具体可参考<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/reflection.html">Refelction Database Objects</a>。</p>
 <h5 id="sqlalchemy-core-数据操作----插入"><em><strong>SQLAlchemy Core</strong></em> 数据操作 &ndash; 插入</h5>
@@ -328,17 +328,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python">    <span class="n">conn</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-    <span class="n">inst</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">insert</span><span class="p">()</span>
-    <span class="n">rst</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;hello&#34;</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="s2">&#34;F&#34;</span><span class="p">)</span>
-    
-    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">address</span><span class="o">.</span><span class="n">insert</span><span class="p">(),</span> <span class="p">[</span> 
-       <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span> <span class="p">:</span> <span class="s1">&#39;Guangdong&#39;</span><span class="p">},</span>
-       <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span> <span class="p">:</span> <span class="s1">&#39;Beijing&#39;</span><span class="p">},</span>
-       <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span> <span class="p">:</span> <span class="s1">&#39;Shanghai&#39;</span><span class="p">},</span>
-       <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span> <span class="p">:</span> <span class="s1">&#39;Hongkong&#39;</span><span class="p">},</span>
-    <span class="p">])</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl">    <span class="n">conn</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">inst</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">insert</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">rst</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&#34;hello&#34;</span><span class="p">,</span> <span class="n">sex</span><span class="o">=</span><span class="s2">&#34;F&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">address</span><span class="o">.</span><span class="n">insert</span><span class="p">(),</span> <span class="p">[</span> 
+</span></span><span class="line"><span class="cl">       <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span> <span class="p">:</span> <span class="s1">&#39;Guangdong&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">       <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span> <span class="p">:</span> <span class="s1">&#39;Beijing&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">       <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span> <span class="p">:</span> <span class="s1">&#39;Shanghai&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">       <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span> <span class="p">:</span> <span class="s1">&#39;Hongkong&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">])</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>结果如下：</p>
 <div class="highlight"><div class="chroma">
@@ -350,12 +350,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">    sqlite&gt; select a.*, b.* from user a left join address b on b.user_id = a.id;
-    1|hello|F|1|1|Guangdong
-    1|hello|F|2|1|Beijing
-    1|hello|F|3|1|Shanghai
-    1|hello|F|4|1|Hongkong
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">    sqlite&gt; select a.*, b.* from user a left join address b on b.user_id = a.id;
+</span></span><span class="line"><span class="cl">    1|hello|F|1|1|Guangdong
+</span></span><span class="line"><span class="cl">    1|hello|F|2|1|Beijing
+</span></span><span class="line"><span class="cl">    1|hello|F|3|1|Shanghai
+</span></span><span class="line"><span class="cl">    1|hello|F|4|1|Hongkong
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果需要事务控制，则需要获取<a href="http://docs.sqlalchemy.org/en/rel_0_9/core/connections.html#sqlalchemy.engine.Transaction">Transection</a>对象，事务一般需要在<code>try/except</code>块中控制，如:</p>
 <pre><code>try:
@@ -989,7 +989,7 @@ ere id = ?
   </div>
 </footer>
 
-<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.884eccc71c2848fb4aeb15945329b5a857717f0313da00cb46b765b5734cfa64b08ce2609627167129c2de17d9b47ed210682f96a2502ebb3aadc73191740211.js" integrity="sha512-iE7MxxwoSPtK6xWUUym1qFdxfwMT2gDLRrdltXNM&#43;mSwjOJglicWcSnC3hfZtH7SEGgvlqJQLrs6rccxkXQCEQ==" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://luoguochun.cn/zh-cn/js/bundle.d217df71f645eebea3db936c88283492d0217a45ec5ae8851eab518badc972cc35c99c079be4db983592b8f42fffe7850e623d855d22d0cdd5548500ac6d9558.js" integrity="sha512-0hffcfZF7r6j25NsiCg0ktAhekXsWuiFHqtRi63Jcsw1yZwHm&#43;TbmDWSuPQv/&#43;eFDmI9hV0i0M3VVIUArG2VWA==" crossorigin="anonymous"></script>
 </body>
 
 </html>
