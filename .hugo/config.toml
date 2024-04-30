@@ -21,8 +21,8 @@ paginate = 10 # 首页每页显示的文章数
 
 publishDir = "../"
 
-# [author]                  # essential                     # 必需
-#   name = "buf1024"
+[author]                  # essential                     # 必需
+   name = "buf1024"
 
 [sitemap] # essential                     # 必需
 changefreq = "weekly"

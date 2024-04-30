@@ -24,6 +24,22 @@
     </item>
     
     <item>
+      <title>Rust sqlx SQLBuilder</title>
+      <link>https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder2/</link>
+      <pubDate>Sat, 13 Jan 2024 16:00:10 +0800</pubDate>
+      
+      <guid>https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder2/</guid>
+      <description>
+        
+          
+            对于个人来说，一直不喜欢ORM​框架。明明就是熟悉sql​的，为何还要封装一层？抛开针对各个数据库厂商难以作sql​ 优化之外，封装之后的写法
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
       <title>rust 过程宏</title>
       <link>https://luoguochun.cn/post/2023-12-26-rust-proc-macro/</link>
       <pubDate>Tue, 26 Dec 2023 16:00:10 +0800</pubDate>
