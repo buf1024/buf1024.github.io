@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Macos on BUF1024</title>
-    <link>/tags/macos/</link>
+    <link>https://buf1024.github.io/tags/macos/</link>
     <description>Recent content in Macos on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 04 Jul 2023 18:00:10 +0800</lastBuildDate><atom:link href="/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jul 2023 18:00:10 +0800</lastBuildDate><atom:link href="https://buf1024.github.io/tags/macos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hiqradio 一个简单的收音机软件</title>
-      <link>/post/2023-07-04-hiqradio/</link>
+      <link>https://buf1024.github.io/post/2023-07-04-hiqradio/</link>
       <pubDate>Tue, 04 Jul 2023 18:00:10 +0800</pubDate>
       
-      <guid>/post/2023-07-04-hiqradio/</guid>
+      <guid>https://buf1024.github.io/post/2023-07-04-hiqradio/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>Macos一丢丢小技巧</title>
-      <link>/post/2018-07-06-mac-newbie/</link>
+      <link>https://buf1024.github.io/post/2018-07-06-mac-newbie/</link>
       <pubDate>Fri, 06 Jul 2018 11:02:16 +0800</pubDate>
       
-      <guid>/post/2018-07-06-mac-newbie/</guid>
+      <guid>https://buf1024.github.io/post/2018-07-06-mac-newbie/</guid>
       <description>
         
           

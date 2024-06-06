@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>OS on BUF1024</title>
-    <link>/tags/os/</link>
+    <link>https://buf1024.github.io/tags/os/</link>
     <description>Recent content in OS on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 18 Jan 2016 11:12:36 +0000</lastBuildDate><atom:link href="/tags/os/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Jan 2016 11:12:36 +0000</lastBuildDate><atom:link href="https://buf1024.github.io/tags/os/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>minix 3</title>
-      <link>/post/2016-01-18-minix-3/</link>
+      <link>https://buf1024.github.io/post/2016-01-18-minix-3/</link>
       <pubDate>Mon, 18 Jan 2016 11:12:36 +0000</pubDate>
       
-      <guid>/post/2016-01-18-minix-3/</guid>
+      <guid>https://buf1024.github.io/post/2016-01-18-minix-3/</guid>
       <description>
         
           

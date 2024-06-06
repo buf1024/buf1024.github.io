@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ssl/Tls on BUF1024</title>
-    <link>/tags/ssl/tls/</link>
+    <link>https://buf1024.github.io/tags/ssl/tls/</link>
     <description>Recent content in Ssl/Tls on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 16 Nov 2016 11:17:11 +0000</lastBuildDate><atom:link href="/tags/ssl/tls/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Nov 2016 11:17:11 +0000</lastBuildDate><atom:link href="https://buf1024.github.io/tags/ssl/tls/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ssl/tls 握手</title>
-      <link>/post/2016-11-16-https-handshake/</link>
+      <link>https://buf1024.github.io/post/2016-11-16-https-handshake/</link>
       <pubDate>Wed, 16 Nov 2016 11:17:11 +0000</pubDate>
       
-      <guid>/post/2016-11-16-https-handshake/</guid>
+      <guid>https://buf1024.github.io/post/2016-11-16-https-handshake/</guid>
       <description>
         
           

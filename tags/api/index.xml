@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>API on BUF1024</title>
-    <link>/tags/api/</link>
+    <link>https://buf1024.github.io/tags/api/</link>
     <description>Recent content in API on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 24 Jun 2012 00:00:43 +0000</lastBuildDate><atom:link href="/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Jun 2012 00:00:43 +0000</lastBuildDate><atom:link href="https://buf1024.github.io/tags/api/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Windows Shell Extension</title>
-      <link>/post/2012-06-24-windows-shell-extension/</link>
+      <link>https://buf1024.github.io/post/2012-06-24-windows-shell-extension/</link>
       <pubDate>Sun, 24 Jun 2012 00:00:43 +0000</pubDate>
       
-      <guid>/post/2012-06-24-windows-shell-extension/</guid>
+      <guid>https://buf1024.github.io/post/2012-06-24-windows-shell-extension/</guid>
       <description>
         
           

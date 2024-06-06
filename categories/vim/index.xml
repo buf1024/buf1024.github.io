@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vim on BUF1024</title>
-    <link>/categories/vim/</link>
+    <link>https://buf1024.github.io/categories/vim/</link>
     <description>Recent content in Vim on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 01 Mar 2019 18:02:12 +0800</lastBuildDate><atom:link href="/categories/vim/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Mar 2019 18:02:12 +0800</lastBuildDate><atom:link href="https://buf1024.github.io/categories/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>vim一些小技巧</title>
-      <link>/post/2019-03-01-vim-tricks/</link>
+      <link>https://buf1024.github.io/post/2019-03-01-vim-tricks/</link>
       <pubDate>Fri, 01 Mar 2019 18:02:12 +0800</pubDate>
       
-      <guid>/post/2019-03-01-vim-tricks/</guid>
+      <guid>https://buf1024.github.io/post/2019-03-01-vim-tricks/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>ycm 选项</title>
-      <link>/post/2015-10-17-ycm-opt/</link>
+      <link>https://buf1024.github.io/post/2015-10-17-ycm-opt/</link>
       <pubDate>Sat, 17 Oct 2015 22:11:41 +0000</pubDate>
       
-      <guid>/post/2015-10-17-ycm-opt/</guid>
+      <guid>https://buf1024.github.io/post/2015-10-17-ycm-opt/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>VIM XX THINGS</title>
-      <link>/post/2015-07-22-vim-xx-things/</link>
+      <link>https://buf1024.github.io/post/2015-07-22-vim-xx-things/</link>
       <pubDate>Wed, 22 Jul 2015 15:25:00 +0000</pubDate>
       
-      <guid>/post/2015-07-22-vim-xx-things/</guid>
+      <guid>https://buf1024.github.io/post/2015-07-22-vim-xx-things/</guid>
       <description>
         
           

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on BUF1024</title>
-    <link>/tags/linux/</link>
+    <link>https://buf1024.github.io/tags/linux/</link>
     <description>Recent content in Linux on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 01 Oct 2018 10:54:00 +0000</lastBuildDate><atom:link href="/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Oct 2018 10:54:00 +0000</lastBuildDate><atom:link href="https://buf1024.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>防火墙放开端口</title>
-      <link>/post/2018-10-01-firewall-cmd/</link>
+      <link>https://buf1024.github.io/post/2018-10-01-firewall-cmd/</link>
       <pubDate>Mon, 01 Oct 2018 10:54:00 +0000</pubDate>
       
-      <guid>/post/2018-10-01-firewall-cmd/</guid>
+      <guid>https://buf1024.github.io/post/2018-10-01-firewall-cmd/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>线程同步与原子变量</title>
-      <link>/post/2017-06-03-synchronize-atomic-variable/</link>
+      <link>https://buf1024.github.io/post/2017-06-03-synchronize-atomic-variable/</link>
       <pubDate>Sat, 03 Jun 2017 11:19:25 +0800</pubDate>
       
-      <guid>/post/2017-06-03-synchronize-atomic-variable/</guid>
+      <guid>https://buf1024.github.io/post/2017-06-03-synchronize-atomic-variable/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>lwan http 服务器</title>
-      <link>/post/2017-04-28-lwan-http-server/</link>
+      <link>https://buf1024.github.io/post/2017-04-28-lwan-http-server/</link>
       <pubDate>Fri, 28 Apr 2017 22:10:32 +0000</pubDate>
       
-      <guid>/post/2017-04-28-lwan-http-server/</guid>
+      <guid>https://buf1024.github.io/post/2017-04-28-lwan-http-server/</guid>
       <description>
         
           
@@ -57,10 +57,10 @@
     
     <item>
       <title>ld常用特别选项</title>
-      <link>/post/2016-01-19-ld-special/</link>
+      <link>https://buf1024.github.io/post/2016-01-19-ld-special/</link>
       <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
       
-      <guid>/post/2016-01-19-ld-special/</guid>
+      <guid>https://buf1024.github.io/post/2016-01-19-ld-special/</guid>
       <description>
         
           
@@ -73,10 +73,10 @@
     
     <item>
       <title>minix 3</title>
-      <link>/post/2016-01-18-minix-3/</link>
+      <link>https://buf1024.github.io/post/2016-01-18-minix-3/</link>
       <pubDate>Mon, 18 Jan 2016 11:12:36 +0000</pubDate>
       
-      <guid>/post/2016-01-18-minix-3/</guid>
+      <guid>https://buf1024.github.io/post/2016-01-18-minix-3/</guid>
       <description>
         
           
@@ -89,10 +89,10 @@
     
     <item>
       <title>tcpdump usage</title>
-      <link>/post/2015-07-25-tcpdump-usage/</link>
+      <link>https://buf1024.github.io/post/2015-07-25-tcpdump-usage/</link>
       <pubDate>Sat, 25 Jul 2015 14:26:04 +0000</pubDate>
       
-      <guid>/post/2015-07-25-tcpdump-usage/</guid>
+      <guid>https://buf1024.github.io/post/2015-07-25-tcpdump-usage/</guid>
       <description>
         
           
@@ -105,10 +105,10 @@
     
     <item>
       <title>gdb一丢丢常见问题</title>
-      <link>/post/2015-04-01-gdb-common-issue/</link>
+      <link>https://buf1024.github.io/post/2015-04-01-gdb-common-issue/</link>
       <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
       
-      <guid>/post/2015-04-01-gdb-common-issue/</guid>
+      <guid>https://buf1024.github.io/post/2015-04-01-gdb-common-issue/</guid>
       <description>
         
           
@@ -121,10 +121,10 @@
     
     <item>
       <title>Linux /proc 伪文件系统</title>
-      <link>/post/2014-07-28-process-information-pseduo-file-system/</link>
+      <link>https://buf1024.github.io/post/2014-07-28-process-information-pseduo-file-system/</link>
       <pubDate>Mon, 28 Jul 2014 14:57:18 +0000</pubDate>
       
-      <guid>/post/2014-07-28-process-information-pseduo-file-system/</guid>
+      <guid>https://buf1024.github.io/post/2014-07-28-process-information-pseduo-file-system/</guid>
       <description>
         
           
@@ -137,10 +137,10 @@
     
     <item>
       <title>杂乱记忆</title>
-      <link>/post/2014-07-15-misc-memory/</link>
+      <link>https://buf1024.github.io/post/2014-07-15-misc-memory/</link>
       <pubDate>Tue, 15 Jul 2014 11:10:13 +0000</pubDate>
       
-      <guid>/post/2014-07-15-misc-memory/</guid>
+      <guid>https://buf1024.github.io/post/2014-07-15-misc-memory/</guid>
       <description>
         
           
@@ -153,10 +153,10 @@
     
     <item>
       <title>隐藏make编译的编译输出</title>
-      <link>/post/2014-07-04-hide-compile-output/</link>
+      <link>https://buf1024.github.io/post/2014-07-04-hide-compile-output/</link>
       <pubDate>Fri, 04 Jul 2014 16:45:00 +0000</pubDate>
       
-      <guid>/post/2014-07-04-hide-compile-output/</guid>
+      <guid>https://buf1024.github.io/post/2014-07-04-hide-compile-output/</guid>
       <description>
         
           
@@ -169,10 +169,10 @@
     
     <item>
       <title>设置进程的名称</title>
-      <link>/post/2014-07-04-set-proccess-title/</link>
+      <link>https://buf1024.github.io/post/2014-07-04-set-proccess-title/</link>
       <pubDate>Fri, 04 Jul 2014 10:27:47 +0000</pubDate>
       
-      <guid>/post/2014-07-04-set-proccess-title/</guid>
+      <guid>https://buf1024.github.io/post/2014-07-04-set-proccess-title/</guid>
       <description>
         
           
@@ -185,10 +185,10 @@
     
     <item>
       <title>mschedule 简单Linux进程管理（树莓派）</title>
-      <link>/post/2014-05-30-myschd/</link>
+      <link>https://buf1024.github.io/post/2014-05-30-myschd/</link>
       <pubDate>Fri, 30 May 2014 23:28:16 +0000</pubDate>
       
-      <guid>/post/2014-05-30-myschd/</guid>
+      <guid>https://buf1024.github.io/post/2014-05-30-myschd/</guid>
       <description>
         
           
@@ -201,10 +201,10 @@
     
     <item>
       <title>Linux pkg-config</title>
-      <link>/post/2013-05-29-linux-pkg-config/</link>
+      <link>https://buf1024.github.io/post/2013-05-29-linux-pkg-config/</link>
       <pubDate>Wed, 29 May 2013 22:37:14 +0000</pubDate>
       
-      <guid>/post/2013-05-29-linux-pkg-config/</guid>
+      <guid>https://buf1024.github.io/post/2013-05-29-linux-pkg-config/</guid>
       <description>
         
           
@@ -217,10 +217,10 @@
     
     <item>
       <title>Linux -- rpm</title>
-      <link>/post/2012-09-18-linux-rpm/</link>
+      <link>https://buf1024.github.io/post/2012-09-18-linux-rpm/</link>
       <pubDate>Tue, 18 Sep 2012 23:48:14 +0000</pubDate>
       
-      <guid>/post/2012-09-18-linux-rpm/</guid>
+      <guid>https://buf1024.github.io/post/2012-09-18-linux-rpm/</guid>
       <description>
         
           
@@ -233,10 +233,10 @@
     
     <item>
       <title>Linux -- yum</title>
-      <link>/post/2012-09-13-linux-yum/</link>
+      <link>https://buf1024.github.io/post/2012-09-13-linux-yum/</link>
       <pubDate>Thu, 13 Sep 2012 20:10:10 +0000</pubDate>
       
-      <guid>/post/2012-09-13-linux-yum/</guid>
+      <guid>https://buf1024.github.io/post/2012-09-13-linux-yum/</guid>
       <description>
         
           
@@ -249,10 +249,10 @@
     
     <item>
       <title>sys/queue.h</title>
-      <link>/post/2012-05-02-sys-queue-h/</link>
+      <link>https://buf1024.github.io/post/2012-05-02-sys-queue-h/</link>
       <pubDate>Wed, 02 May 2012 21:08:14 +0000</pubDate>
       
-      <guid>/post/2012-05-02-sys-queue-h/</guid>
+      <guid>https://buf1024.github.io/post/2012-05-02-sys-queue-h/</guid>
       <description>
         
           

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gas on BUF1024</title>
-    <link>/tags/gas/</link>
+    <link>https://buf1024.github.io/tags/gas/</link>
     <description>Recent content in Gas on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 01 Mar 2016 14:13:05 +0000</lastBuildDate><atom:link href="/tags/gas/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Mar 2016 14:13:05 +0000</lastBuildDate><atom:link href="https://buf1024.github.io/tags/gas/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>内联ASM</title>
-      <link>/post/2016-03-01-inline-asm/</link>
+      <link>https://buf1024.github.io/post/2016-03-01-inline-asm/</link>
       <pubDate>Tue, 01 Mar 2016 14:13:05 +0000</pubDate>
       
-      <guid>/post/2016-03-01-inline-asm/</guid>
+      <guid>https://buf1024.github.io/post/2016-03-01-inline-asm/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>AT&amp;T Stype GAS Assembly</title>
-      <link>/post/2016-02-02-at-t-stype-gas-assembly/</link>
+      <link>https://buf1024.github.io/post/2016-02-02-at-t-stype-gas-assembly/</link>
       <pubDate>Tue, 02 Feb 2016 14:13:05 +0000</pubDate>
       
-      <guid>/post/2016-02-02-at-t-stype-gas-assembly/</guid>
+      <guid>https://buf1024.github.io/post/2016-02-02-at-t-stype-gas-assembly/</guid>
       <description>
         
           

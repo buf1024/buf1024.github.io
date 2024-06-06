@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reactjs on BUF1024</title>
-    <link>/categories/reactjs/</link>
+    <link>https://buf1024.github.io/categories/reactjs/</link>
     <description>Recent content in Reactjs on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 25 May 2018 17:04:10 +0000</lastBuildDate><atom:link href="/categories/reactjs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 May 2018 17:04:10 +0000</lastBuildDate><atom:link href="https://buf1024.github.io/categories/reactjs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>react-native 实践部分</title>
-      <link>/post/2018-05-25-react-native-practice/</link>
+      <link>https://buf1024.github.io/post/2018-05-25-react-native-practice/</link>
       <pubDate>Fri, 25 May 2018 17:04:10 +0000</pubDate>
       
-      <guid>/post/2018-05-25-react-native-practice/</guid>
+      <guid>https://buf1024.github.io/post/2018-05-25-react-native-practice/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>react-native 开发环境配置 -- 调试部分</title>
-      <link>/post/2018-04-14-react-native-dev-env/</link>
+      <link>https://buf1024.github.io/post/2018-04-14-react-native-dev-env/</link>
       <pubDate>Sat, 14 Apr 2018 13:44:08 +0000</pubDate>
       
-      <guid>/post/2018-04-14-react-native-dev-env/</guid>
+      <guid>https://buf1024.github.io/post/2018-04-14-react-native-dev-env/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>ReactJS  --  试水篇</title>
-      <link>/post/2018-01-25-reactjs-try/</link>
+      <link>https://buf1024.github.io/post/2018-01-25-reactjs-try/</link>
       <pubDate>Thu, 25 Jan 2018 09:32:32 +0000</pubDate>
       
-      <guid>/post/2018-01-25-reactjs-try/</guid>
+      <guid>https://buf1024.github.io/post/2018-01-25-reactjs-try/</guid>
       <description>
         
           

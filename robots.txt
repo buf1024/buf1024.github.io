@@ -4,4 +4,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://luoguochun.cn/sitemap.xml
+Sitemap: https://buf1024.github.io/sitemap.xml

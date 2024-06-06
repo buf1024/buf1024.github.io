@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ld on BUF1024</title>
-    <link>/tags/ld/</link>
+    <link>https://buf1024.github.io/tags/ld/</link>
     <description>Recent content in Ld on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 19 Jan 2016 11:12:36 +0000</lastBuildDate><atom:link href="/tags/ld/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Jan 2016 11:12:36 +0000</lastBuildDate><atom:link href="https://buf1024.github.io/tags/ld/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ld常用特别选项</title>
-      <link>/post/2016-01-19-ld-special/</link>
+      <link>https://buf1024.github.io/post/2016-01-19-ld-special/</link>
       <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
       
-      <guid>/post/2016-01-19-ld-special/</guid>
+      <guid>https://buf1024.github.io/post/2016-01-19-ld-special/</guid>
       <description>
         
           

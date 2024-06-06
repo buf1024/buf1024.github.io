@@ -1,5 +1,5 @@
 #baseURL = "https://luoguochun.cn" 
-baseURL = "" 
+baseURL = "https://buf1024.github.io" 
 defaultContentLanguage = "zh-cn" # en / zh-cn / ... (This field determines which i18n file to use)
 enableEmoji = true 
 enableRobotsTXT = true 
