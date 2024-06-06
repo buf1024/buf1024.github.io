@@ -148,7 +148,7 @@
   </span>
   </div>
 
-    <div class="post_body"><p>注：本文比较简略，且存在错漏。更详细的总结参考<a href="https://luoguochun.cn/2016/09/23/tcp-fuck">tcp协议小结</a>，后续如若发现有错漏，则同时在<a href="https://luoguochun.cn/2016/09/23/tcp-fuck">tcp协议小结</a>中进行修正，本文不再做维护。   &ndash;2016-09-23</p>
+    <div class="post_body"><p>注：本文比较简略，且存在错漏。更详细的总结参考<a href="https://buf1024.github.io/2016/09/23/tcp-fuck">tcp协议小结</a>，后续如若发现有错漏，则同时在<a href="https://buf1024.github.io/2016/09/23/tcp-fuck">tcp协议小结</a>中进行修正，本文不再做维护。   &ndash;2016-09-23</p>
 <p>虽然知道wireshark是抓包神器，只会大概大概用一下，还用一下下tcpdump，略懂一点BPF过滤器，也知道一点怎么用wirkshark过滤相关的报文，但是对于详细的字段的含义，如何查看TCP的交互情况还不是非常的了解。现在，简单分析一下。PS：这次抓包的对象是传说中通过公安局多少多少级认证的本公司开发的交易系统，本来看到他的验证码倾斜的很有规律，叫的斑斑点点也不是很密集。就想写个小程序练习一下验证码识别，可是我失望了，在wireshark里面居然没有抓到任何报文，这个东西的验证码居然是客户端生成的，无语。于是，抓下登录过程的报文，看看能否破解，相关的TCP报文：<a href="/raw/tcp/wiresharktcp-crack.pcapng">crack.pcapng</a>。关于报文分析，有一个很好的E文网站:<a href="http://packetlife.net/">packetlife</a>。</p>
 <p>废话少说，简单在看看TCP的协议头：
 <figure>
@@ -313,7 +313,7 @@ A -&gt; B seq = 2560, ACK = 2398, win = 0, Len = 0<br />
 </ul>
 <p>这里的客户端与服务端的交换是有问题的，在第20帧，收到FIN时，不应该再发送数据，这样发送的数据很有可能收到的就是<code>RST</code>。但是这并不一定是发送数据一方的问题，很有可能是客户端还没有接受完数据就关闭连接了。但可以肯定的是，在客户端或服务端某个地方肯定存在BUG。</p>
 <p>这个就是某交易系统登录的报文，报文涉及5次数据交互（请求-应答）。这有5次交换，第1，2次交换，很可能是交换RSA公钥（猜的，因为报文数据有OpenSSL标志：~）。然而后面的还有3次数据交互，并不是我期待的一次交互。难道还要同步其他密钥之类的？有空问下相关开发人员。如果是单纯破解报文的话，存在比较大的难度，但是如果是<code>DOS</code>攻击的话，这应该是非常简单的……</p>
-<p>注：本文比较简略，且存在错漏。更详细的总结参考<a href="https://luoguochun.cn/2016/09/23/tcp-fuck">tcp协议小结</a>，后续如若发现有错漏，则同时在<a href="https://luoguochun.cn/2016/09/23/tcp-fuck">tcp协议小结</a>中进行修正，本文不再做维护。   &ndash;2016-09-23</p>
+<p>注：本文比较简略，且存在错漏。更详细的总结参考<a href="https://buf1024.github.io/2016/09/23/tcp-fuck">tcp协议小结</a>，后续如若发现有错漏，则同时在<a href="https://buf1024.github.io/2016/09/23/tcp-fuck">tcp协议小结</a>中进行修正，本文不再做维护。   &ndash;2016-09-23</p>
 
     </div>
 <div class="post_comments">

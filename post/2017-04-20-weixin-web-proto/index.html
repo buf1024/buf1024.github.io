@@ -147,7 +147,7 @@
   </span>
   </div>
 
-    <div class="post_body"><p>微信有网页版，<a href="https://wx.qq.com/">网页版的微信</a>具备手机微信大部分功能。理论上，放在web页面上的所有东西，都是可以被破解的。对于web微信协议的破解，一些没有接触过前端的后端程序员，可能会想到两个方法：1. 研究网页js代码; 2. 大鲨鱼(wireshark)抓包分析（ps：参考之前写过<a href="https://luoguochun.cn/2015/07/25/tcpdump-usage/">tcpdump usage</a>，<a href="https://luoguochun.cn/2016/09/23/tcp-fuck/">tcp 协议小结</a>, <a href="https://luoguochun.cn/2016/11/16/https-handshake/">ssl/tls 握手</a>）。对于方法1，现在js的编写方法和以前有很大的不同，web前端通常用模块化方法进行js编写，在发布时，用webpack等工具进行压缩混淆，所以该方法不太可行。对于方法2. 因为现在大多web都采用https进行传输，传输过程中的数据全是加密的，所以这种办法更不可行。对于web前端和与web前端有交互的后端开发人员，都清楚还有这么一个非常常用的方式： 使用浏览器自带的开发者工具即可。理论上我们只要认真分析web微信和服务端的交互过程，分析请求参数和应答结果，即可得出相关的协议。下图为chrome开发者工具的截图：</p>
+    <div class="post_body"><p>微信有网页版，<a href="https://wx.qq.com/">网页版的微信</a>具备手机微信大部分功能。理论上，放在web页面上的所有东西，都是可以被破解的。对于web微信协议的破解，一些没有接触过前端的后端程序员，可能会想到两个方法：1. 研究网页js代码; 2. 大鲨鱼(wireshark)抓包分析（ps：参考之前写过<a href="https://buf1024.github.io/2015/07/25/tcpdump-usage/">tcpdump usage</a>，<a href="https://buf1024.github.io/2016/09/23/tcp-fuck/">tcp 协议小结</a>, <a href="https://buf1024.github.io/2016/11/16/https-handshake/">ssl/tls 握手</a>）。对于方法1，现在js的编写方法和以前有很大的不同，web前端通常用模块化方法进行js编写，在发布时，用webpack等工具进行压缩混淆，所以该方法不太可行。对于方法2. 因为现在大多web都采用https进行传输，传输过程中的数据全是加密的，所以这种办法更不可行。对于web前端和与web前端有交互的后端开发人员，都清楚还有这么一个非常常用的方式： 使用浏览器自带的开发者工具即可。理论上我们只要认真分析web微信和服务端的交互过程，分析请求参数和应答结果，即可得出相关的协议。下图为chrome开发者工具的截图：</p>
 <p><figure>
   <picture>
 

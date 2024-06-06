@@ -5,7 +5,7 @@ aliases: [/2017/04/20/weixin-web-proto/]
 categories: [Web]
 tags: [WeChat]
 ---
-微信有网页版，[网页版的微信](https://wx.qq.com/)具备手机微信大部分功能。理论上，放在web页面上的所有东西，都是可以被破解的。对于web微信协议的破解，一些没有接触过前端的后端程序员，可能会想到两个方法：1. 研究网页js代码; 2. 大鲨鱼(wireshark)抓包分析（ps：参考之前写过[tcpdump usage](https://luoguochun.cn/2015/07/25/tcpdump-usage/)，[tcp 协议小结](https://luoguochun.cn/2016/09/23/tcp-fuck/), [ssl/tls 握手](https://luoguochun.cn/2016/11/16/https-handshake/)）。对于方法1，现在js的编写方法和以前有很大的不同，web前端通常用模块化方法进行js编写，在发布时，用webpack等工具进行压缩混淆，所以该方法不太可行。对于方法2. 因为现在大多web都采用https进行传输，传输过程中的数据全是加密的，所以这种办法更不可行。对于web前端和与web前端有交互的后端开发人员，都清楚还有这么一个非常常用的方式： 使用浏览器自带的开发者工具即可。理论上我们只要认真分析web微信和服务端的交互过程，分析请求参数和应答结果，即可得出相关的协议。下图为chrome开发者工具的截图：
+微信有网页版，[网页版的微信](https://wx.qq.com/)具备手机微信大部分功能。理论上，放在web页面上的所有东西，都是可以被破解的。对于web微信协议的破解，一些没有接触过前端的后端程序员，可能会想到两个方法：1. 研究网页js代码; 2. 大鲨鱼(wireshark)抓包分析（ps：参考之前写过[tcpdump usage](https://buf1024.github.io/2015/07/25/tcpdump-usage/)，[tcp 协议小结](https://buf1024.github.io/2016/09/23/tcp-fuck/), [ssl/tls 握手](https://buf1024.github.io/2016/11/16/https-handshake/)）。对于方法1，现在js的编写方法和以前有很大的不同，web前端通常用模块化方法进行js编写，在发布时，用webpack等工具进行压缩混淆，所以该方法不太可行。对于方法2. 因为现在大多web都采用https进行传输，传输过程中的数据全是加密的，所以这种办法更不可行。对于web前端和与web前端有交互的后端开发人员，都清楚还有这么一个非常常用的方式： 使用浏览器自带的开发者工具即可。理论上我们只要认真分析web微信和服务端的交互过程，分析请求参数和应答结果，即可得出相关的协议。下图为chrome开发者工具的截图：
 
 ![chrome微信](/img/weixin/weixinchrome.png)
 

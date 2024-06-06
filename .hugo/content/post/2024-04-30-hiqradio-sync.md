@@ -26,7 +26,7 @@ tags: [Rust, Flutter, Radio]
 
 ‍
 
-web: <https://toyent.com/hiqradio/> <https://luoguochun.cn/hiqradio/> 响应式的。
+web: <https://toyent.com/hiqradio/> <https://buf1024.github.io/hiqradio/> 响应式的。
 
 android/mac(apple芯片): <https://pan.quark.cn/s/c0df18a02331#/list/share>
 

@@ -13,7 +13,7 @@ tags: [Http, C, Linux]
 
 多进程和多线程并无本质区别，多线程的优点个人看来，数据都在整个进程空间，线程内数据都可以共享，需要留意共享数据的互斥访问，缺点就是调试起来稍微麻烦，而多进程的优点在于个人看来，调试相对多线程方便，缺点就是不方便运维。(P.S:旧同事入职一家导航的公司，他们的网络框架就是多线程模式，而公司的，多数是多进程模式。旧同事提起，所以现在再回头看看[lwan](https://github.com/lpereira/lwan), 当时只是看，没记录下来，现在重新记录一下)
 
-[lwan](https://github.com/lpereira/lwan)是个非常轻量级的http服务器(P.S:检验你是否掌握了C语言的标准，是否能完整的实现一个http服务器)，代码量只有2W多行，比起成熟稳定的[nginx](http://nginx.org/)代码量少太多了，当然功能也少很多。[lwan](https://github.com/lpereira/lwan)在16年5月份左右一段时间在C语言项目排行榜star增加数排前列。个人觉得，[lwan](https://github.com/lpereira/lwan)，它采用多线程模式，遵循了高并发服务设计的最基本模式，自己设计一个比较有特色的[trie](http://baike.baidu.com/link?url=3ojcT0gOp_oV_uDCAr0IYmAl6AziaFrQNodhpkS1DPpB7euef3LideO12NpZYhJWhuHYIw-2JqSlUUw_pvP9pa)树的实现，可扩展的模块编写，同时创新的使用了协程（协程，自己在很久之前也关注过，参考: [coroutine协程](https://luoguochun.cn/2014/08/21/coroutine/)），这是最大的特点。当然，到目前为止，它还不稳定，从自己关注提出的第一个issue, 还有很多BUG，代码有一些不好的风格（如相对比较多的`goto`语句，一言不合就`abort`）。尽管如此，它还是一个非常值得学习的web服务器。下面简单粗略回顾下[lwan](https://github.com/lpereira/lwan)，详细了解的话，参考代码，自己也fork了一份，加了部分注释[lwan](https://github.com/buf1024/lwan)。(P.S:自己叫别人去学习，没理由自己忘记了)
+[lwan](https://github.com/lpereira/lwan)是个非常轻量级的http服务器(P.S:检验你是否掌握了C语言的标准，是否能完整的实现一个http服务器)，代码量只有2W多行，比起成熟稳定的[nginx](http://nginx.org/)代码量少太多了，当然功能也少很多。[lwan](https://github.com/lpereira/lwan)在16年5月份左右一段时间在C语言项目排行榜star增加数排前列。个人觉得，[lwan](https://github.com/lpereira/lwan)，它采用多线程模式，遵循了高并发服务设计的最基本模式，自己设计一个比较有特色的[trie](http://baike.baidu.com/link?url=3ojcT0gOp_oV_uDCAr0IYmAl6AziaFrQNodhpkS1DPpB7euef3LideO12NpZYhJWhuHYIw-2JqSlUUw_pvP9pa)树的实现，可扩展的模块编写，同时创新的使用了协程（协程，自己在很久之前也关注过，参考: [coroutine协程](https://buf1024.github.io/2014/08/21/coroutine/)），这是最大的特点。当然，到目前为止，它还不稳定，从自己关注提出的第一个issue, 还有很多BUG，代码有一些不好的风格（如相对比较多的`goto`语句，一言不合就`abort`）。尽管如此，它还是一个非常值得学习的web服务器。下面简单粗略回顾下[lwan](https://github.com/lpereira/lwan)，详细了解的话，参考代码，自己也fork了一份，加了部分注释[lwan](https://github.com/buf1024/lwan)。(P.S:自己叫别人去学习，没理由自己忘记了)
 
 ### 大致工作流程
 
@@ -59,7 +59,7 @@ struct lwan_trie {
 
 ### 协程coro
 
-业务处理线程里面全部使用协程进行处理的。协程应该属于[lwan](https://github.com/bu24/lwan)的核心了。协程可以参考[coroutine协程](https://luoguochun.cn/2014/08/21/coroutine/)，里面描述这里的有很大区别，但本质上都是都对`context`不同程度封装，或用汇编，或直接用系统函数。这里的coro定义了一个`struct coro_defer_array defer;`，用于`connection`超时或协程被清理时，内部资源的清理。具体协程不再详述。
+业务处理线程里面全部使用协程进行处理的。协程应该属于[lwan](https://github.com/bu24/lwan)的核心了。协程可以参考[coroutine协程](https://buf1024.github.io/2014/08/21/coroutine/)，里面描述这里的有很大区别，但本质上都是都对`context`不同程度封装，或用汇编，或直接用系统函数。这里的coro定义了一个`struct coro_defer_array defer;`，用于`connection`超时或协程被清理时，内部资源的清理。具体协程不再详述。
 
 协程本身概念并不难复杂，如果熟悉这种编程模式，那么非阻塞编程模式将可以用顺序编程的方式来思考，对程序员的思考的角度和业务逻辑的理解将有很大的提升(非阻塞的方式时，当业务流程需要进行阻塞时，比如需要连接第三方系统请求数据，那么业务当前的状态可能需要保存下来，当第三方系统应答时，再恢复状态，进行下一步处理，这样，业务流程就变成一段一段的了)。但是协程并没有大规模的使用，[风云](http://blog.codingnow.com/)也曾介绍过，在推广协成概念时，遇到了很多问题(具体出处已忘记)。  
 
