@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SSH on BUF1024</title>
-    <link>http://localhost:1313/tags/ssh/</link>
+    <link>//localhost:1313/tags/ssh/</link>
     <description>Recent content in SSH on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 01 Mar 2015 18:12:15 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Mar 2015 18:12:15 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ssh 隧道访问局域网机器</title>
-      <link>http://localhost:1313/post/2015-03-01-ssh-tunnel/</link>
+      <link>//localhost:1313/post/2015-03-01-ssh-tunnel/</link>
       <pubDate>Sun, 01 Mar 2015 18:12:15 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2015-03-01-ssh-tunnel/</guid>
+      <guid>//localhost:1313/post/2015-03-01-ssh-tunnel/</guid>
       <description>
         
           

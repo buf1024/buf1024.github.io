@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>WeChat on BUF1024</title>
-    <link>http://localhost:1313/tags/wechat/</link>
+    <link>//localhost:1313/tags/wechat/</link>
     <description>Recent content in WeChat on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 20 Apr 2017 21:12:03 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/wechat/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Apr 2017 21:12:03 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/wechat/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微信web通信协议</title>
-      <link>http://localhost:1313/post/2017-04-20-weixin-web-proto/</link>
+      <link>//localhost:1313/post/2017-04-20-weixin-web-proto/</link>
       <pubDate>Thu, 20 Apr 2017 21:12:03 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2017-04-20-weixin-web-proto/</guid>
+      <guid>//localhost:1313/post/2017-04-20-weixin-web-proto/</guid>
       <description>
         
           

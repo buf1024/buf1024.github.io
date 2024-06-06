@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Libevent on BUF1024</title>
-    <link>http://localhost:1313/tags/libevent/</link>
+    <link>//localhost:1313/tags/libevent/</link>
     <description>Recent content in Libevent on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 23 Jun 2012 11:08:14 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/libevent/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Jun 2012 11:08:14 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/libevent/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>基于libevent进程池服务器</title>
-      <link>http://localhost:1313/post/2012-06-23-proccess-pool-server/</link>
+      <link>//localhost:1313/post/2012-06-23-proccess-pool-server/</link>
       <pubDate>Sat, 23 Jun 2012 11:08:14 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2012-06-23-proccess-pool-server/</guid>
+      <guid>//localhost:1313/post/2012-06-23-proccess-pool-server/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>libevent 概述</title>
-      <link>http://localhost:1313/post/2012-03-21-libevent-intro/</link>
+      <link>//localhost:1313/post/2012-03-21-libevent-intro/</link>
       <pubDate>Wed, 21 Mar 2012 21:05:10 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2012-03-21-libevent-intro/</guid>
+      <guid>//localhost:1313/post/2012-03-21-libevent-intro/</guid>
       <description>
         
           

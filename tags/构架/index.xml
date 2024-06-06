@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>构架 on BUF1024</title>
-    <link>http://localhost:1313/tags/%E6%9E%84%E6%9E%B6/</link>
+    <link>//localhost:1313/tags/%E6%9E%84%E6%9E%B6/</link>
     <description>Recent content in 构架 on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 01 Sep 2018 19:54:09 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/%E6%9E%84%E6%9E%B6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Sep 2018 19:54:09 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/%E6%9E%84%E6%9E%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>高可用系统</title>
-      <link>http://localhost:1313/post/2018-09-01-high-available-loadbalance/</link>
+      <link>//localhost:1313/post/2018-09-01-high-available-loadbalance/</link>
       <pubDate>Sat, 01 Sep 2018 19:54:09 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2018-09-01-high-available-loadbalance/</guid>
+      <guid>//localhost:1313/post/2018-09-01-high-available-loadbalance/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>软件构架  --  无技术简篇</title>
-      <link>http://localhost:1313/post/2017-12-26-soft-architecture/</link>
+      <link>//localhost:1313/post/2017-12-26-soft-architecture/</link>
       <pubDate>Wed, 06 Dec 2017 11:08:13 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2017-12-26-soft-architecture/</guid>
+      <guid>//localhost:1313/post/2017-12-26-soft-architecture/</guid>
       <description>
         
           

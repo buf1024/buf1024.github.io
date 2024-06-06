@@ -10,18 +10,18 @@ const imageAltClass = 'img_alt';
 
 
 const defaultSiteLanguage = 'zh-cn';
-const baseURL = 'https://luoguochun.cn';
+const baseURL = '/';
 const searchFieldClass = '.search_field';
 const searchClass = '.search';
 const goBackClass = 'button_back';
 const lineClass = '.line';
 
 // defined in i18n / translation files
-const quickLinks = 'Results';
-const searchResultsLabel = 'Search Results';
-const shortSearchQuery = 'Query is too short'
-const typeToSearch = 'Type to search';
-const noMatchesFound = 'No results found';
+const quickLinks = '';
+const searchResultsLabel = '';
+const shortSearchQuery = ''
+const typeToSearch = '';
+const noMatchesFound = '';
 
 ;
 // global variables

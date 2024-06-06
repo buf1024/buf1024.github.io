@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Html on BUF1024</title>
-    <link>http://localhost:1313/tags/html/</link>
+    <link>//localhost:1313/tags/html/</link>
     <description>Recent content in Html on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 29 Dec 2016 17:08:46 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/html/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Dec 2016 17:08:46 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/html/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>js快速参考</title>
-      <link>http://localhost:1313/post/2016-12-29-head-first-js/</link>
+      <link>//localhost:1313/post/2016-12-29-head-first-js/</link>
       <pubDate>Thu, 29 Dec 2016 17:08:46 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2016-12-29-head-first-js/</guid>
+      <guid>//localhost:1313/post/2016-12-29-head-first-js/</guid>
       <description>
         
           

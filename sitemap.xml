@@ -2,857 +2,857 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>//localhost:1313/</loc>
     <lastmod>2024-04-30T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>//localhost:1313/categories/</loc>
     <lastmod>2024-04-30T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/flutter/</loc>
+    <loc>//localhost:1313/tags/flutter/</loc>
     <lastmod>2024-04-30T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/flutter/</loc>
+    <loc>//localhost:1313/categories/flutter/</loc>
     <lastmod>2024-04-30T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>//localhost:1313/post/</loc>
     <lastmod>2024-04-30T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/radio/</loc>
+    <loc>//localhost:1313/tags/radio/</loc>
     <lastmod>2024-04-30T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/rust/</loc>
+    <loc>//localhost:1313/tags/rust/</loc>
     <lastmod>2024-04-30T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/rust/</loc>
+    <loc>//localhost:1313/categories/rust/</loc>
     <lastmod>2024-04-30T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>//localhost:1313/tags/</loc>
     <lastmod>2024-04-30T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2024-04-30-hiqradio-sync/</loc>
+    <loc>//localhost:1313/post/2024-04-30-hiqradio-sync/</loc>
     <lastmod>2024-04-30T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/database/</loc>
+    <loc>//localhost:1313/tags/database/</loc>
     <lastmod>2024-01-13T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2024-01-13-rust-sqlx-sqlbuilder/</loc>
+    <loc>//localhost:1313/post/2024-01-13-rust-sqlx-sqlbuilder/</loc>
     <lastmod>2024-01-13T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/react/</loc>
+    <loc>//localhost:1313/tags/react/</loc>
     <lastmod>2024-01-08T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/vite/</loc>
+    <loc>//localhost:1313/tags/vite/</loc>
     <lastmod>2024-01-08T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/vue/</loc>
+    <loc>//localhost:1313/tags/vue/</loc>
     <lastmod>2024-01-08T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/web/</loc>
+    <loc>//localhost:1313/categories/web/</loc>
     <lastmod>2024-01-08T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2024-01-08-vite-engineering-config/</loc>
+    <loc>//localhost:1313/post/2024-01-08-vite-engineering-config/</loc>
     <lastmod>2024-01-08T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2023-12-26-rust-proc-macro/</loc>
+    <loc>//localhost:1313/post/2023-12-26-rust-proc-macro/</loc>
     <lastmod>2023-12-26T16:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2023-09-21-rust-panic/</loc>
+    <loc>//localhost:1313/post/2023-09-21-rust-panic/</loc>
     <lastmod>2023-09-21T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/dart/</loc>
+    <loc>//localhost:1313/tags/dart/</loc>
     <lastmod>2023-07-19T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2023-07-19-flutter-muti-window/</loc>
+    <loc>//localhost:1313/post/2023-07-19-flutter-muti-window/</loc>
     <lastmod>2023-07-19T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/android/</loc>
+    <loc>//localhost:1313/tags/android/</loc>
     <lastmod>2023-07-04T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2023-07-04-hiqradio/</loc>
+    <loc>//localhost:1313/post/2023-07-04-hiqradio/</loc>
     <lastmod>2023-07-04T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/macos/</loc>
+    <loc>//localhost:1313/tags/macos/</loc>
     <lastmod>2023-07-04T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/windows/</loc>
+    <loc>//localhost:1313/tags/windows/</loc>
     <lastmod>2023-07-04T18:00:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2023-03-21-android-https/</loc>
+    <loc>//localhost:1313/post/2023-03-21-android-https/</loc>
     <lastmod>2023-03-21T08:10:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/tcp/</loc>
+    <loc>//localhost:1313/categories/tcp/</loc>
     <lastmod>2023-03-21T08:10:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2023-03-16-love-for-insterest/</loc>
+    <loc>//localhost:1313/post/2023-03-16-love-for-insterest/</loc>
     <lastmod>2023-03-16T08:10:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/tcp/</loc>
+    <loc>//localhost:1313/tags/tcp/</loc>
     <lastmod>2023-03-02T14:10:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2023-03-02-tcp-setup/</loc>
+    <loc>//localhost:1313/post/2023-03-02-tcp-setup/</loc>
     <lastmod>2023-03-02T14:10:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2023-02-14-tcp-renew/</loc>
+    <loc>//localhost:1313/post/2023-02-14-tcp-renew/</loc>
     <lastmod>2023-02-02T14:15:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2021-09-13-rust-lib-lazy-static-intro/</loc>
+    <loc>//localhost:1313/post/2021-09-13-rust-lib-lazy-static-intro/</loc>
     <lastmod>2021-09-13T01:12:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/rust-lib/</loc>
+    <loc>//localhost:1313/tags/rust-lib/</loc>
     <lastmod>2021-09-13T01:12:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2021-09-12-rust-lib-nom-intro/</loc>
+    <loc>//localhost:1313/post/2021-09-12-rust-lib-nom-intro/</loc>
     <lastmod>2021-09-12T21:12:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2022-08-02-rust-lib-config-rs-intro/</loc>
+    <loc>//localhost:1313/post/2022-08-02-rust-lib-config-rs-intro/</loc>
     <lastmod>2021-08-02T10:12:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2021-07-26-rust-async/</loc>
+    <loc>//localhost:1313/post/2021-07-26-rust-async/</loc>
     <lastmod>2021-07-26T22:12:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2021-02-03-flask-intro/</loc>
+    <loc>//localhost:1313/post/2021-02-03-flask-intro/</loc>
     <lastmod>2021-02-03T19:10:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/python/</loc>
+    <loc>//localhost:1313/tags/python/</loc>
     <lastmod>2021-02-03T19:10:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/python/</loc>
+    <loc>//localhost:1313/categories/python/</loc>
     <lastmod>2021-02-03T19:10:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2021-01-15-fabric-intro/</loc>
+    <loc>//localhost:1313/post/2021-01-15-fabric-intro/</loc>
     <lastmod>2021-01-15T19:12:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2021-01-01-py-gist/</loc>
+    <loc>//localhost:1313/post/2021-01-01-py-gist/</loc>
     <lastmod>2021-01-01T11:12:08+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/%E6%9E%84%E6%9E%B6/</loc>
+    <loc>//localhost:1313/categories/%E6%9E%84%E6%9E%B6/</loc>
     <lastmod>2019-07-29T20:17:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</loc>
+    <loc>//localhost:1313/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</loc>
     <lastmod>2019-07-29T20:17:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2019-07-30-micro-service/</loc>
+    <loc>//localhost:1313/post/2019-07-30-micro-service/</loc>
     <lastmod>2019-07-29T20:17:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2019-07-05-flutter-gist/</loc>
+    <loc>//localhost:1313/post/2019-07-05-flutter-gist/</loc>
     <lastmod>2019-07-05T16:12:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2019-07-01-android-source/</loc>
+    <loc>//localhost:1313/post/2019-07-01-android-source/</loc>
     <lastmod>2019-07-01T15:12:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/misc/</loc>
+    <loc>//localhost:1313/categories/misc/</loc>
     <lastmod>2019-07-01T15:12:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2019-06-21-flutter-try/</loc>
+    <loc>//localhost:1313/post/2019-06-21-flutter-try/</loc>
     <lastmod>2019-06-21T17:09:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2019-06-02-flutter-desktop-hide-title/</loc>
+    <loc>//localhost:1313/post/2019-06-02-flutter-desktop-hide-title/</loc>
     <lastmod>2019-06-02T15:13:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2019-06-01-flutter-trouble-shoot/</loc>
+    <loc>//localhost:1313/post/2019-06-01-flutter-trouble-shoot/</loc>
     <lastmod>2019-06-01T19:13:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/misc/</loc>
+    <loc>//localhost:1313/tags/misc/</loc>
     <lastmod>2019-05-05T11:12:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2019-05-05-new-xubuntu-problem/</loc>
+    <loc>//localhost:1313/post/2019-05-05-new-xubuntu-problem/</loc>
     <lastmod>2019-05-05T11:12:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/vim/</loc>
+    <loc>//localhost:1313/tags/vim/</loc>
     <lastmod>2019-03-01T18:02:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/vim/</loc>
+    <loc>//localhost:1313/categories/vim/</loc>
     <lastmod>2019-03-01T18:02:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2019-03-01-vim-tricks/</loc>
+    <loc>//localhost:1313/post/2019-03-01-vim-tricks/</loc>
     <lastmod>2019-03-01T18:02:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/linux/</loc>
+    <loc>//localhost:1313/tags/linux/</loc>
     <lastmod>2018-10-01T10:54:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/linux/</loc>
+    <loc>//localhost:1313/categories/linux/</loc>
     <lastmod>2018-10-01T10:54:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2018-10-01-firewall-cmd/</loc>
+    <loc>//localhost:1313/post/2018-10-01-firewall-cmd/</loc>
     <lastmod>2018-10-01T10:54:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2018-09-01-high-available-loadbalance/</loc>
+    <loc>//localhost:1313/post/2018-09-01-high-available-loadbalance/</loc>
     <lastmod>2018-09-01T19:54:09+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/%E6%9E%84%E6%9E%B6/</loc>
+    <loc>//localhost:1313/tags/%E6%9E%84%E6%9E%B6/</loc>
     <lastmod>2018-09-01T19:54:09+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2018-07-06-mac-newbie/</loc>
+    <loc>//localhost:1313/post/2018-07-06-mac-newbie/</loc>
     <lastmod>2018-07-06T11:02:16+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/docker/</loc>
+    <loc>//localhost:1313/tags/docker/</loc>
     <lastmod>2018-06-02T11:40:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/docker/</loc>
+    <loc>//localhost:1313/categories/docker/</loc>
     <lastmod>2018-06-02T11:40:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2018-06-02-docker-intro/</loc>
+    <loc>//localhost:1313/post/2018-06-02-docker-intro/</loc>
     <lastmod>2018-06-02T11:40:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/react-native/</loc>
+    <loc>//localhost:1313/tags/react-native/</loc>
     <lastmod>2018-05-25T17:04:10+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2018-05-25-react-native-practice/</loc>
+    <loc>//localhost:1313/post/2018-05-25-react-native-practice/</loc>
     <lastmod>2018-05-25T17:04:10+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/reactjs/</loc>
+    <loc>//localhost:1313/categories/reactjs/</loc>
     <lastmod>2018-05-25T17:04:10+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2018-04-14-react-native-dev-env/</loc>
+    <loc>//localhost:1313/post/2018-04-14-react-native-dev-env/</loc>
     <lastmod>2018-04-14T13:44:08+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/frontend/</loc>
+    <loc>//localhost:1313/tags/frontend/</loc>
     <lastmod>2018-01-25T09:32:32+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2018-01-25-reactjs-try/</loc>
+    <loc>//localhost:1313/post/2018-01-25-reactjs-try/</loc>
     <lastmod>2018-01-25T09:32:32+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2017-12-26-soft-architecture/</loc>
+    <loc>//localhost:1313/post/2017-12-26-soft-architecture/</loc>
     <lastmod>2017-12-06T11:08:13+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/git/</loc>
+    <loc>//localhost:1313/tags/git/</loc>
     <lastmod>2017-07-15T19:56:18+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/git/</loc>
+    <loc>//localhost:1313/categories/git/</loc>
     <lastmod>2017-07-15T19:56:18+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2017-07-15-git-merge-commit/</loc>
+    <loc>//localhost:1313/post/2017-07-15-git-merge-commit/</loc>
     <lastmod>2017-07-15T19:56:18+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/vcs/</loc>
+    <loc>//localhost:1313/tags/vcs/</loc>
     <lastmod>2017-07-15T19:56:18+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2017-07-05-git-push_multi/</loc>
+    <loc>//localhost:1313/post/2017-07-05-git-push_multi/</loc>
     <lastmod>2017-07-05T20:56:18+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/go/</loc>
+    <loc>//localhost:1313/tags/go/</loc>
     <lastmod>2017-06-23T20:57:11+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/go/</loc>
+    <loc>//localhost:1313/categories/go/</loc>
     <lastmod>2017-06-23T20:57:11+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2017-06-23-golang-private-public-crypt/</loc>
+    <loc>//localhost:1313/post/2017-06-23-golang-private-public-crypt/</loc>
     <lastmod>2017-06-23T20:57:11+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/rsa/</loc>
+    <loc>//localhost:1313/tags/rsa/</loc>
     <lastmod>2017-06-23T20:57:11+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/c/</loc>
+    <loc>//localhost:1313/tags/c/</loc>
     <lastmod>2017-06-03T11:19:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/c/</loc>
+    <loc>//localhost:1313/categories/c/</loc>
     <lastmod>2017-06-03T11:19:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/gcc/</loc>
+    <loc>//localhost:1313/tags/gcc/</loc>
     <lastmod>2017-06-03T11:19:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2017-06-03-synchronize-atomic-variable/</loc>
+    <loc>//localhost:1313/post/2017-06-03-synchronize-atomic-variable/</loc>
     <lastmod>2017-06-03T11:19:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/gcc/</loc>
+    <loc>//localhost:1313/categories/gcc/</loc>
     <lastmod>2017-05-01T22:10:31+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2017-05-01-gcc-missing/</loc>
+    <loc>//localhost:1313/post/2017-05-01-gcc-missing/</loc>
     <lastmod>2017-05-01T22:10:31+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/http/</loc>
+    <loc>//localhost:1313/tags/http/</loc>
     <lastmod>2017-05-01T22:10:31+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2017-04-28-lwan-http-server/</loc>
+    <loc>//localhost:1313/post/2017-04-28-lwan-http-server/</loc>
     <lastmod>2017-04-28T22:10:32+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/wechat/</loc>
+    <loc>//localhost:1313/tags/wechat/</loc>
     <lastmod>2017-04-20T21:12:03+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2017-04-20-weixin-web-proto/</loc>
+    <loc>//localhost:1313/post/2017-04-20-weixin-web-proto/</loc>
     <lastmod>2017-04-20T21:12:03+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/css/</loc>
+    <loc>//localhost:1313/tags/css/</loc>
     <lastmod>2016-12-29T17:08:46+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/html/</loc>
+    <loc>//localhost:1313/tags/html/</loc>
     <lastmod>2016-12-29T17:08:46+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/js/</loc>
+    <loc>//localhost:1313/tags/js/</loc>
     <lastmod>2016-12-29T17:08:46+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2016-12-29-head-first-js/</loc>
+    <loc>//localhost:1313/post/2016-12-29-head-first-js/</loc>
     <lastmod>2016-12-29T17:08:46+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/https/</loc>
+    <loc>//localhost:1313/tags/https/</loc>
     <lastmod>2016-11-16T11:17:11+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/ssl/tls/</loc>
+    <loc>//localhost:1313/tags/ssl/tls/</loc>
     <lastmod>2016-11-16T11:17:11+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2016-11-16-https-handshake/</loc>
+    <loc>//localhost:1313/post/2016-11-16-https-handshake/</loc>
     <lastmod>2016-11-16T11:17:11+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2016-10-10-git-toilet-book/</loc>
+    <loc>//localhost:1313/post/2016-10-10-git-toilet-book/</loc>
     <lastmod>2016-10-10T14:46:23+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2016-09-23-tcp-fuck/</loc>
+    <loc>//localhost:1313/post/2016-09-23-tcp-fuck/</loc>
     <lastmod>2016-09-23T21:20:10+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/asm/</loc>
+    <loc>//localhost:1313/tags/asm/</loc>
     <lastmod>2016-03-01T14:13:05+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/asm/</loc>
+    <loc>//localhost:1313/categories/asm/</loc>
     <lastmod>2016-03-01T14:13:05+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/gas/</loc>
+    <loc>//localhost:1313/tags/gas/</loc>
     <lastmod>2016-03-01T14:13:05+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2016-03-01-inline-asm/</loc>
+    <loc>//localhost:1313/post/2016-03-01-inline-asm/</loc>
     <lastmod>2016-03-01T14:13:05+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2016-02-02-at-t-stype-gas-assembly/</loc>
+    <loc>//localhost:1313/post/2016-02-02-at-t-stype-gas-assembly/</loc>
     <lastmod>2016-02-02T14:13:05+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/c&#43;&#43;/</loc>
+    <loc>//localhost:1313/tags/c&#43;&#43;/</loc>
     <lastmod>2016-01-19T11:12:36+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/ld/</loc>
+    <loc>//localhost:1313/tags/ld/</loc>
     <lastmod>2016-01-19T11:12:36+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2016-01-19-ld-special/</loc>
+    <loc>//localhost:1313/post/2016-01-19-ld-special/</loc>
     <lastmod>2016-01-19T11:12:36+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/c&#43;&#43;/</loc>
+    <loc>//localhost:1313/categories/c&#43;&#43;/</loc>
     <lastmod>2016-01-18T11:12:36+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2016-01-18-minix-3/</loc>
+    <loc>//localhost:1313/post/2016-01-18-minix-3/</loc>
     <lastmod>2016-01-18T11:12:36+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/os/</loc>
+    <loc>//localhost:1313/tags/os/</loc>
     <lastmod>2016-01-18T11:12:36+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2015-10-17-ycm-opt/</loc>
+    <loc>//localhost:1313/post/2015-10-17-ycm-opt/</loc>
     <lastmod>2015-10-17T22:11:41+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2015-07-25-tcpdump-usage/</loc>
+    <loc>//localhost:1313/post/2015-07-25-tcpdump-usage/</loc>
     <lastmod>2015-07-25T14:26:04+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2015-07-22-vim-xx-things/</loc>
+    <loc>//localhost:1313/post/2015-07-22-vim-xx-things/</loc>
     <lastmod>2015-07-22T15:25:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/gdb/</loc>
+    <loc>//localhost:1313/tags/gdb/</loc>
     <lastmod>2015-04-01T17:12:10+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2015-04-01-gdb-common-issue/</loc>
+    <loc>//localhost:1313/post/2015-04-01-gdb-common-issue/</loc>
     <lastmod>2015-04-01T17:12:10+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/ssh/</loc>
+    <loc>//localhost:1313/tags/ssh/</loc>
     <lastmod>2015-03-01T18:12:15+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2015-03-01-ssh-tunnel/</loc>
+    <loc>//localhost:1313/post/2015-03-01-ssh-tunnel/</loc>
     <lastmod>2015-03-01T18:12:15+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/orm/</loc>
+    <loc>//localhost:1313/tags/orm/</loc>
     <lastmod>2014-12-28T21:08:34+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/sqlalchemy/</loc>
+    <loc>//localhost:1313/tags/sqlalchemy/</loc>
     <lastmod>2014-12-28T21:08:34+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-12-28-sqlalchemy-orm-overview/</loc>
+    <loc>//localhost:1313/post/2014-12-28-sqlalchemy-orm-overview/</loc>
     <lastmod>2014-12-28T21:08:34+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-10-22-tcp_nodelay/</loc>
+    <loc>//localhost:1313/post/2014-10-22-tcp_nodelay/</loc>
     <lastmod>2014-10-22T17:01:08+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/jquery/</loc>
+    <loc>//localhost:1313/tags/jquery/</loc>
     <lastmod>2014-10-07T21:36:56+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-10-07-jquery-summary/</loc>
+    <loc>//localhost:1313/post/2014-10-07-jquery-summary/</loc>
     <lastmod>2014-10-07T21:36:56+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/webui/</loc>
+    <loc>//localhost:1313/tags/webui/</loc>
     <lastmod>2014-10-07T21:36:56+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/bt/</loc>
+    <loc>//localhost:1313/tags/bt/</loc>
     <lastmod>2014-09-17T19:12:17+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-09-17-bt-file-structure/</loc>
+    <loc>//localhost:1313/post/2014-09-17-bt-file-structure/</loc>
     <lastmod>2014-09-17T19:12:17+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-08-29-verification-code-identified/</loc>
+    <loc>//localhost:1313/post/2014-08-29-verification-code-identified/</loc>
     <lastmod>2014-08-29T22:31:35+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/coroutine/</loc>
+    <loc>//localhost:1313/tags/coroutine/</loc>
     <lastmod>2014-08-21T16:46:46+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-08-21-coroutine/</loc>
+    <loc>//localhost:1313/post/2014-08-21-coroutine/</loc>
     <lastmod>2014-08-21T16:46:46+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-07-28-process-information-pseduo-file-system/</loc>
+    <loc>//localhost:1313/post/2014-07-28-process-information-pseduo-file-system/</loc>
     <lastmod>2014-07-28T14:57:18+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/process/</loc>
+    <loc>//localhost:1313/tags/process/</loc>
     <lastmod>2014-07-28T14:57:18+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/wireshark/</loc>
+    <loc>//localhost:1313/tags/wireshark/</loc>
     <lastmod>2014-07-23T15:28:16+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-07-23-wireshark-tcp/</loc>
+    <loc>//localhost:1313/post/2014-07-23-wireshark-tcp/</loc>
     <lastmod>2014-07-23T15:28:16+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-07-15-misc-memory/</loc>
+    <loc>//localhost:1313/post/2014-07-15-misc-memory/</loc>
     <lastmod>2014-07-15T11:10:13+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/makefile/</loc>
+    <loc>//localhost:1313/tags/makefile/</loc>
     <lastmod>2014-07-04T16:45:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/redis/</loc>
+    <loc>//localhost:1313/tags/redis/</loc>
     <lastmod>2014-07-04T16:45:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-07-04-hide-compile-output/</loc>
+    <loc>//localhost:1313/post/2014-07-04-hide-compile-output/</loc>
     <lastmod>2014-07-04T16:45:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-07-04-set-proccess-title/</loc>
+    <loc>//localhost:1313/post/2014-07-04-set-proccess-title/</loc>
     <lastmod>2014-07-04T10:27:47+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/endian/</loc>
+    <loc>//localhost:1313/tags/endian/</loc>
     <lastmod>2014-06-30T17:08:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-06-30-endian/</loc>
+    <loc>//localhost:1313/post/2014-06-30-endian/</loc>
     <lastmod>2014-06-30T17:08:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-06-28-infinite/</loc>
+    <loc>//localhost:1313/post/2014-06-28-infinite/</loc>
     <lastmod>2014-06-28T21:40:50+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/server/</loc>
+    <loc>//localhost:1313/tags/server/</loc>
     <lastmod>2014-06-25T20:49:24+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-06-25-server-mode/</loc>
+    <loc>//localhost:1313/post/2014-06-25-server-mode/</loc>
     <lastmod>2014-06-25T20:49:24+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-06-25-c-constructor/</loc>
+    <loc>//localhost:1313/post/2014-06-25-c-constructor/</loc>
     <lastmod>2014-06-25T13:00:43+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/vc/</loc>
+    <loc>//localhost:1313/tags/vc/</loc>
     <lastmod>2014-06-25T13:00:43+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-05-30-myschd/</loc>
+    <loc>//localhost:1313/post/2014-05-30-myschd/</loc>
     <lastmod>2014-05-30T23:28:16+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-05-12-django-nginx-raspberypi-pidora/</loc>
+    <loc>//localhost:1313/post/2014-05-12-django-nginx-raspberypi-pidora/</loc>
     <lastmod>2014-05-12T22:12:47+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-04-09-memcpy-error/</loc>
+    <loc>//localhost:1313/post/2014-04-09-memcpy-error/</loc>
     <lastmod>2014-04-09T19:12:17+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2014-01-11-ctest/</loc>
+    <loc>//localhost:1313/post/2014-01-11-ctest/</loc>
     <lastmod>2014-01-11T23:48:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/gtest/</loc>
+    <loc>//localhost:1313/tags/gtest/</loc>
     <lastmod>2014-01-11T23:48:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/tdd/</loc>
+    <loc>//localhost:1313/tags/tdd/</loc>
     <lastmod>2014-01-11T23:48:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/unittest/</loc>
+    <loc>//localhost:1313/categories/unittest/</loc>
     <lastmod>2014-01-11T23:48:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2013-05-31-linux-gcov/</loc>
+    <loc>//localhost:1313/post/2013-05-31-linux-gcov/</loc>
     <lastmod>2013-05-31T17:08:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2013-05-29-linux-pkg-config/</loc>
+    <loc>//localhost:1313/post/2013-05-29-linux-pkg-config/</loc>
     <lastmod>2013-05-29T22:37:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2012-09-18-linux-rpm/</loc>
+    <loc>//localhost:1313/post/2012-09-18-linux-rpm/</loc>
     <lastmod>2012-09-18T23:48:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/rpm/</loc>
+    <loc>//localhost:1313/tags/rpm/</loc>
     <lastmod>2012-09-18T23:48:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2012-09-13-linux-yum/</loc>
+    <loc>//localhost:1313/post/2012-09-13-linux-yum/</loc>
     <lastmod>2012-09-13T20:10:10+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/api/</loc>
+    <loc>//localhost:1313/tags/api/</loc>
     <lastmod>2012-06-24T00:00:43+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/win32/</loc>
+    <loc>//localhost:1313/tags/win32/</loc>
     <lastmod>2012-06-24T00:00:43+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2012-06-24-windows-shell-extension/</loc>
+    <loc>//localhost:1313/post/2012-06-24-windows-shell-extension/</loc>
     <lastmod>2012-06-24T00:00:43+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/libevent/</loc>
+    <loc>//localhost:1313/tags/libevent/</loc>
     <lastmod>2012-06-23T11:08:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2012-06-23-proccess-pool-server/</loc>
+    <loc>//localhost:1313/post/2012-06-23-proccess-pool-server/</loc>
     <lastmod>2012-06-23T11:08:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2012-05-02-sys-queue-h/</loc>
+    <loc>//localhost:1313/post/2012-05-02-sys-queue-h/</loc>
     <lastmod>2012-05-02T21:08:14+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2012-03-21-libevent-intro/</loc>
+    <loc>//localhost:1313/post/2012-03-21-libevent-intro/</loc>
     <lastmod>2012-03-21T21:05:10+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/logger/</loc>
+    <loc>//localhost:1313/tags/logger/</loc>
     <lastmod>2012-02-18T10:15:09+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2012-02-18-minlog/</loc>
+    <loc>//localhost:1313/post/2012-02-18-minlog/</loc>
     <lastmod>2012-02-18T10:15:09+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2012-02-10-myjson-intro/</loc>
+    <loc>//localhost:1313/post/2012-02-10-myjson-intro/</loc>
     <lastmod>2012-02-10T21:05:10+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/c&#43;/</loc>
+    <loc>//localhost:1313/tags/c&#43;/</loc>
     <lastmod>2012-02-09T20:50:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2012-02-09-simple-c&#43;&#43;-test-framework/</loc>
+    <loc>//localhost:1313/post/2012-02-09-simple-c&#43;&#43;-test-framework/</loc>
     <lastmod>2012-02-09T20:50:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/post/2011-12-05-gtest-summary/</loc>
+    <loc>//localhost:1313/post/2011-12-05-gtest-summary/</loc>
     <lastmod>2011-12-05T12:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>//localhost:1313/about/</loc>
     <lastmod>1989-06-04T20:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

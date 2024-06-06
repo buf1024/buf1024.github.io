@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unittest on BUF1024</title>
-    <link>http://localhost:1313/categories/unittest/</link>
+    <link>//localhost:1313/categories/unittest/</link>
     <description>Recent content in Unittest on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 11 Jan 2014 23:48:14 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/unittest/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Jan 2014 23:48:14 +0000</lastBuildDate><atom:link href="//localhost:1313/categories/unittest/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C 简单单元测试框架</title>
-      <link>http://localhost:1313/post/2014-01-11-ctest/</link>
+      <link>//localhost:1313/post/2014-01-11-ctest/</link>
       <pubDate>Sat, 11 Jan 2014 23:48:14 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-01-11-ctest/</guid>
+      <guid>//localhost:1313/post/2014-01-11-ctest/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>Very Very Simple C&#43;&#43; Testing Framework</title>
-      <link>http://localhost:1313/post/2012-02-09-simple-c&#43;&#43;-test-framework/</link>
+      <link>//localhost:1313/post/2012-02-09-simple-c&#43;&#43;-test-framework/</link>
       <pubDate>Thu, 09 Feb 2012 20:50:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2012-02-09-simple-c&#43;&#43;-test-framework/</guid>
+      <guid>//localhost:1313/post/2012-02-09-simple-c&#43;&#43;-test-framework/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>gtest 小结</title>
-      <link>http://localhost:1313/post/2011-12-05-gtest-summary/</link>
+      <link>//localhost:1313/post/2011-12-05-gtest-summary/</link>
       <pubDate>Mon, 05 Dec 2011 12:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2011-12-05-gtest-summary/</guid>
+      <guid>//localhost:1313/post/2011-12-05-gtest-summary/</guid>
       <description>
         
           

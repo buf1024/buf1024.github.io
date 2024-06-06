@@ -1,4 +1,5 @@
-baseURL = "https://luoguochun.cn" 
+#baseURL = "https://luoguochun.cn" 
+baseURL = "" 
 defaultContentLanguage = "zh-cn" # en / zh-cn / ... (This field determines which i18n file to use)
 enableEmoji = true 
 enableRobotsTXT = true 

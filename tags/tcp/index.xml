@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>TCP on BUF1024</title>
-    <link>http://localhost:1313/tags/tcp/</link>
+    <link>//localhost:1313/tags/tcp/</link>
     <description>Recent content in TCP on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 02 Mar 2023 14:10:12 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Mar 2023 14:10:12 +0800</lastBuildDate><atom:link href="//localhost:1313/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TCP未建立之前，丢失的SYN报文会不会重传？</title>
-      <link>http://localhost:1313/post/2023-03-02-tcp-setup/</link>
+      <link>//localhost:1313/post/2023-03-02-tcp-setup/</link>
       <pubDate>Thu, 02 Mar 2023 14:10:12 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2023-03-02-tcp-setup/</guid>
+      <guid>//localhost:1313/post/2023-03-02-tcp-setup/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>TCP温故而知新</title>
-      <link>http://localhost:1313/post/2023-02-14-tcp-renew/</link>
+      <link>//localhost:1313/post/2023-02-14-tcp-renew/</link>
       <pubDate>Thu, 02 Feb 2023 14:15:12 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2023-02-14-tcp-renew/</guid>
+      <guid>//localhost:1313/post/2023-02-14-tcp-renew/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>tcp 协议小结</title>
-      <link>http://localhost:1313/post/2016-09-23-tcp-fuck/</link>
+      <link>//localhost:1313/post/2016-09-23-tcp-fuck/</link>
       <pubDate>Fri, 23 Sep 2016 21:20:10 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2016-09-23-tcp-fuck/</guid>
+      <guid>//localhost:1313/post/2016-09-23-tcp-fuck/</guid>
       <description>
         
           
@@ -57,10 +57,10 @@
     
     <item>
       <title>tcpdump usage</title>
-      <link>http://localhost:1313/post/2015-07-25-tcpdump-usage/</link>
+      <link>//localhost:1313/post/2015-07-25-tcpdump-usage/</link>
       <pubDate>Sat, 25 Jul 2015 14:26:04 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2015-07-25-tcpdump-usage/</guid>
+      <guid>//localhost:1313/post/2015-07-25-tcpdump-usage/</guid>
       <description>
         
           
@@ -73,10 +73,10 @@
     
     <item>
       <title>tcp_nodelay选项</title>
-      <link>http://localhost:1313/post/2014-10-22-tcp_nodelay/</link>
+      <link>//localhost:1313/post/2014-10-22-tcp_nodelay/</link>
       <pubDate>Wed, 22 Oct 2014 17:01:08 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-10-22-tcp_nodelay/</guid>
+      <guid>//localhost:1313/post/2014-10-22-tcp_nodelay/</guid>
       <description>
         
           
@@ -89,10 +89,10 @@
     
     <item>
       <title>wireshark tcp 协议分析</title>
-      <link>http://localhost:1313/post/2014-07-23-wireshark-tcp/</link>
+      <link>//localhost:1313/post/2014-07-23-wireshark-tcp/</link>
       <pubDate>Wed, 23 Jul 2014 15:28:16 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-07-23-wireshark-tcp/</guid>
+      <guid>//localhost:1313/post/2014-07-23-wireshark-tcp/</guid>
       <description>
         
           
@@ -105,10 +105,10 @@
     
     <item>
       <title>基于libevent进程池服务器</title>
-      <link>http://localhost:1313/post/2012-06-23-proccess-pool-server/</link>
+      <link>//localhost:1313/post/2012-06-23-proccess-pool-server/</link>
       <pubDate>Sat, 23 Jun 2012 11:08:14 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2012-06-23-proccess-pool-server/</guid>
+      <guid>//localhost:1313/post/2012-06-23-proccess-pool-server/</guid>
       <description>
         
           

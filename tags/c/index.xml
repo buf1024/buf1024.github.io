@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C on BUF1024</title>
-    <link>http://localhost:1313/tags/c/</link>
+    <link>//localhost:1313/tags/c/</link>
     <description>Recent content in C on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 03 Jun 2017 11:19:25 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Jun 2017 11:19:25 +0800</lastBuildDate><atom:link href="//localhost:1313/tags/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>线程同步与原子变量</title>
-      <link>http://localhost:1313/post/2017-06-03-synchronize-atomic-variable/</link>
+      <link>//localhost:1313/post/2017-06-03-synchronize-atomic-variable/</link>
       <pubDate>Sat, 03 Jun 2017 11:19:25 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2017-06-03-synchronize-atomic-variable/</guid>
+      <guid>//localhost:1313/post/2017-06-03-synchronize-atomic-variable/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>GCC不常见，但有用特别选项</title>
-      <link>http://localhost:1313/post/2017-05-01-gcc-missing/</link>
+      <link>//localhost:1313/post/2017-05-01-gcc-missing/</link>
       <pubDate>Mon, 01 May 2017 22:10:31 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2017-05-01-gcc-missing/</guid>
+      <guid>//localhost:1313/post/2017-05-01-gcc-missing/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>lwan http 服务器</title>
-      <link>http://localhost:1313/post/2017-04-28-lwan-http-server/</link>
+      <link>//localhost:1313/post/2017-04-28-lwan-http-server/</link>
       <pubDate>Fri, 28 Apr 2017 22:10:32 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2017-04-28-lwan-http-server/</guid>
+      <guid>//localhost:1313/post/2017-04-28-lwan-http-server/</guid>
       <description>
         
           
@@ -57,10 +57,10 @@
     
     <item>
       <title>ld常用特别选项</title>
-      <link>http://localhost:1313/post/2016-01-19-ld-special/</link>
+      <link>//localhost:1313/post/2016-01-19-ld-special/</link>
       <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2016-01-19-ld-special/</guid>
+      <guid>//localhost:1313/post/2016-01-19-ld-special/</guid>
       <description>
         
           
@@ -73,10 +73,10 @@
     
     <item>
       <title>minix 3</title>
-      <link>http://localhost:1313/post/2016-01-18-minix-3/</link>
+      <link>//localhost:1313/post/2016-01-18-minix-3/</link>
       <pubDate>Mon, 18 Jan 2016 11:12:36 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2016-01-18-minix-3/</guid>
+      <guid>//localhost:1313/post/2016-01-18-minix-3/</guid>
       <description>
         
           
@@ -89,10 +89,10 @@
     
     <item>
       <title>gdb一丢丢常见问题</title>
-      <link>http://localhost:1313/post/2015-04-01-gdb-common-issue/</link>
+      <link>//localhost:1313/post/2015-04-01-gdb-common-issue/</link>
       <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2015-04-01-gdb-common-issue/</guid>
+      <guid>//localhost:1313/post/2015-04-01-gdb-common-issue/</guid>
       <description>
         
           
@@ -105,10 +105,10 @@
     
     <item>
       <title>杂乱记忆</title>
-      <link>http://localhost:1313/post/2014-07-15-misc-memory/</link>
+      <link>//localhost:1313/post/2014-07-15-misc-memory/</link>
       <pubDate>Tue, 15 Jul 2014 11:10:13 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-07-15-misc-memory/</guid>
+      <guid>//localhost:1313/post/2014-07-15-misc-memory/</guid>
       <description>
         
           
@@ -121,10 +121,10 @@
     
     <item>
       <title>隐藏make编译的编译输出</title>
-      <link>http://localhost:1313/post/2014-07-04-hide-compile-output/</link>
+      <link>//localhost:1313/post/2014-07-04-hide-compile-output/</link>
       <pubDate>Fri, 04 Jul 2014 16:45:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-07-04-hide-compile-output/</guid>
+      <guid>//localhost:1313/post/2014-07-04-hide-compile-output/</guid>
       <description>
         
           
@@ -137,10 +137,10 @@
     
     <item>
       <title>设置进程的名称</title>
-      <link>http://localhost:1313/post/2014-07-04-set-proccess-title/</link>
+      <link>//localhost:1313/post/2014-07-04-set-proccess-title/</link>
       <pubDate>Fri, 04 Jul 2014 10:27:47 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-07-04-set-proccess-title/</guid>
+      <guid>//localhost:1313/post/2014-07-04-set-proccess-title/</guid>
       <description>
         
           
@@ -153,10 +153,10 @@
     
     <item>
       <title>浮动数与0比较</title>
-      <link>http://localhost:1313/post/2014-06-28-infinite/</link>
+      <link>//localhost:1313/post/2014-06-28-infinite/</link>
       <pubDate>Sat, 28 Jun 2014 21:40:50 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-06-28-infinite/</guid>
+      <guid>//localhost:1313/post/2014-06-28-infinite/</guid>
       <description>
         
           
@@ -169,10 +169,10 @@
     
     <item>
       <title>c构造函数</title>
-      <link>http://localhost:1313/post/2014-06-25-c-constructor/</link>
+      <link>//localhost:1313/post/2014-06-25-c-constructor/</link>
       <pubDate>Wed, 25 Jun 2014 13:00:43 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-06-25-c-constructor/</guid>
+      <guid>//localhost:1313/post/2014-06-25-c-constructor/</guid>
       <description>
         
           
@@ -185,10 +185,10 @@
     
     <item>
       <title>mschedule 简单Linux进程管理（树莓派）</title>
-      <link>http://localhost:1313/post/2014-05-30-myschd/</link>
+      <link>//localhost:1313/post/2014-05-30-myschd/</link>
       <pubDate>Fri, 30 May 2014 23:28:16 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-05-30-myschd/</guid>
+      <guid>//localhost:1313/post/2014-05-30-myschd/</guid>
       <description>
         
           
@@ -201,10 +201,10 @@
     
     <item>
       <title>memcpy造成其他变量值改变</title>
-      <link>http://localhost:1313/post/2014-04-09-memcpy-error/</link>
+      <link>//localhost:1313/post/2014-04-09-memcpy-error/</link>
       <pubDate>Wed, 09 Apr 2014 19:12:17 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-04-09-memcpy-error/</guid>
+      <guid>//localhost:1313/post/2014-04-09-memcpy-error/</guid>
       <description>
         
           
@@ -217,10 +217,10 @@
     
     <item>
       <title>C 简单单元测试框架</title>
-      <link>http://localhost:1313/post/2014-01-11-ctest/</link>
+      <link>//localhost:1313/post/2014-01-11-ctest/</link>
       <pubDate>Sat, 11 Jan 2014 23:48:14 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-01-11-ctest/</guid>
+      <guid>//localhost:1313/post/2014-01-11-ctest/</guid>
       <description>
         
           
@@ -233,10 +233,10 @@
     
     <item>
       <title>gcov 简述</title>
-      <link>http://localhost:1313/post/2013-05-31-linux-gcov/</link>
+      <link>//localhost:1313/post/2013-05-31-linux-gcov/</link>
       <pubDate>Fri, 31 May 2013 17:08:14 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2013-05-31-linux-gcov/</guid>
+      <guid>//localhost:1313/post/2013-05-31-linux-gcov/</guid>
       <description>
         
           
@@ -249,10 +249,10 @@
     
     <item>
       <title>Linux pkg-config</title>
-      <link>http://localhost:1313/post/2013-05-29-linux-pkg-config/</link>
+      <link>//localhost:1313/post/2013-05-29-linux-pkg-config/</link>
       <pubDate>Wed, 29 May 2013 22:37:14 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2013-05-29-linux-pkg-config/</guid>
+      <guid>//localhost:1313/post/2013-05-29-linux-pkg-config/</guid>
       <description>
         
           
@@ -265,10 +265,10 @@
     
     <item>
       <title>基于libevent进程池服务器</title>
-      <link>http://localhost:1313/post/2012-06-23-proccess-pool-server/</link>
+      <link>//localhost:1313/post/2012-06-23-proccess-pool-server/</link>
       <pubDate>Sat, 23 Jun 2012 11:08:14 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2012-06-23-proccess-pool-server/</guid>
+      <guid>//localhost:1313/post/2012-06-23-proccess-pool-server/</guid>
       <description>
         
           
@@ -281,10 +281,10 @@
     
     <item>
       <title>sys/queue.h</title>
-      <link>http://localhost:1313/post/2012-05-02-sys-queue-h/</link>
+      <link>//localhost:1313/post/2012-05-02-sys-queue-h/</link>
       <pubDate>Wed, 02 May 2012 21:08:14 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2012-05-02-sys-queue-h/</guid>
+      <guid>//localhost:1313/post/2012-05-02-sys-queue-h/</guid>
       <description>
         
           
@@ -297,10 +297,10 @@
     
     <item>
       <title>迷你日志类Minilog</title>
-      <link>http://localhost:1313/post/2012-02-18-minlog/</link>
+      <link>//localhost:1313/post/2012-02-18-minlog/</link>
       <pubDate>Sat, 18 Feb 2012 10:15:09 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2012-02-18-minlog/</guid>
+      <guid>//localhost:1313/post/2012-02-18-minlog/</guid>
       <description>
         
           
@@ -313,10 +313,10 @@
     
     <item>
       <title>MyJson, JSON C&#43;&#43; 的另一种实现</title>
-      <link>http://localhost:1313/post/2012-02-10-myjson-intro/</link>
+      <link>//localhost:1313/post/2012-02-10-myjson-intro/</link>
       <pubDate>Fri, 10 Feb 2012 21:05:10 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2012-02-10-myjson-intro/</guid>
+      <guid>//localhost:1313/post/2012-02-10-myjson-intro/</guid>
       <description>
         
           
@@ -329,10 +329,10 @@
     
     <item>
       <title>gtest 小结</title>
-      <link>http://localhost:1313/post/2011-12-05-gtest-summary/</link>
+      <link>//localhost:1313/post/2011-12-05-gtest-summary/</link>
       <pubDate>Mon, 05 Dec 2011 12:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2011-12-05-gtest-summary/</guid>
+      <guid>//localhost:1313/post/2011-12-05-gtest-summary/</guid>
       <description>
         
           

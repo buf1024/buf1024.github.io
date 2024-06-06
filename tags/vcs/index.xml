@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vcs on BUF1024</title>
-    <link>http://localhost:1313/tags/vcs/</link>
+    <link>//localhost:1313/tags/vcs/</link>
     <description>Recent content in Vcs on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 15 Jul 2017 19:56:18 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/vcs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Jul 2017 19:56:18 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/vcs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>git 合并commit</title>
-      <link>http://localhost:1313/post/2017-07-15-git-merge-commit/</link>
+      <link>//localhost:1313/post/2017-07-15-git-merge-commit/</link>
       <pubDate>Sat, 15 Jul 2017 19:56:18 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2017-07-15-git-merge-commit/</guid>
+      <guid>//localhost:1313/post/2017-07-15-git-merge-commit/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>git推送多个远程分支</title>
-      <link>http://localhost:1313/post/2017-07-05-git-push_multi/</link>
+      <link>//localhost:1313/post/2017-07-05-git-push_multi/</link>
       <pubDate>Wed, 05 Jul 2017 20:56:18 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2017-07-05-git-push_multi/</guid>
+      <guid>//localhost:1313/post/2017-07-05-git-push_multi/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>git 版本控制</title>
-      <link>http://localhost:1313/post/2016-10-10-git-toilet-book/</link>
+      <link>//localhost:1313/post/2016-10-10-git-toilet-book/</link>
       <pubDate>Mon, 10 Oct 2016 14:46:23 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2016-10-10-git-toilet-book/</guid>
+      <guid>//localhost:1313/post/2016-10-10-git-toilet-book/</guid>
       <description>
         
           

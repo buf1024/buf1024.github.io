@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on BUF1024</title>
-    <link>http://localhost:1313/categories/python/</link>
+    <link>//localhost:1313/categories/python/</link>
     <description>Recent content in Python on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 03 Feb 2021 19:10:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Feb 2021 19:10:00 +0800</lastBuildDate><atom:link href="//localhost:1313/categories/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>flask极简简介</title>
-      <link>http://localhost:1313/post/2021-02-03-flask-intro/</link>
+      <link>//localhost:1313/post/2021-02-03-flask-intro/</link>
       <pubDate>Wed, 03 Feb 2021 19:10:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2021-02-03-flask-intro/</guid>
+      <guid>//localhost:1313/post/2021-02-03-flask-intro/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>fabric极简简介</title>
-      <link>http://localhost:1313/post/2021-01-15-fabric-intro/</link>
+      <link>//localhost:1313/post/2021-01-15-fabric-intro/</link>
       <pubDate>Fri, 15 Jan 2021 19:12:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2021-01-15-fabric-intro/</guid>
+      <guid>//localhost:1313/post/2021-01-15-fabric-intro/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>Python 使用到的一丢丢代码片段</title>
-      <link>http://localhost:1313/post/2021-01-01-py-gist/</link>
+      <link>//localhost:1313/post/2021-01-01-py-gist/</link>
       <pubDate>Fri, 01 Jan 2021 11:12:08 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2021-01-01-py-gist/</guid>
+      <guid>//localhost:1313/post/2021-01-01-py-gist/</guid>
       <description>
         
           
@@ -57,10 +57,10 @@
     
     <item>
       <title>sqlalchemy orm 概览</title>
-      <link>http://localhost:1313/post/2014-12-28-sqlalchemy-orm-overview/</link>
+      <link>//localhost:1313/post/2014-12-28-sqlalchemy-orm-overview/</link>
       <pubDate>Sun, 28 Dec 2014 21:08:34 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-12-28-sqlalchemy-orm-overview/</guid>
+      <guid>//localhost:1313/post/2014-12-28-sqlalchemy-orm-overview/</guid>
       <description>
         
           
@@ -73,10 +73,10 @@
     
     <item>
       <title>验证码识别</title>
-      <link>http://localhost:1313/post/2014-08-29-verification-code-identified/</link>
+      <link>//localhost:1313/post/2014-08-29-verification-code-identified/</link>
       <pubDate>Fri, 29 Aug 2014 22:31:35 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-08-29-verification-code-identified/</guid>
+      <guid>//localhost:1313/post/2014-08-29-verification-code-identified/</guid>
       <description>
         
           
@@ -89,10 +89,10 @@
     
     <item>
       <title>django &#43; nginx &#43; raspberypi &#43; pidaro</title>
-      <link>http://localhost:1313/post/2014-05-12-django-nginx-raspberypi-pidora/</link>
+      <link>//localhost:1313/post/2014-05-12-django-nginx-raspberypi-pidora/</link>
       <pubDate>Mon, 12 May 2014 22:12:47 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-05-12-django-nginx-raspberypi-pidora/</guid>
+      <guid>//localhost:1313/post/2014-05-12-django-nginx-raspberypi-pidora/</guid>
       <description>
         
           

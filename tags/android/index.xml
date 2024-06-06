@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Android on BUF1024</title>
-    <link>http://localhost:1313/tags/android/</link>
+    <link>//localhost:1313/tags/android/</link>
     <description>Recent content in Android on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 04 Jul 2023 18:00:10 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jul 2023 18:00:10 +0800</lastBuildDate><atom:link href="//localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hiqradio 一个简单的收音机软件</title>
-      <link>http://localhost:1313/post/2023-07-04-hiqradio/</link>
+      <link>//localhost:1313/post/2023-07-04-hiqradio/</link>
       <pubDate>Tue, 04 Jul 2023 18:00:10 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2023-07-04-hiqradio/</guid>
+      <guid>//localhost:1313/post/2023-07-04-hiqradio/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>android https 抓包</title>
-      <link>http://localhost:1313/post/2023-03-21-android-https/</link>
+      <link>//localhost:1313/post/2023-03-21-android-https/</link>
       <pubDate>Tue, 21 Mar 2023 08:10:12 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2023-03-21-android-https/</guid>
+      <guid>//localhost:1313/post/2023-03-21-android-https/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>android国内源</title>
-      <link>http://localhost:1313/post/2019-07-01-android-source/</link>
+      <link>//localhost:1313/post/2019-07-01-android-source/</link>
       <pubDate>Mon, 01 Jul 2019 15:12:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2019-07-01-android-source/</guid>
+      <guid>//localhost:1313/post/2019-07-01-android-source/</guid>
       <description>
         
           

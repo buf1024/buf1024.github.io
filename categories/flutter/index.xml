@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Flutter on BUF1024</title>
-    <link>http://localhost:1313/categories/flutter/</link>
+    <link>//localhost:1313/categories/flutter/</link>
     <description>Recent content in Flutter on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 30 Apr 2024 16:00:10 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/flutter/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Apr 2024 16:00:10 +0800</lastBuildDate><atom:link href="//localhost:1313/categories/flutter/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>网络收音机增加同步功能</title>
-      <link>http://localhost:1313/post/2024-04-30-hiqradio-sync/</link>
+      <link>//localhost:1313/post/2024-04-30-hiqradio-sync/</link>
       <pubDate>Tue, 30 Apr 2024 16:00:10 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2024-04-30-hiqradio-sync/</guid>
+      <guid>//localhost:1313/post/2024-04-30-hiqradio-sync/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>Flutter 桌面端多窗口支持</title>
-      <link>http://localhost:1313/post/2023-07-19-flutter-muti-window/</link>
+      <link>//localhost:1313/post/2023-07-19-flutter-muti-window/</link>
       <pubDate>Wed, 19 Jul 2023 18:00:10 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2023-07-19-flutter-muti-window/</guid>
+      <guid>//localhost:1313/post/2023-07-19-flutter-muti-window/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>hiqradio 一个简单的收音机软件</title>
-      <link>http://localhost:1313/post/2023-07-04-hiqradio/</link>
+      <link>//localhost:1313/post/2023-07-04-hiqradio/</link>
       <pubDate>Tue, 04 Jul 2023 18:00:10 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2023-07-04-hiqradio/</guid>
+      <guid>//localhost:1313/post/2023-07-04-hiqradio/</guid>
       <description>
         
           
@@ -57,10 +57,10 @@
     
     <item>
       <title>为爱发电终是不能长久的……</title>
-      <link>http://localhost:1313/post/2023-03-16-love-for-insterest/</link>
+      <link>//localhost:1313/post/2023-03-16-love-for-insterest/</link>
       <pubDate>Thu, 16 Mar 2023 08:10:12 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2023-03-16-love-for-insterest/</guid>
+      <guid>//localhost:1313/post/2023-03-16-love-for-insterest/</guid>
       <description>
         
           
@@ -73,10 +73,10 @@
     
     <item>
       <title>Flutter 一丢丢代码片段</title>
-      <link>http://localhost:1313/post/2019-07-05-flutter-gist/</link>
+      <link>//localhost:1313/post/2019-07-05-flutter-gist/</link>
       <pubDate>Fri, 05 Jul 2019 16:12:10 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2019-07-05-flutter-gist/</guid>
+      <guid>//localhost:1313/post/2019-07-05-flutter-gist/</guid>
       <description>
         
           
@@ -89,10 +89,10 @@
     
     <item>
       <title>Flutter -- 写app的另一种姿态</title>
-      <link>http://localhost:1313/post/2019-06-21-flutter-try/</link>
+      <link>//localhost:1313/post/2019-06-21-flutter-try/</link>
       <pubDate>Fri, 21 Jun 2019 17:09:02 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2019-06-21-flutter-try/</guid>
+      <guid>//localhost:1313/post/2019-06-21-flutter-try/</guid>
       <description>
         
           
@@ -105,10 +105,10 @@
     
     <item>
       <title>Flutter desktop mac 隐藏标题栏</title>
-      <link>http://localhost:1313/post/2019-06-02-flutter-desktop-hide-title/</link>
+      <link>//localhost:1313/post/2019-06-02-flutter-desktop-hide-title/</link>
       <pubDate>Sun, 02 Jun 2019 15:13:02 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2019-06-02-flutter-desktop-hide-title/</guid>
+      <guid>//localhost:1313/post/2019-06-02-flutter-desktop-hide-title/</guid>
       <description>
         
           
@@ -119,10 +119,10 @@
     
     <item>
       <title>Flutter Trouble shoot</title>
-      <link>http://localhost:1313/post/2019-06-01-flutter-trouble-shoot/</link>
+      <link>//localhost:1313/post/2019-06-01-flutter-trouble-shoot/</link>
       <pubDate>Sat, 01 Jun 2019 19:13:02 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/2019-06-01-flutter-trouble-shoot/</guid>
+      <guid>//localhost:1313/post/2019-06-01-flutter-trouble-shoot/</guid>
       <description>
         
           

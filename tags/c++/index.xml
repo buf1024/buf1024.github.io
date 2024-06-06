@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C&#43;&#43; on BUF1024</title>
-    <link>http://localhost:1313/tags/c&#43;&#43;/</link>
+    <link>//localhost:1313/tags/c&#43;&#43;/</link>
     <description>Recent content in C&#43;&#43; on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 19 Jan 2016 11:12:36 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Jan 2016 11:12:36 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ld常用特别选项</title>
-      <link>http://localhost:1313/post/2016-01-19-ld-special/</link>
+      <link>//localhost:1313/post/2016-01-19-ld-special/</link>
       <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2016-01-19-ld-special/</guid>
+      <guid>//localhost:1313/post/2016-01-19-ld-special/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>minix 3</title>
-      <link>http://localhost:1313/post/2016-01-18-minix-3/</link>
+      <link>//localhost:1313/post/2016-01-18-minix-3/</link>
       <pubDate>Mon, 18 Jan 2016 11:12:36 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2016-01-18-minix-3/</guid>
+      <guid>//localhost:1313/post/2016-01-18-minix-3/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>gdb一丢丢常见问题</title>
-      <link>http://localhost:1313/post/2015-04-01-gdb-common-issue/</link>
+      <link>//localhost:1313/post/2015-04-01-gdb-common-issue/</link>
       <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2015-04-01-gdb-common-issue/</guid>
+      <guid>//localhost:1313/post/2015-04-01-gdb-common-issue/</guid>
       <description>
         
           
@@ -57,10 +57,10 @@
     
     <item>
       <title>隐藏make编译的编译输出</title>
-      <link>http://localhost:1313/post/2014-07-04-hide-compile-output/</link>
+      <link>//localhost:1313/post/2014-07-04-hide-compile-output/</link>
       <pubDate>Fri, 04 Jul 2014 16:45:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-07-04-hide-compile-output/</guid>
+      <guid>//localhost:1313/post/2014-07-04-hide-compile-output/</guid>
       <description>
         
           
@@ -73,10 +73,10 @@
     
     <item>
       <title>浮动数与0比较</title>
-      <link>http://localhost:1313/post/2014-06-28-infinite/</link>
+      <link>//localhost:1313/post/2014-06-28-infinite/</link>
       <pubDate>Sat, 28 Jun 2014 21:40:50 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2014-06-28-infinite/</guid>
+      <guid>//localhost:1313/post/2014-06-28-infinite/</guid>
       <description>
         
           
@@ -89,10 +89,10 @@
     
     <item>
       <title>libevent 概述</title>
-      <link>http://localhost:1313/post/2012-03-21-libevent-intro/</link>
+      <link>//localhost:1313/post/2012-03-21-libevent-intro/</link>
       <pubDate>Wed, 21 Mar 2012 21:05:10 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2012-03-21-libevent-intro/</guid>
+      <guid>//localhost:1313/post/2012-03-21-libevent-intro/</guid>
       <description>
         
           
@@ -105,10 +105,10 @@
     
     <item>
       <title>Very Very Simple C&#43;&#43; Testing Framework</title>
-      <link>http://localhost:1313/post/2012-02-09-simple-c&#43;&#43;-test-framework/</link>
+      <link>//localhost:1313/post/2012-02-09-simple-c&#43;&#43;-test-framework/</link>
       <pubDate>Thu, 09 Feb 2012 20:50:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2012-02-09-simple-c&#43;&#43;-test-framework/</guid>
+      <guid>//localhost:1313/post/2012-02-09-simple-c&#43;&#43;-test-framework/</guid>
       <description>
         
           
