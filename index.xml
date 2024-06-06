@@ -2,17 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>BUF1024</title>
-    <link>https://luoguochun.cn/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 30 Apr 2024 16:00:10 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Apr 2024 16:00:10 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>网络收音机增加同步功能</title>
+      <link>http://localhost:1313/post/2024-04-30-hiqradio-sync/</link>
+      <pubDate>Tue, 30 Apr 2024 16:00:10 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/2024-04-30-hiqradio-sync/</guid>
+      <description>
+        
+          
+            之前写了个跨n端的网络收音机，不过一直缺少的一个功能，就是跨多端播放记录和收藏夹的同步。虽然可以通过导入导出的方式勉强可以实现某种程度的同步
+          
+          
+        
+      </description>
+    </item>
+    
     <item>
       <title>Rust sqlx SQLBuilder</title>
-      <link>https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder/</link>
+      <link>http://localhost:1313/post/2024-01-13-rust-sqlx-sqlbuilder/</link>
       <pubDate>Sat, 13 Jan 2024 16:00:10 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2024-01-13-rust-sqlx-sqlbuilder/</guid>
+      <guid>http://localhost:1313/post/2024-01-13-rust-sqlx-sqlbuilder/</guid>
       <description>
         
           
@@ -25,10 +41,10 @@
     
     <item>
       <title>前端工程化配置保姆级教程</title>
-      <link>https://luoguochun.cn/post/2024-01-08-vite-engineering-config/</link>
+      <link>http://localhost:1313/post/2024-01-08-vite-engineering-config/</link>
       <pubDate>Mon, 08 Jan 2024 16:00:10 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2024-01-08-vite-engineering-config/</guid>
+      <guid>http://localhost:1313/post/2024-01-08-vite-engineering-config/</guid>
       <description>
         
           
@@ -41,10 +57,10 @@
     
     <item>
       <title>rust 过程宏</title>
-      <link>https://luoguochun.cn/post/2023-12-26-rust-proc-macro/</link>
+      <link>http://localhost:1313/post/2023-12-26-rust-proc-macro/</link>
       <pubDate>Tue, 26 Dec 2023 16:00:10 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2023-12-26-rust-proc-macro/</guid>
+      <guid>http://localhost:1313/post/2023-12-26-rust-proc-macro/</guid>
       <description>
         
           
@@ -57,10 +73,10 @@
     
     <item>
       <title>一行代码让 rustc panic</title>
-      <link>https://luoguochun.cn/post/2023-09-21-rust-panic/</link>
+      <link>http://localhost:1313/post/2023-09-21-rust-panic/</link>
       <pubDate>Thu, 21 Sep 2023 18:00:10 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2023-09-21-rust-panic/</guid>
+      <guid>http://localhost:1313/post/2023-09-21-rust-panic/</guid>
       <description>
         
           
@@ -73,10 +89,10 @@
     
     <item>
       <title>Flutter 桌面端多窗口支持</title>
-      <link>https://luoguochun.cn/post/2023-07-19-flutter-muti-window/</link>
+      <link>http://localhost:1313/post/2023-07-19-flutter-muti-window/</link>
       <pubDate>Wed, 19 Jul 2023 18:00:10 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2023-07-19-flutter-muti-window/</guid>
+      <guid>http://localhost:1313/post/2023-07-19-flutter-muti-window/</guid>
       <description>
         
           
@@ -89,10 +105,10 @@
     
     <item>
       <title>hiqradio 一个简单的收音机软件</title>
-      <link>https://luoguochun.cn/post/2023-07-04-hiqradio/</link>
+      <link>http://localhost:1313/post/2023-07-04-hiqradio/</link>
       <pubDate>Tue, 04 Jul 2023 18:00:10 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2023-07-04-hiqradio/</guid>
+      <guid>http://localhost:1313/post/2023-07-04-hiqradio/</guid>
       <description>
         
           
@@ -105,10 +121,10 @@
     
     <item>
       <title>android https 抓包</title>
-      <link>https://luoguochun.cn/post/2023-03-21-android-https/</link>
+      <link>http://localhost:1313/post/2023-03-21-android-https/</link>
       <pubDate>Tue, 21 Mar 2023 08:10:12 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2023-03-21-android-https/</guid>
+      <guid>http://localhost:1313/post/2023-03-21-android-https/</guid>
       <description>
         
           
@@ -121,10 +137,10 @@
     
     <item>
       <title>为爱发电终是不能长久的……</title>
-      <link>https://luoguochun.cn/post/2023-03-16-love-for-insterest/</link>
+      <link>http://localhost:1313/post/2023-03-16-love-for-insterest/</link>
       <pubDate>Thu, 16 Mar 2023 08:10:12 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2023-03-16-love-for-insterest/</guid>
+      <guid>http://localhost:1313/post/2023-03-16-love-for-insterest/</guid>
       <description>
         
           
@@ -137,10 +153,10 @@
     
     <item>
       <title>TCP未建立之前，丢失的SYN报文会不会重传？</title>
-      <link>https://luoguochun.cn/post/2023-03-02-tcp-setup/</link>
+      <link>http://localhost:1313/post/2023-03-02-tcp-setup/</link>
       <pubDate>Thu, 02 Mar 2023 14:10:12 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2023-03-02-tcp-setup/</guid>
+      <guid>http://localhost:1313/post/2023-03-02-tcp-setup/</guid>
       <description>
         
           
@@ -153,10 +169,10 @@
     
     <item>
       <title>TCP温故而知新</title>
-      <link>https://luoguochun.cn/post/2023-02-14-tcp-renew/</link>
+      <link>http://localhost:1313/post/2023-02-14-tcp-renew/</link>
       <pubDate>Thu, 02 Feb 2023 14:15:12 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2023-02-14-tcp-renew/</guid>
+      <guid>http://localhost:1313/post/2023-02-14-tcp-renew/</guid>
       <description>
         
           
@@ -169,10 +185,10 @@
     
     <item>
       <title>lazy_static -- 静态变量延迟初始化</title>
-      <link>https://luoguochun.cn/post/2021-09-13-rust-lib-lazy-static-intro/</link>
+      <link>http://localhost:1313/post/2021-09-13-rust-lib-lazy-static-intro/</link>
       <pubDate>Mon, 13 Sep 2021 01:12:02 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2021-09-13-rust-lib-lazy-static-intro/</guid>
+      <guid>http://localhost:1313/post/2021-09-13-rust-lib-lazy-static-intro/</guid>
       <description>
         
           
@@ -185,10 +201,10 @@
     
     <item>
       <title>nom -- 乐高式富有语义的parser</title>
-      <link>https://luoguochun.cn/post/2021-09-12-rust-lib-nom-intro/</link>
+      <link>http://localhost:1313/post/2021-09-12-rust-lib-nom-intro/</link>
       <pubDate>Sun, 12 Sep 2021 21:12:02 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2021-09-12-rust-lib-nom-intro/</guid>
+      <guid>http://localhost:1313/post/2021-09-12-rust-lib-nom-intro/</guid>
       <description>
         
           
@@ -201,10 +217,10 @@
     
     <item>
       <title>config-rs -- 多种数据配置格式</title>
-      <link>https://luoguochun.cn/post/2022-08-02-rust-lib-config-rs-intro/</link>
+      <link>http://localhost:1313/post/2022-08-02-rust-lib-config-rs-intro/</link>
       <pubDate>Mon, 02 Aug 2021 10:12:02 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2022-08-02-rust-lib-config-rs-intro/</guid>
+      <guid>http://localhost:1313/post/2022-08-02-rust-lib-config-rs-intro/</guid>
       <description>
         
           
@@ -217,10 +233,10 @@
     
     <item>
       <title>rust 异步编程粗略理解 async/.await</title>
-      <link>https://luoguochun.cn/post/2021-07-26-rust-async/</link>
+      <link>http://localhost:1313/post/2021-07-26-rust-async/</link>
       <pubDate>Mon, 26 Jul 2021 22:12:02 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2021-07-26-rust-async/</guid>
+      <guid>http://localhost:1313/post/2021-07-26-rust-async/</guid>
       <description>
         
           
@@ -233,10 +249,10 @@
     
     <item>
       <title>flask极简简介</title>
-      <link>https://luoguochun.cn/post/2021-02-03-flask-intro/</link>
+      <link>http://localhost:1313/post/2021-02-03-flask-intro/</link>
       <pubDate>Wed, 03 Feb 2021 19:10:00 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2021-02-03-flask-intro/</guid>
+      <guid>http://localhost:1313/post/2021-02-03-flask-intro/</guid>
       <description>
         
           
@@ -249,10 +265,10 @@
     
     <item>
       <title>fabric极简简介</title>
-      <link>https://luoguochun.cn/post/2021-01-15-fabric-intro/</link>
+      <link>http://localhost:1313/post/2021-01-15-fabric-intro/</link>
       <pubDate>Fri, 15 Jan 2021 19:12:00 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2021-01-15-fabric-intro/</guid>
+      <guid>http://localhost:1313/post/2021-01-15-fabric-intro/</guid>
       <description>
         
           
@@ -265,10 +281,10 @@
     
     <item>
       <title>Python 使用到的一丢丢代码片段</title>
-      <link>https://luoguochun.cn/post/2021-01-01-py-gist/</link>
+      <link>http://localhost:1313/post/2021-01-01-py-gist/</link>
       <pubDate>Fri, 01 Jan 2021 11:12:08 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2021-01-01-py-gist/</guid>
+      <guid>http://localhost:1313/post/2021-01-01-py-gist/</guid>
       <description>
         
           
@@ -281,10 +297,10 @@
     
     <item>
       <title>微服务架构一些事</title>
-      <link>https://luoguochun.cn/post/2019-07-30-micro-service/</link>
+      <link>http://localhost:1313/post/2019-07-30-micro-service/</link>
       <pubDate>Mon, 29 Jul 2019 20:17:52 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2019-07-30-micro-service/</guid>
+      <guid>http://localhost:1313/post/2019-07-30-micro-service/</guid>
       <description>
         
           
@@ -297,10 +313,10 @@
     
     <item>
       <title>Flutter 一丢丢代码片段</title>
-      <link>https://luoguochun.cn/post/2019-07-05-flutter-gist/</link>
+      <link>http://localhost:1313/post/2019-07-05-flutter-gist/</link>
       <pubDate>Fri, 05 Jul 2019 16:12:10 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2019-07-05-flutter-gist/</guid>
+      <guid>http://localhost:1313/post/2019-07-05-flutter-gist/</guid>
       <description>
         
           
@@ -313,10 +329,10 @@
     
     <item>
       <title>android国内源</title>
-      <link>https://luoguochun.cn/post/2019-07-01-android-source/</link>
+      <link>http://localhost:1313/post/2019-07-01-android-source/</link>
       <pubDate>Mon, 01 Jul 2019 15:12:00 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2019-07-01-android-source/</guid>
+      <guid>http://localhost:1313/post/2019-07-01-android-source/</guid>
       <description>
         
           
@@ -329,10 +345,10 @@
     
     <item>
       <title>Flutter -- 写app的另一种姿态</title>
-      <link>https://luoguochun.cn/post/2019-06-21-flutter-try/</link>
+      <link>http://localhost:1313/post/2019-06-21-flutter-try/</link>
       <pubDate>Fri, 21 Jun 2019 17:09:02 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2019-06-21-flutter-try/</guid>
+      <guid>http://localhost:1313/post/2019-06-21-flutter-try/</guid>
       <description>
         
           
@@ -345,10 +361,10 @@
     
     <item>
       <title>Flutter desktop mac 隐藏标题栏</title>
-      <link>https://luoguochun.cn/post/2019-06-02-flutter-desktop-hide-title/</link>
+      <link>http://localhost:1313/post/2019-06-02-flutter-desktop-hide-title/</link>
       <pubDate>Sun, 02 Jun 2019 15:13:02 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2019-06-02-flutter-desktop-hide-title/</guid>
+      <guid>http://localhost:1313/post/2019-06-02-flutter-desktop-hide-title/</guid>
       <description>
         
           
@@ -359,10 +375,10 @@
     
     <item>
       <title>Flutter Trouble shoot</title>
-      <link>https://luoguochun.cn/post/2019-06-01-flutter-trouble-shoot/</link>
+      <link>http://localhost:1313/post/2019-06-01-flutter-trouble-shoot/</link>
       <pubDate>Sat, 01 Jun 2019 19:13:02 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2019-06-01-flutter-trouble-shoot/</guid>
+      <guid>http://localhost:1313/post/2019-06-01-flutter-trouble-shoot/</guid>
       <description>
         
           
@@ -375,10 +391,10 @@
     
     <item>
       <title>物理机新建xubuntu一些问题</title>
-      <link>https://luoguochun.cn/post/2019-05-05-new-xubuntu-problem/</link>
+      <link>http://localhost:1313/post/2019-05-05-new-xubuntu-problem/</link>
       <pubDate>Sun, 05 May 2019 11:12:02 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2019-05-05-new-xubuntu-problem/</guid>
+      <guid>http://localhost:1313/post/2019-05-05-new-xubuntu-problem/</guid>
       <description>
         
           
@@ -391,10 +407,10 @@
     
     <item>
       <title>vim一些小技巧</title>
-      <link>https://luoguochun.cn/post/2019-03-01-vim-tricks/</link>
+      <link>http://localhost:1313/post/2019-03-01-vim-tricks/</link>
       <pubDate>Fri, 01 Mar 2019 18:02:12 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2019-03-01-vim-tricks/</guid>
+      <guid>http://localhost:1313/post/2019-03-01-vim-tricks/</guid>
       <description>
         
           
@@ -407,10 +423,10 @@
     
     <item>
       <title>防火墙放开端口</title>
-      <link>https://luoguochun.cn/post/2018-10-01-firewall-cmd/</link>
+      <link>http://localhost:1313/post/2018-10-01-firewall-cmd/</link>
       <pubDate>Mon, 01 Oct 2018 10:54:00 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2018-10-01-firewall-cmd/</guid>
+      <guid>http://localhost:1313/post/2018-10-01-firewall-cmd/</guid>
       <description>
         
           
@@ -423,10 +439,10 @@
     
     <item>
       <title>高可用系统</title>
-      <link>https://luoguochun.cn/post/2018-09-01-high-available-loadbalance/</link>
+      <link>http://localhost:1313/post/2018-09-01-high-available-loadbalance/</link>
       <pubDate>Sat, 01 Sep 2018 19:54:09 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2018-09-01-high-available-loadbalance/</guid>
+      <guid>http://localhost:1313/post/2018-09-01-high-available-loadbalance/</guid>
       <description>
         
           
@@ -439,10 +455,10 @@
     
     <item>
       <title>Macos一丢丢小技巧</title>
-      <link>https://luoguochun.cn/post/2018-07-06-mac-newbie/</link>
+      <link>http://localhost:1313/post/2018-07-06-mac-newbie/</link>
       <pubDate>Fri, 06 Jul 2018 11:02:16 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2018-07-06-mac-newbie/</guid>
+      <guid>http://localhost:1313/post/2018-07-06-mac-newbie/</guid>
       <description>
         
           
@@ -455,10 +471,10 @@
     
     <item>
       <title>Docker -- 简介</title>
-      <link>https://luoguochun.cn/post/2018-06-02-docker-intro/</link>
+      <link>http://localhost:1313/post/2018-06-02-docker-intro/</link>
       <pubDate>Sat, 02 Jun 2018 11:40:39 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2018-06-02-docker-intro/</guid>
+      <guid>http://localhost:1313/post/2018-06-02-docker-intro/</guid>
       <description>
         
           
@@ -471,10 +487,10 @@
     
     <item>
       <title>react-native 实践部分</title>
-      <link>https://luoguochun.cn/post/2018-05-25-react-native-practice/</link>
+      <link>http://localhost:1313/post/2018-05-25-react-native-practice/</link>
       <pubDate>Fri, 25 May 2018 17:04:10 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2018-05-25-react-native-practice/</guid>
+      <guid>http://localhost:1313/post/2018-05-25-react-native-practice/</guid>
       <description>
         
           
@@ -487,10 +503,10 @@
     
     <item>
       <title>react-native 开发环境配置 -- 调试部分</title>
-      <link>https://luoguochun.cn/post/2018-04-14-react-native-dev-env/</link>
+      <link>http://localhost:1313/post/2018-04-14-react-native-dev-env/</link>
       <pubDate>Sat, 14 Apr 2018 13:44:08 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2018-04-14-react-native-dev-env/</guid>
+      <guid>http://localhost:1313/post/2018-04-14-react-native-dev-env/</guid>
       <description>
         
           
@@ -503,10 +519,10 @@
     
     <item>
       <title>ReactJS  --  试水篇</title>
-      <link>https://luoguochun.cn/post/2018-01-25-reactjs-try/</link>
+      <link>http://localhost:1313/post/2018-01-25-reactjs-try/</link>
       <pubDate>Thu, 25 Jan 2018 09:32:32 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2018-01-25-reactjs-try/</guid>
+      <guid>http://localhost:1313/post/2018-01-25-reactjs-try/</guid>
       <description>
         
           
@@ -519,10 +535,10 @@
     
     <item>
       <title>软件构架  --  无技术简篇</title>
-      <link>https://luoguochun.cn/post/2017-12-26-soft-architecture/</link>
+      <link>http://localhost:1313/post/2017-12-26-soft-architecture/</link>
       <pubDate>Wed, 06 Dec 2017 11:08:13 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2017-12-26-soft-architecture/</guid>
+      <guid>http://localhost:1313/post/2017-12-26-soft-architecture/</guid>
       <description>
         
           
@@ -535,10 +551,10 @@
     
     <item>
       <title>git 合并commit</title>
-      <link>https://luoguochun.cn/post/2017-07-15-git-merge-commit/</link>
+      <link>http://localhost:1313/post/2017-07-15-git-merge-commit/</link>
       <pubDate>Sat, 15 Jul 2017 19:56:18 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2017-07-15-git-merge-commit/</guid>
+      <guid>http://localhost:1313/post/2017-07-15-git-merge-commit/</guid>
       <description>
         
           
@@ -551,10 +567,10 @@
     
     <item>
       <title>git推送多个远程分支</title>
-      <link>https://luoguochun.cn/post/2017-07-05-git-push_multi/</link>
+      <link>http://localhost:1313/post/2017-07-05-git-push_multi/</link>
       <pubDate>Wed, 05 Jul 2017 20:56:18 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2017-07-05-git-push_multi/</guid>
+      <guid>http://localhost:1313/post/2017-07-05-git-push_multi/</guid>
       <description>
         
           
@@ -567,10 +583,10 @@
     
     <item>
       <title>golang 私钥&#34;加密&#34;公钥&#34;解密&#34;</title>
-      <link>https://luoguochun.cn/post/2017-06-23-golang-private-public-crypt/</link>
+      <link>http://localhost:1313/post/2017-06-23-golang-private-public-crypt/</link>
       <pubDate>Fri, 23 Jun 2017 20:57:11 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2017-06-23-golang-private-public-crypt/</guid>
+      <guid>http://localhost:1313/post/2017-06-23-golang-private-public-crypt/</guid>
       <description>
         
           
@@ -583,10 +599,10 @@
     
     <item>
       <title>线程同步与原子变量</title>
-      <link>https://luoguochun.cn/post/2017-06-03-synchronize-atomic-variable/</link>
+      <link>http://localhost:1313/post/2017-06-03-synchronize-atomic-variable/</link>
       <pubDate>Sat, 03 Jun 2017 11:19:25 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2017-06-03-synchronize-atomic-variable/</guid>
+      <guid>http://localhost:1313/post/2017-06-03-synchronize-atomic-variable/</guid>
       <description>
         
           
@@ -599,10 +615,10 @@
     
     <item>
       <title>GCC不常见，但有用特别选项</title>
-      <link>https://luoguochun.cn/post/2017-05-01-gcc-missing/</link>
+      <link>http://localhost:1313/post/2017-05-01-gcc-missing/</link>
       <pubDate>Mon, 01 May 2017 22:10:31 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2017-05-01-gcc-missing/</guid>
+      <guid>http://localhost:1313/post/2017-05-01-gcc-missing/</guid>
       <description>
         
           
@@ -615,10 +631,10 @@
     
     <item>
       <title>lwan http 服务器</title>
-      <link>https://luoguochun.cn/post/2017-04-28-lwan-http-server/</link>
+      <link>http://localhost:1313/post/2017-04-28-lwan-http-server/</link>
       <pubDate>Fri, 28 Apr 2017 22:10:32 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2017-04-28-lwan-http-server/</guid>
+      <guid>http://localhost:1313/post/2017-04-28-lwan-http-server/</guid>
       <description>
         
           
@@ -631,10 +647,10 @@
     
     <item>
       <title>微信web通信协议</title>
-      <link>https://luoguochun.cn/post/2017-04-20-weixin-web-proto/</link>
+      <link>http://localhost:1313/post/2017-04-20-weixin-web-proto/</link>
       <pubDate>Thu, 20 Apr 2017 21:12:03 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2017-04-20-weixin-web-proto/</guid>
+      <guid>http://localhost:1313/post/2017-04-20-weixin-web-proto/</guid>
       <description>
         
           
@@ -647,10 +663,10 @@
     
     <item>
       <title>js快速参考</title>
-      <link>https://luoguochun.cn/post/2016-12-29-head-first-js/</link>
+      <link>http://localhost:1313/post/2016-12-29-head-first-js/</link>
       <pubDate>Thu, 29 Dec 2016 17:08:46 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2016-12-29-head-first-js/</guid>
+      <guid>http://localhost:1313/post/2016-12-29-head-first-js/</guid>
       <description>
         
           
@@ -663,10 +679,10 @@
     
     <item>
       <title>ssl/tls 握手</title>
-      <link>https://luoguochun.cn/post/2016-11-16-https-handshake/</link>
+      <link>http://localhost:1313/post/2016-11-16-https-handshake/</link>
       <pubDate>Wed, 16 Nov 2016 11:17:11 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2016-11-16-https-handshake/</guid>
+      <guid>http://localhost:1313/post/2016-11-16-https-handshake/</guid>
       <description>
         
           
@@ -679,10 +695,10 @@
     
     <item>
       <title>git 版本控制</title>
-      <link>https://luoguochun.cn/post/2016-10-10-git-toilet-book/</link>
+      <link>http://localhost:1313/post/2016-10-10-git-toilet-book/</link>
       <pubDate>Mon, 10 Oct 2016 14:46:23 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2016-10-10-git-toilet-book/</guid>
+      <guid>http://localhost:1313/post/2016-10-10-git-toilet-book/</guid>
       <description>
         
           
@@ -695,10 +711,10 @@
     
     <item>
       <title>tcp 协议小结</title>
-      <link>https://luoguochun.cn/post/2016-09-23-tcp-fuck/</link>
+      <link>http://localhost:1313/post/2016-09-23-tcp-fuck/</link>
       <pubDate>Fri, 23 Sep 2016 21:20:10 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2016-09-23-tcp-fuck/</guid>
+      <guid>http://localhost:1313/post/2016-09-23-tcp-fuck/</guid>
       <description>
         
           
@@ -711,10 +727,10 @@
     
     <item>
       <title>内联ASM</title>
-      <link>https://luoguochun.cn/post/2016-03-01-inline-asm/</link>
+      <link>http://localhost:1313/post/2016-03-01-inline-asm/</link>
       <pubDate>Tue, 01 Mar 2016 14:13:05 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2016-03-01-inline-asm/</guid>
+      <guid>http://localhost:1313/post/2016-03-01-inline-asm/</guid>
       <description>
         
           
@@ -727,10 +743,10 @@
     
     <item>
       <title>AT&amp;T Stype GAS Assembly</title>
-      <link>https://luoguochun.cn/post/2016-02-02-at-t-stype-gas-assembly/</link>
+      <link>http://localhost:1313/post/2016-02-02-at-t-stype-gas-assembly/</link>
       <pubDate>Tue, 02 Feb 2016 14:13:05 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2016-02-02-at-t-stype-gas-assembly/</guid>
+      <guid>http://localhost:1313/post/2016-02-02-at-t-stype-gas-assembly/</guid>
       <description>
         
           
@@ -743,10 +759,10 @@
     
     <item>
       <title>ld常用特别选项</title>
-      <link>https://luoguochun.cn/post/2016-01-19-ld-special/</link>
+      <link>http://localhost:1313/post/2016-01-19-ld-special/</link>
       <pubDate>Tue, 19 Jan 2016 11:12:36 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2016-01-19-ld-special/</guid>
+      <guid>http://localhost:1313/post/2016-01-19-ld-special/</guid>
       <description>
         
           
@@ -759,10 +775,10 @@
     
     <item>
       <title>minix 3</title>
-      <link>https://luoguochun.cn/post/2016-01-18-minix-3/</link>
+      <link>http://localhost:1313/post/2016-01-18-minix-3/</link>
       <pubDate>Mon, 18 Jan 2016 11:12:36 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2016-01-18-minix-3/</guid>
+      <guid>http://localhost:1313/post/2016-01-18-minix-3/</guid>
       <description>
         
           
@@ -775,10 +791,10 @@
     
     <item>
       <title>ycm 选项</title>
-      <link>https://luoguochun.cn/post/2015-10-17-ycm-opt/</link>
+      <link>http://localhost:1313/post/2015-10-17-ycm-opt/</link>
       <pubDate>Sat, 17 Oct 2015 22:11:41 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2015-10-17-ycm-opt/</guid>
+      <guid>http://localhost:1313/post/2015-10-17-ycm-opt/</guid>
       <description>
         
           
@@ -791,10 +807,10 @@
     
     <item>
       <title>tcpdump usage</title>
-      <link>https://luoguochun.cn/post/2015-07-25-tcpdump-usage/</link>
+      <link>http://localhost:1313/post/2015-07-25-tcpdump-usage/</link>
       <pubDate>Sat, 25 Jul 2015 14:26:04 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2015-07-25-tcpdump-usage/</guid>
+      <guid>http://localhost:1313/post/2015-07-25-tcpdump-usage/</guid>
       <description>
         
           
@@ -807,10 +823,10 @@
     
     <item>
       <title>VIM XX THINGS</title>
-      <link>https://luoguochun.cn/post/2015-07-22-vim-xx-things/</link>
+      <link>http://localhost:1313/post/2015-07-22-vim-xx-things/</link>
       <pubDate>Wed, 22 Jul 2015 15:25:00 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2015-07-22-vim-xx-things/</guid>
+      <guid>http://localhost:1313/post/2015-07-22-vim-xx-things/</guid>
       <description>
         
           
@@ -823,10 +839,10 @@
     
     <item>
       <title>gdb一丢丢常见问题</title>
-      <link>https://luoguochun.cn/post/2015-04-01-gdb-common-issue/</link>
+      <link>http://localhost:1313/post/2015-04-01-gdb-common-issue/</link>
       <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2015-04-01-gdb-common-issue/</guid>
+      <guid>http://localhost:1313/post/2015-04-01-gdb-common-issue/</guid>
       <description>
         
           
@@ -839,10 +855,10 @@
     
     <item>
       <title>ssh 隧道访问局域网机器</title>
-      <link>https://luoguochun.cn/post/2015-03-01-ssh-tunnel/</link>
+      <link>http://localhost:1313/post/2015-03-01-ssh-tunnel/</link>
       <pubDate>Sun, 01 Mar 2015 18:12:15 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2015-03-01-ssh-tunnel/</guid>
+      <guid>http://localhost:1313/post/2015-03-01-ssh-tunnel/</guid>
       <description>
         
           
@@ -855,10 +871,10 @@
     
     <item>
       <title>sqlalchemy orm 概览</title>
-      <link>https://luoguochun.cn/post/2014-12-28-sqlalchemy-orm-overview/</link>
+      <link>http://localhost:1313/post/2014-12-28-sqlalchemy-orm-overview/</link>
       <pubDate>Sun, 28 Dec 2014 21:08:34 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-12-28-sqlalchemy-orm-overview/</guid>
+      <guid>http://localhost:1313/post/2014-12-28-sqlalchemy-orm-overview/</guid>
       <description>
         
           
@@ -871,10 +887,10 @@
     
     <item>
       <title>tcp_nodelay选项</title>
-      <link>https://luoguochun.cn/post/2014-10-22-tcp_nodelay/</link>
+      <link>http://localhost:1313/post/2014-10-22-tcp_nodelay/</link>
       <pubDate>Wed, 22 Oct 2014 17:01:08 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-10-22-tcp_nodelay/</guid>
+      <guid>http://localhost:1313/post/2014-10-22-tcp_nodelay/</guid>
       <description>
         
           
@@ -887,10 +903,10 @@
     
     <item>
       <title>jquery selector小结</title>
-      <link>https://luoguochun.cn/post/2014-10-07-jquery-summary/</link>
+      <link>http://localhost:1313/post/2014-10-07-jquery-summary/</link>
       <pubDate>Tue, 07 Oct 2014 21:36:56 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-10-07-jquery-summary/</guid>
+      <guid>http://localhost:1313/post/2014-10-07-jquery-summary/</guid>
       <description>
         
           
@@ -903,10 +919,10 @@
     
     <item>
       <title>bt种子文件文件结构</title>
-      <link>https://luoguochun.cn/post/2014-09-17-bt-file-structure/</link>
+      <link>http://localhost:1313/post/2014-09-17-bt-file-structure/</link>
       <pubDate>Wed, 17 Sep 2014 19:12:17 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-09-17-bt-file-structure/</guid>
+      <guid>http://localhost:1313/post/2014-09-17-bt-file-structure/</guid>
       <description>
         
           
@@ -919,10 +935,10 @@
     
     <item>
       <title>验证码识别</title>
-      <link>https://luoguochun.cn/post/2014-08-29-verification-code-identified/</link>
+      <link>http://localhost:1313/post/2014-08-29-verification-code-identified/</link>
       <pubDate>Fri, 29 Aug 2014 22:31:35 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-08-29-verification-code-identified/</guid>
+      <guid>http://localhost:1313/post/2014-08-29-verification-code-identified/</guid>
       <description>
         
           
@@ -935,10 +951,10 @@
     
     <item>
       <title>coroutine协程</title>
-      <link>https://luoguochun.cn/post/2014-08-21-coroutine/</link>
+      <link>http://localhost:1313/post/2014-08-21-coroutine/</link>
       <pubDate>Thu, 21 Aug 2014 16:46:46 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-08-21-coroutine/</guid>
+      <guid>http://localhost:1313/post/2014-08-21-coroutine/</guid>
       <description>
         
           
@@ -951,10 +967,10 @@
     
     <item>
       <title>Linux /proc 伪文件系统</title>
-      <link>https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/</link>
+      <link>http://localhost:1313/post/2014-07-28-process-information-pseduo-file-system/</link>
       <pubDate>Mon, 28 Jul 2014 14:57:18 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-07-28-process-information-pseduo-file-system/</guid>
+      <guid>http://localhost:1313/post/2014-07-28-process-information-pseduo-file-system/</guid>
       <description>
         
           
@@ -967,10 +983,10 @@
     
     <item>
       <title>wireshark tcp 协议分析</title>
-      <link>https://luoguochun.cn/post/2014-07-23-wireshark-tcp/</link>
+      <link>http://localhost:1313/post/2014-07-23-wireshark-tcp/</link>
       <pubDate>Wed, 23 Jul 2014 15:28:16 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-07-23-wireshark-tcp/</guid>
+      <guid>http://localhost:1313/post/2014-07-23-wireshark-tcp/</guid>
       <description>
         
           
@@ -983,10 +999,10 @@
     
     <item>
       <title>杂乱记忆</title>
-      <link>https://luoguochun.cn/post/2014-07-15-misc-memory/</link>
+      <link>http://localhost:1313/post/2014-07-15-misc-memory/</link>
       <pubDate>Tue, 15 Jul 2014 11:10:13 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-07-15-misc-memory/</guid>
+      <guid>http://localhost:1313/post/2014-07-15-misc-memory/</guid>
       <description>
         
           
@@ -999,10 +1015,10 @@
     
     <item>
       <title>隐藏make编译的编译输出</title>
-      <link>https://luoguochun.cn/post/2014-07-04-hide-compile-output/</link>
+      <link>http://localhost:1313/post/2014-07-04-hide-compile-output/</link>
       <pubDate>Fri, 04 Jul 2014 16:45:00 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-07-04-hide-compile-output/</guid>
+      <guid>http://localhost:1313/post/2014-07-04-hide-compile-output/</guid>
       <description>
         
           
@@ -1015,10 +1031,10 @@
     
     <item>
       <title>设置进程的名称</title>
-      <link>https://luoguochun.cn/post/2014-07-04-set-proccess-title/</link>
+      <link>http://localhost:1313/post/2014-07-04-set-proccess-title/</link>
       <pubDate>Fri, 04 Jul 2014 10:27:47 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-07-04-set-proccess-title/</guid>
+      <guid>http://localhost:1313/post/2014-07-04-set-proccess-title/</guid>
       <description>
         
           
@@ -1031,10 +1047,10 @@
     
     <item>
       <title>端的起源</title>
-      <link>https://luoguochun.cn/post/2014-06-30-endian/</link>
+      <link>http://localhost:1313/post/2014-06-30-endian/</link>
       <pubDate>Mon, 30 Jun 2014 17:08:14 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-06-30-endian/</guid>
+      <guid>http://localhost:1313/post/2014-06-30-endian/</guid>
       <description>
         
           
@@ -1047,10 +1063,10 @@
     
     <item>
       <title>浮动数与0比较</title>
-      <link>https://luoguochun.cn/post/2014-06-28-infinite/</link>
+      <link>http://localhost:1313/post/2014-06-28-infinite/</link>
       <pubDate>Sat, 28 Jun 2014 21:40:50 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-06-28-infinite/</guid>
+      <guid>http://localhost:1313/post/2014-06-28-infinite/</guid>
       <description>
         
           
@@ -1063,10 +1079,10 @@
     
     <item>
       <title>服务器模式</title>
-      <link>https://luoguochun.cn/post/2014-06-25-server-mode/</link>
+      <link>http://localhost:1313/post/2014-06-25-server-mode/</link>
       <pubDate>Wed, 25 Jun 2014 20:49:24 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-06-25-server-mode/</guid>
+      <guid>http://localhost:1313/post/2014-06-25-server-mode/</guid>
       <description>
         
           
@@ -1079,10 +1095,10 @@
     
     <item>
       <title>c构造函数</title>
-      <link>https://luoguochun.cn/post/2014-06-25-c-constructor/</link>
+      <link>http://localhost:1313/post/2014-06-25-c-constructor/</link>
       <pubDate>Wed, 25 Jun 2014 13:00:43 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-06-25-c-constructor/</guid>
+      <guid>http://localhost:1313/post/2014-06-25-c-constructor/</guid>
       <description>
         
           
@@ -1095,10 +1111,10 @@
     
     <item>
       <title>mschedule 简单Linux进程管理（树莓派）</title>
-      <link>https://luoguochun.cn/post/2014-05-30-myschd/</link>
+      <link>http://localhost:1313/post/2014-05-30-myschd/</link>
       <pubDate>Fri, 30 May 2014 23:28:16 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-05-30-myschd/</guid>
+      <guid>http://localhost:1313/post/2014-05-30-myschd/</guid>
       <description>
         
           
@@ -1111,10 +1127,10 @@
     
     <item>
       <title>django &#43; nginx &#43; raspberypi &#43; pidaro</title>
-      <link>https://luoguochun.cn/post/2014-05-12-django-nginx-raspberypi-pidora/</link>
+      <link>http://localhost:1313/post/2014-05-12-django-nginx-raspberypi-pidora/</link>
       <pubDate>Mon, 12 May 2014 22:12:47 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-05-12-django-nginx-raspberypi-pidora/</guid>
+      <guid>http://localhost:1313/post/2014-05-12-django-nginx-raspberypi-pidora/</guid>
       <description>
         
           
@@ -1127,10 +1143,10 @@
     
     <item>
       <title>memcpy造成其他变量值改变</title>
-      <link>https://luoguochun.cn/post/2014-04-09-memcpy-error/</link>
+      <link>http://localhost:1313/post/2014-04-09-memcpy-error/</link>
       <pubDate>Wed, 09 Apr 2014 19:12:17 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-04-09-memcpy-error/</guid>
+      <guid>http://localhost:1313/post/2014-04-09-memcpy-error/</guid>
       <description>
         
           
@@ -1143,10 +1159,10 @@
     
     <item>
       <title>C 简单单元测试框架</title>
-      <link>https://luoguochun.cn/post/2014-01-11-ctest/</link>
+      <link>http://localhost:1313/post/2014-01-11-ctest/</link>
       <pubDate>Sat, 11 Jan 2014 23:48:14 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-01-11-ctest/</guid>
+      <guid>http://localhost:1313/post/2014-01-11-ctest/</guid>
       <description>
         
           
@@ -1159,10 +1175,10 @@
     
     <item>
       <title>gcov 简述</title>
-      <link>https://luoguochun.cn/post/2013-05-31-linux-gcov/</link>
+      <link>http://localhost:1313/post/2013-05-31-linux-gcov/</link>
       <pubDate>Fri, 31 May 2013 17:08:14 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2013-05-31-linux-gcov/</guid>
+      <guid>http://localhost:1313/post/2013-05-31-linux-gcov/</guid>
       <description>
         
           
@@ -1175,10 +1191,10 @@
     
     <item>
       <title>Linux pkg-config</title>
-      <link>https://luoguochun.cn/post/2013-05-29-linux-pkg-config/</link>
+      <link>http://localhost:1313/post/2013-05-29-linux-pkg-config/</link>
       <pubDate>Wed, 29 May 2013 22:37:14 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2013-05-29-linux-pkg-config/</guid>
+      <guid>http://localhost:1313/post/2013-05-29-linux-pkg-config/</guid>
       <description>
         
           
@@ -1191,10 +1207,10 @@
     
     <item>
       <title>Linux -- rpm</title>
-      <link>https://luoguochun.cn/post/2012-09-18-linux-rpm/</link>
+      <link>http://localhost:1313/post/2012-09-18-linux-rpm/</link>
       <pubDate>Tue, 18 Sep 2012 23:48:14 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2012-09-18-linux-rpm/</guid>
+      <guid>http://localhost:1313/post/2012-09-18-linux-rpm/</guid>
       <description>
         
           
@@ -1207,10 +1223,10 @@
     
     <item>
       <title>Linux -- yum</title>
-      <link>https://luoguochun.cn/post/2012-09-13-linux-yum/</link>
+      <link>http://localhost:1313/post/2012-09-13-linux-yum/</link>
       <pubDate>Thu, 13 Sep 2012 20:10:10 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2012-09-13-linux-yum/</guid>
+      <guid>http://localhost:1313/post/2012-09-13-linux-yum/</guid>
       <description>
         
           
@@ -1223,10 +1239,10 @@
     
     <item>
       <title>Windows Shell Extension</title>
-      <link>https://luoguochun.cn/post/2012-06-24-windows-shell-extension/</link>
+      <link>http://localhost:1313/post/2012-06-24-windows-shell-extension/</link>
       <pubDate>Sun, 24 Jun 2012 00:00:43 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2012-06-24-windows-shell-extension/</guid>
+      <guid>http://localhost:1313/post/2012-06-24-windows-shell-extension/</guid>
       <description>
         
           
@@ -1239,10 +1255,10 @@
     
     <item>
       <title>基于libevent进程池服务器</title>
-      <link>https://luoguochun.cn/post/2012-06-23-proccess-pool-server/</link>
+      <link>http://localhost:1313/post/2012-06-23-proccess-pool-server/</link>
       <pubDate>Sat, 23 Jun 2012 11:08:14 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2012-06-23-proccess-pool-server/</guid>
+      <guid>http://localhost:1313/post/2012-06-23-proccess-pool-server/</guid>
       <description>
         
           
@@ -1255,10 +1271,10 @@
     
     <item>
       <title>sys/queue.h</title>
-      <link>https://luoguochun.cn/post/2012-05-02-sys-queue-h/</link>
+      <link>http://localhost:1313/post/2012-05-02-sys-queue-h/</link>
       <pubDate>Wed, 02 May 2012 21:08:14 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2012-05-02-sys-queue-h/</guid>
+      <guid>http://localhost:1313/post/2012-05-02-sys-queue-h/</guid>
       <description>
         
           
@@ -1271,10 +1287,10 @@
     
     <item>
       <title>libevent 概述</title>
-      <link>https://luoguochun.cn/post/2012-03-21-libevent-intro/</link>
+      <link>http://localhost:1313/post/2012-03-21-libevent-intro/</link>
       <pubDate>Wed, 21 Mar 2012 21:05:10 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2012-03-21-libevent-intro/</guid>
+      <guid>http://localhost:1313/post/2012-03-21-libevent-intro/</guid>
       <description>
         
           
@@ -1287,10 +1303,10 @@
     
     <item>
       <title>迷你日志类Minilog</title>
-      <link>https://luoguochun.cn/post/2012-02-18-minlog/</link>
+      <link>http://localhost:1313/post/2012-02-18-minlog/</link>
       <pubDate>Sat, 18 Feb 2012 10:15:09 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2012-02-18-minlog/</guid>
+      <guid>http://localhost:1313/post/2012-02-18-minlog/</guid>
       <description>
         
           
@@ -1303,10 +1319,10 @@
     
     <item>
       <title>MyJson, JSON C&#43;&#43; 的另一种实现</title>
-      <link>https://luoguochun.cn/post/2012-02-10-myjson-intro/</link>
+      <link>http://localhost:1313/post/2012-02-10-myjson-intro/</link>
       <pubDate>Fri, 10 Feb 2012 21:05:10 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2012-02-10-myjson-intro/</guid>
+      <guid>http://localhost:1313/post/2012-02-10-myjson-intro/</guid>
       <description>
         
           
@@ -1319,10 +1335,10 @@
     
     <item>
       <title>Very Very Simple C&#43;&#43; Testing Framework</title>
-      <link>https://luoguochun.cn/post/2012-02-09-simple-c&#43;&#43;-test-framework/</link>
+      <link>http://localhost:1313/post/2012-02-09-simple-c&#43;&#43;-test-framework/</link>
       <pubDate>Thu, 09 Feb 2012 20:50:00 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2012-02-09-simple-c&#43;&#43;-test-framework/</guid>
+      <guid>http://localhost:1313/post/2012-02-09-simple-c&#43;&#43;-test-framework/</guid>
       <description>
         
           
@@ -1335,10 +1351,10 @@
     
     <item>
       <title>gtest 小结</title>
-      <link>https://luoguochun.cn/post/2011-12-05-gtest-summary/</link>
+      <link>http://localhost:1313/post/2011-12-05-gtest-summary/</link>
       <pubDate>Mon, 05 Dec 2011 12:00:00 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2011-12-05-gtest-summary/</guid>
+      <guid>http://localhost:1313/post/2011-12-05-gtest-summary/</guid>
       <description>
         
           

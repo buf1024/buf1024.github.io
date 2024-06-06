@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rpm on BUF1024</title>
-    <link>https://luoguochun.cn/tags/rpm/</link>
+    <link>http://localhost:1313/tags/rpm/</link>
     <description>Recent content in Rpm on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 18 Sep 2012 23:48:14 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/rpm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Sep 2012 23:48:14 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/rpm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux -- rpm</title>
-      <link>https://luoguochun.cn/post/2012-09-18-linux-rpm/</link>
+      <link>http://localhost:1313/post/2012-09-18-linux-rpm/</link>
       <pubDate>Tue, 18 Sep 2012 23:48:14 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2012-09-18-linux-rpm/</guid>
+      <guid>http://localhost:1313/post/2012-09-18-linux-rpm/</guid>
       <description>
         
           

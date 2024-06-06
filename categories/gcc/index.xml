@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GCC on BUF1024</title>
-    <link>https://luoguochun.cn/categories/gcc/</link>
+    <link>http://localhost:1313/categories/gcc/</link>
     <description>Recent content in GCC on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 01 May 2017 22:10:31 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/categories/gcc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 May 2017 22:10:31 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/gcc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GCC不常见，但有用特别选项</title>
-      <link>https://luoguochun.cn/post/2017-05-01-gcc-missing/</link>
+      <link>http://localhost:1313/post/2017-05-01-gcc-missing/</link>
       <pubDate>Mon, 01 May 2017 22:10:31 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2017-05-01-gcc-missing/</guid>
+      <guid>http://localhost:1313/post/2017-05-01-gcc-missing/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>gdb一丢丢常见问题</title>
-      <link>https://luoguochun.cn/post/2015-04-01-gdb-common-issue/</link>
+      <link>http://localhost:1313/post/2015-04-01-gdb-common-issue/</link>
       <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2015-04-01-gdb-common-issue/</guid>
+      <guid>http://localhost:1313/post/2015-04-01-gdb-common-issue/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>gcov 简述</title>
-      <link>https://luoguochun.cn/post/2013-05-31-linux-gcov/</link>
+      <link>http://localhost:1313/post/2013-05-31-linux-gcov/</link>
       <pubDate>Fri, 31 May 2013 17:08:14 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2013-05-31-linux-gcov/</guid>
+      <guid>http://localhost:1313/post/2013-05-31-linux-gcov/</guid>
       <description>
         
           

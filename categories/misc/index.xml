@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Misc on BUF1024</title>
-    <link>https://luoguochun.cn/categories/misc/</link>
+    <link>http://localhost:1313/categories/misc/</link>
     <description>Recent content in Misc on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 01 Jul 2019 15:12:00 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Jul 2019 15:12:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/misc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>android国内源</title>
-      <link>https://luoguochun.cn/post/2019-07-01-android-source/</link>
+      <link>http://localhost:1313/post/2019-07-01-android-source/</link>
       <pubDate>Mon, 01 Jul 2019 15:12:00 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2019-07-01-android-source/</guid>
+      <guid>http://localhost:1313/post/2019-07-01-android-source/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>物理机新建xubuntu一些问题</title>
-      <link>https://luoguochun.cn/post/2019-05-05-new-xubuntu-problem/</link>
+      <link>http://localhost:1313/post/2019-05-05-new-xubuntu-problem/</link>
       <pubDate>Sun, 05 May 2019 11:12:02 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2019-05-05-new-xubuntu-problem/</guid>
+      <guid>http://localhost:1313/post/2019-05-05-new-xubuntu-problem/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>Macos一丢丢小技巧</title>
-      <link>https://luoguochun.cn/post/2018-07-06-mac-newbie/</link>
+      <link>http://localhost:1313/post/2018-07-06-mac-newbie/</link>
       <pubDate>Fri, 06 Jul 2018 11:02:16 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2018-07-06-mac-newbie/</guid>
+      <guid>http://localhost:1313/post/2018-07-06-mac-newbie/</guid>
       <description>
         
           
@@ -57,10 +57,10 @@
     
     <item>
       <title>ssh 隧道访问局域网机器</title>
-      <link>https://luoguochun.cn/post/2015-03-01-ssh-tunnel/</link>
+      <link>http://localhost:1313/post/2015-03-01-ssh-tunnel/</link>
       <pubDate>Sun, 01 Mar 2015 18:12:15 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2015-03-01-ssh-tunnel/</guid>
+      <guid>http://localhost:1313/post/2015-03-01-ssh-tunnel/</guid>
       <description>
         
           
@@ -73,10 +73,10 @@
     
     <item>
       <title>bt种子文件文件结构</title>
-      <link>https://luoguochun.cn/post/2014-09-17-bt-file-structure/</link>
+      <link>http://localhost:1313/post/2014-09-17-bt-file-structure/</link>
       <pubDate>Wed, 17 Sep 2014 19:12:17 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-09-17-bt-file-structure/</guid>
+      <guid>http://localhost:1313/post/2014-09-17-bt-file-structure/</guid>
       <description>
         
           
@@ -89,10 +89,10 @@
     
     <item>
       <title>端的起源</title>
-      <link>https://luoguochun.cn/post/2014-06-30-endian/</link>
+      <link>http://localhost:1313/post/2014-06-30-endian/</link>
       <pubDate>Mon, 30 Jun 2014 17:08:14 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-06-30-endian/</guid>
+      <guid>http://localhost:1313/post/2014-06-30-endian/</guid>
       <description>
         
           
@@ -105,10 +105,10 @@
     
     <item>
       <title>服务器模式</title>
-      <link>https://luoguochun.cn/post/2014-06-25-server-mode/</link>
+      <link>http://localhost:1313/post/2014-06-25-server-mode/</link>
       <pubDate>Wed, 25 Jun 2014 20:49:24 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-06-25-server-mode/</guid>
+      <guid>http://localhost:1313/post/2014-06-25-server-mode/</guid>
       <description>
         
           
@@ -121,10 +121,10 @@
     
     <item>
       <title>memcpy造成其他变量值改变</title>
-      <link>https://luoguochun.cn/post/2014-04-09-memcpy-error/</link>
+      <link>http://localhost:1313/post/2014-04-09-memcpy-error/</link>
       <pubDate>Wed, 09 Apr 2014 19:12:17 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-04-09-memcpy-error/</guid>
+      <guid>http://localhost:1313/post/2014-04-09-memcpy-error/</guid>
       <description>
         
           
@@ -137,10 +137,10 @@
     
     <item>
       <title>Linux -- yum</title>
-      <link>https://luoguochun.cn/post/2012-09-13-linux-yum/</link>
+      <link>http://localhost:1313/post/2012-09-13-linux-yum/</link>
       <pubDate>Thu, 13 Sep 2012 20:10:10 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2012-09-13-linux-yum/</guid>
+      <guid>http://localhost:1313/post/2012-09-13-linux-yum/</guid>
       <description>
         
           
@@ -153,10 +153,10 @@
     
     <item>
       <title>迷你日志类Minilog</title>
-      <link>https://luoguochun.cn/post/2012-02-18-minlog/</link>
+      <link>http://localhost:1313/post/2012-02-18-minlog/</link>
       <pubDate>Sat, 18 Feb 2012 10:15:09 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2012-02-18-minlog/</guid>
+      <guid>http://localhost:1313/post/2012-02-18-minlog/</guid>
       <description>
         
           
@@ -169,10 +169,10 @@
     
     <item>
       <title>MyJson, JSON C&#43;&#43; 的另一种实现</title>
-      <link>https://luoguochun.cn/post/2012-02-10-myjson-intro/</link>
+      <link>http://localhost:1313/post/2012-02-10-myjson-intro/</link>
       <pubDate>Fri, 10 Feb 2012 21:05:10 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2012-02-10-myjson-intro/</guid>
+      <guid>http://localhost:1313/post/2012-02-10-myjson-intro/</guid>
       <description>
         
           

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rust-Lib on BUF1024</title>
-    <link>https://luoguochun.cn/tags/rust-lib/</link>
+    <link>http://localhost:1313/tags/rust-lib/</link>
     <description>Recent content in Rust-Lib on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 13 Sep 2021 01:12:02 +0800</lastBuildDate><atom:link href="https://luoguochun.cn/tags/rust-lib/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Sep 2021 01:12:02 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/rust-lib/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>lazy_static -- 静态变量延迟初始化</title>
-      <link>https://luoguochun.cn/post/2021-09-13-rust-lib-lazy-static-intro/</link>
+      <link>http://localhost:1313/post/2021-09-13-rust-lib-lazy-static-intro/</link>
       <pubDate>Mon, 13 Sep 2021 01:12:02 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2021-09-13-rust-lib-lazy-static-intro/</guid>
+      <guid>http://localhost:1313/post/2021-09-13-rust-lib-lazy-static-intro/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>nom -- 乐高式富有语义的parser</title>
-      <link>https://luoguochun.cn/post/2021-09-12-rust-lib-nom-intro/</link>
+      <link>http://localhost:1313/post/2021-09-12-rust-lib-nom-intro/</link>
       <pubDate>Sun, 12 Sep 2021 21:12:02 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2021-09-12-rust-lib-nom-intro/</guid>
+      <guid>http://localhost:1313/post/2021-09-12-rust-lib-nom-intro/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>config-rs -- 多种数据配置格式</title>
-      <link>https://luoguochun.cn/post/2022-08-02-rust-lib-config-rs-intro/</link>
+      <link>http://localhost:1313/post/2022-08-02-rust-lib-config-rs-intro/</link>
       <pubDate>Mon, 02 Aug 2021 10:12:02 +0800</pubDate>
       
-      <guid>https://luoguochun.cn/post/2022-08-02-rust-lib-config-rs-intro/</guid>
+      <guid>http://localhost:1313/post/2022-08-02-rust-lib-config-rs-intro/</guid>
       <description>
         
           

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SQLAlchemy on BUF1024</title>
-    <link>https://luoguochun.cn/tags/sqlalchemy/</link>
+    <link>http://localhost:1313/tags/sqlalchemy/</link>
     <description>Recent content in SQLAlchemy on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 28 Dec 2014 21:08:34 +0000</lastBuildDate><atom:link href="https://luoguochun.cn/tags/sqlalchemy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Dec 2014 21:08:34 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/sqlalchemy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>sqlalchemy orm 概览</title>
-      <link>https://luoguochun.cn/post/2014-12-28-sqlalchemy-orm-overview/</link>
+      <link>http://localhost:1313/post/2014-12-28-sqlalchemy-orm-overview/</link>
       <pubDate>Sun, 28 Dec 2014 21:08:34 +0000</pubDate>
       
-      <guid>https://luoguochun.cn/post/2014-12-28-sqlalchemy-orm-overview/</guid>
+      <guid>http://localhost:1313/post/2014-12-28-sqlalchemy-orm-overview/</guid>
       <description>
         
           
