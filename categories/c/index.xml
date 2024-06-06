@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C on BUF1024</title>
-    <link>//localhost:1313/categories/c/</link>
+    <link>/categories/c/</link>
     <description>Recent content in C on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 03 Jun 2017 11:19:25 +0800</lastBuildDate><atom:link href="//localhost:1313/categories/c/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Jun 2017 11:19:25 +0800</lastBuildDate><atom:link href="/categories/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>线程同步与原子变量</title>
-      <link>//localhost:1313/post/2017-06-03-synchronize-atomic-variable/</link>
+      <link>/post/2017-06-03-synchronize-atomic-variable/</link>
       <pubDate>Sat, 03 Jun 2017 11:19:25 +0800</pubDate>
       
-      <guid>//localhost:1313/post/2017-06-03-synchronize-atomic-variable/</guid>
+      <guid>/post/2017-06-03-synchronize-atomic-variable/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>lwan http 服务器</title>
-      <link>//localhost:1313/post/2017-04-28-lwan-http-server/</link>
+      <link>/post/2017-04-28-lwan-http-server/</link>
       <pubDate>Fri, 28 Apr 2017 22:10:32 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2017-04-28-lwan-http-server/</guid>
+      <guid>/post/2017-04-28-lwan-http-server/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>coroutine协程</title>
-      <link>//localhost:1313/post/2014-08-21-coroutine/</link>
+      <link>/post/2014-08-21-coroutine/</link>
       <pubDate>Thu, 21 Aug 2014 16:46:46 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2014-08-21-coroutine/</guid>
+      <guid>/post/2014-08-21-coroutine/</guid>
       <description>
         
           
@@ -57,10 +57,10 @@
     
     <item>
       <title>设置进程的名称</title>
-      <link>//localhost:1313/post/2014-07-04-set-proccess-title/</link>
+      <link>/post/2014-07-04-set-proccess-title/</link>
       <pubDate>Fri, 04 Jul 2014 10:27:47 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2014-07-04-set-proccess-title/</guid>
+      <guid>/post/2014-07-04-set-proccess-title/</guid>
       <description>
         
           
@@ -73,10 +73,10 @@
     
     <item>
       <title>浮动数与0比较</title>
-      <link>//localhost:1313/post/2014-06-28-infinite/</link>
+      <link>/post/2014-06-28-infinite/</link>
       <pubDate>Sat, 28 Jun 2014 21:40:50 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2014-06-28-infinite/</guid>
+      <guid>/post/2014-06-28-infinite/</guid>
       <description>
         
           
@@ -89,10 +89,10 @@
     
     <item>
       <title>c构造函数</title>
-      <link>//localhost:1313/post/2014-06-25-c-constructor/</link>
+      <link>/post/2014-06-25-c-constructor/</link>
       <pubDate>Wed, 25 Jun 2014 13:00:43 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2014-06-25-c-constructor/</guid>
+      <guid>/post/2014-06-25-c-constructor/</guid>
       <description>
         
           
@@ -105,10 +105,10 @@
     
     <item>
       <title>mschedule 简单Linux进程管理（树莓派）</title>
-      <link>//localhost:1313/post/2014-05-30-myschd/</link>
+      <link>/post/2014-05-30-myschd/</link>
       <pubDate>Fri, 30 May 2014 23:28:16 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2014-05-30-myschd/</guid>
+      <guid>/post/2014-05-30-myschd/</guid>
       <description>
         
           

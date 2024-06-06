@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>WEB on BUF1024</title>
-    <link>//localhost:1313/categories/web/</link>
+    <link>/categories/web/</link>
     <description>Recent content in WEB on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 08 Jan 2024 16:00:10 +0800</lastBuildDate><atom:link href="//localhost:1313/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Jan 2024 16:00:10 +0800</lastBuildDate><atom:link href="/categories/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>前端工程化配置保姆级教程</title>
-      <link>//localhost:1313/post/2024-01-08-vite-engineering-config/</link>
+      <link>/post/2024-01-08-vite-engineering-config/</link>
       <pubDate>Mon, 08 Jan 2024 16:00:10 +0800</pubDate>
       
-      <guid>//localhost:1313/post/2024-01-08-vite-engineering-config/</guid>
+      <guid>/post/2024-01-08-vite-engineering-config/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>微信web通信协议</title>
-      <link>//localhost:1313/post/2017-04-20-weixin-web-proto/</link>
+      <link>/post/2017-04-20-weixin-web-proto/</link>
       <pubDate>Thu, 20 Apr 2017 21:12:03 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2017-04-20-weixin-web-proto/</guid>
+      <guid>/post/2017-04-20-weixin-web-proto/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>js快速参考</title>
-      <link>//localhost:1313/post/2016-12-29-head-first-js/</link>
+      <link>/post/2016-12-29-head-first-js/</link>
       <pubDate>Thu, 29 Dec 2016 17:08:46 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2016-12-29-head-first-js/</guid>
+      <guid>/post/2016-12-29-head-first-js/</guid>
       <description>
         
           
@@ -57,10 +57,10 @@
     
     <item>
       <title>jquery selector小结</title>
-      <link>//localhost:1313/post/2014-10-07-jquery-summary/</link>
+      <link>/post/2014-10-07-jquery-summary/</link>
       <pubDate>Tue, 07 Oct 2014 21:36:56 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2014-10-07-jquery-summary/</guid>
+      <guid>/post/2014-10-07-jquery-summary/</guid>
       <description>
         
           

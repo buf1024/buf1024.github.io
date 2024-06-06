@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Misc on BUF1024</title>
-    <link>//localhost:1313/tags/misc/</link>
+    <link>/tags/misc/</link>
     <description>Recent content in Misc on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 05 May 2019 11:12:02 +0800</lastBuildDate><atom:link href="//localhost:1313/tags/misc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 May 2019 11:12:02 +0800</lastBuildDate><atom:link href="/tags/misc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>物理机新建xubuntu一些问题</title>
-      <link>//localhost:1313/post/2019-05-05-new-xubuntu-problem/</link>
+      <link>/post/2019-05-05-new-xubuntu-problem/</link>
       <pubDate>Sun, 05 May 2019 11:12:02 +0800</pubDate>
       
-      <guid>//localhost:1313/post/2019-05-05-new-xubuntu-problem/</guid>
+      <guid>/post/2019-05-05-new-xubuntu-problem/</guid>
       <description>
         
           

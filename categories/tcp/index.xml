@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>TCP on BUF1024</title>
-    <link>//localhost:1313/categories/tcp/</link>
+    <link>/categories/tcp/</link>
     <description>Recent content in TCP on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 21 Mar 2023 08:10:12 +0800</lastBuildDate><atom:link href="//localhost:1313/categories/tcp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Mar 2023 08:10:12 +0800</lastBuildDate><atom:link href="/categories/tcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>android https 抓包</title>
-      <link>//localhost:1313/post/2023-03-21-android-https/</link>
+      <link>/post/2023-03-21-android-https/</link>
       <pubDate>Tue, 21 Mar 2023 08:10:12 +0800</pubDate>
       
-      <guid>//localhost:1313/post/2023-03-21-android-https/</guid>
+      <guid>/post/2023-03-21-android-https/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>TCP未建立之前，丢失的SYN报文会不会重传？</title>
-      <link>//localhost:1313/post/2023-03-02-tcp-setup/</link>
+      <link>/post/2023-03-02-tcp-setup/</link>
       <pubDate>Thu, 02 Mar 2023 14:10:12 +0800</pubDate>
       
-      <guid>//localhost:1313/post/2023-03-02-tcp-setup/</guid>
+      <guid>/post/2023-03-02-tcp-setup/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>TCP温故而知新</title>
-      <link>//localhost:1313/post/2023-02-14-tcp-renew/</link>
+      <link>/post/2023-02-14-tcp-renew/</link>
       <pubDate>Thu, 02 Feb 2023 14:15:12 +0800</pubDate>
       
-      <guid>//localhost:1313/post/2023-02-14-tcp-renew/</guid>
+      <guid>/post/2023-02-14-tcp-renew/</guid>
       <description>
         
           
@@ -57,10 +57,10 @@
     
     <item>
       <title>ssl/tls 握手</title>
-      <link>//localhost:1313/post/2016-11-16-https-handshake/</link>
+      <link>/post/2016-11-16-https-handshake/</link>
       <pubDate>Wed, 16 Nov 2016 11:17:11 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2016-11-16-https-handshake/</guid>
+      <guid>/post/2016-11-16-https-handshake/</guid>
       <description>
         
           
@@ -73,10 +73,10 @@
     
     <item>
       <title>tcp 协议小结</title>
-      <link>//localhost:1313/post/2016-09-23-tcp-fuck/</link>
+      <link>/post/2016-09-23-tcp-fuck/</link>
       <pubDate>Fri, 23 Sep 2016 21:20:10 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2016-09-23-tcp-fuck/</guid>
+      <guid>/post/2016-09-23-tcp-fuck/</guid>
       <description>
         
           
@@ -89,10 +89,10 @@
     
     <item>
       <title>tcpdump usage</title>
-      <link>//localhost:1313/post/2015-07-25-tcpdump-usage/</link>
+      <link>/post/2015-07-25-tcpdump-usage/</link>
       <pubDate>Sat, 25 Jul 2015 14:26:04 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2015-07-25-tcpdump-usage/</guid>
+      <guid>/post/2015-07-25-tcpdump-usage/</guid>
       <description>
         
           
@@ -105,10 +105,10 @@
     
     <item>
       <title>tcp_nodelay选项</title>
-      <link>//localhost:1313/post/2014-10-22-tcp_nodelay/</link>
+      <link>/post/2014-10-22-tcp_nodelay/</link>
       <pubDate>Wed, 22 Oct 2014 17:01:08 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2014-10-22-tcp_nodelay/</guid>
+      <guid>/post/2014-10-22-tcp_nodelay/</guid>
       <description>
         
           
@@ -121,10 +121,10 @@
     
     <item>
       <title>wireshark tcp 协议分析</title>
-      <link>//localhost:1313/post/2014-07-23-wireshark-tcp/</link>
+      <link>/post/2014-07-23-wireshark-tcp/</link>
       <pubDate>Wed, 23 Jul 2014 15:28:16 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2014-07-23-wireshark-tcp/</guid>
+      <guid>/post/2014-07-23-wireshark-tcp/</guid>
       <description>
         
           

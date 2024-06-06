@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GDB on BUF1024</title>
-    <link>//localhost:1313/tags/gdb/</link>
+    <link>/tags/gdb/</link>
     <description>Recent content in GDB on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Apr 2015 17:12:10 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/gdb/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Apr 2015 17:12:10 +0000</lastBuildDate><atom:link href="/tags/gdb/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>gdb一丢丢常见问题</title>
-      <link>//localhost:1313/post/2015-04-01-gdb-common-issue/</link>
+      <link>/post/2015-04-01-gdb-common-issue/</link>
       <pubDate>Wed, 01 Apr 2015 17:12:10 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2015-04-01-gdb-common-issue/</guid>
+      <guid>/post/2015-04-01-gdb-common-issue/</guid>
       <description>
         
           

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>React on BUF1024</title>
-    <link>//localhost:1313/tags/react/</link>
+    <link>/tags/react/</link>
     <description>Recent content in React on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 08 Jan 2024 16:00:10 +0800</lastBuildDate><atom:link href="//localhost:1313/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Jan 2024 16:00:10 +0800</lastBuildDate><atom:link href="/tags/react/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>前端工程化配置保姆级教程</title>
-      <link>//localhost:1313/post/2024-01-08-vite-engineering-config/</link>
+      <link>/post/2024-01-08-vite-engineering-config/</link>
       <pubDate>Mon, 08 Jan 2024 16:00:10 +0800</pubDate>
       
-      <guid>//localhost:1313/post/2024-01-08-vite-engineering-config/</guid>
+      <guid>/post/2024-01-08-vite-engineering-config/</guid>
       <description>
         
           

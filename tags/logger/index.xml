@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Logger on BUF1024</title>
-    <link>//localhost:1313/tags/logger/</link>
+    <link>/tags/logger/</link>
     <description>Recent content in Logger on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 18 Feb 2012 10:15:09 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/logger/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Feb 2012 10:15:09 +0000</lastBuildDate><atom:link href="/tags/logger/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>迷你日志类Minilog</title>
-      <link>//localhost:1313/post/2012-02-18-minlog/</link>
+      <link>/post/2012-02-18-minlog/</link>
       <pubDate>Sat, 18 Feb 2012 10:15:09 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2012-02-18-minlog/</guid>
+      <guid>/post/2012-02-18-minlog/</guid>
       <description>
         
           

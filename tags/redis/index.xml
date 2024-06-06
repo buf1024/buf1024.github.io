@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Redis on BUF1024</title>
-    <link>//localhost:1313/tags/redis/</link>
+    <link>/tags/redis/</link>
     <description>Recent content in Redis on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 04 Jul 2014 16:45:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Jul 2014 16:45:00 +0000</lastBuildDate><atom:link href="/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>隐藏make编译的编译输出</title>
-      <link>//localhost:1313/post/2014-07-04-hide-compile-output/</link>
+      <link>/post/2014-07-04-hide-compile-output/</link>
       <pubDate>Fri, 04 Jul 2014 16:45:00 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2014-07-04-hide-compile-output/</guid>
+      <guid>/post/2014-07-04-hide-compile-output/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>设置进程的名称</title>
-      <link>//localhost:1313/post/2014-07-04-set-proccess-title/</link>
+      <link>/post/2014-07-04-set-proccess-title/</link>
       <pubDate>Fri, 04 Jul 2014 10:27:47 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2014-07-04-set-proccess-title/</guid>
+      <guid>/post/2014-07-04-set-proccess-title/</guid>
       <description>
         
           

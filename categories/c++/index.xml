@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C&#43;&#43; on BUF1024</title>
-    <link>//localhost:1313/categories/c&#43;&#43;/</link>
+    <link>/categories/c&#43;&#43;/</link>
     <description>Recent content in C&#43;&#43; on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 18 Jan 2016 11:12:36 +0000</lastBuildDate><atom:link href="//localhost:1313/categories/c++/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Jan 2016 11:12:36 +0000</lastBuildDate><atom:link href="/categories/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>minix 3</title>
-      <link>//localhost:1313/post/2016-01-18-minix-3/</link>
+      <link>/post/2016-01-18-minix-3/</link>
       <pubDate>Mon, 18 Jan 2016 11:12:36 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2016-01-18-minix-3/</guid>
+      <guid>/post/2016-01-18-minix-3/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>隐藏make编译的编译输出</title>
-      <link>//localhost:1313/post/2014-07-04-hide-compile-output/</link>
+      <link>/post/2014-07-04-hide-compile-output/</link>
       <pubDate>Fri, 04 Jul 2014 16:45:00 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2014-07-04-hide-compile-output/</guid>
+      <guid>/post/2014-07-04-hide-compile-output/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>Windows Shell Extension</title>
-      <link>//localhost:1313/post/2012-06-24-windows-shell-extension/</link>
+      <link>/post/2012-06-24-windows-shell-extension/</link>
       <pubDate>Sun, 24 Jun 2012 00:00:43 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2012-06-24-windows-shell-extension/</guid>
+      <guid>/post/2012-06-24-windows-shell-extension/</guid>
       <description>
         
           
@@ -57,10 +57,10 @@
     
     <item>
       <title>libevent 概述</title>
-      <link>//localhost:1313/post/2012-03-21-libevent-intro/</link>
+      <link>/post/2012-03-21-libevent-intro/</link>
       <pubDate>Wed, 21 Mar 2012 21:05:10 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2012-03-21-libevent-intro/</guid>
+      <guid>/post/2012-03-21-libevent-intro/</guid>
       <description>
         
           

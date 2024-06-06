@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Win32 on BUF1024</title>
-    <link>//localhost:1313/tags/win32/</link>
+    <link>/tags/win32/</link>
     <description>Recent content in Win32 on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 24 Jun 2012 00:00:43 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/win32/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Jun 2012 00:00:43 +0000</lastBuildDate><atom:link href="/tags/win32/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Windows Shell Extension</title>
-      <link>//localhost:1313/post/2012-06-24-windows-shell-extension/</link>
+      <link>/post/2012-06-24-windows-shell-extension/</link>
       <pubDate>Sun, 24 Jun 2012 00:00:43 +0000</pubDate>
       
-      <guid>//localhost:1313/post/2012-06-24-windows-shell-extension/</guid>
+      <guid>/post/2012-06-24-windows-shell-extension/</guid>
       <description>
         
           

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rust on BUF1024</title>
-    <link>//localhost:1313/tags/rust/</link>
+    <link>/tags/rust/</link>
     <description>Recent content in Rust on BUF1024</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 30 Apr 2024 16:00:10 +0800</lastBuildDate><atom:link href="//localhost:1313/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Apr 2024 16:00:10 +0800</lastBuildDate><atom:link href="/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>网络收音机增加同步功能</title>
-      <link>//localhost:1313/post/2024-04-30-hiqradio-sync/</link>
+      <link>/post/2024-04-30-hiqradio-sync/</link>
       <pubDate>Tue, 30 Apr 2024 16:00:10 +0800</pubDate>
       
-      <guid>//localhost:1313/post/2024-04-30-hiqradio-sync/</guid>
+      <guid>/post/2024-04-30-hiqradio-sync/</guid>
       <description>
         
           
@@ -25,10 +25,10 @@
     
     <item>
       <title>Rust sqlx SQLBuilder</title>
-      <link>//localhost:1313/post/2024-01-13-rust-sqlx-sqlbuilder/</link>
+      <link>/post/2024-01-13-rust-sqlx-sqlbuilder/</link>
       <pubDate>Sat, 13 Jan 2024 16:00:10 +0800</pubDate>
       
-      <guid>//localhost:1313/post/2024-01-13-rust-sqlx-sqlbuilder/</guid>
+      <guid>/post/2024-01-13-rust-sqlx-sqlbuilder/</guid>
       <description>
         
           
@@ -41,10 +41,10 @@
     
     <item>
       <title>rust 过程宏</title>
-      <link>//localhost:1313/post/2023-12-26-rust-proc-macro/</link>
+      <link>/post/2023-12-26-rust-proc-macro/</link>
       <pubDate>Tue, 26 Dec 2023 16:00:10 +0800</pubDate>
       
-      <guid>//localhost:1313/post/2023-12-26-rust-proc-macro/</guid>
+      <guid>/post/2023-12-26-rust-proc-macro/</guid>
       <description>
         
           
@@ -57,10 +57,10 @@
     
     <item>
       <title>一行代码让 rustc panic</title>
-      <link>//localhost:1313/post/2023-09-21-rust-panic/</link>
+      <link>/post/2023-09-21-rust-panic/</link>
       <pubDate>Thu, 21 Sep 2023 18:00:10 +0800</pubDate>
       
-      <guid>//localhost:1313/post/2023-09-21-rust-panic/</guid>
+      <guid>/post/2023-09-21-rust-panic/</guid>
       <description>
         
           
@@ -73,10 +73,10 @@
     
     <item>
       <title>rust 异步编程粗略理解 async/.await</title>
-      <link>//localhost:1313/post/2021-07-26-rust-async/</link>
+      <link>/post/2021-07-26-rust-async/</link>
       <pubDate>Mon, 26 Jul 2021 22:12:02 +0800</pubDate>
       
-      <guid>//localhost:1313/post/2021-07-26-rust-async/</guid>
+      <guid>/post/2021-07-26-rust-async/</guid>
       <description>
         
           
