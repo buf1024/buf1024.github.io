@@ -1,0 +1,76 @@
+qwinq.strategy.test.right_side
+==============================
+
+.. py:module:: qwinq.strategy.test.right_side
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   qwinq.strategy.test.right_side.FORMAT
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   qwinq.strategy.test.right_side.RightSide
+
+
+Module Contents
+---------------
+
+.. py:class:: RightSide(strategy_type: List[int] = [StrategyType.Stock], loader: Optional[qdatac.loader.Loader] = None, fetch: Optional[qfetch.fetch.Fetch] = None, cmm_params: Optional[qstrategy.strategy.CommonParam] = None, params: Optional[Dict] = None)
+
+   Bases: :py:obj:`python.qstrategy.qstrategy.base_strategy.BaseStrategy`
+
+   .. autoapi-inheritance-diagram:: qwinq.strategy.test.right_side.RightSide
+      :parts: 1
+
+
+   看上方有没有抛压，上涨幅度。
+   貌似上涨30%的都可以追，上涨大于40%有一定下跌的概率
+   示意形态:
+      |
+     |
+    |
+   |
+
+
+   .. py:attribute:: min_rise_days
+      :value: 3
+
+
+
+   .. py:attribute:: max_shadow_pct
+      :value: 50.0
+
+
+
+   .. py:attribute:: min_test_days
+      :value: 30
+
+
+
+   .. py:method:: help() -> str
+      :staticmethod:
+
+
+
+   .. py:method:: prepare() -> bool
+      :async:
+
+
+
+   .. py:method:: test(typ: qstrategy.strategy.StrategyType, code: str, name: str) -> Optional[qstrategy.strategy.StrategyResult]
+      :async:
+
+
+
+.. py:data:: FORMAT
+   :value: '[%(asctime)-15s][%(filename)s:%(lineno)d][%(name)s][%(levelname)s] %(message)s'
+
+

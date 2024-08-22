@@ -1,0 +1,43 @@
+qstrategy.runner
+================
+
+.. py:module:: qstrategy.runner
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   qstrategy.runner.Runner
+
+
+Module Contents
+---------------
+
+.. py:class:: Runner(typ: str, url: str, concurrent: int = 50)
+
+   .. py:attribute:: inner
+
+
+   .. py:property:: runner
+
+
+   .. py:method:: progress_callback(code: str, name: str, total: int, current: int, progress: float)
+      :staticmethod:
+
+
+
+   .. py:method:: run(strategy: qstrategy.strategy.Strategy, codes: Optional[Dict] = None, progress_func: Optional[types.FunctionType] = _progress_callback, to_frame: bool = False) -> Optional[Dict]
+      :async:
+
+
+
+   .. py:method:: fit(strategy: qstrategy.strategy.Strategy, code: str, name: str, typ: qstrategy.strategy.StrategyType, to_frame: bool = False) -> Optional[qstrategy.strategy.StrategyResult]
+      :async:
+
+
+
+   .. py:method:: shutdown() -> bool
+
+

@@ -1,0 +1,103 @@
+qstrategy.event
+===============
+
+.. py:module:: qstrategy.event
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   qstrategy.event.MonitorEvent
+   qstrategy.event.SelectHit
+   qstrategy.event.SelectEvent
+   qstrategy.event.Quot
+   qstrategy.event.RtQuot
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   qstrategy.event.BrokerEvent
+   qstrategy.event.Event
+   qstrategy.event.QuotEvent
+
+
+Module Contents
+---------------
+
+.. py:data:: MonitorEvent
+
+.. py:data:: SelectHit
+
+.. py:data:: SelectEvent
+
+.. py:class:: BrokerEvent(*, event: str, data: Union[List[qstrategy.tradecomm.Signal], Tuple, List[qstrategy.tradecomm.Position]])
+
+   .. py:method:: to_dict() -> Optional[Dict]
+
+
+.. py:class:: Event(*, event: str, data: Union[qstrategy.tradecomm.Signal, List[str], qstrategy.tradecomm.Entrust, BrokerEvent, MonitorEvent, SelectEvent])
+
+   .. py:property:: event
+      :type: Optional[Dict]
+
+
+
+   .. py:method:: to_dict() -> Optional[Dict]
+
+
+.. py:data:: Quot
+
+.. py:data:: RtQuot
+
+.. py:class:: QuotEvent(event)
+
+   .. py:attribute:: start
+      :value: 'start'
+
+
+
+   .. py:attribute:: morning_open
+      :value: 'morning_open'
+
+
+
+   .. py:attribute:: morning_close
+      :value: 'morning_close'
+
+
+
+   .. py:attribute:: noon_open
+      :value: 'noon_open'
+
+
+
+   .. py:attribute:: noon_close
+      :value: 'noon_close'
+
+
+
+   .. py:attribute:: end
+      :value: 'end'
+
+
+
+   .. py:attribute:: quot
+      :value: 'quot'
+
+
+
+   .. py:property:: event
+      :type: str
+
+
+
+   .. py:property:: data
+      :type: Optional[RtQuot]
+
+
+

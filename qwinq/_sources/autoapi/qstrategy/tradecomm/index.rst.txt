@@ -1,0 +1,79 @@
+qstrategy.tradecomm
+===================
+
+.. py:module:: qstrategy.tradecomm
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   qstrategy.tradecomm.Params
+   qstrategy.tradecomm.Account
+   qstrategy.tradecomm.Deal
+   qstrategy.tradecomm.Entrust
+   qstrategy.tradecomm.Position
+   qstrategy.tradecomm.Signal
+   qstrategy.tradecomm.SignalTypeBuy
+   qstrategy.tradecomm.SignalTypeSell
+   qstrategy.tradecomm.SignalTypeCancel
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   qstrategy.tradecomm.SignalSource
+
+
+Module Contents
+---------------
+
+.. py:data:: Params
+
+.. py:data:: Account
+
+.. py:data:: Deal
+
+.. py:data:: Entrust
+
+.. py:data:: Position
+
+.. py:data:: Signal
+
+.. py:data:: SignalTypeBuy
+   :value: 'buy'
+
+
+.. py:data:: SignalTypeSell
+   :value: 'sell'
+
+
+.. py:data:: SignalTypeCancel
+   :value: 'cancel'
+
+
+.. py:class:: SignalSource
+
+   .. py:method:: risk() -> Dict
+      :classmethod:
+
+
+
+   .. py:method:: strategy() -> Dict
+      :classmethod:
+
+
+
+   .. py:method:: broker() -> Dict
+      :classmethod:
+
+
+
+   .. py:method:: manual() -> Dict
+      :classmethod:
+
+
+

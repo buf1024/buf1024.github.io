@@ -1,0 +1,19 @@
+setup
+=====
+
+.. py:module:: setup
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   setup.long_description
+
+
+Module Contents
+---------------
+
+.. py:data:: long_description
+

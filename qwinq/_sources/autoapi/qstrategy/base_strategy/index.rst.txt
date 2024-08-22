@@ -1,0 +1,68 @@
+qstrategy.base_strategy
+=======================
+
+.. py:module:: qstrategy.base_strategy
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   qstrategy.base_strategy.BaseStrategy
+
+
+Module Contents
+---------------
+
+.. py:class:: BaseStrategy
+
+   Bases: :py:obj:`abc.ABC`
+
+   .. autoapi-inheritance-diagram:: qstrategy.base_strategy.BaseStrategy
+      :parts: 1
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:method:: init(state: qstrategy.qstrategy.ShareState, params: Optional[qstrategy.tradecomm.Params] = None) -> None
+
+
+   .. py:method:: destroy() -> None
+
+
+   .. py:method:: description()
+
+
+   .. py:method:: name()
+
+
+   .. py:method:: on_start(state: qstrategy.qstrategy.ShareState) -> None
+
+
+   .. py:method:: on_end(state: qstrategy.qstrategy.ShareState) -> None
+
+
+   .. py:method:: on_strategy(state: qstrategy.qstrategy.ShareState, event: qstrategy.event.QuotEvent) -> None
+
+
+   .. py:method:: on_open(state: qstrategy.qstrategy.ShareState, event: qstrategy.event.QuotEvent) -> None
+
+
+   .. py:method:: on_morning_open(state: qstrategy.qstrategy.ShareState) -> None
+
+
+   .. py:method:: on_noon_open(state: qstrategy.qstrategy.ShareState) -> None
+
+
+   .. py:method:: on_close(state: qstrategy.qstrategy.ShareState, event: qstrategy.event.QuotEvent) -> None
+
+
+   .. py:method:: on_morning_close(state: qstrategy.qstrategy.ShareState) -> None
+
+
+   .. py:method:: on_noon_close(state: qstrategy.qstrategy.ShareState) -> None
+
+

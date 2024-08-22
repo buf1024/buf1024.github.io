@@ -1,0 +1,32 @@
+qstrategy.risk
+==============
+
+.. py:module:: qstrategy.risk
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   qstrategy.risk.Risk
+
+
+Module Contents
+---------------
+
+.. py:class:: Risk
+
+   Bases: :py:obj:`qstrategy.base_strategy.BaseStrategy`
+
+   .. autoapi-inheritance-diagram:: qstrategy.risk.Risk
+      :parts: 1
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:method:: on_risk(state: qstrategy.qstrategy.ShareState, quots: qstrategy.event.RtQuot) -> None
+
+

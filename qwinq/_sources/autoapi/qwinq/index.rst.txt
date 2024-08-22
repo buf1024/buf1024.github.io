@@ -1,0 +1,24 @@
+qwinq
+=====
+
+.. py:module:: qwinq
+
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/qwinq/strategy/index
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/qwinq/common/index
+
+

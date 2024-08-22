@@ -1,0 +1,41 @@
+qstrategy.test_strategy
+=======================
+
+.. py:module:: qstrategy.test_strategy
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   qstrategy.test_strategy.TestStrategy
+
+
+Module Contents
+---------------
+
+.. py:class:: TestStrategy(loader: Optional[qdatac.loader.Loader] = None, fetch: Optional[qfetch.fetch.Fetch] = None, cmm_params: Optional[qstrategy.strategy.CommonParam] = None, params: Optional[Dict] = None)
+
+   Bases: :py:obj:`qstrategy.strategy.Strategy`
+
+   .. autoapi-inheritance-diagram:: qstrategy.test_strategy.TestStrategy
+      :parts: 1
+
+
+   .. py:method:: help()
+
+
+   .. py:method:: name()
+
+
+   .. py:method:: prepare() -> bool
+      :async:
+
+
+
+   .. py:method:: test(typ, code, name) -> Optional[str]
+      :async:
+
+
+

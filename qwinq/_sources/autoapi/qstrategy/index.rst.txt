@@ -1,0 +1,27 @@
+qstrategy
+=========
+
+.. py:module:: qstrategy
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/qstrategy/base_strategy/index
+   /autoapi/qstrategy/broker/index
+   /autoapi/qstrategy/dictclass/index
+   /autoapi/qstrategy/event/index
+   /autoapi/qstrategy/monitor/index
+   /autoapi/qstrategy/qstrategy/index
+   /autoapi/qstrategy/risk/index
+   /autoapi/qstrategy/runner/index
+   /autoapi/qstrategy/select/index
+   /autoapi/qstrategy/strategy/index
+   /autoapi/qstrategy/test_strategy/index
+   /autoapi/qstrategy/trade/index
+   /autoapi/qstrategy/tradecomm/index
+
+

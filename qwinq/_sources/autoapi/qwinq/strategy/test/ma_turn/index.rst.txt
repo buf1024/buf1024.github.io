@@ -1,0 +1,85 @@
+qwinq.strategy.test.ma_turn
+===========================
+
+.. py:module:: qwinq.strategy.test.ma_turn
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   qwinq.strategy.test.ma_turn.FORMAT
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   qwinq.strategy.test.ma_turn.MaTurn
+
+
+Module Contents
+---------------
+
+.. py:class:: MaTurn(strategy_type: List[int] = [StrategyType.Stock], loader: Optional[qdatac.loader.Loader] = None, fetch: Optional[qfetch.fetch.Fetch] = None, cmm_params: Optional[qstrategy.strategy.CommonParam] = None, params: Optional[Dict] = None)
+
+   Bases: :py:obj:`python.qstrategy.qstrategy.base_strategy.BaseStrategy`
+
+   .. autoapi-inheritance-diagram:: qwinq.strategy.test.ma_turn.MaTurn
+      :parts: 1
+
+
+   根据ma拐
+
+
+   .. py:attribute:: ma
+      :value: 5
+
+
+
+   .. py:attribute:: min_up_days
+      :value: 10
+
+
+
+   .. py:attribute:: min_up_pct
+      :value: 20.0
+
+
+
+   .. py:attribute:: min_down_days
+      :value: 5
+
+
+
+   .. py:attribute:: min_turn_days
+      :value: 2
+
+
+
+   .. py:attribute:: max_turn_days
+      :value: 5
+
+
+
+   .. py:method:: help() -> str
+      :staticmethod:
+
+
+
+   .. py:method:: prepare() -> bool
+      :async:
+
+
+
+   .. py:method:: test(typ: qstrategy.strategy.StrategyType, code: str, name: str) -> Optional[qstrategy.strategy.StrategyResult]
+      :async:
+
+
+
+.. py:data:: FORMAT
+   :value: '[%(asctime)-15s][%(filename)s:%(lineno)d][%(name)s][%(levelname)s] %(message)s'
+
+

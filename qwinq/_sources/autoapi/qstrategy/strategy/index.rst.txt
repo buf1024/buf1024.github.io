@@ -1,0 +1,6 @@
+qstrategy.strategy
+==================
+
+.. py:module:: qstrategy.strategy
+
+

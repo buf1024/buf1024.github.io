@@ -1,0 +1,32 @@
+qstrategy.monitor
+=================
+
+.. py:module:: qstrategy.monitor
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   qstrategy.monitor.Monitor
+
+
+Module Contents
+---------------
+
+.. py:class:: Monitor
+
+   Bases: :py:obj:`qstrategy.base_strategy.BaseStrategy`
+
+   .. autoapi-inheritance-diagram:: qstrategy.monitor.Monitor
+      :parts: 1
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:method:: on_monitor(state: qstrategy.qstrategy.ShareState, quots: qstrategy.event.RtQuot) -> None
+
+

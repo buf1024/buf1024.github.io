@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qstrategy.event &mdash; qwinq 1.0.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=34088549"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="qstrategy.monitor" href="../monitor/index.html" />
+    <link rel="prev" title="qstrategy.dictclass" href="../dictclass/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            qwinq
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fetch/index.html">数据获取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data.html">本地数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../select.html">选股策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../backtest.html">股票回测</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../qfetch/index.html">qfetch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qdatac/index.html">qdatac</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">qstrategy</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../base_strategy/index.html">qstrategy.base_strategy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../broker/index.html">qstrategy.broker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dictclass/index.html">qstrategy.dictclass</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">qstrategy.event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../monitor/index.html">qstrategy.monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../qstrategy/index.html">qstrategy.qstrategy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../risk/index.html">qstrategy.risk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../runner/index.html">qstrategy.runner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../select/index.html">qstrategy.select</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../strategy/index.html">qstrategy.strategy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../test_strategy/index.html">qstrategy.test_strategy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../trade/index.html">qstrategy.trade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tradecomm/index.html">qstrategy.tradecomm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">qwinq</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">qstrategy</a></li>
+      <li class="breadcrumb-item active">qstrategy.event</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qstrategy.event">
+<span id="qstrategy-event"></span><h1>qstrategy.event<a class="headerlink" href="#module-qstrategy.event" title="Link to this heading"></a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.event.MonitorEvent" title="qstrategy.event.MonitorEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MonitorEvent</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qstrategy.event.SelectHit" title="qstrategy.event.SelectHit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelectHit</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.event.SelectEvent" title="qstrategy.event.SelectEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelectEvent</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qstrategy.event.Quot" title="qstrategy.event.Quot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quot</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.event.RtQuot" title="qstrategy.event.RtQuot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RtQuot</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.event.BrokerEvent" title="qstrategy.event.BrokerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BrokerEvent</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qstrategy.event.Event" title="qstrategy.event.Event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Event</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.event.QuotEvent" title="qstrategy.event.QuotEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuotEvent</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="qstrategy.event.MonitorEvent">
+<span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">MonitorEvent</span></span><a class="headerlink" href="#qstrategy.event.MonitorEvent" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qstrategy.event.SelectHit">
+<span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">SelectHit</span></span><a class="headerlink" href="#qstrategy.event.SelectHit" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qstrategy.event.SelectEvent">
+<span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">SelectEvent</span></span><a class="headerlink" href="#qstrategy.event.SelectEvent" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qstrategy.event.BrokerEvent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">BrokerEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">qstrategy.tradecomm.Signal</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">qstrategy.tradecomm.Position</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.event.BrokerEvent" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.event.BrokerEvent.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.event.BrokerEvent.to_dict" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qstrategy.event.Event">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">Event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.tradecomm.Signal</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">qstrategy.tradecomm.Entrust</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#qstrategy.event.BrokerEvent" title="qstrategy.event.BrokerEvent"><span class="pre">BrokerEvent</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MonitorEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SelectEvent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.event.Event" title="Link to this definition"></a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="qstrategy.event.Event.event">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">event</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#qstrategy.event.Event.event" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.event.Event.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.event.Event.to_dict" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qstrategy.event.Quot">
+<span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">Quot</span></span><a class="headerlink" href="#qstrategy.event.Quot" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qstrategy.event.RtQuot">
+<span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">RtQuot</span></span><a class="headerlink" href="#qstrategy.event.RtQuot" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qstrategy.event.QuotEvent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">QuotEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.event.QuotEvent" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="qstrategy.event.QuotEvent.start">
+<span class="sig-name descname"><span class="pre">start</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'start'</span></em><a class="headerlink" href="#qstrategy.event.QuotEvent.start" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qstrategy.event.QuotEvent.morning_open">
+<span class="sig-name descname"><span class="pre">morning_open</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'morning_open'</span></em><a class="headerlink" href="#qstrategy.event.QuotEvent.morning_open" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qstrategy.event.QuotEvent.morning_close">
+<span class="sig-name descname"><span class="pre">morning_close</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'morning_close'</span></em><a class="headerlink" href="#qstrategy.event.QuotEvent.morning_close" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qstrategy.event.QuotEvent.noon_open">
+<span class="sig-name descname"><span class="pre">noon_open</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noon_open'</span></em><a class="headerlink" href="#qstrategy.event.QuotEvent.noon_open" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qstrategy.event.QuotEvent.noon_close">
+<span class="sig-name descname"><span class="pre">noon_close</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noon_close'</span></em><a class="headerlink" href="#qstrategy.event.QuotEvent.noon_close" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qstrategy.event.QuotEvent.end">
+<span class="sig-name descname"><span class="pre">end</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'end'</span></em><a class="headerlink" href="#qstrategy.event.QuotEvent.end" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qstrategy.event.QuotEvent.quot">
+<span class="sig-name descname"><span class="pre">quot</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'quot'</span></em><a class="headerlink" href="#qstrategy.event.QuotEvent.quot" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qstrategy.event.QuotEvent.event">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">event</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#qstrategy.event.QuotEvent.event" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qstrategy.event.QuotEvent.data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">RtQuot</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#qstrategy.event.QuotEvent.data" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../dictclass/index.html" class="btn btn-neutral float-left" title="qstrategy.dictclass" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../monitor/index.html" class="btn btn-neutral float-right" title="qstrategy.monitor" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2018 - 2024, buf1024@gmail.com。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

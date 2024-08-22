@@ -1,0 +1,17 @@
+qwinq.strategy.test
+===================
+
+.. py:module:: qwinq.strategy.test
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/qwinq/strategy/test/ma_turn/index
+   /autoapi/qwinq/strategy/test/right_side/index
+   /autoapi/qwinq/strategy/test/shock_rise/index
+
+

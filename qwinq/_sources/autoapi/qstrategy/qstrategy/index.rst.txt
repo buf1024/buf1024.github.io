@@ -1,0 +1,88 @@
+qstrategy.qstrategy
+===================
+
+.. py:module:: qstrategy.qstrategy
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   qstrategy.qstrategy.ShareState
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   qstrategy.qstrategy.test
+   qstrategy.qstrategy.uuid
+   qstrategy.qstrategy.new_signal
+   qstrategy.qstrategy.stat_select_hit
+
+
+Module Contents
+---------------
+
+.. py:function:: test()
+
+.. py:function:: uuid() -> str
+
+.. py:function:: new_signal(type: str, source: ast.Dict, code: str, name: str, price: float, volume: int, desc: str) -> ast.Dict
+
+.. py:function:: stat_select_hit(data: List[ast.Dict], hit: int, hit_max: int) -> ast.Dict
+
+.. py:class:: ShareState(loader: qdatac.loader.BlockLoader, is_trading: bool, is_started: bool, account: Optional[qstrategy.tradecomm.Account] = None)
+
+   .. py:property:: loader
+      :type: qdatac.loader.BlockLoader
+
+
+
+   .. py:property:: account
+      :type: Optional[qstrategy.tradecomm.Account]
+
+
+
+   .. py:property:: is_trading
+      :type: bool
+
+
+
+   .. py:property:: is_started
+      :type: bool
+
+
+
+   .. py:method:: can_buy(price: float, volume: int) -> bool
+
+
+   .. py:method:: can_sell(code: str) -> int
+
+
+   .. py:method:: can_cancel(code: str) -> Optional[List[qstrategy.tradecomm.Entrust]]
+
+
+   .. py:method:: get_position_volume(code: str) -> Tuple[int, int]
+
+
+   .. py:method:: get_position(code: Optional[str] = None) -> Optional[List[qstrategy.tradecomm.Position]]
+
+
+   .. py:method:: buy(signal: qstrategy.tradecomm.Signal) -> None
+
+
+   .. py:method:: sell(signal: qstrategy.tradecomm.Signal) -> None
+
+
+   .. py:method:: cancel(signal: qstrategy.tradecomm.Signal) -> None
+
+
+   .. py:method:: subscribe(codes: List[str]) -> None
+
+
+   .. py:method:: emit(event: qstrategy.event.Event) -> None
+
+

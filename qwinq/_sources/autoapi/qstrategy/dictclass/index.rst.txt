@@ -1,0 +1,22 @@
+qstrategy.dictclass
+===================
+
+.. py:module:: qstrategy.dictclass
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   qstrategy.dictclass.DictClass
+
+
+Module Contents
+---------------
+
+.. py:class:: DictClass(the_dict)
+
+   .. py:method:: to_dict() -> Dict
+
+
