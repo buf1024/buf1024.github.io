@@ -52,6 +52,7 @@ __pycache__/
 *.pyc
 
 .hugo/content/talib-doc
+.hugo/static/qwinq
 .idea
 *.lock
 
