@@ -1,0 +1,59 @@
+:py:mod:`pywqfetch.calc_chip`
+=============================
+
+.. py:module:: pywqfetch.calc_chip
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   pywqfetch.calc_chip.ChipDistribution
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   pywqfetch.calc_chip.a
+
+
+.. py:class:: ChipDistribution
+
+
+   .. py:method:: get_data()
+
+
+   .. py:method:: calcuJUN(dateT, highT, lowT, volT, TurnoverRateT, A, minD)
+
+
+   .. py:method:: calcuSin(dateT, highT, lowT, avgT, volT, TurnoverRateT, minD, A)
+
+
+   .. py:method:: calcu(dateT, highT, lowT, avgT, volT, TurnoverRateT, minD=0.01, flag=1, AC=1)
+
+
+   .. py:method:: calcuChip(flag=1, AC=1)
+
+
+   .. py:method:: winner(p=None)
+
+
+   .. py:method:: lwinner(N=5, p=None)
+
+
+   .. py:method:: cost(N)
+
+
+
+.. py:data:: a
+
+   
+

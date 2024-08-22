@@ -1,0 +1,252 @@
+qfetch.qfetch
+=============
+
+.. py:module:: qfetch.qfetch
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   qfetch.qfetch.fetch_trade_date
+   qfetch.qfetch.block_fetch_trade_date
+   qfetch.qfetch.fetch_next_trade_date
+   qfetch.qfetch.block_fetch_next_trade_date
+   qfetch.qfetch.fetch_prev_trade_date
+   qfetch.qfetch.block_fetch_prev_trade_date
+   qfetch.qfetch.fetch_is_trade_date
+   qfetch.qfetch.block_fetch_is_trade_date
+   qfetch.qfetch.to_std_code
+   qfetch.qfetch.fetch_rt_quot
+   qfetch.qfetch.block_fetch_rt_quot
+   qfetch.qfetch.fetch_stock_rt_quot
+   qfetch.qfetch.block_fetch_stock_rt_quot
+   qfetch.qfetch.calc_chip_dist
+   qfetch.qfetch.calc_winner
+   qfetch.qfetch.calc_cost
+   qfetch.qfetch.fetch_bond_info
+   qfetch.qfetch.block_fetch_bond_info
+   qfetch.qfetch.fetch_bond_bar
+   qfetch.qfetch.block_fetch_bond_bar
+   qfetch.qfetch.fetch_fund_info
+   qfetch.qfetch.block_fetch_fund_info
+   qfetch.qfetch.fetch_fund_net
+   qfetch.qfetch.block_fetch_fund_net
+   qfetch.qfetch.fetch_fund_bar
+   qfetch.qfetch.block_fetch_fund_bar
+   qfetch.qfetch.fetch_index_info
+   qfetch.qfetch.block_fetch_index_info
+   qfetch.qfetch.fetch_index_bar
+   qfetch.qfetch.block_fetch_index_bar
+   qfetch.qfetch.fetch_stock_info
+   qfetch.qfetch.block_fetch_stock_info
+   qfetch.qfetch.fetch_stock_is_margin
+   qfetch.qfetch.block_fetch_stock_is_margin
+   qfetch.qfetch.fetch_stock_bar
+   qfetch.qfetch.block_fetch_stock_bar
+   qfetch.qfetch.fetch_stock_index
+   qfetch.qfetch.block_fetch_stock_index
+   qfetch.qfetch.fetch_stock_industry
+   qfetch.qfetch.block_fetch_stock_industry
+   qfetch.qfetch.fetch_stock_industry_detail
+   qfetch.qfetch.block_fetch_stock_industry_detail
+   qfetch.qfetch.fetch_stock_industry_daily
+   qfetch.qfetch.block_fetch_stock_industry_daily
+   qfetch.qfetch.fetch_stock_concept
+   qfetch.qfetch.block_fetch_stock_concept
+   qfetch.qfetch.fetch_stock_concept_detail
+   qfetch.qfetch.block_fetch_stock_concept_detail
+   qfetch.qfetch.fetch_stock_concept_daily
+   qfetch.qfetch.block_fetch_stock_concept_daily
+   qfetch.qfetch.fetch_stock_yjbb
+   qfetch.qfetch.block_fetch_stock_yjbb
+   qfetch.qfetch.fetch_stock_margin
+   qfetch.qfetch.block_fetch_stock_margin
+   qfetch.qfetch.fetch_stock_hot_rank
+   qfetch.qfetch.block_fetch_stock_hot_rank
+   qfetch.qfetch.fetch_stock_comment
+   qfetch.qfetch.block_fetch_stock_comment
+   qfetch.qfetch.fetch_stock_comment_his
+   qfetch.qfetch.block_fetch_stock_comment_his
+
+
+Module Contents
+---------------
+
+.. py:function:: fetch_trade_date() -> Set[int]
+   :async:
+
+
+.. py:function:: block_fetch_trade_date() -> Set[int]
+
+.. py:function:: fetch_next_trade_date(d: datetime.date) -> int
+   :async:
+
+
+.. py:function:: block_fetch_next_trade_date(d: datetime.date) -> int
+
+.. py:function:: fetch_prev_trade_date(d: datetime.date) -> int
+   :async:
+
+
+.. py:function:: block_fetch_prev_trade_date(d: datetime.date) -> int
+
+.. py:function:: fetch_is_trade_date(d: datetime.date) -> bool
+   :async:
+
+
+.. py:function:: block_fetch_is_trade_date(d: datetime.date) -> bool
+
+.. py:function:: to_std_code(typ: int, code: str) -> str
+
+.. py:function:: fetch_rt_quot(code: List[str]) -> Dict[str, Dict]
+   :async:
+
+
+.. py:function:: block_fetch_rt_quot(code: List[str]) -> Dict[str, Dict]
+
+.. py:function:: fetch_stock_rt_quot(codes: Optional[List[str]]) -> List[Dict]
+   :async:
+
+
+.. py:function:: block_fetch_stock_rt_quot(codes: Optional[List[str]]) -> List[Dict]
+
+.. py:function:: calc_chip_dist(data: List[Dict], ac: int = 1, chip_dist: Dict = None) -> Dict
+
+.. py:function:: calc_winner(chip_dist: Dict, data: List[Dict] = None, price: float = None) -> Dict
+
+.. py:function:: calc_cost(chip_dist: Dict, ratio: int) -> Dict
+
+.. py:function:: fetch_bond_info() -> List[Dict]
+   :async:
+
+
+.. py:function:: block_fetch_bond_info() -> List[Dict]
+
+.. py:function:: fetch_bond_bar(code: str, name: str, stock_code: str, stock_name: str, freq: Optional[int], start: Optional[datetime.date], end: Optional[datetime.date], skip_rt: bool) -> Dict
+   :async:
+
+
+.. py:function:: block_fetch_bond_bar(code: str, name: str, stock_code: str, stock_name: str, freq: Optional[int], start: Optional[datetime.date], end: Optional[datetime.date], skip_rt: bool) -> Dict
+
+.. py:function:: fetch_fund_info() -> List[Dict]
+   :async:
+
+
+.. py:function:: block_fetch_fund_info() -> List[Dict]
+
+.. py:function:: fetch_fund_net(code: str, name: Optional[str], start: Optional[datetime.date], end: Optional[datetime.date]) -> List[Dict]
+   :async:
+
+
+.. py:function:: block_fetch_fund_net(code: str, name: Optional[str], start: Optional[datetime.date], end: Optional[datetime.date]) -> List[Dict]
+
+.. py:function:: fetch_fund_bar(code: str, name: Optional[str], freq: Optional[int], start: Optional[datetime.date], end: Optional[datetime.date], skip_rt: bool) -> Dict
+   :async:
+
+
+.. py:function:: block_fetch_fund_bar(code: str, name: Optional[str], freq: Optional[int], start: Optional[datetime.date], end: Optional[datetime.date], skip_rt: bool) -> Dict
+
+.. py:function:: fetch_index_info() -> List[Dict]
+   :async:
+
+
+.. py:function:: block_fetch_index_info() -> List[Dict]
+
+.. py:function:: fetch_index_bar(code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
+   :async:
+
+
+.. py:function:: block_fetch_index_bar(code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
+
+.. py:function:: fetch_stock_info(market: int = 0) -> List[Dict]
+   :async:
+
+
+.. py:function:: block_fetch_stock_info(market: int = 0) -> List[Dict]
+
+.. py:function:: fetch_stock_is_margin() -> Set[str]
+   :async:
+
+
+.. py:function:: block_fetch_stock_is_margin() -> Set[str]
+
+.. py:function:: fetch_stock_bar(code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
+   :async:
+
+
+.. py:function:: block_fetch_stock_bar(code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
+
+.. py:function:: fetch_stock_index(index_date: Optional[datetime.date]) -> Dict[str, Dict]
+   :async:
+
+
+.. py:function:: block_fetch_stock_index(index_date: Optional[datetime.date]) -> Dict[str, Dict]
+
+.. py:function:: fetch_stock_industry() -> List[Dict]
+   :async:
+
+
+.. py:function:: block_fetch_stock_industry() -> List[Dict]
+
+.. py:function:: fetch_stock_industry_detail(code: Optional[str] = None, name: Optional[str] = None) -> List[Dict]
+   :async:
+
+
+.. py:function:: block_fetch_stock_industry_detail(code: Optional[str] = None, name: Optional[str] = None) -> List[Dict]
+
+.. py:function:: fetch_stock_industry_daily(code: str, name: Optional[str] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
+   :async:
+
+
+.. py:function:: block_fetch_stock_industry_daily(code: str, name: Optional[str] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
+
+.. py:function:: fetch_stock_concept() -> List[Dict]
+   :async:
+
+
+.. py:function:: block_fetch_stock_concept() -> List[Dict]
+
+.. py:function:: fetch_stock_concept_detail(code: Optional[str] = None, name: Optional[str] = None) -> List[Dict]
+   :async:
+
+
+.. py:function:: block_fetch_stock_concept_detail(code: Optional[str] = None, name: Optional[str] = None) -> List[Dict]
+
+.. py:function:: fetch_stock_concept_daily(code: str, name: Optional[str] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
+   :async:
+
+
+.. py:function:: block_fetch_stock_concept_daily(code: str, name: Optional[str] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
+
+.. py:function:: fetch_stock_yjbb(year: int, season: int) -> List[Dict]
+   :async:
+
+
+.. py:function:: block_fetch_stock_yjbb(year: int, season: int) -> List[Dict]
+
+.. py:function:: fetch_stock_margin(code: str, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None) -> List[Dict]
+   :async:
+
+
+.. py:function:: block_fetch_stock_margin(code: str, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None) -> List[Dict]
+
+.. py:function:: fetch_stock_hot_rank(code: str) -> Dict
+   :async:
+
+
+.. py:function:: block_fetch_stock_hot_rank(code: str) -> Dict
+
+.. py:function:: fetch_stock_comment(codes: Optional[List[str]] = None) -> Dict
+   :async:
+
+
+.. py:function:: block_fetch_stock_comment(codes: Optional[List[str]] = None) -> Dict
+
+.. py:function:: fetch_stock_comment_his(code: str) -> Dict
+   :async:
+
+
+.. py:function:: block_fetch_stock_comment_his(code: str) -> Dict
+

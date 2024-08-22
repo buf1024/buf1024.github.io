@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>股票数据 &mdash; qwinq 1.0.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=34088549"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="ETF基金数据" href="fund.html" />
+    <link rel="prev" title="通用数据" href="general.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            qwinq
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">简介</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">数据获取</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="general.html">通用数据</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">股票数据</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">指数基本信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k">指数k线数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">股票基本信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">融资股票信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">股票k线数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">​​股票指标数据​</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">股票行业数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">股票行业明细</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">股票行业日线数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">股票概念数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">股票概念明细</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">股票概念日线数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">股票融资融券</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">业绩报表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">股票实时排名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">筹码成本分布</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">筹码​​获利盘​</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">筹码成本分布</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fund.html">ETF基金数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bond.html">可转债数据</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data.html">本地数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../select.html">选股策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backtest.html">股票回测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">qwinq</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">数据获取</a></li>
+      <li class="breadcrumb-item active">股票数据</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>股票数据<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<section id="id2">
+<h2>指数基本信息<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>​<code class="docutils literal notranslate"><span class="pre">​</span> <span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_index_info(self,</span> <span class="pre">*,</span> <span class="pre">to_frame=True)</span> <span class="pre">-&gt;</span> <span class="pre">Union[List[Dict],</span> <span class="pre">pd.DataFrame]:</span></code>​</p>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出(仅描述<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>​)：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>指数代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>指数名称</td>
+</tr>
+<tr>
+<td>block</td>
+<td>str</td>
+<td>板块</td>
+</tr>
+<tr>
+<td>is_margin</td>
+<td>bool</td>
+<td>是否融资融券，字段无意义</td>
+</tr>
+<tr>
+<td>listing_date</td>
+<td>datetime</td>
+<td>上市日期，字段无意义</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">qfetch</span> <span class="k">as</span> <span class="nn">fetch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_index_info</span><span class="p">()</span>
+<span class="go">      code   name block  is_margin listing_date</span>
+<span class="go">0     sh000001   上证综指    指数      False   1970-01-01</span>
+<span class="go">..        ...    ...    </span>
+<span class="go">[12 rows x 5 columns]</span>
+</pre></div>
+</div>
+</section>
+<section id="k">
+<h2>指数k线数据<a class="headerlink" href="#k" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_index_bar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                              <span class="n">freq</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                              <span class="n">start</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">skip_rt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>指数代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>指数名称</td>
+</tr>
+<tr>
+<td>freq</td>
+<td>int/BarFreq</td>
+<td>k线周期</td>
+</tr>
+<tr>
+<td>start</td>
+<td>date</td>
+<td>开始时间，默认全部</td>
+</tr>
+<tr>
+<td>end</td>
+<td>date</td>
+<td>结束时间，默认全部</td>
+</tr>
+<tr>
+<td>skip_rt</td>
+<td>bool</td>
+<td>是否忽略实时行情的数据</td>
+</tr>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>指数代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>指数名称</td>
+</tr>
+<tr>
+<td>freq</td>
+<td>int/BarFreq</td>
+<td>k线周期</td>
+</tr>
+<tr>
+<td>bars</td>
+<td>DataFrame</td>
+<td>-</td>
+</tr>
+<tr>
+<td>DataFrame格式</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>代码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>trade_date</td>
+<td>datetime</td>
+<td>交易日</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>开盘价</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>收盘价</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>最高价</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>最低价</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>int</td>
+<td>成交量</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>成交额</td>
+</tr>
+<tr>
+<td>turnover</td>
+<td>float</td>
+<td>换手率%</td>
+</tr>
+<tr>
+<td>chg_pct</td>
+<td>float</td>
+<td>涨跌%</td>
+</tr>
+<tr>
+<td>volume_chg_pct</td>
+<td>float</td>
+<td>成交量变化%</td>
+</tr>
+<tr>
+<td>amount_chg_pct</td>
+<td>float</td>
+<td>成交额变化%</td>
+</tr>
+<tr>
+<td>hfq_factor</td>
+<td>float</td>
+<td>后复权因子</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_index_bar</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">&#39;bj899050&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> 
+<span class="p">{</span><span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;bj899050&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;北证50&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;freq&#39;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
+ <span class="s1">&#39;bars&#39;</span><span class="p">:</span>          <span class="n">code</span>  <span class="n">name</span> <span class="n">trade_date</span>         <span class="nb">open</span>  <span class="o">...</span>  <span class="n">chg_pct</span>  <span class="n">volume_chg_pct</span>  <span class="n">amount_chg_pct</span>  <span class="n">hfq_factor</span>
+ <span class="mi">0</span>    <span class="n">bj899050</span>  <span class="n">北证50</span> <span class="mi">2022</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">29</span>  <span class="mf">1000.000000</span>  <span class="o">...</span>     <span class="mf">0.00</span>        <span class="mf">0.000000</span>        <span class="mf">0.000000</span>         <span class="mf">1.0</span>
+ <span class="o">..</span>        <span class="o">...</span>   <span class="o">...</span>        <span class="o">...</span>          <span class="o">...</span>  <span class="o">...</span>      <span class="o">...</span>             <span class="o">...</span>             <span class="o">...</span>         <span class="o">...</span>
+ <span class="p">[</span><span class="mi">336</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">14</span> <span class="n">columns</span><span class="p">]}</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>股票基本信息<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>​<code class="docutils literal notranslate"><span class="pre">​</span> <span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_stock_info(self,</span> <span class="pre">*,</span> <span class="pre">to_frame=True)</span> <span class="pre">-&gt;</span> <span class="pre">Union[List[Dict],</span> <span class="pre">pd.DataFrame]:</span></code>​</p>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出(仅描述<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>​)：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>指数代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>指数名称</td>
+</tr>
+<tr>
+<td>block</td>
+<td>str</td>
+<td>板块</td>
+</tr>
+<tr>
+<td>is_margin</td>
+<td>bool</td>
+<td>是否融资融券</td>
+</tr>
+<tr>
+<td>listing_date</td>
+<td>datetime</td>
+<td>上市日期</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">qfetch</span> <span class="k">as</span> <span class="nn">fetch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_info</span><span class="p">()</span>
+<span class="go">      code   name block  is_margin listing_date</span>
+<span class="go">0     sh600000   浦发银行    主板       True   1999-11-10</span>
+<span class="go">..        ...    ...  </span>
+<span class="go">[5056 rows x 5 columns]</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>融资股票信息<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>​<code class="docutils literal notranslate"><span class="pre">​</span> <span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_stock_info(self,</span> <span class="pre">*,</span> <span class="pre">to_frame=True)</span> <span class="pre">-&gt;</span> <span class="pre">Union[List[Dict],</span> <span class="pre">pd.DataFrame]:</span></code>​​</p>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出(仅描述<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>​)：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>股票代码<br /></td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">qfetch</span> <span class="k">as</span> <span class="nn">fetch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_is_margin</span><span class="p">()</span>
+<span class="go">      code</span>
+<span class="go">0     sz003040</span>
+<span class="go">...</span>
+<span class="go">[3500 rows x 1 columns]</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>股票k线数据<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_bar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                              <span class="n">freq</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                              <span class="n">start</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                              <span class="n">skip_rt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                              <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>股票代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>股票名称</td>
+</tr>
+<tr>
+<td>freq</td>
+<td>int/BarFreq</td>
+<td>k线周期</td>
+</tr>
+<tr>
+<td>start</td>
+<td>date</td>
+<td>开始时间，默认全部</td>
+</tr>
+<tr>
+<td>end</td>
+<td>date</td>
+<td>结束时间，默认全部</td>
+</tr>
+<tr>
+<td>skip_rt</td>
+<td>bool</td>
+<td>是否忽略实时行情的数据</td>
+</tr>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>股票代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>股票名称</td>
+</tr>
+<tr>
+<td>freq</td>
+<td>int/BarFreq</td>
+<td>k线周期</td>
+</tr>
+<tr>
+<td>bars</td>
+<td>DataFrame</td>
+<td>-</td>
+</tr>
+<tr>
+<td>DataFrame格式</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>代码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>trade_date</td>
+<td>datetime</td>
+<td>交易日</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>开盘价</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>收盘价</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>最高价</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>最低价</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>int</td>
+<td>成交量</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>成交额</td>
+</tr>
+<tr>
+<td>turnover</td>
+<td>float</td>
+<td>换手率%</td>
+</tr>
+<tr>
+<td>chg_pct</td>
+<td>float</td>
+<td>涨跌%</td>
+</tr>
+<tr>
+<td>volume_chg_pct</td>
+<td>float</td>
+<td>成交量变化%</td>
+</tr>
+<tr>
+<td>amount_chg_pct</td>
+<td>float</td>
+<td>成交额变化%</td>
+</tr>
+<tr>
+<td>hfq_factor</td>
+<td>float</td>
+<td>后复权因子</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_bar</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">&#39;sz003040&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> 
+<span class="p">{</span><span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;sz003040&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;楚天龙&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;freq&#39;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
+ <span class="s1">&#39;bars&#39;</span><span class="p">:</span>          <span class="n">code</span> <span class="n">name</span> <span class="n">trade_date</span>   <span class="nb">open</span>  <span class="o">...</span>    <span class="n">chg_pct</span>  <span class="n">volume_chg_pct</span>  <span class="n">amount_chg_pct</span>  <span class="n">hfq_factor</span>
+ <span class="mi">0</span>    <span class="n">sz003040</span>  <span class="n">楚天龙</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">22</span>   <span class="mf">5.54</span>  <span class="o">...</span>  <span class="mf">43.939999</span>        <span class="mf">0.000000</span>        <span class="mf">0.000000</span>    <span class="mf">1.000000</span>
+ <span class="o">..</span>        <span class="o">...</span>  <span class="o">...</span>        <span class="o">...</span>    <span class="o">...</span>  <span class="o">...</span>        <span class="o">...</span>             <span class="o">...</span>             <span class="o">...</span>         <span class="o">...</span>
+ 
+ <span class="p">[</span><span class="mi">605</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">14</span> <span class="n">columns</span><span class="p">]}</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>​​股票指标数据​<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">index_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index_date</td>
+<td>datetime</td>
+<td>指标日期<br /></td>
+</tr>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>股票代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>股票名称</td>
+</tr>
+<tr>
+<td>freq</td>
+<td>int/BarFreq</td>
+<td>k线周期</td>
+</tr>
+<tr>
+<td>bars</td>
+<td>DataFrame</td>
+<td>-</td>
+</tr>
+<tr>
+<td>DataFrame格式</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>代码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>trade_date</td>
+<td>datetime</td>
+<td>交易日</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>当前价</td>
+</tr>
+<tr>
+<td>pe</td>
+<td>float</td>
+<td>收盘价</td>
+</tr>
+<tr>
+<td>pb</td>
+<td>float</td>
+<td>最高价</td>
+</tr>
+<tr>
+<td>total_value</td>
+<td>float</td>
+<td>总市值（元）</td>
+</tr>
+<tr>
+<td>currency_value</td>
+<td>float</td>
+<td>流通市值（元）</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_index</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> 
+          <span class="n">code</span>  <span class="n">name</span> <span class="n">trade_date</span>      <span class="n">price</span>          <span class="n">pe</span>     <span class="n">pb</span>   <span class="n">total_value</span>  <span class="n">currency_value</span>
+<span class="mi">0</span>     <span class="n">sh601992</span>  <span class="n">金隅集团</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">12</span>   <span class="mf">2.180000</span>   <span class="mf">28.379999</span>   <span class="mf">0.50</span>  <span class="mf">2.327754e+10</span>    <span class="mf">1.816847e+10</span>
+<span class="o">...</span>        <span class="o">...</span>   <span class="o">...</span>        <span class="o">...</span>        <span class="o">...</span>         <span class="o">...</span>    <span class="o">...</span>           <span class="o">...</span>             <span class="o">...</span>
+
+<span class="p">[</span><span class="mi">5298</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">8</span> <span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>股票行业数据<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_industry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>行业代码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>行业名称</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qfetch</span> <span class="k">as</span> <span class="nn">fetch</span>
+<span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_industry</span><span class="p">()</span>
+    <span class="n">code</span>   <span class="n">name</span>
+<span class="mi">0</span>   <span class="n">BK1015</span>   <span class="n">能源金属</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h2>股票行业明细<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_industry_detail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>行业代码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>行业名称</td>
+</tr>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>行业代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>行业名称</td>
+</tr>
+<tr>
+<td>stock_code</td>
+<td>str</td>
+<td>股票代码</td>
+</tr>
+<tr>
+<td>sotck_name</td>
+<td>str</td>
+<td>股票名称</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_industry_detail</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">&#39;BK1046&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;游戏&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span> 
+      <span class="n">code</span> <span class="n">name</span> <span class="n">stock_code</span> <span class="n">stock_name</span>
+<span class="mi">0</span>   <span class="n">BK1046</span>   <span class="n">游戏</span>   <span class="n">sz300052</span>        <span class="n">中青宝</span>
+<span class="mi">1</span>   <span class="n">BK1046</span>   <span class="n">游戏</span>   <span class="n">sh600715</span>       <span class="n">文投控股</span>
+<span class="o">...</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> 
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h2>股票行业日线数据<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_industry_daily</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                         <span class="n">start</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                         <span class="n">skip_rt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                                         <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>股票代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>股票名称</td>
+</tr>
+<tr>
+<td>start</td>
+<td>date</td>
+<td>开始时间，默认全部</td>
+</tr>
+<tr>
+<td>end</td>
+<td>date</td>
+<td>结束时间，默认全部</td>
+</tr>
+<tr>
+<td>skip_rt</td>
+<td>bool</td>
+<td>是否忽略实时行情的数据</td>
+</tr>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>股票代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>股票名称</td>
+</tr>
+<tr>
+<td>freq</td>
+<td>int/BarFreq</td>
+<td>k线周期</td>
+</tr>
+<tr>
+<td>bars</td>
+<td>DataFrame</td>
+<td>-</td>
+</tr>
+<tr>
+<td>DataFrame格式</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>代码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>trade_date</td>
+<td>datetime</td>
+<td>交易日</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>开盘价</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>收盘价</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>最高价</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>最低价</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>int</td>
+<td>成交量</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>成交额</td>
+</tr>
+<tr>
+<td>turnover</td>
+<td>float</td>
+<td>换手率%</td>
+</tr>
+<tr>
+<td>chg_pct</td>
+<td>float</td>
+<td>涨跌%</td>
+</tr>
+<tr>
+<td>volume_chg_pct</td>
+<td>float</td>
+<td>成交量变化%</td>
+</tr>
+<tr>
+<td>amount_chg_pct</td>
+<td>float</td>
+<td>成交额变化%</td>
+</tr>
+<tr>
+<td>hfq_factor</td>
+<td>float</td>
+<td>后复权因子</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_industry_daily</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">&#39;BK0474&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">10</span><span class="p">]:</span> 
+<span class="p">{</span><span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;BK0474&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;保险&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;freq&#39;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
+ <span class="s1">&#39;bars&#39;</span><span class="p">:</span>         <span class="n">code</span> <span class="n">name</span> <span class="n">trade_date</span>         <span class="nb">open</span>  <span class="o">...</span>  <span class="n">chg_pct</span>  <span class="n">volume_chg_pct</span>  <span class="n">amount_chg_pct</span>  <span class="n">hfq_factor</span>
+ <span class="mi">0</span>     <span class="n">BK0474</span>   <span class="n">保险</span> <span class="mi">2007</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">09</span>  <span class="mf">1000.000000</span>  <span class="o">...</span>     <span class="mf">5.22</span>        <span class="mf">0.000000</span>        <span class="mf">0.000000</span>         <span class="mf">1.0</span>
+ <span class="o">...</span>      <span class="o">...</span>  <span class="o">...</span>        <span class="o">...</span>          <span class="o">...</span>  <span class="o">...</span>      <span class="o">...</span>             <span class="o">...</span>             <span class="o">...</span>         <span class="o">...</span>
+
+ <span class="p">[</span><span class="mi">4057</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">14</span> <span class="n">columns</span><span class="p">]}</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h2>股票概念数据<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_concept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>概念代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>概念名称</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_concept</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span> 
+       <span class="n">code</span>   <span class="n">name</span>
+<span class="mi">0</span>    <span class="n">BK1092</span>   <span class="n">麒麟电池</span>
+<span class="o">..</span> <span class="o">..</span> <span class="o">..</span>
+<span class="p">[</span><span class="mi">432</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">2</span> <span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h2>股票概念明细<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_concept_detail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>概念代码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>概念名称</td>
+</tr>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>行业代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>行业名称</td>
+</tr>
+<tr>
+<td>stock_code</td>
+<td>str</td>
+<td>股票代码</td>
+</tr>
+<tr>
+<td>sotck_name</td>
+<td>str</td>
+<td>股票名称</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_concept_detail</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">&#39;BK1084&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;数字哨兵&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span> 
+      <span class="n">code</span>  <span class="n">name</span> <span class="n">stock_code</span> <span class="n">stock_name</span>
+<span class="mi">0</span>   <span class="n">BK1084</span>  <span class="n">数字哨兵</span>   <span class="n">sz300188</span>       <span class="n">美亚柏科</span>
+<span class="mi">1</span>   <span class="n">BK1084</span>  <span class="n">数字哨兵</span>   <span class="n">sz002908</span>       <span class="n">德生科技</span>
+<span class="o">..</span> <span class="o">..</span> <span class="o">..</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h2>股票概念日线数据<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_concept_daily</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                         <span class="n">start</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                         <span class="n">skip_rt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                                         <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>概念代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>概念名称</td>
+</tr>
+<tr>
+<td>start</td>
+<td>date</td>
+<td>开始时间，默认全部</td>
+</tr>
+<tr>
+<td>end</td>
+<td>date</td>
+<td>结束时间，默认全部</td>
+</tr>
+<tr>
+<td>skip_rt</td>
+<td>bool</td>
+<td>是否忽略实时行情的数据</td>
+</tr>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>概念代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>概念名称</td>
+</tr>
+<tr>
+<td>freq</td>
+<td>int/BarFreq</td>
+<td>k线周期</td>
+</tr>
+<tr>
+<td>bars</td>
+<td>DataFrame</td>
+<td>-</td>
+</tr>
+<tr>
+<td>DataFrame格式</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>代码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>trade_date</td>
+<td>datetime</td>
+<td>交易日</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>开盘价</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>收盘价</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>最高价</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>最低价</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>int</td>
+<td>成交量</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>成交额</td>
+</tr>
+<tr>
+<td>turnover</td>
+<td>float</td>
+<td>换手率%</td>
+</tr>
+<tr>
+<td>chg_pct</td>
+<td>float</td>
+<td>涨跌%</td>
+</tr>
+<tr>
+<td>volume_chg_pct</td>
+<td>float</td>
+<td>成交量变化%</td>
+</tr>
+<tr>
+<td>amount_chg_pct</td>
+<td>float</td>
+<td>成交额变化%</td>
+</tr>
+<tr>
+<td>hfq_factor</td>
+<td>float</td>
+<td>后复权因子</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_concept_daily</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">&#39;BK1084&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span> 
+<span class="p">{</span><span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="s1">&#39;BK1084&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;数字哨兵&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;freq&#39;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
+ <span class="s1">&#39;bars&#39;</span><span class="p">:</span>        <span class="n">code</span>  <span class="n">name</span> <span class="n">trade_date</span>         <span class="nb">open</span>  <span class="o">...</span>  <span class="n">chg_pct</span>  <span class="n">volume_chg_pct</span>  <span class="n">amount_chg_pct</span>  <span class="n">hfq_factor</span>
+ <span class="mi">0</span>    <span class="n">BK1084</span>  <span class="n">数字哨兵</span> <span class="mi">2022</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span>   <span class="mf">999.750000</span>  <span class="o">...</span>    <span class="o">-</span><span class="mf">1.16</span>        <span class="mf">0.000000</span>        <span class="mf">0.000000</span>         <span class="mf">1.0</span>
+ <span class="o">..</span>      <span class="o">...</span>   <span class="o">...</span>        <span class="o">...</span>          <span class="o">...</span>  <span class="o">...</span>      <span class="o">...</span>             <span class="o">...</span>             <span class="o">...</span>         <span class="o">...</span>
+ 
+ <span class="p">[</span><span class="mi">327</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">14</span> <span class="n">columns</span><span class="p">]}</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h2>股票融资融券<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_margin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                 <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>股票代码<br /></td>
+</tr>
+<tr>
+<td>start</td>
+<td>date</td>
+<td>开始时间，默认全部</td>
+</tr>
+<tr>
+<td>end</td>
+<td>date</td>
+<td>结束时间，默认全部</td>
+</tr>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>股票代码<br /></td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>股票名称</td>
+</tr>
+<tr>
+<td>trade_date</td>
+<td>datetime</td>
+<td>交易日</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>收盘价</td>
+</tr>
+<tr>
+<td>chg_pct</td>
+<td>float</td>
+<td>涨跌%<br /></td>
+</tr>
+<tr>
+<td>rz_ye</td>
+<td>float</td>
+<td>融资: 余额(元)</td>
+</tr>
+<tr>
+<td>rz_ye_zb</td>
+<td>flaot</td>
+<td>余额占流通市值比(%)</td>
+</tr>
+<tr>
+<td>​rz_mre​</td>
+<td>float</td>
+<td>买入额(元)<br /></td>
+</tr>
+<tr>
+<td>​rz_che​</td>
+<td>float</td>
+<td>​偿还额(元)​</td>
+</tr>
+<tr>
+<td>​rz_jme​</td>
+<td>float</td>
+<td>​​​净买入(元)​​</td>
+</tr>
+<tr>
+<td>​rq_ye​</td>
+<td>float</td>
+<td>​​​​融券: 余额(元)​​​</td>
+</tr>
+<tr>
+<td>​rq_yl​</td>
+<td>float</td>
+<td>​余量(股)​</td>
+</tr>
+<tr>
+<td>​rq_mcl​</td>
+<td>float</td>
+<td>​卖出量(股)​</td>
+</tr>
+<tr>
+<td>​rq_chl​</td>
+<td>int</td>
+<td>​偿还量(股)​</td>
+</tr>
+<tr>
+<td>​rq_jmg​</td>
+<td>int</td>
+<td>​净卖出(股)​</td>
+</tr>
+<tr>
+<td>​rz_rq_ye​</td>
+<td>falot</td>
+<td>​融资融券余额(元)​</td>
+</tr>
+<tr>
+<td>​rz_rq_ye_cz​</td>
+<td>float</td>
+<td>​融资融券余额差值(元)​</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_margin</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">&#39;sz000001&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">17</span><span class="p">]:</span> 
+          <span class="n">code</span>  <span class="n">name</span> <span class="n">trade_date</span>      <span class="n">close</span>  <span class="n">chg_pct</span>  <span class="o">...</span>  <span class="n">rq_mcl</span>   <span class="n">rq_chl</span>  <span class="n">rq_jmg</span>      <span class="n">rz_rq_ye</span>   <span class="n">rz_rq_ye_cz</span>
+<span class="mi">0</span>     <span class="n">sz000001</span>  <span class="n">平安银行</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">11</span>  <span class="mf">11.340000</span>   <span class="mf">0.6211</span>  <span class="o">...</span>   <span class="mi">72300</span>   <span class="mi">232700</span> <span class="o">-</span><span class="mi">160400</span>  <span class="mf">4.306517e+09</span>  <span class="mf">4.274436e+09</span>
+<span class="o">...</span>        <span class="o">...</span>   <span class="o">...</span>        <span class="o">...</span>        <span class="o">...</span>      <span class="o">...</span>  <span class="o">...</span>     <span class="o">...</span>      <span class="o">...</span>     <span class="o">...</span>           <span class="o">...</span>           <span class="o">...</span>
+
+<span class="p">[</span><span class="mi">3256</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">16</span> <span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h2>业绩报表<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_yjbb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">year</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">season</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                               <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>year</td>
+<td>int</td>
+<td>年份</td>
+</tr>
+<tr>
+<td>season</td>
+<td>int</td>
+<td>季度: 1, 2, 3, 4</td>
+</tr>
+<tr>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>year</td>
+<td>ing</td>
+<td>年份<br /></td>
+</tr>
+<tr>
+<td>season</td>
+<td>ing</td>
+<td>季度: 1, 2, 3, 4</td>
+</tr>
+<tr>
+<td>season_date</td>
+<td>datetime</td>
+<td>季度时间</td>
+</tr>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>股票代码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>股票名称</td>
+</tr>
+<tr>
+<td>mg_sy</td>
+<td>float</td>
+<td>​​​每股收益​​</td>
+</tr>
+<tr>
+<td>yysr</td>
+<td>float</td>
+<td>营业收入<br /></td>
+</tr>
+<tr>
+<td>yysr_tbzz</td>
+<td>float</td>
+<td>营业收入-同比增长</td>
+</tr>
+<tr>
+<td>yysr_jdhbzz</td>
+<td>flaot</td>
+<td>营业收入-季度环比增长</td>
+</tr>
+<tr>
+<td>jlr</td>
+<td>float</td>
+<td>净利润<br /></td>
+</tr>
+<tr>
+<td>jlr_tbzz</td>
+<td>float</td>
+<td>净利润-同比增长</td>
+</tr>
+<tr>
+<td>jlr_jdhbzz</td>
+<td>float</td>
+<td>净利润-季度环比增长</td>
+</tr>
+<tr>
+<td>mg_jzc</td>
+<td>float</td>
+<td>每股净资产</td>
+</tr>
+<tr>
+<td>jzc_syl</td>
+<td>float</td>
+<td>净资产收益率</td>
+</tr>
+<tr>
+<td>mg_jy_xjl</td>
+<td>float</td>
+<td>每股经营现金流量</td>
+</tr>
+<tr>
+<td>xs_mll</td>
+<td>float</td>
+<td>销售毛利率</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_yjbb</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">2023</span><span class="p">,</span> <span class="n">season</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">20</span><span class="p">]:</span> 
+       <span class="n">year</span>  <span class="n">season</span> <span class="n">season_date</span>      <span class="n">code</span>  <span class="n">name</span>  <span class="o">...</span>  <span class="n">jlr_jdhbzz</span>    <span class="n">mg_jzc</span>   <span class="n">jzc_syl</span>  <span class="n">mg_jy_xjl</span>     <span class="n">xs_mll</span>
+<span class="mi">0</span>      <span class="mi">2023</span>       <span class="mi">2</span>  <span class="mi">2023</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">30</span>  <span class="n">sh688657</span>  <span class="n">浩辰软件</span>  <span class="o">...</span>    <span class="mf">0.000000</span>  <span class="mf">9.646614</span>  <span class="mf">9.646614</span>   <span class="mf">0.756221</span>  <span class="mf">91.050240</span>
+<span class="o">...</span>     <span class="o">...</span>     <span class="o">...</span>         <span class="o">...</span>       <span class="o">...</span>   <span class="o">...</span>  <span class="o">...</span>         <span class="o">...</span>       <span class="o">...</span>       <span class="o">...</span>        <span class="o">...</span>        <span class="o">...</span>
+
+<span class="p">[</span><span class="mi">11657</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">16</span> <span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h2>股票实时排名<a class="headerlink" href="#id15" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_hot_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">],</span>
+                                   <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>Union[str, list]<br /></td>
+<td>单个或一组股票代码</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>行业代码<br /></td>
+</tr>
+<tr>
+<td>market_all_count</td>
+<td>str</td>
+<td>行业名称</td>
+</tr>
+<tr>
+<td>rank</td>
+<td>int</td>
+<td>当前排名</td>
+</tr>
+<tr>
+<td>rank_chg</td>
+<td>int</td>
+<td>排名变化</td>
+</tr>
+<tr>
+<td>calc_time</td>
+<td>datetime</td>
+<td>当天时间</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_hot_rank</span><span class="p">(</span><span class="n">code</span> <span class="o">=</span><span class="s1">&#39;sz000001&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">21</span><span class="p">]:</span> 
+       <span class="n">code</span>  <span class="n">market_all_count</span>  <span class="n">rank</span>  <span class="n">rank_chg</span>           <span class="n">calc_time</span>
+<span class="mi">0</span>  <span class="n">sz000001</span> 
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h2>筹码成本分布<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_chip_dist</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">ac</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">chip_dist</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>计算筹码分布，采用的是三角分布的算法，不要传递上市以来的所有数据，否则计算比较慢。传递120天或者90天，计算的结果和全量数据结果差不多。</p>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>pd.DataFrame<br /></td>
+<td>股票日线数据, 参考日线数据bars部分</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chip</td>
+<td>Dict</td>
+<td>所有价格的筹码分布</td>
+</tr>
+<tr>
+<td>chip_list</td>
+<td>Dict</td>
+<td>每日的筹码分布</td>
+</tr>
+<tr>
+<td>筹码分布Dict<br /></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>价格</td>
+<td>持仓量</td>
+<td>key为价格单位分，value为持仓量</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">qfetch</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">fetch_stock_bar</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">&#39;sz000039&#39;</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;bars&#39;</span><span class="p">]</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">calc_chip_dist</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">dist</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span> 
+<span class="p">{</span><span class="s1">&#39;chip&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">690</span><span class="p">:</span> <span class="mf">13.788155302733578</span><span class="p">,</span>
+  <span class="o">...</span>
+  <span class="mi">722</span><span class="p">:</span> <span class="mf">26.93899356690681</span><span class="p">},</span>
+ <span class="s1">&#39;chip_list&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">20230901</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">},</span>
+  <span class="o">...</span>
+  <span class="mi">20230913</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}}}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> 
+</pre></div>
+</div>
+</section>
+<section id="id17">
+<h2>筹码​​获利盘​<a class="headerlink" href="#id17" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_winner</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chip_dist</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">price</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chip_dist</td>
+<td>Dict</td>
+<td>calc_chip_dist的返回值</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Dict<br /></td>
+<td>股票日线数据, 参考日线数据bars部分，主要是参考收盘价，data和price两者必须一个不为空</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>相对该价的盈利，data和price两者必须一个不为空</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>Dict</td>
+<td>每日的盈利概率</td>
+</tr>
+<tr>
+<td>盈利概率<br /></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>日期</td>
+<td>Float</td>
+<td>key为日期int，value为概率</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">calc_winner</span><span class="p">(</span><span class="n">chip_dist</span><span class="o">=</span><span class="n">dist</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span> 
+<span class="p">{</span><span class="mi">20230901</span><span class="p">:</span> <span class="mf">0.6644586478617531</span><span class="p">,</span>
+ <span class="mi">20230904</span><span class="p">:</span> <span class="mf">0.6291703778163454</span><span class="p">,</span>
+ <span class="mi">20230905</span><span class="p">:</span> <span class="mf">0.7535948207068112</span><span class="p">,</span>
+ <span class="mi">20230906</span><span class="p">:</span> <span class="mf">0.2455806272170779</span><span class="p">,</span>
+ <span class="mi">20230907</span><span class="p">:</span> <span class="mf">0.04154799274363736</span><span class="p">,</span>
+ <span class="mi">20230908</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+ <span class="mi">20230911</span><span class="p">:</span> <span class="mf">0.5919655179648782</span><span class="p">,</span>
+ <span class="mi">20230912</span><span class="p">:</span> <span class="mf">0.18903289615357532</span><span class="p">,</span>
+ <span class="mi">20230913</span><span class="p">:</span> <span class="mf">0.5132108034149797</span><span class="p">}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> 
+</pre></div>
+</div>
+</section>
+<section id="id18">
+<h2>筹码成本分布<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_cost</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chip_dist</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">ratio</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span>
+</pre></div>
+</div>
+<p>输入：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chip_dist</td>
+<td>Dict</td>
+<td>calc_chip_dist的返回值</td>
+</tr>
+<tr>
+<td>ratio</td>
+<td>int</td>
+<td>成本区间，如90，代表90%的筹码</td>
+</tr>
+</tbody>
+</table><p>输出：</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>Dict</td>
+<td>每日的盈利概率</td>
+</tr>
+<tr>
+<td>盈利概率<br /></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>日期</td>
+<td>Float</td>
+<td>key为日期int，value为价格</td>
+</tr>
+</tbody>
+</table><p>示例:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">calc_cost</span><span class="p">(</span><span class="n">chip_dist</span><span class="o">=</span><span class="n">dist</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span> 
+<span class="p">{</span><span class="mi">20230901</span><span class="p">:</span> <span class="mf">7.15</span><span class="p">,</span>
+ <span class="mi">20230904</span><span class="p">:</span> <span class="mf">7.2</span><span class="p">,</span>
+ <span class="mi">20230905</span><span class="p">:</span> <span class="mf">7.2</span><span class="p">,</span>
+ <span class="mi">20230906</span><span class="p">:</span> <span class="mf">7.19</span><span class="p">,</span>
+ <span class="mi">20230907</span><span class="p">:</span> <span class="mf">7.19</span><span class="p">,</span>
+ <span class="mi">20230908</span><span class="p">:</span> <span class="mf">7.18</span><span class="p">,</span>
+ <span class="mi">20230911</span><span class="p">:</span> <span class="mf">7.18</span><span class="p">,</span>
+ <span class="mi">20230912</span><span class="p">:</span> <span class="mf">7.18</span><span class="p">,</span>
+ <span class="mi">20230913</span><span class="p">:</span> <span class="mf">7.17</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>‍</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="general.html" class="btn btn-neutral float-left" title="通用数据" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="fund.html" class="btn btn-neutral float-right" title="ETF基金数据" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2018 - 2024, buf1024@gmail.com。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

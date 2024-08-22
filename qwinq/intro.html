@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>简介 &mdash; qwinq 1.0.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=34088549"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=beaddf03"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="数据获取" href="fetch/index.html" />
+    <link rel="prev" title="qwinq 文档" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            qwinq
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fetch/index.html">数据获取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">本地数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="select.html">选股策略</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backtest.html">股票回测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">qwinq</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">简介</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>简介<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://github.com/buf1024/rwinq/tree/main/python">qwinq</a>是<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main">rwinq</a>的python版本，<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main">rwinq</a>(rust winner quantitative trader)是用rust编写的个人股票分析测试系统，包括数据，回测，投研，交易等多个模块。然而rust是编译型的系统语言，不便于快速建模和测试，所以这才有了这个<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main/python">qwinq</a>。<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main/python">qwinq</a>所提供的核心功能基本和<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main">rwinq</a>一致，而且比原生的python效率高出几个数量级。而且<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main/python">qwinq</a>各个模块之间先对独立，可以独立安装。不如你只对怎么获取财经数据感兴趣，只需要安装<code class="docutils literal notranslate"><span class="pre">pyfech</span></code>​而忽略其他模块。</p>
+<p>不过需要注意的是，这里所提供的方式方法不一定是主流股票投资的方式，也不能保证这个所谓的系统能够助力盈利，更不能保证不会亏损。这项目的功能更多是探索应用rust实现一个完整的系统而已。</p>
+<p>另外还需要注意的是，本项目中所涉及到的财经数据，全部来源于公开的数据，不涉及个人或其他隐私数据，也不能保证所收集到的数据是正确的。所获取到的数据仅用于学习和研究用，禁止商用。</p>
+<p>‍</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="qwinq 文档" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="fetch/index.html" class="btn btn-neutral float-right" title="数据获取" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2018 - 2024, buf1024@gmail.com。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
