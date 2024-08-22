@@ -1,5 +1,0 @@
-<map id="inheritanceb993b7c531" name="inheritanceb993b7c531">
-<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,5,77,32"/>
-<area shape="rect" id="node2" href="../loader/#qdatac.loader.BlockLoader" target="_top" title="BlockLoader" alt="" coords="125,5,219,32"/>
-<area shape="rect" id="node3" href="#qdatac.mongo.BlockMongoLoader" target="_top" title="BlockMongoLoader" alt="" coords="267,5,399,32"/>
-</map>
