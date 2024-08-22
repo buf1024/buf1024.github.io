@@ -1,0 +1,5 @@
+<map id="inheritance081abb19c9" name="inheritance081abb19c9">
+<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,5,77,32"/>
+<area shape="rect" id="node2" href="../base_strategy/#qstrategy.base_strategy.BaseStrategy" target="_top" title="BaseStrategy" alt="" coords="125,5,226,32"/>
+<area shape="rect" id="node3" href="#qstrategy.select.Select" target="_top" title="Select" alt="" coords="274,5,346,32"/>
+</map>
