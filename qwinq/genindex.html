@@ -47,8 +47,7 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fetch/index.html">数据获取</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data.html">本地数据</a></li>
-<li class="toctree-l1"><a class="reference internal" href="select.html">选股策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="backtest.html">股票回测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategy/index.html">股票策略</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
 </ul>
 
@@ -86,7 +85,6 @@
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
- | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#J"><strong>J</strong></a>
  | <a href="#L"><strong>L</strong></a>
@@ -128,6 +126,10 @@
       <li><a href="autoapi/qfetch/fetch/index.html#qfetch.fetch.block_fetch_bond_bar">block_fetch_bond_bar()（在 qfetch.fetch 模块中）</a>
 </li>
       <li><a href="autoapi/qfetch/qfetch/index.html#qfetch.qfetch.block_fetch_bond_bar">block_fetch_bond_bar()（在 qfetch.qfetch 模块中）</a>
+</li>
+      <li><a href="autoapi/qfetch/index.html#qfetch.block_fetch_bond_info">block_fetch_bond_info()（在 qfetch 模块中）</a>
+</li>
+      <li><a href="autoapi/qfetch/fetch/index.html#qfetch.fetch.block_fetch_bond_info">block_fetch_bond_info()（在 qfetch.fetch 模块中）</a>
 </li>
       <li><a href="autoapi/qfetch/qfetch/index.html#qfetch.qfetch.block_fetch_bond_info">block_fetch_bond_info()（在 qfetch.qfetch 模块中）</a>
 </li>
@@ -213,10 +215,10 @@
 </li>
       <li><a href="autoapi/qfetch/fetch/index.html#qfetch.fetch.block_fetch_stock_concept_daily">block_fetch_stock_concept_daily()（在 qfetch.fetch 模块中）</a>
 </li>
-      <li><a href="autoapi/qfetch/qfetch/index.html#qfetch.qfetch.block_fetch_stock_concept_daily">block_fetch_stock_concept_daily()（在 qfetch.qfetch 模块中）</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/qfetch/qfetch/index.html#qfetch.qfetch.block_fetch_stock_concept_daily">block_fetch_stock_concept_daily()（在 qfetch.qfetch 模块中）</a>
+</li>
       <li><a href="autoapi/qfetch/index.html#qfetch.block_fetch_stock_concept_detail">block_fetch_stock_concept_detail()（在 qfetch 模块中）</a>
 </li>
       <li><a href="autoapi/qfetch/fetch/index.html#qfetch.fetch.block_fetch_stock_concept_detail">block_fetch_stock_concept_detail()（在 qfetch.fetch 模块中）</a>
@@ -323,36 +325,24 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/qfetch/index.html#qfetch.calc_chip_dist">calc_chip_dist()（在 qfetch 模块中）</a>
+      <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.calc_chip_dist">calc_chip_dist()（在 qstrategy.qstrategy 模块中）</a>
 </li>
-      <li><a href="autoapi/qfetch/fetch/index.html#qfetch.fetch.calc_chip_dist">calc_chip_dist()（在 qfetch.fetch 模块中）</a>
+      <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.calc_cost">calc_cost()（在 qstrategy.qstrategy 模块中）</a>
 </li>
-      <li><a href="autoapi/qfetch/qfetch/index.html#qfetch.qfetch.calc_chip_dist">calc_chip_dist()（在 qfetch.qfetch 模块中）</a>
-</li>
-      <li><a href="autoapi/qfetch/index.html#qfetch.calc_cost">calc_cost()（在 qfetch 模块中）</a>
-</li>
-      <li><a href="autoapi/qfetch/fetch/index.html#qfetch.fetch.calc_cost">calc_cost()（在 qfetch.fetch 模块中）</a>
-</li>
-      <li><a href="autoapi/qfetch/qfetch/index.html#qfetch.qfetch.calc_cost">calc_cost()（在 qfetch.qfetch 模块中）</a>
-</li>
-      <li><a href="autoapi/qfetch/index.html#qfetch.calc_winner">calc_winner()（在 qfetch 模块中）</a>
-</li>
-      <li><a href="autoapi/qfetch/fetch/index.html#qfetch.fetch.calc_winner">calc_winner()（在 qfetch.fetch 模块中）</a>
-</li>
-      <li><a href="autoapi/qfetch/qfetch/index.html#qfetch.qfetch.calc_winner">calc_winner()（在 qfetch.qfetch 模块中）</a>
+      <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.calc_winner">calc_winner()（在 qstrategy.qstrategy 模块中）</a>
 </li>
       <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.ShareState.can_buy">can_buy() （qstrategy.qstrategy.ShareState 方法）</a>
 </li>
       <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.ShareState.can_cancel">can_cancel() （qstrategy.qstrategy.ShareState 方法）</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.ShareState.can_sell">can_sell() （qstrategy.qstrategy.ShareState 方法）</a>
 </li>
       <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.ShareState.cancel">cancel() （qstrategy.qstrategy.ShareState 方法）</a>
 </li>
       <li><a href="autoapi/qdatac/index.html#qdatac.BlockMongoLoader.count">count() （qdatac.BlockMongoLoader 方法）</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/qdatac/index.html#qdatac.Loader.count">count() （qdatac.Loader 方法）</a>
 </li>
       <li><a href="autoapi/qdatac/loader/index.html#qdatac.loader.BlockLoader.count">count() （qdatac.loader.BlockLoader 方法）</a>
@@ -379,12 +369,18 @@
 </li>
       <li><a href="autoapi/qstrategy/event/index.html#qstrategy.event.QuotEvent.data">data（qstrategy.event.QuotEvent 属性）</a>
 </li>
+      <li><a href="autoapi/qdatac/index.html#qdatac.Loader.datetime_to_int">datetime_to_int()（qdatac.Loader 静态方法）</a>
+</li>
+      <li><a href="autoapi/qdatac/loader/index.html#qdatac.loader.BlockLoader.datetime_to_int">datetime_to_int()（qdatac.loader.BlockLoader 静态方法）</a>
+</li>
+      <li><a href="autoapi/qdatac/loader/index.html#qdatac.loader.Loader.datetime_to_int">datetime_to_int()（qdatac.loader.Loader 静态方法）</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/qstrategy/tradecomm/index.html#qstrategy.tradecomm.Deal">Deal()（在 qstrategy.tradecomm 模块中）</a>
 </li>
       <li><a href="autoapi/qstrategy/base_strategy/index.html#qstrategy.base_strategy.BaseStrategy.description">description() （qstrategy.base_strategy.BaseStrategy 方法）</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/qstrategy/base_strategy/index.html#qstrategy.base_strategy.BaseStrategy.destroy">destroy() （qstrategy.base_strategy.BaseStrategy 方法）</a>
 </li>
       <li><a href="autoapi/qdatac/index.html#qdatac.Dest">Dest（qdatac 中的类）</a>
@@ -513,10 +509,10 @@
 </li>
       <li><a href="autoapi/qfetch/fetch/index.html#qfetch.fetch.fetch_stock_concept_daily">fetch_stock_concept_daily()（在 qfetch.fetch 模块中）</a>
 </li>
-      <li><a href="autoapi/qfetch/qfetch/index.html#qfetch.qfetch.fetch_stock_concept_daily">fetch_stock_concept_daily()（在 qfetch.qfetch 模块中）</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/qfetch/qfetch/index.html#qfetch.qfetch.fetch_stock_concept_daily">fetch_stock_concept_daily()（在 qfetch.qfetch 模块中）</a>
+</li>
       <li><a href="autoapi/qfetch/index.html#qfetch.fetch_stock_concept_detail">fetch_stock_concept_detail()（在 qfetch 模块中）</a>
 </li>
       <li><a href="autoapi/qfetch/fetch/index.html#qfetch.fetch.fetch_stock_concept_detail">fetch_stock_concept_detail()（在 qfetch.fetch 模块中）</a>
@@ -593,8 +589,6 @@
 </li>
       <li><a href="autoapi/qdatac/sync/index.html#qdatac.sync.Dest.file">file（qdatac.sync.Dest 属性）</a>
 </li>
-      <li><a href="autoapi/qstrategy/runner/index.html#qstrategy.runner.Runner.fit">fit() （qstrategy.runner.Runner 方法）</a>
-</li>
       <li><a href="autoapi/qdatac/index.html#qdatac.Funcs">Funcs（qdatac 中的类）</a>
 </li>
       <li><a href="autoapi/qdatac/sync/index.html#qdatac.sync.Funcs">Funcs（qdatac.sync 中的类）</a>
@@ -630,14 +624,6 @@
   </ul></td>
 </tr></table>
 
-<h2 id="H">H</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/qstrategy/test_strategy/index.html#qstrategy.test_strategy.TestStrategy.help">help() （qstrategy.test_strategy.TestStrategy 方法）</a>
-</li>
-  </ul></td>
-</tr></table>
-
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -660,8 +646,6 @@
       <li><a href="autoapi/qdatac/sync/index.html#qdatac.sync.MyBlockSync.inner">inner（qdatac.sync.MyBlockSync 属性）</a>
 </li>
       <li><a href="autoapi/qdatac/sync/index.html#qdatac.sync.MySync.inner">inner（qdatac.sync.MySync 属性）</a>
-</li>
-      <li><a href="autoapi/qstrategy/runner/index.html#qstrategy.runner.Runner.inner">inner（qstrategy.runner.Runner 属性）</a>
 </li>
       <li><a href="autoapi/qdatac/index.html#qdatac.int_to_str_date">int_to_str_date()（在 qdatac 模块中）</a>
 </li>
@@ -1073,6 +1057,8 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.ma">ma()（在 qstrategy.qstrategy 模块中）</a>
+</li>
       <li><a href="autoapi/qstrategy/tradecomm/index.html#qstrategy.tradecomm.SignalSource.manual">manual()（qstrategy.tradecomm.SignalSource 类方法）</a>
 </li>
       <li><a href="autoapi/qfetch/index.html#qfetch.MarketType">MarketType（qfetch 中的类）</a>
@@ -1125,13 +1111,7 @@
 </li>
         <li><a href="autoapi/qstrategy/risk/index.html#module-qstrategy.risk">qstrategy.risk</a>
 </li>
-        <li><a href="autoapi/qstrategy/runner/index.html#module-qstrategy.runner">qstrategy.runner</a>
-</li>
         <li><a href="autoapi/qstrategy/select/index.html#module-qstrategy.select">qstrategy.select</a>
-</li>
-        <li><a href="autoapi/qstrategy/strategy/index.html#module-qstrategy.strategy">qstrategy.strategy</a>
-</li>
-        <li><a href="autoapi/qstrategy/test_strategy/index.html#module-qstrategy.test_strategy">qstrategy.test_strategy</a>
 </li>
         <li><a href="autoapi/qstrategy/trade/index.html#module-qstrategy.trade">qstrategy.trade</a>
 </li>
@@ -1180,12 +1160,10 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/qstrategy/base_strategy/index.html#qstrategy.base_strategy.BaseStrategy.name">name() （qstrategy.base_strategy.BaseStrategy 方法）</a>
 </li>
-      <li><a href="autoapi/qstrategy/test_strategy/index.html#qstrategy.test_strategy.TestStrategy.name">name() （qstrategy.test_strategy.TestStrategy 方法）</a>
+      <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.new_signal">new_signal()（在 qstrategy.qstrategy 模块中）</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.new_signal">new_signal()（在 qstrategy.qstrategy 模块中）</a>
-</li>
       <li><a href="autoapi/qstrategy/event/index.html#qstrategy.event.QuotEvent.noon_close">noon_close（qstrategy.event.QuotEvent 属性）</a>
 </li>
       <li><a href="autoapi/qstrategy/event/index.html#qstrategy.event.QuotEvent.noon_open">noon_open（qstrategy.event.QuotEvent 属性）</a>
@@ -1236,13 +1214,9 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/qstrategy/tradecomm/index.html#qstrategy.tradecomm.Params">Params()（在 qstrategy.tradecomm 模块中）</a>
 </li>
-      <li><a href="autoapi/qstrategy/tradecomm/index.html#qstrategy.tradecomm.Position">Position()（在 qstrategy.tradecomm 模块中）</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/qstrategy/test_strategy/index.html#qstrategy.test_strategy.TestStrategy.prepare">prepare() （qstrategy.test_strategy.TestStrategy 方法）</a>
-</li>
-      <li><a href="autoapi/qstrategy/runner/index.html#qstrategy.runner.Runner.progress_callback">progress_callback()（qstrategy.runner.Runner 静态方法）</a>
+      <li><a href="autoapi/qstrategy/tradecomm/index.html#qstrategy.tradecomm.Position">Position()（在 qstrategy.tradecomm 模块中）</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1320,6 +1294,8 @@
         <li><a href="autoapi/qstrategy/base_strategy/index.html#module-qstrategy.base_strategy">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     qstrategy.broker
 
@@ -1334,8 +1310,6 @@
         <li><a href="autoapi/qstrategy/dictclass/index.html#module-qstrategy.dictclass">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     qstrategy.event
 
@@ -1365,31 +1339,10 @@
 </li>
       </ul></li>
       <li>
-    qstrategy.runner
-
-      <ul>
-        <li><a href="autoapi/qstrategy/runner/index.html#module-qstrategy.runner">module</a>
-</li>
-      </ul></li>
-      <li>
     qstrategy.select
 
       <ul>
         <li><a href="autoapi/qstrategy/select/index.html#module-qstrategy.select">module</a>
-</li>
-      </ul></li>
-      <li>
-    qstrategy.strategy
-
-      <ul>
-        <li><a href="autoapi/qstrategy/strategy/index.html#module-qstrategy.strategy">module</a>
-</li>
-      </ul></li>
-      <li>
-    qstrategy.test_strategy
-
-      <ul>
-        <li><a href="autoapi/qstrategy/test_strategy/index.html#module-qstrategy.test_strategy">module</a>
 </li>
       </ul></li>
       <li>
@@ -1420,17 +1373,11 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/qstrategy/tradecomm/index.html#qstrategy.tradecomm.SignalSource.risk">risk()（qstrategy.tradecomm.SignalSource 类方法）</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/qstrategy/risk/index.html#qstrategy.risk.Risk">Risk（qstrategy.risk 中的类）</a>
 </li>
       <li><a href="autoapi/qstrategy/event/index.html#qstrategy.event.RtQuot">RtQuot()（在 qstrategy.event 模块中）</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/qstrategy/runner/index.html#qstrategy.runner.Runner.run">run() （qstrategy.runner.Runner 方法）</a>
-</li>
-      <li><a href="autoapi/qstrategy/runner/index.html#qstrategy.runner.Runner">Runner（qstrategy.runner 中的类）</a>
-</li>
-      <li><a href="autoapi/qstrategy/runner/index.html#qstrategy.runner.Runner.runner">runner（qstrategy.runner.Runner 属性）</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1448,6 +1395,8 @@
 </li>
       <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.ShareState.sell">sell() （qstrategy.qstrategy.ShareState 方法）</a>
 </li>
+      <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.shadow">shadow()（在 qstrategy.qstrategy 模块中）</a>
+</li>
       <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.ShareState">ShareState（qstrategy.qstrategy 中的类）</a>
 </li>
       <li><a href="autoapi/qdatac/index.html#qdatac.MyBlockSync.shutdown">shutdown() （qdatac.MyBlockSync 方法）</a>
@@ -1461,8 +1410,6 @@
       <li><a href="autoapi/qdatac/sync/index.html#qdatac.sync.MyBlockSync.shutdown">shutdown() （qdatac.sync.MyBlockSync 方法）</a>
 </li>
       <li><a href="autoapi/qdatac/sync/index.html#qdatac.sync.MySync.shutdown">shutdown() （qdatac.sync.MySync 方法）</a>
-</li>
-      <li><a href="autoapi/qstrategy/runner/index.html#qstrategy.runner.Runner.shutdown">shutdown() （qstrategy.runner.Runner 方法）</a>
 </li>
       <li><a href="autoapi/qfetch/index.html#qfetch.Market.SH">SH（qfetch.Market 属性）</a>
 </li>
@@ -1556,12 +1503,6 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/qstrategy/test_strategy/index.html#qstrategy.test_strategy.TestStrategy.test">test() （qstrategy.test_strategy.TestStrategy 方法）</a>
-</li>
-      <li><a href="autoapi/qstrategy/qstrategy/index.html#qstrategy.qstrategy.test">test()（在 qstrategy.qstrategy 模块中）</a>
-</li>
-      <li><a href="autoapi/qstrategy/test_strategy/index.html#qstrategy.test_strategy.TestStrategy">TestStrategy（qstrategy.test_strategy 中的类）</a>
-</li>
       <li><a href="autoapi/qdatac/index.html#qdatac.BlockMongoLoader.to_dataframe">to_dataframe()（qdatac.BlockMongoLoader 静态方法）</a>
 </li>
       <li><a href="autoapi/qdatac/index.html#qdatac.Loader.to_dataframe">to_dataframe()（qdatac.Loader 静态方法）</a>
@@ -1572,12 +1513,12 @@
 </li>
       <li><a href="autoapi/qdatac/mongo/index.html#qdatac.mongo.BlockMongoLoader.to_dataframe">to_dataframe()（qdatac.mongo.BlockMongoLoader 静态方法）</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/qstrategy/dictclass/index.html#qstrategy.dictclass.DictClass.to_dict">to_dict() （qstrategy.dictclass.DictClass 方法）</a>
 </li>
       <li><a href="autoapi/qstrategy/event/index.html#qstrategy.event.BrokerEvent.to_dict">to_dict() （qstrategy.event.BrokerEvent 方法）</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/qstrategy/event/index.html#qstrategy.event.Event.to_dict">to_dict() （qstrategy.event.Event 方法）</a>
 </li>
       <li><a href="autoapi/qdatac/index.html#qdatac.Dest.to_list">to_list() （qdatac.Dest 方法）</a>

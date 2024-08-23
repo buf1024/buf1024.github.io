@@ -31,28 +31,51 @@ Module Contents
 
 .. py:data:: MonitorEvent
 
+   监控事件
+
 .. py:data:: SelectHit
+
+   选股命中信息
 
 .. py:data:: SelectEvent
 
+   选股事件
+
 .. py:class:: BrokerEvent(*, event: str, data: Union[List[qstrategy.tradecomm.Signal], Tuple, List[qstrategy.tradecomm.Position]])
 
+   q券商事件
+
+
    .. py:method:: to_dict() -> Optional[Dict]
+
+      事件转换为字典形式
+
 
 
 .. py:class:: Event(*, event: str, data: Union[qstrategy.tradecomm.Signal, List[str], qstrategy.tradecomm.Entrust, BrokerEvent, MonitorEvent, SelectEvent])
 
+   事件
+
+
    .. py:property:: event
       :type: Optional[Dict]
 
+      事件转为字典形式
 
 
    .. py:method:: to_dict() -> Optional[Dict]
 
+      事件转为字典形式
+
+
 
 .. py:data:: Quot
 
+   单个标的行情
+
 .. py:data:: RtQuot
+
+   多个标的行情
 
 .. py:class:: QuotEvent(event)
 

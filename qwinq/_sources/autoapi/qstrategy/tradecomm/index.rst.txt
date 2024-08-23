@@ -33,15 +33,27 @@ Module Contents
 
 .. py:data:: Params
 
+   策略参数
+
 .. py:data:: Account
+
+   交易账户
 
 .. py:data:: Deal
 
+   成交单
+
 .. py:data:: Entrust
+
+   委托单
 
 .. py:data:: Position
 
+   交易头寸
+
 .. py:data:: Signal
+
+   交易信号
 
 .. py:data:: SignalTypeBuy
    :value: 'buy'

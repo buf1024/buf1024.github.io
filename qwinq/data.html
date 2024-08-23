@@ -23,7 +23,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
-    <link rel="next" title="选股策略" href="select.html" />
+    <link rel="next" title="股票策略" href="strategy/index.html" />
     <link rel="prev" title="可转债数据" href="fetch/bond.html" /> 
 </head>
 
@@ -50,8 +50,7 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fetch/index.html">数据获取</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">本地数据</a></li>
-<li class="toctree-l1"><a class="reference internal" href="select.html">选股策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="backtest.html">股票回测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategy/index.html">股票策略</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
 </ul>
 
@@ -80,7 +79,12 @@
              
   <section id="id1">
 <h1>本地数据<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
-<p>‍本地数据缓存在本地数据库</p>
+<p>直接通过pip安装即可:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>qdatac
+</pre></div>
+</div>
+<p><a class="reference external" href="https://pypi.org/project/qfetch/">qfetch</a> 是获取远程数据的，而<a class="reference external" href="https://pypi.org/project/qdatac/">qdatac</a>是如何将远程数据保存至本地以及如何获取本地数据的，也是一个相对独立的模块。<a class="reference external" href="https://pypi.org/project/qdatac/">qdatac</a> 计划是支持四种形式的数据存储方式，文件，mongodb，mysql以及clickhouse，不过目前只实现mongodb 这种方式。将远程数据保存至本地，rust版本已经做的挺好的了，正常来说，是不太需要使用的，为了完整性保留下来。通常我们使用的是如何获取本地的数据。和<a class="reference external" href="https://pypi.org/project/qfetch/">qfetch</a>类似，<a class="reference external" href="https://pypi.org/project/qdatac/">qdatac</a>也是提供阻塞和非阻塞两个版本，不同的是<a class="reference external" href="https://pypi.org/project/qdatac/">qdatac</a> 要保存一些状态，所以以类的形式提供。</p>
+<p>‍</p>
 </section>
 
 
@@ -88,7 +92,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
         <a href="fetch/bond.html" class="btn btn-neutral float-left" title="可转债数据" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="select.html" class="btn btn-neutral float-right" title="选股策略" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="strategy/index.html" class="btn btn-neutral float-right" title="股票策略" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

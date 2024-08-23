@@ -24,12 +24,20 @@ Module Contents
       :parts: 1
 
 
-   Helper class that provides a standard way to create an ABC using
-   inheritance.
+   数据库查询接口
+
 
 
    .. py:method:: to_dataframe(to_frame, data)
       :staticmethod:
+
+
+
+   .. py:method:: datetime_to_int(date: Union[str, datetime.datetime]) -> int
+      :staticmethod:
+
+
+      datetime转换为数据格式的时间
 
 
 
@@ -42,9 +50,37 @@ Module Contents
       :async:
 
 
+      加载可转债信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
+
+
 
    .. py:method:: load_bond_daily(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
       :async:
+
+
+      加载可转债k线信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
 
 
 
@@ -52,9 +88,37 @@ Module Contents
       :async:
 
 
+      加载etf基金信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
+
+
 
    .. py:method:: load_fund_daily(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
       :async:
+
+
+      加载etf基金k线信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
 
 
 
@@ -62,9 +126,37 @@ Module Contents
       :async:
 
 
+      加载etf基金净值信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
+
+
 
    .. py:method:: load_index_info(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
       :async:
+
+
+      加载指数信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
 
 
 
@@ -72,9 +164,37 @@ Module Contents
       :async:
 
 
+      加载指数指标信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
+
+
 
    .. py:method:: load_stock_info(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
       :async:
+
+
+      加载股票信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
 
 
 
@@ -82,9 +202,37 @@ Module Contents
       :async:
 
 
+      加载股票k线信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
+
+
 
    .. py:method:: load_stock_index(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
       :async:
+
+
+      加载股票指标信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
 
 
 
@@ -92,9 +240,37 @@ Module Contents
       :async:
 
 
+      加载行业信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
+
+
 
    .. py:method:: load_stock_industry_daily(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
       :async:
+
+
+      加载行业k线信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
 
 
 
@@ -102,9 +278,37 @@ Module Contents
       :async:
 
 
+      加载行业明细信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
+
+
 
    .. py:method:: load_stock_concept(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
       :async:
+
+
+      加载股票概念信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
 
 
 
@@ -112,9 +316,37 @@ Module Contents
       :async:
 
 
+      加载股票k线信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
+
+
 
    .. py:method:: load_stock_concept_detail(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
       :async:
+
+
+      加载股票明细信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
 
 
 
@@ -122,9 +354,37 @@ Module Contents
       :async:
 
 
+      加载股票业绩报表信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
+
+
 
    .. py:method:: load_stock_margin(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
       :async:
+
+
+      加载股票融资融券信息
+
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
 
 
 
@@ -132,14 +392,55 @@ Module Contents
       :async:
 
 
+      加载数据库条数
+
+      :param tab: 库表名称。
+      :type tab: str
+
+      :returns: 条数
+      :rtype: int
+
+
 
    .. py:method:: load_info(*, tab: str, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
       :async:
 
 
+      加载基本信息
+
+      :param tab: 库表名称。
+      :type tab: str
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
+
+
 
    .. py:method:: load_daily(*, tab: str, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
       :async:
+
+
+      加载基本k线信息
+
+      :param tab: 库表名称。
+      :type tab: str
+      :param filter: 过滤条件，同mongodb格式，默认 {}。
+      :type filter: Optional[Dict], optional
+      :param sort: 排序条件， 同mongodb格式，默认 {}。
+      :type sort: Optional[Dict], optional
+      :param limit: 限制条数， 默认 None，不限制
+      :type limit: Optional[int], optional
+      :param to_frame: 是否转换为DataFrame格式，默认 是
+      :type to_frame: bool, optional
+
+      :rtype: Union[List[Dict], pd.DataFrame]
 
 
 
@@ -151,12 +452,19 @@ Module Contents
       :parts: 1
 
 
-   Helper class that provides a standard way to create an ABC using
-   inheritance.
+   数据库查询接口(阻塞版本)
 
 
    .. py:method:: to_dataframe(to_frame, data)
       :staticmethod:
+
+
+
+   .. py:method:: datetime_to_int(date: Union[str, datetime.datetime]) -> int
+      :staticmethod:
+
+
+      datetime转换为数据格式的时间
 
 
 
@@ -167,64 +475,127 @@ Module Contents
 
    .. py:method:: load_bond_info(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
 
+      参考: :func:`qdatac.loader.Loader.load_bond_info`
+
+
 
    .. py:method:: load_bond_daily(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+      参考: :func:`qdatac.loader.Loader.load_bond_daily`
+
 
 
    .. py:method:: load_fund_info(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
 
+      参考: :func:`qdatac.loader.Loader.load_fund_info`
+
+
 
    .. py:method:: load_fund_daily(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+      参考: :func:`qdatac.loader.Loader.load_fund_daily`
+
 
 
    .. py:method:: load_fund_net(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
 
+      参考: :func:`qdatac.loader.Loader.load_fund_net`
+
+
 
    .. py:method:: load_index_info(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+      参考: :func:`qdatac.loader.Loader.load_index_info`
+
 
 
    .. py:method:: load_index_daily(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
 
+      参考: :func:`qdatac.loader.Loader.load_index_daily`
+
+
 
    .. py:method:: load_stock_info(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+      参考: :func:`qdatac.loader.Loader.load_stock_info`
+
 
 
    .. py:method:: load_stock_daily(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
 
+      参考: :func:`qdatac.loader.Loader.load_stock_daily`
+
+
 
    .. py:method:: load_stock_index(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+      参考: :func:`qdatac.loader.Loader.load_stock_index`
+
 
 
    .. py:method:: load_stock_industry(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
 
+      参考: :func:`qdatac.loader.Loader.load_stock_industry`
+
+
 
    .. py:method:: load_stock_industry_daily(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+      参考: :func:`qdatac.loader.Loader.load_stock_industry_daily`
+
 
 
    .. py:method:: load_stock_industry_detail(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
 
+      参考: :func:`qdatac.loader.Loader.load_stock_industry_detail`
+
+
 
    .. py:method:: load_stock_concept(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+      参考: :func:`qdatac.loader.Loader.load_stock_concept`
+
 
 
    .. py:method:: load_stock_concept_daily(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
 
+      参考: :func:`qdatac.loader.Loader.load_stock_concept_daily`
+
+
 
    .. py:method:: load_stock_concept_detail(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+      参考: :func:`qdatac.loader.Loader.load_stock_concept_detail`
+
 
 
    .. py:method:: load_stock_yjbb(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
 
+      参考: :func:`qdatac.loader.Loader.load_stock_yjbb`
+
+
 
    .. py:method:: load_stock_margin(*, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+      参考: :func:`qdatac.loader.Loader.load_stock_margin`
+
 
 
    .. py:method:: count(*, tab: str) -> int
 
+      参考: :func:`qdatac.loader.Loader.count`
+
+
 
    .. py:method:: load_info(*, typ: str, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
 
+      参考: :func:`qdatac.loader.Loader.load_info`
+
+
 
    .. py:method:: load_daily(*, typ: str, filter: Optional[Dict] = {}, sort: Optional[Dict] = {}, limit: Optional[int] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+      参考: :func:`qdatac.loader.Loader.load_daily`
+
 
 

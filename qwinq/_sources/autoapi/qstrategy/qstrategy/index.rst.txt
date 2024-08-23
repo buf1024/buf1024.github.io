@@ -17,7 +17,11 @@ Functions
 
 .. autoapisummary::
 
-   qstrategy.qstrategy.test
+   qstrategy.qstrategy.calc_chip_dist
+   qstrategy.qstrategy.calc_winner
+   qstrategy.qstrategy.calc_cost
+   qstrategy.qstrategy.ma
+   qstrategy.qstrategy.shadow
    qstrategy.qstrategy.uuid
    qstrategy.qstrategy.new_signal
    qstrategy.qstrategy.stat_select_hit
@@ -26,7 +30,80 @@ Functions
 Module Contents
 ---------------
 
-.. py:function:: test()
+.. py:function:: calc_chip_dist(data: List[ast.Dict], ac: int = 1, chip_dist: ast.Dict = None) -> ast.Dict
+
+   筹码分布计算，计算winner或cost时，先调用该函数
+
+   :param data: k线数据
+   :type data: List[Dict]
+   :param ac: 衰减系数，如不清楚怎么设置，直接用默认值， 默认值为 1。
+   :type ac: int, optional
+   :param chip_dist: 筹码分布，如果之前计算过，则传过来，减少计算量
+   :type chip_dist: Dict, optional
+
+   :returns: 筹码分布情况
+   :rtype: Dict
+
+
+.. py:function:: calc_winner(chip_dist: ast.Dict, data: List[ast.Dict] = None, price: float = None) -> ast.Dict
+
+   计算胜率分布
+
+   :param chip_dist: 筹码分布情况，使用calc_chip_dist调用的结果
+   :type chip_dist: Dict
+   :param data: 原始k线数据。胜率的标准，使用的是close价格，data和price两者不能同时为空
+   :type data: List[Dict], optional
+   :param price: 胜率的标准，使用的是固定价格，data和price两者不能同时为空
+   :type price: float, optional
+
+   :returns: 胜率分布情况
+   :rtype: Dict
+
+
+.. py:function:: calc_cost(chip_dist: ast.Dict, ratio: int) -> ast.Dict
+
+   计算成本分布
+
+   :param chip_dist: 筹码分布情况，使用calc_chip_dist调用的结果
+   :type chip_dist: Dict
+   :param ratio: 百分之几的成本的价格
+   :type ratio: int
+
+   :returns: 成本分布情况
+   :rtype: Dict
+
+
+.. py:function:: ma(bar: List[float], ma_type: int) -> List[float]
+
+   均线
+
+   :param bar: K线
+   :type bar: List[float]
+   :param ma_type: ma类型
+   :type ma_type: int
+
+   :returns: 日线
+   :rtype: List[float]
+
+
+.. py:function:: shadow(last_close: float, open: float, close: float, low: float, high: float) -> Tuple[float]
+
+   k线各部分占比
+
+   :param last_close: 昨收价
+   :type last_close: float
+   :param open: 开盘价
+   :type open: float
+   :param close: 收盘价
+   :type close: float
+   :param low: 最低价
+   :type low: float
+   :param high: 最高价
+   :type high: float
+
+   :returns: (振幅， 上天线占比， 蜡烛图占比， 下天线占比)
+   :rtype: Tuple[float]
+
 
 .. py:function:: uuid() -> str
 

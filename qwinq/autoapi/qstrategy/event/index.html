@@ -50,8 +50,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../intro.html">简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../fetch/index.html">数据获取</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../data.html">本地数据</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../select.html">选股策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../backtest.html">股票回测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../strategy/index.html">股票策略</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../qfetch/index.html">qfetch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qdatac/index.html">qdatac</a></li>
@@ -64,10 +63,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../monitor/index.html">qstrategy.monitor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../qstrategy/index.html">qstrategy.qstrategy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../risk/index.html">qstrategy.risk</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../runner/index.html">qstrategy.runner</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../select/index.html">qstrategy.select</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../strategy/index.html">qstrategy.strategy</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../test_strategy/index.html">qstrategy.test_strategy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../trade/index.html">qstrategy.trade</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tradecomm/index.html">qstrategy.tradecomm</a></li>
 </ul>
@@ -110,19 +106,19 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.event.MonitorEvent" title="qstrategy.event.MonitorEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MonitorEvent</span></code></a></p></td>
-<td><p></p></td>
+<td><p>监控事件</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qstrategy.event.SelectHit" title="qstrategy.event.SelectHit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelectHit</span></code></a></p></td>
-<td><p></p></td>
+<td><p>选股命中信息</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.event.SelectEvent" title="qstrategy.event.SelectEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelectEvent</span></code></a></p></td>
-<td><p></p></td>
+<td><p>选股事件</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qstrategy.event.Quot" title="qstrategy.event.Quot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quot</span></code></a></p></td>
-<td><p></p></td>
+<td><p>单个标的行情</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.event.RtQuot" title="qstrategy.event.RtQuot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RtQuot</span></code></a></p></td>
-<td><p></p></td>
+<td><p>多个标的行情</p></td>
 </tr>
 </tbody>
 </table>
@@ -132,10 +128,10 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.event.BrokerEvent" title="qstrategy.event.BrokerEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BrokerEvent</span></code></a></p></td>
-<td><p></p></td>
+<td><p>q券商事件</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qstrategy.event.Event" title="qstrategy.event.Event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Event</span></code></a></p></td>
-<td><p></p></td>
+<td><p>事件</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.event.QuotEvent" title="qstrategy.event.QuotEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuotEvent</span></code></a></p></td>
 <td><p></p></td>
@@ -148,52 +144,62 @@
 <dl class="py data">
 <dt class="sig sig-object py" id="qstrategy.event.MonitorEvent">
 <span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">MonitorEvent</span></span><a class="headerlink" href="#qstrategy.event.MonitorEvent" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>监控事件</p>
+</dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="qstrategy.event.SelectHit">
 <span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">SelectHit</span></span><a class="headerlink" href="#qstrategy.event.SelectHit" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>选股命中信息</p>
+</dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="qstrategy.event.SelectEvent">
 <span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">SelectEvent</span></span><a class="headerlink" href="#qstrategy.event.SelectEvent" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>选股事件</p>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qstrategy.event.BrokerEvent">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">BrokerEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">qstrategy.tradecomm.Signal</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">qstrategy.tradecomm.Position</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.event.BrokerEvent" title="Link to this definition"></a></dt>
-<dd><dl class="py method">
+<dd><p>q券商事件</p>
+<dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.event.BrokerEvent.to_dict">
 <span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.event.BrokerEvent.to_dict" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>事件转换为字典形式</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qstrategy.event.Event">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">Event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.tradecomm.Signal</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">qstrategy.tradecomm.Entrust</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#qstrategy.event.BrokerEvent" title="qstrategy.event.BrokerEvent"><span class="pre">BrokerEvent</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MonitorEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SelectEvent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.event.Event" title="Link to this definition"></a></dt>
-<dd><dl class="py property">
+<dd><p>事件</p>
+<dl class="py property">
 <dt class="sig sig-object py" id="qstrategy.event.Event.event">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">event</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#qstrategy.event.Event.event" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>事件转为字典形式</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.event.Event.to_dict">
 <span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.event.Event.to_dict" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>事件转为字典形式</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="qstrategy.event.Quot">
 <span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">Quot</span></span><a class="headerlink" href="#qstrategy.event.Quot" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>单个标的行情</p>
+</dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="qstrategy.event.RtQuot">
 <span class="sig-prename descclassname"><span class="pre">qstrategy.event.</span></span><span class="sig-name descname"><span class="pre">RtQuot</span></span><a class="headerlink" href="#qstrategy.event.RtQuot" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>多个标的行情</p>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qstrategy.event.QuotEvent">

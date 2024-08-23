@@ -24,7 +24,7 @@
 >>> await fetch.fetch_fund_info()
      code                name
 0    sh016002         博时保证金货币ETFC
-..        ...    ...    
+..        ...    ...  
 [836 rows x 2 columns]
 ```
 

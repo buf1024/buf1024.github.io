@@ -2,10 +2,12 @@
 
 ### 基础常量
 
-k线周期
+K线频率
 
 ```python
 class BarFreq:
+    """K线频率
+    """
     Min1 = 1  # 1分钟k线
     Min5 = 5  # 5分钟k线
     Min15 = 15  # 15分钟k线
@@ -17,10 +19,23 @@ class BarFreq:
     LooseDaily = 1010  # 日线，在交易日没结束前，显示的是最新值，交易日结束后，同Daily
 ```
 
-市场品种：
+交易市场:
+
+```python
+class Market:
+    """交易市场
+    """
+    SZ = 0
+    SH = 1
+    BJ = 2
+```
+
+交易类型：
 
 ```python
 class MarketType:
+    """交易类型
+    """
     Bond = 0  # 可转债
     Fund = 1  # ETF基金
     Stock = 2  # 股票
@@ -28,7 +43,7 @@ class MarketType:
 
 ### 交易日数据
 
-​`async def fetch_trade_date(to_frame=True) -> Union[Set[int], pd.DataFrame]`​
+​`async def fetch_trade_date(*, to_frame=True) -> Union[Set[int], pd.DataFrame]`​​
 
 输入：
 
@@ -46,26 +61,34 @@ class MarketType:
 
 ```python
 In [1]: import qfetch as fetch
-   ...: await fetch.fetch_trade_date()
-Out[1]: 
+
+In [2]: await fetch.fetch_trade_date()
+Out[2]: 
       trade_date
 0       20120104
 1       20120105
+2       20120106
+3       20120109
+4       20120110
 ...          ...
-8068    20021231
+8306    20021225
+8307    20021226
+8308    20021227
+8309    20021230
+8310    20021231
 
-[8069 rows x 1 columns]
+[8311 rows x 1 columns]
 ```
 
 ### 下一个交易日
 
-​`async def fetch_next_trade_date(d: Union[date, datetime]) -> date`​
+​`async def fetch_next_trade_date(*, date: Union[date, datetime, str]) -> date`​
 
 输入：
 
 |名称|类型|描述|
-| ------| ------| :----: |
-|d|-|时间|
+| ------------| ------| :--------------------------------------: |
+|​date​<br />|-|如str类型，格式为yyyy-mm-dd/yyyymmdd<br />|
 
 输出：
 
@@ -76,23 +99,25 @@ Out[1]:
 示例:
 
 ```python
-In [3]: from datetime import datetime
+In [1]: import qfetch as fetch
 
-In [4]: now = datetime.now()
+In [2]: from datetime import datetime
 
-In [5]: await fetch.fetch_next_trade_date(now)
-Out[5]: datetime.date(2023, 9, 13)
+In [3]: now = datetime.now()
+
+In [4]: await fetch.fetch_next_trade_date(date=now)
+Out[4]: datetime.date(2024, 8, 26)
 ```
 
 ### 上一个交易日
 
-​`async def fetch_prev_trade_date(d: Union[date, datetime]) -> date`​
+​`async def fetch_prev_trade_date(*, date: Union[date, datetime, str]) -> date`​​
 
 输入：
 
 |名称|类型|描述|
-| ------| ------| :----: |
-|d|-|时间|
+| --------| ------| :--------------------------------------: |
+|date<br />|-|如str类型，格式为yyyy-mm-dd/yyyymmdd<br />|
 
 输出：
 
@@ -103,19 +128,25 @@ Out[5]: datetime.date(2023, 9, 13)
 示例:
 
 ```python
-In [7]: await fetch.fetch_prev_trade_date(now)
-Out[7]: datetime.date(2023, 9, 11)
+In [1]: import qfetch as fetch
+
+In [2]: from datetime import datetime
+
+In [3]: now = datetime.now()
+
+In [4]: await fetch.fetch_prev_trade_date(date=now)
+Out[4]: datetime.date(2024, 8, 22)
 ```
 
 ### 是否交易日
 
-​`async def fetch_is_trade_date(d: Union[date, datetime]) -> bool`​
+​`async def fetch_is_trade_date(date: Union[date, datetime, str]) -> bool`​
 
 输入：
 
 |名称|类型|描述|
-| ------| ------| :----: |
-|d|-|时间|
+| ------| ------| :------------------------------------: |
+|date|-|如str类型，格式为yyyy-mm-dd/yyyymmdd|
 
 输出：
 
@@ -126,17 +157,17 @@ Out[7]: datetime.date(2023, 9, 11)
 示例:
 
 ```python
-In [12]: await fetch.fetch_is_trade_date(now)
-Out[12]: True
+In [6]: await fetch.fetch_is_trade_date(date=now)
+Out[6]: True
 ```
 
-### 股票实时行情
+### 实时行情
 
 ```python
  async def fetch_rt_quot(self, *, code: List[str], to_frame=True) -> Union[Dict[str, Dict], pd.DataFrame]:
 ```
 
-注意，该接口是准实时，有几秒的延迟，切勿高频，可以用与股票/可转债/ETF基金，行业概念等等。
+注意，该接口是准实时，有几秒的延迟，切勿高频，可以用与股票/可转债/ETF基金/行业/概念等等。
 
 输入：
 
@@ -148,34 +179,43 @@ Out[12]: True
 输出：
 
 |名称|类型|描述|
-| ---------------------------| ----------------------| -----------------------|
+| -------------------------------------| ----------------------| ----------------------------------------|
 |code|str|代码|
 |name|str|名称|
 |time|datetime|行情时间|
 |last_close|float|昨收价|
+|now|float|现价|
 |open|float|开盘价|
 |high|float|最高价|
 |low|float|最低价|
-|last|float|最后一口价|
+|buy|float|买价|
+|sell|float|卖价|
+|bid|tuple|买5：((量，价),.., ...)|
+|ask|tuple|卖5：((量，价),.., ...)|
 |chg|float|涨跌额|
 |chg_pct|float|涨跌%|
 |volume|int|成交量|
 |amount|float|成交额|
-|turnover|float|换手率%|
-|total_value|float|总市值|
-|currency_value|float|流通市值|
+|turnover|float|换手率%，可转债等没有该值|
+|total_value|float|总市值，可转债等没有该值|
+|currency_value|float|流通市值，可转债等没有该值|
 |is_trading|bool|是否交易中|
+|freq\_open|float|周期内开盘价，不一定有值|
+|freq\_high|float|周期内最高价，不一定有值|
+|freq\_low|float|周期内最低价，不一定有值|
+|freq\_chg|float|周期内涨跌额，不一定有值|
+|freq\_chg\_pct|float|周期内涨跌%，不一定有值|
+|freq\_time|datetime|周期内频率时间，不一定有值|
 
 示例:
 
 ```python
-In [3]: await fetch.fetch_stock_rt_quot(code =['bj873576', 'sz000001'])
-Out[3]: 
-       code                time  last_close   open  ...  turnover   total_value  currency_value  is_trading
-0  sz000001 2023-09-12 15:04:42       11.34  11.35  ...      0.26  2.188988e+11    2.188946e+11       False
-1  bj873576 2023-09-12 15:32:21       13.45  13.33  ...      1.01  1.446856e+09    3.959731e+08       False
+In [22]: await fetch.fetch_rt_quot(code=['sz000001'])
+Out[22]: 
+       code  name   open  last_close  ...  freq_low  freq_chg  freq_chg_pct       freq_time
+0  sz000001  平安银行  10.39       10.38  ...       0.0       0.0           0.0  19700101000000
 
-[2 rows x 15 columns]
+[1 rows x 26 columns]
 ```
 
 ‍

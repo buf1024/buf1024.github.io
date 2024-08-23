@@ -50,8 +50,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fetch/index.html">数据获取</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data.html">本地数据</a></li>
-<li class="toctree-l1"><a class="reference internal" href="select.html">选股策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="backtest.html">股票回测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategy/index.html">股票策略</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
 </ul>
 
@@ -80,9 +79,9 @@
              
   <section id="id1">
 <h1>简介<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
-<p><a class="reference external" href="https://github.com/buf1024/rwinq/tree/main/python">qwinq</a>是<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main">rwinq</a>的python版本，<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main">rwinq</a>(rust winner quantitative trader)是用rust编写的个人股票分析测试系统，包括数据，回测，投研，交易等多个模块。然而rust是编译型的系统语言，不便于快速建模和测试，所以这才有了这个<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main/python">qwinq</a>。<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main/python">qwinq</a>所提供的核心功能基本和<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main">rwinq</a>一致，而且比原生的python效率高出几个数量级。而且<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main/python">qwinq</a>各个模块之间先对独立，可以独立安装。如果你只对怎么获取财经数据感兴趣，那么只需要安装<code class="docutils literal notranslate"><span class="pre">qfetch</span></code>，​而忽略其他模块。</p>
-<p>不过需要注意的是，这里所提供的方式方法不一定是主流股票投资的方式，也不能保证这个所谓的系统能够助力盈利，更不能保证不会亏损。这项目的功能更多是探索应用rust实现一个完整的系统而已。</p>
-<p>另外还需要注意的是，本项目中所涉及到的财经数据，全部来源于公开的数据，不涉及个人或其他隐私数据，也不能保证所收集到的数据是正确的。所获取到的数据仅用于学习和研究用，禁止商用。</p>
+<p><strong>qwinq</strong>是<strong>rwinq</strong>的python版本，<strong>rwinq</strong>(Rust winner quantitative trader)是用<code class="docutils literal notranslate"><span class="pre">Rust</span></code>​语言编写的个人股票分析测试系统，包括数据，回测，投研，交易等多个模块。然而<code class="docutils literal notranslate"><span class="pre">Rust</span></code>​是编译型的系统语言，不便于快速建模和测试策略，所以这才有了这个<strong>qwinq</strong>。<strong>qwinq</strong>本计划是提供和<code class="docutils literal notranslate"><span class="pre">Rust</span></code>​版本<strong>rwinq</strong>核心功能基本一致的，不过貌似分离代码工作量有点大，而且不没太大的必要，因此只提供一些核心模块，同时封装了<code class="docutils literal notranslate"><span class="pre">pyhton</span></code>​代码，以方便编写策略给<code class="docutils literal notranslate"><span class="pre">Rust</span></code>​调用，这样的骚操作后，效率比原生的<code class="docutils literal notranslate"><span class="pre">python</span></code>​效率高出几个数量级。不过由于<code class="docutils literal notranslate"><span class="pre">gil</span></code>​的限制，用<code class="docutils literal notranslate"><span class="pre">Rust</span></code>​后，并发效率还是受限的，同时由于<code class="docutils literal notranslate"><span class="pre">pyo3-asyncio</span></code>​这个坑货，要占据主线程，所以异步代码是不支持的。<strong>qwinq</strong>各个模块之间先对独立，可以独立安装。如果你只对怎么获取财经数据感兴趣，那么只需要安装<code class="docutils literal notranslate"><span class="pre">qfetch</span></code>​，而忽略其他模块。</p>
+<p>不过另外需要注意的是，这里所提供的方式方法不一定是主流股票投资的方式，也不能保证这个所谓的系统能够助力盈利，更不能保证不会亏损。这项目的功能更多是探索应用<code class="docutils literal notranslate"><span class="pre">rust</span></code>​实现一个完整的系统而已，所以请谨慎将该系统用于投资决策。</p>
+<p>另外还需要注意的是，本项目中所涉及到的财经数据，全部来源于公开的数据，不涉及个人或其他隐私数据，同时也不能保证所收集到的数据是正确的。所获取到的数据仅用于学习和研究用，禁止商用。</p>
 <p>‍</p>
 </section>
 

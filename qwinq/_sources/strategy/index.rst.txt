@@ -1,0 +1,15 @@
+股票策略
+========
+
+直接通过pip安装即可:
+
+.. code:: shell
+
+   pip install -U qstrategy
+
+`qstrategy <https://pypi.org/project/qstrategy/>`__\ 模块主要是用python实现策略的模块，同时也会包括一些简单的ta技术分析的函数。策略主要包括：监控策略(`qstrategy.monitor.Monitor`​)，选股策略(``qstrategy.select.Select``\ ​)，交易策略(``qstrategy.trade.Strategy``\ ​)，风控策略(``qstrategy.risk.Risk``\ ​)以及券商策略(``qstrategy.broker.Broker``\ ​)。
+
+.. toctree::
+   :maxdepth: 2
+
+   ta

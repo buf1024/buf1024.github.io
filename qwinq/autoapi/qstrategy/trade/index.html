@@ -24,7 +24,7 @@
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
     <link rel="next" title="qstrategy.tradecomm" href="../tradecomm/index.html" />
-    <link rel="prev" title="qstrategy.test_strategy" href="../test_strategy/index.html" /> 
+    <link rel="prev" title="qstrategy.select" href="../select/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,8 +50,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../intro.html">简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../fetch/index.html">数据获取</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../data.html">本地数据</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../select.html">选股策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../backtest.html">股票回测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../strategy/index.html">股票策略</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../qfetch/index.html">qfetch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qdatac/index.html">qdatac</a></li>
@@ -64,10 +63,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../monitor/index.html">qstrategy.monitor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../qstrategy/index.html">qstrategy.qstrategy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../risk/index.html">qstrategy.risk</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../runner/index.html">qstrategy.runner</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../select/index.html">qstrategy.select</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../strategy/index.html">qstrategy.strategy</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../test_strategy/index.html">qstrategy.test_strategy</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">qstrategy.trade</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tradecomm/index.html">qstrategy.tradecomm</a></li>
 </ul>
@@ -110,7 +106,7 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.trade.Strategy" title="qstrategy.trade.Strategy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Strategy</span></code></a></p></td>
-<td><p>Helper class that provides a standard way to create an ABC using</p></td>
+<td><p>交易策略基类，实现交易策略，要继承于该类</p></td>
 </tr>
 </tbody>
 </table>
@@ -121,16 +117,24 @@
 <dt class="sig sig-object py" id="qstrategy.trade.Strategy">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qstrategy.trade.</span></span><span class="sig-name descname"><span class="pre">Strategy</span></span><a class="headerlink" href="#qstrategy.trade.Strategy" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../base_strategy/index.html#qstrategy.base_strategy.BaseStrategy" title="qstrategy.base_strategy.BaseStrategy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qstrategy.base_strategy.BaseStrategy</span></code></a></p>
-<div class="graphviz"><img src="../../../_images/inheritance-acbe6498322161160b7773c088c2fd525eb17ff2.png" alt="Inheritance diagram of qstrategy.trade.Strategy" usemap="#inheritancee1f0314f7a" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../../../_images/inheritance-efb1fd37e3df522271b9a789f66725d5c4848cc8.png" alt="Inheritance diagram of qstrategy.trade.Strategy" usemap="#inheritancee1f0314f7a" class="inheritance graphviz" /></div>
 <map id="inheritancee1f0314f7a" name="inheritancee1f0314f7a">
-<area shape="rect" id="node2" href="../base_strategy/index.html#qstrategy.base_strategy.BaseStrategy" target="_top" title="BaseStrategy" alt="" coords="125,5,226,32"/>
-<area shape="rect" id="node3" href="#qstrategy.trade.Strategy" target="_top" title="Strategy" alt="" coords="274,5,346,32"/>
-</map><p>Helper class that provides a standard way to create an ABC using
-inheritance.</p>
+<area shape="rect" id="node2" href="../base_strategy/index.html#qstrategy.base_strategy.BaseStrategy" target="_top" title="策略基类" alt="" coords="125,5,226,32"/>
+<area shape="rect" id="node3" href="#qstrategy.trade.Strategy" target="_top" title="交易策略基类，实现交易策略，要继承于该类" alt="" coords="274,5,346,32"/>
+</map><p>交易策略基类，实现交易策略，要继承于该类</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.trade.Strategy.on_trade">
-<span class="sig-name descname"><span class="pre">on_trade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">quots</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.event.RtQuot</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.trade.Strategy.on_trade" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">on_trade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">quots</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.event.RtQuot</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.trade.Strategy.on_trade" title="Link to this definition"></a></dt>
+<dd><p>有行情时回调，实现交易逻辑</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><em>ShareState</em></a>) – 共享状态</p></li>
+<li><p><strong>quots</strong> (<em>RtQuot</em>) – 行情</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -141,7 +145,7 @@ inheritance.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
-        <a href="../test_strategy/index.html" class="btn btn-neutral float-left" title="qstrategy.test_strategy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../select/index.html" class="btn btn-neutral float-left" title="qstrategy.select" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="../tradecomm/index.html" class="btn btn-neutral float-right" title="qstrategy.tradecomm" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

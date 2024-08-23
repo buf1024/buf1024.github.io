@@ -20,6 +20,10 @@ Module Contents
 
 .. py:class:: Dest(*, file: Optional[str] = None, mongo: Optional[str] = None, mysql: Optional[str] = None)
 
+   同步目的
+
+
+
    .. py:attribute:: file
 
 
@@ -31,8 +35,18 @@ Module Contents
 
    .. py:method:: to_list() -> Optional[List[Tuple]]
 
+      转换为list
+
+      :returns: list
+      :rtype: Optional[List[Tuple]]
+
+
 
 .. py:class:: Funcs
+
+   同步的数据类型
+
+
 
    .. py:attribute:: TradeDate
       :value: 1
@@ -131,6 +145,10 @@ Module Contents
 
 .. py:class:: MySync(dest: Dest, funcs: Optional[List[int]] = None)
 
+   数据同步
+
+
+
    .. py:attribute:: inner
 
 
@@ -138,18 +156,40 @@ Module Contents
       :async:
 
 
+      同步函数
+
+      :param skip_basic: 是否忽略基础数据，默认否。
+      :type skip_basic: bool, optional
+      :param task_count: 任务数量，默认4，如果不清楚，不要改变。过多并发容易被封。
+      :type task_count: int, optional
+      :param split_count: 同一个任务切分分组数，默认5。
+      :type split_count: int, optional
+
+
 
    .. py:method:: shutdown()
 
+      停止同步
+
+
 
 .. py:class:: MyBlockSync(dest: Dest, funcs: Optional[List[int]] = None)
+
+   数据同步（阻塞版本）
+
 
    .. py:attribute:: inner
 
 
    .. py:method:: sync(skip_basic=False, task_count=4, split_count=5)
 
+      参考：:func:`qdatac.sync.MySync.sync`
+
+
 
    .. py:method:: shutdown()
+
+      参考：:func:`qdatac.sync.MySync.shutdown`
+
 
 

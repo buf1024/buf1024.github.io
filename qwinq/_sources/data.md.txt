@@ -1,3 +1,11 @@
 # 本地数据
 
-‍本地数据缓存在本地数据库
+直接通过pip安装即可:
+
+```shell
+pip install -U qdatac
+```
+
+[qfetch](https://pypi.org/project/qfetch/) 是获取远程数据的，而[qdatac](https://pypi.org/project/qdatac/)是如何将远程数据保存至本地以及如何获取本地数据的，也是一个相对独立的模块。[qdatac](https://pypi.org/project/qdatac/) 计划是支持四种形式的数据存储方式，文件，mongodb，mysql以及clickhouse，不过目前只实现mongodb 这种方式。将远程数据保存至本地，rust版本已经做的挺好的了，正常来说，是不太需要使用的，为了完整性保留下来。通常我们使用的是如何获取本地的数据。和[qfetch](https://pypi.org/project/qfetch/)类似，[qdatac](https://pypi.org/project/qdatac/)也是提供阻塞和非阻塞两个版本，不同的是[qdatac](https://pypi.org/project/qdatac/) 要保存一些状态，所以以类的形式提供。
+
+‍

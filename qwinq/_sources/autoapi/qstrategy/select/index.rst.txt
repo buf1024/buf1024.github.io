@@ -23,10 +23,19 @@ Module Contents
       :parts: 1
 
 
-   Helper class that provides a standard way to create an ABC using
-   inheritance.
+   选股策略基类，实现选股策略，要继承于该类
 
 
-   .. py:method:: select(state: qstrategy.qstrategy.ShareState, code: str, name: str) -> None
+   .. py:method:: select(state: qstrategy.qstrategy.ShareState, code: str, name: str)
+
+      选股时回调，计算选择逻辑
+
+      :param state: 共享状态
+      :type state: ShareState
+      :param code: 代码
+      :type code: str
+      :param name: 名称
+      :type name: str
+
 
 

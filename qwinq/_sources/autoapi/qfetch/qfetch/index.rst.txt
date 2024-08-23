@@ -9,6 +9,7 @@ Functions
 
 .. autoapisummary::
 
+   qfetch.qfetch.to_std_code
    qfetch.qfetch.fetch_trade_date
    qfetch.qfetch.block_fetch_trade_date
    qfetch.qfetch.fetch_next_trade_date
@@ -17,14 +18,10 @@ Functions
    qfetch.qfetch.block_fetch_prev_trade_date
    qfetch.qfetch.fetch_is_trade_date
    qfetch.qfetch.block_fetch_is_trade_date
-   qfetch.qfetch.to_std_code
    qfetch.qfetch.fetch_rt_quot
    qfetch.qfetch.block_fetch_rt_quot
    qfetch.qfetch.fetch_stock_rt_quot
    qfetch.qfetch.block_fetch_stock_rt_quot
-   qfetch.qfetch.calc_chip_dist
-   qfetch.qfetch.calc_winner
-   qfetch.qfetch.calc_cost
    qfetch.qfetch.fetch_bond_info
    qfetch.qfetch.block_fetch_bond_info
    qfetch.qfetch.fetch_bond_bar
@@ -74,179 +71,352 @@ Functions
 Module Contents
 ---------------
 
+.. py:function:: to_std_code(typ: int, code: str) -> str
+
+   转换代码为内部格式的代码场
+
+   :param typ: 场交易类型, 参考 :class:`qfetch.MarketType`
+   :type typ: int
+   :param code: 代码
+   :type code: str
+
+   :returns: _description_
+   :rtype: str
+
+
 .. py:function:: fetch_trade_date() -> Set[int]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_trade_date`
+
+
 .. py:function:: block_fetch_trade_date() -> Set[int]
+
+   参考 :func:`qfetch.fetch.block_fetch_trade_date`
+
 
 .. py:function:: fetch_next_trade_date(d: datetime.date) -> int
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_next_trade_date`
+
+
 .. py:function:: block_fetch_next_trade_date(d: datetime.date) -> int
+
+   参考 :func:`qfetch.fetch.block_fetch_next_trade_date`
+
 
 .. py:function:: fetch_prev_trade_date(d: datetime.date) -> int
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_prev_trade_date`
+
+
 .. py:function:: block_fetch_prev_trade_date(d: datetime.date) -> int
+
+   参考 :func:`qfetch.fetch.block_fetch_prev_trade_date`
+
 
 .. py:function:: fetch_is_trade_date(d: datetime.date) -> bool
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_is_trade_date`
+
+
 .. py:function:: block_fetch_is_trade_date(d: datetime.date) -> bool
 
-.. py:function:: to_std_code(typ: int, code: str) -> str
+   参考 :func:`qfetch.fetch.block_fetch_is_trade_date`
+
 
 .. py:function:: fetch_rt_quot(code: List[str]) -> Dict[str, Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_rt_quot`
+
+
 .. py:function:: block_fetch_rt_quot(code: List[str]) -> Dict[str, Dict]
+
+   参考 :func:`qfetch.fetch.block_fetch_rt_quot`
+
 
 .. py:function:: fetch_stock_rt_quot(codes: Optional[List[str]]) -> List[Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_rt_quot`
+
+
 .. py:function:: block_fetch_stock_rt_quot(codes: Optional[List[str]]) -> List[Dict]
 
-.. py:function:: calc_chip_dist(data: List[Dict], ac: int = 1, chip_dist: Dict = None) -> Dict
+   参考 :func:`qfetch.fetch.block_fetch_stock_rt_quot`
 
-.. py:function:: calc_winner(chip_dist: Dict, data: List[Dict] = None, price: float = None) -> Dict
-
-.. py:function:: calc_cost(chip_dist: Dict, ratio: int) -> Dict
 
 .. py:function:: fetch_bond_info() -> List[Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_bond_info`
+
+
 .. py:function:: block_fetch_bond_info() -> List[Dict]
+
+   参考 :func:`qfetch.fetch.block_fetch_bond_info`
+
 
 .. py:function:: fetch_bond_bar(code: str, name: str, stock_code: str, stock_name: str, freq: Optional[int], start: Optional[datetime.date], end: Optional[datetime.date], skip_rt: bool) -> Dict
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_bond_bar`
+
+
 .. py:function:: block_fetch_bond_bar(code: str, name: str, stock_code: str, stock_name: str, freq: Optional[int], start: Optional[datetime.date], end: Optional[datetime.date], skip_rt: bool) -> Dict
+
+   参考 :func:`qfetch.fetch.block_fetch_bond_bar`
+
 
 .. py:function:: fetch_fund_info() -> List[Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_fund_info`
+
+
 .. py:function:: block_fetch_fund_info() -> List[Dict]
+
+   参考 :func:`qfetch.fetch.block_fetch_fund_info`
+
 
 .. py:function:: fetch_fund_net(code: str, name: Optional[str], start: Optional[datetime.date], end: Optional[datetime.date]) -> List[Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_fund_net`
+
+
 .. py:function:: block_fetch_fund_net(code: str, name: Optional[str], start: Optional[datetime.date], end: Optional[datetime.date]) -> List[Dict]
+
+   参考 :func:`qfetch.fetch.block_fetch_fund_net`
+
 
 .. py:function:: fetch_fund_bar(code: str, name: Optional[str], freq: Optional[int], start: Optional[datetime.date], end: Optional[datetime.date], skip_rt: bool) -> Dict
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_fund_bar`
+
+
 .. py:function:: block_fetch_fund_bar(code: str, name: Optional[str], freq: Optional[int], start: Optional[datetime.date], end: Optional[datetime.date], skip_rt: bool) -> Dict
+
+   参考 :func:`qfetch.fetch.block_fetch_fund_bar`
+
 
 .. py:function:: fetch_index_info() -> List[Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_index_info`
+
+
 .. py:function:: block_fetch_index_info() -> List[Dict]
+
+   参考 :func:`qfetch.fetch.block_fetch_index_info`
+
 
 .. py:function:: fetch_index_bar(code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_index_bar`
+
+
 .. py:function:: block_fetch_index_bar(code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
+
+   参考 :func:`qfetch.fetch.block_fetch_index_bar`
+
 
 .. py:function:: fetch_stock_info(market: int = 0) -> List[Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_info`
+
+
 .. py:function:: block_fetch_stock_info(market: int = 0) -> List[Dict]
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_info`
+
 
 .. py:function:: fetch_stock_is_margin() -> Set[str]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_is_margin`
+
+
 .. py:function:: block_fetch_stock_is_margin() -> Set[str]
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_is_margin`
+
 
 .. py:function:: fetch_stock_bar(code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_bar`
+
+
 .. py:function:: block_fetch_stock_bar(code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_bar`
+
 
 .. py:function:: fetch_stock_index(index_date: Optional[datetime.date]) -> Dict[str, Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_index`
+
+
 .. py:function:: block_fetch_stock_index(index_date: Optional[datetime.date]) -> Dict[str, Dict]
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_index`
+
 
 .. py:function:: fetch_stock_industry() -> List[Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_industry`
+
+
 .. py:function:: block_fetch_stock_industry() -> List[Dict]
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_industry`
+
 
 .. py:function:: fetch_stock_industry_detail(code: Optional[str] = None, name: Optional[str] = None) -> List[Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_industry_detail`
+
+
 .. py:function:: block_fetch_stock_industry_detail(code: Optional[str] = None, name: Optional[str] = None) -> List[Dict]
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_industry_detail`
+
 
 .. py:function:: fetch_stock_industry_daily(code: str, name: Optional[str] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_industry_daily`
+
+
 .. py:function:: block_fetch_stock_industry_daily(code: str, name: Optional[str] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_industry_daily`
+
 
 .. py:function:: fetch_stock_concept() -> List[Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_concept`
+
+
 .. py:function:: block_fetch_stock_concept() -> List[Dict]
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_concept`
+
 
 .. py:function:: fetch_stock_concept_detail(code: Optional[str] = None, name: Optional[str] = None) -> List[Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_concept_detail`
+
+
 .. py:function:: block_fetch_stock_concept_detail(code: Optional[str] = None, name: Optional[str] = None) -> List[Dict]
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_concept_detail`
+
 
 .. py:function:: fetch_stock_concept_daily(code: str, name: Optional[str] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_concept_daily`
+
+
 .. py:function:: block_fetch_stock_concept_daily(code: str, name: Optional[str] = None, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None, skip_rt: bool = True) -> Dict
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_concept_daily`
+
 
 .. py:function:: fetch_stock_yjbb(year: int, season: int) -> List[Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_yjbb`
+
+
 .. py:function:: block_fetch_stock_yjbb(year: int, season: int) -> List[Dict]
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_yjbb`
+
 
 .. py:function:: fetch_stock_margin(code: str, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None) -> List[Dict]
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_margin`
+
+
 .. py:function:: block_fetch_stock_margin(code: str, start: Optional[datetime.date] = None, end: Optional[datetime.date] = None) -> List[Dict]
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_margin`
+
 
 .. py:function:: fetch_stock_hot_rank(code: str) -> Dict
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_hot_rank`
+
+
 .. py:function:: block_fetch_stock_hot_rank(code: str) -> Dict
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_hot_rank`
+
 
 .. py:function:: fetch_stock_comment(codes: Optional[List[str]] = None) -> Dict
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_comment`
+
+
 .. py:function:: block_fetch_stock_comment(codes: Optional[List[str]] = None) -> Dict
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_comment`
+
 
 .. py:function:: fetch_stock_comment_his(code: str) -> Dict
    :async:
 
 
+   参考 :func:`qfetch.fetch.fetch_stock_comment_his`
+
+
 .. py:function:: block_fetch_stock_comment_his(code: str) -> Dict
+
+   参考 :func:`qfetch.fetch.block_fetch_stock_comment_his`
+
 

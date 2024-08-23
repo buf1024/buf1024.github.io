@@ -23,16 +23,37 @@ Module Contents
       :parts: 1
 
 
-   Helper class that provides a standard way to create an ABC using
-   inheritance.
+   交易券商基类，实现交易券商，要继承于该类
 
 
-   .. py:method:: on_broker(state: qstrategy.qstrategy.ShareState, quots: qstrategy.event.RtQuot) -> None
+   .. py:method:: on_broker(state: qstrategy.qstrategy.ShareState, quots: qstrategy.event.RtQuot)
+
+      有行情时回调，一般券商不关心行情，所以不用管，为了接口完整性而已
+
+      :param state: 共享状态
+      :type state: ShareState
+      :param quots: 行情
+      :type quots: RtQuot
 
 
-   .. py:method:: on_entrust(state: qstrategy.qstrategy.ShareState, entrust: qstrategy.tradecomm.Entrust) -> None
+
+   .. py:method:: on_entrust(state: qstrategy.qstrategy.ShareState, entrust: qstrategy.tradecomm.Entrust)
+
+      委托请求，一般券商接口收到后，发送委托单给真实的券商
+
+      :param state: 共享状态
+      :type state: ShareState
+      :param entrust: 委托单
+      :type entrust: Entrust
 
 
-   .. py:method:: on_poll(state: qstrategy.qstrategy.ShareState) -> None
+
+   .. py:method:: on_poll(state: qstrategy.qstrategy.ShareState)
+
+      沦陷交易单据状态，真实的券商结果缓存后，由这个接口返回的交易系统
+
+      :param state: 共享状态
+      :type state: ShareState
+
 
 

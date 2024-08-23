@@ -50,8 +50,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../intro.html">简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../fetch/index.html">数据获取</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../data.html">本地数据</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../select.html">选股策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../backtest.html">股票回测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../strategy/index.html">股票策略</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../qfetch/index.html">qfetch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qdatac/index.html">qdatac</a></li>
@@ -64,10 +63,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../monitor/index.html">qstrategy.monitor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../qstrategy/index.html">qstrategy.qstrategy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../risk/index.html">qstrategy.risk</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../runner/index.html">qstrategy.runner</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../select/index.html">qstrategy.select</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../strategy/index.html">qstrategy.strategy</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../test_strategy/index.html">qstrategy.test_strategy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../trade/index.html">qstrategy.trade</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tradecomm/index.html">qstrategy.tradecomm</a></li>
 </ul>
@@ -110,7 +106,7 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.base_strategy.BaseStrategy" title="qstrategy.base_strategy.BaseStrategy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseStrategy</span></code></a></p></td>
-<td><p>Helper class that provides a standard way to create an ABC using</p></td>
+<td><p>策略基类</p></td>
 </tr>
 </tbody>
 </table>
@@ -121,75 +117,165 @@
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qstrategy.base_strategy.</span></span><span class="sig-name descname"><span class="pre">BaseStrategy</span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<div class="graphviz"><img src="../../../_images/inheritance-74068518e5a9aa1273268757ea4d6924725f00d0.png" alt="Inheritance diagram of qstrategy.base_strategy.BaseStrategy" usemap="#inheritance77dbcf1786" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../../../_images/inheritance-43ae8e334237632696e4352baba7e693b3aca17c.png" alt="Inheritance diagram of qstrategy.base_strategy.BaseStrategy" usemap="#inheritance77dbcf1786" class="inheritance graphviz" /></div>
 <map id="inheritance77dbcf1786" name="inheritance77dbcf1786">
-<area shape="rect" id="node2" href="#qstrategy.base_strategy.BaseStrategy" target="_top" title="BaseStrategy" alt="" coords="125,5,226,32"/>
-</map><p>Helper class that provides a standard way to create an ABC using
-inheritance.</p>
+<area shape="rect" id="node2" href="#qstrategy.base_strategy.BaseStrategy" target="_top" title="策略基类" alt="" coords="125,5,226,32"/>
+</map><p>策略基类</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy.init">
-<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.tradecomm.Params</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.init" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.tradecomm.Params</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.init" title="Link to this definition"></a></dt>
+<dd><p>策略初始化，策略如要初始化，重写该函数实现</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><em>ShareState</em></a>) – 策略共享状态</p></li>
+<li><p><strong>params</strong> (<em>Optional</em><em>[</em><em>Params</em><em>]</em><em>, </em><em>optional</em>) – 策略参数，默认是没有的</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy.destroy">
-<span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.destroy" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.destroy" title="Link to this definition"></a></dt>
+<dd><p>策略销毁，策略如要销毁，重写该函数实现</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy.description">
-<span class="sig-name descname"><span class="pre">description</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.description" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">description</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.description" title="Link to this definition"></a></dt>
+<dd><p>返回该策略是使用说明，参数配置等，markdown格式</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>策略说明</p>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy.name">
-<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.name" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.name" title="Link to this definition"></a></dt>
+<dd><p>返回策略的名称，名称应该是有意义的，在同一个目录内唯一</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>策略名称</p>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy.on_start">
-<span class="sig-name descname"><span class="pre">on_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_start" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">on_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_start" title="Link to this definition"></a></dt>
+<dd><p>策略启动时调用</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><em>ShareState</em></a>) – 策略共享状态</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy.on_end">
-<span class="sig-name descname"><span class="pre">on_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_end" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">on_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_end" title="Link to this definition"></a></dt>
+<dd><p>策略结束时调用</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><em>ShareState</em></a>) – 策略共享状态</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy.on_strategy">
-<span class="sig-name descname"><span class="pre">on_strategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../event/index.html#qstrategy.event.QuotEvent" title="qstrategy.event.QuotEvent"><span class="pre">qstrategy.event.QuotEvent</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_strategy" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">on_strategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../event/index.html#qstrategy.event.QuotEvent" title="qstrategy.event.QuotEvent"><span class="pre">qstrategy.event.QuotEvent</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_strategy" title="Link to this definition"></a></dt>
+<dd><p>统一的调用入口，一般来说不要重写这个，保持原样就可以</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><em>ShareState</em></a>) – 策略共享状态</p></li>
+<li><p><strong>event</strong> (<a class="reference internal" href="../event/index.html#qstrategy.event.QuotEvent" title="qstrategy.event.QuotEvent"><em>QuotEvent</em></a>) – 事件</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy.on_open">
-<span class="sig-name descname"><span class="pre">on_open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../event/index.html#qstrategy.event.QuotEvent" title="qstrategy.event.QuotEvent"><span class="pre">qstrategy.event.QuotEvent</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_open" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">on_open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../event/index.html#qstrategy.event.QuotEvent" title="qstrategy.event.QuotEvent"><span class="pre">qstrategy.event.QuotEvent</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_open" title="Link to this definition"></a></dt>
+<dd><p>开市回调，一般不用管</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><em>ShareState</em></a>) – 策略共享状态</p></li>
+<li><p><strong>event</strong> (<a class="reference internal" href="../event/index.html#qstrategy.event.QuotEvent" title="qstrategy.event.QuotEvent"><em>QuotEvent</em></a>) – 事件</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy.on_morning_open">
-<span class="sig-name descname"><span class="pre">on_morning_open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_morning_open" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">on_morning_open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_morning_open" title="Link to this definition"></a></dt>
+<dd><p>早市开市回调</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><em>ShareState</em></a>) – 策略共享状态</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy.on_noon_open">
-<span class="sig-name descname"><span class="pre">on_noon_open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_noon_open" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">on_noon_open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_noon_open" title="Link to this definition"></a></dt>
+<dd><p>午市开市回调</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><em>ShareState</em></a>) – 策略共享状态</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy.on_close">
-<span class="sig-name descname"><span class="pre">on_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../event/index.html#qstrategy.event.QuotEvent" title="qstrategy.event.QuotEvent"><span class="pre">qstrategy.event.QuotEvent</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_close" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">on_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../event/index.html#qstrategy.event.QuotEvent" title="qstrategy.event.QuotEvent"><span class="pre">qstrategy.event.QuotEvent</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_close" title="Link to this definition"></a></dt>
+<dd><p>休市回调，一般不用管</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><em>ShareState</em></a>) – 策略共享状态</p></li>
+<li><p><strong>event</strong> (<a class="reference internal" href="../event/index.html#qstrategy.event.QuotEvent" title="qstrategy.event.QuotEvent"><em>QuotEvent</em></a>) – 事件</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy.on_morning_close">
-<span class="sig-name descname"><span class="pre">on_morning_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_morning_close" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">on_morning_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_morning_close" title="Link to this definition"></a></dt>
+<dd><p>早市开市回调</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><em>ShareState</em></a>) – 策略共享状态</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qstrategy.base_strategy.BaseStrategy.on_noon_close">
-<span class="sig-name descname"><span class="pre">on_noon_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_noon_close" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">on_noon_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.base_strategy.BaseStrategy.on_noon_close" title="Link to this definition"></a></dt>
+<dd><p>午市开市回调</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<a class="reference internal" href="../qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><em>ShareState</em></a>) – 策略共享状态</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

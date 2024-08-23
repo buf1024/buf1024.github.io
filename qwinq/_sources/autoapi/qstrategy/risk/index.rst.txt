@@ -23,10 +23,17 @@ Module Contents
       :parts: 1
 
 
-   Helper class that provides a standard way to create an ABC using
-   inheritance.
+   风控策略基类，实现风控策略，要继承于该类
 
 
-   .. py:method:: on_risk(state: qstrategy.qstrategy.ShareState, quots: qstrategy.event.RtQuot) -> None
+   .. py:method:: on_risk(state: qstrategy.qstrategy.ShareState, quots: qstrategy.event.RtQuot)
+
+      有行情时回调，实现风控逻辑
+
+      :param state: 共享状态
+      :type state: ShareState
+      :param quots: 行情
+      :type quots: RtQuot
+
 
 

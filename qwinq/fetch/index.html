@@ -56,8 +56,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data.html">本地数据</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../select.html">选股策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../backtest.html">股票回测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../strategy/index.html">股票策略</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">API Reference</a></li>
 </ul>
 
@@ -86,33 +85,36 @@
              
   <section id="id1">
 <h1>数据获取<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
-<p>数据获取模块<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main/python/qfetch">qfetch</a>是相对独立的模块，主要功能是从公开的数据源获取数据。<a class="reference external" href="https://github.com/buf1024/rwinq/tree/main/python/qfetch">qfetch</a>提供两种api，一种是异步版本，以`fetch_`​开头，另外一种是阻塞版本，以<code class="docutils literal notranslate"><span class="pre">block_fetch</span></code>​开头。</p>
-<p>Rust编写的模块和函数是通过
-<code class="docutils literal notranslate"><span class="pre">qfetch.qfetch</span></code>​导出，该包原样导出Rust模块和函数(<code class="docutils literal notranslate"><span class="pre">.pyi</span></code>​文件)。一般情况下，不需要使用该包下面的函数，在<code class="docutils literal notranslate"><span class="pre">qfetch.fetch</span></code>​下面有此包的包括类(<code class="docutils literal notranslate"><span class="pre">Fetch/BlockFetch</span></code>​)，将Rust所有的功能汇聚成一个包装类。包装类除了可返回原始的Rust输出外，也提供可选装换为<code class="docutils literal notranslate"><span class="pre">pd.Dataframe</span></code>​格式的参数，同时为了清晰，有多个参数情况下，仅支持命名的方式传递参数。为了更加方便，包生成了一个全局的<code class="docutils literal notranslate"><span class="pre">Fetch/BlockFetch</span></code>​实例，可以直接通过<code class="docutils literal notranslate"><span class="pre">fetch/block_fetch</span></code>​函数使用。</p>
-<p>如<code class="docutils literal notranslate"><span class="pre">ipython</span></code>​：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">qfetch</span> <span class="k">as</span> <span class="nn">fetch</span>
-   <span class="o">...</span><span class="p">:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_trade_date</span><span class="p">()</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-      <span class="n">trade_date</span>
-<span class="mi">0</span>       <span class="mi">20120104</span>
-<span class="mi">1</span>       <span class="mi">20120105</span>
-<span class="mi">2</span>       <span class="mi">20120106</span>
-<span class="mi">3</span>       <span class="mi">20120109</span>
-<span class="mi">4</span>       <span class="mi">20120110</span>
-<span class="o">...</span>          <span class="o">...</span>
-<span class="mi">8064</span>    <span class="mi">20021225</span>
-<span class="mi">8065</span>    <span class="mi">20021226</span>
-<span class="mi">8066</span>    <span class="mi">20021227</span>
-<span class="mi">8067</span>    <span class="mi">20021230</span>
-<span class="mi">8068</span>    <span class="mi">20021231</span>
-
-<span class="p">[</span><span class="mi">8069</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">1</span> <span class="n">columns</span><span class="p">]</span>
-</pre></div>
-</div>
 <p>直接通过pip安装即可:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>qfetch
 </pre></div>
 </div>
+<p>数据获取模块<a class="reference external" href="https://pypi.org/project/qfetch/">qfetch</a>是相对独立的模块，主要功能是从公开的数据源获取数据。<a class="reference external" href="https://pypi.org/project/qfetch/">qfetch</a>提供两种api，一种是异步版本，以`fetch_`​开头，另外一种是阻塞版本，以<code class="docutils literal notranslate"><span class="pre">block_fetch_</span></code>​
+开头。</p>
+<p>Rust编写的模块和函数是通过<code class="docutils literal notranslate"><span class="pre">qfetch.qfetch</span></code>​导出，该模块原样导出Rust
+封装的函数(.pyi\
+文件)。一般情况下，是不需要使用该包下面的函数，在<code class="docutils literal notranslate"><span class="pre">qfetch.fetch</span></code>​下面有此包的包装函数，包装函数除了可返回原始的Rust输出外，也提供可选装换为pd.Dataframe格式的参数。如：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>In<span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>:<span class="w"> </span>import<span class="w"> </span>qfetch<span class="w"> </span>as<span class="w"> </span>fetch
+
+In<span class="w"> </span><span class="o">[</span><span class="m">2</span><span class="o">]</span>:<span class="w"> </span>await<span class="w"> </span>fetch.fetch_trade_date<span class="o">()</span>
+Out<span class="o">[</span><span class="m">2</span><span class="o">]</span>:
+<span class="w">      </span>trade_date
+<span class="m">0</span><span class="w">       </span><span class="m">20120104</span>
+<span class="m">1</span><span class="w">       </span><span class="m">20120105</span>
+<span class="m">2</span><span class="w">       </span><span class="m">20120106</span>
+<span class="m">3</span><span class="w">       </span><span class="m">20120109</span>
+<span class="m">4</span><span class="w">       </span><span class="m">20120110</span>
+...<span class="w">          </span>...
+<span class="m">8306</span><span class="w">    </span><span class="m">20021225</span>
+<span class="m">8307</span><span class="w">    </span><span class="m">20021226</span>
+<span class="m">8308</span><span class="w">    </span><span class="m">20021227</span>
+<span class="m">8309</span><span class="w">    </span><span class="m">20021230</span>
+<span class="m">8310</span><span class="w">    </span><span class="m">20021231</span>
+
+<span class="o">[</span><span class="m">8311</span><span class="w"> </span>rows<span class="w"> </span>x<span class="w"> </span><span class="m">1</span><span class="w"> </span>columns<span class="o">]</span>
+</pre></div>
+</div>
+<p>‍</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="general.html">通用数据</a><ul>
@@ -121,7 +123,7 @@
 <li class="toctree-l2"><a class="reference internal" href="general.html#id4">下一个交易日</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general.html#id5">上一个交易日</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general.html#id6">是否交易日</a></li>
-<li class="toctree-l2"><a class="reference internal" href="general.html#id7">股票实时行情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general.html#id7">实时行情</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stock.html">股票数据</a><ul>
@@ -138,11 +140,11 @@
 <li class="toctree-l2"><a class="reference internal" href="stock.html#id11">股票概念明细</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stock.html#id12">股票概念日线数据</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stock.html#id13">股票融资融券</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stock.html#id14">业绩报表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stock.html#id14">股票业绩报表</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stock.html#id15">股票实时排名</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stock.html#id16">筹码成本分布</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stock.html#id17">筹码​​获利盘​</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stock.html#id18">筹码成本分布</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stock.html#id16">股票千股千评</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stock.html#id17">股票千股千评历史</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stock.html#id18">股票全量实时行情</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="fund.html">ETF基金数据</a><ul>

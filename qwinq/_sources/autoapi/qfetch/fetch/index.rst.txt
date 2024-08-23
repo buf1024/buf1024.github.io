@@ -9,9 +9,6 @@ Functions
 
 .. autoapisummary::
 
-   qfetch.fetch.calc_chip_dist
-   qfetch.fetch.calc_winner
-   qfetch.fetch.calc_cost
    qfetch.fetch.fetch_trade_date
    qfetch.fetch.block_fetch_trade_date
    qfetch.fetch.fetch_next_trade_date
@@ -25,6 +22,7 @@ Functions
    qfetch.fetch.fetch_stock_rt_quot
    qfetch.fetch.block_fetch_stock_rt_quot
    qfetch.fetch.fetch_bond_info
+   qfetch.fetch.block_fetch_bond_info
    qfetch.fetch.fetch_bond_bar
    qfetch.fetch.block_fetch_bond_bar
    qfetch.fetch.fetch_fund_info
@@ -72,175 +70,861 @@ Functions
 Module Contents
 ---------------
 
-.. py:function:: calc_chip_dist(*, data: pandas.DataFrame, ac: int = 1, chip_dist: Dict = None) -> Dict
-
-.. py:function:: calc_winner(*, chip_dist: Dict, data: pandas.DataFrame = None, price: float = None) -> Dict
-
-.. py:function:: calc_cost(*, chip_dist: Dict, ratio: int) -> Dict
-
-.. py:function:: fetch_trade_date(to_frame=True) -> Union[Set[int], pandas.DataFrame]
+.. py:function:: fetch_trade_date(*, to_frame=True) -> Union[Set[int], pandas.DataFrame]
    :async:
 
 
-.. py:function:: block_fetch_trade_date(to_frame=True) -> Union[Set[int], pandas.DataFrame]
+   获取交易日
 
-.. py:function:: fetch_next_trade_date(d: Union[datetime.date, datetime.datetime, str]) -> datetime.date
+   :param to_frame: 是否转换为DataFrame格式，默认 True.
+   :type to_frame: bool, optional
+
+   :returns: [trade_date]
+   :rtype: Union[Set[int], pd.DataFrame]
+
+
+.. py:function:: block_fetch_trade_date(*, to_frame=True) -> Union[Set[int], pandas.DataFrame]
+
+   获取交易日(阻塞版本)
+
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :returns: [trade_date]
+   :rtype: Union[Set[int], pd.DataFrame]
+
+
+.. py:function:: fetch_next_trade_date(*, date: Union[fetch_next_trade_date.date, datetime.datetime, str]) -> fetch_next_trade_date.date
    :async:
 
 
-.. py:function:: block_fetch_next_trade_date(d: Union[datetime.date, datetime.datetime, str]) -> datetime.date
+   获取下一个交易日
 
-.. py:function:: fetch_prev_trade_date(d: Union[datetime.date, datetime.datetime, str]) -> datetime.date
+   :param date: 参考交易日
+   :type date: Union[date, datetime, str]
+
+   :returns: 下一个交易日
+   :rtype: date
+
+
+.. py:function:: block_fetch_next_trade_date(*, date: Union[block_fetch_next_trade_date.date, datetime.datetime, str]) -> block_fetch_next_trade_date.date
+
+   获取下一个交易日(阻塞版本)
+
+   :param date: 参考交易日
+   :type date: Union[date, datetime, str]
+
+   :returns: 下一个交易日
+   :rtype: date
+
+
+.. py:function:: fetch_prev_trade_date(*, date: Union[fetch_prev_trade_date.date, datetime.datetime, str]) -> fetch_prev_trade_date.date
    :async:
 
 
-.. py:function:: block_fetch_prev_trade_date(d: Union[datetime.date, datetime.datetime, str]) -> datetime.date
+   获取前一个交易日
 
-.. py:function:: fetch_is_trade_date(d: Union[datetime.date, datetime.datetime, str]) -> bool
+   :param date: 参考交易日
+   :type date: Union[date, datetime, str]
+
+   :returns: 前一个交易日
+   :rtype: date
+
+
+.. py:function:: block_fetch_prev_trade_date(*, date: Union[block_fetch_prev_trade_date.date, datetime.datetime, str]) -> block_fetch_prev_trade_date.date
+
+   获取前一个交易日(阻塞版本)
+
+   :param date: 参考交易日
+   :type date: Union[date, datetime, str]
+
+   :returns: 前一个交易日
+   :rtype: date
+
+
+.. py:function:: fetch_is_trade_date(*, date: Union[fetch_is_trade_date.date, datetime.datetime, str]) -> bool
    :async:
 
 
-.. py:function:: block_fetch_is_trade_date(d: Union[datetime.date, datetime.datetime, str]) -> bool
+   判断是否是交易日
+
+   :param date: 参考交易日
+   :type date: Union[date, datetime, str]
+
+   :returns: True/False
+   :rtype: bool
+
+
+.. py:function:: block_fetch_is_trade_date(*, date: Union[block_fetch_is_trade_date.date, datetime.datetime, str]) -> bool
+
+   判断是否是交易日（阻塞版本）
+
+   :param date: 参考交易日
+   :type date: Union[date, datetime, str]
+
+   :returns: True/False
+   :rtype: bool
+
 
 .. py:function:: fetch_rt_quot(*, code: Union[str, List[str]], to_frame=True) -> Union[Dict[str, Dict], pandas.DataFrame]
    :async:
 
 
+   获取实时行情
+
+   :param code: 代码或代码列表
+   :type code: Union[str, List[str]]
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[Dict[str, Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_rt_quot(*, code: Union[str, List[str]], to_frame=True) -> Union[Dict[str, Dict], pandas.DataFrame]
+
+   获取实时行情（阻塞版本）
+
+   :param code: 代码或代码列表
+   :type code: Union[str, List[str]]
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[Dict[str, Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_rt_quot(*, codes: Optional[Union[str, List[str]]], to_frame=True) -> Union[List[Dict], pandas.DataFrame]
    :async:
 
 
+   全量股票行情，注意调用频率，有可能被封
+
+   :param codes: 股票代码列表
+   :type codes: Optional[Union[str, List[str]]]
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_rt_quot(*, codes: Optional[Union[str, List[str]]], to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+   全量股票行情，注意调用频率，有可能被封（阻塞版本）
+
+   :param codes: 股票代码列表
+   :type codes: Optional[Union[str, List[str]]]
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_bond_info(*, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
    :async:
+
+
+   获取可转债信息
+
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
+.. py:function:: block_fetch_bond_info(*, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+   获取可转债信息（阻塞版本）
+
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
 
 
 .. py:function:: fetch_bond_bar(*, code: str, name: str, stock_code: str, stock_name: str, freq: Optional[int] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, skip_rt: bool = True, to_frame=True) -> Dict
    :async:
 
 
+   获取可转债K线信息
+
+   :param code: 代码
+   :type code: str
+   :param name: 名称
+   :type name: str
+   :param stock_code: 股票代码
+   :type stock_code: str
+   :param stock_name: 股票名称
+   :type stock_name: str
+   :param freq: 频率，默认 None，即日频
+   :type freq: Optional[int], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param skip_rt: 是否忽略实时交易部分的数据，默认 True
+   :type skip_rt: bool, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Dict
+
+
 .. py:function:: block_fetch_bond_bar(*, code: str, name: str, stock_code: str, stock_name: str, freq: Optional[int] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, skip_rt: bool = True, to_frame=True) -> Dict
+
+   获取可转债K线信息（阻塞版本）
+
+   :param code: 代码
+   :type code: str
+   :param name: 名称
+   :type name: str
+   :param stock_code: 股票代码
+   :type stock_code: str
+   :param stock_name: 股票名称
+   :type stock_name: str
+   :param freq: 频率，默认 None，即日频
+   :type freq: Optional[int], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param skip_rt: 是否忽略实时交易部分的数据，默认 True
+   :type skip_rt: bool, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Dict
+
 
 .. py:function:: fetch_fund_info(*, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
    :async:
 
 
+   获取etf基金信息
+
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_fund_info(*, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+   获取etf基金信息（阻塞版本）
+
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_fund_net(*, code: str, name: Optional[str] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
    :async:
 
 
+   获取基金净值
+
+   :param code: 代码
+   :type code: str
+   :param name: 基金名称，空就是没有
+   :type name: Optional[str], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_fund_net(*, code: str, name: Optional[str] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+   获取基金净值（阻塞版本）
+
+   :param code: 代码
+   :type code: str
+   :param name: 基金名称，空就是没有
+   :type name: Optional[str], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_fund_bar(*, code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, skip_rt: bool = True, to_frame=True) -> Dict
    :async:
 
 
+   获取基金k线
+
+   :param code: 代码
+   :type code: str
+   :param name: 基金名称，空就是没有
+   :type name: Optional[str], optional
+   :param freq: 频率，默认 None，即日频
+   :type freq: Optional[int], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param skip_rt: 是否忽略实时交易部分的数据，默认 True
+   :type skip_rt: bool, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_fund_bar(*, code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, skip_rt: bool = True, to_frame=True) -> Dict
+
+   获取基金k线（阻塞版本）
+
+   :param code: 代码
+   :type code: str
+   :param name: 基金名称，空就是没有
+   :type name: Optional[str], optional
+   :param freq: 频率，默认 None，即日频
+   :type freq: Optional[int], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param skip_rt: 是否忽略实时交易部分的数据，默认 True
+   :type skip_rt: bool, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_index_info(*, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
    :async:
 
 
+   获取指数信息
+
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_index_info(*, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+   获取指数信息（阻塞版本）
+
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_index_bar(*, code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, skip_rt: bool = True, to_frame=True) -> Dict
    :async:
 
 
+   获取指数k线
+
+   :param code: 代码
+   :type code: str
+   :param name: 基金名称，空就是没有
+   :type name: Optional[str], optional
+   :param freq: 频率，默认 None，即日频
+   :type freq: Optional[int], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param skip_rt: 是否忽略实时交易部分的数据，默认 True
+   :type skip_rt: bool, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_index_bar(*, code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, skip_rt: bool = True, to_frame=True) -> Dict
+
+   获取指数k线（阻塞版本）
+
+   :param code: 代码
+   :type code: str
+   :param name: 基金名称，空就是没有
+   :type name: Optional[str], optional
+   :param freq: 频率，默认 None，即日频
+   :type freq: Optional[int], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param skip_rt: 是否忽略实时交易部分的数据，默认 True
+   :type skip_rt: bool, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_info(*, market: int = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
    :async:
 
 
+   获取股票信息
+
+   :param market: 市场，默认全市场
+   :type market: int
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_info(*, market: int = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+   获取股票信息（阻塞版本）
+
+   :param market: 市场，默认全市场
+   :type market: int
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_is_margin(*, to_frame=True) -> Union[Set[str], pandas.DataFrame]
    :async:
 
 
+   获取股票是否融资融券标的
+
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_is_margin(*, to_frame=True) -> Union[Set[str], pandas.DataFrame]
+
+   获取股票是否融资融券标的（阻塞版本）
+
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_bar(*, code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, skip_rt: bool = True, to_frame=True) -> Union[Dict, pandas.DataFrame]
    :async:
 
 
+   获取股票k线
+
+   :param code: 代码
+   :type code: str
+   :param name: 名称，空就是没有
+   :type name: Optional[str], optional
+   :param freq: 频率，默认 None，即日频
+   :type freq: Optional[int], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param skip_rt: 是否忽略实时交易部分的数据，默认 True
+   :type skip_rt: bool, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_bar(*, code: str, name: Optional[str] = None, freq: Optional[int] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, skip_rt: bool = True, to_frame=True) -> Union[Dict, pandas.DataFrame]
+
+   获取股票k线（阻塞版本）
+
+   :param code: 代码
+   :type code: str
+   :param name: 名称，空就是没有
+   :type name: Optional[str], optional
+   :param freq: 频率，默认 None，即日频
+   :type freq: Optional[int], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param skip_rt: 是否忽略实时交易部分的数据，默认 True
+   :type skip_rt: bool, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_index(*, index_date: Optional[Union[datetime.date, str]] = None, to_frame=True) -> Union[Dict[str, Dict], pandas.DataFrame]
    :async:
 
 
+   获取股票指标
+
+   :param index_date: 指标日期，默认 None，即当天
+   :type index_date: Optional[Union[date, str]], optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :returns: _description_
+   :rtype: Union[Dict[str, Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_index(*, index_date: Optional[datetime.date] = None, to_frame=True) -> Union[Dict[str, Dict], pandas.DataFrame]
+
+   获取股票指标（阻塞版本）
+
+   :param index_date: 指标日期，默认 None，即当天
+   :type index_date: Optional[Union[date, str]], optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :returns: _description_
+   :rtype: Union[Dict[str, Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_industry(*, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
    :async:
 
 
+   获取行业信息
+
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_industry(*, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+   获取行业信息（阻塞版本）
+
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_industry_detail(*, code: Optional[str] = None, name: Optional[str] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
    :async:
 
 
+   获取行业明细
+
+   :param code: 代码，默认空，即所有行业
+   :type code: bool, optional
+   :param name: 名称，默认空，即忽略名称
+   :type name: str, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_industry_detail(*, code: Optional[str] = None, name: Optional[str] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+   获取行业明细（阻塞版本）
+
+   :param code: 代码，默认空，即所有行业
+   :type code: bool, optional
+   :param name: 名称，默认空，即忽略名称
+   :type name: str, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_industry_daily(*, code: str, name: Optional[str] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, skip_rt: bool = True, to_frame=True) -> Union[Dict, pandas.DataFrame]
    :async:
 
 
+   获取行业k线
+
+   :param code: 代码
+   :type code: str
+   :param name: 名称，空就是没有
+   :type name: Optional[str], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param skip_rt: 是否忽略实时交易部分的数据，默认 True
+   :type skip_rt: bool, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_industry_daily(*, code: str, name: Optional[str] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, skip_rt: bool = True, to_frame=True) -> Union[Dict, pandas.DataFrame]
+
+   获取行业k线（阻塞版本）
+
+   :param code: 代码
+   :type code: str
+   :param name: 名称，空就是没有
+   :type name: Optional[str], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param skip_rt: 是否忽略实时交易部分的数据，默认 True
+   :type skip_rt: bool, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_concept(*, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
    :async:
 
 
+   获取概念信息
+
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_concept(*, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+   获取概念信息（阻塞版本）
+
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_concept_detail(*, code: Optional[str] = None, name: Optional[str] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
    :async:
 
 
+   获取概念明细
+
+   :param code: 代码，默认空，即所有行业
+   :type code: bool, optional
+   :param name: 名称，默认空，即忽略名称
+   :type name: str, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_concept_detail(*, code: Optional[str] = None, name: Optional[str] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+   获取概念明细（阻塞版本）
+
+   :param code: 代码，默认空，即所有行业
+   :type code: bool, optional
+   :param name: 名称，默认空，即忽略名称
+   :type name: str, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_concept_daily(*, code: str, name: Optional[str] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, skip_rt: bool = True, to_frame=True) -> Union[Dict, pandas.DataFrame]
    :async:
 
 
+   获取概念k线
+
+   :param code: 代码
+   :type code: str
+   :param name: 名称，空就是没有
+   :type name: Optional[str], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param skip_rt: 是否忽略实时交易部分的数据，默认 True
+   :type skip_rt: bool, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_concept_daily(*, code: str, name: Optional[str] = None, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, skip_rt: bool = True, to_frame=True) -> Union[Dict, pandas.DataFrame]
+
+   获取概念k线（阻塞版本）
+
+   :param code: 代码
+   :type code: str
+   :param name: 名称，空就是没有
+   :type name: Optional[str], optional
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param skip_rt: 是否忽略实时交易部分的数据，默认 True
+   :type skip_rt: bool, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_yjbb(*, year: int, season: int, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
    :async:
 
 
+   获取股票业绩报表
+
+   :param year: 年份
+   :type year: int
+   :param season: 季度
+   :type season: int
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_yjbb(*, year: int, season: int, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+   获取股票业绩报表（阻塞版本）
+
+   :param year: 年份
+   :type year: int
+   :param season: 季度
+   :type season: int
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_margin(*, code: str, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
    :async:
 
 
+   获取股票融资融券信息
+
+   :param code: 代码
+   :type code: str
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_margin(*, code: str, start: Optional[Union[datetime.date, str]] = None, end: Optional[Union[datetime.date, str]] = None, to_frame=True) -> Union[List[Dict], pandas.DataFrame]
+
+   获取股票融资融券信息（阻塞版本）
+
+   :param code: 代码
+   :type code: str
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_hot_rank(*, code: Union[str, list], to_frame=True) -> Union[Dict, pandas.DataFrame]
    :async:
 
 
+   获取股票排名
+
+   :param code: 代码或代码列表
+   :type code: Union[str, list]
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_hot_rank(*, code: Union[str, list], to_frame=True) -> Union[Dict, pandas.DataFrame]
+
+   获取股票排名（阻塞版本）
+
+   :param code: 代码或代码列表
+   :type code: Union[str, list]
+   :param start: 开始时间，默认 None，即当日
+   :type start: Optional[Union[date, str]], optional
+   :param end: 开始时间，默认 None，即当日
+   :type end: Optional[Union[date, str]], optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 
 .. py:function:: fetch_stock_comment(*, code: Optional[Union[List[str], str]] = None, to_frame=True) -> Union[Dict, pandas.DataFrame]
    :async:
 
 
+   获取千股千评信息
+
+   :param code: 代码或代码列表
+   :type code: Union[str, list]
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
 .. py:function:: block_fetch_stock_comment(*, code: Optional[Union[List[str], str]] = None, to_frame=True) -> Union[Dict, pandas.DataFrame]
 
-.. py:function:: fetch_stock_comment_his(code: str, to_frame=True) -> Dict
+   获取千股千评信息（阻塞版本）
+
+   :param code: 代码或代码列表
+   :type code: Union[str, list]
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
+.. py:function:: fetch_stock_comment_his(*, code: str, to_frame=True) -> Union[Dict, pandas.DataFrame]
    :async:
 
 
-.. py:function:: block_fetch_stock_comment_his(code: str, to_frame=True) -> Dict
+   获取千股千评历史
+
+   :param code: 代码
+   :type code: str
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+
+.. py:function:: block_fetch_stock_comment_his(*, code: str, to_frame=True) -> Union[Dict, pandas.DataFrame]
+
+   获取千股千评历史（阻塞版本）
+
+   :param code: 代码
+   :type code: str
+   :param to_frame: 是否转换为DataFrame格式，默认 True
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
 

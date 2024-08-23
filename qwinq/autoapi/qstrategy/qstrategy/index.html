@@ -50,8 +50,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../intro.html">简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../fetch/index.html">数据获取</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../data.html">本地数据</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../select.html">选股策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../backtest.html">股票回测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../strategy/index.html">股票策略</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../qfetch/index.html">qfetch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qdatac/index.html">qdatac</a></li>
@@ -64,10 +63,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../monitor/index.html">qstrategy.monitor</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">qstrategy.qstrategy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../risk/index.html">qstrategy.risk</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../runner/index.html">qstrategy.runner</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../select/index.html">qstrategy.select</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../strategy/index.html">qstrategy.strategy</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../test_strategy/index.html">qstrategy.test_strategy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../trade/index.html">qstrategy.trade</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../tradecomm/index.html">qstrategy.tradecomm</a></li>
 </ul>
@@ -119,8 +115,20 @@
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.qstrategy.test" title="qstrategy.qstrategy.test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.qstrategy.calc_chip_dist" title="qstrategy.qstrategy.calc_chip_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_chip_dist</span></code></a>(→ ast.Dict)</p></td>
+<td><p>筹码分布计算，计算winner或cost时，先调用该函数</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qstrategy.qstrategy.calc_winner" title="qstrategy.qstrategy.calc_winner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_winner</span></code></a>(→ ast.Dict)</p></td>
+<td><p>计算胜率分布</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.qstrategy.calc_cost" title="qstrategy.qstrategy.calc_cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_cost</span></code></a>(→ ast.Dict)</p></td>
+<td><p>计算成本分布</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qstrategy.qstrategy.ma" title="qstrategy.qstrategy.ma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ma</span></code></a>(→ List[float])</p></td>
+<td><p>均线</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.qstrategy.shadow" title="qstrategy.qstrategy.shadow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shadow</span></code></a>(→ Tuple[float])</p></td>
+<td><p>k线各部分占比</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qstrategy.qstrategy.uuid" title="qstrategy.qstrategy.uuid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uuid</span></code></a>(→ str)</p></td>
 <td><p></p></td>
@@ -137,9 +145,109 @@
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="qstrategy.qstrategy.test">
-<span class="sig-prename descclassname"><span class="pre">qstrategy.qstrategy.</span></span><span class="sig-name descname"><span class="pre">test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.qstrategy.test" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="qstrategy.qstrategy.calc_chip_dist">
+<span class="sig-prename descclassname"><span class="pre">qstrategy.qstrategy.</span></span><span class="sig-name descname"><span class="pre">calc_chip_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ast.Dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ac</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chip_dist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ast.Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ast.Dict</span></span></span><a class="headerlink" href="#qstrategy.qstrategy.calc_chip_dist" title="Link to this definition"></a></dt>
+<dd><p>筹码分布计算，计算winner或cost时，先调用该函数</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em>) – k线数据</p></li>
+<li><p><strong>ac</strong> (<em>int</em><em>, </em><em>optional</em>) – 衰减系数，如不清楚怎么设置，直接用默认值， 默认值为 1。</p></li>
+<li><p><strong>chip_dist</strong> (<em>Dict</em><em>, </em><em>optional</em>) – 筹码分布，如果之前计算过，则传过来，减少计算量</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>筹码分布情况</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qstrategy.qstrategy.calc_winner">
+<span class="sig-prename descclassname"><span class="pre">qstrategy.qstrategy.</span></span><span class="sig-name descname"><span class="pre">calc_winner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chip_dist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ast.Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ast.Dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ast.Dict</span></span></span><a class="headerlink" href="#qstrategy.qstrategy.calc_winner" title="Link to this definition"></a></dt>
+<dd><p>计算胜率分布</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chip_dist</strong> (<em>Dict</em>) – 筹码分布情况，使用calc_chip_dist调用的结果</p></li>
+<li><p><strong>data</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em><em>, </em><em>optional</em>) – 原始k线数据。胜率的标准，使用的是close价格，data和price两者不能同时为空</p></li>
+<li><p><strong>price</strong> (<em>float</em><em>, </em><em>optional</em>) – 胜率的标准，使用的是固定价格，data和price两者不能同时为空</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>胜率分布情况</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qstrategy.qstrategy.calc_cost">
+<span class="sig-prename descclassname"><span class="pre">qstrategy.qstrategy.</span></span><span class="sig-name descname"><span class="pre">calc_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chip_dist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ast.Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ast.Dict</span></span></span><a class="headerlink" href="#qstrategy.qstrategy.calc_cost" title="Link to this definition"></a></dt>
+<dd><p>计算成本分布</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chip_dist</strong> (<em>Dict</em>) – 筹码分布情况，使用calc_chip_dist调用的结果</p></li>
+<li><p><strong>ratio</strong> (<em>int</em>) – 百分之几的成本的价格</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>成本分布情况</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qstrategy.qstrategy.ma">
+<span class="sig-prename descclassname"><span class="pre">qstrategy.qstrategy.</span></span><span class="sig-name descname"><span class="pre">ma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ma_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qstrategy.qstrategy.ma" title="Link to this definition"></a></dt>
+<dd><p>均线</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bar</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – K线</p></li>
+<li><p><strong>ma_type</strong> (<em>int</em>) – ma类型</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>日线</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qstrategy.qstrategy.shadow">
+<span class="sig-prename descclassname"><span class="pre">qstrategy.qstrategy.</span></span><span class="sig-name descname"><span class="pre">shadow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">last_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">open</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qstrategy.qstrategy.shadow" title="Link to this definition"></a></dt>
+<dd><p>k线各部分占比</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>last_close</strong> (<em>float</em>) – 昨收价</p></li>
+<li><p><strong>open</strong> (<em>float</em>) – 开盘价</p></li>
+<li><p><strong>close</strong> (<em>float</em>) – 收盘价</p></li>
+<li><p><strong>low</strong> (<em>float</em>) – 最低价</p></li>
+<li><p><strong>high</strong> (<em>float</em>) – 最高价</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>(振幅， 上天线占比， 蜡烛图占比， 下天线占比)</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[float]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="qstrategy.qstrategy.uuid">

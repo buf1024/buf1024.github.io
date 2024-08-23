@@ -17,6 +17,15 @@ Module Contents
 
 .. py:class:: DictClass(the_dict)
 
+   字段类，将字典数据类型转换为类类型，方便直接访问
+
+
    .. py:method:: to_dict() -> Dict
+
+      类转换回字典
+
+      :returns: 转换回去的字典
+      :rtype: Dict
+
 
 

@@ -20,26 +20,58 @@ Module Contents
 
 .. py:class:: Sync(funcs: Optional[List[int]] = None)
 
+   参考: :class:`qdatac.sync.MySync`
+
+
+
    .. py:method:: sync(skip_basic, task_count, split_count)
       :async:
 
 
+      参考: :func:`qdatac.sync.MySync.sync`
+
+
+
 
    .. py:method:: shutdown()
+
+      参考: :func:`qdatac.sync.MySync.shutdown`
+
+
 
 
 .. py:class:: BlockSync(funcs: Optional[List[int]])
 
+   参考: :class:`qdatac.sync.MySync`
+
+
+
    .. py:method:: sync(skip_basic, task_count, split_count)
+
+      参考: :func:`qdatac.sync.MySync.sync`
+
+
 
 
    .. py:method:: shutdown()
 
+      参考: :func:`qdatac.sync.MySync.shutdown`
+
+
+
 
 .. py:class:: MongoLoader
 
+   参考: :class:`qdatac.loader.Loader`
+
+
+
    .. py:method:: load_bond_info(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
       :async:
+
+
+      参考: :func:`qdatac.loader.Loader.load_bond_info`
+
 
 
 
@@ -47,9 +79,17 @@ Module Contents
       :async:
 
 
+      参考: :func:`qdatac.loader.Loader.load_bond_daily`
+
+
+
 
    .. py:method:: load_fund_info(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
       :async:
+
+
+      参考: :func:`qdatac.loader.Loader.load_fund_info`
+
 
 
 
@@ -57,9 +97,17 @@ Module Contents
       :async:
 
 
+      参考: :func:`qdatac.loader.Loader.load_fund_daily`
+
+
+
 
    .. py:method:: load_fund_net(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
       :async:
+
+
+      参考: :func:`qdatac.loader.Loader.load_fund_net`
+
 
 
 
@@ -67,9 +115,17 @@ Module Contents
       :async:
 
 
+      参考: :func:`qdatac.loader.Loader.load_index_info`
+
+
+
 
    .. py:method:: load_index_daily(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
       :async:
+
+
+      参考: :func:`qdatac.loader.Loader.load_index_daily`
+
 
 
 
@@ -77,9 +133,17 @@ Module Contents
       :async:
 
 
+      参考: :func:`qdatac.loader.Loader.load_stock_info`
+
+
+
 
    .. py:method:: load_stock_daily(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
       :async:
+
+
+      参考: :func:`qdatac.loader.Loader.load_stock_daily`
+
 
 
 
@@ -87,9 +151,17 @@ Module Contents
       :async:
 
 
+      参考: :func:`qdatac.loader.Loader.load_stock_index`
+
+
+
 
    .. py:method:: load_stock_industry(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
       :async:
+
+
+      参考: :func:`qdatac.loader.Loader.load_stock_industry`
+
 
 
 
@@ -97,9 +169,17 @@ Module Contents
       :async:
 
 
+      参考: :func:`qdatac.loader.Loader.load_stock_industry_daily`
+
+
+
 
    .. py:method:: load_stock_industry_detail(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
       :async:
+
+
+      参考: :func:`qdatac.loader.Loader.load_stock_industry_detail`
+
 
 
 
@@ -107,9 +187,17 @@ Module Contents
       :async:
 
 
+      参考: :func:`qdatac.loader.Loader.load_stock_concept`
+
+
+
 
    .. py:method:: load_stock_concept_daily(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
       :async:
+
+
+      参考: :func:`qdatac.loader.Loader.load_stock_concept_daily`
+
 
 
 
@@ -117,9 +205,17 @@ Module Contents
       :async:
 
 
+      参考: :func:`qdatac.loader.Loader.load_stock_concept_detail`
+
+
+
 
    .. py:method:: load_stock_yjbb(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
       :async:
+
+
+      参考: :func:`qdatac.loader.Loader.load_stock_yjbb`
+
 
 
 
@@ -127,9 +223,17 @@ Module Contents
       :async:
 
 
+      参考: :func:`qdatac.loader.Loader.load_stock_margin`
+
+
+
 
    .. py:method:: count(tab: str) -> int
       :async:
+
+
+      参考: :func:`qdatac.loader.Loader.count`
+
 
 
 
@@ -137,70 +241,158 @@ Module Contents
       :async:
 
 
+      参考: :func:`qdatac.loader.Loader.load_info`
+
+
+
 
    .. py:method:: load_daily(typ: str, filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
       :async:
+
+
+      参考: :func:`qdatac.loader.Loader.load_daily`
+
 
 
 
 .. py:class:: BlockMongoLoader
 
+   参考: :func:`qdatac.loader.Loader`
+
+
+
    .. py:method:: load_bond_info(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
+
+      参考: :func:`qdatac.loader.Loader.load_bond_info`
+
+
 
 
    .. py:method:: load_bond_daily(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
 
+      参考: :func:`qdatac.loader.Loader.load_bond_daily`
+
+
+
 
    .. py:method:: load_fund_info(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
+
+      参考: :func:`qdatac.loader.Loader.load_fund_info`
+
+
 
 
    .. py:method:: load_fund_daily(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
 
+      参考: :func:`qdatac.loader.Loader.load_fund_daily`
+
+
+
 
    .. py:method:: load_fund_net(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
+
+      参考: :func:`qdatac.loader.Loader.load_fund_net`
+
+
 
 
    .. py:method:: load_index_info(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
 
+      参考: :func:`qdatac.loader.Loader.load_index_info`
+
+
+
 
    .. py:method:: load_index_daily(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
+
+      参考: :func:`qdatac.loader.Loader.load_index_daily`
+
+
 
 
    .. py:method:: load_stock_info(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
 
+      参考: :func:`qdatac.loader.Loader.load_stock_info`
+
+
+
 
    .. py:method:: load_stock_daily(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
+
+      参考: :func:`qdatac.loader.Loader.load_stock_daily`
+
+
 
 
    .. py:method:: load_stock_index(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
 
+      参考: :func:`qdatac.loader.Loader.load_stock_index`
+
+
+
 
    .. py:method:: load_stock_industry(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
+
+      参考: :func:`qdatac.loader.Loader.load_stock_industry`
+
+
 
 
    .. py:method:: load_stock_industry_daily(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
 
+      参考: :func:`qdatac.loader.Loader.load_stock_industry_daily`
+
+
+
 
    .. py:method:: load_stock_industry_detail(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
+
+      参考: :func:`qdatac.loader.Loader.load_stock_industry_detail`
+
+
 
 
    .. py:method:: load_stock_concept(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
 
+      参考: :func:`qdatac.loader.Loader.load_stock_concept`
+
+
+
 
    .. py:method:: load_stock_concept_daily(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
+
+      参考: :func:`qdatac.loader.Loader.load_stock_concept_daily`
+
+
 
 
    .. py:method:: load_stock_concept_detail(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
 
+      参考: :func:`qdatac.loader.Loader.load_stock_concept_detail`
+
+
+
 
    .. py:method:: load_stock_yjbb(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
+
+      参考: :func:`qdatac.loader.Loader.load_stock_yjbb`
+
+
 
 
    .. py:method:: load_stock_margin(filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
 
+      参考: :func:`qdatac.loader.Loader.load_stock_margin`
+
+
+
 
    .. py:method:: count(tab: str) -> int
       :async:
+
+
+      参考: :func:`qdatac.loader.Loader.count`
+
 
 
 
@@ -208,9 +400,17 @@ Module Contents
       :async:
 
 
+      参考: :func:`qdatac.loader.Loader.load_info`
+
+
+
 
    .. py:method:: load_daily(typ: str, filter: Optional[str], sort: Optional[str], limit: Optional[int]) -> List[Dict]
       :async:
+
+
+      参考: :func:`qdatac.loader.Loader.load_daily`
+
 
 
 

@@ -6,21 +6,12 @@
 qwinq 文档
 ==================================
 
-.. note::
-
-   源码在 `Github`_ , 提BUG点 `Issues`_。
-
-.. _Github: https://github.com/buf1024/rwinq
-
-.. _Issues: https://github.com/buf1024/rwinq/issues
-
 .. toctree::
    :maxdepth: 2
 
    intro
    fetch/index
    data
-   select
-   backtest
+   strategy/index
 
 

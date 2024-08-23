@@ -1,0 +1,5 @@
+<map id="inheritancee1f0314f7a" name="inheritancee1f0314f7a">
+<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,5,77,32"/>
+<area shape="rect" id="node2" href="../base_strategy/index.html#qstrategy.base_strategy.BaseStrategy" target="_top" title="策略基类" alt="" coords="125,5,226,32"/>
+<area shape="rect" id="node3" href="#qstrategy.trade.Strategy" target="_top" title="交易策略基类，实现交易策略，要继承于该类" alt="" coords="274,5,346,32"/>
+</map>

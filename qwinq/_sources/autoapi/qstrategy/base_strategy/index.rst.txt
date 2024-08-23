@@ -23,46 +23,129 @@ Module Contents
       :parts: 1
 
 
-   Helper class that provides a standard way to create an ABC using
-   inheritance.
+   策略基类
 
 
-   .. py:method:: init(state: qstrategy.qstrategy.ShareState, params: Optional[qstrategy.tradecomm.Params] = None) -> None
+   .. py:method:: init(state: qstrategy.qstrategy.ShareState, params: Optional[qstrategy.tradecomm.Params] = None)
+
+      策略初始化，策略如要初始化，重写该函数实现
+
+      :param state: 策略共享状态
+      :type state: ShareState
+      :param params: 策略参数，默认是没有的
+      :type params: Optional[Params], optional
 
 
-   .. py:method:: destroy() -> None
+
+   .. py:method:: destroy()
+
+      策略销毁，策略如要销毁，重写该函数实现
 
 
-   .. py:method:: description()
 
 
-   .. py:method:: name()
+   .. py:method:: description() -> str
+
+      返回该策略是使用说明，参数配置等，markdown格式
+
+      :returns: 策略说明
+      :rtype: str
 
 
-   .. py:method:: on_start(state: qstrategy.qstrategy.ShareState) -> None
+
+   .. py:method:: name() -> str
+
+      返回策略的名称，名称应该是有意义的，在同一个目录内唯一
+
+      :returns: 策略名称
+      :rtype: str
 
 
-   .. py:method:: on_end(state: qstrategy.qstrategy.ShareState) -> None
+
+   .. py:method:: on_start(state: qstrategy.qstrategy.ShareState)
+
+      策略启动时调用
+
+      :param state: 策略共享状态
+      :type state: ShareState
 
 
-   .. py:method:: on_strategy(state: qstrategy.qstrategy.ShareState, event: qstrategy.event.QuotEvent) -> None
+
+   .. py:method:: on_end(state: qstrategy.qstrategy.ShareState)
+
+      策略结束时调用
+
+      :param state: 策略共享状态
+      :type state: ShareState
 
 
-   .. py:method:: on_open(state: qstrategy.qstrategy.ShareState, event: qstrategy.event.QuotEvent) -> None
+
+   .. py:method:: on_strategy(state: qstrategy.qstrategy.ShareState, event: qstrategy.event.QuotEvent)
+
+      统一的调用入口，一般来说不要重写这个，保持原样就可以
+
+      :param state: 策略共享状态
+      :type state: ShareState
+      :param event: 事件
+      :type event: QuotEvent
 
 
-   .. py:method:: on_morning_open(state: qstrategy.qstrategy.ShareState) -> None
+
+   .. py:method:: on_open(state: qstrategy.qstrategy.ShareState, event: qstrategy.event.QuotEvent)
+
+      开市回调，一般不用管
+
+      :param state: 策略共享状态
+      :type state: ShareState
+      :param event: 事件
+      :type event: QuotEvent
 
 
-   .. py:method:: on_noon_open(state: qstrategy.qstrategy.ShareState) -> None
+
+   .. py:method:: on_morning_open(state: qstrategy.qstrategy.ShareState)
+
+      早市开市回调
+
+      :param state: 策略共享状态
+      :type state: ShareState
 
 
-   .. py:method:: on_close(state: qstrategy.qstrategy.ShareState, event: qstrategy.event.QuotEvent) -> None
+
+   .. py:method:: on_noon_open(state: qstrategy.qstrategy.ShareState)
+
+      午市开市回调
+
+      :param state: 策略共享状态
+      :type state: ShareState
 
 
-   .. py:method:: on_morning_close(state: qstrategy.qstrategy.ShareState) -> None
+
+   .. py:method:: on_close(state: qstrategy.qstrategy.ShareState, event: qstrategy.event.QuotEvent)
+
+      休市回调，一般不用管
+
+      :param state: 策略共享状态
+      :type state: ShareState
+      :param event: 事件
+      :type event: QuotEvent
 
 
-   .. py:method:: on_noon_close(state: qstrategy.qstrategy.ShareState) -> None
+
+   .. py:method:: on_morning_close(state: qstrategy.qstrategy.ShareState)
+
+      早市开市回调
+
+      :param state: 策略共享状态
+      :type state: ShareState
+
+
+
+   .. py:method:: on_noon_close(state: qstrategy.qstrategy.ShareState)
+
+      午市开市回调
+
+      :param state: 策略共享状态
+      :type state: ShareState
+
 
 

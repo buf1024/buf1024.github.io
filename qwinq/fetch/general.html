@@ -55,7 +55,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id4">下一个交易日</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">上一个交易日</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id6">是否交易日</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">股票实时行情</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">实时行情</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="stock.html">股票数据</a></li>
@@ -64,8 +64,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data.html">本地数据</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../select.html">选股策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../backtest.html">股票回测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../strategy/index.html">股票策略</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">API Reference</a></li>
 </ul>
 
@@ -97,8 +96,10 @@
 <h1>通用数据<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <section id="id2">
 <h2>基础常量<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<p>k线周期</p>
+<p>K线频率</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BarFreq</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;K线频率</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">Min1</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 1分钟k线</span>
     <span class="n">Min5</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># 5分钟k线</span>
     <span class="n">Min15</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1"># 15分钟k线</span>
@@ -110,8 +111,19 @@
     <span class="n">LooseDaily</span> <span class="o">=</span> <span class="mi">1010</span>  <span class="c1"># 日线，在交易日没结束前，显示的是最新值，交易日结束后，同Daily</span>
 </pre></div>
 </div>
-<p>市场品种：</p>
+<p>交易市场:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Market</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;交易市场</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">SZ</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">SH</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">BJ</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>交易类型：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MarketType</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;交易类型</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">Bond</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 可转债</span>
     <span class="n">Fund</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># ETF基金</span>
     <span class="n">Stock</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># 股票</span>
@@ -120,7 +132,7 @@
 </section>
 <section id="id3">
 <h2>交易日数据<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
-<p>​<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_trade_date(to_frame=True)</span> <span class="pre">-&gt;</span> <span class="pre">Union[Set[int],</span> <span class="pre">pd.DataFrame]</span></code>​</p>
+<p>​<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_trade_date(*,</span> <span class="pre">to_frame=True)</span> <span class="pre">-&gt;</span> <span class="pre">Union[Set[int],</span> <span class="pre">pd.DataFrame]</span></code>​​</p>
 <p>输入：</p>
 <table border="1" class="docutils">
 <thead>
@@ -155,21 +167,29 @@
 </tbody>
 </table><p>示例:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">qfetch</span> <span class="k">as</span> <span class="nn">fetch</span>
-   <span class="o">...</span><span class="p">:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_trade_date</span><span class="p">()</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> 
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_trade_date</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> 
       <span class="n">trade_date</span>
 <span class="mi">0</span>       <span class="mi">20120104</span>
 <span class="mi">1</span>       <span class="mi">20120105</span>
+<span class="mi">2</span>       <span class="mi">20120106</span>
+<span class="mi">3</span>       <span class="mi">20120109</span>
+<span class="mi">4</span>       <span class="mi">20120110</span>
 <span class="o">...</span>          <span class="o">...</span>
-<span class="mi">8068</span>    <span class="mi">20021231</span>
+<span class="mi">8306</span>    <span class="mi">20021225</span>
+<span class="mi">8307</span>    <span class="mi">20021226</span>
+<span class="mi">8308</span>    <span class="mi">20021227</span>
+<span class="mi">8309</span>    <span class="mi">20021230</span>
+<span class="mi">8310</span>    <span class="mi">20021231</span>
 
-<span class="p">[</span><span class="mi">8069</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">1</span> <span class="n">columns</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">8311</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">1</span> <span class="n">columns</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
 <section id="id4">
 <h2>下一个交易日<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
-<p>​<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_next_trade_date(d:</span> <span class="pre">Union[date,</span> <span class="pre">datetime])</span> <span class="pre">-&gt;</span> <span class="pre">date</span></code>​</p>
+<p>​<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_next_trade_date(*,</span> <span class="pre">date:</span> <span class="pre">Union[date,</span> <span class="pre">datetime,</span> <span class="pre">str])</span> <span class="pre">-&gt;</span> <span class="pre">date</span></code>​</p>
 <p>输入：</p>
 <table border="1" class="docutils">
 <thead>
@@ -181,9 +201,9 @@
 </thead>
 <tbody>
 <tr>
-<td>d</td>
+<td>​date​<br /></td>
 <td>-</td>
-<td style="text-align: center;">时间</td>
+<td style="text-align: center;">如str类型，格式为yyyy-mm-dd/yyyymmdd<br /></td>
 </tr>
 </tbody>
 </table><p>输出：</p>
@@ -203,18 +223,20 @@
 </tr>
 </tbody>
 </table><p>示例:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">qfetch</span> <span class="k">as</span> <span class="nn">fetch</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_next_trade_date</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_next_trade_date</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">now</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id5">
 <h2>上一个交易日<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
-<p>​<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_prev_trade_date(d:</span> <span class="pre">Union[date,</span> <span class="pre">datetime])</span> <span class="pre">-&gt;</span> <span class="pre">date</span></code>​</p>
+<p>​<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_prev_trade_date(*,</span> <span class="pre">date:</span> <span class="pre">Union[date,</span> <span class="pre">datetime,</span> <span class="pre">str])</span> <span class="pre">-&gt;</span> <span class="pre">date</span></code>​​</p>
 <p>输入：</p>
 <table border="1" class="docutils">
 <thead>
@@ -226,9 +248,9 @@
 </thead>
 <tbody>
 <tr>
-<td>d</td>
+<td>date<br /></td>
 <td>-</td>
-<td style="text-align: center;">时间</td>
+<td style="text-align: center;">如str类型，格式为yyyy-mm-dd/yyyymmdd<br /></td>
 </tr>
 </tbody>
 </table><p>输出：</p>
@@ -248,14 +270,20 @@
 </tr>
 </tbody>
 </table><p>示例:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_prev_trade_date</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">qfetch</span> <span class="k">as</span> <span class="nn">fetch</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_prev_trade_date</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">now</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="id6">
 <h2>是否交易日<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
-<p>​<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_is_trade_date(d:</span> <span class="pre">Union[date,</span> <span class="pre">datetime])</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code>​</p>
+<p>​<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_is_trade_date(date:</span> <span class="pre">Union[date,</span> <span class="pre">datetime,</span> <span class="pre">str])</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code>​</p>
 <p>输入：</p>
 <table border="1" class="docutils">
 <thead>
@@ -267,9 +295,9 @@
 </thead>
 <tbody>
 <tr>
-<td>d</td>
+<td>date</td>
 <td>-</td>
-<td style="text-align: center;">时间</td>
+<td style="text-align: center;">如str类型，格式为yyyy-mm-dd/yyyymmdd</td>
 </tr>
 </tbody>
 </table><p>输出：</p>
@@ -289,17 +317,17 @@
 </tr>
 </tbody>
 </table><p>示例:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_is_trade_date</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="kc">True</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_is_trade_date</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">now</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="kc">True</span>
 </pre></div>
 </div>
 </section>
 <section id="id7">
-<h2>股票实时行情<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<h2>实时行情<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_rt_quot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
 </pre></div>
 </div>
-<p>注意，该接口是准实时，有几秒的延迟，切勿高频，可以用与股票/可转债/ETF基金，行业概念等等。</p>
+<p>注意，该接口是准实时，有几秒的延迟，切勿高频，可以用与股票/可转债/ETF基金/行业/概念等等。</p>
 <p>输入：</p>
 <table border="1" class="docutils">
 <thead>
@@ -352,6 +380,11 @@
 <td>昨收价</td>
 </tr>
 <tr>
+<td>now</td>
+<td>float</td>
+<td>现价</td>
+</tr>
+<tr>
 <td>open</td>
 <td>float</td>
 <td>开盘价</td>
@@ -367,9 +400,24 @@
 <td>最低价</td>
 </tr>
 <tr>
-<td>last</td>
+<td>buy</td>
 <td>float</td>
-<td>最后一口价</td>
+<td>买价</td>
+</tr>
+<tr>
+<td>sell</td>
+<td>float</td>
+<td>卖价</td>
+</tr>
+<tr>
+<td>bid</td>
+<td>tuple</td>
+<td>买5：((量，价),.., ...)</td>
+</tr>
+<tr>
+<td>ask</td>
+<td>tuple</td>
+<td>卖5：((量，价),.., ...)</td>
 </tr>
 <tr>
 <td>chg</td>
@@ -394,32 +442,61 @@
 <tr>
 <td>turnover</td>
 <td>float</td>
-<td>换手率%</td>
+<td>换手率%，可转债等没有该值</td>
 </tr>
 <tr>
 <td>total_value</td>
 <td>float</td>
-<td>总市值</td>
+<td>总市值，可转债等没有该值</td>
 </tr>
 <tr>
 <td>currency_value</td>
 <td>float</td>
-<td>流通市值</td>
+<td>流通市值，可转债等没有该值</td>
 </tr>
 <tr>
 <td>is_trading</td>
 <td>bool</td>
 <td>是否交易中</td>
 </tr>
+<tr>
+<td>freq_open</td>
+<td>float</td>
+<td>周期内开盘价，不一定有值</td>
+</tr>
+<tr>
+<td>freq_high</td>
+<td>float</td>
+<td>周期内最高价，不一定有值</td>
+</tr>
+<tr>
+<td>freq_low</td>
+<td>float</td>
+<td>周期内最低价，不一定有值</td>
+</tr>
+<tr>
+<td>freq_chg</td>
+<td>float</td>
+<td>周期内涨跌额，不一定有值</td>
+</tr>
+<tr>
+<td>freq_chg_pct</td>
+<td>float</td>
+<td>周期内涨跌%，不一定有值</td>
+</tr>
+<tr>
+<td>freq_time</td>
+<td>datetime</td>
+<td>周期内频率时间，不一定有值</td>
+</tr>
 </tbody>
 </table><p>示例:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_rt_quot</span><span class="p">(</span><span class="n">code</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;bj873576&#39;</span><span class="p">,</span> <span class="s1">&#39;sz000001&#39;</span><span class="p">])</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> 
-       <span class="n">code</span>                <span class="n">time</span>  <span class="n">last_close</span>   <span class="nb">open</span>  <span class="o">...</span>  <span class="n">turnover</span>   <span class="n">total_value</span>  <span class="n">currency_value</span>  <span class="n">is_trading</span>
-<span class="mi">0</span>  <span class="n">sz000001</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">12</span> <span class="mi">15</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mi">42</span>       <span class="mf">11.34</span>  <span class="mf">11.35</span>  <span class="o">...</span>      <span class="mf">0.26</span>  <span class="mf">2.188988e+11</span>    <span class="mf">2.188946e+11</span>       <span class="kc">False</span>
-<span class="mi">1</span>  <span class="n">bj873576</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">12</span> <span class="mi">15</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">21</span>       <span class="mf">13.45</span>  <span class="mf">13.33</span>  <span class="o">...</span>      <span class="mf">1.01</span>  <span class="mf">1.446856e+09</span>    <span class="mf">3.959731e+08</span>       <span class="kc">False</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_rt_quot</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sz000001&#39;</span><span class="p">])</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">22</span><span class="p">]:</span> 
+       <span class="n">code</span>  <span class="n">name</span>   <span class="nb">open</span>  <span class="n">last_close</span>  <span class="o">...</span>  <span class="n">freq_low</span>  <span class="n">freq_chg</span>  <span class="n">freq_chg_pct</span>       <span class="n">freq_time</span>
+<span class="mi">0</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.39</span>       <span class="mf">10.38</span>  <span class="o">...</span>       <span class="mf">0.0</span>       <span class="mf">0.0</span>           <span class="mf">0.0</span>  <span class="mi">19700101000000</span>
 
-<span class="p">[</span><span class="mi">2</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">15</span> <span class="n">columns</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">26</span> <span class="n">columns</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>‍</p>

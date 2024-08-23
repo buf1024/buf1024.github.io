@@ -64,11 +64,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#id11">股票概念明细</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id12">股票概念日线数据</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id13">股票融资融券</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">业绩报表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">股票业绩报表</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id15">股票实时排名</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">筹码成本分布</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">筹码​​获利盘​</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">筹码成本分布</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">股票千股千评</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">股票千股千评历史</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">股票全量实时行情</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="fund.html">ETF基金数据</a></li>
@@ -76,8 +76,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data.html">本地数据</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../select.html">选股策略</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../backtest.html">股票回测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../strategy/index.html">股票策略</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">API Reference</a></li>
 </ul>
 
@@ -109,7 +108,7 @@
 <h1>股票数据<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <section id="id2">
 <h2>指数基本信息<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<p>​<code class="docutils literal notranslate"><span class="pre">​</span> <span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_index_info(self,</span> <span class="pre">*,</span> <span class="pre">to_frame=True)</span> <span class="pre">-&gt;</span> <span class="pre">Union[List[Dict],</span> <span class="pre">pd.DataFrame]:</span></code>​</p>
+<p>​<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_index_info(self,</span> <span class="pre">*,</span> <span class="pre">to_frame=True)</span> <span class="pre">-&gt;</span> <span class="pre">Union[List[Dict],</span> <span class="pre">pd.DataFrame]:</span></code>​</p>
 <p>输入：</p>
 <table border="1" class="docutils">
 <thead>
@@ -167,7 +166,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_index_info</span><span class="p">()</span>
 <span class="go">      code   name block  is_margin listing_date</span>
 <span class="go">0     sh000001   上证综指    指数      False   1970-01-01</span>
-<span class="go">..        ...    ...    </span>
+<span class="go">..        ...    ...  </span>
 <span class="go">[12 rows x 5 columns]</span>
 </pre></div>
 </div>
@@ -346,7 +345,7 @@
 </section>
 <section id="id3">
 <h2>股票基本信息<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
-<p>​<code class="docutils literal notranslate"><span class="pre">​</span> <span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_stock_info(self,</span> <span class="pre">*,</span> <span class="pre">to_frame=True)</span> <span class="pre">-&gt;</span> <span class="pre">Union[List[Dict],</span> <span class="pre">pd.DataFrame]:</span></code>​</p>
+<p>​<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_stock_info(self,</span> <span class="pre">*,</span> <span class="pre">to_frame=True)</span> <span class="pre">-&gt;</span> <span class="pre">Union[List[Dict],</span> <span class="pre">pd.DataFrame]:</span></code>​</p>
 <p>输入：</p>
 <table border="1" class="docutils">
 <thead>
@@ -411,7 +410,7 @@
 </section>
 <section id="id4">
 <h2>融资股票信息<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
-<p>​<code class="docutils literal notranslate"><span class="pre">​</span> <span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_stock_info(self,</span> <span class="pre">*,</span> <span class="pre">to_frame=True)</span> <span class="pre">-&gt;</span> <span class="pre">Union[List[Dict],</span> <span class="pre">pd.DataFrame]:</span></code>​​</p>
+<p>​<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">fetch_stock_info(self,</span> <span class="pre">*,</span> <span class="pre">to_frame=True)</span> <span class="pre">-&gt;</span> <span class="pre">Union[List[Dict],</span> <span class="pre">pd.DataFrame]:</span></code>​​</p>
 <p>输入：</p>
 <table border="1" class="docutils">
 <thead>
@@ -1477,7 +1476,7 @@
 </div>
 </section>
 <section id="id14">
-<h2>业绩报表<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
+<h2>股票业绩报表<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_yjbb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">year</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">season</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                                <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
 </pre></div>
@@ -1677,11 +1676,11 @@
 </div>
 </section>
 <section id="id16">
-<h2>筹码成本分布<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_chip_dist</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">ac</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">chip_dist</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<h2>股票千股千评<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_comment</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                              <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>计算筹码分布，采用的是三角分布的算法，不要传递上市以来的所有数据，否则计算比较慢。传递120天或者90天，计算的结果和全量数据结果差不多。</p>
 <p>输入：</p>
 <table border="1" class="docutils">
 <thead>
@@ -1693,64 +1692,100 @@
 </thead>
 <tbody>
 <tr>
-<td>data</td>
-<td>pd.DataFrame<br /></td>
-<td>股票日线数据, 参考日线数据bars部分</td>
+<td>code</td>
+<td>Union[str, list]<br /></td>
+<td>单个或一组股票代码</td>
 </tr>
 </tbody>
 </table><p>输出：</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
-<th>名称</th>
+<th>主力成本名称</th>
 <th>类型</th>
 <th>描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>chip</td>
-<td>Dict</td>
-<td>所有价格的筹码分布</td>
+<td>code</td>
+<td>str</td>
+<td>行业代码<br /></td>
 </tr>
 <tr>
-<td>chip_list</td>
-<td>Dict</td>
-<td>每日的筹码分布</td>
+<td>name</td>
+<td>str</td>
+<td>行业名称</td>
 </tr>
 <tr>
-<td>筹码分布Dict<br /></td>
-<td></td>
-<td></td>
+<td>close</td>
+<td>float</td>
+<td>收盘价</td>
 </tr>
 <tr>
-<td>价格</td>
-<td>持仓量</td>
-<td>key为价格单位分，value为持仓量</td>
+<td>chg_pct</td>
+<td>float</td>
+<td>涨跌%</td>
+</tr>
+<tr>
+<td>turnover</td>
+<td>float</td>
+<td>换手率</td>
+</tr>
+<tr>
+<td>pe</td>
+<td>float</td>
+<td>市盈率</td>
+</tr>
+<tr>
+<td>cost</td>
+<td>float</td>
+<td>主力成本</td>
+</tr>
+<tr>
+<td>engage</td>
+<td>float</td>
+<td>主力参与度</td>
+</tr>
+<tr>
+<td>score</td>
+<td>float</td>
+<td>综合得分</td>
+</tr>
+<tr>
+<td>rank</td>
+<td>int</td>
+<td>排名</td>
+</tr>
+<tr>
+<td>rank_chg</td>
+<td>float</td>
+<td>排名变化</td>
+</tr>
+<tr>
+<td>attention</td>
+<td>float</td>
+<td>关注度</td>
+</tr>
+<tr>
+<td>trade_date</td>
+<td>datetime</td>
+<td>当天时间</td>
 </tr>
 </tbody>
 </table><p>示例:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">qfetch</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">fetch_stock_bar</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">&#39;sz000039&#39;</span><span class="p">)</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;bars&#39;</span><span class="p">]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">calc_chip_dist</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">dist</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span> 
-<span class="p">{</span><span class="s1">&#39;chip&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">690</span><span class="p">:</span> <span class="mf">13.788155302733578</span><span class="p">,</span>
-  <span class="o">...</span>
-  <span class="mi">722</span><span class="p">:</span> <span class="mf">26.93899356690681</span><span class="p">},</span>
- <span class="s1">&#39;chip_list&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">20230901</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">},</span>
-  <span class="o">...</span>
-  <span class="mi">20230913</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}}}</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_comment</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sz000001&#39;</span><span class="p">])</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">17</span><span class="p">]:</span>
+       <span class="n">code</span>  <span class="n">name</span>  <span class="n">close</span>  <span class="n">chg_pct</span>  <span class="n">turnover</span>  <span class="o">...</span>      <span class="n">score</span>  <span class="n">rank</span>  <span class="n">rank</span>\<span class="n">_chg</span>  <span class="n">attention</span>      <span class="n">trade</span>\<span class="n">_date</span>
+<span class="mi">0</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.47</span>     <span class="mf">0.87</span>      <span class="mf">0.55</span>  <span class="o">...</span>  <span class="mf">71.047424</span>   <span class="mi">233</span>      <span class="o">-</span><span class="mi">414</span>       <span class="mf">90.0</span>  <span class="mi">20240823000000</span>
+<span class="p">[</span><span class="mi">1</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">13</span> <span class="n">columns</span><span class="p">]</span> 
 </pre></div>
 </div>
 </section>
 <section id="id17">
-<h2>筹码​​获利盘​<a class="headerlink" href="#id17" title="Link to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_winner</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chip_dist</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">price</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<h2>股票千股千评历史<a class="headerlink" href="#id17" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_comment_his</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                                  <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
 </pre></div>
 </div>
 <p>输入：</p>
@@ -1764,69 +1799,146 @@
 </thead>
 <tbody>
 <tr>
-<td>chip_dist</td>
-<td>Dict</td>
-<td>calc_chip_dist的返回值</td>
-</tr>
-<tr>
-<td>data</td>
-<td>Dict<br /></td>
-<td>股票日线数据, 参考日线数据bars部分，主要是参考收盘价，data和price两者必须一个不为空</td>
-</tr>
-<tr>
-<td>price</td>
-<td>float</td>
-<td>相对该价的盈利，data和price两者必须一个不为空</td>
+<td>code</td>
+<td>Union[str, list]<br /></td>
+<td>单个或一组股票代码</td>
 </tr>
 </tbody>
 </table><p>输出：</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
-<th>名称</th>
+<th>主力成本名称</th>
 <th>类型</th>
 <th>描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>-</td>
-<td>Dict</td>
-<td>每日的盈利概率</td>
+<td>code</td>
+<td>str</td>
+<td>行业代码<br /></td>
 </tr>
 <tr>
-<td>盈利概率<br /></td>
-<td></td>
-<td></td>
+<td>name</td>
+<td>str</td>
+<td>行业名称</td>
 </tr>
 <tr>
-<td>日期</td>
-<td>Float</td>
-<td>key为日期int，value为概率</td>
+<td>close</td>
+<td>float</td>
+<td>收盘价</td>
+</tr>
+<tr>
+<td>chg_pct</td>
+<td>float</td>
+<td>涨跌%</td>
+</tr>
+<tr>
+<td>turnover</td>
+<td>float</td>
+<td>换手率</td>
+</tr>
+<tr>
+<td>pe</td>
+<td>float</td>
+<td>市盈率</td>
+</tr>
+<tr>
+<td>cost</td>
+<td>float</td>
+<td>主力成本</td>
+</tr>
+<tr>
+<td>engage</td>
+<td>float</td>
+<td>主力参与度</td>
+</tr>
+<tr>
+<td>score</td>
+<td>float</td>
+<td>综合得分</td>
+</tr>
+<tr>
+<td>rank</td>
+<td>int</td>
+<td>排名</td>
+</tr>
+<tr>
+<td>rank_chg</td>
+<td>float</td>
+<td>排名变化</td>
+</tr>
+<tr>
+<td>attention</td>
+<td>float</td>
+<td>关注度</td>
+</tr>
+<tr>
+<td>trade_date</td>
+<td>datetime</td>
+<td>交易日</td>
 </tr>
 </tbody>
 </table><p>示例:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">calc_winner</span><span class="p">(</span><span class="n">chip_dist</span><span class="o">=</span><span class="n">dist</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span> 
-<span class="p">{</span><span class="mi">20230901</span><span class="p">:</span> <span class="mf">0.6644586478617531</span><span class="p">,</span>
- <span class="mi">20230904</span><span class="p">:</span> <span class="mf">0.6291703778163454</span><span class="p">,</span>
- <span class="mi">20230905</span><span class="p">:</span> <span class="mf">0.7535948207068112</span><span class="p">,</span>
- <span class="mi">20230906</span><span class="p">:</span> <span class="mf">0.2455806272170779</span><span class="p">,</span>
- <span class="mi">20230907</span><span class="p">:</span> <span class="mf">0.04154799274363736</span><span class="p">,</span>
- <span class="mi">20230908</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
- <span class="mi">20230911</span><span class="p">:</span> <span class="mf">0.5919655179648782</span><span class="p">,</span>
- <span class="mi">20230912</span><span class="p">:</span> <span class="mf">0.18903289615357532</span><span class="p">,</span>
- <span class="mi">20230913</span><span class="p">:</span> <span class="mf">0.5132108034149797</span><span class="p">}</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch</span>\<span class="n">_stock</span>\<span class="n">_comment</span>\<span class="n">_his</span><span class="p">(</span><span class="n">code</span>\<span class="o">=</span><span class="s1">&#39;sz000001&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">18</span><span class="p">]:</span>
+        <span class="n">code</span>  <span class="n">name</span>  <span class="n">close</span>  <span class="n">chg</span>\<span class="n">_pct</span>  <span class="n">turnover</span>  <span class="o">...</span>      <span class="n">score</span>  <span class="n">rank</span>  <span class="n">rank</span>\<span class="n">_chg</span>  <span class="n">attention</span>      <span class="n">trade</span>\<span class="n">_date</span>
+<span class="mi">0</span>   <span class="n">sz000001</span>  <span class="n">平安银行</span>   <span class="mf">9.98</span>  <span class="o">-</span><span class="mf">0.2000</span>    <span class="mf">0.4880</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240624000000</span>
+<span class="mi">1</span>   <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.08</span>   <span class="mf">1.0020</span>    <span class="mf">0.3968</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240625000000</span>
+<span class="mi">2</span>   <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.08</span>   <span class="mf">0.0000</span>    <span class="mf">0.3239</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240626000000</span>
+<span class="mi">3</span>   <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.13</span>   <span class="mf">0.4960</span>    <span class="mf">0.4787</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240627000000</span>
+<span class="mi">4</span>   <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.15</span>   <span class="mf">0.1974</span>    <span class="mf">0.4731</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240628000000</span>
+<span class="mi">5</span>   <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.35</span>   <span class="mf">1.9704</span>    <span class="mf">0.6921</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240701000000</span>
+<span class="mi">6</span>   <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.40</span>   <span class="mf">0.4831</span>    <span class="mf">0.7134</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240702000000</span>
+<span class="mi">7</span>   <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.31</span>  <span class="o">-</span><span class="mf">0.8654</span>    <span class="mf">0.3675</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240703000000</span>
+<span class="mi">8</span>   <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.26</span>  <span class="o">-</span><span class="mf">0.4850</span>    <span class="mf">0.3788</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240704000000</span>
+<span class="mi">9</span>   <span class="n">sz000001</span>  <span class="n">平安银行</span>   <span class="mf">9.97</span>  <span class="o">-</span><span class="mf">2.8265</span>    <span class="mf">0.8829</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240705000000</span>
+<span class="mi">10</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>   <span class="mf">9.93</span>  <span class="o">-</span><span class="mf">0.4012</span>    <span class="mf">0.4476</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240708000000</span>
+<span class="mi">11</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.07</span>   <span class="mf">1.4099</span>    <span class="mf">0.5321</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240709000000</span>
+<span class="mi">12</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.14</span>   <span class="mf">0.6951</span>    <span class="mf">0.4503</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240710000000</span>
+<span class="mi">13</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.13</span>  <span class="o">-</span><span class="mf">0.0986</span>    <span class="mf">0.3717</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240711000000</span>
+<span class="mi">14</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.31</span>   <span class="mf">1.7769</span>    <span class="mf">0.6257</span>  <span class="o">...</span>   <span class="mf">0.000000</span>     <span class="mi">0</span>         <span class="mi">0</span>   <span class="mf">0.000000</span>  <span class="mi">20240712000000</span>
+<span class="mi">15</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.33</span>   <span class="mf">0.1940</span>    <span class="mf">0.4480</span>  <span class="o">...</span>  <span class="mf">63.161259</span>   <span class="mi">149</span>       <span class="mi">230</span>  <span class="mf">90.800003</span>  <span class="mi">20240715000000</span>
+<span class="mi">16</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.30</span>  <span class="o">-</span><span class="mf">0.2904</span>    <span class="mf">0.4859</span>  <span class="o">...</span>  <span class="mf">64.401863</span>   <span class="mi">201</span>       <span class="o">-</span><span class="mi">52</span>  <span class="mf">88.400002</span>  <span class="mi">20240716000000</span>
+<span class="mi">17</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.40</span>   <span class="mf">0.9709</span>    <span class="mf">0.6288</span>  <span class="o">...</span>  <span class="mf">64.775063</span>   <span class="mi">224</span>       <span class="o">-</span><span class="mi">23</span>  <span class="mf">88.000000</span>  <span class="mi">20240717000000</span>
+<span class="mi">18</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.41</span>   <span class="mf">0.0962</span>    <span class="mf">0.5602</span>  <span class="o">...</span>  <span class="mf">64.658623</span>   <span class="mi">182</span>        <span class="mi">42</span>  <span class="mf">88.800003</span>  <span class="mi">20240718000000</span>
+<span class="mi">19</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.37</span>  <span class="o">-</span><span class="mf">0.3842</span>    <span class="mf">0.4631</span>  <span class="o">...</span>  <span class="mf">63.469402</span>   <span class="mi">188</span>        <span class="o">-</span><span class="mi">6</span>  <span class="mf">89.199997</span>  <span class="mi">20240719000000</span>
+<span class="mi">20</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.23</span>  <span class="o">-</span><span class="mf">1.3500</span>    <span class="mf">0.5125</span>  <span class="o">...</span>  <span class="mf">63.452164</span>   <span class="mi">416</span>      <span class="o">-</span><span class="mi">228</span>  <span class="mf">85.199997</span>  <span class="mi">20240722000000</span>
+<span class="mi">21</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.18</span>  <span class="o">-</span><span class="mf">0.4888</span>    <span class="mf">0.5257</span>  <span class="o">...</span>  <span class="mf">63.272633</span>   <span class="mi">409</span>         <span class="mi">7</span>  <span class="mf">85.599998</span>  <span class="mi">20240723000000</span>
+<span class="mi">22</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.13</span>  <span class="o">-</span><span class="mf">0.4912</span>    <span class="mf">0.3734</span>  <span class="o">...</span>  <span class="mf">62.601505</span>   <span class="mi">453</span>       <span class="o">-</span><span class="mi">44</span>  <span class="mf">84.400002</span>  <span class="mi">20240724000000</span>
+<span class="mi">23</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.09</span>  <span class="o">-</span><span class="mf">0.3949</span>    <span class="mf">0.4413</span>  <span class="o">...</span>  <span class="mf">62.226879</span>   <span class="mi">411</span>        <span class="mi">42</span>  <span class="mf">85.199997</span>  <span class="mi">20240725000000</span>
+<span class="mi">24</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.03</span>  <span class="o">-</span><span class="mf">0.5946</span>    <span class="mf">0.4790</span>  <span class="o">...</span>  <span class="mf">62.834686</span>   <span class="mi">443</span>       <span class="o">-</span><span class="mi">32</span>  <span class="mf">84.800003</span>  <span class="mi">20240726000000</span>
+<span class="mi">25</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.11</span>   <span class="mf">0.7976</span>    <span class="mf">0.4027</span>  <span class="o">...</span>  <span class="mf">66.200012</span>   <span class="mi">503</span>       <span class="o">-</span><span class="mi">60</span>  <span class="mf">85.199997</span>  <span class="mi">20240729000000</span>
+<span class="mi">26</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.08</span>  <span class="o">-</span><span class="mf">0.2967</span>    <span class="mf">0.3160</span>  <span class="o">...</span>  <span class="mf">61.531887</span>   <span class="mi">476</span>        <span class="mi">27</span>  <span class="mf">84.800003</span>  <span class="mi">20240730000000</span>
+<span class="mi">27</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.27</span>   <span class="mf">1.8849</span>    <span class="mf">0.5653</span>  <span class="o">...</span>  <span class="mf">69.033257</span>   <span class="mi">507</span>       <span class="o">-</span><span class="mi">31</span>  <span class="mf">84.400002</span>  <span class="mi">20240731000000</span>
+<span class="mi">28</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.27</span>   <span class="mf">0.0000</span>    <span class="mf">0.3782</span>  <span class="o">...</span>  <span class="mf">64.054733</span>   <span class="mi">682</span>      <span class="o">-</span><span class="mi">175</span>  <span class="mf">82.400002</span>  <span class="mi">20240801000000</span>
+<span class="mi">29</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.14</span>  <span class="o">-</span><span class="mf">1.2658</span>    <span class="mf">0.3042</span>  <span class="o">...</span>  <span class="mf">61.089195</span>   <span class="mi">777</span>       <span class="o">-</span><span class="mi">95</span>  <span class="mf">81.599998</span>  <span class="mi">20240802000000</span>
+<span class="mi">30</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.05</span>  <span class="o">-</span><span class="mf">0.8876</span>    <span class="mf">0.3911</span>  <span class="o">...</span>  <span class="mf">62.205414</span>   <span class="mi">649</span>       <span class="mi">128</span>  <span class="mf">83.599998</span>  <span class="mi">20240805000000</span>
+<span class="mi">31</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>   <span class="mf">9.93</span>  <span class="o">-</span><span class="mf">1.1940</span>    <span class="mf">0.6521</span>  <span class="o">...</span>  <span class="mf">62.438190</span>   <span class="mi">792</span>      <span class="o">-</span><span class="mi">143</span>  <span class="mf">82.000000</span>  <span class="mi">20240806000000</span>
+<span class="mi">32</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>   <span class="mf">9.93</span>   <span class="mf">0.0000</span>    <span class="mf">0.2667</span>  <span class="o">...</span>  <span class="mf">60.818207</span>   <span class="mi">881</span>       <span class="o">-</span><span class="mi">89</span>  <span class="mf">81.199997</span>  <span class="mi">20240807000000</span>
+<span class="mi">33</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>   <span class="mf">9.94</span>   <span class="mf">0.1007</span>    <span class="mf">0.2579</span>  <span class="o">...</span>  <span class="mf">64.815414</span>   <span class="mi">974</span>       <span class="o">-</span><span class="mi">93</span>  <span class="mf">80.400002</span>  <span class="mi">20240808000000</span>
+<span class="mi">34</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.04</span>   <span class="mf">1.0060</span>    <span class="mf">0.3763</span>  <span class="o">...</span>  <span class="mf">65.761078</span>   <span class="mi">946</span>        <span class="mi">28</span>  <span class="mf">80.800003</span>  <span class="mi">20240809000000</span>
+<span class="mi">35</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.01</span>  <span class="o">-</span><span class="mf">0.2988</span>    <span class="mf">0.1819</span>  <span class="o">...</span>  <span class="mf">61.457481</span>   <span class="mi">703</span>       <span class="mi">243</span>  <span class="mf">83.199997</span>  <span class="mi">20240812000000</span>
+<span class="mi">36</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>   <span class="mf">9.95</span>  <span class="o">-</span><span class="mf">0.5994</span>    <span class="mf">0.3206</span>  <span class="o">...</span>  <span class="mf">62.377365</span>   <span class="mi">728</span>       <span class="o">-</span><span class="mi">25</span>  <span class="mf">82.400002</span>  <span class="mi">20240813000000</span>
+<span class="mi">37</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>   <span class="mf">9.92</span>  <span class="o">-</span><span class="mf">0.3015</span>    <span class="mf">0.2249</span>  <span class="o">...</span>  <span class="mf">62.039284</span>   <span class="mi">734</span>        <span class="o">-</span><span class="mi">6</span>  <span class="mf">82.400002</span>  <span class="mi">20240814000000</span>
+<span class="mi">38</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.03</span>   <span class="mf">1.1089</span>    <span class="mf">0.4000</span>  <span class="o">...</span>  <span class="mf">66.938240</span>   <span class="mi">737</span>        <span class="o">-</span><span class="mi">3</span>  <span class="mf">82.400002</span>  <span class="mi">20240815000000</span>
+<span class="mi">39</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.13</span>   <span class="mf">0.9970</span>    <span class="mf">0.6495</span>  <span class="o">...</span>  <span class="mf">68.291466</span>   <span class="mi">509</span>       <span class="mi">228</span>  <span class="mf">84.400002</span>  <span class="mi">20240816000000</span>
+<span class="mi">40</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.29</span>   <span class="mf">1.5795</span>    <span class="mf">0.7642</span>  <span class="o">...</span>  <span class="mf">67.467194</span>   <span class="mi">368</span>       <span class="mi">141</span>  <span class="mf">86.400002</span>  <span class="mi">20240819000000</span>
+<span class="mi">41</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.34</span>   <span class="mf">0.4859</span>    <span class="mf">0.8086</span>  <span class="o">...</span>  <span class="mf">64.091919</span>   <span class="mi">134</span>       <span class="mi">234</span>  <span class="mf">89.199997</span>  <span class="mi">20240820000000</span>
+<span class="mi">42</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.35</span>   <span class="mf">0.0967</span>    <span class="mf">0.5333</span>  <span class="o">...</span>  <span class="mf">64.804741</span>   <span class="mi">107</span>        <span class="mi">27</span>  <span class="mf">90.000000</span>  <span class="mi">20240821000000</span>
+<span class="mi">43</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.38</span>   <span class="mf">0.2899</span>    <span class="mf">0.5715</span>  <span class="o">...</span>  <span class="mf">63.826473</span>   <span class="mi">119</span>       <span class="o">-</span><span class="mi">12</span>  <span class="mf">89.599998</span>  <span class="mi">20240822000000</span>
+<span class="mi">44</span>  <span class="n">sz000001</span>  <span class="n">平安银行</span>  <span class="mf">10.47</span>   <span class="mf">0.8671</span>    <span class="mf">0.5524</span>  <span class="o">...</span>  <span class="mf">71.047424</span>   <span class="mi">119</span>         <span class="mi">0</span>  <span class="mf">90.000000</span>  <span class="mi">20240823000000</span>
+<span class="p">[</span><span class="mi">45</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">13</span> <span class="n">columns</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
 <section id="id18">
-<h2>筹码成本分布<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_cost</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chip_dist</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">ratio</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span>
+<h2>股票全量实时行情<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_stock_rt_quot</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">codes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]],</span> <span class="n">to_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>注意，该接口是准实时，有几秒的延迟，切勿高频，只使用与股票的全量行情获取。</p>
 <p>输入：</p>
 <table border="1" class="docutils">
 <thead>
@@ -1838,14 +1950,14 @@
 </thead>
 <tbody>
 <tr>
-<td>chip_dist</td>
-<td>Dict</td>
-<td>calc_chip_dist的返回值</td>
+<td>codes</td>
+<td>Optional[Union[str, List[str]]]</td>
+<td>代码列表<br /></td>
 </tr>
 <tr>
-<td>ratio</td>
-<td>int</td>
-<td>成本区间，如90，代表90%的筹码</td>
+<td>to_frame</td>
+<td>bool</td>
+<td>是否转<code>DataFrame</code>​格式</td>
 </tr>
 </tbody>
 </table><p>输出：</p>
@@ -1859,33 +1971,104 @@
 </thead>
 <tbody>
 <tr>
-<td>-</td>
-<td>Dict</td>
-<td>每日的盈利概率</td>
+<td>code</td>
+<td>str</td>
+<td>代码</td>
 </tr>
 <tr>
-<td>盈利概率<br /></td>
-<td></td>
-<td></td>
+<td>name</td>
+<td>str</td>
+<td>名称</td>
 </tr>
 <tr>
-<td>日期</td>
-<td>Float</td>
-<td>key为日期int，value为价格</td>
+<td>last_close</td>
+<td>float</td>
+<td>昨收价</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>现价</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>开盘价</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>最高价</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>最低价</td>
+</tr>
+<tr>
+<td>pe</td>
+<td>float</td>
+<td>市盈率</td>
+</tr>
+<tr>
+<td>pb</td>
+<td>float</td>
+<td>市净率</td>
+</tr>
+<tr>
+<td>chg</td>
+<td>float</td>
+<td>涨跌额</td>
+</tr>
+<tr>
+<td>chg_pct</td>
+<td>float</td>
+<td>涨跌%</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>int</td>
+<td>成交量</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>成交额</td>
+</tr>
+<tr>
+<td>turnover</td>
+<td>float</td>
+<td>换手率%，可转债等没有该值</td>
+</tr>
+<tr>
+<td>total_value</td>
+<td>float</td>
+<td>总市值，可转债等没有该值</td>
+</tr>
+<tr>
+<td>currency_value</td>
+<td>float</td>
+<td>流通市值，可转债等没有该值</td>
+</tr>
+<tr>
+<td>rise_speed</td>
+<td>float</td>
+<td>涨速</td>
+</tr>
+<tr>
+<td>vol_ratio</td>
+<td>float</td>
+<td>量化</td>
 </tr>
 </tbody>
 </table><p>示例:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">calc_cost</span><span class="p">(</span><span class="n">chip_dist</span><span class="o">=</span><span class="n">dist</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span> 
-<span class="p">{</span><span class="mi">20230901</span><span class="p">:</span> <span class="mf">7.15</span><span class="p">,</span>
- <span class="mi">20230904</span><span class="p">:</span> <span class="mf">7.2</span><span class="p">,</span>
- <span class="mi">20230905</span><span class="p">:</span> <span class="mf">7.2</span><span class="p">,</span>
- <span class="mi">20230906</span><span class="p">:</span> <span class="mf">7.19</span><span class="p">,</span>
- <span class="mi">20230907</span><span class="p">:</span> <span class="mf">7.19</span><span class="p">,</span>
- <span class="mi">20230908</span><span class="p">:</span> <span class="mf">7.18</span><span class="p">,</span>
- <span class="mi">20230911</span><span class="p">:</span> <span class="mf">7.18</span><span class="p">,</span>
- <span class="mi">20230912</span><span class="p">:</span> <span class="mf">7.18</span><span class="p">,</span>
- <span class="mi">20230913</span><span class="p">:</span> <span class="mf">7.17</span><span class="p">}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="k">await</span> <span class="n">fetch</span><span class="o">.</span><span class="n">fetch_stock_rt_quot</span><span class="p">(</span><span class="n">code</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;bj873576&#39;</span><span class="p">,</span> <span class="s1">&#39;sz000001&#39;</span><span class="p">])</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> 
+       <span class="n">code</span>                <span class="n">time</span>  <span class="n">last_close</span>   <span class="nb">open</span>  <span class="o">...</span>  <span class="n">turnover</span>   <span class="n">total_value</span>  <span class="n">currency_value</span>  <span class="n">is_trading</span>
+<span class="mi">0</span>  <span class="n">sz000001</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">12</span> <span class="mi">15</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mi">42</span>       <span class="mf">11.34</span>  <span class="mf">11.35</span>  <span class="o">...</span>      <span class="mf">0.26</span>  <span class="mf">2.188988e+11</span>    <span class="mf">2.188946e+11</span>       <span class="kc">False</span>
+<span class="mi">1</span>  <span class="n">bj873576</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">12</span> <span class="mi">15</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">21</span>       <span class="mf">13.45</span>  <span class="mf">13.33</span>  <span class="o">...</span>      <span class="mf">1.01</span>  <span class="mf">1.446856e+09</span>    <span class="mf">3.959731e+08</span>       <span class="kc">False</span>
+
+<span class="p">[</span><span class="mi">2</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">15</span> <span class="n">columns</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>‍</p>

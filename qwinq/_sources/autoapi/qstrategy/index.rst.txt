@@ -17,10 +17,7 @@ Submodules
    /autoapi/qstrategy/monitor/index
    /autoapi/qstrategy/qstrategy/index
    /autoapi/qstrategy/risk/index
-   /autoapi/qstrategy/runner/index
    /autoapi/qstrategy/select/index
-   /autoapi/qstrategy/strategy/index
-   /autoapi/qstrategy/test_strategy/index
    /autoapi/qstrategy/trade/index
    /autoapi/qstrategy/tradecomm/index
 
