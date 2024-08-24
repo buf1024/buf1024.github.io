@@ -107,59 +107,180 @@ Module Contents
 
 .. py:function:: uuid() -> str
 
+   生成uuid
+
+
 .. py:function:: new_signal(type: str, source: ast.Dict, code: str, name: str, price: float, volume: int, desc: str) -> ast.Dict
 
+   生成新signal
+
+   :param type: 类型
+   :type type: str
+   :param source: 信号源
+   :type source: Dict
+   :param code: 代码
+   :type code: str
+   :param name: 名称
+   :type name: str
+   :param price: 价格
+   :type price: float
+   :param volume: 量
+   :type volume: int
+   :param desc: 说明
+   :type desc: str
+
+   :rtype: Dict
+
+
 .. py:function:: stat_select_hit(data: List[ast.Dict], hit: int, hit_max: int) -> ast.Dict
+
+   标记select 命中结果
+
+   :param data: 命中数据
+   :type data: List[Dict]
+   :param hit: 命中下标
+   :type hit: int
+   :param hit_max: 最大下标
+   :type hit_max: int
+
+   :rtype: Dict
+
 
 .. py:class:: ShareState(loader: qdatac.loader.BlockLoader, is_trading: bool, is_started: bool, account: Optional[qstrategy.tradecomm.Account] = None)
 
    .. py:property:: loader
       :type: qdatac.loader.BlockLoader
 
+      Loader
 
 
    .. py:property:: account
       :type: Optional[qstrategy.tradecomm.Account]
 
+      Account
+
+
+   .. py:property:: events
+      :type: List[ast.Dict]
+
+      Events
 
 
    .. py:property:: is_trading
       :type: bool
 
+      is_trading
 
 
    .. py:property:: is_started
       :type: bool
 
+      is_started
 
 
    .. py:method:: can_buy(price: float, volume: int) -> bool
 
+      测试是否可以买
+
+      :param price: 价格
+      :type price: float
+      :param volume: 量
+      :type volume: int
+
+      :rtype: bool
+
+
 
    .. py:method:: can_sell(code: str) -> int
+
+      测试是否可以卖
+
+      :param code: 代码
+      :type code: str
+
+      :returns: 可卖量
+      :rtype: int
+
 
 
    .. py:method:: can_cancel(code: str) -> Optional[List[qstrategy.tradecomm.Entrust]]
 
+      是否可以取消委托
+
+      :param code: 代码
+      :type code: str
+
+      :returns: 可取消的委托单
+      :rtype: Optional[List[Entrust]]
+
+
 
    .. py:method:: get_position_volume(code: str) -> Tuple[int, int]
+
+      返回头寸的量和可用量
+
+      :param code: 代码
+      :type code: str
+
+      :returns: (量，可用量)
+      :rtype: Tuple[int, int]
+
 
 
    .. py:method:: get_position(code: Optional[str] = None) -> Optional[List[qstrategy.tradecomm.Position]]
 
+      返回头寸列表
 
-   .. py:method:: buy(signal: qstrategy.tradecomm.Signal) -> None
+      :param code: 代码，如果没有，则返回全部
+      :type code: Optional[str], optional
 
-
-   .. py:method:: sell(signal: qstrategy.tradecomm.Signal) -> None
-
-
-   .. py:method:: cancel(signal: qstrategy.tradecomm.Signal) -> None
-
-
-   .. py:method:: subscribe(codes: List[str]) -> None
+      :returns: 头寸列表
+      :rtype: Optional[List[Position]]
 
 
-   .. py:method:: emit(event: qstrategy.event.Event) -> None
+
+   .. py:method:: buy(signal: qstrategy.tradecomm.Signal)
+
+      发出买信号
+
+      :param signal: 信号
+      :type signal: Signal
+
+
+
+   .. py:method:: sell(signal: qstrategy.tradecomm.Signal)
+
+      发出卖信号
+
+      :param signal: 信号
+      :type signal: Signal
+
+
+
+   .. py:method:: cancel(signal: qstrategy.tradecomm.Signal)
+
+      发出取消信号
+
+      :param signal: 信号
+      :type signal: Signal
+
+
+
+   .. py:method:: subscribe(codes: List[str])
+
+      订阅行情
+
+      :param codes: 代码列表
+      :type codes: List[str]
+
+
+
+   .. py:method:: emit(event: qstrategy.event.Event)
+
+      发出事件
+
+      :param event: 事件
+      :type event: Event
+
 
 

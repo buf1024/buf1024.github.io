@@ -1,0 +1,37 @@
+qstrategy.do_select
+===================
+
+.. py:module:: qstrategy.do_select
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   qstrategy.do_select.do_select
+
+
+Module Contents
+---------------
+
+.. py:function:: do_select(strategy: qstrategy.select.Select, loader: qdatac.loader.BlockLoader, typ: str, params: Optional[qstrategy.tradecomm.Params] = None, with_progress: bool = False, to_frame: bool = True) -> Union[List[Dict], pandas.DataFrame]
+
+   执行选股
+
+   :param strategy: 策略实例
+   :type strategy: Select
+   :param loader: Loader
+   :type loader: BlockLoader
+   :param typ: 类型：stock, bond, fund
+   :type typ: str
+   :param params: 策略参数
+   :type params: Optional[Params], optional
+   :param with_progress: 是否显示进度条，默认是不显示的。
+   :type with_progress: bool, optional
+   :param to_frame: 是否转换为DataFrame格式，默认 True.
+   :type to_frame: bool, optional
+
+   :rtype: Union[List[Dict], pd.DataFrame]
+
+

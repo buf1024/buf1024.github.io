@@ -59,6 +59,7 @@
 <li class="toctree-l4"><a class="reference internal" href="base_strategy/index.html">qstrategy.base_strategy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="broker/index.html">qstrategy.broker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictclass/index.html">qstrategy.dictclass</a></li>
+<li class="toctree-l4"><a class="reference internal" href="do_select/index.html">qstrategy.do_select</a></li>
 <li class="toctree-l4"><a class="reference internal" href="event/index.html">qstrategy.event</a></li>
 <li class="toctree-l4"><a class="reference internal" href="monitor/index.html">qstrategy.monitor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qstrategy/index.html">qstrategy.qstrategy</a></li>
@@ -66,6 +67,18 @@
 <li class="toctree-l4"><a class="reference internal" href="select/index.html">qstrategy.select</a></li>
 <li class="toctree-l4"><a class="reference internal" href="trade/index.html">qstrategy.trade</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tradecomm/index.html">qstrategy.tradecomm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#qstrategy.Broker"><code class="docutils literal notranslate"><span class="pre">Broker</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qstrategy.Monitor"><code class="docutils literal notranslate"><span class="pre">Monitor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qstrategy.Risk"><code class="docutils literal notranslate"><span class="pre">Risk</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qstrategy.Select"><code class="docutils literal notranslate"><span class="pre">Select</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qstrategy.Strategy"><code class="docutils literal notranslate"><span class="pre">Strategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qstrategy.ShareState"><code class="docutils literal notranslate"><span class="pre">ShareState</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qstrategy.do_select"><code class="docutils literal notranslate"><span class="pre">do_select()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -107,6 +120,7 @@
 <li class="toctree-l1"><a class="reference internal" href="base_strategy/index.html">qstrategy.base_strategy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="broker/index.html">qstrategy.broker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dictclass/index.html">qstrategy.dictclass</a></li>
+<li class="toctree-l1"><a class="reference internal" href="do_select/index.html">qstrategy.do_select</a></li>
 <li class="toctree-l1"><a class="reference internal" href="event/index.html">qstrategy.event</a></li>
 <li class="toctree-l1"><a class="reference internal" href="monitor/index.html">qstrategy.monitor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qstrategy/index.html">qstrategy.qstrategy</a></li>
@@ -116,6 +130,387 @@
 <li class="toctree-l1"><a class="reference internal" href="tradecomm/index.html">qstrategy.tradecomm</a></li>
 </ul>
 </div>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.Broker" title="qstrategy.Broker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Broker</span></code></a></p></td>
+<td><p>交易券商基类，实现交易券商，要继承于该类</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qstrategy.Monitor" title="qstrategy.Monitor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Monitor</span></code></a></p></td>
+<td><p>监控策略基类，实现监控策略，要继承于该类</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.Risk" title="qstrategy.Risk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Risk</span></code></a></p></td>
+<td><p>风控策略基类，实现风控策略，要继承于该类</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qstrategy.Select" title="qstrategy.Select"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Select</span></code></a></p></td>
+<td><p>选股策略基类，实现选股策略，要继承于该类</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.Strategy" title="qstrategy.Strategy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Strategy</span></code></a></p></td>
+<td><p>交易策略基类，实现交易策略，要继承于该类</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qstrategy.ShareState" title="qstrategy.ShareState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShareState</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qstrategy.do_select" title="qstrategy.do_select"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_select</span></code></a>(→ Union[List[Dict], pandas.DataFrame])</p></td>
+<td><p>执行选股</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qstrategy.Broker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qstrategy.</span></span><span class="sig-name descname"><span class="pre">Broker</span></span><a class="headerlink" href="#qstrategy.Broker" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="base_strategy/index.html#qstrategy.base_strategy.BaseStrategy" title="qstrategy.base_strategy.BaseStrategy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qstrategy.base_strategy.BaseStrategy</span></code></a></p>
+<div class="graphviz"><img src="../../_images/inheritance-9ab51bb267c8fea4c148be534830aea29dc12acd.png" alt="Inheritance diagram of qstrategy.Broker" usemap="#inheritance97b492bcc7" class="inheritance graphviz" /></div>
+<map id="inheritance97b492bcc7" name="inheritance97b492bcc7">
+<area shape="rect" id="node2" href="base_strategy/index.html#qstrategy.base_strategy.BaseStrategy" target="_top" title="策略基类" alt="" coords="125,5,226,32"/>
+<area shape="rect" id="node3" href="broker/index.html#qstrategy.broker.Broker" target="_top" title="交易券商基类，实现交易券商，要继承于该类" alt="" coords="274,5,346,32"/>
+</map><p>交易券商基类，实现交易券商，要继承于该类</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.Broker.on_broker">
+<span class="sig-name descname"><span class="pre">on_broker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">quots</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.event.RtQuot</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.Broker.on_broker" title="Link to this definition"></a></dt>
+<dd><p>有行情时回调，一般券商不关心行情，所以不用管，为了接口完整性而已</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="#qstrategy.ShareState" title="qstrategy.ShareState"><em>ShareState</em></a>) – 共享状态</p></li>
+<li><p><strong>quots</strong> (<em>RtQuot</em>) – 行情</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.Broker.on_entrust">
+<span class="sig-name descname"><span class="pre">on_entrust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">entrust</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.tradecomm.Entrust</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.Broker.on_entrust" title="Link to this definition"></a></dt>
+<dd><p>委托请求，一般券商接口收到后，发送委托单给真实的券商</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="#qstrategy.ShareState" title="qstrategy.ShareState"><em>ShareState</em></a>) – 共享状态</p></li>
+<li><p><strong>entrust</strong> (<em>Entrust</em>) – 委托单</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.Broker.on_poll">
+<span class="sig-name descname"><span class="pre">on_poll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.Broker.on_poll" title="Link to this definition"></a></dt>
+<dd><p>沦陷交易单据状态，真实的券商结果缓存后，由这个接口返回的交易系统</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<a class="reference internal" href="#qstrategy.ShareState" title="qstrategy.ShareState"><em>ShareState</em></a>) – 共享状态</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qstrategy.Monitor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qstrategy.</span></span><span class="sig-name descname"><span class="pre">Monitor</span></span><a class="headerlink" href="#qstrategy.Monitor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="base_strategy/index.html#qstrategy.base_strategy.BaseStrategy" title="qstrategy.base_strategy.BaseStrategy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qstrategy.base_strategy.BaseStrategy</span></code></a></p>
+<div class="graphviz"><img src="../../_images/inheritance-5c2a8a39b29ebacebb75ae9bd6d4b6678f54b0b2.png" alt="Inheritance diagram of qstrategy.Monitor" usemap="#inheritancecf31dc7d7e" class="inheritance graphviz" /></div>
+<map id="inheritancecf31dc7d7e" name="inheritancecf31dc7d7e">
+<area shape="rect" id="node2" href="base_strategy/index.html#qstrategy.base_strategy.BaseStrategy" target="_top" title="策略基类" alt="" coords="125,5,226,32"/>
+<area shape="rect" id="node3" href="monitor/index.html#qstrategy.monitor.Monitor" target="_top" title="监控策略基类，实现监控策略，要继承于该类" alt="" coords="274,5,346,32"/>
+</map><p>监控策略基类，实现监控策略，要继承于该类</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.Monitor.on_monitor">
+<span class="sig-name descname"><span class="pre">on_monitor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">quots</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.event.RtQuot</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.Monitor.on_monitor" title="Link to this definition"></a></dt>
+<dd><p>有行情时回调，实现监控逻辑</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="#qstrategy.ShareState" title="qstrategy.ShareState"><em>ShareState</em></a>) – 共享状态</p></li>
+<li><p><strong>quots</strong> (<em>RtQuot</em>) – 行情</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qstrategy.Risk">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qstrategy.</span></span><span class="sig-name descname"><span class="pre">Risk</span></span><a class="headerlink" href="#qstrategy.Risk" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="base_strategy/index.html#qstrategy.base_strategy.BaseStrategy" title="qstrategy.base_strategy.BaseStrategy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qstrategy.base_strategy.BaseStrategy</span></code></a></p>
+<div class="graphviz"><img src="../../_images/inheritance-46161d4e1bcfff677b821a2f7ae53962068b6564.png" alt="Inheritance diagram of qstrategy.Risk" usemap="#inheritancea1267b6492" class="inheritance graphviz" /></div>
+<map id="inheritancea1267b6492" name="inheritancea1267b6492">
+<area shape="rect" id="node2" href="base_strategy/index.html#qstrategy.base_strategy.BaseStrategy" target="_top" title="策略基类" alt="" coords="125,5,226,32"/>
+<area shape="rect" id="node3" href="risk/index.html#qstrategy.risk.Risk" target="_top" title="风控策略基类，实现风控策略，要继承于该类" alt="" coords="274,5,346,32"/>
+</map><p>风控策略基类，实现风控策略，要继承于该类</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.Risk.on_risk">
+<span class="sig-name descname"><span class="pre">on_risk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">quots</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.event.RtQuot</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.Risk.on_risk" title="Link to this definition"></a></dt>
+<dd><p>有行情时回调，实现风控逻辑</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="#qstrategy.ShareState" title="qstrategy.ShareState"><em>ShareState</em></a>) – 共享状态</p></li>
+<li><p><strong>quots</strong> (<em>RtQuot</em>) – 行情</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qstrategy.Select">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qstrategy.</span></span><span class="sig-name descname"><span class="pre">Select</span></span><a class="headerlink" href="#qstrategy.Select" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="base_strategy/index.html#qstrategy.base_strategy.BaseStrategy" title="qstrategy.base_strategy.BaseStrategy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qstrategy.base_strategy.BaseStrategy</span></code></a></p>
+<p>选股策略基类，实现选股策略，要继承于该类</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.Select.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.Select.select" title="Link to this definition"></a></dt>
+<dd><p>选股时回调，计算选择逻辑</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="#qstrategy.ShareState" title="qstrategy.ShareState"><em>ShareState</em></a>) – 共享状态</p></li>
+<li><p><strong>code</strong> (<em>str</em>) – 代码</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – 名称</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qstrategy.Strategy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qstrategy.</span></span><span class="sig-name descname"><span class="pre">Strategy</span></span><a class="headerlink" href="#qstrategy.Strategy" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="base_strategy/index.html#qstrategy.base_strategy.BaseStrategy" title="qstrategy.base_strategy.BaseStrategy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qstrategy.base_strategy.BaseStrategy</span></code></a></p>
+<div class="graphviz"><img src="../../_images/inheritance-a796d4f00505308a0584baa3e1a6d6ec03d11ae1.png" alt="Inheritance diagram of qstrategy.Strategy" usemap="#inheritanceded7047015" class="inheritance graphviz" /></div>
+<map id="inheritanceded7047015" name="inheritanceded7047015">
+<area shape="rect" id="node2" href="base_strategy/index.html#qstrategy.base_strategy.BaseStrategy" target="_top" title="策略基类" alt="" coords="125,5,226,32"/>
+<area shape="rect" id="node3" href="trade/index.html#qstrategy.trade.Strategy" target="_top" title="交易策略基类，实现交易策略，要继承于该类" alt="" coords="274,5,346,32"/>
+</map><p>交易策略基类，实现交易策略，要继承于该类</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.Strategy.on_trade">
+<span class="sig-name descname"><span class="pre">on_trade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="qstrategy/index.html#qstrategy.qstrategy.ShareState" title="qstrategy.qstrategy.ShareState"><span class="pre">qstrategy.qstrategy.ShareState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">quots</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.event.RtQuot</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.Strategy.on_trade" title="Link to this definition"></a></dt>
+<dd><p>有行情时回调，实现交易逻辑</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="#qstrategy.ShareState" title="qstrategy.ShareState"><em>ShareState</em></a>) – 共享状态</p></li>
+<li><p><strong>quots</strong> (<em>RtQuot</em>) – 行情</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qstrategy.ShareState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qstrategy.</span></span><span class="sig-name descname"><span class="pre">ShareState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qdatac/loader/index.html#qdatac.loader.BlockLoader" title="qdatac.loader.BlockLoader"><span class="pre">qdatac.loader.BlockLoader</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_trading</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_started</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.tradecomm.Account</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.ShareState" title="Link to this definition"></a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="qstrategy.ShareState.loader">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loader</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../qdatac/loader/index.html#qdatac.loader.BlockLoader" title="qdatac.loader.BlockLoader"><span class="pre">qdatac.loader.BlockLoader</span></a></em><a class="headerlink" href="#qstrategy.ShareState.loader" title="Link to this definition"></a></dt>
+<dd><p>Loader</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qstrategy.ShareState.account">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">account</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">qstrategy.tradecomm.Account</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#qstrategy.ShareState.account" title="Link to this definition"></a></dt>
+<dd><p>Account</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qstrategy.ShareState.events">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">events</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ast.Dict</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qstrategy.ShareState.events" title="Link to this definition"></a></dt>
+<dd><p>Events</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qstrategy.ShareState.is_trading">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_trading</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#qstrategy.ShareState.is_trading" title="Link to this definition"></a></dt>
+<dd><p>is_trading</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qstrategy.ShareState.is_started">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_started</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#qstrategy.ShareState.is_started" title="Link to this definition"></a></dt>
+<dd><p>is_started</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.ShareState.can_buy">
+<span class="sig-name descname"><span class="pre">can_buy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">price</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qstrategy.ShareState.can_buy" title="Link to this definition"></a></dt>
+<dd><p>测试是否可以买</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>price</strong> (<em>float</em>) – 价格</p></li>
+<li><p><strong>volume</strong> (<em>int</em>) – 量</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.ShareState.can_sell">
+<span class="sig-name descname"><span class="pre">can_sell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qstrategy.ShareState.can_sell" title="Link to this definition"></a></dt>
+<dd><p>测试是否可以卖</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>str</em>) – 代码</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>可卖量</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.ShareState.can_cancel">
+<span class="sig-name descname"><span class="pre">can_cancel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">qstrategy.tradecomm.Entrust</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.ShareState.can_cancel" title="Link to this definition"></a></dt>
+<dd><p>是否可以取消委托</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>str</em>) – 代码</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>可取消的委托单</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[List[Entrust]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.ShareState.get_position_volume">
+<span class="sig-name descname"><span class="pre">get_position_volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qstrategy.ShareState.get_position_volume" title="Link to this definition"></a></dt>
+<dd><p>返回头寸的量和可用量</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>str</em>) – 代码</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>(量，可用量)</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.ShareState.get_position">
+<span class="sig-name descname"><span class="pre">get_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">qstrategy.tradecomm.Position</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#qstrategy.ShareState.get_position" title="Link to this definition"></a></dt>
+<dd><p>返回头寸列表</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – 代码，如果没有，则返回全部</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>头寸列表</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[List[Position]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.ShareState.buy">
+<span class="sig-name descname"><span class="pre">buy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.tradecomm.Signal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.ShareState.buy" title="Link to this definition"></a></dt>
+<dd><p>发出买信号</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>signal</strong> (<em>Signal</em>) – 信号</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.ShareState.sell">
+<span class="sig-name descname"><span class="pre">sell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.tradecomm.Signal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.ShareState.sell" title="Link to this definition"></a></dt>
+<dd><p>发出卖信号</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>signal</strong> (<em>Signal</em>) – 信号</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.ShareState.cancel">
+<span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.tradecomm.Signal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.ShareState.cancel" title="Link to this definition"></a></dt>
+<dd><p>发出取消信号</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>signal</strong> (<em>Signal</em>) – 信号</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.ShareState.subscribe">
+<span class="sig-name descname"><span class="pre">subscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">codes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.ShareState.subscribe" title="Link to this definition"></a></dt>
+<dd><p>订阅行情</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>codes</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – 代码列表</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qstrategy.ShareState.emit">
+<span class="sig-name descname"><span class="pre">emit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="event/index.html#qstrategy.event.Event" title="qstrategy.event.Event"><span class="pre">qstrategy.event.Event</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qstrategy.ShareState.emit" title="Link to this definition"></a></dt>
+<dd><p>发出事件</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="event/index.html#qstrategy.event.Event" title="qstrategy.event.Event"><em>Event</em></a>) – 事件</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qstrategy.do_select">
+<span class="sig-prename descclassname"><span class="pre">qstrategy.</span></span><span class="sig-name descname"><span class="pre">do_select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strategy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="select/index.html#qstrategy.select.Select" title="qstrategy.select.Select"><span class="pre">qstrategy.select.Select</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../qdatac/loader/index.html#qdatac.loader.BlockLoader" title="qdatac.loader.BlockLoader"><span class="pre">qdatac.loader.BlockLoader</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">typ</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qstrategy.tradecomm.Params</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_progress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pandas.DataFrame</span></span></span><a class="headerlink" href="#qstrategy.do_select" title="Link to this definition"></a></dt>
+<dd><p>执行选股</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strategy</strong> (<a class="reference internal" href="#qstrategy.Select" title="qstrategy.Select"><em>Select</em></a>) – 策略实例</p></li>
+<li><p><strong>loader</strong> (<a class="reference internal" href="../qdatac/loader/index.html#qdatac.loader.BlockLoader" title="qdatac.loader.BlockLoader"><em>BlockLoader</em></a>) – Loader</p></li>
+<li><p><strong>typ</strong> (<em>str</em>) – 类型：stock, bond, fund</p></li>
+<li><p><strong>params</strong> (<em>Optional</em><em>[</em><em>Params</em><em>]</em><em>, </em><em>optional</em>) – 策略参数</p></li>
+<li><p><strong>with_progress</strong> (<em>bool</em><em>, </em><em>optional</em>) – 是否显示进度条，默认是不显示的。</p></li>
+<li><p><strong>to_frame</strong> (<em>bool</em><em>, </em><em>optional</em>) – 是否转换为DataFrame格式，默认 True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>Union[List[Dict], pd.DataFrame]</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 
